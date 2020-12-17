@@ -1,0 +1,110 @@
+\hypertarget{namespacefilelist__mod}{}\doxysection{filelist\+\_\+mod Module Reference}
+\label{namespacefilelist__mod}\index{filelist\_mod@{filelist\_mod}}
+
+
+This module contains classes and procedures to obtain a list of files in a given directory.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structfilelist__mod_1_1filelist__type}{filelist\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The File\+List\+\_\+type class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+type(\mbox{\hyperlink{structfilelist__mod_1_1filelist__type}{filelist\+\_\+type}}) function \mbox{\hyperlink{namespacefilelist__mod_a03ce1a570da7c6b22b006590abbb809f}{constructfilelist}} (search\+Str, order\+Str, exclude\+Str, OS)
+\begin{DoxyCompactList}\small\item\em The constructor of the \mbox{\hyperlink{structfilelist__mod_1_1filelist__type}{File\+List\+\_\+type}} class. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespacefilelist__mod_a5e58ff87062902f61d1c84bce0591a7c}{getfilelist}} (File\+List, Err, count, search\+Str, order\+Str, exclude\+Str, OS)
+\begin{DoxyCompactList}\small\item\em Return a list of files that match {\ttfamily search\+Str}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespacefilelist__mod_a80303191dbededeed22ddf175f894966}{module\+\_\+name}} = \char`\"{}@File\+List\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains classes and procedures to obtain a list of files in a given directory. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespacefilelist__mod_a03ce1a570da7c6b22b006590abbb809f}\label{namespacefilelist__mod_a03ce1a570da7c6b22b006590abbb809f}} 
+\index{filelist\_mod@{filelist\_mod}!constructfilelist@{constructfilelist}}
+\index{constructfilelist@{constructfilelist}!filelist\_mod@{filelist\_mod}}
+\doxysubsubsection{\texorpdfstring{constructfilelist()}{constructfilelist()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structfilelist__mod_1_1filelist__type}{filelist\+\_\+type}}) function filelist\+\_\+mod\+::constructfilelist (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in), optional}]{search\+Str,  }\item[{character($\ast$), intent(in), optional}]{order\+Str,  }\item[{character($\ast$), intent(in), optional}]{exclude\+Str,  }\item[{type(\mbox{\hyperlink{structsystem__mod_1_1os__type}{os\+\_\+type}}), intent(inout), optional}]{OS }\end{DoxyParamCaption})}
+
+
+
+The constructor of the \mbox{\hyperlink{structfilelist__mod_1_1filelist__type}{File\+List\+\_\+type}} class. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em search\+Str} & \+: The pattern for the file search ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em order\+Str} & \+: The order by which the search results will be listed ({\bfseries{optional}}, default = \char`\"{}name\char`\"{}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em exclude\+Str} & \+: The string which the listed files should not contain ({\bfseries{optional}}, default = \char`\"{}\char`\"{}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em OS} & \+: An object of class \mbox{\hyperlink{structsystem__mod_1_1os__type}{O\+S\+\_\+type}} indicating the OS type ({\bfseries{optional}}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File\+List \+: An object of \mbox{\hyperlink{structfilelist__mod_1_1filelist__type}{File\+List\+\_\+type}} class. 
+\end{DoxyReturn}
+
+
+Definition at line 87 of file File\+List\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacefilelist__mod_a5e58ff87062902f61d1c84bce0591a7c}\label{namespacefilelist__mod_a5e58ff87062902f61d1c84bce0591a7c}} 
+\index{filelist\_mod@{filelist\_mod}!getfilelist@{getfilelist}}
+\index{getfilelist@{getfilelist}!filelist\_mod@{filelist\_mod}}
+\doxysubsubsection{\texorpdfstring{getfilelist()}{getfilelist()}}
+{\footnotesize\ttfamily subroutine filelist\+\_\+mod\+::getfilelist (\begin{DoxyParamCaption}\item[{type(charvec\+\_\+type), dimension(\+:), intent(out), allocatable}]{File\+List,  }\item[{type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}), intent(out)}]{Err,  }\item[{integer(ik), intent(out), optional}]{count,  }\item[{character($\ast$), intent(in), optional}]{search\+Str,  }\item[{character($\ast$), intent(in), optional}]{order\+Str,  }\item[{character($\ast$), intent(in), optional}]{exclude\+Str,  }\item[{type(\mbox{\hyperlink{structsystem__mod_1_1os__type}{os\+\_\+type}}), intent(inout), optional}]{OS }\end{DoxyParamCaption})}
+
+
+
+Return a list of files that match {\ttfamily search\+Str}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em File\+List} & \+: The list of files matching the requested search pattern ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ out}}  & {\em count} & \+: The number of files ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ out}}  & {\em Err} & \+: The error object indicating the occurrence of error. \\
+\hline
+\mbox{\texttt{ in}}  & {\em search\+Str} & \+: The pattern for the file search ({\bfseries{optional}}). It can be the path of the folder of interest to be searched. \\
+\hline
+\mbox{\texttt{ in}}  & {\em order\+Str} & \+: The order by which the search results will be listed ({\bfseries{optional}}, default = \char`\"{}name\char`\"{}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em exclude\+Str} & \+: The string which the listed files should not contain ({\bfseries{optional}}, default = \char`\"{}\char`\"{}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em OS} & \+: An object of class \mbox{\hyperlink{structsystem__mod_1_1os__type}{O\+S\+\_\+type}} indicating the OS type ({\bfseries{optional}}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File\+List \+: An object of \mbox{\hyperlink{structfilelist__mod_1_1filelist__type}{File\+List\+\_\+type}} class. 
+\end{DoxyReturn}
+
+
+Definition at line 129 of file File\+List\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacefilelist__mod_a80303191dbededeed22ddf175f894966}\label{namespacefilelist__mod_a80303191dbededeed22ddf175f894966}} 
+\index{filelist\_mod@{filelist\_mod}!module\_name@{module\_name}}
+\index{module\_name@{module\_name}!filelist\_mod@{filelist\_mod}}
+\doxysubsubsection{\texorpdfstring{module\_name}{module\_name}}
+{\footnotesize\ttfamily character($\ast$), parameter filelist\+\_\+mod\+::module\+\_\+name = \char`\"{}@File\+List\+\_\+mod\char`\"{}}
+
+
+
+Definition at line 55 of file File\+List\+\_\+mod.\+f90.
+

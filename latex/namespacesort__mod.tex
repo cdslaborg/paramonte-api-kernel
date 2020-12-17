@@ -1,0 +1,266 @@
+\hypertarget{namespacesort__mod}{}\doxysection{sort\+\_\+mod Module Reference}
+\label{namespacesort__mod}\index{sort\_mod@{sort\_mod}}
+
+
+This module contains procedures for sorting arrays.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfacesort__mod_1_1getmedian}{getmedian}}
+\item 
+interface \mbox{\hyperlink{interfacesort__mod_1_1indexarray}{indexarray}}
+\item 
+interface \mbox{\hyperlink{interfacesort__mod_1_1sortarray}{sortarray}}
+\item 
+interface \mbox{\hyperlink{interfacesort__mod_1_1sortascending}{sortascending}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+pure recursive subroutine \mbox{\hyperlink{namespacesort__mod_ad3206134318b44a939a70966a91460cc}{sortarray\+\_\+rk}} (array)
+\begin{DoxyCompactList}\small\item\em Sort (recursively) the input real array of arbitrary size from the smallest value to the largest and return the result inside the input array. \end{DoxyCompactList}\item 
+pure subroutine \mbox{\hyperlink{namespacesort__mod_a45503b963c90f191e806b72bb06aa6c4}{partition}} (array, marker)
+\item 
+pure subroutine \mbox{\hyperlink{namespacesort__mod_a41914829e36e023eb048b5ae19b49843}{sortascending\+\_\+rk}} (np, Point, Err)
+\begin{DoxyCompactList}\small\item\em Sort (recursively) the input real array of arbitrary size from the smallest value to the largest and return the result inside the input array. \end{DoxyCompactList}\item 
+pure subroutine \mbox{\hyperlink{namespacesort__mod_afcf619faf51572a7248423bc074b61d1}{indexarray\+\_\+rk}} (n, Array, Indx, Err)
+\begin{DoxyCompactList}\small\item\em Given the real {\ttfamily Array(1\+:n)} return the array {\ttfamily Indx(1\+:n)} such that {\ttfamily Array(\+Indx(j)), j=1\+:n} is in ascending order. \end{DoxyCompactList}\item 
+pure subroutine \mbox{\hyperlink{namespacesort__mod_a4aa99e2a8f719bb9ed84cba3405a25ad}{indexarray\+\_\+ik}} (n, Array, Indx, Err)
+\begin{DoxyCompactList}\small\item\em Given the integer {\ttfamily Array(1\+:n)} return the array {\ttfamily Indx(1\+:n)} such that {\ttfamily Array(\+Indx(j)), j=1\+:n} is in ascending order. \end{DoxyCompactList}\item 
+pure subroutine \mbox{\hyperlink{namespacesort__mod_a36ab15bfe1fcbc50bd6b6a436377ef20}{sortascendingwithrooter\+\_\+ik}} (len\+Leader, Leader, Rooter, Err)
+\begin{DoxyCompactList}\small\item\em Sort the real {\ttfamily Leader(1\+:len\+Leader)} in ascending order using Quicksort while making the corresponding rearrangement of real {\ttfamily Rooter(1\+:len\+Leader)}. \end{DoxyCompactList}\item 
+pure subroutine \mbox{\hyperlink{namespacesort__mod_a39753cbf491a6a16e20aa987ae807e99}{sortascendingwithrooter\+\_\+rk}} (len\+Leader, Leader, Rooter, Err)
+\begin{DoxyCompactList}\small\item\em Sort the real {\ttfamily Leader(1\+:len\+Leader)} in ascending order using Quicksort while making the corresponding rearrangement of real {\ttfamily Rooter(1\+:len\+Leader)}. \end{DoxyCompactList}\item 
+pure subroutine \mbox{\hyperlink{namespacesort__mod_a8c2e4c28e1fa940cfc673e8ba0c09947}{getmedian\+\_\+rk}} (len\+Array, Array, median, Err)
+\begin{DoxyCompactList}\small\item\em Return the median of the input vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespacesort__mod_a3971fb926173014977acba8e3e9bd684}{module\+\_\+name}} = \char`\"{}@Sort\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains procedures for sorting arrays. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespacesort__mod_a8c2e4c28e1fa940cfc673e8ba0c09947}\label{namespacesort__mod_a8c2e4c28e1fa940cfc673e8ba0c09947}} 
+\index{sort\_mod@{sort\_mod}!getmedian\_rk@{getmedian\_rk}}
+\index{getmedian\_rk@{getmedian\_rk}!sort\_mod@{sort\_mod}}
+\doxysubsubsection{\texorpdfstring{getmedian\_rk()}{getmedian\_rk()}}
+{\footnotesize\ttfamily pure subroutine sort\+\_\+mod\+::getmedian\+\_\+rk (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{len\+Array,  }\item[{real(rk), dimension(lenarray), intent(in)}]{Array,  }\item[{real(rk), intent(out)}]{median,  }\item[{type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}), intent(out)}]{Err }\end{DoxyParamCaption})}
+
+
+
+Return the median of the input vector. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em len\+Array} & \+: The length of the input vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Array} & \+: The input vector of length {\ttfamily len\+Array} whose median is to be found. \\
+\hline
+\mbox{\texttt{ out}}  & {\em median} & \+: The median of the input {\ttfamily Array}. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Err} & \+: An object of class \mbox{\hyperlink{structerr__mod_1_1err__type}{Err\+\_\+type}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+On return, the value of {\ttfamily Err\%occurred} must be checked for any potential occurrences of errors during sorting. 
+\end{DoxyWarning}
+
+
+Definition at line 546 of file Sort\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacesort__mod_a4aa99e2a8f719bb9ed84cba3405a25ad}\label{namespacesort__mod_a4aa99e2a8f719bb9ed84cba3405a25ad}} 
+\index{sort\_mod@{sort\_mod}!indexarray\_ik@{indexarray\_ik}}
+\index{indexarray\_ik@{indexarray\_ik}!sort\_mod@{sort\_mod}}
+\doxysubsubsection{\texorpdfstring{indexarray\_ik()}{indexarray\_ik()}}
+{\footnotesize\ttfamily pure subroutine sort\+\_\+mod\+::indexarray\+\_\+ik (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{n,  }\item[{integer(ik), dimension(n), intent(in)}]{Array,  }\item[{integer(ik), dimension(n), intent(out)}]{Indx,  }\item[{type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}), intent(out)}]{Err }\end{DoxyParamCaption})}
+
+
+
+Given the integer {\ttfamily Array(1\+:n)} return the array {\ttfamily Indx(1\+:n)} such that {\ttfamily Array(\+Indx(j)), j=1\+:n} is in ascending order. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em n} & \+: The length of the input vector to be sorted. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Array} & \+: The input vector of length {\ttfamily n} to be sorted. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Indx} & \+: The output integer vector of indices of the sorted vector. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Err} & \+: An object of class \mbox{\hyperlink{structerr__mod_1_1err__type}{Err\+\_\+type}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+On return, the value of {\ttfamily Err\%occurred} must be checked for any potential occurrences of errors during sorting. 
+\end{DoxyWarning}
+
+
+Definition at line 357 of file Sort\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacesort__mod_afcf619faf51572a7248423bc074b61d1}\label{namespacesort__mod_afcf619faf51572a7248423bc074b61d1}} 
+\index{sort\_mod@{sort\_mod}!indexarray\_rk@{indexarray\_rk}}
+\index{indexarray\_rk@{indexarray\_rk}!sort\_mod@{sort\_mod}}
+\doxysubsubsection{\texorpdfstring{indexarray\_rk()}{indexarray\_rk()}}
+{\footnotesize\ttfamily pure subroutine sort\+\_\+mod\+::indexarray\+\_\+rk (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{n,  }\item[{real(rk), dimension(n), intent(in)}]{Array,  }\item[{integer(ik), dimension(n), intent(out)}]{Indx,  }\item[{type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}), intent(out)}]{Err }\end{DoxyParamCaption})}
+
+
+
+Given the real {\ttfamily Array(1\+:n)} return the array {\ttfamily Indx(1\+:n)} such that {\ttfamily Array(\+Indx(j)), j=1\+:n} is in ascending order. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em n} & \+: The length of the input vector to be sorted. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Array} & \+: The input vector of length {\ttfamily n} to be sorted. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Indx} & \+: The output integer vector of indices of the sorted vector. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Err} & \+: An object of class \mbox{\hyperlink{structerr__mod_1_1err__type}{Err\+\_\+type}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+On return, the value of {\ttfamily Err\%occurred} must be checked for any potential occurrences of errors during sorting. 
+\end{DoxyWarning}
+
+
+Definition at line 246 of file Sort\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacesort__mod_a45503b963c90f191e806b72bb06aa6c4}\label{namespacesort__mod_a45503b963c90f191e806b72bb06aa6c4}} 
+\index{sort\_mod@{sort\_mod}!partition@{partition}}
+\index{partition@{partition}!sort\_mod@{sort\_mod}}
+\doxysubsubsection{\texorpdfstring{partition()}{partition()}}
+{\footnotesize\ttfamily pure subroutine sort\+\_\+mod\+::partition (\begin{DoxyParamCaption}\item[{real(rk), dimension(\+:), intent(inout)}]{array,  }\item[{integer(ik), intent(out)}]{marker }\end{DoxyParamCaption})}
+
+
+
+Definition at line 98 of file Sort\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacesort__mod_ad3206134318b44a939a70966a91460cc}\label{namespacesort__mod_ad3206134318b44a939a70966a91460cc}} 
+\index{sort\_mod@{sort\_mod}!sortarray\_rk@{sortarray\_rk}}
+\index{sortarray\_rk@{sortarray\_rk}!sort\_mod@{sort\_mod}}
+\doxysubsubsection{\texorpdfstring{sortarray\_rk()}{sortarray\_rk()}}
+{\footnotesize\ttfamily pure recursive subroutine sort\+\_\+mod\+::sortarray\+\_\+rk (\begin{DoxyParamCaption}\item[{real(rk), dimension(\+:), intent(inout)}]{array }\end{DoxyParamCaption})}
+
+
+
+Sort (recursively) the input real array of arbitrary size from the smallest value to the largest and return the result inside the input array. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em array} & \+: The input vector to be sorted.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+On return, the contents of the input array is completely overwritten. 
+\end{DoxyWarning}
+
+
+Definition at line 80 of file Sort\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacesort__mod_a41914829e36e023eb048b5ae19b49843}\label{namespacesort__mod_a41914829e36e023eb048b5ae19b49843}} 
+\index{sort\_mod@{sort\_mod}!sortascending\_rk@{sortascending\_rk}}
+\index{sortascending\_rk@{sortascending\_rk}!sort\_mod@{sort\_mod}}
+\doxysubsubsection{\texorpdfstring{sortascending\_rk()}{sortascending\_rk()}}
+{\footnotesize\ttfamily pure subroutine sort\+\_\+mod\+::sortascending\+\_\+rk (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{np,  }\item[{real(rk), dimension(np), intent(inout)}]{Point,  }\item[{type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}), intent(out)}]{Err }\end{DoxyParamCaption})}
+
+
+
+Sort (recursively) the input real array of arbitrary size from the smallest value to the largest and return the result inside the input array. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em np} & \+: The length of the input vector to be sorted. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em Point} & \+: The input vector to be sorted. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Err} & \+: An object of class \mbox{\hyperlink{structerr__mod_1_1err__type}{Err\+\_\+type}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+On return, the contents of the input array is completely overwritten by the output sorted array.
+
+On return, the value of {\ttfamily Erroccurred} must be checked for any potential occurrences of errors during sorting. 
+\end{DoxyWarning}
+
+
+Definition at line 152 of file Sort\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacesort__mod_a36ab15bfe1fcbc50bd6b6a436377ef20}\label{namespacesort__mod_a36ab15bfe1fcbc50bd6b6a436377ef20}} 
+\index{sort\_mod@{sort\_mod}!sortascendingwithrooter\_ik@{sortascendingwithrooter\_ik}}
+\index{sortascendingwithrooter\_ik@{sortascendingwithrooter\_ik}!sort\_mod@{sort\_mod}}
+\doxysubsubsection{\texorpdfstring{sortascendingwithrooter\_ik()}{sortascendingwithrooter\_ik()}}
+{\footnotesize\ttfamily pure subroutine sort\+\_\+mod\+::sortascendingwithrooter\+\_\+ik (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{len\+Leader,  }\item[{integer(ik), dimension(lenleader), intent(inout)}]{Leader,  }\item[{integer(ik), dimension(lenleader), intent(inout)}]{Rooter,  }\item[{type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}), intent(out)}]{Err }\end{DoxyParamCaption})}
+
+
+
+Sort the real {\ttfamily Leader(1\+:len\+Leader)} in ascending order using Quicksort while making the corresponding rearrangement of real {\ttfamily Rooter(1\+:len\+Leader)}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em len\+Leader} & \+: The length of the input vector to be sorted. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em Leader} & \+: The vector of length {\ttfamily len\+Leader} to be sorted. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em Rooter} & \+: The vector of length {\ttfamily len\+Leader} to be sorted according to the rearrangement of the elements of {\ttfamily Leader}. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Err} & \+: An object of class \mbox{\hyperlink{structerr__mod_1_1err__type}{Err\+\_\+type}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+On return, the value of {\ttfamily Err\%occurred} must be checked for any potential occurrences of errors during sorting. 
+\end{DoxyWarning}
+
+
+Definition at line 468 of file Sort\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacesort__mod_a39753cbf491a6a16e20aa987ae807e99}\label{namespacesort__mod_a39753cbf491a6a16e20aa987ae807e99}} 
+\index{sort\_mod@{sort\_mod}!sortascendingwithrooter\_rk@{sortascendingwithrooter\_rk}}
+\index{sortascendingwithrooter\_rk@{sortascendingwithrooter\_rk}!sort\_mod@{sort\_mod}}
+\doxysubsubsection{\texorpdfstring{sortascendingwithrooter\_rk()}{sortascendingwithrooter\_rk()}}
+{\footnotesize\ttfamily pure subroutine sort\+\_\+mod\+::sortascendingwithrooter\+\_\+rk (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{len\+Leader,  }\item[{real(rk), dimension(lenleader), intent(inout)}]{Leader,  }\item[{real(rk), dimension(lenleader), intent(inout)}]{Rooter,  }\item[{type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}), intent(out)}]{Err }\end{DoxyParamCaption})}
+
+
+
+Sort the real {\ttfamily Leader(1\+:len\+Leader)} in ascending order using Quicksort while making the corresponding rearrangement of real {\ttfamily Rooter(1\+:len\+Leader)}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em len\+Leader} & \+: The length of the input vector to be sorted. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em Leader} & \+: The vector of length {\ttfamily len\+Leader} to be sorted. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em Rooter} & \+: The vector of length {\ttfamily len\+Leader} to be sorted according to the rearrangement of the elements of {\ttfamily Leader}. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Err} & \+: An object of class \mbox{\hyperlink{structerr__mod_1_1err__type}{Err\+\_\+type}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+On return, the value of {\ttfamily Err\%occurred} must be checked for any potential occurrences of errors during sorting. 
+\end{DoxyWarning}
+
+
+Definition at line 507 of file Sort\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacesort__mod_a3971fb926173014977acba8e3e9bd684}\label{namespacesort__mod_a3971fb926173014977acba8e3e9bd684}} 
+\index{sort\_mod@{sort\_mod}!module\_name@{module\_name}}
+\index{module\_name@{module\_name}!sort\_mod@{sort\_mod}}
+\doxysubsubsection{\texorpdfstring{module\_name}{module\_name}}
+{\footnotesize\ttfamily character($\ast$), parameter sort\+\_\+mod\+::module\+\_\+name = \char`\"{}@Sort\+\_\+mod\char`\"{}}
+
+
+
+Definition at line 50 of file Sort\+\_\+mod.\+f90.
+

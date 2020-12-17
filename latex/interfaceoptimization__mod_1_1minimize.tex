@@ -1,0 +1,68 @@
+\hypertarget{interfaceoptimization__mod_1_1minimize}{}\doxysection{optimization\+\_\+mod\+::minimize Interface Reference}
+\label{interfaceoptimization__mod_1_1minimize}\index{optimization\_mod::minimize@{optimization\_mod::minimize}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+type(\mbox{\hyperlink{structoptimization__mod_1_1brentminimum__type}{brentminimum\+\_\+type}}) function \mbox{\hyperlink{interfaceoptimization__mod_1_1minimize_afb77f58fff753987d1d0f089e3579489}{minimizebrent}} (get\+Func, x0, x1, x2, xtol)
+\begin{DoxyCompactList}\small\item\em The constructor of the class \mbox{\hyperlink{structoptimization__mod_1_1brentminimum__type}{Brent\+Minimum\+\_\+type}}. Compute the minimum of the input 1-\/dimensional function isolated to a fractional precision of about xtol using Brent\textquotesingle{}s method. \end{DoxyCompactList}\item 
+type(\mbox{\hyperlink{structoptimization__mod_1_1powellminimum__type}{powellminimum\+\_\+type}}) function \mbox{\hyperlink{interfaceoptimization__mod_1_1minimize_aec220c129bdc1cb6f5b86baae9e63305}{minimizepowell}} (ndim, get\+Func\+MD, Start\+Vec, Dir\+Mat, ftol)
+\begin{DoxyCompactList}\small\item\em The constructor of the class \mbox{\hyperlink{structoptimization__mod_1_1powellminimum__type}{Powell\+Minimum\+\_\+type}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 120 of file Optimization\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{interfaceoptimization__mod_1_1minimize_afb77f58fff753987d1d0f089e3579489}\label{interfaceoptimization__mod_1_1minimize_afb77f58fff753987d1d0f089e3579489}} 
+\index{optimization\_mod::minimize@{optimization\_mod::minimize}!minimizebrent@{minimizebrent}}
+\index{minimizebrent@{minimizebrent}!optimization\_mod::minimize@{optimization\_mod::minimize}}
+\doxysubsubsection{\texorpdfstring{minimizebrent()}{minimizebrent()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structoptimization__mod_1_1brentminimum__type}{brentminimum\+\_\+type}}) function optimization\+\_\+mod\+::minimize\+::minimizebrent (\begin{DoxyParamCaption}\item[{procedure(getfunc1d\+\_\+proc)}]{get\+Func,  }\item[{real(rk), intent(in), optional}]{x0,  }\item[{real(rk), intent(in), optional}]{x1,  }\item[{real(rk), intent(in), optional}]{x2,  }\item[{real(rk), intent(in), optional}]{xtol }\end{DoxyParamCaption})}
+
+
+
+The constructor of the class \mbox{\hyperlink{structoptimization__mod_1_1brentminimum__type}{Brent\+Minimum\+\_\+type}}. Compute the minimum of the input 1-\/dimensional function isolated to a fractional precision of about xtol using Brent\textquotesingle{}s method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em get\+Func} & \+: The 1-\/dimensional function which will have to be minimized. \\
+\hline
+\mbox{\texttt{ in}}  & {\em x0} & \+: The lower point in the set of optional bracketing triplet of abscissas that bracket the minimum of the function such that, {\ttfamily x0 $<$ x1 $<$ x2} and {\ttfamily get\+Func(x0) $>$ get\+Func(x1) $<$ get\+Func(x2)} ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em x1} & \+: The middle point in the set of optional bracketing triplet of abscissas that bracket the minimum of the function such that, {\ttfamily x0 $<$ x1 $<$ x2} and {\ttfamily get\+Func(x0) $>$ get\+Func(x1) $<$ get\+Func(x2)} ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em x2} & \+: The upper point in the set of optional bracketing triplet of abscissas that bracket the minimum of the function such that, {\ttfamily x0 $<$ x1 $<$ x2} and {\ttfamily get\+Func(x0) $>$ get\+Func(x1) $<$ get\+Func(x2)} ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em xtol} & \+: An optional fractional precision within which is the minimum is returned. The default value is sqrt(epsilon(1.\+\_\+\+RK)).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Brent\+Minimum} \+: An object of class \mbox{\hyperlink{structoptimization__mod_1_1brentminimum__type}{Brent\+Minimum\+\_\+type}} that contains the minimum of the function ({\ttfamily xmin}) and the function value at the minimum ({\ttfamily fmin}) as well as other relevant information. 
+\end{DoxyReturn}
+
+
+Definition at line 150 of file Optimization\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{interfaceoptimization__mod_1_1minimize_aec220c129bdc1cb6f5b86baae9e63305}\label{interfaceoptimization__mod_1_1minimize_aec220c129bdc1cb6f5b86baae9e63305}} 
+\index{optimization\_mod::minimize@{optimization\_mod::minimize}!minimizepowell@{minimizepowell}}
+\index{minimizepowell@{minimizepowell}!optimization\_mod::minimize@{optimization\_mod::minimize}}
+\doxysubsubsection{\texorpdfstring{minimizepowell()}{minimizepowell()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structoptimization__mod_1_1powellminimum__type}{powellminimum\+\_\+type}}) function optimization\+\_\+mod\+::minimize\+::minimizepowell (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{ndim,  }\item[{procedure(getfuncmd\+\_\+proc)}]{get\+Func\+MD,  }\item[{real(rk), dimension(ndim), intent(in)}]{Start\+Vec,  }\item[{real(rk), dimension(ndim,ndim), intent(in), optional}]{Dir\+Mat,  }\item[{real(rk), intent(in), optional}]{ftol }\end{DoxyParamCaption})}
+
+
+
+The constructor of the class \mbox{\hyperlink{structoptimization__mod_1_1powellminimum__type}{Powell\+Minimum\+\_\+type}}. 
+
+
+
+Definition at line 373 of file Optimization\+\_\+mod.\+f90.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Dropbox/\+Projects/20180101\+\_\+\+Para\+Monte/git/src/kernel/\mbox{\hyperlink{Optimization__mod_8f90}{Optimization\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

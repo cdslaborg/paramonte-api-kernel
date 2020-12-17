@@ -1,0 +1,183 @@
+\hypertarget{namespaceparallelism__mod}{}\doxysection{parallelism\+\_\+mod Module Reference}
+\label{namespaceparallelism__mod}\index{parallelism\_mod@{parallelism\_mod}}
+
+
+This module contains procedures for computing the parallel performance of the parallel algorithms.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{forkjoin\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily Fork\+Join\+\_\+type} class. \end{DoxyCompactList}\item 
+type \mbox{\hyperlink{structparallelism__mod_1_1image__type}{image\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{structparallelism__mod_1_1image__type}{Image\+\_\+type}} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \mbox{\hyperlink{namespaceparallelism__mod_a40ce1f0eedcf20b24dc85bb41809b94f}{queryimage}} (Image)
+\begin{DoxyCompactList}\small\item\em Return the statistics of the parallel processors available, depending on the type of parallelism requested. This is a dynamic member of the \mbox{\hyperlink{structparallelism__mod_1_1image__type}{Image\+\_\+type}} class. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceparallelism__mod_a5e56b0435bda6950975afea9a382a32d}{syncimages}} ()
+\begin{DoxyCompactList}\small\item\em Synchronize all existing parallel images and return nothing. This is a static member of the \mbox{\hyperlink{structparallelism__mod_1_1image__type}{Image\+\_\+type}} class. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceparallelism__mod_ad329b8db2f8dd29163f38c40d4afef9b}{finalizeimages}} ()
+\begin{DoxyCompactList}\small\item\em Finalize the current parallel simulation and return nothing. This is a static member of the \mbox{\hyperlink{structparallelism__mod_1_1image__type}{Image\+\_\+type}} class. \end{DoxyCompactList}\item 
+type(\mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{forkjoin\+\_\+type}}) function \mbox{\hyperlink{namespaceparallelism__mod_aabda4b8ad53a2e3734c06f0e913b0170}{constructforkjoin}} (process\+Count, len\+Process\+ID, Process\+ID, success\+Prob, seq\+Sec\+Time, par\+Sec\+Time, com\+Sec\+Time)
+\begin{DoxyCompactList}\small\item\em This is the constructor of the \mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{Fork\+Join\+\_\+type}} class. Return the predicted speedup of the parallel simulation given the input characteristics and timing information of the simulation. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceparallelism__mod_aceda85707c0a0418753f265d1eb310e7}{getforkjoinspeedup}} (success\+Prob, seq\+Sec\+Time, par\+Sec\+Time, com\+Sec\+Time\+Per\+Proc, min\+Max\+Num\+Proc, Speedup, len\+Speedup, max\+Speedup\+Num\+Proc, max\+Speedup, Err)
+\begin{DoxyCompactList}\small\item\em Predict the parallel simulation speedup for a range of possible processor counts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceparallelism__mod_a6b3f47f6207ef49472d9d9384904a185}{module\+\_\+name}} = \char`\"{}@Parallelism\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains procedures for computing the parallel performance of the parallel algorithms. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceparallelism__mod_aabda4b8ad53a2e3734c06f0e913b0170}\label{namespaceparallelism__mod_aabda4b8ad53a2e3734c06f0e913b0170}} 
+\index{parallelism\_mod@{parallelism\_mod}!constructforkjoin@{constructforkjoin}}
+\index{constructforkjoin@{constructforkjoin}!parallelism\_mod@{parallelism\_mod}}
+\doxysubsubsection{\texorpdfstring{constructforkjoin()}{constructforkjoin()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{forkjoin\+\_\+type}}) function parallelism\+\_\+mod\+::constructforkjoin (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{process\+Count,  }\item[{integer(ik), intent(in)}]{len\+Process\+ID,  }\item[{integer(ik), dimension(lenprocessid), intent(in)}]{Process\+ID,  }\item[{real(rk), intent(in)}]{success\+Prob,  }\item[{real(rk), intent(in)}]{seq\+Sec\+Time,  }\item[{real(rk), intent(in)}]{par\+Sec\+Time,  }\item[{real(rk), intent(in)}]{com\+Sec\+Time }\end{DoxyParamCaption})}
+
+
+
+This is the constructor of the \mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{Fork\+Join\+\_\+type}} class. Return the predicted speedup of the parallel simulation given the input characteristics and timing information of the simulation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em process\+Count} & \+: The number of processes in the simulation. \\
+\hline
+\mbox{\texttt{ in}}  & {\em len\+Process\+ID} & \+: The length of {\ttfamily Process\+ID} vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Process\+ID} & \+: The vector of process I\+Ds. \\
+\hline
+\mbox{\texttt{ in}}  & {\em success\+Prob} & \+: The success probability (the effective acceptance rate per objective function call). \\
+\hline
+\mbox{\texttt{ in}}  & {\em seq\+Sec\+Time} & \+: The timing of the sequential sections of the code. \\
+\hline
+\mbox{\texttt{ in}}  & {\em par\+Sec\+Time} & \+: The timing of the parallel sections of the code. \\
+\hline
+\mbox{\texttt{ in}}  & {\em com\+Sec\+Time} & \+: The timing of the communication sections of the code.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Fork\+Join} \+: An object of class \mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{Fork\+Join\+\_\+type}} containing the parallelization speedup. 
+\end{DoxyReturn}
+
+
+Definition at line 240 of file Parallelism\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceparallelism__mod_ad329b8db2f8dd29163f38c40d4afef9b}\label{namespaceparallelism__mod_ad329b8db2f8dd29163f38c40d4afef9b}} 
+\index{parallelism\_mod@{parallelism\_mod}!finalizeimages@{finalizeimages}}
+\index{finalizeimages@{finalizeimages}!parallelism\_mod@{parallelism\_mod}}
+\doxysubsubsection{\texorpdfstring{finalizeimages()}{finalizeimages()}}
+{\footnotesize\ttfamily subroutine parallelism\+\_\+mod\+::finalizeimages}
+
+
+
+Finalize the current parallel simulation and return nothing. This is a static member of the \mbox{\hyperlink{structparallelism__mod_1_1image__type}{Image\+\_\+type}} class. 
+
+\begin{DoxyWarning}{Warning}
+M\+PI communications will be shut down upon calling this routine and further interprocess communications will be impossible. 
+\end{DoxyWarning}
+
+
+Definition at line 205 of file Parallelism\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceparallelism__mod_aceda85707c0a0418753f265d1eb310e7}\label{namespaceparallelism__mod_aceda85707c0a0418753f265d1eb310e7}} 
+\index{parallelism\_mod@{parallelism\_mod}!getforkjoinspeedup@{getforkjoinspeedup}}
+\index{getforkjoinspeedup@{getforkjoinspeedup}!parallelism\_mod@{parallelism\_mod}}
+\doxysubsubsection{\texorpdfstring{getforkjoinspeedup()}{getforkjoinspeedup()}}
+{\footnotesize\ttfamily subroutine parallelism\+\_\+mod\+::getforkjoinspeedup (\begin{DoxyParamCaption}\item[{real(rk), intent(in)}]{success\+Prob,  }\item[{real(rk), intent(in)}]{seq\+Sec\+Time,  }\item[{real(rk), intent(in)}]{par\+Sec\+Time,  }\item[{real(rk), intent(in)}]{com\+Sec\+Time\+Per\+Proc,  }\item[{integer(ik), intent(in)}]{min\+Max\+Num\+Proc,  }\item[{real(rk), dimension(\+:), intent(out), allocatable}]{Speedup,  }\item[{integer(ik), intent(out)}]{len\+Speedup,  }\item[{integer(ik), intent(out)}]{max\+Speedup\+Num\+Proc,  }\item[{real(rk), intent(out)}]{max\+Speedup,  }\item[{type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}), intent(out), optional}]{Err }\end{DoxyParamCaption})}
+
+
+
+Predict the parallel simulation speedup for a range of possible processor counts. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em success\+Prob} & \+: The success probability (the effective acceptance rate per objective function call). \\
+\hline
+\mbox{\texttt{ in}}  & {\em seq\+Sec\+Time} & \+: The timing of the sequential sections of the code. \\
+\hline
+\mbox{\texttt{ in}}  & {\em par\+Sec\+Time} & \+: The timing of the parallel sections of the code. \\
+\hline
+\mbox{\texttt{ in}}  & {\em com\+Sec\+Time\+Per\+Proc} & \+: The timing of the communication sections of the code per processor. \\
+\hline
+\mbox{\texttt{ in}}  & {\em min\+Max\+Num\+Proc} & \+: The minimum number of processes for which the speedup will be computed. It must be at least 1. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Speedup} & \+: The vector of speedup values for different counts of processes. \\
+\hline
+\mbox{\texttt{ out}}  & {\em len\+Speedup} & \+: The length of the vector {\ttfamily Speedup}. \\
+\hline
+\mbox{\texttt{ out}}  & {\em max\+Speedup\+Num\+Proc} & \+: The number of processes at which the maximum speedup happens. \\
+\hline
+\mbox{\texttt{ out}}  & {\em max\+Speedup} & \+: The maximum speedup for any number of processors. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Err} & \+: An object of \mbox{\hyperlink{structerr__mod_1_1err__type}{Err\+\_\+type}} class indicating whether and error has occurred upon return. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 414 of file Parallelism\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceparallelism__mod_a40ce1f0eedcf20b24dc85bb41809b94f}\label{namespaceparallelism__mod_a40ce1f0eedcf20b24dc85bb41809b94f}} 
+\index{parallelism\_mod@{parallelism\_mod}!queryimage@{queryimage}}
+\index{queryimage@{queryimage}!parallelism\_mod@{parallelism\_mod}}
+\doxysubsubsection{\texorpdfstring{queryimage()}{queryimage()}}
+{\footnotesize\ttfamily subroutine parallelism\+\_\+mod\+::queryimage (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structparallelism__mod_1_1image__type}{image\+\_\+type}}), intent(inout)}]{Image }\end{DoxyParamCaption})}
+
+
+
+Return the statistics of the parallel processors available, depending on the type of parallelism requested. This is a dynamic member of the \mbox{\hyperlink{structparallelism__mod_1_1image__type}{Image\+\_\+type}} class. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em Image} & \+: An object of class \mbox{\hyperlink{structparallelism__mod_1_1image__type}{Image\+\_\+type}}. On output, all properties of {\ttfamily Image} will be reset, except the attributes {\ttfamily is\+Leader} and {\ttfamily is\+Rooter}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+This routine must not contain any synchronization statements under any circumstances. 
+\end{DoxyWarning}
+
+
+Definition at line 131 of file Parallelism\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceparallelism__mod_a5e56b0435bda6950975afea9a382a32d}\label{namespaceparallelism__mod_a5e56b0435bda6950975afea9a382a32d}} 
+\index{parallelism\_mod@{parallelism\_mod}!syncimages@{syncimages}}
+\index{syncimages@{syncimages}!parallelism\_mod@{parallelism\_mod}}
+\doxysubsubsection{\texorpdfstring{syncimages()}{syncimages()}}
+{\footnotesize\ttfamily subroutine parallelism\+\_\+mod\+::syncimages}
+
+
+
+Synchronize all existing parallel images and return nothing. This is a static member of the \mbox{\hyperlink{structparallelism__mod_1_1image__type}{Image\+\_\+type}} class. 
+
+\begin{DoxyWarning}{Warning}
+This routine global Coarray and M\+PI synchronization barriers and therefore, must be called by all processes in the current simulation. 
+\end{DoxyWarning}
+
+
+Definition at line 177 of file Parallelism\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparallelism__mod_a6b3f47f6207ef49472d9d9384904a185}\label{namespaceparallelism__mod_a6b3f47f6207ef49472d9d9384904a185}} 
+\index{parallelism\_mod@{parallelism\_mod}!module\_name@{module\_name}}
+\index{module\_name@{module\_name}!parallelism\_mod@{parallelism\_mod}}
+\doxysubsubsection{\texorpdfstring{module\_name}{module\_name}}
+{\footnotesize\ttfamily character($\ast$), parameter parallelism\+\_\+mod\+::module\+\_\+name = \char`\"{}@Parallelism\+\_\+mod\char`\"{}}
+
+
+
+Definition at line 54 of file Parallelism\+\_\+mod.\+f90.
+

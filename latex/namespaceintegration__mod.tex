@@ -1,0 +1,283 @@
+\hypertarget{namespaceintegration__mod}{}\doxysection{integration\+\_\+mod Module Reference}
+\label{namespaceintegration__mod}\index{integration\_mod@{integration\_mod}}
+
+
+This module contains classes and procedures to perform numerical integrations.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\+\_\+proc}}
+\begin{DoxyCompactList}\small\item\em The abstract interface of the integrand. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceintegration__mod_1_1integrator__proc}{integrator\+\_\+proc}}
+\begin{DoxyCompactList}\small\item\em The abstract interface of the integrator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+recursive subroutine \mbox{\hyperlink{namespaceintegration__mod_af9c975b93e34e434e95398beb6d86c55}{doquadrombclosed}} (get\+Func, lower\+Lim, upper\+Lim, max\+Relative\+Error, n\+Refinement, integral, relative\+Error, num\+Func\+Eval, ierr)
+\begin{DoxyCompactList}\small\item\em Return the integral of function get\+Func in the closed range \mbox{[}lower\+Lim,upper\+Lim\mbox{]} using Adaptive Romberg extrapolation method. \end{DoxyCompactList}\item 
+recursive subroutine \mbox{\hyperlink{namespaceintegration__mod_abf46f3f1e7533c9e4f8ce428ec6f9611}{doquadrombopen}} (get\+Func, integrate, lower\+Lim, upper\+Lim, max\+Relative\+Error, n\+Refinement, integral, relative\+Error, num\+Func\+Eval, ierr)
+\begin{DoxyCompactList}\small\item\em Return the integral of function get\+Func in the open range {\ttfamily \mbox{[}lower\+Lim,upper\+Lim\mbox{]}} using Adaptive Romberg extrapolation method. \end{DoxyCompactList}\item 
+recursive subroutine \mbox{\hyperlink{namespaceintegration__mod_adbae9c8c0a402468af9d952feb584cfd}{dopolinterp}} (xa, ya, ndata, x, y, dy, ierr)
+\item 
+recursive subroutine \mbox{\hyperlink{namespaceintegration__mod_a6c7db5f1c81e30baf983fcaf1461ac12}{doquadtrap}} (get\+Func, lower\+Lim, upper\+Lim, integral, refinement\+Stage, num\+Func\+Eval)
+\item 
+recursive subroutine \mbox{\hyperlink{namespaceintegration__mod_a6f824efc8ae563c5d6ef19bcc5ab8fc4}{midexp}} (get\+Func, lower\+Lim, upper\+Lim, integral, refinement\+Stage, num\+Func\+Eval)
+\begin{DoxyCompactList}\small\item\em Return the refinement of the integration of an exponentially-\/decaying function on a semi-\/infinite. This function is an integrator driver to be passed to \mbox{\hyperlink{namespaceintegration__mod_abf46f3f1e7533c9e4f8ce428ec6f9611}{do\+Quad\+Romb\+Open}}. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceintegration__mod_a11a4361492f991207bd22da85470fac0}{midinf}} (get\+Func, lower\+Lim, upper\+Lim, integral, refinement\+Stage, num\+Func\+Eval)
+\begin{DoxyCompactList}\small\item\em This routine is an exact replacement for \mbox{\hyperlink{namespaceintegration__mod_a80d9b5405c919f13c6caed9394f4a302}{midpnt}}, i.\+e., returns as {\ttfamily integral} the nth stage of refinement of the integral of funk from {\ttfamily lower\+Lim} to {\ttfamily upper\+Lim}, except that the function is evaluated at evenly spaced points in {\ttfamily 1/x} rather than in {\ttfamily x}. This allows the upper limit {\ttfamily upper\+Lim} to be as large and positive as the computer allows, or the lower limit {\ttfamily lower\+Lim} to be as large and negative, but not both. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceintegration__mod_a80d9b5405c919f13c6caed9394f4a302}{midpnt}} (get\+Func, lower\+Lim, upper\+Lim, integral, refinement\+Stage, num\+Func\+Eval)
+\begin{DoxyCompactList}\small\item\em This routine computes the nth stage of refinement of an extended midpoint rule. When called with {\ttfamily n = 1}, the routine returns as {\ttfamily integral} the crudest estimate of $\int_a^b f(x) ~ dx$. Subsequent calls with {\ttfamily n = 2, 3, ...} (in that sequential order) will improve the accuracy of {\ttfamily integral} by adding {\ttfamily (2/3) $\ast$ 3n-\/1} additional interior points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceintegration__mod_a3f0d72c327d06a890ba043acb1518368}{module\+\_\+name}} = \char`\"{}@Integration\+\_\+mod\char`\"{}
+\item 
+real(rk), parameter \mbox{\hyperlink{namespaceintegration__mod_a3f0d28d67b91b4193320eac996dd986e}{one\+\_\+third}} = 1.\+\_\+\+RK / 3.\+\_\+\+RK
+\item 
+character(len=117), dimension(3) \mbox{\hyperlink{namespaceintegration__mod_af799efaca3f992de2aa611eccc15c929}{errormessage}} = \mbox{[} \char`\"{}@Integration\+\_\+mod@do\+Quad\+Romb\+Closed()\+: Too many steps in do\+Quad\+Romb\+Closed(). \char`\"{} , \char`\"{}@Integration\+\_\+mod@do\+Quad\+Romb\+Closed()@do\+Pol\+Interp()\+: Input lower\+Lim, upper\+Lim to do\+Quad\+Romb\+Closed() are likely equal. \char`\"{} , \char`\"{}@Integration\+\_\+mod@do\+Quad\+Romb\+Open()@do\+Pol\+Interp()\+: Input lower\+Lim, upper\+Lim to do\+Quad\+Romb\+Open() are likely equal. \char`\"{} \mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains classes and procedures to perform numerical integrations. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceintegration__mod_adbae9c8c0a402468af9d952feb584cfd}\label{namespaceintegration__mod_adbae9c8c0a402468af9d952feb584cfd}} 
+\index{integration\_mod@{integration\_mod}!dopolinterp@{dopolinterp}}
+\index{dopolinterp@{dopolinterp}!integration\_mod@{integration\_mod}}
+\doxysubsubsection{\texorpdfstring{dopolinterp()}{dopolinterp()}}
+{\footnotesize\ttfamily recursive subroutine integration\+\_\+mod\+::dopolinterp (\begin{DoxyParamCaption}\item[{real(rk), dimension(ndata), intent(in)}]{xa,  }\item[{real(rk), dimension(ndata), intent(in)}]{ya,  }\item[{integer, intent(in)}]{ndata,  }\item[{real(rk), intent(in)}]{x,  }\item[{real(rk), intent(out)}]{y,  }\item[{real(rk), intent(out)}]{dy,  }\item[{integer, intent(out)}]{ierr }\end{DoxyParamCaption})}
+
+
+
+Definition at line 216 of file Integration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceintegration__mod_af9c975b93e34e434e95398beb6d86c55}\label{namespaceintegration__mod_af9c975b93e34e434e95398beb6d86c55}} 
+\index{integration\_mod@{integration\_mod}!doquadrombclosed@{doquadrombclosed}}
+\index{doquadrombclosed@{doquadrombclosed}!integration\_mod@{integration\_mod}}
+\doxysubsubsection{\texorpdfstring{doquadrombclosed()}{doquadrombclosed()}}
+{\footnotesize\ttfamily recursive subroutine integration\+\_\+mod\+::doquadrombclosed (\begin{DoxyParamCaption}\item[{procedure(\mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\+\_\+proc}})}]{get\+Func,  }\item[{real(rk), intent(in)}]{lower\+Lim,  }\item[{real(rk), intent(in)}]{upper\+Lim,  }\item[{real(rk), intent(in)}]{max\+Relative\+Error,  }\item[{integer(ik), intent(in)}]{n\+Refinement,  }\item[{real(rk), intent(out)}]{integral,  }\item[{real(rk), intent(out)}]{relative\+Error,  }\item[{integer(ik), intent(out)}]{num\+Func\+Eval,  }\item[{integer(ik), intent(out)}]{ierr }\end{DoxyParamCaption})}
+
+
+
+Return the integral of function get\+Func in the closed range \mbox{[}lower\+Lim,upper\+Lim\mbox{]} using Adaptive Romberg extrapolation method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em get\+Func} & \+: The input function to be integrated. It must have the interface specified by \mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\+\_\+proc}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em lower\+Lim} & \+: The lower limit of integration. \\
+\hline
+\mbox{\texttt{ in}}  & {\em upper\+Lim} & \+: The upper limit of integration. \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+Relative\+Error} & \+: The tolerance that once reach, the integration will stop. \\
+\hline
+\mbox{\texttt{ in}}  & {\em n\+Refinement} & \+: The number of refinements in the Romberg method. A number between 4-\/6 is typically good. \\
+\hline
+\mbox{\texttt{ out}}  & {\em integral} & \+: The result of integration. \\
+\hline
+\mbox{\texttt{ out}}  & {\em relative\+Error} & \+: The final estimated relative error in the result. By definition, this is always smaller than {\ttfamily max\+Relative\+Error}. \\
+\hline
+\mbox{\texttt{ out}}  & {\em num\+Func\+Eval} & \+: The number of function evaluations made. \\
+\hline
+\mbox{\texttt{ out}}  & {\em ierr} & \+: Integer flag indicating whether an error has occurred. If {\ttfamily ierr == 0}, then no error has occurred. Otherwise, the integer value points to the corresponding element of \mbox{\hyperlink{namespaceintegration__mod_af799efaca3f992de2aa611eccc15c929}{Error\+Message}} array. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 108 of file Integration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceintegration__mod_abf46f3f1e7533c9e4f8ce428ec6f9611}\label{namespaceintegration__mod_abf46f3f1e7533c9e4f8ce428ec6f9611}} 
+\index{integration\_mod@{integration\_mod}!doquadrombopen@{doquadrombopen}}
+\index{doquadrombopen@{doquadrombopen}!integration\_mod@{integration\_mod}}
+\doxysubsubsection{\texorpdfstring{doquadrombopen()}{doquadrombopen()}}
+{\footnotesize\ttfamily recursive subroutine integration\+\_\+mod\+::doquadrombopen (\begin{DoxyParamCaption}\item[{procedure(\mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\+\_\+proc}})}]{get\+Func,  }\item[{procedure(\mbox{\hyperlink{interfaceintegration__mod_1_1integrator__proc}{integrator\+\_\+proc}})}]{integrate,  }\item[{real(rk), intent(in)}]{lower\+Lim,  }\item[{real(rk), intent(in)}]{upper\+Lim,  }\item[{real(rk), intent(in)}]{max\+Relative\+Error,  }\item[{integer(ik), intent(in)}]{n\+Refinement,  }\item[{real(rk), intent(out)}]{integral,  }\item[{real(rk), intent(out)}]{relative\+Error,  }\item[{integer(ik), intent(out)}]{num\+Func\+Eval,  }\item[{integer(ik), intent(out)}]{ierr }\end{DoxyParamCaption})}
+
+
+
+Return the integral of function get\+Func in the open range {\ttfamily \mbox{[}lower\+Lim,upper\+Lim\mbox{]}} using Adaptive Romberg extrapolation method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em get\+Func} & \+: The input function to be integrated. It must have the interface specified by \mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\+\_\+proc}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em integrate} & \+: The integrator routine. It can be either \mbox{\hyperlink{namespaceintegration__mod_a6f824efc8ae563c5d6ef19bcc5ab8fc4}{midexp}}, \mbox{\hyperlink{namespaceintegration__mod_a80d9b5405c919f13c6caed9394f4a302}{midpnt}}, or \mbox{\hyperlink{namespaceintegration__mod_a11a4361492f991207bd22da85470fac0}{midinf}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em lower\+Lim} & \+: The lower limit of integration. \\
+\hline
+\mbox{\texttt{ in}}  & {\em upper\+Lim} & \+: The upper limit of integration. \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+Relative\+Error} & \+: The tolerance that once reach, the integration will stop. \\
+\hline
+\mbox{\texttt{ in}}  & {\em n\+Refinement} & \+: The number of refinements in the Romberg method. A number between 4-\/6 is typically good. \\
+\hline
+\mbox{\texttt{ out}}  & {\em integral} & \+: The result of integration. \\
+\hline
+\mbox{\texttt{ out}}  & {\em relative\+Error} & \+: The final estimated relative error in the result. By definition, this is always smaller than {\ttfamily max\+Relative\+Error}. \\
+\hline
+\mbox{\texttt{ out}}  & {\em num\+Func\+Eval} & \+: The number of function evaluations made. \\
+\hline
+\mbox{\texttt{ out}}  & {\em ierr} & \+: Integer flag indicating whether an error has occurred. If {\ttfamily ierr == 0}, then no error has occurred. Otherwise, the integer value points to the corresponding element of \mbox{\hyperlink{namespaceintegration__mod_af799efaca3f992de2aa611eccc15c929}{Error\+Message}} array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Checked by Joshua Osborne on 5/28/2020 at 9\+:03 pm. 
+\end{DoxyRemark}
+
+
+Definition at line 171 of file Integration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceintegration__mod_a6c7db5f1c81e30baf983fcaf1461ac12}\label{namespaceintegration__mod_a6c7db5f1c81e30baf983fcaf1461ac12}} 
+\index{integration\_mod@{integration\_mod}!doquadtrap@{doquadtrap}}
+\index{doquadtrap@{doquadtrap}!integration\_mod@{integration\_mod}}
+\doxysubsubsection{\texorpdfstring{doquadtrap()}{doquadtrap()}}
+{\footnotesize\ttfamily recursive subroutine integration\+\_\+mod\+::doquadtrap (\begin{DoxyParamCaption}\item[{procedure(\mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\+\_\+proc}})}]{get\+Func,  }\item[{real(rk), intent(in)}]{lower\+Lim,  }\item[{real(rk), intent(in)}]{upper\+Lim,  }\item[{real(rk), intent(inout)}]{integral,  }\item[{integer(ik), intent(in)}]{refinement\+Stage,  }\item[{integer(ik), intent(out)}]{num\+Func\+Eval }\end{DoxyParamCaption})}
+
+
+
+Definition at line 267 of file Integration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceintegration__mod_a6f824efc8ae563c5d6ef19bcc5ab8fc4}\label{namespaceintegration__mod_a6f824efc8ae563c5d6ef19bcc5ab8fc4}} 
+\index{integration\_mod@{integration\_mod}!midexp@{midexp}}
+\index{midexp@{midexp}!integration\_mod@{integration\_mod}}
+\doxysubsubsection{\texorpdfstring{midexp()}{midexp()}}
+{\footnotesize\ttfamily recursive subroutine integration\+\_\+mod\+::midexp (\begin{DoxyParamCaption}\item[{procedure(\mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\+\_\+proc}})}]{get\+Func,  }\item[{real(rk), intent(in)}]{lower\+Lim,  }\item[{real(rk), intent(in)}]{upper\+Lim,  }\item[{real(rk), intent(inout)}]{integral,  }\item[{integer(ik), intent(in)}]{refinement\+Stage,  }\item[{integer(ik), intent(out)}]{num\+Func\+Eval }\end{DoxyParamCaption})}
+
+
+
+Return the refinement of the integration of an exponentially-\/decaying function on a semi-\/infinite. This function is an integrator driver to be passed to \mbox{\hyperlink{namespaceintegration__mod_abf46f3f1e7533c9e4f8ce428ec6f9611}{do\+Quad\+Romb\+Open}}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em get\+Func} & \+: The input function to be integrated. It must have the interface specified by \mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\+\_\+proc}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em lower\+Lim} & \+: The lower limit of integration. \\
+\hline
+\mbox{\texttt{ in}}  & {\em upper\+Lim} & \+: The upper limit of integration (typically set to {\ttfamily huge(1.\+\_\+\+RK)} to represent $+\infty$). \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em integral} & \+: The result of integration. \\
+\hline
+\mbox{\texttt{ in}}  & {\em refinement\+Stage} & \+: The number of refinements since the first call to the integrator. \\
+\hline
+\mbox{\texttt{ out}}  & {\em num\+Func\+Eval} & \+: The number of function evaluations made.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+It is expected that {\ttfamily upper\+Lim $>$ lower\+Lim $>$ 0.\+0} must hold for this integrator to function properly.
+
+Tested by Joshua Osborne on 5/28/2020 at 8\+:58 pm. 
+\end{DoxyRemark}
+
+
+Definition at line 315 of file Integration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceintegration__mod_a11a4361492f991207bd22da85470fac0}\label{namespaceintegration__mod_a11a4361492f991207bd22da85470fac0}} 
+\index{integration\_mod@{integration\_mod}!midinf@{midinf}}
+\index{midinf@{midinf}!integration\_mod@{integration\_mod}}
+\doxysubsubsection{\texorpdfstring{midinf()}{midinf()}}
+{\footnotesize\ttfamily subroutine integration\+\_\+mod\+::midinf (\begin{DoxyParamCaption}\item[{procedure(\mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\+\_\+proc}})}]{get\+Func,  }\item[{real(rk), intent(in)}]{lower\+Lim,  }\item[{real(rk), intent(in)}]{upper\+Lim,  }\item[{real(rk), intent(inout)}]{integral,  }\item[{integer(ik), intent(in)}]{refinement\+Stage,  }\item[{integer(ik), intent(out)}]{num\+Func\+Eval }\end{DoxyParamCaption})}
+
+
+
+This routine is an exact replacement for \mbox{\hyperlink{namespaceintegration__mod_a80d9b5405c919f13c6caed9394f4a302}{midpnt}}, i.\+e., returns as {\ttfamily integral} the nth stage of refinement of the integral of funk from {\ttfamily lower\+Lim} to {\ttfamily upper\+Lim}, except that the function is evaluated at evenly spaced points in {\ttfamily 1/x} rather than in {\ttfamily x}. This allows the upper limit {\ttfamily upper\+Lim} to be as large and positive as the computer allows, or the lower limit {\ttfamily lower\+Lim} to be as large and negative, but not both. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em get\+Func} & \+: The input function to be integrated. It must have the interface specified by \mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\+\_\+proc}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em lower\+Lim} & \+: The lower limit of integration. \\
+\hline
+\mbox{\texttt{ in}}  & {\em upper\+Lim} & \+: The upper limit of integration. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em integral} & \+: The result of integration. \\
+\hline
+\mbox{\texttt{ in}}  & {\em refinement\+Stage} & \+: The number of refinements since the first call to the integrator. \\
+\hline
+\mbox{\texttt{ out}}  & {\em num\+Func\+Eval} & \+: The number of function evaluations made.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+{\ttfamily lower\+Lim $\ast$ upper\+Lim $>$ 0.\+0} must hold for this integrator to function properly.
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+Tested by Joshua Osborne on 5/28/2020 at 8\+:58 pm. 
+\end{DoxyRemark}
+
+
+Definition at line 380 of file Integration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceintegration__mod_a80d9b5405c919f13c6caed9394f4a302}\label{namespaceintegration__mod_a80d9b5405c919f13c6caed9394f4a302}} 
+\index{integration\_mod@{integration\_mod}!midpnt@{midpnt}}
+\index{midpnt@{midpnt}!integration\_mod@{integration\_mod}}
+\doxysubsubsection{\texorpdfstring{midpnt()}{midpnt()}}
+{\footnotesize\ttfamily subroutine integration\+\_\+mod\+::midpnt (\begin{DoxyParamCaption}\item[{procedure(\mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\+\_\+proc}})}]{get\+Func,  }\item[{real(rk), intent(in)}]{lower\+Lim,  }\item[{real(rk), intent(in)}]{upper\+Lim,  }\item[{real(rk), intent(inout)}]{integral,  }\item[{integer(ik), intent(in)}]{refinement\+Stage,  }\item[{integer(ik), intent(out)}]{num\+Func\+Eval }\end{DoxyParamCaption})}
+
+
+
+This routine computes the nth stage of refinement of an extended midpoint rule. When called with {\ttfamily n = 1}, the routine returns as {\ttfamily integral} the crudest estimate of $\int_a^b f(x) ~ dx$. Subsequent calls with {\ttfamily n = 2, 3, ...} (in that sequential order) will improve the accuracy of {\ttfamily integral} by adding {\ttfamily (2/3) $\ast$ 3n-\/1} additional interior points. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em get\+Func} & \+: The input function to be integrated. It must have the interface specified by \mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\+\_\+proc}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em lower\+Lim} & \+: The lower limit of integration. \\
+\hline
+\mbox{\texttt{ in}}  & {\em upper\+Lim} & \+: The upper limit of integration. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em integral} & \+: The result of integration. \\
+\hline
+\mbox{\texttt{ in}}  & {\em refinement\+Stage} & \+: The number of refinements since the first call to the integrator. \\
+\hline
+\mbox{\texttt{ out}}  & {\em num\+Func\+Eval} & \+: The number of function evaluations made.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+The argument {\ttfamily integral} should not be modified between sequential calls.
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+Tested by Joshua Osborne on 5/28/2020 at 8\+:55 pm. 
+\end{DoxyRemark}
+
+
+Definition at line 444 of file Integration\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceintegration__mod_af799efaca3f992de2aa611eccc15c929}\label{namespaceintegration__mod_af799efaca3f992de2aa611eccc15c929}} 
+\index{integration\_mod@{integration\_mod}!errormessage@{errormessage}}
+\index{errormessage@{errormessage}!integration\_mod@{integration\_mod}}
+\doxysubsubsection{\texorpdfstring{errormessage}{errormessage}}
+{\footnotesize\ttfamily character(len=117), dimension(3) integration\+\_\+mod\+::errormessage = \mbox{[} \char`\"{}@Integration\+\_\+mod@do\+Quad\+Romb\+Closed()\+: Too many steps in do\+Quad\+Romb\+Closed(). \char`\"{} , \char`\"{}@Integration\+\_\+mod@do\+Quad\+Romb\+Closed()@do\+Pol\+Interp()\+: Input lower\+Lim, upper\+Lim to do\+Quad\+Romb\+Closed() are likely equal. \char`\"{} , \char`\"{}@Integration\+\_\+mod@do\+Quad\+Romb\+Open()@do\+Pol\+Interp()\+: Input lower\+Lim, upper\+Lim to do\+Quad\+Romb\+Open() are likely equal. \char`\"{} \mbox{]}}
+
+
+
+Definition at line 56 of file Integration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceintegration__mod_a3f0d72c327d06a890ba043acb1518368}\label{namespaceintegration__mod_a3f0d72c327d06a890ba043acb1518368}} 
+\index{integration\_mod@{integration\_mod}!module\_name@{module\_name}}
+\index{module\_name@{module\_name}!integration\_mod@{integration\_mod}}
+\doxysubsubsection{\texorpdfstring{module\_name}{module\_name}}
+{\footnotesize\ttfamily character($\ast$), parameter integration\+\_\+mod\+::module\+\_\+name = \char`\"{}@Integration\+\_\+mod\char`\"{}}
+
+
+
+Definition at line 52 of file Integration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceintegration__mod_a3f0d28d67b91b4193320eac996dd986e}\label{namespaceintegration__mod_a3f0d28d67b91b4193320eac996dd986e}} 
+\index{integration\_mod@{integration\_mod}!one\_third@{one\_third}}
+\index{one\_third@{one\_third}!integration\_mod@{integration\_mod}}
+\doxysubsubsection{\texorpdfstring{one\_third}{one\_third}}
+{\footnotesize\ttfamily real(rk), parameter integration\+\_\+mod\+::one\+\_\+third = 1.\+\_\+\+RK / 3.\+\_\+\+RK}
+
+
+
+Definition at line 54 of file Integration\+\_\+mod.\+f90.
+

@@ -1,0 +1,143 @@
+\hypertarget{structparallelism__mod_1_1forkjoin__type}{}\doxysection{parallelism\+\_\+mod\+::forkjoin\+\_\+type Interface Reference}
+\label{structparallelism__mod_1_1forkjoin__type}\index{parallelism\_mod::forkjoin\_type@{parallelism\_mod::forkjoin\_type}}
+
+
+The {\ttfamily Fork\+Join\+\_\+type} class.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+procedure, nopass \mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type_a26d1b6d5f554d6a4e514bcf17915992c}{getforkjoinspeedup}}
+\item 
+type(\mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{forkjoin\+\_\+type}}) function \mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type_aa5546dbd73e0dc5dd09bca52a7f28e93}{constructforkjoin}} (process\+Count, len\+Process\+ID, Process\+ID, success\+Prob, seq\+Sec\+Time, par\+Sec\+Time, com\+Sec\+Time)
+\begin{DoxyCompactList}\small\item\em This is the constructor of the \mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{Fork\+Join\+\_\+type}} class. Return the predicted speedup of the parallel simulation given the input characteristics and timing information of the simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+type(uniqueprocess\+\_\+type) \mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type_a6038e844e31094f1d83cfdeb314d6171}{uniqueprocess}}
+\item 
+type(contribution\+\_\+type) \mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type_a68270511549852fee9ec048747659293}{contribution}}
+\begin{DoxyCompactList}\small\item\em Contains information similar to {\ttfamily Unique\+Process}, but including all processes, even zero contributors. \end{DoxyCompactList}\item 
+type(successprob\+\_\+type) \mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type_a9abd58e072287ba96015606f42350f8b}{successprob}}
+\item 
+type(speedup\+\_\+type) \mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type_af31fd07baad63cf7864fef8bc5a852ac}{speedup}}
+\item 
+type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}) \mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type_ade7c204bc8dd5f7051bca9e8da8a8085}{err}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The {\ttfamily Fork\+Join\+\_\+type} class. 
+
+Definition at line 101 of file Parallelism\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{structparallelism__mod_1_1forkjoin__type_aa5546dbd73e0dc5dd09bca52a7f28e93}\label{structparallelism__mod_1_1forkjoin__type_aa5546dbd73e0dc5dd09bca52a7f28e93}} 
+\index{parallelism\_mod::forkjoin\_type@{parallelism\_mod::forkjoin\_type}!constructforkjoin@{constructforkjoin}}
+\index{constructforkjoin@{constructforkjoin}!parallelism\_mod::forkjoin\_type@{parallelism\_mod::forkjoin\_type}}
+\doxysubsubsection{\texorpdfstring{constructforkjoin()}{constructforkjoin()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{forkjoin\+\_\+type}}) function parallelism\+\_\+mod\+::forkjoin\+\_\+type\+::constructforkjoin (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{process\+Count,  }\item[{integer(ik), intent(in)}]{len\+Process\+ID,  }\item[{integer(ik), dimension(lenprocessid), intent(in)}]{Process\+ID,  }\item[{real(rk), intent(in)}]{success\+Prob,  }\item[{real(rk), intent(in)}]{seq\+Sec\+Time,  }\item[{real(rk), intent(in)}]{par\+Sec\+Time,  }\item[{real(rk), intent(in)}]{com\+Sec\+Time }\end{DoxyParamCaption})}
+
+
+
+This is the constructor of the \mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{Fork\+Join\+\_\+type}} class. Return the predicted speedup of the parallel simulation given the input characteristics and timing information of the simulation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em process\+Count} & \+: The number of processes in the simulation. \\
+\hline
+\mbox{\texttt{ in}}  & {\em len\+Process\+ID} & \+: The length of {\ttfamily Process\+ID} vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Process\+ID} & \+: The vector of process I\+Ds. \\
+\hline
+\mbox{\texttt{ in}}  & {\em success\+Prob} & \+: The success probability (the effective acceptance rate per objective function call). \\
+\hline
+\mbox{\texttt{ in}}  & {\em seq\+Sec\+Time} & \+: The timing of the sequential sections of the code. \\
+\hline
+\mbox{\texttt{ in}}  & {\em par\+Sec\+Time} & \+: The timing of the parallel sections of the code. \\
+\hline
+\mbox{\texttt{ in}}  & {\em com\+Sec\+Time} & \+: The timing of the communication sections of the code.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Fork\+Join} \+: An object of class \mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{Fork\+Join\+\_\+type}} containing the parallelization speedup. 
+\end{DoxyReturn}
+
+
+Definition at line 240 of file Parallelism\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structparallelism__mod_1_1forkjoin__type_a26d1b6d5f554d6a4e514bcf17915992c}\label{structparallelism__mod_1_1forkjoin__type_a26d1b6d5f554d6a4e514bcf17915992c}} 
+\index{parallelism\_mod::forkjoin\_type@{parallelism\_mod::forkjoin\_type}!getforkjoinspeedup@{getforkjoinspeedup}}
+\index{getforkjoinspeedup@{getforkjoinspeedup}!parallelism\_mod::forkjoin\_type@{parallelism\_mod::forkjoin\_type}}
+\doxysubsubsection{\texorpdfstring{getforkjoinspeedup()}{getforkjoinspeedup()}}
+{\footnotesize\ttfamily procedure, nopass parallelism\+\_\+mod\+::forkjoin\+\_\+type\+::getforkjoinspeedup}
+
+
+
+Definition at line 108 of file Parallelism\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structparallelism__mod_1_1forkjoin__type_a68270511549852fee9ec048747659293}\label{structparallelism__mod_1_1forkjoin__type_a68270511549852fee9ec048747659293}} 
+\index{parallelism\_mod::forkjoin\_type@{parallelism\_mod::forkjoin\_type}!contribution@{contribution}}
+\index{contribution@{contribution}!parallelism\_mod::forkjoin\_type@{parallelism\_mod::forkjoin\_type}}
+\doxysubsubsection{\texorpdfstring{contribution}{contribution}}
+{\footnotesize\ttfamily type(contribution\+\_\+type) parallelism\+\_\+mod\+::forkjoin\+\_\+type\+::contribution}
+
+
+
+Contains information similar to {\ttfamily Unique\+Process}, but including all processes, even zero contributors. 
+
+
+
+Definition at line 103 of file Parallelism\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structparallelism__mod_1_1forkjoin__type_ade7c204bc8dd5f7051bca9e8da8a8085}\label{structparallelism__mod_1_1forkjoin__type_ade7c204bc8dd5f7051bca9e8da8a8085}} 
+\index{parallelism\_mod::forkjoin\_type@{parallelism\_mod::forkjoin\_type}!err@{err}}
+\index{err@{err}!parallelism\_mod::forkjoin\_type@{parallelism\_mod::forkjoin\_type}}
+\doxysubsubsection{\texorpdfstring{err}{err}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}) parallelism\+\_\+mod\+::forkjoin\+\_\+type\+::err}
+
+
+
+Definition at line 106 of file Parallelism\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structparallelism__mod_1_1forkjoin__type_af31fd07baad63cf7864fef8bc5a852ac}\label{structparallelism__mod_1_1forkjoin__type_af31fd07baad63cf7864fef8bc5a852ac}} 
+\index{parallelism\_mod::forkjoin\_type@{parallelism\_mod::forkjoin\_type}!speedup@{speedup}}
+\index{speedup@{speedup}!parallelism\_mod::forkjoin\_type@{parallelism\_mod::forkjoin\_type}}
+\doxysubsubsection{\texorpdfstring{speedup}{speedup}}
+{\footnotesize\ttfamily type(speedup\+\_\+type) parallelism\+\_\+mod\+::forkjoin\+\_\+type\+::speedup}
+
+
+
+Definition at line 105 of file Parallelism\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structparallelism__mod_1_1forkjoin__type_a9abd58e072287ba96015606f42350f8b}\label{structparallelism__mod_1_1forkjoin__type_a9abd58e072287ba96015606f42350f8b}} 
+\index{parallelism\_mod::forkjoin\_type@{parallelism\_mod::forkjoin\_type}!successprob@{successprob}}
+\index{successprob@{successprob}!parallelism\_mod::forkjoin\_type@{parallelism\_mod::forkjoin\_type}}
+\doxysubsubsection{\texorpdfstring{successprob}{successprob}}
+{\footnotesize\ttfamily type(successprob\+\_\+type) parallelism\+\_\+mod\+::forkjoin\+\_\+type\+::successprob}
+
+
+
+Definition at line 104 of file Parallelism\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structparallelism__mod_1_1forkjoin__type_a6038e844e31094f1d83cfdeb314d6171}\label{structparallelism__mod_1_1forkjoin__type_a6038e844e31094f1d83cfdeb314d6171}} 
+\index{parallelism\_mod::forkjoin\_type@{parallelism\_mod::forkjoin\_type}!uniqueprocess@{uniqueprocess}}
+\index{uniqueprocess@{uniqueprocess}!parallelism\_mod::forkjoin\_type@{parallelism\_mod::forkjoin\_type}}
+\doxysubsubsection{\texorpdfstring{uniqueprocess}{uniqueprocess}}
+{\footnotesize\ttfamily type(uniqueprocess\+\_\+type) parallelism\+\_\+mod\+::forkjoin\+\_\+type\+::uniqueprocess}
+
+
+
+Definition at line 102 of file Parallelism\+\_\+mod.\+f90.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Dropbox/\+Projects/20180101\+\_\+\+Para\+Monte/git/src/kernel/\mbox{\hyperlink{Parallelism__mod_8f90}{Parallelism\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

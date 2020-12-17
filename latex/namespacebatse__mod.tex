@@ -1,0 +1,367 @@
+\hypertarget{namespacebatse__mod}{}\doxysection{batse\+\_\+mod Module Reference}
+\label{namespacebatse__mod}\index{batse\_mod@{batse\_mod}}
+
+
+This module contains the procedures for modeling and manipulating the B\+A\+T\+SE Catalog.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \mbox{\hyperlink{structbatse__mod_1_1event__type}{event\+\_\+type}}
+\item 
+interface \mbox{\hyperlink{interfacebatse__mod_1_1getlogeffectivepeakphotonflux}{getlogeffectivepeakphotonflux}}
+\item 
+interface \mbox{\hyperlink{interfacebatse__mod_1_1getlogeffectivepeakphotonfluxcorrection}{getlogeffectivepeakphotonfluxcorrection}}
+\item 
+type \mbox{\hyperlink{structbatse__mod_1_1grb__type}{grb\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \mbox{\hyperlink{namespacebatse__mod_a9af89b37dbc9a04f9f84abbd869f839f}{readdatagrb}} (in\+File\+Path, out\+File\+Path, is\+Lgrb)
+\begin{DoxyCompactList}\small\item\em Return all log of data in natural (Neper) base. \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacebatse__mod_a2c622fd87e8a2997fb6a5a461e53958d}{getlog10pf53}} (log10epk, log10pbol)
+\item 
+pure real(rk) function \mbox{\hyperlink{namespacebatse__mod_a85f6e2fe2c3bf3623a6f2ba0264dbe3e}{getlogpf53}} (log\+Epk, log\+Pbol)
+\item 
+pure real(rk) function \mbox{\hyperlink{namespacebatse__mod_abedf25cda5ba51ad232793eb7bb54f2d}{getlogpbol}} (log\+Epk, log\+P\+F53)
+\item 
+pure real(rk) function \mbox{\hyperlink{namespacebatse__mod_af7e0ed9bf667972378445a21dae0acc9}{getlogeffectivepeakphotonflux\+\_\+spr}} (log\+Peak\+Photon\+Flux64ms, log\+T90)
+\item 
+pure real(rk) function \mbox{\hyperlink{namespacebatse__mod_a19e67eced12a044127eec18ea6f85dc5}{getlogeffectivepeakphotonflux\+\_\+dpr}} (log\+Peak\+Photon\+Flux64ms, log\+T90)
+\item 
+pure real(rk) function \mbox{\hyperlink{namespacebatse__mod_ac1c97ede1873c66fde5ad3e07e91af43}{getlogeffectivepeakphotonfluxcorrection\+\_\+spr}} (log\+T90)
+\item 
+pure real(rk) function \mbox{\hyperlink{namespacebatse__mod_ac40115bfa9cd53dcfe39aefa72dd95e3}{getlogeffectivepeakphotonfluxcorrection\+\_\+dpr}} (log\+T90)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespacebatse__mod_acfb7a4dafc4e9baf802a426fd713eae2}{module\+\_\+name}} = \char`\"{}@Batse\+\_\+mod\char`\"{}
+\item 
+integer(ik), parameter \mbox{\hyperlink{namespacebatse__mod_a489576b227265bdcfc71b3d91931eaf4}{nlgrb}} = 1366\+\_\+\+IK
+\item 
+integer(ik), parameter \mbox{\hyperlink{namespacebatse__mod_a1314d1c6f62803df04d1348eb30a78ea}{nsgrb}} = 565\+\_\+\+IK
+\item 
+integer(ik), parameter \mbox{\hyperlink{namespacebatse__mod_a8489bd76c77441c526afb3648aefc804}{nvar}} = 4\+\_\+\+IK
+\item 
+real(rk), parameter \mbox{\hyperlink{namespacebatse__mod_af74f27a8986c0cecd4f1efa1d1dd1b32}{max\+\_\+log10ph53\+\_\+4\+\_\+logpbolzero}} = 6.\+318167895318538\+\_\+\+RK
+\item 
+real(rk), parameter \mbox{\hyperlink{namespacebatse__mod_a05922b96c86c48c3b808b9fa8fd9d489}{min\+\_\+log10ph53\+\_\+4\+\_\+logpbolzero}} = 4.\+92\+\_\+\+RK
+\item 
+real(rk), parameter \mbox{\hyperlink{namespacebatse__mod_a82d410f48aa7c4158007cb18756e1635}{max\+\_\+logph53\+\_\+4\+\_\+logpbolzero}} = M\+A\+X\+\_\+\+L\+O\+G10\+P\+H53\+\_\+4\+\_\+\+L\+O\+G\+P\+B\+O\+L\+Z\+E\+RO $\ast$ L\+N10
+\item 
+real(rk), parameter \mbox{\hyperlink{namespacebatse__mod_a18d0bdf420c30b153a27bf37de98dc6c}{min\+\_\+logph53\+\_\+4\+\_\+logpbolzero}} = M\+I\+N\+\_\+\+L\+O\+G10\+P\+H53\+\_\+4\+\_\+\+L\+O\+G\+P\+B\+O\+L\+Z\+E\+RO $\ast$ L\+N10
+\item 
+real(rk), parameter \mbox{\hyperlink{namespacebatse__mod_adb701488ca2ad02d56cc9e39b787e12b}{dif\+\_\+logph53\+\_\+4\+\_\+logpbolzero}} = M\+A\+X\+\_\+\+L\+O\+G\+P\+H53\+\_\+4\+\_\+\+L\+O\+G\+P\+B\+O\+L\+Z\+E\+RO -\/ M\+I\+N\+\_\+\+L\+O\+G\+P\+H53\+\_\+4\+\_\+\+L\+O\+G\+P\+B\+O\+L\+Z\+E\+RO
+\item 
+real(rk), parameter \mbox{\hyperlink{namespacebatse__mod_a047ca6c2f50bbce6d853dd190ba68090}{thresh\+\_\+erfc\+\_\+base}} = +0.\+146314238936889\+\_\+\+RK $\ast$ L\+N10
+\item 
+real(rk), parameter \mbox{\hyperlink{namespacebatse__mod_a3ab5dfe6d254ce9405d51b5f21bc63bd}{thresh\+\_\+erfc\+\_\+amp}} = +0.\+282313526464596\+\_\+\+RK $\ast$ L\+N10
+\item 
+real(rk), parameter \mbox{\hyperlink{namespacebatse__mod_adf01986bcf13b16cd9c57f1b6c714ebe}{thresh\+\_\+erfc\+\_\+avg}} = -\/0.\+483553339256463\+\_\+\+RK $\ast$ L\+N10
+\item 
+real(rk), parameter \mbox{\hyperlink{namespacebatse__mod_a6d130081058104c2158d47bd4f2b5db6}{thresh\+\_\+erfc\+\_\+std}} = 1.\+0514698984694800\+\_\+\+RK $\ast$ L\+N10
+\item 
+real(rk), parameter \mbox{\hyperlink{namespacebatse__mod_ae6ea9f954b206b56f094c413d1196008}{thresh\+\_\+erfc\+\_\+std\+\_\+inv}} = 1.\+\_\+\+RK / T\+H\+R\+E\+S\+H\+\_\+\+E\+R\+F\+C\+\_\+\+S\+TD
+\item 
+real(rk), parameter \mbox{\hyperlink{namespacebatse__mod_a4461fff2c64eb4a111399d9f85171157}{thresh\+\_\+erfc\+\_\+height}} = 2\+\_\+\+IK $\ast$ T\+H\+R\+E\+S\+H\+\_\+\+E\+R\+F\+C\+\_\+\+A\+MP
+\item 
+real(rk), parameter \mbox{\hyperlink{namespacebatse__mod_aaf54cf6992c4f687e7275f7f79e6f4a1}{thresh\+\_\+logpbol64\+\_\+correction}} = D\+I\+F\+\_\+\+L\+O\+G\+P\+H53\+\_\+4\+\_\+\+L\+O\+G\+P\+B\+O\+L\+Z\+E\+RO -\/ M\+I\+N\+\_\+\+L\+O\+G\+P\+H53\+\_\+4\+\_\+\+L\+O\+G\+P\+B\+O\+L\+Z\+E\+RO + T\+H\+R\+E\+S\+H\+\_\+\+E\+R\+F\+C\+\_\+\+H\+E\+I\+G\+HT
+\item 
+type(\mbox{\hyperlink{structbatse__mod_1_1grb__type}{grb\+\_\+type}}) \mbox{\hyperlink{namespacebatse__mod_ad7faa620b262904e2935ac99108d86a9}{grb}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily G\+R\+B\+\_\+type} class containing G\+RB prompt attributes. \end{DoxyCompactList}\item 
+integer(ik), dimension(\+:), allocatable \mbox{\hyperlink{namespacebatse__mod_adc978762cac2f66ee0363f68f7c5dab8}{trigger}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains the procedures for modeling and manipulating the B\+A\+T\+SE Catalog. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Tuesday April 30, 2019, 12\+:58 PM, S\+E\+IR, U\+TA 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespacebatse__mod_a2c622fd87e8a2997fb6a5a461e53958d}\label{namespacebatse__mod_a2c622fd87e8a2997fb6a5a461e53958d}} 
+\index{batse\_mod@{batse\_mod}!getlog10pf53@{getlog10pf53}}
+\index{getlog10pf53@{getlog10pf53}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{getlog10pf53()}{getlog10pf53()}}
+{\footnotesize\ttfamily pure real(rk) function batse\+\_\+mod\+::getlog10pf53 (\begin{DoxyParamCaption}\item[{real(rk), intent(in)}]{log10epk,  }\item[{real(rk), intent(in)}]{log10pbol }\end{DoxyParamCaption})}
+
+
+
+Definition at line 262 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_a19e67eced12a044127eec18ea6f85dc5}\label{namespacebatse__mod_a19e67eced12a044127eec18ea6f85dc5}} 
+\index{batse\_mod@{batse\_mod}!getlogeffectivepeakphotonflux\_dpr@{getlogeffectivepeakphotonflux\_dpr}}
+\index{getlogeffectivepeakphotonflux\_dpr@{getlogeffectivepeakphotonflux\_dpr}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{getlogeffectivepeakphotonflux\_dpr()}{getlogeffectivepeakphotonflux\_dpr()}}
+{\footnotesize\ttfamily pure real(rk) function batse\+\_\+mod\+::getlogeffectivepeakphotonflux\+\_\+dpr (\begin{DoxyParamCaption}\item[{real(rk), intent(in)}]{log\+Peak\+Photon\+Flux64ms,  }\item[{real(rk), intent(in)}]{log\+T90 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 396 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_af7e0ed9bf667972378445a21dae0acc9}\label{namespacebatse__mod_af7e0ed9bf667972378445a21dae0acc9}} 
+\index{batse\_mod@{batse\_mod}!getlogeffectivepeakphotonflux\_spr@{getlogeffectivepeakphotonflux\_spr}}
+\index{getlogeffectivepeakphotonflux\_spr@{getlogeffectivepeakphotonflux\_spr}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{getlogeffectivepeakphotonflux\_spr()}{getlogeffectivepeakphotonflux\_spr()}}
+{\footnotesize\ttfamily pure real(rk) function batse\+\_\+mod\+::getlogeffectivepeakphotonflux\+\_\+spr (\begin{DoxyParamCaption}\item[{real(rk), intent(in)}]{log\+Peak\+Photon\+Flux64ms,  }\item[{real(rk), intent(in)}]{log\+T90 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 380 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_ac40115bfa9cd53dcfe39aefa72dd95e3}\label{namespacebatse__mod_ac40115bfa9cd53dcfe39aefa72dd95e3}} 
+\index{batse\_mod@{batse\_mod}!getlogeffectivepeakphotonfluxcorrection\_dpr@{getlogeffectivepeakphotonfluxcorrection\_dpr}}
+\index{getlogeffectivepeakphotonfluxcorrection\_dpr@{getlogeffectivepeakphotonfluxcorrection\_dpr}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{getlogeffectivepeakphotonfluxcorrection\_dpr()}{getlogeffectivepeakphotonfluxcorrection\_dpr()}}
+{\footnotesize\ttfamily pure real(rk) function batse\+\_\+mod\+::getlogeffectivepeakphotonfluxcorrection\+\_\+dpr (\begin{DoxyParamCaption}\item[{real(rk), intent(in)}]{log\+T90 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 429 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_ac1c97ede1873c66fde5ad3e07e91af43}\label{namespacebatse__mod_ac1c97ede1873c66fde5ad3e07e91af43}} 
+\index{batse\_mod@{batse\_mod}!getlogeffectivepeakphotonfluxcorrection\_spr@{getlogeffectivepeakphotonfluxcorrection\_spr}}
+\index{getlogeffectivepeakphotonfluxcorrection\_spr@{getlogeffectivepeakphotonfluxcorrection\_spr}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{getlogeffectivepeakphotonfluxcorrection\_spr()}{getlogeffectivepeakphotonfluxcorrection\_spr()}}
+{\footnotesize\ttfamily pure real(rk) function batse\+\_\+mod\+::getlogeffectivepeakphotonfluxcorrection\+\_\+spr (\begin{DoxyParamCaption}\item[{real(rk), intent(in)}]{log\+T90 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 412 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_abedf25cda5ba51ad232793eb7bb54f2d}\label{namespacebatse__mod_abedf25cda5ba51ad232793eb7bb54f2d}} 
+\index{batse\_mod@{batse\_mod}!getlogpbol@{getlogpbol}}
+\index{getlogpbol@{getlogpbol}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{getlogpbol()}{getlogpbol()}}
+{\footnotesize\ttfamily pure real(rk) function batse\+\_\+mod\+::getlogpbol (\begin{DoxyParamCaption}\item[{real(rk), intent(in)}]{log\+Epk,  }\item[{real(rk), intent(in)}]{log\+P\+F53 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 363 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_a85f6e2fe2c3bf3623a6f2ba0264dbe3e}\label{namespacebatse__mod_a85f6e2fe2c3bf3623a6f2ba0264dbe3e}} 
+\index{batse\_mod@{batse\_mod}!getlogpf53@{getlogpf53}}
+\index{getlogpf53@{getlogpf53}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{getlogpf53()}{getlogpf53()}}
+{\footnotesize\ttfamily pure real(rk) function batse\+\_\+mod\+::getlogpf53 (\begin{DoxyParamCaption}\item[{real(rk), intent(in)}]{log\+Epk,  }\item[{real(rk), intent(in)}]{log\+Pbol }\end{DoxyParamCaption})}
+
+
+
+Definition at line 312 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_a9af89b37dbc9a04f9f84abbd869f839f}\label{namespacebatse__mod_a9af89b37dbc9a04f9f84abbd869f839f}} 
+\index{batse\_mod@{batse\_mod}!readdatagrb@{readdatagrb}}
+\index{readdatagrb@{readdatagrb}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{readdatagrb()}{readdatagrb()}}
+{\footnotesize\ttfamily subroutine batse\+\_\+mod\+::readdatagrb (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{in\+File\+Path,  }\item[{character($\ast$), intent(in)}]{out\+File\+Path,  }\item[{logical, intent(in)}]{is\+Lgrb }\end{DoxyParamCaption})}
+
+
+
+Return all log of data in natural (Neper) base. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em in\+File\+Path} & \+: The path to the input B\+A\+T\+SE file. \\
+\hline
+\mbox{\texttt{ in}}  & {\em out\+File\+Path} & \+: The path to the output B\+A\+T\+SE file. \\
+\hline
+\mbox{\texttt{ in}}  & {\em is\+Lgrb} & \+: A logical flag indicating what type of input file is being processed. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 143 of file Batse\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacebatse__mod_adb701488ca2ad02d56cc9e39b787e12b}\label{namespacebatse__mod_adb701488ca2ad02d56cc9e39b787e12b}} 
+\index{batse\_mod@{batse\_mod}!dif\_logph53\_4\_logpbolzero@{dif\_logph53\_4\_logpbolzero}}
+\index{dif\_logph53\_4\_logpbolzero@{dif\_logph53\_4\_logpbolzero}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{dif\_logph53\_4\_logpbolzero}{dif\_logph53\_4\_logpbolzero}}
+{\footnotesize\ttfamily real(rk), parameter batse\+\_\+mod\+::dif\+\_\+logph53\+\_\+4\+\_\+logpbolzero = M\+A\+X\+\_\+\+L\+O\+G\+P\+H53\+\_\+4\+\_\+\+L\+O\+G\+P\+B\+O\+L\+Z\+E\+RO -\/ M\+I\+N\+\_\+\+L\+O\+G\+P\+H53\+\_\+4\+\_\+\+L\+O\+G\+P\+B\+O\+L\+Z\+E\+RO}
+
+
+
+Definition at line 61 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_ad7faa620b262904e2935ac99108d86a9}\label{namespacebatse__mod_ad7faa620b262904e2935ac99108d86a9}} 
+\index{batse\_mod@{batse\_mod}!grb@{grb}}
+\index{grb@{grb}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{grb}{grb}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structbatse__mod_1_1grb__type}{grb\+\_\+type}}) batse\+\_\+mod\+::grb}
+
+
+
+The {\ttfamily G\+R\+B\+\_\+type} class containing G\+RB prompt attributes. 
+
+
+
+Definition at line 112 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_af74f27a8986c0cecd4f1efa1d1dd1b32}\label{namespacebatse__mod_af74f27a8986c0cecd4f1efa1d1dd1b32}} 
+\index{batse\_mod@{batse\_mod}!max\_log10ph53\_4\_logpbolzero@{max\_log10ph53\_4\_logpbolzero}}
+\index{max\_log10ph53\_4\_logpbolzero@{max\_log10ph53\_4\_logpbolzero}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{max\_log10ph53\_4\_logpbolzero}{max\_log10ph53\_4\_logpbolzero}}
+{\footnotesize\ttfamily real(rk), parameter batse\+\_\+mod\+::max\+\_\+log10ph53\+\_\+4\+\_\+logpbolzero = 6.\+318167895318538\+\_\+\+RK}
+
+
+
+Definition at line 57 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_a82d410f48aa7c4158007cb18756e1635}\label{namespacebatse__mod_a82d410f48aa7c4158007cb18756e1635}} 
+\index{batse\_mod@{batse\_mod}!max\_logph53\_4\_logpbolzero@{max\_logph53\_4\_logpbolzero}}
+\index{max\_logph53\_4\_logpbolzero@{max\_logph53\_4\_logpbolzero}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{max\_logph53\_4\_logpbolzero}{max\_logph53\_4\_logpbolzero}}
+{\footnotesize\ttfamily real(rk), parameter batse\+\_\+mod\+::max\+\_\+logph53\+\_\+4\+\_\+logpbolzero = M\+A\+X\+\_\+\+L\+O\+G10\+P\+H53\+\_\+4\+\_\+\+L\+O\+G\+P\+B\+O\+L\+Z\+E\+RO $\ast$ L\+N10}
+
+
+
+Definition at line 59 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_a05922b96c86c48c3b808b9fa8fd9d489}\label{namespacebatse__mod_a05922b96c86c48c3b808b9fa8fd9d489}} 
+\index{batse\_mod@{batse\_mod}!min\_log10ph53\_4\_logpbolzero@{min\_log10ph53\_4\_logpbolzero}}
+\index{min\_log10ph53\_4\_logpbolzero@{min\_log10ph53\_4\_logpbolzero}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{min\_log10ph53\_4\_logpbolzero}{min\_log10ph53\_4\_logpbolzero}}
+{\footnotesize\ttfamily real(rk), parameter batse\+\_\+mod\+::min\+\_\+log10ph53\+\_\+4\+\_\+logpbolzero = 4.\+92\+\_\+\+RK}
+
+
+
+Definition at line 58 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_a18d0bdf420c30b153a27bf37de98dc6c}\label{namespacebatse__mod_a18d0bdf420c30b153a27bf37de98dc6c}} 
+\index{batse\_mod@{batse\_mod}!min\_logph53\_4\_logpbolzero@{min\_logph53\_4\_logpbolzero}}
+\index{min\_logph53\_4\_logpbolzero@{min\_logph53\_4\_logpbolzero}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{min\_logph53\_4\_logpbolzero}{min\_logph53\_4\_logpbolzero}}
+{\footnotesize\ttfamily real(rk), parameter batse\+\_\+mod\+::min\+\_\+logph53\+\_\+4\+\_\+logpbolzero = M\+I\+N\+\_\+\+L\+O\+G10\+P\+H53\+\_\+4\+\_\+\+L\+O\+G\+P\+B\+O\+L\+Z\+E\+RO $\ast$ L\+N10}
+
+
+
+Definition at line 60 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_acfb7a4dafc4e9baf802a426fd713eae2}\label{namespacebatse__mod_acfb7a4dafc4e9baf802a426fd713eae2}} 
+\index{batse\_mod@{batse\_mod}!module\_name@{module\_name}}
+\index{module\_name@{module\_name}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{module\_name}{module\_name}}
+{\footnotesize\ttfamily character($\ast$), parameter batse\+\_\+mod\+::module\+\_\+name = \char`\"{}@Batse\+\_\+mod\char`\"{}}
+
+
+
+Definition at line 54 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_a489576b227265bdcfc71b3d91931eaf4}\label{namespacebatse__mod_a489576b227265bdcfc71b3d91931eaf4}} 
+\index{batse\_mod@{batse\_mod}!nlgrb@{nlgrb}}
+\index{nlgrb@{nlgrb}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{nlgrb}{nlgrb}}
+{\footnotesize\ttfamily integer(ik), parameter batse\+\_\+mod\+::nlgrb = 1366\+\_\+\+IK}
+
+
+
+Definition at line 56 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_a1314d1c6f62803df04d1348eb30a78ea}\label{namespacebatse__mod_a1314d1c6f62803df04d1348eb30a78ea}} 
+\index{batse\_mod@{batse\_mod}!nsgrb@{nsgrb}}
+\index{nsgrb@{nsgrb}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{nsgrb}{nsgrb}}
+{\footnotesize\ttfamily integer(ik), parameter batse\+\_\+mod\+::nsgrb = 565\+\_\+\+IK}
+
+
+
+Definition at line 56 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_a8489bd76c77441c526afb3648aefc804}\label{namespacebatse__mod_a8489bd76c77441c526afb3648aefc804}} 
+\index{batse\_mod@{batse\_mod}!nvar@{nvar}}
+\index{nvar@{nvar}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{nvar}{nvar}}
+{\footnotesize\ttfamily integer(ik), parameter batse\+\_\+mod\+::nvar = 4\+\_\+\+IK}
+
+
+
+Definition at line 56 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_a3ab5dfe6d254ce9405d51b5f21bc63bd}\label{namespacebatse__mod_a3ab5dfe6d254ce9405d51b5f21bc63bd}} 
+\index{batse\_mod@{batse\_mod}!thresh\_erfc\_amp@{thresh\_erfc\_amp}}
+\index{thresh\_erfc\_amp@{thresh\_erfc\_amp}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{thresh\_erfc\_amp}{thresh\_erfc\_amp}}
+{\footnotesize\ttfamily real(rk), parameter batse\+\_\+mod\+::thresh\+\_\+erfc\+\_\+amp = +0.\+282313526464596\+\_\+\+RK $\ast$ L\+N10}
+
+
+
+Definition at line 81 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_adf01986bcf13b16cd9c57f1b6c714ebe}\label{namespacebatse__mod_adf01986bcf13b16cd9c57f1b6c714ebe}} 
+\index{batse\_mod@{batse\_mod}!thresh\_erfc\_avg@{thresh\_erfc\_avg}}
+\index{thresh\_erfc\_avg@{thresh\_erfc\_avg}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{thresh\_erfc\_avg}{thresh\_erfc\_avg}}
+{\footnotesize\ttfamily real(rk), parameter batse\+\_\+mod\+::thresh\+\_\+erfc\+\_\+avg = -\/0.\+483553339256463\+\_\+\+RK $\ast$ L\+N10}
+
+
+
+Definition at line 84 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_a047ca6c2f50bbce6d853dd190ba68090}\label{namespacebatse__mod_a047ca6c2f50bbce6d853dd190ba68090}} 
+\index{batse\_mod@{batse\_mod}!thresh\_erfc\_base@{thresh\_erfc\_base}}
+\index{thresh\_erfc\_base@{thresh\_erfc\_base}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{thresh\_erfc\_base}{thresh\_erfc\_base}}
+{\footnotesize\ttfamily real(rk), parameter batse\+\_\+mod\+::thresh\+\_\+erfc\+\_\+base = +0.\+146314238936889\+\_\+\+RK $\ast$ L\+N10}
+
+
+
+Definition at line 78 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_a4461fff2c64eb4a111399d9f85171157}\label{namespacebatse__mod_a4461fff2c64eb4a111399d9f85171157}} 
+\index{batse\_mod@{batse\_mod}!thresh\_erfc\_height@{thresh\_erfc\_height}}
+\index{thresh\_erfc\_height@{thresh\_erfc\_height}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{thresh\_erfc\_height}{thresh\_erfc\_height}}
+{\footnotesize\ttfamily real(rk), parameter batse\+\_\+mod\+::thresh\+\_\+erfc\+\_\+height = 2\+\_\+\+IK $\ast$ T\+H\+R\+E\+S\+H\+\_\+\+E\+R\+F\+C\+\_\+\+A\+MP}
+
+
+
+Definition at line 93 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_a6d130081058104c2158d47bd4f2b5db6}\label{namespacebatse__mod_a6d130081058104c2158d47bd4f2b5db6}} 
+\index{batse\_mod@{batse\_mod}!thresh\_erfc\_std@{thresh\_erfc\_std}}
+\index{thresh\_erfc\_std@{thresh\_erfc\_std}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{thresh\_erfc\_std}{thresh\_erfc\_std}}
+{\footnotesize\ttfamily real(rk), parameter batse\+\_\+mod\+::thresh\+\_\+erfc\+\_\+std = 1.\+0514698984694800\+\_\+\+RK $\ast$ L\+N10}
+
+
+
+Definition at line 87 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_ae6ea9f954b206b56f094c413d1196008}\label{namespacebatse__mod_ae6ea9f954b206b56f094c413d1196008}} 
+\index{batse\_mod@{batse\_mod}!thresh\_erfc\_std\_inv@{thresh\_erfc\_std\_inv}}
+\index{thresh\_erfc\_std\_inv@{thresh\_erfc\_std\_inv}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{thresh\_erfc\_std\_inv}{thresh\_erfc\_std\_inv}}
+{\footnotesize\ttfamily real(rk), parameter batse\+\_\+mod\+::thresh\+\_\+erfc\+\_\+std\+\_\+inv = 1.\+\_\+\+RK / T\+H\+R\+E\+S\+H\+\_\+\+E\+R\+F\+C\+\_\+\+S\+TD}
+
+
+
+Definition at line 90 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_aaf54cf6992c4f687e7275f7f79e6f4a1}\label{namespacebatse__mod_aaf54cf6992c4f687e7275f7f79e6f4a1}} 
+\index{batse\_mod@{batse\_mod}!thresh\_logpbol64\_correction@{thresh\_logpbol64\_correction}}
+\index{thresh\_logpbol64\_correction@{thresh\_logpbol64\_correction}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{thresh\_logpbol64\_correction}{thresh\_logpbol64\_correction}}
+{\footnotesize\ttfamily real(rk), parameter batse\+\_\+mod\+::thresh\+\_\+logpbol64\+\_\+correction = D\+I\+F\+\_\+\+L\+O\+G\+P\+H53\+\_\+4\+\_\+\+L\+O\+G\+P\+B\+O\+L\+Z\+E\+RO -\/ M\+I\+N\+\_\+\+L\+O\+G\+P\+H53\+\_\+4\+\_\+\+L\+O\+G\+P\+B\+O\+L\+Z\+E\+RO + T\+H\+R\+E\+S\+H\+\_\+\+E\+R\+F\+C\+\_\+\+H\+E\+I\+G\+HT}
+
+
+
+Definition at line 97 of file Batse\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacebatse__mod_adc978762cac2f66ee0363f68f7c5dab8}\label{namespacebatse__mod_adc978762cac2f66ee0363f68f7c5dab8}} 
+\index{batse\_mod@{batse\_mod}!trigger@{trigger}}
+\index{trigger@{trigger}!batse\_mod@{batse\_mod}}
+\doxysubsubsection{\texorpdfstring{trigger}{trigger}}
+{\footnotesize\ttfamily integer(ik), dimension(\+:), allocatable batse\+\_\+mod\+::trigger}
+
+
+
+Definition at line 118 of file Batse\+\_\+mod.\+f90.
+

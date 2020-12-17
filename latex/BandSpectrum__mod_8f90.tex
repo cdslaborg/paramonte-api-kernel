@@ -1,0 +1,31 @@
+\hypertarget{BandSpectrum__mod_8f90}{}\doxysection{D\+:/\+Dropbox/\+Projects/20180101\+\_\+\+Para\+Monte/git/src/kernel/\+Band\+Spectrum\+\_\+mod.f90 File Reference}
+\label{BandSpectrum__mod_8f90}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/BandSpectrum\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/BandSpectrum\_mod.f90}}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespacebandspectrum__mod}{bandspectrum\+\_\+mod}}
+\begin{DoxyCompactList}\small\item\em This module contains the procedures for computing the various Band Spectrum properties of G\+R\+Bs. See Eqn. A6 of \href{https://www.cdslab.org/pubs/2015_Shahmoradi_I.pdf}{\texttt{ Shahmoradi and Nemiroff, 2015, M\+N\+R\+AS, 451\+:4645-\/4662}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+pure real(rk) function \mbox{\hyperlink{namespacebandspectrum__mod_a72b64605c7495f257a19a2c48006f6d6}{bandspectrum\+\_\+mod\+::getebreak}} (epk, alpha, beta)
+\begin{DoxyCompactList}\small\item\em Return {\ttfamily epk$\ast$(alpha-\/beta)/(alpha+2)}, which is the normalization factor in the exponent of the first component of the Band model. \end{DoxyCompactList}\item 
+pure subroutine \mbox{\hyperlink{namespacebandspectrum__mod_a5a8d7bb9f2f6bb5af3b381437f840ee0}{bandspectrum\+\_\+mod\+::getbandparam}} (epk, alpha, beta, ebrk, coef, alpha\+Plus\+Two)
+\begin{DoxyCompactList}\small\item\em Compute the break energy {\ttfamily ebrk} of the Band model, as well as the coefficient by which the high energy component of the Band model must be multiplied in order to get a smooth function (assuming the normalization coefficient of the lower energy component is unity). \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacebandspectrum__mod_aa8f4ef1b8ec4a0cf208d5f96f5709311}{bandspectrum\+\_\+mod\+::getphotonflux}} (energy, epk, alpha, beta, ebrk, coef, alpha\+Plus\+Two)
+\begin{DoxyCompactList}\small\item\em Compute the differential photon flux according to the Band differential spectrum at the given input {\ttfamily energy} value. \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacebandspectrum__mod_aaba1737b69a7b15b4adb923f975a5a1e}{bandspectrum\+\_\+mod\+::getphotonfluxlower}} (energy, alpha, alpha\+Plus\+Two\+Over\+Epk)
+\begin{DoxyCompactList}\small\item\em Compute the differential photon flux according to the lower component of the Band spectrum at the given input {\ttfamily energy} value. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespacebandspectrum__mod_a47615db63c34be04069b7d8f8a753b5f}{bandspectrum\+\_\+mod\+::getphotonfluencefromenergyfluence}} (energy\+Fluence, lower\+Lim, upper\+Lim, epk, alpha, beta, tolerance, photon\+Fluence, Err, lower\+Lim\+New, upper\+Lim\+New)
+\begin{DoxyCompactList}\small\item\em Convert an {\bfseries{input energy fluence}} in {\ttfamily \mbox{[}lower\+Lim, upper\+Lim\mbox{]}} energy window, all in units of keV (or A\+LL in some other units), {\bfseries{to photon fluence}}, within the same energy range, or if {\ttfamily \mbox{[}lower\+Lim\+New, upper\+Lim\+New\mbox{]}} is provided, then in that range. The input {\ttfamily tolerance} is passed to integrators as a measure of the desired accuracy for the computation of {\ttfamily photon\+Fluence}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespacebandspectrum__mod_ad94e59bb9883d6a1147fdf1981c331fd}{bandspectrum\+\_\+mod\+::module\+\_\+name}} = \char`\"{}@Band\+Spectrum\+\_\+mod\char`\"{}
+\item 
+real(rk), parameter \mbox{\hyperlink{namespacebandspectrum__mod_a9faee13d16d0bc8a08e98f1cd62a029d}{bandspectrum\+\_\+mod\+::amplitude\+\_\+default}} = 1.\+\_\+\+RK
+\item 
+real(rk), parameter \mbox{\hyperlink{namespacebandspectrum__mod_a888ed586b66fa684f7cdb13962feed89}{bandspectrum\+\_\+mod\+::alpha\+\_\+default}} = -\/1.\+1\+\_\+\+RK
+\item 
+real(rk), parameter \mbox{\hyperlink{namespacebandspectrum__mod_a459c91c73f9a6d2d5f5f2c73a9ce7263}{bandspectrum\+\_\+mod\+::beta\+\_\+default}} = -\/2.\+3\+\_\+\+RK
+\end{DoxyCompactItemize}

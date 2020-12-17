@@ -1,0 +1,295 @@
+\hypertarget{namespacedecoration__mod}{}\doxysection{decoration\+\_\+mod Module Reference}
+\label{namespacedecoration__mod}\index{decoration\_mod@{decoration\_mod}}
+
+
+This module contains classes and procedures for decorating and outputting text.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \mbox{\hyperlink{structdecoration__mod_1_1ansi__type}{ansi\+\_\+type}}
+\item 
+interface \mbox{\hyperlink{structdecoration__mod_1_1decoration__type}{decoration\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The decoration class. \end{DoxyCompactList}\item 
+type \mbox{\hyperlink{structdecoration__mod_1_1wrapper__type}{wrapper\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+character(\+:) function, allocatable \mbox{\hyperlink{namespacedecoration__mod_a376b87799b3d94c980ef662cc896f963}{style}} (string, attr, clfg, clbg)
+\begin{DoxyCompactList}\small\item\em Wrap the input text with A\+N\+S\+I/\+V\+T100 Control sequences to stylize and color the string. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespacedecoration__mod_a601b1fabffcceed179423b63e227e204}{getgenericformat}} (width, precision, delim, prefix)
+\begin{DoxyCompactList}\small\item\em Return an IO Fortran format given the input characteristics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespacedecoration__mod_ad6a53f927175e1a9158042cc1292c60e}{module\+\_\+name}} = \char`\"{}@Decoration\+\_\+mod\char`\"{}
+\item 
+integer(ik), parameter \mbox{\hyperlink{namespacedecoration__mod_a364f19d6489e9c4fe378539200797232}{decoration\+\_\+width}} = 132
+\item 
+integer(ik), parameter \mbox{\hyperlink{namespacedecoration__mod_ae12ae9ebb07fce76d6b2afd6e1f4e43e}{decoration\+\_\+thickness\+\_\+horz}} = 4
+\item 
+integer(ik), parameter \mbox{\hyperlink{namespacedecoration__mod_aeda4975e87a8295fe0a7c7d27def138f}{decoration\+\_\+thickness\+\_\+vert}} = 1
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespacedecoration__mod_a9ffb20f6292c7c95526f8eb5a46abf36}{star}} = \char`\"{}$\ast$\char`\"{}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespacedecoration__mod_a7bbe14a4863aacbfee0ce513711ac285}{tab}} = \char`\"{} \char`\"{}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespacedecoration__mod_a8bee6ade167f6651caf5d7b3436ddc49}{indent}} = T\+AB // T\+AB
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\+\_\+output\+\_\+format}} = \char`\"{}($\ast$(g0,\+:,\textquotesingle{} \textquotesingle{}))\char`\"{}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespacedecoration__mod_a7cc5402c3618f513bc16af539404c597}{generic\+\_\+tabbed\+\_\+format}} = \char`\"{}(\textquotesingle{}\char`\"{} // T\+AB // T\+AB // \char`\"{}\textquotesingle{},$\ast$(g0,\+:,\textquotesingle{} \textquotesingle{}))\char`\"{}
+\item 
+integer(ik), parameter \mbox{\hyperlink{namespacedecoration__mod_a85130bf279b9c59b98b5bace272263e0}{ansi\+\_\+attribute\+\_\+list\+\_\+len}} = 8
+\item 
+integer(ik), parameter \mbox{\hyperlink{namespacedecoration__mod_a972929ba6ea01b5cb196c2dee99c7e2e}{ansi\+\_\+color\+\_\+list\+\_\+len}} = 16
+\item 
+type(\mbox{\hyperlink{structdecoration__mod_1_1ansi__type}{ansi\+\_\+type}}), dimension(\+:), allocatable \mbox{\hyperlink{namespacedecoration__mod_a2161b3c974646d1022a09b709bb0d888}{mc\+\_\+ansiattributelist}}
+\item 
+type(\mbox{\hyperlink{structdecoration__mod_1_1ansi__type}{ansi\+\_\+type}}), dimension(\+:), allocatable \mbox{\hyperlink{namespacedecoration__mod_a1f597dee5b2e90f864a432163aeed7d9}{mc\+\_\+ansiforegroundcolorlist}}
+\item 
+type(\mbox{\hyperlink{structdecoration__mod_1_1ansi__type}{ansi\+\_\+type}}), dimension(\+:), allocatable \mbox{\hyperlink{namespacedecoration__mod_ad50f33fad5fb1c0e7e714f3230033907}{mc\+\_\+ansibackgroundcolorlist}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains classes and procedures for decorating and outputting text. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespacedecoration__mod_a601b1fabffcceed179423b63e227e204}\label{namespacedecoration__mod_a601b1fabffcceed179423b63e227e204}} 
+\index{decoration\_mod@{decoration\_mod}!getgenericformat@{getgenericformat}}
+\index{getgenericformat@{getgenericformat}!decoration\_mod@{decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{getgenericformat()}{getgenericformat()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable decoration\+\_\+mod\+::getgenericformat (\begin{DoxyParamCaption}\item[{integer(ik), intent(in), optional}]{width,  }\item[{integer(ik), intent(in), optional}]{precision,  }\item[{character($\ast$), intent(in), optional}]{delim,  }\item[{character($\ast$), intent(in), optional}]{prefix }\end{DoxyParamCaption})}
+
+
+
+Return an IO Fortran format given the input characteristics. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em width} & \+: The width of the target IO record ({\bfseries{optional}}, default = dynamically set). \\
+\hline
+\mbox{\texttt{ in}}  & {\em precision} & \+: The precision of the target IO record if it happens to be a real number ({\bfseries{optional}}, default = dynamically set). \\
+\hline
+\mbox{\texttt{ in}}  & {\em delim} & \+: The delimiter of the target IO record if it happens multiple entries ({\bfseries{optional}}, default = \char`\"{}\char`\"{}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em prefix} & \+: The prefix of the target IO record ({\bfseries{optional}}, default = \char`\"{}\char`\"{}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily format\+Str} \+: The output format string to be used in IO. 
+\end{DoxyReturn}
+
+
+Definition at line 407 of file Decoration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacedecoration__mod_a376b87799b3d94c980ef662cc896f963}\label{namespacedecoration__mod_a376b87799b3d94c980ef662cc896f963}} 
+\index{decoration\_mod@{decoration\_mod}!style@{style}}
+\index{style@{style}!decoration\_mod@{decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{style()}{style()}}
+{\footnotesize\ttfamily character(\+:) function, allocatable decoration\+\_\+mod\+::style (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{string,  }\item[{character($\ast$), intent(in), optional}]{attr,  }\item[{character($\ast$), intent(in), optional}]{clfg,  }\item[{character($\ast$), intent(in), optional}]{clbg }\end{DoxyParamCaption})}
+
+
+
+Wrap the input text with A\+N\+S\+I/\+V\+T100 Control sequences to stylize and color the string. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em string} & \+: The input string to be stylized. \\
+\hline
+\mbox{\texttt{ in}}  & {\em attr} & \+: The requested attribute ({\bfseries{optional}}). It can be\+:
+\begin{DoxyItemize}
+\item {\ttfamily \char`\"{}off\char`\"{}} \+: All attributes off (0).
+\item {\ttfamily \char`\"{}bold\char`\"{}} \+: Boldface text (1)
+\item {\ttfamily \char`\"{}bright\char`\"{}} \+: Bright text (1)
+\item {\ttfamily \char`\"{}dim\char`\"{}} \+: Dimmed text (2)
+\item {\ttfamily \char`\"{}underlined\char`\"{}} \+: Underlined text (4)
+\item {\ttfamily \char`\"{}blinking\char`\"{}} \+: Blinking text (5)
+\item {\ttfamily \char`\"{}reverse\char`\"{}} \+: Reversed attributes text (7)
+\item {\ttfamily \char`\"{}hidden\char`\"{}} \+: Hidden text (8) The {\bfseries{default}} value is \char`\"{}off\char`\"{}. 
+\end{DoxyItemize}\\
+\hline
+\mbox{\texttt{ in}}  & {\em clfg} & \+: The Foreground color of the text ({\bfseries{optional}}, see below for possible colors). \\
+\hline
+\mbox{\texttt{ in}}  & {\em clbg} & \+: The Background color of the text ({\bfseries{optional}}, see below for possible colors).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily modified\+String} \+: The output string wrapped with the requested style and coloring.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+Possible Foreground / Background colors are the following\+:
+\begin{DoxyItemize}
+\item {\ttfamily \char`\"{}black\char`\"{}} \+: (30) / (40)
+\item {\ttfamily \char`\"{}red\char`\"{}} \+: (31) / (41)
+\item {\ttfamily \char`\"{}green\char`\"{}} \+: (32) / (42)
+\item {\ttfamily \char`\"{}yellow\char`\"{}} \+: (33) / (43)
+\item {\ttfamily \char`\"{}blue\char`\"{}} \+: (34) / (44)
+\item {\ttfamily \char`\"{}magenta\char`\"{}} \+: (35) / (45)
+\item {\ttfamily \char`\"{}cyan\char`\"{}} \+: (36) / (46)
+\item {\ttfamily \char`\"{}light gray\char`\"{}} \+: (37) / (47)
+\item {\ttfamily \char`\"{}dark gray\char`\"{}} \+: (90) / (100)
+\item {\ttfamily \char`\"{}light red\char`\"{}} \+: (91) / (101)
+\item {\ttfamily \char`\"{}light green\char`\"{}} \+: (92) / (102)
+\item {\ttfamily \char`\"{}light yellow\char`\"{}} \+: (93) / (103)
+\item {\ttfamily \char`\"{}light blue\char`\"{}} \+: (94) / (104)
+\item {\ttfamily \char`\"{}light magenta\char`\"{}} \+: (95) / (105)
+\item {\ttfamily \char`\"{}light cyan\char`\"{}} \+: (96) / (106)
+\item {\ttfamily \char`\"{}white\char`\"{}} \+: (97) / (107) 
+\end{DoxyItemize}
+\end{DoxyRemark}
+
+
+Definition at line 296 of file Decoration\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacedecoration__mod_a85130bf279b9c59b98b5bace272263e0}\label{namespacedecoration__mod_a85130bf279b9c59b98b5bace272263e0}} 
+\index{decoration\_mod@{decoration\_mod}!ansi\_attribute\_list\_len@{ansi\_attribute\_list\_len}}
+\index{ansi\_attribute\_list\_len@{ansi\_attribute\_list\_len}!decoration\_mod@{decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{ansi\_attribute\_list\_len}{ansi\_attribute\_list\_len}}
+{\footnotesize\ttfamily integer(ik), parameter decoration\+\_\+mod\+::ansi\+\_\+attribute\+\_\+list\+\_\+len = 8}
+
+
+
+Definition at line 67 of file Decoration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacedecoration__mod_a972929ba6ea01b5cb196c2dee99c7e2e}\label{namespacedecoration__mod_a972929ba6ea01b5cb196c2dee99c7e2e}} 
+\index{decoration\_mod@{decoration\_mod}!ansi\_color\_list\_len@{ansi\_color\_list\_len}}
+\index{ansi\_color\_list\_len@{ansi\_color\_list\_len}!decoration\_mod@{decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{ansi\_color\_list\_len}{ansi\_color\_list\_len}}
+{\footnotesize\ttfamily integer(ik), parameter decoration\+\_\+mod\+::ansi\+\_\+color\+\_\+list\+\_\+len = 16}
+
+
+
+Definition at line 68 of file Decoration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacedecoration__mod_ae12ae9ebb07fce76d6b2afd6e1f4e43e}\label{namespacedecoration__mod_ae12ae9ebb07fce76d6b2afd6e1f4e43e}} 
+\index{decoration\_mod@{decoration\_mod}!decoration\_thickness\_horz@{decoration\_thickness\_horz}}
+\index{decoration\_thickness\_horz@{decoration\_thickness\_horz}!decoration\_mod@{decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{decoration\_thickness\_horz}{decoration\_thickness\_horz}}
+{\footnotesize\ttfamily integer(ik), parameter decoration\+\_\+mod\+::decoration\+\_\+thickness\+\_\+horz = 4}
+
+
+
+Definition at line 56 of file Decoration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacedecoration__mod_aeda4975e87a8295fe0a7c7d27def138f}\label{namespacedecoration__mod_aeda4975e87a8295fe0a7c7d27def138f}} 
+\index{decoration\_mod@{decoration\_mod}!decoration\_thickness\_vert@{decoration\_thickness\_vert}}
+\index{decoration\_thickness\_vert@{decoration\_thickness\_vert}!decoration\_mod@{decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{decoration\_thickness\_vert}{decoration\_thickness\_vert}}
+{\footnotesize\ttfamily integer(ik), parameter decoration\+\_\+mod\+::decoration\+\_\+thickness\+\_\+vert = 1}
+
+
+
+Definition at line 57 of file Decoration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacedecoration__mod_a364f19d6489e9c4fe378539200797232}\label{namespacedecoration__mod_a364f19d6489e9c4fe378539200797232}} 
+\index{decoration\_mod@{decoration\_mod}!decoration\_width@{decoration\_width}}
+\index{decoration\_width@{decoration\_width}!decoration\_mod@{decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{decoration\_width}{decoration\_width}}
+{\footnotesize\ttfamily integer(ik), parameter decoration\+\_\+mod\+::decoration\+\_\+width = 132}
+
+
+
+Definition at line 55 of file Decoration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}\label{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}} 
+\index{decoration\_mod@{decoration\_mod}!generic\_output\_format@{generic\_output\_format}}
+\index{generic\_output\_format@{generic\_output\_format}!decoration\_mod@{decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{generic\_output\_format}{generic\_output\_format}}
+{\footnotesize\ttfamily character($\ast$), parameter decoration\+\_\+mod\+::generic\+\_\+output\+\_\+format = \char`\"{}($\ast$(g0,\+:,\textquotesingle{} \textquotesingle{}))\char`\"{}}
+
+
+
+Definition at line 62 of file Decoration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacedecoration__mod_a7cc5402c3618f513bc16af539404c597}\label{namespacedecoration__mod_a7cc5402c3618f513bc16af539404c597}} 
+\index{decoration\_mod@{decoration\_mod}!generic\_tabbed\_format@{generic\_tabbed\_format}}
+\index{generic\_tabbed\_format@{generic\_tabbed\_format}!decoration\_mod@{decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{generic\_tabbed\_format}{generic\_tabbed\_format}}
+{\footnotesize\ttfamily character($\ast$), parameter decoration\+\_\+mod\+::generic\+\_\+tabbed\+\_\+format = \char`\"{}(\textquotesingle{}\char`\"{} // T\+AB // T\+AB // \char`\"{}\textquotesingle{},$\ast$(g0,\+:,\textquotesingle{} \textquotesingle{}))\char`\"{}}
+
+
+
+Definition at line 63 of file Decoration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacedecoration__mod_a8bee6ade167f6651caf5d7b3436ddc49}\label{namespacedecoration__mod_a8bee6ade167f6651caf5d7b3436ddc49}} 
+\index{decoration\_mod@{decoration\_mod}!indent@{indent}}
+\index{indent@{indent}!decoration\_mod@{decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{indent}{indent}}
+{\footnotesize\ttfamily character($\ast$), parameter decoration\+\_\+mod\+::indent = T\+AB // T\+AB}
+
+
+
+Definition at line 60 of file Decoration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacedecoration__mod_a2161b3c974646d1022a09b709bb0d888}\label{namespacedecoration__mod_a2161b3c974646d1022a09b709bb0d888}} 
+\index{decoration\_mod@{decoration\_mod}!mc\_ansiattributelist@{mc\_ansiattributelist}}
+\index{mc\_ansiattributelist@{mc\_ansiattributelist}!decoration\_mod@{decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{mc\_ansiattributelist}{mc\_ansiattributelist}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structdecoration__mod_1_1ansi__type}{ansi\+\_\+type}}), dimension(\+:), allocatable decoration\+\_\+mod\+::mc\+\_\+ansiattributelist}
+
+
+
+Definition at line 74 of file Decoration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacedecoration__mod_ad50f33fad5fb1c0e7e714f3230033907}\label{namespacedecoration__mod_ad50f33fad5fb1c0e7e714f3230033907}} 
+\index{decoration\_mod@{decoration\_mod}!mc\_ansibackgroundcolorlist@{mc\_ansibackgroundcolorlist}}
+\index{mc\_ansibackgroundcolorlist@{mc\_ansibackgroundcolorlist}!decoration\_mod@{decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{mc\_ansibackgroundcolorlist}{mc\_ansibackgroundcolorlist}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structdecoration__mod_1_1ansi__type}{ansi\+\_\+type}}), dimension(\+:), allocatable decoration\+\_\+mod\+::mc\+\_\+ansibackgroundcolorlist}
+
+
+
+Definition at line 76 of file Decoration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacedecoration__mod_a1f597dee5b2e90f864a432163aeed7d9}\label{namespacedecoration__mod_a1f597dee5b2e90f864a432163aeed7d9}} 
+\index{decoration\_mod@{decoration\_mod}!mc\_ansiforegroundcolorlist@{mc\_ansiforegroundcolorlist}}
+\index{mc\_ansiforegroundcolorlist@{mc\_ansiforegroundcolorlist}!decoration\_mod@{decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{mc\_ansiforegroundcolorlist}{mc\_ansiforegroundcolorlist}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structdecoration__mod_1_1ansi__type}{ansi\+\_\+type}}), dimension(\+:), allocatable decoration\+\_\+mod\+::mc\+\_\+ansiforegroundcolorlist}
+
+
+
+Definition at line 75 of file Decoration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacedecoration__mod_ad6a53f927175e1a9158042cc1292c60e}\label{namespacedecoration__mod_ad6a53f927175e1a9158042cc1292c60e}} 
+\index{decoration\_mod@{decoration\_mod}!module\_name@{module\_name}}
+\index{module\_name@{module\_name}!decoration\_mod@{decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{module\_name}{module\_name}}
+{\footnotesize\ttfamily character($\ast$), parameter decoration\+\_\+mod\+::module\+\_\+name = \char`\"{}@Decoration\+\_\+mod\char`\"{}}
+
+
+
+Definition at line 53 of file Decoration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacedecoration__mod_a9ffb20f6292c7c95526f8eb5a46abf36}\label{namespacedecoration__mod_a9ffb20f6292c7c95526f8eb5a46abf36}} 
+\index{decoration\_mod@{decoration\_mod}!star@{star}}
+\index{star@{star}!decoration\_mod@{decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{star}{star}}
+{\footnotesize\ttfamily character($\ast$), parameter decoration\+\_\+mod\+::star = \char`\"{}$\ast$\char`\"{}}
+
+
+
+Definition at line 58 of file Decoration\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacedecoration__mod_a7bbe14a4863aacbfee0ce513711ac285}\label{namespacedecoration__mod_a7bbe14a4863aacbfee0ce513711ac285}} 
+\index{decoration\_mod@{decoration\_mod}!tab@{tab}}
+\index{tab@{tab}!decoration\_mod@{decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{tab}{tab}}
+{\footnotesize\ttfamily character($\ast$), parameter decoration\+\_\+mod\+::tab = \char`\"{} \char`\"{}}
+
+
+
+Definition at line 59 of file Decoration\+\_\+mod.\+f90.
+

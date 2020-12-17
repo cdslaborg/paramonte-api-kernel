@@ -1,0 +1,296 @@
+\hypertarget{structpath__mod_1_1path__type}{}\doxysection{path\+\_\+mod\+::path\+\_\+type Interface Reference}
+\label{structpath__mod_1_1path__type}\index{path\_mod::path\_type@{path\_mod::path\_type}}
+Inheritance diagram for path\+\_\+mod\+::path\+\_\+type\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{structpath__mod_1_1path__type}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+procedure, pass \mbox{\hyperlink{structpath__mod_1_1path__type_a2239c1eac938fc64cb9b68c2d2e1b7f0}{query}}
+\item 
+procedure, nopass \mbox{\hyperlink{structpath__mod_1_1path__type_a76f9741f6676d04b755e08b29d584de0}{modify}}
+\item 
+procedure, nopass \mbox{\hyperlink{structpath__mod_1_1path__type_ac783755111ec95ab29c2f14171784734}{getdirnameext}}
+\item 
+nopass \mbox{\hyperlink{structpath__mod_1_1path__type_a48a490fdeba8bbc6e0021746d533f1c2}{getdirfullname}}
+\item 
+nopass \mbox{\hyperlink{structpath__mod_1_1path__type_a1b69880f842a90a495aed7954feba575}{getnameext}}
+\item 
+procedure, nopass \mbox{\hyperlink{structpath__mod_1_1path__type_a0030910c594364b7314732a1d4cd88ea}{winify}}
+\item 
+nopass \mbox{\hyperlink{structpath__mod_1_1path__type_a57f2c6525eff1a107eb6299a3a20da8d}{linify}}
+\item 
+procedure, nopass \mbox{\hyperlink{structpath__mod_1_1path__type_ad9d74802a06d777c6ffffabbcf3fd4ce}{mkdir}}
+\item 
+procedure, nopass \mbox{\hyperlink{structpath__mod_1_1path__type_aeac9a5aef4e6bdcf7dd05b4e493b7637}{isdir}}
+\item 
+type(\mbox{\hyperlink{structpath__mod_1_1path__type}{path\+\_\+type}}) function \mbox{\hyperlink{structpath__mod_1_1path__type_a01539113e3e926c4596db39fe4344631}{constructpath}} (input\+Path, OS)
+\begin{DoxyCompactList}\small\item\em This is the constructor of the class \mbox{\hyperlink{structpath__mod_1_1path__type}{Path\+\_\+type}}.~\newline
+ Return an object of class \mbox{\hyperlink{structpath__mod_1_1path__type}{Path\+\_\+type}} given the input specifications. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+character(\+:), allocatable \mbox{\hyperlink{structpath__mod_1_1path__type_af1dfc22fd746ed3b26020ae84fe6e5f3}{original}}
+\begin{DoxyCompactList}\small\item\em The original path. \end{DoxyCompactList}\item 
+character(\+:), allocatable \mbox{\hyperlink{structpath__mod_1_1path__type_a6574f1ca7f76a29b05a056fe2573b540}{modified}}
+\begin{DoxyCompactList}\small\item\em The modified path based on the O\+S/platform type. \end{DoxyCompactList}\item 
+character(\+:), allocatable \mbox{\hyperlink{structpath__mod_1_1path__type_a1d596b98bcd79b4250d1a5f3d285702b}{dir}}
+\begin{DoxyCompactList}\small\item\em The directory segment of the path. \end{DoxyCompactList}\item 
+character(\+:), allocatable \mbox{\hyperlink{structpath__mod_1_1path__type_a210bc897b1eb3c9cc26c04f1671d76a5}{name}}
+\begin{DoxyCompactList}\small\item\em The name of the file, if any exists in the path. \end{DoxyCompactList}\item 
+character(\+:), allocatable \mbox{\hyperlink{structpath__mod_1_1path__type_a733d59dd441753358b9f752d68bc83c8}{base}}
+\begin{DoxyCompactList}\small\item\em The base of the file name, if any exists in the path. \end{DoxyCompactList}\item 
+character(\+:), allocatable \mbox{\hyperlink{structpath__mod_1_1path__type_a5e5eb6249051989fb00379f92578326d}{ext}}
+\begin{DoxyCompactList}\small\item\em The file extension, if any exists in the path (including the dot separator). \end{DoxyCompactList}\item 
+character(1) \mbox{\hyperlink{structpath__mod_1_1path__type_a621dc87caa30b4ad22b3715c740b6000}{shellslash}}
+\begin{DoxyCompactList}\small\item\em The type of the separator (forward/backward slash) with which the original path is {\itshape modified}. \end{DoxyCompactList}\item 
+type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}) \mbox{\hyperlink{structpath__mod_1_1path__type_ac3ef0df130444d5d65b045740d905568}{err}}
+\begin{DoxyCompactList}\small\item\em An object of class \mbox{\hyperlink{structerr__mod_1_1err__type}{Err\+\_\+type}} containing error handling tools. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 96 of file Path\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{structpath__mod_1_1path__type_a01539113e3e926c4596db39fe4344631}\label{structpath__mod_1_1path__type_a01539113e3e926c4596db39fe4344631}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!constructpath@{constructpath}}
+\index{constructpath@{constructpath}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{constructpath()}{constructpath()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structpath__mod_1_1path__type}{path\+\_\+type}}) function path\+\_\+mod\+::path\+\_\+type\+::constructpath (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{input\+Path,  }\item[{type(\mbox{\hyperlink{structsystem__mod_1_1os__type}{os\+\_\+type}}), intent(in), optional}]{OS }\end{DoxyParamCaption})}
+
+
+
+This is the constructor of the class \mbox{\hyperlink{structpath__mod_1_1path__type}{Path\+\_\+type}}.~\newline
+ Return an object of class \mbox{\hyperlink{structpath__mod_1_1path__type}{Path\+\_\+type}} given the input specifications. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em input\+Path} & \+: The input path. \\
+\hline
+\mbox{\texttt{ in}}  & {\em OS} & \+: An object of class \mbox{\hyperlink{structsystem__mod_1_1os__type}{O\+S\+\_\+type}} containing information about the operating system ({\bfseries{optional}}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Path} \+: An object of class \mbox{\hyperlink{structpath__mod_1_1path__type}{Path\+\_\+type}} containing the path properties and methods. 
+\end{DoxyReturn}
+
+
+Definition at line 133 of file Path\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structpath__mod_1_1path__type_a48a490fdeba8bbc6e0021746d533f1c2}\label{structpath__mod_1_1path__type_a48a490fdeba8bbc6e0021746d533f1c2}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!getdirfullname@{getdirfullname}}
+\index{getdirfullname@{getdirfullname}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{getdirfullname()}{getdirfullname()}}
+{\footnotesize\ttfamily nopass path\+\_\+mod\+::path\+\_\+type\+::getdirfullname}
+
+
+
+Definition at line 108 of file Path\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structpath__mod_1_1path__type_ac783755111ec95ab29c2f14171784734}\label{structpath__mod_1_1path__type_ac783755111ec95ab29c2f14171784734}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!getdirnameext@{getdirnameext}}
+\index{getdirnameext@{getdirnameext}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{getdirnameext()}{getdirnameext()}}
+{\footnotesize\ttfamily procedure, nopass path\+\_\+mod\+::path\+\_\+type\+::getdirnameext}
+
+
+
+Definition at line 108 of file Path\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structpath__mod_1_1path__type_a1b69880f842a90a495aed7954feba575}\label{structpath__mod_1_1path__type_a1b69880f842a90a495aed7954feba575}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!getnameext@{getnameext}}
+\index{getnameext@{getnameext}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{getnameext()}{getnameext()}}
+{\footnotesize\ttfamily nopass path\+\_\+mod\+::path\+\_\+type\+::getnameext}
+
+
+
+Definition at line 108 of file Path\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structpath__mod_1_1path__type_aeac9a5aef4e6bdcf7dd05b4e493b7637}\label{structpath__mod_1_1path__type_aeac9a5aef4e6bdcf7dd05b4e493b7637}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!isdir@{isdir}}
+\index{isdir@{isdir}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{isdir()}{isdir()}}
+{\footnotesize\ttfamily procedure, nopass path\+\_\+mod\+::path\+\_\+type\+::isdir}
+
+
+
+Definition at line 111 of file Path\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structpath__mod_1_1path__type_a57f2c6525eff1a107eb6299a3a20da8d}\label{structpath__mod_1_1path__type_a57f2c6525eff1a107eb6299a3a20da8d}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!linify@{linify}}
+\index{linify@{linify}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{linify()}{linify()}}
+{\footnotesize\ttfamily nopass path\+\_\+mod\+::path\+\_\+type\+::linify}
+
+
+
+Definition at line 109 of file Path\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structpath__mod_1_1path__type_ad9d74802a06d777c6ffffabbcf3fd4ce}\label{structpath__mod_1_1path__type_ad9d74802a06d777c6ffffabbcf3fd4ce}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!mkdir@{mkdir}}
+\index{mkdir@{mkdir}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{mkdir()}{mkdir()}}
+{\footnotesize\ttfamily procedure, nopass path\+\_\+mod\+::path\+\_\+type\+::mkdir}
+
+
+
+Definition at line 110 of file Path\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structpath__mod_1_1path__type_a76f9741f6676d04b755e08b29d584de0}\label{structpath__mod_1_1path__type_a76f9741f6676d04b755e08b29d584de0}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!modify@{modify}}
+\index{modify@{modify}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{modify()}{modify()}}
+{\footnotesize\ttfamily procedure, nopass path\+\_\+mod\+::path\+\_\+type\+::modify}
+
+
+
+Definition at line 107 of file Path\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structpath__mod_1_1path__type_a2239c1eac938fc64cb9b68c2d2e1b7f0}\label{structpath__mod_1_1path__type_a2239c1eac938fc64cb9b68c2d2e1b7f0}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!query@{query}}
+\index{query@{query}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{query()}{query()}}
+{\footnotesize\ttfamily procedure, pass path\+\_\+mod\+::path\+\_\+type\+::query}
+
+
+
+Definition at line 106 of file Path\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structpath__mod_1_1path__type_a0030910c594364b7314732a1d4cd88ea}\label{structpath__mod_1_1path__type_a0030910c594364b7314732a1d4cd88ea}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!winify@{winify}}
+\index{winify@{winify}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{winify()}{winify()}}
+{\footnotesize\ttfamily procedure, nopass path\+\_\+mod\+::path\+\_\+type\+::winify}
+
+
+
+Definition at line 109 of file Path\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structpath__mod_1_1path__type_a733d59dd441753358b9f752d68bc83c8}\label{structpath__mod_1_1path__type_a733d59dd441753358b9f752d68bc83c8}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!base@{base}}
+\index{base@{base}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{base}{base}}
+{\footnotesize\ttfamily character(\+:), allocatable path\+\_\+mod\+::path\+\_\+type\+::base}
+
+
+
+The base of the file name, if any exists in the path. 
+
+
+
+Definition at line 101 of file Path\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structpath__mod_1_1path__type_a1d596b98bcd79b4250d1a5f3d285702b}\label{structpath__mod_1_1path__type_a1d596b98bcd79b4250d1a5f3d285702b}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!dir@{dir}}
+\index{dir@{dir}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{dir}{dir}}
+{\footnotesize\ttfamily character(\+:), allocatable path\+\_\+mod\+::path\+\_\+type\+::dir}
+
+
+
+The directory segment of the path. 
+
+
+
+Definition at line 99 of file Path\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structpath__mod_1_1path__type_ac3ef0df130444d5d65b045740d905568}\label{structpath__mod_1_1path__type_ac3ef0df130444d5d65b045740d905568}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!err@{err}}
+\index{err@{err}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{err}{err}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}) path\+\_\+mod\+::path\+\_\+type\+::err}
+
+
+
+An object of class \mbox{\hyperlink{structerr__mod_1_1err__type}{Err\+\_\+type}} containing error handling tools. 
+
+
+
+Definition at line 104 of file Path\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structpath__mod_1_1path__type_a5e5eb6249051989fb00379f92578326d}\label{structpath__mod_1_1path__type_a5e5eb6249051989fb00379f92578326d}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!ext@{ext}}
+\index{ext@{ext}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{ext}{ext}}
+{\footnotesize\ttfamily character(\+:), allocatable path\+\_\+mod\+::path\+\_\+type\+::ext}
+
+
+
+The file extension, if any exists in the path (including the dot separator). 
+
+
+
+Definition at line 102 of file Path\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structpath__mod_1_1path__type_a6574f1ca7f76a29b05a056fe2573b540}\label{structpath__mod_1_1path__type_a6574f1ca7f76a29b05a056fe2573b540}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!modified@{modified}}
+\index{modified@{modified}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{modified}{modified}}
+{\footnotesize\ttfamily character(\+:), allocatable path\+\_\+mod\+::path\+\_\+type\+::modified}
+
+
+
+The modified path based on the O\+S/platform type. 
+
+
+
+Definition at line 98 of file Path\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structpath__mod_1_1path__type_a210bc897b1eb3c9cc26c04f1671d76a5}\label{structpath__mod_1_1path__type_a210bc897b1eb3c9cc26c04f1671d76a5}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!name@{name}}
+\index{name@{name}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily character(\+:), allocatable path\+\_\+mod\+::path\+\_\+type\+::name}
+
+
+
+The name of the file, if any exists in the path. 
+
+
+
+Definition at line 100 of file Path\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structpath__mod_1_1path__type_af1dfc22fd746ed3b26020ae84fe6e5f3}\label{structpath__mod_1_1path__type_af1dfc22fd746ed3b26020ae84fe6e5f3}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!original@{original}}
+\index{original@{original}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{original}{original}}
+{\footnotesize\ttfamily character(\+:), allocatable path\+\_\+mod\+::path\+\_\+type\+::original}
+
+
+
+The original path. 
+
+
+
+Definition at line 97 of file Path\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structpath__mod_1_1path__type_a621dc87caa30b4ad22b3715c740b6000}\label{structpath__mod_1_1path__type_a621dc87caa30b4ad22b3715c740b6000}} 
+\index{path\_mod::path\_type@{path\_mod::path\_type}!shellslash@{shellslash}}
+\index{shellslash@{shellslash}!path\_mod::path\_type@{path\_mod::path\_type}}
+\doxysubsubsection{\texorpdfstring{shellslash}{shellslash}}
+{\footnotesize\ttfamily character(1) path\+\_\+mod\+::path\+\_\+type\+::shellslash}
+
+
+
+The type of the separator (forward/backward slash) with which the original path is {\itshape modified}. 
+
+
+
+Definition at line 103 of file Path\+\_\+mod.\+f90.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Dropbox/\+Projects/20180101\+\_\+\+Para\+Monte/git/src/kernel/\mbox{\hyperlink{Path__mod_8f90}{Path\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

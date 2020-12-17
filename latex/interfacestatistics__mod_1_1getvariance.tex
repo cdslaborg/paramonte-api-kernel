@@ -1,0 +1,95 @@
+\hypertarget{interfacestatistics__mod_1_1getvariance}{}\doxysection{statistics\+\_\+mod\+::getvariance Interface Reference}
+\label{interfacestatistics__mod_1_1getvariance}\index{statistics\_mod::getvariance@{statistics\_mod::getvariance}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+pure real(rk) function \mbox{\hyperlink{interfacestatistics__mod_1_1getvariance_a6406e41dad1b5c41c7944af129d48625}{getvariance\+\_\+1d}} (np, mean, Point, Weight, sum\+Weight)
+\begin{DoxyCompactList}\small\item\em Return the variance of the input vector of values of length {\ttfamily np}. \end{DoxyCompactList}\item 
+pure real(rk) function, dimension(nd) \mbox{\hyperlink{interfacestatistics__mod_1_1getvariance_a4b5109dfb893349855372a2a90b9aee0}{getvariance\+\_\+2d}} (nd, np, Mean, Point, Weight)
+\begin{DoxyCompactList}\small\item\em Return the vector of variance of a set of {\ttfamily np} points of {\ttfamily nd} dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 85 of file Statistics\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{interfacestatistics__mod_1_1getvariance_a6406e41dad1b5c41c7944af129d48625}\label{interfacestatistics__mod_1_1getvariance_a6406e41dad1b5c41c7944af129d48625}} 
+\index{statistics\_mod::getvariance@{statistics\_mod::getvariance}!getvariance\_1d@{getvariance\_1d}}
+\index{getvariance\_1d@{getvariance\_1d}!statistics\_mod::getvariance@{statistics\_mod::getvariance}}
+\doxysubsubsection{\texorpdfstring{getvariance\_1d()}{getvariance\_1d()}}
+{\footnotesize\ttfamily pure real(rk) function statistics\+\_\+mod\+::getvariance\+::getvariance\+\_\+1d (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{np,  }\item[{real(rk), intent(in)}]{mean,  }\item[{real(rk), dimension(np), intent(in)}]{Point,  }\item[{integer(ik), dimension(np), intent(in), optional}]{Weight,  }\item[{integer(ik), intent(in), optional}]{sum\+Weight }\end{DoxyParamCaption})}
+
+
+
+Return the variance of the input vector of values of length {\ttfamily np}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of points in the sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em mean} & \+: The mean of the vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The array of shape {\ttfamily np} containing the sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of weights of the points in the sample ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em sum\+Weight} & \+: The sum of the vector of weights ({\bfseries{optional}}, if {\ttfamily Weight} is also missing).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily variance} \+: The variance of the input sample.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+If {\ttfamily Weight} is present, then {\ttfamily sum\+Weight} must be also present. Why? if mean is already given, it implies that sum\+Weight is also computed a priori.
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+One also use the concise Fortran syntax to achieve the same goal as this function\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mean = sum(weight*point) / sum(weight)}
+\DoxyCodeLine{variance = sum( (weight*(point-\/mean))**2 ) / (sum(weight)-\/1)}
+\end{DoxyCode}
+
+\end{DoxyRemark}
+But the above concise version will be slightly slower as it involves three loops instead of two. 
+
+Definition at line 914 of file Statistics\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{interfacestatistics__mod_1_1getvariance_a4b5109dfb893349855372a2a90b9aee0}\label{interfacestatistics__mod_1_1getvariance_a4b5109dfb893349855372a2a90b9aee0}} 
+\index{statistics\_mod::getvariance@{statistics\_mod::getvariance}!getvariance\_2d@{getvariance\_2d}}
+\index{getvariance\_2d@{getvariance\_2d}!statistics\_mod::getvariance@{statistics\_mod::getvariance}}
+\doxysubsubsection{\texorpdfstring{getvariance\_2d()}{getvariance\_2d()}}
+{\footnotesize\ttfamily pure real(rk) function, dimension(nd) statistics\+\_\+mod\+::getvariance\+::getvariance\+\_\+2d (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{nd,  }\item[{integer(ik), intent(in)}]{np,  }\item[{real(rk), dimension(nd), intent(in)}]{Mean,  }\item[{real(rk), dimension(nd,np), intent(in)}]{Point,  }\item[{integer(ik), dimension(np), intent(in), optional}]{Weight }\end{DoxyParamCaption})}
+
+
+
+Return the vector of variance of a set of {\ttfamily np} points of {\ttfamily nd} dimensions. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the input sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of points in the sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Mean} & \+: The mean vector of the sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The array of shape {\ttfamily (nd,np)} containing the sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of weights of the points in the sample of shape {\ttfamily (nd,np)} ({\bfseries{optional}}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Variance} \+: The vector of length {\ttfamily nd} of the variances of the input sample. 
+\end{DoxyReturn}
+
+
+Definition at line 952 of file Statistics\+\_\+mod.\+f90.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Dropbox/\+Projects/20180101\+\_\+\+Para\+Monte/git/src/kernel/\mbox{\hyperlink{Statistics__mod_8f90}{Statistics\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

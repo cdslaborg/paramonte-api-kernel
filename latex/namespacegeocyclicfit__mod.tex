@@ -1,0 +1,149 @@
+\hypertarget{namespacegeocyclicfit__mod}{}\doxysection{geocyclicfit\+\_\+mod Module Reference}
+\label{namespacegeocyclicfit__mod}\index{geocyclicfit\_mod@{geocyclicfit\_mod}}
+
+
+This module contains the classes and procedures for fitting a Cyclic Geometric distribution. The functions and procedures contained in this module were originally part of the \mbox{\hyperlink{namespacestatistics__mod}{Statistics\+\_\+mod}} module. However, they were moved out to bypass the segmentation fault error with internal functions when the library is compiled and run on Microsoft Windows Subsystem for Linux using the G\+NU Fortran compiler.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \mbox{\hyperlink{structgeocyclicfit__mod_1_1geocyclicfit__type}{geocyclicfit\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+type(\mbox{\hyperlink{structoptimization__mod_1_1powellminimum__type}{powellminimum\+\_\+type}}) function \mbox{\hyperlink{namespacegeocyclicfit__mod_a88d66e1fac5af41881bea1fd31e21fb6}{fitgeocycliclogpdf}} (max\+Num\+Trial, num\+Trial, Success\+Step, Log\+Count)
+\begin{DoxyCompactList}\small\item\em Return a fit of the Cyclic Geometric distribution P\+DF to the input natural logarithm of a sequence of Counts, the {\ttfamily i}th element of which represents the number of successes after {\ttfamily Success\+Step(i)} tries in a Bernoulli trail. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character(len= $\ast$), parameter \mbox{\hyperlink{namespacegeocyclicfit__mod_ade029610cc72266c35171a76208a39c6}{module\+\_\+name}} = \char`\"{}@Geo\+Cyclic\+Fit\+\_\+mod\char`\"{}
+\item 
+integer(ik) \mbox{\hyperlink{namespacegeocyclicfit__mod_ae79391dba43da98cc7657733faf435c3}{numtrial\+\_\+wsl}}
+\begin{DoxyCompactList}\small\item\em This madness bypasses the Microsoft Subsystem for Linux Internal Function call G\+Fortran Segmentation Fault error. \end{DoxyCompactList}\item 
+integer(ik) \mbox{\hyperlink{namespacegeocyclicfit__mod_a597b9d842eb13f0923d16bc4af903c32}{maxnumtrial\+\_\+wsl}}
+\begin{DoxyCompactList}\small\item\em This madness bypasses the Microsoft Subsystem for Linux Internal Function call G\+Fortran Segmentation Fault error. \end{DoxyCompactList}\item 
+integer(ik), dimension(\+:), allocatable \mbox{\hyperlink{namespacegeocyclicfit__mod_adc20680bf77e843895837637a88dfd46}{successstep\+\_\+wsl}}
+\begin{DoxyCompactList}\small\item\em This madness bypasses the Microsoft Subsystem for Linux Internal Function call G\+Fortran Segmentation Fault error. \end{DoxyCompactList}\item 
+real(rk), dimension(\+:), allocatable \mbox{\hyperlink{namespacegeocyclicfit__mod_a28b8259170a3402a5835ecd663394edd}{logcount\+\_\+wsl}}
+\begin{DoxyCompactList}\small\item\em This madness bypasses the Microsoft Subsystem for Linux Internal Function call G\+Fortran Segmentation Fault error. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains the classes and procedures for fitting a Cyclic Geometric distribution. The functions and procedures contained in this module were originally part of the \mbox{\hyperlink{namespacestatistics__mod}{Statistics\+\_\+mod}} module. However, they were moved out to bypass the segmentation fault error with internal functions when the library is compiled and run on Microsoft Windows Subsystem for Linux using the G\+NU Fortran compiler. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespacegeocyclicfit__mod_a88d66e1fac5af41881bea1fd31e21fb6}\label{namespacegeocyclicfit__mod_a88d66e1fac5af41881bea1fd31e21fb6}} 
+\index{geocyclicfit\_mod@{geocyclicfit\_mod}!fitgeocycliclogpdf@{fitgeocycliclogpdf}}
+\index{fitgeocycliclogpdf@{fitgeocycliclogpdf}!geocyclicfit\_mod@{geocyclicfit\_mod}}
+\doxysubsubsection{\texorpdfstring{fitgeocycliclogpdf()}{fitgeocycliclogpdf()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structoptimization__mod_1_1powellminimum__type}{powellminimum\+\_\+type}}) function geocyclicfit\+\_\+mod\+::fitgeocycliclogpdf (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{max\+Num\+Trial,  }\item[{integer(ik), intent(in)}]{num\+Trial,  }\item[{integer(ik), dimension(numtrial), intent(in)}]{Success\+Step,  }\item[{real(rk), dimension(numtrial), intent(in)}]{Log\+Count }\end{DoxyParamCaption})}
+
+
+
+Return a fit of the Cyclic Geometric distribution P\+DF to the input natural logarithm of a sequence of Counts, the {\ttfamily i}th element of which represents the number of successes after {\ttfamily Success\+Step(i)} tries in a Bernoulli trail. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em max\+Num\+Trial} & \+: The maximum number of trails possible. After {\ttfamily max\+Num\+Trial} tries, \\
+\hline
+\mbox{\texttt{ in}}  & {\em num\+Trial} & \+: The length of the array {\ttfamily Success\+Step} and {\ttfamily Log\+Count}. Note that {\ttfamily num\+Trial $<$ max\+Num\+Trial} must hold. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Success\+Step} & \+: A vector of length {\ttfamily (1\+:num\+Trial)} of integers that represent the steps at which the Bernoulli successes occur. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Log\+Count} & \+: A real-\/valued vector of length {\ttfamily (1\+:num\+Trial)} representing the natural logarithms of the counts of success at the corresponding Bernoulli trials specified by elements of {\ttfamily Success\+Step}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Powell\+Minimum} \+: An object of class \mbox{\hyperlink{structoptimization__mod_1_1powellminimum__type}{Powell\+Minimum\+\_\+type}} containing the best-\/fit success\+Prob and the normalization constant of the fit in the vector component {\ttfamily xmin}.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+Any value of Success\+Step must be an integer numbers between {\ttfamily 1} and {\ttfamily max\+Num\+Trial}. The onus is on the user to ensure this condition holds.
+\end{DoxyWarning}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]Update\+: Amir Shahmoradi, Sunday Nov 29, 2020, 11\+:19 pm, Dallas, TX The current implementation of the objective function relies on the definitions of module variables. Although inefficient and ugly, this was necessary to resolve the viscous Segmentation Fault error that happens with internal function calls on Windows Subsystem for Linux Ubuntu with G\+Fortran. Once this error of unknown origin is resolved, the external module function {\ttfamily get\+Sum\+Dist\+Sq()} must be converted back to an internal function within \mbox{\hyperlink{namespacegeocyclicfit__mod_a88d66e1fac5af41881bea1fd31e21fb6}{fit\+Geo\+Cyclic\+Log\+P\+DF}} and subsequently, all module variables must be removed. update (Dec 16, 2020)\+: ~\newline
+ The source of the error was identified to be a bug in W\+S\+L1. This problem is now resolved in W\+S\+L2. However, the code will be kept intact for future compatibility with W\+S\+L1 and those who still use it.\end{DoxyRefDesc}
+
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, I\+C\+ES, The University of Texas at Austin. 
+\end{DoxyAuthor}
+
+
+Definition at line 116 of file Geo\+Cyclic\+Fit\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacegeocyclicfit__mod_a28b8259170a3402a5835ecd663394edd}\label{namespacegeocyclicfit__mod_a28b8259170a3402a5835ecd663394edd}} 
+\index{geocyclicfit\_mod@{geocyclicfit\_mod}!logcount\_wsl@{logcount\_wsl}}
+\index{logcount\_wsl@{logcount\_wsl}!geocyclicfit\_mod@{geocyclicfit\_mod}}
+\doxysubsubsection{\texorpdfstring{logcount\_wsl}{logcount\_wsl}}
+{\footnotesize\ttfamily real(rk), dimension(\+:), allocatable geocyclicfit\+\_\+mod\+::logcount\+\_\+wsl}
+
+
+
+This madness bypasses the Microsoft Subsystem for Linux Internal Function call G\+Fortran Segmentation Fault error. 
+
+
+
+Definition at line 65 of file Geo\+Cyclic\+Fit\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacegeocyclicfit__mod_a597b9d842eb13f0923d16bc4af903c32}\label{namespacegeocyclicfit__mod_a597b9d842eb13f0923d16bc4af903c32}} 
+\index{geocyclicfit\_mod@{geocyclicfit\_mod}!maxnumtrial\_wsl@{maxnumtrial\_wsl}}
+\index{maxnumtrial\_wsl@{maxnumtrial\_wsl}!geocyclicfit\_mod@{geocyclicfit\_mod}}
+\doxysubsubsection{\texorpdfstring{maxnumtrial\_wsl}{maxnumtrial\_wsl}}
+{\footnotesize\ttfamily integer(ik) geocyclicfit\+\_\+mod\+::maxnumtrial\+\_\+wsl}
+
+
+
+This madness bypasses the Microsoft Subsystem for Linux Internal Function call G\+Fortran Segmentation Fault error. 
+
+
+
+Definition at line 63 of file Geo\+Cyclic\+Fit\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacegeocyclicfit__mod_ade029610cc72266c35171a76208a39c6}\label{namespacegeocyclicfit__mod_ade029610cc72266c35171a76208a39c6}} 
+\index{geocyclicfit\_mod@{geocyclicfit\_mod}!module\_name@{module\_name}}
+\index{module\_name@{module\_name}!geocyclicfit\_mod@{geocyclicfit\_mod}}
+\doxysubsubsection{\texorpdfstring{module\_name}{module\_name}}
+{\footnotesize\ttfamily character(len=$\ast$), parameter geocyclicfit\+\_\+mod\+::module\+\_\+name = \char`\"{}@Geo\+Cyclic\+Fit\+\_\+mod\char`\"{}}
+
+
+
+Definition at line 58 of file Geo\+Cyclic\+Fit\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacegeocyclicfit__mod_ae79391dba43da98cc7657733faf435c3}\label{namespacegeocyclicfit__mod_ae79391dba43da98cc7657733faf435c3}} 
+\index{geocyclicfit\_mod@{geocyclicfit\_mod}!numtrial\_wsl@{numtrial\_wsl}}
+\index{numtrial\_wsl@{numtrial\_wsl}!geocyclicfit\_mod@{geocyclicfit\_mod}}
+\doxysubsubsection{\texorpdfstring{numtrial\_wsl}{numtrial\_wsl}}
+{\footnotesize\ttfamily integer(ik) geocyclicfit\+\_\+mod\+::numtrial\+\_\+wsl}
+
+
+
+This madness bypasses the Microsoft Subsystem for Linux Internal Function call G\+Fortran Segmentation Fault error. 
+
+
+
+Definition at line 62 of file Geo\+Cyclic\+Fit\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespacegeocyclicfit__mod_adc20680bf77e843895837637a88dfd46}\label{namespacegeocyclicfit__mod_adc20680bf77e843895837637a88dfd46}} 
+\index{geocyclicfit\_mod@{geocyclicfit\_mod}!successstep\_wsl@{successstep\_wsl}}
+\index{successstep\_wsl@{successstep\_wsl}!geocyclicfit\_mod@{geocyclicfit\_mod}}
+\doxysubsubsection{\texorpdfstring{successstep\_wsl}{successstep\_wsl}}
+{\footnotesize\ttfamily integer(ik), dimension(\+:), allocatable geocyclicfit\+\_\+mod\+::successstep\+\_\+wsl}
+
+
+
+This madness bypasses the Microsoft Subsystem for Linux Internal Function call G\+Fortran Segmentation Fault error. 
+
+
+
+Definition at line 64 of file Geo\+Cyclic\+Fit\+\_\+mod.\+f90.
+
