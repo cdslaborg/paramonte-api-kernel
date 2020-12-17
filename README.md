@@ -1,7 +1,7 @@
 <div align="center">
 
-<a href="https://cdslaborg.github.io/paramonte-api-kernel/html/" target="_blank">
-    <img alt="paramonte-api-kernel" src="https://cdslaborg.github.io/paramonte-api-kernel/html/logo.png" width="80%">
+<a href="https://cdslaborg.github.io/paramonte-kernel-doc/html/" target="_blank">
+    <img alt="paramonte-kernel-doc" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png" width="80%">
 </a>
 
 ParaMonte Kernel Application Programming Interface
