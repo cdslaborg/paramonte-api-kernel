@@ -7,7 +7,7 @@
 ParaMonte Kernel Application Programming Interface
 ==================================================
 
-This project contains the Doxygen documentation of the [ParaMonte kernel library](https://github.com/cdslaborg/paramonte).  
+This project contains the [Application Programming Interface documentation](https://cdslaborg.github.io/paramonte-kernel-doc/html/) of the [ParaMonte kernel library](https://github.com/cdslaborg/paramonte).  
 For full documentation visit the [ParaMonte library's documentation website](https://www.cdslab.org/paramonte/).  
 
 </div>
