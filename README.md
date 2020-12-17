@@ -1,6 +1,6 @@
 <div align="center">
     <a href="https://cdslaborg.github.io/paramonte-api-kernel/html/" target="_blank">
-        <img alt="paramonte-api-kernel" src="https://cdslaborg.github.io/paramontedx/html/logo.png">
+        <img alt="paramonte-api-kernel" src="https://cdslaborg.github.io/paramonte-api-kernel/html/logo.png">
     </a>
 </div>
 
