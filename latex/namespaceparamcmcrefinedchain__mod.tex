@@ -1,0 +1,245 @@
+\hypertarget{namespaceparamcmcrefinedchain__mod}{}\doxysection{paramcmcrefinedchain\+\_\+mod Module Reference}
+\label{namespaceparamcmcrefinedchain__mod}\index{paramcmcrefinedchain\_mod@{paramcmcrefinedchain\_mod}}
+
+
+This module contains the classes and procedures for refining M\+C\+MC output chains.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \mbox{\hyperlink{structparamcmcrefinedchain__mod_1_1method__type}{method\+\_\+type}}
+\item 
+type \mbox{\hyperlink{structparamcmcrefinedchain__mod_1_1refinedchain__type}{refinedchain\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily Refined\+Chain\+\_\+type} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \mbox{\hyperlink{namespaceparamcmcrefinedchain__mod_a7f4defc4336f935e75b2ea8d1e82f990}{getrefinedchain}} (Refined\+Chain, C\+FC, Err, burnin\+Loc, refined\+Chain\+Size, sample\+Refinement\+Count, sample\+Refinement\+Method)
+\begin{DoxyCompactList}\small\item\em Return the refined Markov chain, given the input Markov chain and its specifications. This procedure is a method of the \mbox{\hyperlink{structparamcmcrefinedchain__mod_1_1refinedchain__type}{Refined\+Chain\+\_\+type}} class. \end{DoxyCompactList}\item 
+pure integer(ik) function, dimension(np) \mbox{\hyperlink{namespaceparamcmcrefinedchain__mod_aaee283af9f9f1d6d6ad0273304a98ee4}{getrefinedweight}} (np, Weight, skip, refined\+Chain\+Size)
+\begin{DoxyCompactList}\small\item\em Return the refined vector of weights of the vector of weights of a weighted Markov chain. \end{DoxyCompactList}\item 
+pure subroutine \mbox{\hyperlink{namespaceparamcmcrefinedchain__mod_af35d257b9ee8b4608d6fa8d648147c3d}{refineweightedsample}} (nd, np, skip, Sample, Weight, Refined\+Chain, Refined\+Weight, Point\+Count, refined\+Chain\+Size)
+\begin{DoxyCompactList}\small\item\em Refined an input weighted sample according to the new requested weights. \end{DoxyCompactList}\item 
+pure integer(ik) function \mbox{\hyperlink{namespaceparamcmcrefinedchain__mod_a7fb3b71b7353b1902512f180b1e457b9}{getskip4newsamplesize}} (old\+Sample\+Size, new\+Sample\+Size)
+\begin{DoxyCompactList}\small\item\em Return the best skip size through a Markov chain to refined it to the optimal requested size. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceparamcmcrefinedchain__mod_a233bd351c53fb656940029f0009c2fb1}{writerefinedchain}} (Refined\+Chain, sample\+File\+Unit, sample\+File\+Header\+Format, sample\+File\+Contents\+Format)
+\begin{DoxyCompactList}\small\item\em Write the computed refined chain to the specified output file. \end{DoxyCompactList}\item 
+type(\mbox{\hyperlink{structparamcmcrefinedchain__mod_1_1refinedchain__type}{refinedchain\+\_\+type}}) function \mbox{\hyperlink{namespaceparamcmcrefinedchain__mod_a438f7618e64b5acc46616fc81d2eb981}{readrefinedchain}} (sample\+File\+Path, delimiter, ndim, tenabled)
+\begin{DoxyCompactList}\small\item\em Write the computed refined chain to the specified output file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceparamcmcrefinedchain__mod_a2d5d4435c1790f7b440ad58a8a58df52}{module\+\_\+name}} = \char`\"{}\textbackslash{}param\+C\+M\+C\+Refined\+Chain\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains the classes and procedures for refining M\+C\+MC output chains. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceparamcmcrefinedchain__mod_a7f4defc4336f935e75b2ea8d1e82f990}\label{namespaceparamcmcrefinedchain__mod_a7f4defc4336f935e75b2ea8d1e82f990}} 
+\index{paramcmcrefinedchain\_mod@{paramcmcrefinedchain\_mod}!getrefinedchain@{getrefinedchain}}
+\index{getrefinedchain@{getrefinedchain}!paramcmcrefinedchain\_mod@{paramcmcrefinedchain\_mod}}
+\doxysubsubsection{\texorpdfstring{getrefinedchain()}{getrefinedchain()}}
+{\footnotesize\ttfamily subroutine paramcmcrefinedchain\+\_\+mod\+::getrefinedchain (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structparamcmcrefinedchain__mod_1_1refinedchain__type}{refinedchain\+\_\+type}}), intent(inout)}]{Refined\+Chain,  }\item[{type(\mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{chainfilecontents\+\_\+type}}), intent(inout)}]{C\+FC,  }\item[{type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}), intent(out)}]{Err,  }\item[{integer(ik), intent(in), optional}]{burnin\+Loc,  }\item[{integer(ik), intent(in), optional}]{refined\+Chain\+Size,  }\item[{integer(ik), intent(in), optional}]{sample\+Refinement\+Count,  }\item[{character($\ast$), intent(in), optional}]{sample\+Refinement\+Method }\end{DoxyParamCaption})}
+
+
+
+Return the refined Markov chain, given the input Markov chain and its specifications. This procedure is a method of the \mbox{\hyperlink{structparamcmcrefinedchain__mod_1_1refinedchain__type}{Refined\+Chain\+\_\+type}} class. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em Refined\+Chain} & \+: An object of class \mbox{\hyperlink{structparamcmcrefinedchain__mod_1_1refinedchain__type}{Refined\+Chain\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em C\+FC} & \+: An object of type \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}} containing the Markov chain. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Err} & \+: An object of class \mbox{\hyperlink{structerr__mod_1_1err__type}{Err\+\_\+type}} indicating whether any error has occurred or not. \\
+\hline
+\mbox{\texttt{ in}}  & {\em burnin\+Loc} & \+: The estimated location of burnin point in the Markov chain ({\bfseries{optional}}). If not provided, it will be extracted from the components of the input {\ttfamily C\+FC}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em refined\+Chain\+Size} & \+: The requested refined sample size ({\bfseries{optional}}). If the size of the refined sample is given as input, then the requested sample is directly generated based on the input size. \\
+\hline
+\mbox{\texttt{ in}}  & {\em sample\+Refinement\+Count} & \+: The maximum number of times the sample can be refined ({\bfseries{optional}}, default = {\ttfamily Infinity}). \+: For example, if set to 1, then only one round of refinement will be performed on the Markov chain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em sample\+Refinement\+Method} & \+: The requested method of refining the sample ({\bfseries{optional}}, default = \char`\"{}\+Batch\+Means\char`\"{}). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 107 of file Para\+M\+C\+M\+C\+Refined\+Chain\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceparamcmcrefinedchain__mod_aaee283af9f9f1d6d6ad0273304a98ee4}\label{namespaceparamcmcrefinedchain__mod_aaee283af9f9f1d6d6ad0273304a98ee4}} 
+\index{paramcmcrefinedchain\_mod@{paramcmcrefinedchain\_mod}!getrefinedweight@{getrefinedweight}}
+\index{getrefinedweight@{getrefinedweight}!paramcmcrefinedchain\_mod@{paramcmcrefinedchain\_mod}}
+\doxysubsubsection{\texorpdfstring{getrefinedweight()}{getrefinedweight()}}
+{\footnotesize\ttfamily pure integer(ik) function, dimension(np) paramcmcrefinedchain\+\_\+mod\+::getrefinedweight (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{np,  }\item[{integer(ik), dimension(np), intent(in)}]{Weight,  }\item[{real(rk), intent(in)}]{skip,  }\item[{integer(ik), intent(in), optional}]{refined\+Chain\+Size }\end{DoxyParamCaption})}
+
+
+
+Return the refined vector of weights of the vector of weights of a weighted Markov chain. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of elements of the {\ttfamily Weight} vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The input vector of weights. \\
+\hline
+\mbox{\texttt{ in}}  & {\em skip} & \+: The size of the jumps that have to be made through the weighted Markov chain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em refined\+Chain\+Size} & \+: The requested refined sample size ({\bfseries{optional}}). If present, then the refined chain (represented by the \+: vector {\ttfamily Weight}) will be refined such that the resulting refined chain has the size {\ttfamily refined\+Chain\+Size}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Refined\+Weight} \+: An array of size {\ttfamily np}, whose elements indicate which points are present in the final refined chain.~\newline
+ Examples\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{         skip: 1}
+\DoxyCodeLine{       weight: 5, 0, 1, 3, 1}
+\DoxyCodeLine{refinedweight: 5, 0, 1, 3, 1}
+\DoxyCodeLine{         skip: 2}
+\DoxyCodeLine{       weight: 5, 0, 1, 3, 1}
+\DoxyCodeLine{refinedweight: 3, 0, 0, 2, 0}
+\DoxyCodeLine{         skip: 3}
+\DoxyCodeLine{       weight: 5, 0, 1, 3, 1}
+\DoxyCodeLine{refinedweight: 2, 0, 0, 1, 1}
+\end{DoxyCode}
+ 
+\end{DoxyReturn}
+
+
+Definition at line 416 of file Para\+M\+C\+M\+C\+Refined\+Chain\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceparamcmcrefinedchain__mod_a7fb3b71b7353b1902512f180b1e457b9}\label{namespaceparamcmcrefinedchain__mod_a7fb3b71b7353b1902512f180b1e457b9}} 
+\index{paramcmcrefinedchain\_mod@{paramcmcrefinedchain\_mod}!getskip4newsamplesize@{getskip4newsamplesize}}
+\index{getskip4newsamplesize@{getskip4newsamplesize}!paramcmcrefinedchain\_mod@{paramcmcrefinedchain\_mod}}
+\doxysubsubsection{\texorpdfstring{getskip4newsamplesize()}{getskip4newsamplesize()}}
+{\footnotesize\ttfamily pure integer(ik) function paramcmcrefinedchain\+\_\+mod\+::getskip4newsamplesize (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{old\+Sample\+Size,  }\item[{integer(ik), intent(in)}]{new\+Sample\+Size }\end{DoxyParamCaption})}
+
+
+
+Return the best skip size through a Markov chain to refined it to the optimal requested size. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em old\+Sample\+Size} & \+: The original size of the Markov chain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em new\+Sample\+Size} & \+: The final desired size of the refined sample.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily skip4\+New\+Sample\+Size} \+: The computed skip size.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The condition {\ttfamily old\+Sample\+Size $>$= new\+Sample\+Size} must always hold, otherwise a negative value for {\ttfamily skip4\+New\+Sample\+Size} will be returned to indicate the occurrence of an error. 
+\end{DoxyWarning}
+
+
+Definition at line 523 of file Para\+M\+C\+M\+C\+Refined\+Chain\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceparamcmcrefinedchain__mod_a438f7618e64b5acc46616fc81d2eb981}\label{namespaceparamcmcrefinedchain__mod_a438f7618e64b5acc46616fc81d2eb981}} 
+\index{paramcmcrefinedchain\_mod@{paramcmcrefinedchain\_mod}!readrefinedchain@{readrefinedchain}}
+\index{readrefinedchain@{readrefinedchain}!paramcmcrefinedchain\_mod@{paramcmcrefinedchain\_mod}}
+\doxysubsubsection{\texorpdfstring{readrefinedchain()}{readrefinedchain()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structparamcmcrefinedchain__mod_1_1refinedchain__type}{refinedchain\+\_\+type}}) function paramcmcrefinedchain\+\_\+mod\+::readrefinedchain (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{sample\+File\+Path,  }\item[{character($\ast$), intent(in)}]{delimiter,  }\item[{integer(ik), intent(in)}]{ndim,  }\item[{logical, intent(in), optional}]{tenabled }\end{DoxyParamCaption})}
+
+
+
+Write the computed refined chain to the specified output file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em sample\+File\+Path} & \+: The path to the input chain file that must be read. \\
+\hline
+\mbox{\texttt{ in}}  & {\em delimiter} & \+: The delimiter used in the file. \\
+\hline
+\mbox{\texttt{ in}}  & {\em ndim} & \+: The number of dimensions of the sampled states in the sample file. This is basically, the size of the domain of the objective function. \\
+\hline
+\mbox{\texttt{ in}}  & {\em tenabled} & \+: An optional input logical value standing for {\ttfamily transpose-\/enabled}. If {\ttfamily .false.}, the input data will be naturally read according to Fortran column-\/wise data storage rule as a matrix of rank {\ttfamily 0\+:nd $\ast$ 1\+:np}. If {\ttfamily .false.}, the input sample file will be read as a matrix of rank {\ttfamily 1\+:np $\ast$ 0\+:nd}. Note that {\ttfamily np} represents the number of rows in the files (that is, the number of sampled points, whereas {\ttfamily nd} represents the number of columns in the input file ({\bfseries{optional}}, default = {\ttfamily .false.}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Refined\+Chain} \+: An object of class \mbox{\hyperlink{structparamcmcrefinedchain__mod_1_1refinedchain__type}{Refined\+Chain\+\_\+type}} containing the sampled states read from the specified input file. 
+\end{DoxyReturn}
+
+
+Definition at line 586 of file Para\+M\+C\+M\+C\+Refined\+Chain\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceparamcmcrefinedchain__mod_af35d257b9ee8b4608d6fa8d648147c3d}\label{namespaceparamcmcrefinedchain__mod_af35d257b9ee8b4608d6fa8d648147c3d}} 
+\index{paramcmcrefinedchain\_mod@{paramcmcrefinedchain\_mod}!refineweightedsample@{refineweightedsample}}
+\index{refineweightedsample@{refineweightedsample}!paramcmcrefinedchain\_mod@{paramcmcrefinedchain\_mod}}
+\doxysubsubsection{\texorpdfstring{refineweightedsample()}{refineweightedsample()}}
+{\footnotesize\ttfamily pure subroutine paramcmcrefinedchain\+\_\+mod\+::refineweightedsample (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{nd,  }\item[{integer(ik), intent(in)}]{np,  }\item[{real(rk), intent(in)}]{skip,  }\item[{real(rk), dimension(0\+:nd,np), intent(in)}]{Sample,  }\item[{integer(ik), dimension(np), intent(in)}]{Weight,  }\item[{real(rk), dimension(\+:,\+:), intent(out), allocatable}]{Refined\+Chain,  }\item[{integer(ik), dimension(\+:), intent(out), allocatable}]{Refined\+Weight,  }\item[{type(\mbox{\hyperlink{structparamontechainfilecontents__mod_1_1count__type}{count\+\_\+type}}), intent(out)}]{Point\+Count,  }\item[{integer(ik), intent(in), optional}]{refined\+Chain\+Size }\end{DoxyParamCaption})}
+
+
+
+Refined an input weighted sample according to the new requested weights. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the input {\ttfamily Sample(0\+:nd,np)}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of points in the input {\ttfamily Sample(0\+:nd,np)}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em skip} & \+: The jump size with which the input chain has to be refined. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Sample} & \+: The input 2-\/dimensional array of sampled states which has to be refined. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The weights of the sampled points. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Refined\+Chain} & \+: The refined array. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Refined\+Weight} & \+: The vector of refined weights corresponding to the output refined array. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Point\+Count} & \+: An object of derived type \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1count__type}{Count\+\_\+type}} containing the number of points in the refined sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em refined\+Chain\+Size} & \+: The requested refined sample size ({\bfseries{optional}}). If the size of the refined sample is given as input, then the requested sample is directly generated based on the input size. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 481 of file Para\+M\+C\+M\+C\+Refined\+Chain\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceparamcmcrefinedchain__mod_a233bd351c53fb656940029f0009c2fb1}\label{namespaceparamcmcrefinedchain__mod_a233bd351c53fb656940029f0009c2fb1}} 
+\index{paramcmcrefinedchain\_mod@{paramcmcrefinedchain\_mod}!writerefinedchain@{writerefinedchain}}
+\index{writerefinedchain@{writerefinedchain}!paramcmcrefinedchain\_mod@{paramcmcrefinedchain\_mod}}
+\doxysubsubsection{\texorpdfstring{writerefinedchain()}{writerefinedchain()}}
+{\footnotesize\ttfamily subroutine paramcmcrefinedchain\+\_\+mod\+::writerefinedchain (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structparamcmcrefinedchain__mod_1_1refinedchain__type}{refinedchain\+\_\+type}}), intent(in)}]{Refined\+Chain,  }\item[{integer(ik), intent(in)}]{sample\+File\+Unit,  }\item[{character($\ast$), intent(in)}]{sample\+File\+Header\+Format,  }\item[{character($\ast$), intent(in)}]{sample\+File\+Contents\+Format }\end{DoxyParamCaption})}
+
+
+
+Write the computed refined chain to the specified output file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Refined\+Chain} & \+: An object of class \mbox{\hyperlink{structparamcmcrefinedchain__mod_1_1refinedchain__type}{Refined\+Chain\+\_\+type}} containing the refined sample to be written to the output file. \\
+\hline
+\mbox{\texttt{ in}}  & {\em sample\+File\+Unit} & \+: The unit of the file to which the sample must be written. \\
+\hline
+\mbox{\texttt{ in}}  & {\em sample\+File\+Header\+Format} & \+: The IO format of the header of the sample file. \\
+\hline
+\mbox{\texttt{ in}}  & {\em sample\+File\+Contents\+Format} & \+: The IO format of the contents (sampled states) in the sample file. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 550 of file Para\+M\+C\+M\+C\+Refined\+Chain\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparamcmcrefinedchain__mod_a2d5d4435c1790f7b440ad58a8a58df52}\label{namespaceparamcmcrefinedchain__mod_a2d5d4435c1790f7b440ad58a8a58df52}} 
+\index{paramcmcrefinedchain\_mod@{paramcmcrefinedchain\_mod}!module\_name@{module\_name}}
+\index{module\_name@{module\_name}!paramcmcrefinedchain\_mod@{paramcmcrefinedchain\_mod}}
+\doxysubsubsection{\texorpdfstring{module\_name}{module\_name}}
+{\footnotesize\ttfamily character($\ast$), parameter paramcmcrefinedchain\+\_\+mod\+::module\+\_\+name = \char`\"{}\textbackslash{}param\+C\+M\+C\+Refined\+Chain\+\_\+mod\char`\"{}}
+
+
+
+Definition at line 58 of file Para\+M\+C\+M\+C\+Refined\+Chain\+\_\+mod.\+f90.
+

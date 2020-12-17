@@ -1,0 +1,193 @@
+\hypertarget{structrandomseed__mod_1_1randomseed__type}{}\doxysection{randomseed\+\_\+mod\+::randomseed\+\_\+type Interface Reference}
+\label{structrandomseed__mod_1_1randomseed__type}\index{randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}}
+
+
+The {\ttfamily Random\+Seed\+\_\+type} class.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+procedure, public \mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type_af7642a38396445d6ceb14278728d56de}{set}} =$>$ setrandomseed
+\item 
+procedure, public \mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type_a71e3d9765dd547dfa0101c237b980c5e}{get}} =$>$ getrandomseed
+\item 
+type(\mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type}{randomseed\+\_\+type}}) function \mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type_a2f822720c08530298be4dc59ebbc0bfb}{constructrandomseed}} (image\+ID, input\+Seed, is\+Repeatable, is\+Image\+Distinct)
+\begin{DoxyCompactList}\small\item\em This is the constructor of the \mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type}{Random\+Seed\+\_\+type}} class. Initialize the seed of the random number generator and return an object of class \mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type}{Random\+Seed\+\_\+type}} containing the information and methods for setting and resetting the random seed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+integer(ik) \mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type_a875b87370d63dc54205f1b4d6e39b262}{size}} = -\/huge(1\+\_\+\+IK)
+\begin{DoxyCompactList}\small\item\em The size of the random seed vector. \end{DoxyCompactList}\item 
+integer(ik) \mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type_ac5a28b6638b2a02a737844b86af41249}{imageid}} = -\/huge(1\+\_\+\+IK)
+\begin{DoxyCompactList}\small\item\em The ID of the current image/processor. \end{DoxyCompactList}\item 
+integer(ik), dimension(\+:), allocatable \mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type_a3ac1c432acbb00c16f90442e3980ac26}{value}}
+\begin{DoxyCompactList}\small\item\em The random seed vector. \end{DoxyCompactList}\item 
+logical \mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type_a7fa7584ba7d4d183d8e72304b87043ba}{isrepeatable}} = .false.
+\begin{DoxyCompactList}\small\item\em The logical flag indicating whether the random number sequence must be repeatable upon each restart. \end{DoxyCompactList}\item 
+logical \mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type_ab6a9f36ded6f743364d2c820fb17bc4b}{isimagedistinct}} = .true.
+\begin{DoxyCompactList}\small\item\em The logical flag indicating whether the random seed must be distinct on each processor from others. \end{DoxyCompactList}\item 
+type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}) \mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type_ad3c1587fda2f65d7397b15fb19cb6589}{err}}
+\begin{DoxyCompactList}\small\item\em An object of class \mbox{\hyperlink{structerr__mod_1_1err__type}{Err\+\_\+type}} containing the error handling tools. \end{DoxyCompactList}\item 
+character(\+:), allocatable \mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type_aa525ff5546e471f916f67700ac70f844}{info}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The {\ttfamily Random\+Seed\+\_\+type} class. 
+
+Definition at line 58 of file Random\+Seed\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{structrandomseed__mod_1_1randomseed__type_a2f822720c08530298be4dc59ebbc0bfb}\label{structrandomseed__mod_1_1randomseed__type_a2f822720c08530298be4dc59ebbc0bfb}} 
+\index{randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}!constructrandomseed@{constructrandomseed}}
+\index{constructrandomseed@{constructrandomseed}!randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}}
+\doxysubsubsection{\texorpdfstring{constructrandomseed()}{constructrandomseed()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type}{randomseed\+\_\+type}}) function randomseed\+\_\+mod\+::randomseed\+\_\+type\+::constructrandomseed (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{image\+ID,  }\item[{integer(ik), intent(in), optional}]{input\+Seed,  }\item[{logical, intent(in), optional}]{is\+Repeatable,  }\item[{logical, intent(in), optional}]{is\+Image\+Distinct }\end{DoxyParamCaption})}
+
+
+
+This is the constructor of the \mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type}{Random\+Seed\+\_\+type}} class. Initialize the seed of the random number generator and return an object of class \mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type}{Random\+Seed\+\_\+type}} containing the information and methods for setting and resetting the random seed. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em image\+ID} & \+: The ID of the current process. \\
+\hline
+\mbox{\texttt{ in}}  & {\em input\+Seed} & \+: The optional scalar integer based upon which the seed of the random number generator will be set ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em is\+Repeatable} & \+: The logical flag indicating whether the random number sequence must be repeatable upon each restart ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em is\+Image\+Distinct} & \+: The logical flag indicating whether the random seed must be distinct on each processor from others ({\bfseries{optional}}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Random\+Seed} \+: An object of class \mbox{\hyperlink{structrandomseed__mod_1_1randomseed__type}{Random\+Seed\+\_\+type}} containing the information and methods for setting and resetting the random seed. 
+\end{DoxyReturn}
+
+
+Definition at line 93 of file Random\+Seed\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structrandomseed__mod_1_1randomseed__type_a71e3d9765dd547dfa0101c237b980c5e}\label{structrandomseed__mod_1_1randomseed__type_a71e3d9765dd547dfa0101c237b980c5e}} 
+\index{randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}!get@{get}}
+\index{get@{get}!randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily procedure, public randomseed\+\_\+mod\+::randomseed\+\_\+type\+::get}
+
+
+
+Definition at line 68 of file Random\+Seed\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structrandomseed__mod_1_1randomseed__type_af7642a38396445d6ceb14278728d56de}\label{structrandomseed__mod_1_1randomseed__type_af7642a38396445d6ceb14278728d56de}} 
+\index{randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}!set@{set}}
+\index{set@{set}!randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily procedure, public randomseed\+\_\+mod\+::randomseed\+\_\+type\+::set}
+
+
+
+Definition at line 67 of file Random\+Seed\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structrandomseed__mod_1_1randomseed__type_ad3c1587fda2f65d7397b15fb19cb6589}\label{structrandomseed__mod_1_1randomseed__type_ad3c1587fda2f65d7397b15fb19cb6589}} 
+\index{randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}!err@{err}}
+\index{err@{err}!randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}}
+\doxysubsubsection{\texorpdfstring{err}{err}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}) randomseed\+\_\+mod\+::randomseed\+\_\+type\+::err}
+
+
+
+An object of class \mbox{\hyperlink{structerr__mod_1_1err__type}{Err\+\_\+type}} containing the error handling tools. 
+
+
+
+Definition at line 64 of file Random\+Seed\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structrandomseed__mod_1_1randomseed__type_ac5a28b6638b2a02a737844b86af41249}\label{structrandomseed__mod_1_1randomseed__type_ac5a28b6638b2a02a737844b86af41249}} 
+\index{randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}!imageid@{imageid}}
+\index{imageid@{imageid}!randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}}
+\doxysubsubsection{\texorpdfstring{imageid}{imageid}}
+{\footnotesize\ttfamily integer(ik) randomseed\+\_\+mod\+::randomseed\+\_\+type\+::imageid = -\/huge(1\+\_\+\+IK)}
+
+
+
+The ID of the current image/processor. 
+
+
+
+Definition at line 60 of file Random\+Seed\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structrandomseed__mod_1_1randomseed__type_aa525ff5546e471f916f67700ac70f844}\label{structrandomseed__mod_1_1randomseed__type_aa525ff5546e471f916f67700ac70f844}} 
+\index{randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}!info@{info}}
+\index{info@{info}!randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}}
+\doxysubsubsection{\texorpdfstring{info}{info}}
+{\footnotesize\ttfamily character(\+:), allocatable randomseed\+\_\+mod\+::randomseed\+\_\+type\+::info}
+
+
+
+Definition at line 65 of file Random\+Seed\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structrandomseed__mod_1_1randomseed__type_ab6a9f36ded6f743364d2c820fb17bc4b}\label{structrandomseed__mod_1_1randomseed__type_ab6a9f36ded6f743364d2c820fb17bc4b}} 
+\index{randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}!isimagedistinct@{isimagedistinct}}
+\index{isimagedistinct@{isimagedistinct}!randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}}
+\doxysubsubsection{\texorpdfstring{isimagedistinct}{isimagedistinct}}
+{\footnotesize\ttfamily logical randomseed\+\_\+mod\+::randomseed\+\_\+type\+::isimagedistinct = .true.}
+
+
+
+The logical flag indicating whether the random seed must be distinct on each processor from others. 
+
+
+
+Definition at line 63 of file Random\+Seed\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structrandomseed__mod_1_1randomseed__type_a7fa7584ba7d4d183d8e72304b87043ba}\label{structrandomseed__mod_1_1randomseed__type_a7fa7584ba7d4d183d8e72304b87043ba}} 
+\index{randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}!isrepeatable@{isrepeatable}}
+\index{isrepeatable@{isrepeatable}!randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}}
+\doxysubsubsection{\texorpdfstring{isrepeatable}{isrepeatable}}
+{\footnotesize\ttfamily logical randomseed\+\_\+mod\+::randomseed\+\_\+type\+::isrepeatable = .false.}
+
+
+
+The logical flag indicating whether the random number sequence must be repeatable upon each restart. 
+
+
+
+Definition at line 62 of file Random\+Seed\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structrandomseed__mod_1_1randomseed__type_a875b87370d63dc54205f1b4d6e39b262}\label{structrandomseed__mod_1_1randomseed__type_a875b87370d63dc54205f1b4d6e39b262}} 
+\index{randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}!size@{size}}
+\index{size@{size}!randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}}
+\doxysubsubsection{\texorpdfstring{size}{size}}
+{\footnotesize\ttfamily integer(ik) randomseed\+\_\+mod\+::randomseed\+\_\+type\+::size = -\/huge(1\+\_\+\+IK)}
+
+
+
+The size of the random seed vector. 
+
+
+
+Definition at line 59 of file Random\+Seed\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structrandomseed__mod_1_1randomseed__type_a3ac1c432acbb00c16f90442e3980ac26}\label{structrandomseed__mod_1_1randomseed__type_a3ac1c432acbb00c16f90442e3980ac26}} 
+\index{randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}!value@{value}}
+\index{value@{value}!randomseed\_mod::randomseed\_type@{randomseed\_mod::randomseed\_type}}
+\doxysubsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily integer(ik), dimension(\+:), allocatable randomseed\+\_\+mod\+::randomseed\+\_\+type\+::value}
+
+
+
+The random seed vector. 
+
+
+
+Definition at line 61 of file Random\+Seed\+\_\+mod.\+f90.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Dropbox/\+Projects/20180101\+\_\+\+Para\+Monte/git/src/kernel/\mbox{\hyperlink{RandomSeed__mod_8f90}{Random\+Seed\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

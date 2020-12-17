@@ -1,0 +1,281 @@
+\hypertarget{namespaceparamontechainfilecontents__mod}{}\doxysection{paramontechainfilecontents\+\_\+mod Module Reference}
+\label{namespaceparamontechainfilecontents__mod}\index{paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}}
+
+
+This module contains the classs and procedures for chain IO and manipulation.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{chainfilecontents\+\_\+type}}
+\item 
+type \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1count__type}{count\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+type(\mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{chainfilecontents\+\_\+type}}) function \mbox{\hyperlink{namespaceparamontechainfilecontents__mod_a2f2c5348facfcac33a57b58306acb778}{constructchainfilecontents}} (ndim, variable\+Name\+List, chain\+File\+Path, chain\+Size, chain\+File\+Form, len\+Header, delimiter, target\+Chain\+Size)
+\begin{DoxyCompactList}\small\item\em This is the constructor of the class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Return an object of class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}} given the input specifications. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceparamontechainfilecontents__mod_a5a16ee9af290aab23985ea4d59784db4}{getchainfilecontents}} (C\+FC, chain\+File\+Path, chain\+File\+Form, Err, chain\+Size, len\+Header, ndim, delimiter, target\+Chain\+Size)
+\begin{DoxyCompactList}\small\item\em This is a method of the class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Return the contents of a Para\+Monte simulation output chain file, always in {\ttfamily compact} format, regardless of the value of {\ttfamily chain\+File\+Format} and store it in the object of class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceparamontechainfilecontents__mod_a6419468f357349222253f79028f0b28f}{nullifychainfilecontents}} (C\+FC, start\+Index, end\+Index)
+\begin{DoxyCompactList}\small\item\em This is a method of the class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Reset the components of the chain object to an unlikely value for the purpose of error catching and debugging. Store the modified components as part of the input object of class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceparamontechainfilecontents__mod_adc69277ce29b5bdda0986fb046235df8}{getlenheader}} (C\+FC, ndim, is\+Binary, chain\+File\+Format)
+\begin{DoxyCompactList}\small\item\em This is a method of the class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Return the length of the header of the chain file. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceparamontechainfilecontents__mod_ab679804e5ba7a99c8a6e183e3818004f}{writeheader}} (C\+FC, ndim, chain\+File\+Unit, is\+Binary, chain\+File\+Format)
+\begin{DoxyCompactList}\small\item\em This is a method of the class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Write the requested header to the chain file. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceparamontechainfilecontents__mod_a8a03e627c77dfce568419490c0319e98}{writechainfile}} (C\+FC, ndim, compact\+Start\+Index, compact\+End\+Index, chain\+File\+Unit, chain\+File\+Form, chain\+File\+Format, adaptive\+Update\+Period)
+\begin{DoxyCompactList}\small\item\em This is a method of the class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Write the chain properties to the chain file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceparamontechainfilecontents__mod_a83cfa440398901645e9e22d89ba726c3}{module\+\_\+name}} = \char`\"{}@Para\+Monte\+Chain\+File\+Contents\+\_\+mod\char`\"{}
+\item 
+integer(ik), parameter \mbox{\hyperlink{namespaceparamontechainfilecontents__mod_a788a70c8f42d214de9bc42077a37ed97}{num\+\_\+def\+\_\+col}} = 7\+\_\+\+IK
+\item 
+character($\ast$), dimension(\mbox{\hyperlink{namespaceparamontechainfilecontents__mod_a788a70c8f42d214de9bc42077a37ed97}{num\+\_\+def\+\_\+col}}), parameter \mbox{\hyperlink{namespaceparamontechainfilecontents__mod_a24dc3a50c39cc57c2e28d9f3252a22e3}{col\+\_\+header\+\_\+default}} = \mbox{[} \char`\"{}Process\+ID \char`\"{} , \char`\"{}Delayed\+Rejection\+Stage\char`\"{} , \char`\"{}Mean\+Acceptance\+Rate \char`\"{} , \char`\"{}Adaptation\+Measure \char`\"{} , \char`\"{}Burnin\+Location \char`\"{} , \char`\"{}Sample\+Weight \char`\"{} , \char`\"{}Sample\+Log\+Func \char`\"{} \mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains the classs and procedures for chain IO and manipulation. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceparamontechainfilecontents__mod_a2f2c5348facfcac33a57b58306acb778}\label{namespaceparamontechainfilecontents__mod_a2f2c5348facfcac33a57b58306acb778}} 
+\index{paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}!constructchainfilecontents@{constructchainfilecontents}}
+\index{constructchainfilecontents@{constructchainfilecontents}!paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}}
+\doxysubsubsection{\texorpdfstring{constructchainfilecontents()}{constructchainfilecontents()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{chainfilecontents\+\_\+type}}) function paramontechainfilecontents\+\_\+mod\+::constructchainfilecontents (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{ndim,  }\item[{character($\ast$), dimension(ndim), intent(in), optional}]{variable\+Name\+List,  }\item[{character($\ast$), intent(in), optional}]{chain\+File\+Path,  }\item[{integer(ik), intent(in), optional}]{chain\+Size,  }\item[{character($\ast$), intent(in), optional}]{chain\+File\+Form,  }\item[{integer(ik), intent(in), optional}]{len\+Header,  }\item[{character($\ast$), intent(in), optional}]{delimiter,  }\item[{integer(ik), intent(in), optional}]{target\+Chain\+Size }\end{DoxyParamCaption})}
+
+
+
+This is the constructor of the class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Return an object of class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}} given the input specifications. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ndim} & \+: The number of dimensions of the domain of the objective function. \\
+\hline
+\mbox{\texttt{ in}}  & {\em variable\+Name\+List} & \+: The list of variable names corresponding to each axis of the domain of the objective function ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Path} & \+: The list of variable names corresponding to each axis of the domain of the objective function ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+Size} & \+: The size of the chain in the chain file specified by the input {\ttfamily chain\+File\+Path} ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Form} & \+: The file format of the chain file ({\ttfamily \char`\"{}binary\char`\"{}} vs. {\ttfamily \char`\"{}compact\char`\"{}} vs. {\ttfamily \char`\"{}verbose\char`\"{}}) ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len\+Header} & \+: The full length of the first line in the input file (the header line) ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em delimiter} & \+: The delimiter symbol used in the chain file ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em target\+Chain\+Size} & \+: The final target size of the chain (in case the chain file is an interrupted simulation) ({\bfseries{optional}}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily C\+FC} \+: An object of class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}} containing the chain.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+If {\ttfamily chain\+File\+Path} is given, then the rest of the optional arguments {\itshape must be also given}. 
+\end{DoxyWarning}
+
+
+Definition at line 126 of file Para\+Monte\+Chain\+File\+Contents\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceparamontechainfilecontents__mod_a5a16ee9af290aab23985ea4d59784db4}\label{namespaceparamontechainfilecontents__mod_a5a16ee9af290aab23985ea4d59784db4}} 
+\index{paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}!getchainfilecontents@{getchainfilecontents}}
+\index{getchainfilecontents@{getchainfilecontents}!paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}}
+\doxysubsubsection{\texorpdfstring{getchainfilecontents()}{getchainfilecontents()}}
+{\footnotesize\ttfamily subroutine paramontechainfilecontents\+\_\+mod\+::getchainfilecontents (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{chainfilecontents\+\_\+type}}), intent(inout)}]{C\+FC,  }\item[{character($\ast$), intent(in)}]{chain\+File\+Path,  }\item[{character($\ast$), intent(in)}]{chain\+File\+Form,  }\item[{type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}), intent(out)}]{Err,  }\item[{integer(ik), intent(in), optional}]{chain\+Size,  }\item[{integer(ik), intent(in), optional}]{len\+Header,  }\item[{integer(ik), intent(in), optional}]{ndim,  }\item[{character($\ast$), intent(in), optional}]{delimiter,  }\item[{integer(ik), intent(in), optional}]{target\+Chain\+Size }\end{DoxyParamCaption})}
+
+
+
+This is a method of the class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Return the contents of a Para\+Monte simulation output chain file, always in {\ttfamily compact} format, regardless of the value of {\ttfamily chain\+File\+Format} and store it in the object of class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em C\+FC} & \+: The object of class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Path} & \+: The list of variable names corresponding to each axis of the domain of the objective function. \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Form} & \+: The file format of the chain file ({\ttfamily \char`\"{}binary\char`\"{}} vs. {\ttfamily \char`\"{}compact\char`\"{}} vs. {\ttfamily \char`\"{}verbose\char`\"{}}). \\
+\hline
+\mbox{\texttt{ out}}  & {\em Err} & \+: An object of class \mbox{\hyperlink{structerr__mod_1_1err__type}{Err\+\_\+type}} containing information about whether an error has occurred. \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+Size} & \+: The size of the chain in the chain file specified by the input {\ttfamily chain\+File\+Path} ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len\+Header} & \+: The full length of the first line in the input file (the header line) ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em ndim} & \+: The number of dimensions of the domain of the objective function ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em delimiter} & \+: The delimiter symbol used in the chain file ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em target\+Chain\+Size} & \+: The final target size of the chain (in case the chain file is an interrupted simulation) ({\bfseries{optional}}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+{\ttfamily target\+Chain\+Size} must be {\ttfamily $>$= chain\+Size}, if provided. It is used for the allocation of the chain components.
+
+{\ttfamily chain\+Size} must be {\ttfamily $<$= target\+Chain\+Size}. The first {\ttfamily chain\+Size} elements of the {\ttfamily C\+FC} components will contain the chain information read from the chain file. The chain component elements beyond {\ttfamily chain\+Size} will be set to zero. 
+\end{DoxyWarning}
+
+
+Definition at line 198 of file Para\+Monte\+Chain\+File\+Contents\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceparamontechainfilecontents__mod_adc69277ce29b5bdda0986fb046235df8}\label{namespaceparamontechainfilecontents__mod_adc69277ce29b5bdda0986fb046235df8}} 
+\index{paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}!getlenheader@{getlenheader}}
+\index{getlenheader@{getlenheader}!paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}}
+\doxysubsubsection{\texorpdfstring{getlenheader()}{getlenheader()}}
+{\footnotesize\ttfamily subroutine paramontechainfilecontents\+\_\+mod\+::getlenheader (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{chainfilecontents\+\_\+type}}), intent(inout)}]{C\+FC,  }\item[{integer(ik), intent(in)}]{ndim,  }\item[{logical, intent(in)}]{is\+Binary,  }\item[{character($\ast$), intent(in), optional}]{chain\+File\+Format }\end{DoxyParamCaption})}
+
+
+
+This is a method of the class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Return the length of the header of the chain file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em C\+FC} & \+: The object of class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em ndim} & \+: The number of dimensions of the domain of the objective function. \\
+\hline
+\mbox{\texttt{ in}}  & {\em is\+Binary} & \+: The logical flag indicating whether the file is in {\ttfamily binary} format. \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Format} & \+: The Fortran IO formatting string to be used to read the contents of the chain file ({\bfseries{optional}}). This argument is only required with a non-\/binary chain file, i.\+e., when {\ttfamily is\+Binary = .false.}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 793 of file Para\+Monte\+Chain\+File\+Contents\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceparamontechainfilecontents__mod_a6419468f357349222253f79028f0b28f}\label{namespaceparamontechainfilecontents__mod_a6419468f357349222253f79028f0b28f}} 
+\index{paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}!nullifychainfilecontents@{nullifychainfilecontents}}
+\index{nullifychainfilecontents@{nullifychainfilecontents}!paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}}
+\doxysubsubsection{\texorpdfstring{nullifychainfilecontents()}{nullifychainfilecontents()}}
+{\footnotesize\ttfamily subroutine paramontechainfilecontents\+\_\+mod\+::nullifychainfilecontents (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{chainfilecontents\+\_\+type}}), intent(inout)}]{C\+FC,  }\item[{integer(ik), intent(in)}]{start\+Index,  }\item[{integer(ik), intent(in)}]{end\+Index }\end{DoxyParamCaption})}
+
+
+
+This is a method of the class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Reset the components of the chain object to an unlikely value for the purpose of error catching and debugging. Store the modified components as part of the input object of class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em C\+FC} & \+: The number of dimensions of the domain of the objective function. \\
+\hline
+\mbox{\texttt{ in}}  & {\em start\+Index} & \+: The beginning index beyond which the component values will be reset. \\
+\hline
+\mbox{\texttt{ in}}  & {\em end\+Index} & \+: The ending index below which the component values will be reset. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 765 of file Para\+Monte\+Chain\+File\+Contents\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceparamontechainfilecontents__mod_a8a03e627c77dfce568419490c0319e98}\label{namespaceparamontechainfilecontents__mod_a8a03e627c77dfce568419490c0319e98}} 
+\index{paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}!writechainfile@{writechainfile}}
+\index{writechainfile@{writechainfile}!paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}}
+\doxysubsubsection{\texorpdfstring{writechainfile()}{writechainfile()}}
+{\footnotesize\ttfamily subroutine paramontechainfilecontents\+\_\+mod\+::writechainfile (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{chainfilecontents\+\_\+type}}), intent(inout)}]{C\+FC,  }\item[{integer(ik), intent(in)}]{ndim,  }\item[{integer(ik), intent(in)}]{compact\+Start\+Index,  }\item[{integer(ik), intent(in)}]{compact\+End\+Index,  }\item[{integer(ik), intent(in)}]{chain\+File\+Unit,  }\item[{character($\ast$), intent(in)}]{chain\+File\+Form,  }\item[{character($\ast$), intent(in), optional}]{chain\+File\+Format,  }\item[{integer(ik), intent(in), optional}]{adaptive\+Update\+Period }\end{DoxyParamCaption})}
+
+
+
+This is a method of the class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Write the chain properties to the chain file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em C\+FC} & \+: The object of class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em ndim} & \+: The number of dimensions of the domain of the objective function. \\
+\hline
+\mbox{\texttt{ in}}  & {\em compact\+Start\+Index} & \+: The beginning index of the compact chain beyond which the elements of the chain will be written to the output file. \\
+\hline
+\mbox{\texttt{ in}}  & {\em compact\+End\+Index} & \+: The ending index of the compact chain below which the elements of the chain will be written to the output file. \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Unit} & \+: The unit ID of the chain file to which the header should be written. \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Form} & \+: The file format of the chain file ({\ttfamily \char`\"{}binary\char`\"{}} vs. {\ttfamily \char`\"{}compact\char`\"{}} vs. {\ttfamily \char`\"{}verbose\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Format} & \+: The Fortran IO formatting string to be used to read the contents of the chain file ({\bfseries{optional}}). This argument is only required with a non-\/binary chain file, i.\+e., when {\ttfamily is\+Binary = .false.}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em adaptive\+Update\+Period} & \+: The adaptive update period ({\bfseries{optional}}). It must be provided if {\ttfamily chain\+File\+Form = \char`\"{}verbose\char`\"{}}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 890 of file Para\+Monte\+Chain\+File\+Contents\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceparamontechainfilecontents__mod_ab679804e5ba7a99c8a6e183e3818004f}\label{namespaceparamontechainfilecontents__mod_ab679804e5ba7a99c8a6e183e3818004f}} 
+\index{paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}!writeheader@{writeheader}}
+\index{writeheader@{writeheader}!paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}}
+\doxysubsubsection{\texorpdfstring{writeheader()}{writeheader()}}
+{\footnotesize\ttfamily subroutine paramontechainfilecontents\+\_\+mod\+::writeheader (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{chainfilecontents\+\_\+type}}), intent(inout)}]{C\+FC,  }\item[{integer(ik), intent(in)}]{ndim,  }\item[{integer(ik), intent(in)}]{chain\+File\+Unit,  }\item[{logical, intent(in)}]{is\+Binary,  }\item[{character($\ast$), intent(in), optional}]{chain\+File\+Format }\end{DoxyParamCaption})}
+
+
+
+This is a method of the class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Write the requested header to the chain file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em C\+FC} & \+: The object of class \mbox{\hyperlink{structparamontechainfilecontents__mod_1_1chainfilecontents__type}{Chain\+File\+Contents\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em ndim} & \+: The number of dimensions of the domain of the objective function. \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Unit} & \+: The unit ID of the chain file to which the header should be written. \\
+\hline
+\mbox{\texttt{ in}}  & {\em is\+Binary} & \+: The logical flag indicating whether the file is in {\ttfamily binary} format. \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Format} & \+: The Fortran IO formatting string to be used to read the contents of the chain file ({\bfseries{optional}}). This argument is only required with a non-\/binary chain file, i.\+e., when {\ttfamily is\+Binary = .false.}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 840 of file Para\+Monte\+Chain\+File\+Contents\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparamontechainfilecontents__mod_a24dc3a50c39cc57c2e28d9f3252a22e3}\label{namespaceparamontechainfilecontents__mod_a24dc3a50c39cc57c2e28d9f3252a22e3}} 
+\index{paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}!col\_header\_default@{col\_header\_default}}
+\index{col\_header\_default@{col\_header\_default}!paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}}
+\doxysubsubsection{\texorpdfstring{col\_header\_default}{col\_header\_default}}
+{\footnotesize\ttfamily character($\ast$), dimension(\mbox{\hyperlink{namespaceparamontechainfilecontents__mod_a788a70c8f42d214de9bc42077a37ed97}{num\+\_\+def\+\_\+col}}), parameter paramontechainfilecontents\+\_\+mod\+::col\+\_\+header\+\_\+default = \mbox{[} \char`\"{}Process\+ID \char`\"{} , \char`\"{}Delayed\+Rejection\+Stage\char`\"{} , \char`\"{}Mean\+Acceptance\+Rate \char`\"{} , \char`\"{}Adaptation\+Measure \char`\"{} , \char`\"{}Burnin\+Location \char`\"{} , \char`\"{}Sample\+Weight \char`\"{} , \char`\"{}Sample\+Log\+Func \char`\"{} \mbox{]}}
+
+
+
+Definition at line 59 of file Para\+Monte\+Chain\+File\+Contents\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceparamontechainfilecontents__mod_a83cfa440398901645e9e22d89ba726c3}\label{namespaceparamontechainfilecontents__mod_a83cfa440398901645e9e22d89ba726c3}} 
+\index{paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}!module\_name@{module\_name}}
+\index{module\_name@{module\_name}!paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}}
+\doxysubsubsection{\texorpdfstring{module\_name}{module\_name}}
+{\footnotesize\ttfamily character($\ast$), parameter paramontechainfilecontents\+\_\+mod\+::module\+\_\+name = \char`\"{}@Para\+Monte\+Chain\+File\+Contents\+\_\+mod\char`\"{}}
+
+
+
+Definition at line 55 of file Para\+Monte\+Chain\+File\+Contents\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{namespaceparamontechainfilecontents__mod_a788a70c8f42d214de9bc42077a37ed97}\label{namespaceparamontechainfilecontents__mod_a788a70c8f42d214de9bc42077a37ed97}} 
+\index{paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}!num\_def\_col@{num\_def\_col}}
+\index{num\_def\_col@{num\_def\_col}!paramontechainfilecontents\_mod@{paramontechainfilecontents\_mod}}
+\doxysubsubsection{\texorpdfstring{num\_def\_col}{num\_def\_col}}
+{\footnotesize\ttfamily integer(ik), parameter paramontechainfilecontents\+\_\+mod\+::num\+\_\+def\+\_\+col = 7\+\_\+\+IK}
+
+
+
+Definition at line 57 of file Para\+Monte\+Chain\+File\+Contents\+\_\+mod.\+f90.
+

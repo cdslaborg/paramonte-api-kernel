@@ -1,0 +1,88 @@
+\hypertarget{interfacestatistics__mod_1_1getnormdata}{}\doxysection{statistics\+\_\+mod\+::getnormdata Interface Reference}
+\label{interfacestatistics__mod_1_1getnormdata}\index{statistics\_mod::getnormdata@{statistics\_mod::getnormdata}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+pure real(rk) function, dimension(np, nd) \mbox{\hyperlink{interfacestatistics__mod_1_1getnormdata_a488a2ace9b665280aedb23b5d1a74032}{getnormdata\+\_\+2d}} (nd, np, Mean, Point)
+\begin{DoxyCompactList}\small\item\em Return the normalized data with respect to the input mean vector of length {\ttfamily nd}. \end{DoxyCompactList}\item 
+pure real(rk) function, dimension(\+:,\+:), allocatable \mbox{\hyperlink{interfacestatistics__mod_1_1getnormdata_a86ad69951dac9342a77141491f1e134b}{normalizeweighteddata\+\_\+2d}} (nd, np, Data, Weight, tenabled)
+\begin{DoxyCompactList}\small\item\em Return the normalized 2D data of size {\ttfamily (nd,np)} with respect to the mean of the data along the second dimension of length {\ttfamily np}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 81 of file Statistics\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{interfacestatistics__mod_1_1getnormdata_a488a2ace9b665280aedb23b5d1a74032}\label{interfacestatistics__mod_1_1getnormdata_a488a2ace9b665280aedb23b5d1a74032}} 
+\index{statistics\_mod::getnormdata@{statistics\_mod::getnormdata}!getnormdata\_2d@{getnormdata\_2d}}
+\index{getnormdata\_2d@{getnormdata\_2d}!statistics\_mod::getnormdata@{statistics\_mod::getnormdata}}
+\doxysubsubsection{\texorpdfstring{getnormdata\_2d()}{getnormdata\_2d()}}
+{\footnotesize\ttfamily pure real(rk) function, dimension(np,nd) statistics\+\_\+mod\+::getnormdata\+::getnormdata\+\_\+2d (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{nd,  }\item[{integer(ik), intent(in)}]{np,  }\item[{real(rk), dimension(nd), intent(in)}]{Mean,  }\item[{real(rk), dimension(nd,np), intent(in)}]{Point }\end{DoxyParamCaption})}
+
+
+
+Return the normalized data with respect to the input mean vector of length {\ttfamily nd}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the input sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of points in the sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Mean} & \+: The mean vector of length {\ttfamily nd}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The array of shape {\ttfamily (nd,np)} containing the sample.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Norm\+Data} \+: The output normalized points array of shape {\ttfamily (np,nd)}.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+Note the difference in the shape of the input {\ttfamily Point} vs. the output {\ttfamily Norm\+Data}. 
+\end{DoxyRemark}
+
+
+Definition at line 809 of file Statistics\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{interfacestatistics__mod_1_1getnormdata_a86ad69951dac9342a77141491f1e134b}\label{interfacestatistics__mod_1_1getnormdata_a86ad69951dac9342a77141491f1e134b}} 
+\index{statistics\_mod::getnormdata@{statistics\_mod::getnormdata}!normalizeweighteddata\_2d@{normalizeweighteddata\_2d}}
+\index{normalizeweighteddata\_2d@{normalizeweighteddata\_2d}!statistics\_mod::getnormdata@{statistics\_mod::getnormdata}}
+\doxysubsubsection{\texorpdfstring{normalizeweighteddata\_2d()}{normalizeweighteddata\_2d()}}
+{\footnotesize\ttfamily pure real(rk) function, dimension(\+:,\+:), allocatable statistics\+\_\+mod\+::getnormdata\+::normalizeweighteddata\+\_\+2d (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{nd,  }\item[{integer(ik), intent(in)}]{np,  }\item[{real(rk), dimension(nd,np), intent(in)}]{Data,  }\item[{integer(ik), dimension(np), intent(in), optional}]{Weight,  }\item[{logical, intent(in), optional}]{tenabled }\end{DoxyParamCaption})}
+
+
+
+Return the normalized 2D data of size {\ttfamily (nd,np)} with respect to the mean of the data along the second dimension of length {\ttfamily np}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The length of the input {\ttfamily Data} matrix along the first dimension. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The length of the input {\ttfamily Data} matrix along the second dimension. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Data} & \+: The input data series data vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of weights of the input data points ({\bfseries{optional}}, default = array of ones). \\
+\hline
+\mbox{\texttt{ in}}  & {\em tenabled} & \+: A logical value that, if {\ttfamily .true.} will cause the output {\ttfamily Norm\+Data} to have transposed shape of the input {\ttfamily Point(nd,np)} matrix, that is {\ttfamily (np,nd)} ({\bfseries{optional}}, default = {\ttfamily .false.}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Norm\+Data} \+: The integrated autocorrelation (I\+AC) via the Batch\+Means method.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+Note that np must be large enough to get a meaningful answer. 
+\end{DoxyRemark}
+
+
+Definition at line 841 of file Statistics\+\_\+mod.\+f90.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Dropbox/\+Projects/20180101\+\_\+\+Para\+Monte/git/src/kernel/\mbox{\hyperlink{Statistics__mod_8f90}{Statistics\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

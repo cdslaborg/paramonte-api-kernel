@@ -1,0 +1,82 @@
+\hypertarget{Math__mod_8f90}{}\doxysection{D\+:/\+Dropbox/\+Projects/20180101\+\_\+\+Para\+Monte/git/src/kernel/\+Math\+\_\+mod.f90 File Reference}
+\label{Math__mod_8f90}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/Math\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/Math\_mod.f90}}
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfacemath__mod_1_1getcumsum}{math\+\_\+mod\+::getcumsum}}
+\item 
+interface \mbox{\hyperlink{interfacemath__mod_1_1getcumsumreverse}{math\+\_\+mod\+::getcumsumreverse}}
+\item 
+interface \mbox{\hyperlink{interfacemath__mod_1_1getlogsumexp}{math\+\_\+mod\+::getlogsumexp}}
+\item 
+interface \mbox{\hyperlink{interfacemath__mod_1_1getlogsubexp}{math\+\_\+mod\+::getlogsubexp}}
+\item 
+interface \mbox{\hyperlink{interfacemath__mod_1_1getlogeggbox}{math\+\_\+mod\+::getlogeggbox}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespacemath__mod}{math\+\_\+mod}}
+\begin{DoxyCompactList}\small\item\em This module contains mathematical procedures. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_aa3625156d49b2b411f3197e12efd8fa7}{math\+\_\+mod\+::getdistancesq}} (nd, Point1, Point2)
+\begin{DoxyCompactList}\small\item\em Return the distance squared between the two input points. \end{DoxyCompactList}\item 
+pure elemental real(rk) function \mbox{\hyperlink{namespacemath__mod_a2da2ee0fe226823f936b23877e1ffe36}{math\+\_\+mod\+::getcorceoffromfishertrans}} (fisher\+Trans)
+\begin{DoxyCompactList}\small\item\em Return the correlation coefficient ({\ttfamily -\/1 $<$ cor\+Coef $<$ 1}) corresponding to the input Fisher z-\/transformation. \end{DoxyCompactList}\item 
+pure elemental real(rk) function \mbox{\hyperlink{namespacemath__mod_aed697b0a83ed8b3233d99d4322192dd1}{math\+\_\+mod\+::getfishertransfromcorcoef}} (cor\+Coef)
+\begin{DoxyCompactList}\small\item\em Return Fisher z-\/transformation of an input correlation coefficient ({\ttfamily -\/1 $<$ cor\+Coef $<$ 1}). \end{DoxyCompactList}\item 
+pure integer(ik) function, dimension(veclen) \mbox{\hyperlink{namespacemath__mod_a699191bae6044ed7af73c5f1becb515c}{math\+\_\+mod\+::getcumsum\+\_\+ik}} (vec\+Len, Vec)
+\begin{DoxyCompactList}\small\item\em Return the cumulative sum of the input integer array. \end{DoxyCompactList}\item 
+pure real(rk) function, dimension(veclen) \mbox{\hyperlink{namespacemath__mod_a3e33500eec5eb8ca57cf0de19e78de37}{math\+\_\+mod\+::getcumsum\+\_\+rk}} (vec\+Len, Vec)
+\begin{DoxyCompactList}\small\item\em Return the cumulative sum of the input real array. \end{DoxyCompactList}\item 
+pure integer(ik) function, dimension(veclen) \mbox{\hyperlink{namespacemath__mod_afc88e71f3274a806352201fdce3fc7ed}{math\+\_\+mod\+::getcumsumreverse\+\_\+ik}} (vec\+Len, Vec)
+\begin{DoxyCompactList}\small\item\em Return the cumulative sum of the input integer array, in the backward direction. \end{DoxyCompactList}\item 
+pure real(rk) function, dimension(veclen) \mbox{\hyperlink{namespacemath__mod_ae0aa0124586237d8b74e4961b4421bde}{math\+\_\+mod\+::getcumsumreverse\+\_\+rk}} (vec\+Len, Vec)
+\begin{DoxyCompactList}\small\item\em Return the cumulative sum of the input real array, in the backward direction. \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_a617a8829a383a52a3d0221a5b3529e31}{math\+\_\+mod\+::getlogsubexp\+\_\+rk}} (log\+Value\+Larger, log\+Value\+Samller)
+\begin{DoxyCompactList}\small\item\em Return {\ttfamily log( exp(log\+Value\+Larger) -\/ exp(log\+Value\+Samller) )} robustly (without overflow or underflow). \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_a23c7ae712d570c415e6e8d1aaebe960d}{math\+\_\+mod\+::getlogsumexp\+\_\+rk}} (len\+Log\+Value, Log\+Value, max\+Log\+Value)
+\begin{DoxyCompactList}\small\item\em Return the logarithm of the sum of the exponential of the input real vector robustly (without overflow or underflow). \end{DoxyCompactList}\item 
+pure complex(rk) function \mbox{\hyperlink{namespacemath__mod_a1ccc0e61e354b7829cf1934e1c396f5a}{math\+\_\+mod\+::getlogsumexp\+\_\+ck}} (len\+Log\+Value, Log\+Value, max\+Log\+Value)
+\begin{DoxyCompactList}\small\item\em Return the logarithm of the sum of the exponential of the input complex vector robustly (without overflow or underflow). \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_ad1389d7cf5b98270994aa4aca95e5a69}{math\+\_\+mod\+::getlogeggboxsd\+\_\+rk}} (constant, exponent, coef, point)
+\begin{DoxyCompactList}\small\item\em Return the logarithm of the egg-\/box probability density function in one dimension. \end{DoxyCompactList}\item 
+pure complex(rk) function \mbox{\hyperlink{namespacemath__mod_ad1d4d3efec7e834a3672033bb33b7581}{math\+\_\+mod\+::getlogeggboxsd\+\_\+ck}} (constant, exponent, coef, point)
+\begin{DoxyCompactList}\small\item\em Return the logarithm of the egg-\/box probability density function in one dimension, as a complex number. \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_a0bedc5ec9cf3c8a17794454e96161e2c}{math\+\_\+mod\+::getlogeggboxmd\+\_\+rk}} (nd, constant, exponent, Coef, Point)
+\begin{DoxyCompactList}\small\item\em Return the logarithm of the egg-\/box probability density function in multiple dimensions, as a real number. \end{DoxyCompactList}\item 
+pure complex(rk) function \mbox{\hyperlink{namespacemath__mod_a355566c3c7c0d04a22c1956d5b41f0c8}{math\+\_\+mod\+::getlogeggboxmd\+\_\+ck}} (nd, constant, exponent, Coef, Point)
+\begin{DoxyCompactList}\small\item\em Return the logarithm of the egg-\/box probability density function in multiple dimensions, as a complex number. \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_a7d1c8e8304e6957a64e17b759ce0f3e6}{math\+\_\+mod\+::getlogfactorial}} (positive\+Integer)
+\begin{DoxyCompactList}\small\item\em Return the log(factorial) for a whole integer input. This is basically {\ttfamily log\+Gamma( positive\+Integer + 1 )}. \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_abb348de0d339801c8c82af59b7869ca1}{math\+\_\+mod\+::getfactorial}} (positive\+Integer)
+\begin{DoxyCompactList}\small\item\em Return the factorial for a whole integer input. This is basically {\ttfamily Gamma( int\+Num + 1 )}. \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_a79b5972c015917bbad7dda5c79bc7881}{math\+\_\+mod\+::getgammahalfint}} (positive\+Half\+Integer)
+\begin{DoxyCompactList}\small\item\em Return the Gamma function for a half-\/integer input as real of kind {\ttfamily RK}. \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_ab76c27501d82e96f5b10ad4324780cf1}{math\+\_\+mod\+::getloggammahalfint}} (positive\+Half\+Integer)
+\begin{DoxyCompactList}\small\item\em Return the natural logarithm of the Gamma function for a half-\/integer input as real of kind {\ttfamily RK}. \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_ad3ca238b9c06bbabfea447267400b395}{math\+\_\+mod\+::getellvolcoef}} (nd)
+\begin{DoxyCompactList}\small\item\em Return the coefficient of the volume of an {\ttfamily nd}-\/dimensional ellipsoid. \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_ab07c5d9e25263657d51639d4397b7257}{math\+\_\+mod\+::getlogellvolcoef}} (nd)
+\begin{DoxyCompactList}\small\item\em Return the coefficient of the volume of an {\ttfamily nd}-\/dimensional ellipsoid. \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_a2b1f81e7fbebd1ed3fc4695b13e41184}{math\+\_\+mod\+::getlogvolunitball}} (nd)
+\begin{DoxyCompactList}\small\item\em Return the logarithm of the volume of an {\ttfamily nd}-\/dimensional ball of unit-\/radius. \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_aaea4e9ab3ce0e70e1927da4115bd3743}{math\+\_\+mod\+::getlogvolellipsoid}} (nd, log\+Sqrt\+Det\+Cov\+Mat)
+\begin{DoxyCompactList}\small\item\em Return the logarithm of the volume of an {\ttfamily nd}-\/dimensional hyper-\/ellipsoid. \end{DoxyCompactList}\item 
+pure real(rk) function, dimension(nellipsoid) \mbox{\hyperlink{namespacemath__mod_ad75d94e79b243e6141aab5398d9a46ce}{math\+\_\+mod\+::getlogvolellipsoids}} (nd, n\+Ellipsoid, Log\+Sqrt\+Det\+Cov\+Mat)
+\begin{DoxyCompactList}\small\item\em Return the volume of a list of {\ttfamily n\+Ellipsoid} {\ttfamily nd}-\/dimensional hyper-\/ellipsoids. \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_a29df9bb87f0052d8b2d41d0eb7b00fd6}{math\+\_\+mod\+::getlowergamma}} (exponent, log\+Gamma\+Exponent, upper\+Lim, tolerance)
+\begin{DoxyCompactList}\small\item\em Return the lower incomplete gamma function for the specified {\ttfamily exponent} and upper limit. {\ttfamily tolerance} represents the relative accuracy. \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_a0e037af98dfcf4a61699ec32c8676fef}{math\+\_\+mod\+::getuppergamma}} (exponent, log\+Gamma\+Exponent, lower\+Lim, tolerance)
+\begin{DoxyCompactList}\small\item\em Return the lower incomplete gamma function for the specified exponent and upper limit. \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_ac7cc8e163dc583114e7dff9cd3961cd6}{math\+\_\+mod\+::getgammaseries}} (exponent, log\+Gamma\+Exponent, upper\+Lim, tolerance)
+\begin{DoxyCompactList}\small\item\em Return the lower incomplete gamma function {\ttfamily P(exponent, upper\+Lim)} evaluated by its series representation as {\ttfamily gamma\+Series}. \end{DoxyCompactList}\item 
+pure real(rk) function \mbox{\hyperlink{namespacemath__mod_a9a526bee43e376a7583d828f7850240c}{math\+\_\+mod\+::getgammacontfrac}} (exponent, log\+Gamma\+Exponent, lower\+Lim, tolerance)
+\begin{DoxyCompactList}\small\item\em Return the incomplete gamma function {\ttfamily Q(exponent, lower\+Lim)} evaluated by its continued fraction representation as {\ttfamily gamma\+Cont\+Frac}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespacemath__mod_afe457eabd32a452d2b80a14258b2dee8}{math\+\_\+mod\+::module\+\_\+name}} = \char`\"{}@Math\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}

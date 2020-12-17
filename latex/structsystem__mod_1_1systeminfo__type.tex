@@ -1,0 +1,124 @@
+\hypertarget{structsystem__mod_1_1systeminfo__type}{}\doxysection{system\+\_\+mod\+::systeminfo\+\_\+type Interface Reference}
+\label{structsystem__mod_1_1systeminfo__type}\index{system\_mod::systeminfo\_type@{system\_mod::systeminfo\_type}}
+
+
+The {\ttfamily System\+Info\+\_\+type} class.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+procedure, nopass \mbox{\hyperlink{structsystem__mod_1_1systeminfo__type_ae8336fdd3f94c900f2a94652369a51c4}{get}} =$>$ \mbox{\hyperlink{namespacesystem__mod_afd53f477deeaf2fcf3657b5ea400e153}{getsysteminfo}}
+\item 
+type(\mbox{\hyperlink{structsystem__mod_1_1systeminfo__type}{systeminfo\+\_\+type}}) function \mbox{\hyperlink{structsystem__mod_1_1systeminfo__type_adbd6d9b006f36a6763be04ca8b451398}{constructsysteminfo}} (OS, path, pid)
+\begin{DoxyCompactList}\small\item\em The constructor of the class \mbox{\hyperlink{structsystem__mod_1_1systeminfo__type}{System\+Info\+\_\+type}}. Return a comprehensive report of the system information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+integer(ik) \mbox{\hyperlink{structsystem__mod_1_1systeminfo__type_a77457bc789f1808875204f189d6e5479}{nrecord}}
+\begin{DoxyCompactList}\small\item\em The number of elements of the vector {\ttfamily List}. \end{DoxyCompactList}\item 
+type(\mbox{\hyperlink{structjaggedarray__mod_1_1charvec__type}{charvec\+\_\+type}}), dimension(\+:), allocatable \mbox{\hyperlink{structsystem__mod_1_1systeminfo__type_a1e3de5a9d4502b9fce94d7fc29ea5a35}{records}}
+\begin{DoxyCompactList}\small\item\em An array of length {\ttfamily n\+Record} of strings, each element of which represents one line in the output system information. \end{DoxyCompactList}\item 
+type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}) \mbox{\hyperlink{structsystem__mod_1_1systeminfo__type_a84b8d4099983d543294d177a99296587}{err}}
+\begin{DoxyCompactList}\small\item\em An object of class \mbox{\hyperlink{structerr__mod_1_1err__type}{Err\+\_\+type}} indicating whether any error has occurred during information collection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The {\ttfamily System\+Info\+\_\+type} class. 
+
+The {\ttfamily System\+Info\+\_\+type} constructor. 
+
+Definition at line 82 of file System\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{structsystem__mod_1_1systeminfo__type_adbd6d9b006f36a6763be04ca8b451398}\label{structsystem__mod_1_1systeminfo__type_adbd6d9b006f36a6763be04ca8b451398}} 
+\index{system\_mod::systeminfo\_type@{system\_mod::systeminfo\_type}!constructsysteminfo@{constructsysteminfo}}
+\index{constructsysteminfo@{constructsysteminfo}!system\_mod::systeminfo\_type@{system\_mod::systeminfo\_type}}
+\doxysubsubsection{\texorpdfstring{constructsysteminfo()}{constructsysteminfo()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structsystem__mod_1_1systeminfo__type}{systeminfo\+\_\+type}}) function system\+\_\+mod\+::systeminfo\+\_\+type\+::constructsysteminfo (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structsystem__mod_1_1os__type}{os\+\_\+type}}), intent(in), optional}]{OS,  }\item[{character($\ast$), intent(in), optional}]{path,  }\item[{integer(ik), intent(in), optional}]{pid }\end{DoxyParamCaption})}
+
+
+
+The constructor of the class \mbox{\hyperlink{structsystem__mod_1_1systeminfo__type}{System\+Info\+\_\+type}}. Return a comprehensive report of the system information. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em OS} & \+: An object of class \mbox{\hyperlink{structsystem__mod_1_1os__type}{O\+S\+\_\+type}} loaded with {\ttfamily OSquery()} results ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em path} & \+: A string representing the path to file that has the system information already cached ({\bfseries{optional}}). If the path is provided and the file exists, then the system information will be read from that file. \\
+\hline
+\mbox{\texttt{ in}}  & {\em pid} & \+: An input integer representing the ID of the current process ({\bfseries{optional}}). If present, it will be used to generate processor-\/unique systeminfo cache files. This is mostly useful for parallel code coverage analysis.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily System\+Info} \+: An object of class \mbox{\hyperlink{structsystem__mod_1_1systeminfo__type}{System\+Info\+\_\+type}} containing the system information.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily pid} is used only when the input {\ttfamily path} is missing. 
+\end{DoxyWarning}
+
+
+Definition at line 205 of file System\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structsystem__mod_1_1systeminfo__type_ae8336fdd3f94c900f2a94652369a51c4}\label{structsystem__mod_1_1systeminfo__type_ae8336fdd3f94c900f2a94652369a51c4}} 
+\index{system\_mod::systeminfo\_type@{system\_mod::systeminfo\_type}!get@{get}}
+\index{get@{get}!system\_mod::systeminfo\_type@{system\_mod::systeminfo\_type}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily procedure, nopass system\+\_\+mod\+::systeminfo\+\_\+type\+::get}
+
+
+
+Definition at line 89 of file System\+\_\+mod.\+f90.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structsystem__mod_1_1systeminfo__type_a84b8d4099983d543294d177a99296587}\label{structsystem__mod_1_1systeminfo__type_a84b8d4099983d543294d177a99296587}} 
+\index{system\_mod::systeminfo\_type@{system\_mod::systeminfo\_type}!err@{err}}
+\index{err@{err}!system\_mod::systeminfo\_type@{system\_mod::systeminfo\_type}}
+\doxysubsubsection{\texorpdfstring{err}{err}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}) system\+\_\+mod\+::systeminfo\+\_\+type\+::err}
+
+
+
+An object of class \mbox{\hyperlink{structerr__mod_1_1err__type}{Err\+\_\+type}} indicating whether any error has occurred during information collection. 
+
+
+
+Definition at line 86 of file System\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structsystem__mod_1_1systeminfo__type_a77457bc789f1808875204f189d6e5479}\label{structsystem__mod_1_1systeminfo__type_a77457bc789f1808875204f189d6e5479}} 
+\index{system\_mod::systeminfo\_type@{system\_mod::systeminfo\_type}!nrecord@{nrecord}}
+\index{nrecord@{nrecord}!system\_mod::systeminfo\_type@{system\_mod::systeminfo\_type}}
+\doxysubsubsection{\texorpdfstring{nrecord}{nrecord}}
+{\footnotesize\ttfamily integer(ik) system\+\_\+mod\+::systeminfo\+\_\+type\+::nrecord}
+
+
+
+The number of elements of the vector {\ttfamily List}. 
+
+
+
+Definition at line 83 of file System\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{structsystem__mod_1_1systeminfo__type_a1e3de5a9d4502b9fce94d7fc29ea5a35}\label{structsystem__mod_1_1systeminfo__type_a1e3de5a9d4502b9fce94d7fc29ea5a35}} 
+\index{system\_mod::systeminfo\_type@{system\_mod::systeminfo\_type}!records@{records}}
+\index{records@{records}!system\_mod::systeminfo\_type@{system\_mod::systeminfo\_type}}
+\doxysubsubsection{\texorpdfstring{records}{records}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structjaggedarray__mod_1_1charvec__type}{charvec\+\_\+type}}), dimension(\+:), allocatable system\+\_\+mod\+::systeminfo\+\_\+type\+::records}
+
+
+
+An array of length {\ttfamily n\+Record} of strings, each element of which represents one line in the output system information. 
+
+
+
+Definition at line 84 of file System\+\_\+mod.\+f90.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Dropbox/\+Projects/20180101\+\_\+\+Para\+Monte/git/src/kernel/\mbox{\hyperlink{System__mod_8f90}{System\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

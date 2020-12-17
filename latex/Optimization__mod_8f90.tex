@@ -1,0 +1,77 @@
+\hypertarget{Optimization__mod_8f90}{}\doxysection{D\+:/\+Dropbox/\+Projects/20180101\+\_\+\+Para\+Monte/git/src/kernel/\+Optimization\+\_\+mod.f90 File Reference}
+\label{Optimization__mod_8f90}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/Optimization\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/Optimization\_mod.f90}}
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structoptimization__mod_1_1brentminimum__type}{optimization\+\_\+mod\+::brentminimum\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The Brent minimizer class. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{structoptimization__mod_1_1brentminimum__type}{optimization\+\_\+mod\+::brentminimum\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The Brent minimizer class. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceoptimization__mod_1_1getFunc1D__proc}{optimization\+\_\+mod\+::get\+Func1\+D\+\_\+proc}}
+\item 
+interface \mbox{\hyperlink{structoptimization__mod_1_1powellminimum__type}{optimization\+\_\+mod\+::powellminimum\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The Powell minimizer class. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{structoptimization__mod_1_1powellminimum__type}{optimization\+\_\+mod\+::powellminimum\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The Powell minimizer class. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceoptimization__mod_1_1getFuncMD__proc}{optimization\+\_\+mod\+::get\+Func\+M\+D\+\_\+proc}}
+\item 
+interface \mbox{\hyperlink{interfaceoptimization__mod_1_1minimize}{optimization\+\_\+mod\+::minimize}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespaceoptimization__mod}{optimization\+\_\+mod}}
+\begin{DoxyCompactList}\small\item\em This module contains numerical optimization procedures. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+type(brentminimum\+\_\+type) function \mbox{\hyperlink{namespaceoptimization__mod_a0655ffb4dc031438aff84fac3e9490a8}{optimization\+\_\+mod\+::minimizebrent}} (get\+Func, x0, x1, x2, xtol)
+\begin{DoxyCompactList}\small\item\em The constructor of the class \mbox{\hyperlink{structoptimization__mod_1_1brentminimum__type}{Brent\+Minimum\+\_\+type}}. Compute the minimum of the input 1-\/dimensional function isolated to a fractional precision of about xtol using Brent\textquotesingle{}s method. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{Optimization__mod_8f90_ab1517e164a67fd87ac9b13b0adf6137c}{shft}} (a, b, c, d)
+\item 
+subroutine \mbox{\hyperlink{namespaceoptimization__mod_aab9d1d7df92d06f86fdcb3a5c3a3b0f5}{optimization\+\_\+mod\+::getbracket}} (ax, bx, cx, fa, fb, fc, get\+Func)
+\item 
+type(powellminimum\+\_\+type) function \mbox{\hyperlink{namespaceoptimization__mod_a2f846ec4fac147c27ff443a2c0731a8b}{optimization\+\_\+mod\+::minimizepowell}} (ndim, get\+Func\+MD, Start\+Vec, Dir\+Mat, ftol)
+\begin{DoxyCompactList}\small\item\em The constructor of the class \mbox{\hyperlink{structoptimization__mod_1_1powellminimum__type}{Powell\+Minimum\+\_\+type}}. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceoptimization__mod_aa7c9c2b5518ed20ea87af6104890c3b4}{optimization\+\_\+mod\+::linmin}} (get\+Func\+MD, ndim, Start\+Vec, Dir\+Vec, fmin, Err)
+\item 
+real(rk) function \mbox{\hyperlink{Optimization__mod_8f90_ad3157297b93e7ff43a0679f031627587}{getfunc1d}} (x)
+\item 
+real(rk) function \mbox{\hyperlink{namespaceoptimization__mod_aa2abc6b80828522ba333f749203440c7}{optimization\+\_\+mod\+::getfunc1d}} (x)
+\begin{DoxyCompactList}\small\item\em Bypass the Microsoft Subsystem for Linux Internal Function call G\+Fortran Segmentation Fault error. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceoptimization__mod_a12ae3b5651bec3bf750f1cbf042f8d62}{optimization\+\_\+mod\+::module\+\_\+name}} = \char`\"{}@Optimization\+\_\+mod\char`\"{}
+\item 
+procedure(getfuncmd\+\_\+proc), pointer \mbox{\hyperlink{namespaceoptimization__mod_ae811b79289d7270ef33a03937914dd27}{optimization\+\_\+mod\+::getfuncmd\+\_\+wsl}}
+\begin{DoxyCompactList}\small\item\em This madness bypasses the Microsoft Subsystem for Linux Internal Function call G\+Fortran Segmentation Fault error. \end{DoxyCompactList}\item 
+real(rk), dimension(\+:), allocatable \mbox{\hyperlink{namespaceoptimization__mod_abd00b147b352154d6a3446553b14d55b}{optimization\+\_\+mod\+::startvec\+\_\+wsl}}
+\item 
+real(rk), dimension(\+:), allocatable \mbox{\hyperlink{namespaceoptimization__mod_a8796a31b750805f3ce1cba6ef10ef1fa}{optimization\+\_\+mod\+::dirvec\+\_\+wsl}}
+\begin{DoxyCompactList}\small\item\em This madness bypasses the Microsoft Subsystem for Linux Internal Function call G\+Fortran Segmentation Fault error. \end{DoxyCompactList}\item 
+integer(ik) \mbox{\hyperlink{namespaceoptimization__mod_a91967ea40a0cc1856e69cb892d82a793}{optimization\+\_\+mod\+::ndim\+\_\+wsl}}
+\begin{DoxyCompactList}\small\item\em This madness bypasses the Microsoft Subsystem for Linux Internal Function call G\+Fortran Segmentation Fault error. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{Optimization__mod_8f90_ad3157297b93e7ff43a0679f031627587}\label{Optimization__mod_8f90_ad3157297b93e7ff43a0679f031627587}} 
+\index{Optimization\_mod.f90@{Optimization\_mod.f90}!getfunc1d@{getfunc1d}}
+\index{getfunc1d@{getfunc1d}!Optimization\_mod.f90@{Optimization\_mod.f90}}
+\doxysubsubsection{\texorpdfstring{getfunc1d()}{getfunc1d()}}
+{\footnotesize\ttfamily real(rk) function linmin\+::getfunc1d (\begin{DoxyParamCaption}\item[{real(rk), intent(in)}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line 507 of file Optimization\+\_\+mod.\+f90.
+
+\mbox{\Hypertarget{Optimization__mod_8f90_ab1517e164a67fd87ac9b13b0adf6137c}\label{Optimization__mod_8f90_ab1517e164a67fd87ac9b13b0adf6137c}} 
+\index{Optimization\_mod.f90@{Optimization\_mod.f90}!shft@{shft}}
+\index{shft@{shft}!Optimization\_mod.f90@{Optimization\_mod.f90}}
+\doxysubsubsection{\texorpdfstring{shft()}{shft()}}
+{\footnotesize\ttfamily subroutine shft (\begin{DoxyParamCaption}\item[{real(rk), intent(out)}]{a,  }\item[{real(rk), intent(inout)}]{b,  }\item[{real(rk), intent(inout)}]{c,  }\item[{real(rk), intent(in)}]{d }\end{DoxyParamCaption})}
+
+
+
+Definition at line 277 of file Optimization\+\_\+mod.\+f90.
+
