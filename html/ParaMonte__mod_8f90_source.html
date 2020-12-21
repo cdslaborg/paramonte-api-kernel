@@ -118,7 +118,7 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">!!!!   work (education/research/industry/development/...) by citing the ParaMonte</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">!!!!   library as described on this page:</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">!!!!</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">!!!!       https://github.com/cdslaborg/paramonte/blob/master/ACKNOWLEDGMENT.md</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">!!!!</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</span></div>
@@ -518,7 +518,7 @@ $(function() {
 <div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;        <span class="comment">! Get system info by all images. why? Not anymore.</span></div>
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        <span class="comment">! On many parallel processors via singlChain this leads to</span></div>
 <div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;        <span class="comment">! the creation of thousands of files on the system, simultaneously.</span></div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;        <span class="comment">! this is not needed by any process other than the masters.</span></div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;        <span class="comment">! this is not needed by any process other than the leader images.</span></div>
 <div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160; </div>
 <div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        self%SystemInfo = <a class="code" href="structsystem__mod_1_1systeminfo__type.html">systeminfo_type</a>(os = self%OS, path = self%SpecBase%SystemInfoFilePath%val)</div>
 <div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;        <span class="keywordflow">if</span> (self%SystemInfo%Err%occurred) <span class="keywordflow">then</span></div>
@@ -760,7 +760,7 @@ $(function() {
 <div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160; </div>
 <div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;        <span class="keywordflow">if</span> (self%Image%isFirst) <span class="keyword">call </span>self%note( prefix = self%brand, outputunit = self%LogFile%unit, newline = nlc, msg = <span class="stringliteral">&quot;Searching for previous runs of &quot;</span> // self%name // <span class="stringliteral">&quot;...&quot;</span> )</div>
 <div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160; </div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;        <span class="comment">! this block could be all executed by only the master images</span></div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;        <span class="comment">! this block could be all executed by only the leader images</span></div>
 <div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160; </div>
 <div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;        self%LogFile%Path%Ext = file_ext%ascii</div>
 <div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;        self%TimeFile%Path%Ext = file_ext%ascii</div>
@@ -1151,7 +1151,7 @@ $(function() {
 <div class="ttc" id="astructsystem__mod_1_1os__type_html"><div class="ttname"><a href="structsystem__mod_1_1os__type.html">system_mod::os_type</a></div><div class="ttdoc">The OS_type class.</div><div class="ttdef"><b>Definition:</b> <a href="System__mod_8f90_source.html#l00121">System_mod.f90:121</a></div></div>
 <div class="ttc" id="anamespaceparamonte__mod_html_a6415ca448bafdb8a1b0d1f3ac8141eea"><div class="ttname"><a href="namespaceparamonte__mod.html#a6415ca448bafdb8a1b0d1f3ac8141eea">paramonte_mod::setupoutputfiles</a></div><div class="ttdeci">subroutine setupoutputfiles(self)</div><div class="ttdoc">This procedure is a method of the ParaMonte_type class. Set up the output files of the simulation.</div><div class="ttdef"><b>Definition:</b> <a href="ParaMonte__mod_8f90_source.html#l00738">ParaMonte_mod.f90:739</a></div></div>
 <div class="ttc" id="astructtimer__mod_1_1timer__type_html"><div class="ttname"><a href="structtimer__mod_1_1timer__type.html">timer_mod::timer_type</a></div><div class="ttdoc">The Timer_type class, containing method for setting up a wall-time timer.</div><div class="ttdef"><b>Definition:</b> <a href="Timer__mod_8f90_source.html#l00076">Timer_mod.f90:76</a></div></div>
-<div class="ttc" id="astructspecbase__mod_1_1specbase__type_html"><div class="ttname"><a href="structspecbase__mod_1_1specbase__type.html">specbase_mod::specbase_type</a></div><div class="ttdef"><b>Definition:</b> <a href="SpecBase__mod_8f90_source.html#l00100">SpecBase_mod.f90:100</a></div></div>
+<div class="ttc" id="astructspecbase__mod_1_1specbase__type_html"><div class="ttname"><a href="structspecbase__mod_1_1specbase__type.html">specbase_mod::specbase_type</a></div><div class="ttdef"><b>Definition:</b> <a href="SpecBase__mod_8f90_source.html#l00105">SpecBase_mod.f90:105</a></div></div>
 <div class="ttc" id="astructparamonte__mod_1_1quantileprobability__type_html"><div class="ttname"><a href="structparamonte__mod_1_1quantileprobability__type.html">paramonte_mod::quantileprobability_type</a></div><div class="ttdoc">The Quantile derived type containing the distribution quantiles.</div><div class="ttdef"><b>Definition:</b> <a href="ParaMonte__mod_8f90_source.html#l00147">ParaMonte_mod.f90:147</a></div></div>
 <div class="ttc" id="anamespaceerr__mod_html"><div class="ttname"><a href="namespaceerr__mod.html">err_mod</a></div><div class="ttdoc">This module contains classes and procedures for reporting and handling errors.</div><div class="ttdef"><b>Definition:</b> <a href="Err__mod_8f90_source.html#l00046">Err_mod.f90:46</a></div></div>
 <div class="ttc" id="anamespacedecoration__mod_html_a8bee6ade167f6651caf5d7b3436ddc49"><div class="ttname"><a href="namespacedecoration__mod.html#a8bee6ade167f6651caf5d7b3436ddc49">decoration_mod::indent</a></div><div class="ttdeci">character(*), parameter indent</div><div class="ttdef"><b>Definition:</b> <a href="Decoration__mod_8f90_source.html#l00060">Decoration_mod.f90:60</a></div></div>
@@ -1183,7 +1183,7 @@ $(function() {
 <div class="ttc" id="astructparamonte__mod_1_1paramontestatistics__type_html"><div class="ttname"><a href="structparamonte__mod_1_1paramontestatistics__type.html">paramonte_mod::paramontestatistics_type</a></div><div class="ttdoc">The derived type containing information about the statistics of the objective function and the runtim...</div><div class="ttdef"><b>Definition:</b> <a href="ParaMonte__mod_8f90_source.html#l00176">ParaMonte_mod.f90:176</a></div></div>
 <div class="ttc" id="astructparamonte__mod_1_1chainfile__type_html"><div class="ttname"><a href="structparamonte__mod_1_1chainfile__type.html">paramonte_mod::chainfile_type</a></div><div class="ttdef"><b>Definition:</b> <a href="ParaMonte__mod_8f90_source.html#l00195">ParaMonte_mod.f90:195</a></div></div>
 <div class="ttc" id="anamespaceconstants__mod_html_a8b24c7a356c2f26b1c3c53c8335c4a0a"><div class="ttname"><a href="namespaceconstants__mod.html#a8b24c7a356c2f26b1c3c53c8335c4a0a">constants_mod::nlc</a></div><div class="ttdeci">character(1), parameter nlc</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00112">Constants_mod.f90:112</a></div></div>
-<div class="ttc" id="anamespacespecbase__mod_html"><div class="ttname"><a href="namespacespecbase__mod.html">specbase_mod</a></div><div class="ttdef"><b>Definition:</b> <a href="SpecBase__mod_8f90_source.html#l00043">SpecBase_mod.f90:43</a></div></div>
+<div class="ttc" id="anamespacespecbase__mod_html"><div class="ttname"><a href="namespacespecbase__mod.html">specbase_mod</a></div><div class="ttdoc">This module contains the classes and procedures for setting up the basic attributes of ParaMonte samp...</div><div class="ttdef"><b>Definition:</b> <a href="SpecBase__mod_8f90_source.html#l00048">SpecBase_mod.f90:48</a></div></div>
     <!-- start footer part -->
     <hr class="footer"/>
     <div style="text-align:center">
@@ -1195,7 +1195,7 @@ $(function() {
     </div>
     <address class="footer">
         <small>
-            Generated on Thu Dec 17 2020 02:08:43 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
+            Generated on Mon Dec 21 2020 15:39:10 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
             <!--
             1.8.20
             -->
