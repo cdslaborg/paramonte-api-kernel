@@ -202,8 +202,7 @@ var searchData=
   ['syscmd_5ftype_1223',['syscmd_type',['../structsystem__mod_1_1syscmd__type.html',1,'system_mod']]],
   ['system_5fmod_1224',['system_mod',['../namespacesystem__mod.html',1,'']]],
   ['system_5fmod_2ef90_1225',['System_mod.f90',['../System__mod_8f90.html',1,'']]],
-  ['systeminfo_1226',['systeminfo',['../structparamonte__mod_1_1paramonte__type.html#a52cb1bd30e4869099963419ac9df00ef',1,'paramonte_mod::paramonte_type']]],
-  ['systeminfo_5ftype_1227',['systeminfo_type',['../structsystem__mod_1_1systeminfo__type.html',1,'system_mod']]],
-  ['systeminfofilepath_1228',['systeminfofilepath',['../structspecbase__mod_1_1specbase__type.html#a265ca40c280ecf19566f091fcfbf9808',1,'specbase_mod::specbase_type::systeminfofilepath()'],['../namespacespecbase__systeminfofilepath__mod.html#ae29796a790d11e15e132ea68f2ad0a2a',1,'specbase_systeminfofilepath_mod::systeminfofilepath()']]],
-  ['systeminfofilepath_5ftype_1229',['systeminfofilepath_type',['../structspecbase__systeminfofilepath__mod_1_1systeminfofilepath__type.html',1,'specbase_systeminfofilepath_mod']]]
+  ['systeminfo_5ftype_1226',['systeminfo_type',['../structsystem__mod_1_1systeminfo__type.html',1,'system_mod']]],
+  ['systeminfofilepath_1227',['systeminfofilepath',['../structspecbase__mod_1_1specbase__type.html#a265ca40c280ecf19566f091fcfbf9808',1,'specbase_mod::specbase_type::systeminfofilepath()'],['../namespacespecbase__systeminfofilepath__mod.html#ae29796a790d11e15e132ea68f2ad0a2a',1,'specbase_systeminfofilepath_mod::systeminfofilepath()']]],
+  ['systeminfofilepath_5ftype_1228',['systeminfofilepath_type',['../structspecbase__systeminfofilepath__mod_1_1systeminfofilepath__type.html',1,'specbase_systeminfofilepath_mod']]]
 ];
