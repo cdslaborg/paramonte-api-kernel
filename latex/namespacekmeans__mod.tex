@@ -1,0 +1,286 @@
+\hypertarget{namespacekmeans__mod}{}\doxysection{kmeans\+\_\+mod Module Reference}
+\label{namespacekmeans__mod}\index{kmeans\_mod@{kmeans\_mod}}
+
+
+This module contains procedures and routines for the Kmeans the statistical classification and clustering methods.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structkmeans__mod_1_1kmeans__type}{kmeans\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily Kmeans\+\_\+type} class. The inclusion of the component {\ttfamily Normed\+Point} adds $\sim$50\% to the computational cost of performing Kmeans. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+pure type(\mbox{\hyperlink{structkmeans__mod_1_1kmeans__type}{kmeans\+\_\+type}}) function \mbox{\hyperlink{namespacekmeans__mod_a63e980f94c019b6e4bf20500170ae7bd}{allocatekmeans}} (nd, np, nc)
+\item 
+type(\mbox{\hyperlink{structkmeans__mod_1_1kmeans__type}{kmeans\+\_\+type}}) function \mbox{\hyperlink{namespacekmeans__mod_ade4cda2541fadf07e50d536fb45235e0}{getkmeans}} (nd, np, nc, Point, Init\+Center, niter\+Max, nzsci\+Max, rel\+Tol)
+\begin{DoxyCompactList}\small\item\em Perform the Kmeans clustering on the input data set represented by the array {\ttfamily Point(nd, np)} and return the resulting cluster characteristics as an object of type \mbox{\hyperlink{structkmeans__mod_1_1kmeans__type}{Kmeans\+\_\+type}}. \end{DoxyCompactList}\item 
+type(\mbox{\hyperlink{structkmeans__mod_1_1kmeans__type}{kmeans\+\_\+type}}) function \mbox{\hyperlink{namespacekmeans__mod_a179e97f529381ac7aa944c0e733b3d16}{optimizekmeans}} (nd, np, nc, nt, Point, Init\+Center, niter\+Max, nzsci\+Max, rel\+Tol)
+\begin{DoxyCompactList}\small\item\em Perform the Kmeans clustering for {\ttfamily nt} tries on the input data set represented by the array {\ttfamily Point(nd, np)} and return the clustering that yields the least potential. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{runkmeans}} (nd, np, nc, Point, Size, Center, Membership, Normed\+Point, Min\+Distance\+Sq, potential, niter, nzsci, Err, Init\+Center, niter\+Max, nzsci\+Max, rel\+Tol)
+\begin{DoxyCompactList}\small\item\em Perform the Kmeans clustering on the input data set represented by the array {\ttfamily Point(nd, np)}. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespacekmeans__mod_aede71e605b5c262785c58ca5f963199e}{runkpp}} (nc, nd, np, Point, Sum\+Point, Membership, Size, potential)
+\begin{DoxyCompactList}\small\item\em Find nc initial cluster centers for the Kmeans algorithm, using Kmeans++ recipe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespacekmeans__mod_a4fed5ecdcc29c926c0fc419c9adb0a97}{module\+\_\+name}} = \char`\"{}@Kmeans\+\_\+mod\char`\"{}
+\item 
+real(rk) \mbox{\hyperlink{namespacekmeans__mod_a05a8bc03ee86089ac6ec535aef69ba5c}{ndkuniform}}
+\item 
+real(rk) \mbox{\hyperlink{namespacekmeans__mod_a8778b586ca410412f2b7ee65019aa239}{btfactor}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains procedures and routines for the Kmeans the statistical classification and clustering methods. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespacekmeans__mod_a63e980f94c019b6e4bf20500170ae7bd}\label{namespacekmeans__mod_a63e980f94c019b6e4bf20500170ae7bd}} 
+\index{kmeans\_mod@{kmeans\_mod}!allocatekmeans@{allocatekmeans}}
+\index{allocatekmeans@{allocatekmeans}!kmeans\_mod@{kmeans\_mod}}
+\doxysubsubsection{\texorpdfstring{allocatekmeans()}{allocatekmeans()}}
+{\footnotesize\ttfamily pure type(\mbox{\hyperlink{structkmeans__mod_1_1kmeans__type}{kmeans\+\_\+type}}) function kmeans\+\_\+mod\+::allocatekmeans (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{nd,  }\item[{integer(ik), intent(in)}]{np,  }\item[{integer(ik), intent(in)}]{nc }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Kmeans__mod_8f90_source_l00089}{89}} of file \mbox{\hyperlink{Kmeans__mod_8f90_source}{Kmeans\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespacekmeans__mod_ade4cda2541fadf07e50d536fb45235e0}\label{namespacekmeans__mod_ade4cda2541fadf07e50d536fb45235e0}} 
+\index{kmeans\_mod@{kmeans\_mod}!getkmeans@{getkmeans}}
+\index{getkmeans@{getkmeans}!kmeans\_mod@{kmeans\_mod}}
+\doxysubsubsection{\texorpdfstring{getkmeans()}{getkmeans()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structkmeans__mod_1_1kmeans__type}{kmeans\+\_\+type}}) function kmeans\+\_\+mod\+::getkmeans (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{nd,  }\item[{integer(ik), intent(in)}]{np,  }\item[{integer(ik), intent(in)}]{nc,  }\item[{real(rk), dimension(nd,np), intent(in)}]{Point,  }\item[{real(rk), dimension(nd,nc), intent(in), optional}]{Init\+Center,  }\item[{integer(ik), intent(in), optional}]{niter\+Max,  }\item[{integer(ik), intent(in), optional}]{nzsci\+Max,  }\item[{real(rk), intent(in), optional}]{rel\+Tol }\end{DoxyParamCaption})}
+
+
+
+Perform the Kmeans clustering on the input data set represented by the array {\ttfamily Point(nd, np)} and return the resulting cluster characteristics as an object of type \mbox{\hyperlink{structkmeans__mod_1_1kmeans__type}{Kmeans\+\_\+type}}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: See the description of the \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{run\+Kmeans}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: See the description of the \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{run\+Kmeans}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em nc} & \+: See the description of the \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{run\+Kmeans}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: See the description of the \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{run\+Kmeans}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Init\+Center} & \+: See the description of the \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{run\+Kmeans}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em niter\+Max} & \+: See the description of the \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{run\+Kmeans}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em nszci\+Max} & \+: See the description of the \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{run\+Kmeans}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em rel\+Tol} & \+: See the description of the \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{run\+Kmeans}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Kmeans} \+: An object of type Kmeans\+\_\+type containing the properties of the identified clusters. The {\ttfamily Errstat} component of the output {\ttfamily Kmeans} will be set to {\ttfamily 1} if the number of iterations reaches the input {\ttfamily niter\+Max} or its default value before convergence occurs. The {\ttfamily Errstat} component of the output {\ttfamily Kmeans} will be set to {\ttfamily 2} if more than {\ttfamily nzsci\+Max} clustering tries result in clusters with zero members. In both cases in the above, {\ttfamily Erroccurred = .true.} upon exiting the procedure.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The input value for {\ttfamily niter\+Max} must be larger than 0 since at least one iteration will be performed by the procedure.
+
+This algorithm does not check for the consistency of the input values for {\ttfamily nc}, {\ttfamily nd}, and {\ttfamily np}. It is currently the user\textquotesingle{}s responsibility to ensure that these input values are logical and sensible.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Kmeans__mod_8f90_source_l00133}{133}} of file \mbox{\hyperlink{Kmeans__mod_8f90_source}{Kmeans\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespacekmeans__mod_a179e97f529381ac7aa944c0e733b3d16}\label{namespacekmeans__mod_a179e97f529381ac7aa944c0e733b3d16}} 
+\index{kmeans\_mod@{kmeans\_mod}!optimizekmeans@{optimizekmeans}}
+\index{optimizekmeans@{optimizekmeans}!kmeans\_mod@{kmeans\_mod}}
+\doxysubsubsection{\texorpdfstring{optimizekmeans()}{optimizekmeans()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structkmeans__mod_1_1kmeans__type}{kmeans\+\_\+type}}) function kmeans\+\_\+mod\+::optimizekmeans (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{nd,  }\item[{integer(ik), intent(in)}]{np,  }\item[{integer(ik), intent(in)}]{nc,  }\item[{integer(ik), intent(in)}]{nt,  }\item[{real(rk), dimension(nd,np), intent(in)}]{Point,  }\item[{real(rk), dimension(nd,nc), intent(in), optional}]{Init\+Center,  }\item[{integer(ik), intent(in), optional}]{niter\+Max,  }\item[{integer(ik), intent(in), optional}]{nzsci\+Max,  }\item[{real(rk), intent(in), optional}]{rel\+Tol }\end{DoxyParamCaption})}
+
+
+
+Perform the Kmeans clustering for {\ttfamily nt} tries on the input data set represented by the array {\ttfamily Point(nd, np)} and return the clustering that yields the least potential. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: See the description of the \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{run\+Kmeans}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: See the description of the \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{run\+Kmeans}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em nc} & \+: See the description of the \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{run\+Kmeans}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em nt} & \+: The number of independent instances of Kmeans to run. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: See the description of the \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{run\+Kmeans}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Init\+Center} & \+: See the description of the \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{run\+Kmeans}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em niter\+Max} & \+: See the description of the \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{run\+Kmeans}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em nszci\+Max} & \+: See the description of the \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{run\+Kmeans}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em rel\+Tol} & \+: See the description of the \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{run\+Kmeans}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Kmeans} \+: An object of type Kmeans\+\_\+type containing the properties of the identified clusters. The {\ttfamily Errstat} component of the output {\ttfamily Kmeans} will be set to {\ttfamily 1} if the number of iterations reaches the input {\ttfamily niter\+Max} or its default value before convergence occurs. The {\ttfamily Errstat} component of the output {\ttfamily Kmeans} will be set to {\ttfamily 2} if more than {\ttfamily nzsci\+Max} clustering tries result in clusters with zero members. In both cases in the above, {\ttfamily Erroccurred = .true.} upon exiting the procedure.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The input value for {\ttfamily nt} must be at least 1, otherwise it will lead to a runtime error or at best, the output will be undefined.
+
+The input value for {\ttfamily niter\+Max} must be larger than 0 since at least one iteration will be performed by the procedure.
+
+This algorithm does not check for the consistency of the input values for {\ttfamily nc}, {\ttfamily nd}, and {\ttfamily np}. It is currently the user\textquotesingle{}s responsibility to ensure that these input values are logical and sensible.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Kmeans__mod_8f90_source_l00198}{198}} of file \mbox{\hyperlink{Kmeans__mod_8f90_source}{Kmeans\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}\label{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}} 
+\index{kmeans\_mod@{kmeans\_mod}!runkmeans@{runkmeans}}
+\index{runkmeans@{runkmeans}!kmeans\_mod@{kmeans\_mod}}
+\doxysubsubsection{\texorpdfstring{runkmeans()}{runkmeans()}}
+{\footnotesize\ttfamily subroutine kmeans\+\_\+mod\+::runkmeans (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{nd,  }\item[{integer(ik), intent(in)}]{np,  }\item[{integer(ik), intent(in)}]{nc,  }\item[{real(rk), dimension(nd,np), intent(in)}]{Point,  }\item[{integer(ik), dimension(nc), intent(out)}]{Size,  }\item[{real(rk), dimension(nd,nc), intent(out)}]{Center,  }\item[{integer(ik), dimension(np), intent(out)}]{Membership,  }\item[{real(rk), dimension(nd,np,nc), intent(out)}]{Normed\+Point,  }\item[{real(rk), dimension(np), intent(out)}]{Min\+Distance\+Sq,  }\item[{real(rk), intent(out)}]{potential,  }\item[{integer(ik), intent(out)}]{niter,  }\item[{integer(ik), intent(out)}]{nzsci,  }\item[{type(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\+\_\+type}}), intent(out)}]{Err,  }\item[{real(rk), dimension(nd,nc), intent(in), optional}]{Init\+Center,  }\item[{integer(ik), intent(in), optional}]{niter\+Max,  }\item[{integer(ik), intent(in), optional}]{nzsci\+Max,  }\item[{real(rk), intent(in), optional}]{rel\+Tol }\end{DoxyParamCaption})}
+
+
+
+Perform the Kmeans clustering on the input data set represented by the array {\ttfamily Point(nd, np)}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions (features) of the input data array {\ttfamily Point}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of observations in the input data array {\ttfamily Point}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em nc} & \+: The number of clusters to be found via the Kmeans algorithm. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The input array of size {\ttfamily (nd,np)} of the points to be clustered via the Kmeans algorithm. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Size} & \+: A vector of size {\ttfamily nc} (the number of clusters) containing the sizes of the individual clusters identified. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Center} & \+: An array of size {\ttfamily (nd,nc)} containing the centers of the individual clusters identified. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Membership} & \+: A vector of size {\ttfamily np} each element of which represents the cluster ID to which the point belongs. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Normed\+Point} & \+: An array of size {\ttfamily (nd,np,nc)} containing the normalized input array {\ttfamily Point(nd,np)} w.\+r.\+t. each cluster center. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Min\+Distance\+Sq} & \+: An array of size {\ttfamily (np)} containing the minimum distances of the points from the cluster centers. \\
+\hline
+\mbox{\texttt{ out}}  & {\em potential} & \+: The sum of the distances-\/squared of all points from their corresponding group centers. \\
+\hline
+\mbox{\texttt{ out}}  & {\em niter} & \+: The number of iterations to reach convergence. \\
+\hline
+\mbox{\texttt{ out}}  & {\em nzsci} & \+: The number of Zero-\/\+Sized Clusters Iterations. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Err} & \+: An object of class \mbox{\hyperlink{structerr__mod_1_1err__type}{Err\+\_\+type}} containing information about error occurrence. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Init\+Center} & \+: An input array of size {\ttfamily (nd,nc)} representing the initial centers of the Kmeans clusters ({\bfseries{optional}}). If not provided, the cluster centers will be initialized via the Kmeans++ algorithm. \\
+\hline
+\mbox{\texttt{ in}}  & {\em niter\+Max} & \+: The maximum number of iterations beyond which it a lack of converge is assumed ({\bfseries{optional}}, default = 1000). \\
+\hline
+\mbox{\texttt{ in}}  & {\em nszci\+Max} & \+: The maximum number of zero-\/sized cluster iterations beyond which it a lack of converge is assumed ({\bfseries{optional}}, default = 10). \\
+\hline
+\mbox{\texttt{ in}}  & {\em rel\+Tol} & \+: If the {\bfseries{relative}} difference between two subsequent potentials is below {\ttfamily rel\+Tol}, convergence is assumed ({\bfseries{optional}}, default = 1.\+e-\/4).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+The input value for {\ttfamily niter\+Max} must be larger than 0 since at least one iteration will be performed by the procedure.
+
+This algorithm does not check for the consistency of the input values for {\ttfamily nc}, {\ttfamily nd}, and {\ttfamily np}. It is currently the user\textquotesingle{}s responsibility to ensure that these input values are logical and sensible.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Kmeans__mod_8f90_source_l00273}{273}} of file \mbox{\hyperlink{Kmeans__mod_8f90_source}{Kmeans\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespacekmeans__mod_aede71e605b5c262785c58ca5f963199e}\label{namespacekmeans__mod_aede71e605b5c262785c58ca5f963199e}} 
+\index{kmeans\_mod@{kmeans\_mod}!runkpp@{runkpp}}
+\index{runkpp@{runkpp}!kmeans\_mod@{kmeans\_mod}}
+\doxysubsubsection{\texorpdfstring{runkpp()}{runkpp()}}
+{\footnotesize\ttfamily subroutine kmeans\+\_\+mod\+::runkpp (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{nc,  }\item[{integer(ik), intent(in)}]{nd,  }\item[{integer(ik), intent(in)}]{np,  }\item[{real(rk), dimension(nd,np), intent(in)}]{Point,  }\item[{real(rk), dimension(nd,nc), intent(out)}]{Sum\+Point,  }\item[{integer(ik), dimension(np), intent(out)}]{Membership,  }\item[{integer(ik), dimension(nc), intent(out)}]{Size,  }\item[{real(rk), intent(out)}]{potential }\end{DoxyParamCaption})}
+
+
+
+Find nc initial cluster centers for the Kmeans algorithm, using Kmeans++ recipe. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nc} & \+: The number of clusters to be found via the Kmeans algorithm (must be \texorpdfstring{$>$}{>} 1, though it is not verified). \\
+\hline
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions (features) of the input data array {\ttfamily Point}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of observations in the input data array {\ttfamily Point}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The input array of size {\ttfamily (nd,np)} of the points to be clustered via the Kmeans algorithm. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Sum\+Point} & \+: An output array of size {\ttfamily (nd,nc)} containing the sum of the points in each cluster. When divided by the corresponding output cluster size, it will yield the final updated cluster centers. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Membership} & \+: An output array of size {\ttfamily (np)} representing the IDs of the clusters to which individual points belong. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Size} & \+: An output array of size {\ttfamily (nc)} representing the sizes of the identified clusters. \\
+\hline
+\mbox{\texttt{ out}}  & {\em potential} & \+: The sum of the minimum-\/distances-\/squared of all points from their corresponding group centers.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+There is no benefit in calling this routine for {\ttfamily nc = 1}. As such, calling this routine with {\ttfamily nc = 1} will lead to undefined behavior.
+\end{DoxyWarning}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000002}{Todo}}]All {\ttfamily minloc} queries in this procedure can be replaced with more efficient bin search algorithms.\end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000003}{Todo}}]The variable {\ttfamily Cum\+Sum\+Dist\+Sq} does not have to be defined as {\ttfamily real64}.\end{DoxyRefDesc}
+
+
+\begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Kmeans__mod_8f90_source_l00518}{518}} of file \mbox{\hyperlink{Kmeans__mod_8f90_source}{Kmeans\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacekmeans__mod_a8778b586ca410412f2b7ee65019aa239}\label{namespacekmeans__mod_a8778b586ca410412f2b7ee65019aa239}} 
+\index{kmeans\_mod@{kmeans\_mod}!btfactor@{btfactor}}
+\index{btfactor@{btfactor}!kmeans\_mod@{kmeans\_mod}}
+\doxysubsubsection{\texorpdfstring{btfactor}{btfactor}}
+{\footnotesize\ttfamily real(rk) kmeans\+\_\+mod\+::btfactor}
+
+
+
+Definition at line \mbox{\hyperlink{Kmeans__mod_8f90_source_l00057}{57}} of file \mbox{\hyperlink{Kmeans__mod_8f90_source}{Kmeans\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespacekmeans__mod_a4fed5ecdcc29c926c0fc419c9adb0a97}\label{namespacekmeans__mod_a4fed5ecdcc29c926c0fc419c9adb0a97}} 
+\index{kmeans\_mod@{kmeans\_mod}!module\_name@{module\_name}}
+\index{module\_name@{module\_name}!kmeans\_mod@{kmeans\_mod}}
+\doxysubsubsection{\texorpdfstring{module\_name}{module\_name}}
+{\footnotesize\ttfamily character($\ast$), parameter kmeans\+\_\+mod\+::module\+\_\+name = \char`\"{}@Kmeans\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{Kmeans__mod_8f90_source_l00055}{55}} of file \mbox{\hyperlink{Kmeans__mod_8f90_source}{Kmeans\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespacekmeans__mod_a05a8bc03ee86089ac6ec535aef69ba5c}\label{namespacekmeans__mod_a05a8bc03ee86089ac6ec535aef69ba5c}} 
+\index{kmeans\_mod@{kmeans\_mod}!ndkuniform@{ndkuniform}}
+\index{ndkuniform@{ndkuniform}!kmeans\_mod@{kmeans\_mod}}
+\doxysubsubsection{\texorpdfstring{ndkuniform}{ndkuniform}}
+{\footnotesize\ttfamily real(rk) kmeans\+\_\+mod\+::ndkuniform}
+
+
+
+Definition at line \mbox{\hyperlink{Kmeans__mod_8f90_source_l00057}{57}} of file \mbox{\hyperlink{Kmeans__mod_8f90_source}{Kmeans\+\_\+mod.\+f90}}.
+

@@ -1,0 +1,482 @@
+\hypertarget{FileList__mod_8f90_source}{}\doxysection{File\+List\+\_\+mod.\+f90}
+\label{FileList__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/FileList\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/FileList\_mod.f90}}
+\mbox{\hyperlink{FileList__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00001}00001 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00002}00002 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00003}00003 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00004}00004 \textcolor{comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00005}00005 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00006}00006 \textcolor{comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00007}00007 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00008}00008 \textcolor{comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00009}00009 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00010}00010 \textcolor{comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00011}00011 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00012}00012 \textcolor{comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00013}00013 \textcolor{comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}),}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00014}00014 \textcolor{comment}{!!!!   to deal in the Software without restriction, including without limitation}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00015}00015 \textcolor{comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00016}00016 \textcolor{comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00017}00017 \textcolor{comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00018}00018 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00019}00019 \textcolor{comment}{!!!!   The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00020}00020 \textcolor{comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00021}00021 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00022}00022 \textcolor{comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00023}00023 \textcolor{comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00024}00024 \textcolor{comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00025}00025 \textcolor{comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00026}00026 \textcolor{comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00027}00027 \textcolor{comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00028}00028 \textcolor{comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00029}00029 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00030}00030 \textcolor{comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00031}00031 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00032}00032 \textcolor{comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00033}00033 \textcolor{comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00034}00034 \textcolor{comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00035}00035 \textcolor{comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00036}00036 \textcolor{comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00037}00037 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00038}00038 \textcolor{comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00039}00039 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00040}00040 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00041}00041 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00046}\mbox{\hyperlink{namespacefilelist__mod}{00046}} \textcolor{keyword}{module} \mbox{\hyperlink{namespacefilelist__mod}{filelist\_mod}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00048}00048     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestring__mod}{string\_mod}}, \textcolor{keywordtype}{only}: charvec\_type}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00049}00049     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00050}00050     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00051}00051     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00053}00053     \textcolor{keywordtype}{public}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00055}\mbox{\hyperlink{namespacefilelist__mod_a80303191dbededeed22ddf175f894966}{00055}}     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}} = \textcolor{stringliteral}{"{}@FileList\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00058}\mbox{\hyperlink{structfilelist__mod_1_1filelist__type}{00058}}     \textcolor{keyword}{type} :: \mbox{\hyperlink{structfilelist__mod_1_1filelist__type}{filelist\_type}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00059}\mbox{\hyperlink{structfilelist__mod_1_1filelist__type_a47e638b607e00f6d70a56353c31bd37f}{00059}}         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}       :: searchstr}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00060}\mbox{\hyperlink{structfilelist__mod_1_1filelist__type_a66c230112bb2c9ee9050af08a5bdd14d}{00060}}         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}       :: orderstr}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00061}\mbox{\hyperlink{structfilelist__mod_1_1filelist__type_a718c76d9bfa32973f0aed45ec8443e92}{00061}}         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}       :: excludestr}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00062}\mbox{\hyperlink{structfilelist__mod_1_1filelist__type_a18c692ae73017813115c7f81c6f07447}{00062}}         \textcolor{keywordtype}{integer(IK)}                     :: count}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00063}\mbox{\hyperlink{structfilelist__mod_1_1filelist__type_accfd9aae136fa369907e4cdf702076b4}{00063}}         \textcolor{keywordtype}{type}(charvec\_type), \textcolor{keywordtype}{allocatable} :: file(:)}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00064}\mbox{\hyperlink{structfilelist__mod_1_1filelist__type_a170695216320806f35ed984ede9c8e40}{00064}}         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})                  :: err}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00065}00065     \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00066}\mbox{\hyperlink{structfilelist__mod_1_1filelist__type_a9674df5991bb7adc4a32e8d435046fa9}{00066}}         \textcolor{keywordtype}{procedure}, \textcolor{keywordtype}{nopass}               :: get => \mbox{\hyperlink{namespacefilelist__mod_a5e58ff87062902f61d1c84bce0591a7c}{getfilelist}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00067}00067     \textcolor{keyword}{end type }\mbox{\hyperlink{structfilelist__mod_1_1filelist__type}{filelist\_type}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00069}00069     \textcolor{keyword}{interface} \mbox{\hyperlink{structfilelist__mod_1_1filelist__type}{filelist\_type}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00070}00070         \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacefilelist__mod_a03ce1a570da7c6b22b006590abbb809f}{constructfilelist}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00071}00071     \textcolor{keyword}{end interface }\mbox{\hyperlink{structfilelist__mod_1_1filelist__type}{filelist\_type}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00073}00073 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00075}00075 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00077}00077 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00087}\mbox{\hyperlink{structfilelist__mod_1_1filelist__type_afc34b0d0c672411c60a0c57e854b7221}{00087}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacefilelist__mod_a03ce1a570da7c6b22b006590abbb809f}{constructfilelist}}(searchStr,orderStr,excludeStr,OS) \textcolor{keyword}{result}(FileList)}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00088}00088 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00089}00089 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: constructFileList}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00090}00090 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00091}00091 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacesystem__mod}{system\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structsystem__mod_1_1os__type}{os\_type}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00092}00092         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00093}00093         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}      :: searchstr}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00094}00094         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}      :: excludestr}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00095}00095         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}      :: orderstr}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00096}00096         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structsystem__mod_1_1os__type}{os\_type}}), \textcolor{keywordtype}{intent(inout)}, \textcolor{keywordtype}{optional}  :: os}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00097}00097         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structfilelist__mod_1_1filelist__type}{filelist\_type}})                     :: filelist}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00098}00098         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(searchstr)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00099}00099             filelist\%searchStr = searchstr}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00100}00100         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00101}00101             filelist\%searchStr = \textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00102}00102 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00103}00103         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(orderstr)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00104}00104             filelist\%orderStr = orderstr}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00105}00105         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00106}00106             filelist\%orderStr = \textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00107}00107 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00108}00108         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(excludestr)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00109}00109             filelist\%excludeStr = excludestr}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00110}00110         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00111}00111             filelist\%excludeStr = \textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00112}00112 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00113}00113         \textcolor{keyword}{call }\mbox{\hyperlink{namespacefilelist__mod_a5e58ff87062902f61d1c84bce0591a7c}{getfilelist}}(filelist\%File,filelist\%Err,filelist\%count,filelist\%searchStr,filelist\%orderStr,filelist\%excludeStr,os)}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00114}00114     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacefilelist__mod_a03ce1a570da7c6b22b006590abbb809f}{constructfilelist}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00116}00116 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00117}00117 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00129}\mbox{\hyperlink{namespacefilelist__mod_a5e58ff87062902f61d1c84bce0591a7c}{00129}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespacefilelist__mod_a5e58ff87062902f61d1c84bce0591a7c}{getfilelist}}(FileList,Err,count,searchStr,orderStr,excludeStr,OS)}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00130}00130 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00131}00131 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: getFileList}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00132}00132 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00133}00133 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00134}00134         use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: output\_unit}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00135}00135         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacesystem__mod}{system\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structsystem__mod_1_1os__type}{os\_type}}, \mbox{\hyperlink{namespacesystem__mod_a7c697b3e8ca70626e0b27bcab21a26b4}{executecmd}}, \mbox{\hyperlink{namespacesystem__mod_ad23b9f8e897ebc5ce897de5daffccfc9}{sleep}} \textcolor{comment}{!, removeFile}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00136}00136         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk, \mbox{\hyperlink{namespaceconstants__mod_ae1ebe399e20c4ad7b31e4af1f4a937e5}{max\_rec\_len}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00137}00137         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestring__mod}{string\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacestring__mod_a7b4ad790c8a3a5bb9937ee1b51f3baa2}{getlowercase}}, \mbox{\hyperlink{interfacestring__mod_1_1num2str}{num2str}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00138}00138         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacejaggedarray__mod}{jaggedarray\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structjaggedarray__mod_1_1charvec__type}{charvec\_type}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00139}00139         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacedatetime__mod}{datetime\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structdatetime__mod_1_1datetime__type}{datetime\_type}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00140}00140         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00142}00142         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00144}00144         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}              :: searchStr, orderStr, excludeStr}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00145}00145         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structjaggedarray__mod_1_1charvec__type}{charvec\_type}}), \textcolor{keywordtype}{allocatable}, \textcolor{keywordtype}{intent(out)}    :: FileList(:)}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00146}00146         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}), \textcolor{keywordtype}{intent(out)}                     :: Err}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00147}00147         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(out)}, \textcolor{keywordtype}{optional}              :: count}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00148}00148         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structsystem__mod_1_1os__type}{os\_type}}), \textcolor{keywordtype}{intent(inout)}, \textcolor{keywordtype}{optional}          :: OS}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00149}00149 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00150}00150         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}                       :: search,order,exclude \textcolor{comment}{!,searchModified}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00151}00151         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}                       :: command,filename,stdErr,recordTrimmed}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00152}00152         \textcolor{keywordtype}{character(MAX\_REC\_LEN)}                          :: record}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00153}00153         \textcolor{keywordtype}{integer(IK)}                                     :: fileUnit}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00154}00154         \textcolor{keywordtype}{integer(IK)}                                     :: counter,nrecord,nskip,fileCounter}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00155}00155         \textcolor{keywordtype}{logical}                                         :: fileIsOpen, isWindowsShell}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00157}00157         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter}                         ::  PROCEDURE\_NAME = \textcolor{stringliteral}{"{}@getFileList()"{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00159}00159         err\%occurred = .false.}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00160}00160         err\%msg = \textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00161}00161 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00162}00162         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(searchstr)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00163}00163             search = trim(adjustl(searchstr))}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00164}00164         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00165}00165             search = \textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00166}00166 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00168}00168         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(orderstr)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00169}00169             \textcolor{keywordflow}{if} ( trim(adjustl(orderstr))/=\textcolor{stringliteral}{"{}"{}} ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00170}00170                 order = \mbox{\hyperlink{namespacestring__mod_a7b4ad790c8a3a5bb9937ee1b51f3baa2}{getlowercase}}( trim(adjustl(orderstr) ))}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00171}00171             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00172}00172                 order = \textcolor{stringliteral}{"{}name"{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00173}00173 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00174}00174         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00175}00175             order = \textcolor{stringliteral}{"{}name"{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00176}00176 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00177}00177 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00178}00178         \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00179}00179         \textcolor{comment}{! check if the input order request is supported}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00180}00180         \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00182}00182         \textcolor{keywordflow}{if} (order/=\textcolor{stringliteral}{"{}name"{}} .and. order/=\textcolor{stringliteral}{"{}date"{}}) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00183}00183             err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00184}00184             err\%msg =   procedure\_name // \textcolor{stringliteral}{"{}: Error Occurred. The requested search order orderStr='"{}} // order // \textcolor{stringliteral}{"{}' is not supported."{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00185}00185             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00186}00186 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00187}00187 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00188}00188         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(excludestr)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00189}00189             exclude = trim(adjustl(excludestr))}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00190}00190         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00191}00191             exclude = \textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00192}00192 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00193}00193 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00194}00194         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(os)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00195}00195             \textcolor{keywordflow}{if} ( os\%isWindows .and. .not. (os\%Shell\%isCMD .or. os\%Shell\%isPowershell) ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00196}00196             \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00197}00197                 \textcolor{keyword}{call }os\%Shell\%query()}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00198}00198                 \textcolor{keywordflow}{if} (os\%Shell\%Err\%occurred) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00199}00199                     err = os\%Shell\%Err}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00200}00200                     err\%msg = procedure\_name//\textcolor{stringliteral}{"{}: Error occurred while attempting to query OS type in search of files containing '"{}}//search//\textcolor{stringliteral}{"{}'.\(\backslash\)n"{}}//err\%msg}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00201}00201                     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00202}00202 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00203}00203 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00204}00204             iswindowsshell = os\%isWindows .and. .not. os\%Shell\%isUnix}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00205}00205             \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00206}00206         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00207}00207             block}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00208}00208                 \textcolor{keywordtype}{type}(\mbox{\hyperlink{structsystem__mod_1_1os__type}{os\_type}}) :: OS}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00209}00209                 \textcolor{keyword}{call }os\%query(shellqueryenabled = .true.)}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00210}00210                 \textcolor{keywordflow}{if} (os\%Err\%occurred) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00211}00211                 \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00212}00212                     err = os\%Err}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00213}00213                 \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00214}00214                 \textcolor{keywordflow}{elseif} (os\%Shell\%Err\%occurred) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00215}00215                 \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00216}00216                     err = os\%Shell\%Err}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00217}00217                 \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00218}00218 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00219}00219                 \textcolor{keywordflow}{if} (err\%occurred) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00220}00220                 \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00221}00221                     err\%msg = procedure\_name//\textcolor{stringliteral}{"{}: Error occurred while attempting to query OS type in search of files containing '"{}}//search//\textcolor{stringliteral}{"{}'.\(\backslash\)n"{}}//err\%msg}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00222}00222                     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00223}00223                 \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00224}00224 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00225}00225                 iswindowsshell = os\%isWindows .and. .not. os\%Shell\%isUnix}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00226}00226             \textcolor{keyword}{end }block}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00227}00227 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00228}00228 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00229}00229         \textcolor{keywordflow}{if} (iswindowsshell) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00230}00230 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00231}00231             \textcolor{comment}{!call winify(search,searchModified,Err)}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00232}00232             \textcolor{comment}{!if (Err\%occurred) then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00233}00233             \textcolor{comment}{!    Err\%msg =   PROCEDURE\_NAME // "{}: Error occurred while attempting to modify searchStr='"{} // search // \&}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00234}00234             \textcolor{comment}{!                "{}' according to the OS type.\(\backslash\)n"{} // Err\%msg}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00235}00235             \textcolor{comment}{!    return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00236}00236             \textcolor{comment}{!end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00237}00237 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00238}00238             \textcolor{comment}{! see: https://www.computerhope.com/dirhlp.htm}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00239}00239             \textcolor{comment}{! /b Uses bare format (no heading information or summary).}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00240}00240             \textcolor{comment}{! /A[:Attributes] List only files with the specified file attributes. Attributes is a series of letters:}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00241}00241             \textcolor{comment}{!       D : Directories.}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00242}00242             \textcolor{comment}{!       R : Read-\/only files.}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00243}00243             \textcolor{comment}{!       H : Hidden files.}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00244}00244             \textcolor{comment}{!       A : Files ready for archiving.}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00245}00245             \textcolor{comment}{!       S : System files.}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00246}00246             \textcolor{comment}{!       -\/ : Prefix meaning "{}not"{}.}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00247}00247             \textcolor{comment}{! /O[:SortOrder]    List files in sorted order, indicated by SortOrder:}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00248}00248             \textcolor{comment}{!       N : By name (alphabetic).}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00249}00249             \textcolor{comment}{!       S : By size (smallest first).}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00250}00250             \textcolor{comment}{!       E : By extension (alphabetic).}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00251}00251             \textcolor{comment}{!       D : By date and time (earliest first).}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00252}00252             \textcolor{comment}{!       G : Group directories first.}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00253}00253             \textcolor{comment}{!       -\/ : Prefix to reverse order.}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00254}00254             \textcolor{comment}{!       A : By Last Access Date (earliest first).}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00255}00255 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00256}00256             \textcolor{keywordflow}{if} (order==\textcolor{stringliteral}{"{}name"{}}) \textcolor{keywordflow}{then}  \textcolor{comment}{! ascending in name}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00257}00257                 command = \textcolor{stringliteral}{"{}dir /b /a-\/d "{}} // search}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00258}00258             \textcolor{keywordflow}{elseif} (order==\textcolor{stringliteral}{"{}date"{}}) \textcolor{keywordflow}{then}   \textcolor{comment}{! newest will be first}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00259}00259                 command = \textcolor{stringliteral}{"{}dir /b /a-\/d /o:-\/d "{}} // search}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00260}00260 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00261}00261             \textcolor{keywordflow}{if} ( len(exclude)>0 ) command = command // \textcolor{stringliteral}{"{} | findstr /v /i "{}} // exclude}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00262}00262 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00263}00263         \textcolor{keywordflow}{else}    \textcolor{comment}{! It is not windows: either Mac or Linux}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00264}00264 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00265}00265             \textcolor{comment}{! Assume Bash environment:}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00266}00266             \textcolor{comment}{! see: http://pubs.opengroup.org/onlinepubs/9699919799/utilities/ls.html}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00267}00267             \textcolor{comment}{! 1 causes each file to be printed on one line}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00268}00268             \textcolor{comment}{! p causes directories to have "{}/"{} at the end}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00269}00269             \textcolor{comment}{! t sorts files by modification date, most recent first.}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00270}00270             \textcolor{comment}{! r reverses the sort order (not present here)}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00271}00271 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00272}00272             \textcolor{keywordflow}{if} (order==\textcolor{stringliteral}{"{}name"{}}) \textcolor{keywordflow}{then}  \textcolor{comment}{! ascending in name}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00273}00273                 \textcolor{comment}{!command = "{}ls -\/1 "{} // searchModified}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00274}00274                 command = \textcolor{stringliteral}{"{}ls -\/1p "{}} // search}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00275}00275             \textcolor{keywordflow}{elseif} (order==\textcolor{stringliteral}{"{}date"{}}) \textcolor{keywordflow}{then}   \textcolor{comment}{! newest will be first}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00276}00276                 command = \textcolor{stringliteral}{"{}ls -\/1pt "{}} // search}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00277}00277 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00278}00278             \textcolor{keywordflow}{if} ( len(exclude)>0 ) command = command // \textcolor{stringliteral}{"{} -\/-\/ignore="{}} // trim(adjustl(exclude))}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00279}00279 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00280}00280 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00281}00281 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00282}00282         \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00283}00283         \textcolor{comment}{! generate a brand new, non-\/existing filename}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00284}00284         \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00285}00285 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00286}00286         block}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00287}00287             \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacesystem__mod}{system\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structsystem__mod_1_1randomfilename__type}{randomfilename\_type}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00288}00288             \textcolor{keywordtype}{type}(\mbox{\hyperlink{structsystem__mod_1_1randomfilename__type}{randomfilename\_type}})   :: RFN}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00289}00289             rfn = \mbox{\hyperlink{structsystem__mod_1_1randomfilename__type}{randomfilename\_type}}(key=\textcolor{stringliteral}{"{}getFileList"{}})}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00290}00290             \textcolor{keywordflow}{if} (rfn\%Err\%occurred) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00291}00291             \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00292}00292                 rfn\%Err\%msg = procedure\_name // rfn\%Err\%msg}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00293}00293                 \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00294}00294 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00295}00295             \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00296}00296             filename = rfn\%path}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00297}00297         \textcolor{keyword}{end }block}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00298}00298         stderr = filename // \textcolor{stringliteral}{"{}.stderr"{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00299}00299 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00300}00300         \textcolor{keyword}{call }executecmd( command = command//\textcolor{stringliteral}{"{} > "{}}//filename//\textcolor{stringliteral}{"{} 2> "{}}//stderr, err=err )}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00301}00301         \textcolor{keywordflow}{if} (err\%occurred) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00302}00302         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00303}00303             err\%msg = procedure\_name // \textcolor{stringliteral}{"{}: Error occurred while attempting to write the search results to external file.\(\backslash\)n"{}} // err\%msg}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00304}00304             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00305}00305 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00306}00306         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00307}00307 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00308}00308         \textcolor{comment}{! delete the stderr file}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00309}00309 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00310}00310         \textcolor{keyword}{open}( newunit = fileunit \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00311}00311             , status = \textcolor{stringliteral}{"{}replace"{}} \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00312}00312             , file = stderr \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00313}00313 \textcolor{preprocessor}{\#if defined INTEL\_COMPILER\_ENABLED \&\& defined OS\_IS\_WINDOWS}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00314}00314 \textcolor{preprocessor}{}            , shared \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00315}00315 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00316}00316 \textcolor{preprocessor}{}            )}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00317}00317         \textcolor{keyword}{close}(fileunit, status = \textcolor{stringliteral}{"{}delete"{}}, iostat = err\%stat) \textcolor{comment}{! parallel processes cannot delete the same file}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00318}00318 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00319}00319         \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00320}00320         \textcolor{comment}{! now count the number of records in file:}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00321}00321         \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00322}00322 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00323}00323         \textcolor{keyword}{inquire}(file=filename,opened=fileisopen,number=fileunit,iostat=err\%stat)    \textcolor{comment}{! check if the file already exists}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00324}00324         \textcolor{keywordflow}{if} (err\%stat/=0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00325}00325         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00326}00326             err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00327}00327             err\%msg = procedure\_name // \textcolor{stringliteral}{"{}: Error occurred while inquiring the open status of file='"{}} // filename // \textcolor{stringliteral}{"{}'."{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00328}00328             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00329}00329 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00330}00330         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00331}00331 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00332}00332         \textcolor{keywordflow}{if} (fileisopen) \textcolor{keyword}{close}(fileunit,iostat=err\%stat)}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00333}00333         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00334}00334         \textcolor{keywordflow}{if} (err\%stat/=0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00335}00335             err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00336}00336             err\%msg = procedure\_name // \textcolor{stringliteral}{"{}: Error occurred while attempting to close the open file='"{}} // filename // \textcolor{stringliteral}{"{}'."{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00337}00337             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00338}00338 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00339}00339         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00340}00340 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00341}00341         \textcolor{keyword}{call }sleep(seconds=0.1\_rk,err=err)}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00342}00342         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00343}00343         \textcolor{keywordflow}{if} (err\%occurred) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00344}00344             err\%msg = procedure\_name // err\%msg}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00345}00345             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00346}00346 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00347}00347         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00348}00348 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00349}00349         \textcolor{comment}{! open the list file}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00350}00350 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00351}00351         \textcolor{keyword}{open}( newunit = fileunit \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00352}00352             , iostat = err\%stat \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00353}00353             , file = filename \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00354}00354             , status = \textcolor{stringliteral}{"{}old"{}} \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00355}00355 \textcolor{preprocessor}{\#if defined INTEL\_COMPILER\_ENABLED \&\& defined OS\_IS\_WINDOWS}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00356}00356 \textcolor{preprocessor}{}            , shared \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00357}00357 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00358}00358 \textcolor{preprocessor}{}            )}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00359}00359         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00360}00360         \textcolor{keywordflow}{if} (err\%stat>0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00361}00361             err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00362}00362             err\%msg = procedure\_name // \textcolor{stringliteral}{"{}: Unknown error occurred while opening file='"{}} // filename // \textcolor{stringliteral}{"{}'."{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00363}00363             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00364}00364 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00365}00365         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00366}00366 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00367}00367         nskip = 0   \textcolor{comment}{! check filename is not among records}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00368}00368         nrecord = 0 \textcolor{comment}{! number of filenames in the file}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00369}00369         \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00370}00370             \textcolor{keyword}{read}(fileunit,\textcolor{stringliteral}{"{}(A)"{}},iostat=err\%stat) record}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00371}00371             \textcolor{keywordflow}{if} ( is\_iostat\_eor(err\%stat) ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00372}00372             \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00373}00373                 err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00374}00374                 err\%msg  = procedure\_name // \textcolor{stringliteral}{"{}: End-\/Of-\/Record error condition occurred while attempting to read from file='"{}} // filename // \textcolor{stringliteral}{"{}'."{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00375}00375                 \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00376}00376             \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00377}00377             \textcolor{keywordflow}{elseif} ( is\_iostat\_end(err\%stat) ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00378}00378                 \textcolor{keywordflow}{exit}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00379}00379             \textcolor{keywordflow}{elseif} ( err\%stat>0 ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00380}00380             \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00381}00381                 err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00382}00382                 err\%msg = procedure\_name // \textcolor{stringliteral}{"{}: Unknown error condition occurred while attempting to read from file='"{}} // filename // \textcolor{stringliteral}{"{}'."{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00383}00383                 \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00384}00384             \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00385}00385             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00386}00386                 recordtrimmed = trim(adjustl(record))}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00387}00387                 \textcolor{keywordflow}{if}(filename==recordtrimmed) nskip = nskip + 1}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00388}00388                 nrecord = nrecord + 1}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00389}00389                 cycle}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00390}00390 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00391}00391 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00392}00392         \textcolor{keyword}{close}(fileunit, iostat = err\%stat)}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00393}00393         \textcolor{keywordflow}{if} (err\%stat/=0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00394}00394         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00395}00395             err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00396}00396             err\%msg = procedure\_name // \textcolor{stringliteral}{"{}: Error occurred while attempting to close the open file='"{}} // filename // \textcolor{stringliteral}{"{}'."{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00397}00397             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00398}00398 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00399}00399         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00400}00400 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00401}00401         \textcolor{keyword}{allocate}(filelist(nrecord-\/nskip))}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00402}00402 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00403}00403         \textcolor{keyword}{call }sleep(seconds=0.1\_rk,err=err)}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00404}00404         \textcolor{keywordflow}{if} (err\%occurred) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00405}00405         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00406}00406             err\%msg = procedure\_name // err\%msg}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00407}00407             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00408}00408 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00409}00409         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00410}00410 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00411}00411         \textcolor{keyword}{open}( newunit = fileunit \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00412}00412             , iostat = err\%stat \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00413}00413             , file = filename \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00414}00414             , status = \textcolor{stringliteral}{"{}old"{}} \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00415}00415 \textcolor{preprocessor}{\#if defined INTEL\_COMPILER\_ENABLED \&\& defined OS\_IS\_WINDOWS}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00416}00416 \textcolor{preprocessor}{}            , shared \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00417}00417 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00418}00418 \textcolor{preprocessor}{}            )}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00419}00419         \textcolor{keywordflow}{if} (err\%stat>0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00420}00420         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00421}00421             err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00422}00422             err\%msg = procedure\_name // \textcolor{stringliteral}{"{}: Unknown error occurred while opening file='"{}} // filename // \textcolor{stringliteral}{"{}'."{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00423}00423             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00424}00424 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00425}00425         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00426}00426 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00427}00427         filecounter = 0}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00428}00428         \textcolor{keywordflow}{do} counter = 1,nrecord}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00429}00429             \textcolor{keyword}{read}(fileunit,\textcolor{stringliteral}{"{}(A)"{}},iostat=err\%stat) record}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00430}00430             \textcolor{keywordflow}{if} ( is\_iostat\_eor(err\%stat) ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00431}00431             \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00432}00432                 err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00433}00433                 err\%msg  = procedure\_name // \textcolor{stringliteral}{"{}: End-\/Of-\/Record error condition occurred while attempting to read from file='"{}} // filename // \textcolor{stringliteral}{"{}'."{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00434}00434                 \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00435}00435             \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00436}00436             \textcolor{keywordflow}{elseif} ( is\_iostat\_end(err\%stat) ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00437}00437                 \textcolor{keywordflow}{exit}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00438}00438             \textcolor{keywordflow}{elseif} ( err\%stat>0 ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00439}00439             \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00440}00440                 err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00441}00441                 err\%msg = procedure\_name // \textcolor{stringliteral}{"{}: Unknown error condition occurred while attempting to read from file='"{}} // filename // \textcolor{stringliteral}{"{}'."{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00442}00442                 \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00443}00443 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00444}00444             \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00445}00445             recordtrimmed = trim(adjustl(record))}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00446}00446             \textcolor{keywordflow}{if}(filename/=recordtrimmed) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00447}00447                 filecounter = filecounter + 1}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00448}00448                 filelist(filecounter)\%record = trim(adjustl(record))}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00449}00449 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00450}00450 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00451}00451 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00452}00452         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(count)) count = filecounter}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00453}00453 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00454}00454         \textcolor{keyword}{close}(fileunit, status = \textcolor{stringliteral}{"{}delete"{}}, iostat = err\%stat) \textcolor{comment}{! parallel processes cannot delete the same file}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00455}00455 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00456}00456         \textcolor{comment}{!if (Err\%stat/=0) then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00457}00457         \textcolor{comment}{!! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00458}00458         \textcolor{comment}{!    Err\%occurred = .true.}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00459}00459         \textcolor{comment}{!    Err\%msg = PROCEDURE\_NAME // "{}: Error occurred while attempting to close the open file='"{} // filename // "{}'."{}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00460}00460         \textcolor{comment}{!    return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00461}00461         \textcolor{comment}{!end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00462}00462         \textcolor{comment}{!! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00463}00463 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00464}00464         \textcolor{comment}{! remove the files}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00465}00465         \textcolor{comment}{!call removeFile(filename,isWindowsShell,Err)}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00466}00466         \textcolor{comment}{!if (Err\%occurred) then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00467}00467         \textcolor{comment}{!    Err\%msg = PROCEDURE\_NAME // Err\%msg}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00468}00468         \textcolor{comment}{!    return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00469}00469         \textcolor{comment}{!end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00470}00470         \textcolor{comment}{!call removeFile(stdErr,isWindowsShell,Err)}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00471}00471         \textcolor{comment}{!if (Err\%occurred) then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00472}00472         \textcolor{comment}{!    Err\%msg = PROCEDURE\_NAME // Err\%msg}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00473}00473         \textcolor{comment}{!    return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00474}00474         \textcolor{comment}{!end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00475}00475 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00476}00476         \textcolor{comment}{!call sleep(seconds=0.1\_RK,Err=Err)}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00477}00477         \textcolor{comment}{!if (Err\%occurred) then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00478}00478         \textcolor{comment}{!    Err\%msg = PROCEDURE\_NAME // Err\%msg}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00479}00479         \textcolor{comment}{!    return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00480}00480         \textcolor{comment}{!end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00481}00481         \textcolor{comment}{!if (isWindowsShell) then  ! it is Windows cmd}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00482}00482         \textcolor{comment}{!    command = "{}del "{} // filename // "{}; del "{} // stdErr}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00483}00483         \textcolor{comment}{!else}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00484}00484         \textcolor{comment}{!    command = "{}rm "{} // filename // "{}; rm "{} // stdErr}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00485}00485         \textcolor{comment}{!end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00486}00486         \textcolor{comment}{!call executeCmd( command = command//"{} > "{}//filename//"{} 2> "{}//stdErr, Err=Err )}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00487}00487         \textcolor{comment}{!if (Err\%occurred) then}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00488}00488         \textcolor{comment}{!    Err\%msg =   PROCEDURE\_NAME // \&}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00489}00489         \textcolor{comment}{!                "{}: Error occurred while attempting to deleting the external file='"{} // filename // "{}'.\(\backslash\)n"{} // Err\%msg}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00490}00490         \textcolor{comment}{!    return}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00491}00491         \textcolor{comment}{!end if}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00492}00492 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00493}00493     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespacefilelist__mod_a5e58ff87062902f61d1c84bce0591a7c}{getfilelist}}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00494}00494 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00495}00495 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00496}00496 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00497}00497 }
+\DoxyCodeLine{\Hypertarget{FileList__mod_8f90_source_l00498}00498 \textcolor{keyword}{end module }\mbox{\hyperlink{namespacefilelist__mod}{filelist\_mod}} ! lcov\_excl\_line}
+
+\end{DoxyCode}

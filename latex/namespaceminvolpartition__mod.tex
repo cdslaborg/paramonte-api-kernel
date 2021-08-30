@@ -1,0 +1,149 @@
+\hypertarget{namespaceminvolpartition__mod}{}\doxysection{minvolpartition\+\_\+mod Module Reference}
+\label{namespaceminvolpartition__mod}\index{minvolpartition\_mod@{minvolpartition\_mod}}
+
+
+This module contains procedures and routines for the minimum bounding ellipsoid partitioning of a given set of points.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \mbox{\hyperlink{structminvolpartition__mod_1_1ellipsoid__type}{ellipsoid\+\_\+type}}
+\item 
+type \mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type}{minvolpartition\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily Min\+Vol\+Partition\+\_\+type} class. Partitions an input array {\ttfamily Point(nd,np)} with {\ttfamily nd} attributes and {\ttfamily np} observations (points). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \mbox{\hyperlink{namespaceminvolpartition__mod_a82a4bdaa5cd0b54252e4b6d47b1dc2bb}{runminvolpartition}} (nc\+Max, nd, np, max\+Kvolume\+Loop\+Recursion, max\+Allowed\+Kmeans\+Failure, max\+Allowed\+Min\+Vol\+Failure, stabilization\+Requested, mahal\+Sq\+Weight\+Exponent, tightness, inclusion\+Fraction, par\+Log\+Vol, Point, nc\+Optimal, CCenter, CSize, CBEInv\+Cov\+Mat, CBEChol\+Cov, CBEChol\+Diag, CBEVol\+Normed, CMembership, Point\+Index, convergence\+Failure\+Counter)
+\item 
+recursive subroutine \mbox{\hyperlink{namespaceminvolpartition__mod_ae2644d3f5cfc00e7e7e10015da6ac603}{runminvolkernel}} (nc\+Max, nd, np, stabilization\+Requested, max\+Kvolume\+Loop\+Recursion, max\+Allowed\+Kmeans\+Failure, max\+Allowed\+Min\+Vol\+Failure, mahal\+Sq\+Weight\+Exponent, tightness, inclusion\+Fraction, par\+Vol\+Normed, log\+Norm\+Fac, Point, nc\+Optimal, CCenter, CSize, CBEInv\+Cov\+Mat, CBEChol\+Cov, CBEChol\+Diag, CBEVol\+Normed, CMembership, Point\+Index, convergence\+Failure\+Counter)
+\item 
+type(\mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type}{minvolpartition\+\_\+type}}) function \mbox{\hyperlink{namespaceminvolpartition__mod_a7aa1d5777d8656b5bdf73b9cbc10ff7e}{constructminvolpartition}} (nd, np\+Max, ndiv, stabilization\+Requested, max\+Allowed\+Loop\+Recursion, max\+Allowed\+Kmeans\+Failure, max\+Allowed\+Min\+Vol\+Failure, mahal\+Sq\+Weight\+Exponent, inclusion\+Fraction, tightness)
+\begin{DoxyCompactList}\small\item\em Construct and return an object of class \mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type}{Min\+Vol\+Partition\+\_\+type}} to be later used for (repeated) partitioning of a data array of size {\ttfamily Point(nd,np)} with {\ttfamily nd} attributes and {\ttfamily np} observations. This constructor solely computes the maximum number of possible bounding ellipsoids ({\ttfamily ne\+Max}) and allocates the components of the object. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceminvolpartition__mod_aa3da3555e00a8667ce0894ae583b95bb}{getminvolpartition}} (self, nd, np, par\+Log\+Vol, Point)
+\begin{DoxyCompactList}\small\item\em This function is a method of the class \mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type}{Min\+Vol\+Partition\+\_\+type}}. Perform the minimum-\/bounding-\/volume partitioning of the input set of {\ttfamily Point(nd,np)}. The partitioning result will be stored in the components of {\ttfamily self} upon exit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceminvolpartition__mod_acfc91d3e6720662967db55d25e5195f8}{module\+\_\+name}} = \char`\"{}@Min\+Vol\+Partition\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains procedures and routines for the minimum bounding ellipsoid partitioning of a given set of points. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceminvolpartition__mod_a7aa1d5777d8656b5bdf73b9cbc10ff7e}\label{namespaceminvolpartition__mod_a7aa1d5777d8656b5bdf73b9cbc10ff7e}} 
+\index{minvolpartition\_mod@{minvolpartition\_mod}!constructminvolpartition@{constructminvolpartition}}
+\index{constructminvolpartition@{constructminvolpartition}!minvolpartition\_mod@{minvolpartition\_mod}}
+\doxysubsubsection{\texorpdfstring{constructminvolpartition()}{constructminvolpartition()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type}{minvolpartition\+\_\+type}}) function minvolpartition\+\_\+mod\+::constructminvolpartition (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{nd,  }\item[{integer(ik), intent(in)}]{np\+Max,  }\item[{integer(ik), intent(in)}]{ndiv,  }\item[{logical, intent(in)}]{stabilization\+Requested,  }\item[{integer, intent(in)}]{max\+Allowed\+Loop\+Recursion,  }\item[{integer, intent(in)}]{max\+Allowed\+Kmeans\+Failure,  }\item[{integer, intent(in)}]{max\+Allowed\+Min\+Vol\+Failure,  }\item[{real(rk), intent(in)}]{mahal\+Sq\+Weight\+Exponent,  }\item[{real(rk), intent(in)}]{inclusion\+Fraction,  }\item[{real(rk), intent(in)}]{tightness }\end{DoxyParamCaption})}
+
+
+
+Construct and return an object of class \mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type}{Min\+Vol\+Partition\+\_\+type}} to be later used for (repeated) partitioning of a data array of size {\ttfamily Point(nd,np)} with {\ttfamily nd} attributes and {\ttfamily np} observations. This constructor solely computes the maximum number of possible bounding ellipsoids ({\ttfamily ne\+Max}) and allocates the components of the object. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions (features) of the input data array {\ttfamily Point}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np\+Max} & \+: The maximum conceivable number of observations in the input data array {\ttfamily Point} ({\ttfamily np \texorpdfstring{$<$}{<}= np\+Max}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em stabilization\+Requested} & \+: A logical flag indicating whether stabilization of the volumes of ellipsoids must be performed. \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+Allowed\+Loop\+Recursion} & \+: A logical flag representing the maximum allowed number of recursions before convergence occurs. \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+Allowed\+Kmeans\+Failure} & \+: A logical flag representing the maximum number of times the kmeans clustering returns a cluster with {\ttfamily size \texorpdfstring{$<$}{<}= nd}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em mahal\+Sq\+Weight\+Exponent} & \+: The positive real value to be used to assign weights the Mahalanobis distances of the points. \\
+\hline
+\mbox{\texttt{ in}}  & {\em inclusion\+Fraction} & \+: The fraction of non-\/cluster-\/member points that ARE inside the cluster, to be considered in the estimation of the true volume of the cluster. \\
+\hline
+\mbox{\texttt{ in}}  & {\em tightness} & \+: The factor determining how large the bounding ellipsoid can be compared to the true volume of the ellipsoid.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily self} \+: An object of class \mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type}{Min\+Vol\+Partition\+\_\+type}} to be used for partitioning of the points.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+This algorithm does not check for the consistency of the input values for {\ttfamily nd} and {\ttfamily np\+Max}. It is currently the user\textquotesingle{}s responsibility to ensure that these input values are logical and sensible.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{temp_2MinVolPartition__mod_8f90_source_l00119}{119}} of file \mbox{\hyperlink{temp_2MinVolPartition__mod_8f90_source}{Min\+Vol\+Partition\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceminvolpartition__mod_aa3da3555e00a8667ce0894ae583b95bb}\label{namespaceminvolpartition__mod_aa3da3555e00a8667ce0894ae583b95bb}} 
+\index{minvolpartition\_mod@{minvolpartition\_mod}!getminvolpartition@{getminvolpartition}}
+\index{getminvolpartition@{getminvolpartition}!minvolpartition\_mod@{minvolpartition\_mod}}
+\doxysubsubsection{\texorpdfstring{getminvolpartition()}{getminvolpartition()}}
+{\footnotesize\ttfamily subroutine minvolpartition\+\_\+mod\+::getminvolpartition (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type}{minvolpartition\+\_\+type}}), intent(inout)}]{self,  }\item[{integer(ik), intent(in)}]{nd,  }\item[{integer(ik), intent(in)}]{np,  }\item[{real(rk), intent(in)}]{par\+Log\+Vol,  }\item[{real(rk), dimension(nd,np), intent(inout)}]{Point }\end{DoxyParamCaption})}
+
+
+
+This function is a method of the class \mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type}{Min\+Vol\+Partition\+\_\+type}}. Perform the minimum-\/bounding-\/volume partitioning of the input set of {\ttfamily Point(nd,np)}. The partitioning result will be stored in the components of {\ttfamily self} upon exit. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em self} & \+: An object of class \mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type}{Min\+Vol\+Partition\+\_\+type}} that will contain the partitioning information. \\
+\hline
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions (features) of the input data array {\ttfamily Point}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of observations in the input data array {\ttfamily Point}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em par\+Log\+Vol} & \+: The input log-\/estimate of the total volume of the points (the PARent ellipsoid\textquotesingle{}s LOG-\/\+VOLume). \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em Point} & \+: The input array of size {\ttfamily (nd,np)} to be partitioned. On output, it is reordered.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+The input value {\ttfamily np} must be always smaller than the value passed for {\ttfamily np\+Max} when constructing the parent object of this method.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{temp_2MinVolPartition__mod_8f90_source_l00189}{189}} of file \mbox{\hyperlink{temp_2MinVolPartition__mod_8f90_source}{Min\+Vol\+Partition\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceminvolpartition__mod_ae2644d3f5cfc00e7e7e10015da6ac603}\label{namespaceminvolpartition__mod_ae2644d3f5cfc00e7e7e10015da6ac603}} 
+\index{minvolpartition\_mod@{minvolpartition\_mod}!runminvolkernel@{runminvolkernel}}
+\index{runminvolkernel@{runminvolkernel}!minvolpartition\_mod@{minvolpartition\_mod}}
+\doxysubsubsection{\texorpdfstring{runminvolkernel()}{runminvolkernel()}}
+{\footnotesize\ttfamily recursive subroutine minvolpartition\+\_\+mod\+::runminvolkernel (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{nc\+Max,  }\item[{integer, intent(in)}]{nd,  }\item[{integer, intent(in)}]{np,  }\item[{logical, intent(in)}]{stabilization\+Requested,  }\item[{integer, intent(in)}]{max\+Kvolume\+Loop\+Recursion,  }\item[{integer, intent(in)}]{max\+Allowed\+Kmeans\+Failure,  }\item[{integer, intent(in)}]{max\+Allowed\+Min\+Vol\+Failure,  }\item[{real(rk), intent(in)}]{mahal\+Sq\+Weight\+Exponent,  }\item[{real(rk), intent(in)}]{tightness,  }\item[{real(rk), intent(in)}]{inclusion\+Fraction,  }\item[{real(rk), intent(in)}]{par\+Vol\+Normed,  }\item[{real(rk), intent(in)}]{log\+Norm\+Fac,  }\item[{real(rk), dimension(nd,np), intent(inout)}]{Point,  }\item[{integer, intent(out)}]{nc\+Optimal,  }\item[{real(rk), dimension(nd,ncmax), intent(inout)}]{CCenter,  }\item[{integer, dimension(ncmax), intent(out)}]{CSize,  }\item[{real(rk), dimension(nd,nd,ncmax), intent(inout)}]{CBEInv\+Cov\+Mat,  }\item[{real(rk), dimension(nd,nd,ncmax), intent(inout)}]{CBEChol\+Cov,  }\item[{real(rk), dimension(nd,ncmax), intent(inout)}]{CBEChol\+Diag,  }\item[{real(rk), dimension(ncmax), intent(inout)}]{CBEVol\+Normed,  }\item[{integer, dimension(np), intent(inout)}]{CMembership,  }\item[{integer, dimension(np), intent(inout)}]{Point\+Index,  }\item[{integer, intent(inout)}]{convergence\+Failure\+Counter }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{MinVolPartition__mod_8f90_source_l00207}{207}} of file \mbox{\hyperlink{MinVolPartition__mod_8f90_source}{Min\+Vol\+Partition\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceminvolpartition__mod_a82a4bdaa5cd0b54252e4b6d47b1dc2bb}\label{namespaceminvolpartition__mod_a82a4bdaa5cd0b54252e4b6d47b1dc2bb}} 
+\index{minvolpartition\_mod@{minvolpartition\_mod}!runminvolpartition@{runminvolpartition}}
+\index{runminvolpartition@{runminvolpartition}!minvolpartition\_mod@{minvolpartition\_mod}}
+\doxysubsubsection{\texorpdfstring{runminvolpartition()}{runminvolpartition()}}
+{\footnotesize\ttfamily subroutine minvolpartition\+\_\+mod\+::runminvolpartition (\begin{DoxyParamCaption}\item[{integer(ik), intent(in)}]{nc\+Max,  }\item[{integer(ik), intent(in)}]{nd,  }\item[{integer(ik), intent(in)}]{np,  }\item[{integer(ik), intent(in)}]{max\+Kvolume\+Loop\+Recursion,  }\item[{integer(ik), intent(in)}]{max\+Allowed\+Kmeans\+Failure,  }\item[{integer(ik), intent(in)}]{max\+Allowed\+Min\+Vol\+Failure,  }\item[{logical, intent(in)}]{stabilization\+Requested,  }\item[{real(rk), intent(in)}]{mahal\+Sq\+Weight\+Exponent,  }\item[{real(rk), intent(in)}]{tightness,  }\item[{real(rk), intent(in)}]{inclusion\+Fraction,  }\item[{real(rk), intent(in)}]{par\+Log\+Vol,  }\item[{real(rk), dimension(nd,np), intent(inout)}]{Point,  }\item[{integer, intent(out)}]{nc\+Optimal,  }\item[{real(rk), dimension(nd,ncmax), intent(out)}]{CCenter,  }\item[{integer, dimension(ncmax), intent(out)}]{CSize,  }\item[{real(rk), dimension(nd,nd,ncmax), intent(out)}]{CBEInv\+Cov\+Mat,  }\item[{real(rk), dimension(nd,nd,ncmax), intent(out)}]{CBEChol\+Cov,  }\item[{real(rk), dimension(nd,ncmax), intent(out)}]{CBEChol\+Diag,  }\item[{real(rk), dimension(ncmax), intent(out)}]{CBEVol\+Normed,  }\item[{integer, dimension(np), intent(out)}]{CMembership,  }\item[{integer, dimension(np), intent(out)}]{Point\+Index,  }\item[{integer, intent(inout)}]{convergence\+Failure\+Counter }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{MinVolPartition__mod_8f90_source_l00079}{79}} of file \mbox{\hyperlink{MinVolPartition__mod_8f90_source}{Min\+Vol\+Partition\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceminvolpartition__mod_acfc91d3e6720662967db55d25e5195f8}\label{namespaceminvolpartition__mod_acfc91d3e6720662967db55d25e5195f8}} 
+\index{minvolpartition\_mod@{minvolpartition\_mod}!module\_name@{module\_name}}
+\index{module\_name@{module\_name}!minvolpartition\_mod@{minvolpartition\_mod}}
+\doxysubsubsection{\texorpdfstring{module\_name}{module\_name}}
+{\footnotesize\ttfamily character($\ast$) parameter minvolpartition\+\_\+mod\+::module\+\_\+name = \char`\"{}@Min\+Vol\+Partition\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{MinVolPartition__mod_8f90_source_l00055}{55}} of file \mbox{\hyperlink{MinVolPartition__mod_8f90_source}{Min\+Vol\+Partition\+\_\+mod.\+f90}}.
+

@@ -1,0 +1,202 @@
+\hypertarget{Cosmology__mod_8f90_source}{}\doxysection{Cosmology\+\_\+mod.\+f90}
+\label{Cosmology__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/Cosmology\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/Cosmology\_mod.f90}}
+\mbox{\hyperlink{Cosmology__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00001}00001 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00002}00002 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00003}00003 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00004}00004 \textcolor{comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00005}00005 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00006}00006 \textcolor{comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00007}00007 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00008}00008 \textcolor{comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00009}00009 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00010}00010 \textcolor{comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00011}00011 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00012}00012 \textcolor{comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00013}00013 \textcolor{comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}),}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00014}00014 \textcolor{comment}{!!!!   to deal in the Software without restriction, including without limitation}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00015}00015 \textcolor{comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00016}00016 \textcolor{comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00017}00017 \textcolor{comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00018}00018 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00019}00019 \textcolor{comment}{!!!!   The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00020}00020 \textcolor{comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00021}00021 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00022}00022 \textcolor{comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00023}00023 \textcolor{comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00024}00024 \textcolor{comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00025}00025 \textcolor{comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00026}00026 \textcolor{comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00027}00027 \textcolor{comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00028}00028 \textcolor{comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00029}00029 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00030}00030 \textcolor{comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00031}00031 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00032}00032 \textcolor{comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00033}00033 \textcolor{comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00034}00034 \textcolor{comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00035}00035 \textcolor{comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00036}00036 \textcolor{comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00037}00037 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00038}00038 \textcolor{comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00039}00039 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00040}00040 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00041}00041 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00046}\mbox{\hyperlink{namespacecosmology__mod}{00046}} \textcolor{keyword}{module} \mbox{\hyperlink{namespacecosmology__mod}{cosmology\_mod}}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00048}00048     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, \mbox{\hyperlink{namespaceconstants__mod_a36fefa8a6c72f790763382d69f8443fa}{pi}}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00050}00050     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00052}\mbox{\hyperlink{namespacecosmology__mod_a413d463ec881540c4e466133be383d15}{00052}}     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}} = \textcolor{stringliteral}{"{}@Cosmology\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00054}00054     \textcolor{comment}{! Cosmological constants}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00056}\mbox{\hyperlink{namespacecosmology__mod_a58e4f83afc5788c0616f0204bc2444fa}{00056}} \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespacecosmology__mod_a58e4f83afc5788c0616f0204bc2444fa}{light\_speed}} = 3.e5\_rk                                    }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00057}\mbox{\hyperlink{namespacecosmology__mod_a7b2a427758bb861889e4a64bb956f3f2}{00057}} \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespacecosmology__mod_a7b2a427758bb861889e4a64bb956f3f2}{hubble\_const}} = 7.1e1\_rk                                  }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00058}\mbox{\hyperlink{namespacecosmology__mod_a88147177976dfcd4535b0de03d65e74c}{00058}} \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespacecosmology__mod_a88147177976dfcd4535b0de03d65e74c}{hubble\_time\_gyrs}} = 13.8\_rk                               }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00059}\mbox{\hyperlink{namespacecosmology__mod_aae33fea33486c8ee9029ef17c6d3f9e3}{00059}} \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespacecosmology__mod_aae33fea33486c8ee9029ef17c6d3f9e3}{inverse\_hubble\_const}} = 1.\_rk / \mbox{\hyperlink{namespacecosmology__mod_a7b2a427758bb861889e4a64bb956f3f2}{hubble\_const}}              }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00060}\mbox{\hyperlink{namespacecosmology__mod_aa4930954e353ace2511a96491985e02e}{00060}} \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespacecosmology__mod_aa4930954e353ace2511a96491985e02e}{ls2hc}} = \mbox{\hyperlink{namespacecosmology__mod_a58e4f83afc5788c0616f0204bc2444fa}{light\_speed}} / \mbox{\hyperlink{namespacecosmology__mod_a7b2a427758bb861889e4a64bb956f3f2}{hubble\_const}}                       }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00061}\mbox{\hyperlink{namespacecosmology__mod_a9d442145188282551a5a445b7aebbc32}{00061}} \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespacecosmology__mod_a9d442145188282551a5a445b7aebbc32}{logls2hc}} = log(\mbox{\hyperlink{namespacecosmology__mod_a58e4f83afc5788c0616f0204bc2444fa}{light\_speed}}) -\/ log(\mbox{\hyperlink{namespacecosmology__mod_a7b2a427758bb861889e4a64bb956f3f2}{hubble\_const}})          }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00062}\mbox{\hyperlink{namespacecosmology__mod_a9f240464cdcc92d404bd79400753a5c7}{00062}} \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespacecosmology__mod_a9f240464cdcc92d404bd79400753a5c7}{mpc2cm}} = 3.09e24\_rk                                      }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00063}\mbox{\hyperlink{namespacecosmology__mod_ad7517f95eafe10a309c24cecb97f1244}{00063}} \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespacecosmology__mod_ad7517f95eafe10a309c24cecb97f1244}{logmpc2cmsq4pi}}   = log(4.\_rk*\mbox{\hyperlink{namespaceconstants__mod_a36fefa8a6c72f790763382d69f8443fa}{pi}}) + 2.\_rk*log(\mbox{\hyperlink{namespacecosmology__mod_a9f240464cdcc92d404bd79400753a5c7}{mpc2cm}})     }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00064}\mbox{\hyperlink{namespacecosmology__mod_a2ab6483bfb713b38ccf36fde6d366b7a}{00064}} \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespacecosmology__mod_a2ab6483bfb713b38ccf36fde6d366b7a}{log10mpc2cmsq4pi}} = log10(4.\_rk*\mbox{\hyperlink{namespaceconstants__mod_a36fefa8a6c72f790763382d69f8443fa}{pi}}) + 2.\_rk*log10(\mbox{\hyperlink{namespacecosmology__mod_a9f240464cdcc92d404bd79400753a5c7}{mpc2cm}}) }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00065}\mbox{\hyperlink{namespacecosmology__mod_a6e50489a59451cf4609c271bcb9ce277}{00065}} \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespacecosmology__mod_a6e50489a59451cf4609c271bcb9ce277}{omega\_de}} = 0.7\_rk                                        }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00066}\mbox{\hyperlink{namespacecosmology__mod_a0c992ad841cb5b96570abeee12ef3013}{00066}} \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespacecosmology__mod_a0c992ad841cb5b96570abeee12ef3013}{omega\_dm}} = 0.3\_rk                                        }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00068}00068 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00070}00070 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00072}00072 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00083}\mbox{\hyperlink{namespacecosmology__mod_a8c62ecbec057f1a18bad8887b00da7ba}{00083}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacecosmology__mod_a8c62ecbec057f1a18bad8887b00da7ba}{getlogdvdz}}(zplus1,logzplus1,twiceLogLumDisMpc) \textcolor{keyword}{result}(logdvdz)}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00084}00084 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00085}00085 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: getlogdvdz}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00086}00086 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00087}00087 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, \mbox{\hyperlink{namespaceconstants__mod_a36fefa8a6c72f790763382d69f8443fa}{pi}}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00088}00088         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00089}00089 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(in)}    :: zplus1, logzplus1, twiceloglumdismpc}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00090}00090 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: log\_coef = log(4*\mbox{\hyperlink{namespaceconstants__mod_a36fefa8a6c72f790763382d69f8443fa}{pi}}*\mbox{\hyperlink{namespacecosmology__mod_aa4930954e353ace2511a96491985e02e}{ls2hc}})}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00091}00091 \textcolor{keywordtype}{        real}(rk)                :: logdvdz}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00092}00092         logdvdz = log\_coef + twiceloglumdismpc -\/ ( 2*logzplus1 + 0.5\_rk*log(\mbox{\hyperlink{namespacecosmology__mod_a0c992ad841cb5b96570abeee12ef3013}{omega\_dm}}*zplus1**3+\mbox{\hyperlink{namespacecosmology__mod_a6e50489a59451cf4609c271bcb9ce277}{omega\_de}}) )}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00093}00093     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecosmology__mod_a8c62ecbec057f1a18bad8887b00da7ba}{getlogdvdz}}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00095}00095 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00112}\mbox{\hyperlink{namespacecosmology__mod_aec853a801b9c1bca78b772d2bc8c359f}{00112}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacecosmology__mod_aec853a801b9c1bca78b772d2bc8c359f}{getloglumdiswicmpc}}(zplus1) \textcolor{keyword}{result}(logLumDisWicMpc)}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00113}00113 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00114}00114 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: getLogLumDisWicMpc}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00115}00115 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00116}00116 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00117}00117         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00118}00118 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(in)}    :: zplus1   \textcolor{comment}{! redshift + 1}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00119}00119 \textcolor{keywordtype}{        real}(rk)                :: loglumdiswicmpc}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00120}00120 \textcolor{keywordtype}{        real}(rk)                :: alpha1, x1, x1sq, psix1}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00121}00121 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: twice\_omega\_de\_over\_omega\_dm = 2.\_rk * \mbox{\hyperlink{namespacecosmology__mod_a6e50489a59451cf4609c271bcb9ce277}{omega\_de}} / \mbox{\hyperlink{namespacecosmology__mod_a0c992ad841cb5b96570abeee12ef3013}{omega\_dm}}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00122}00122 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: alpha0 = 1.\_rk + twice\_omega\_de\_over\_omega\_dm}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00123}00123 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: x0 = log( alpha0 + sqrt(alpha0**2-\/1.\_rk) )}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00124}00124 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: x0sq = x0**2}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00125}00125 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: psi\_coef1 = 2.\_rk**(2.\_rk/3.\_rk)}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00126}00126 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: psi\_coef2 = -\/psi\_coef1 / 252.\_rk}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00127}00127 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: psi\_coef3 = +psi\_coef1 / 21060.\_rk}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00128}00128 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: psix0 = x0**0.333333333333333\_rk * ( psi\_coef1 + x0sq * (psi\_coef2 + x0sq*psi\_coef3) )}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00129}00129 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: log\_coef = log(\mbox{\hyperlink{namespacecosmology__mod_aa4930954e353ace2511a96491985e02e}{ls2hc}} / (\mbox{\hyperlink{namespacecosmology__mod_a6e50489a59451cf4609c271bcb9ce277}{omega\_de}}**0.1666666666666667\_rk*\mbox{\hyperlink{namespacecosmology__mod_a0c992ad841cb5b96570abeee12ef3013}{omega\_dm}}**0.3333333333333333\_rk))}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00130}00130         alpha1          = 1.\_rk + twice\_omega\_de\_over\_omega\_dm / zplus1**3}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00131}00131         x1              = log( alpha1 + sqrt( alpha1**2 -\/ 1.\_rk ) )}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00132}00132         x1sq            = x1**2}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00133}00133         psix1           = x1**0.333333333333333\_rk * ( psi\_coef1 + x1sq * (psi\_coef2 + x1sq*psi\_coef3) )}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00134}00134         loglumdiswicmpc = log\_coef +  log(zplus1*(psix0-\/psix1))}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00135}00135     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecosmology__mod_aec853a801b9c1bca78b772d2bc8c359f}{getloglumdiswicmpc}}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00137}00137 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00153}\mbox{\hyperlink{namespacecosmology__mod_af4a7d4dd7b2b7376051938910de6cba7}{00153}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacecosmology__mod_af4a7d4dd7b2b7376051938910de6cba7}{ldiswickram}}(zplus1)}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00154}00154 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00155}00155 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: ldiswickram}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00156}00156 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00157}00157 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00158}00158         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00159}00159 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(in)}    :: zplus1}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00160}00160 \textcolor{keywordtype}{        real}(rk)                :: \mbox{\hyperlink{namespacecosmology__mod_af4a7d4dd7b2b7376051938910de6cba7}{ldiswickram}},alpha,alpha0,x,x0,psi,psi0}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00161}00161         alpha=1.\_rk+2*\mbox{\hyperlink{namespacecosmology__mod_a6e50489a59451cf4609c271bcb9ce277}{omega\_de}}/(\mbox{\hyperlink{namespacecosmology__mod_a0c992ad841cb5b96570abeee12ef3013}{omega\_dm}}*zplus1**3)}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00162}00162         alpha0=1.\_rk+2*\mbox{\hyperlink{namespacecosmology__mod_a6e50489a59451cf4609c271bcb9ce277}{omega\_de}}/\mbox{\hyperlink{namespacecosmology__mod_a0c992ad841cb5b96570abeee12ef3013}{omega\_dm}}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00163}00163         x=log(alpha+sqrt(alpha*alpha-\/1.\_rk))}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00164}00164         x0=log(alpha0+sqrt(alpha0*alpha0-\/1.\_rk))}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00165}00165         psi=x**0.333333333333333\_rk*(1.5874010519682\_rk-\/6.2992105236833e-\/3\_rk*x*x+7.5375168659459e-\/5\_rk*x**4)}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00166}00166         psi0=x0**0.333333333333333\_rk*(1.5874010519682\_rk-\/6.2992105236833e-\/3\_rk*x0*x0+7.5375168659459e-\/5\_rk*x0**4)}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00167}00167         \mbox{\hyperlink{namespacecosmology__mod_af4a7d4dd7b2b7376051938910de6cba7}{ldiswickram}}=\mbox{\hyperlink{namespacecosmology__mod_aa4930954e353ace2511a96491985e02e}{ls2hc}}*zplus1*(psi0-\/psi)/(\mbox{\hyperlink{namespacecosmology__mod_a6e50489a59451cf4609c271bcb9ce277}{omega\_de}}**0.1666666666666667\_rk*\mbox{\hyperlink{namespacecosmology__mod_a0c992ad841cb5b96570abeee12ef3013}{omega\_dm}}**0.333333333333333\_rk)}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00168}00168     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecosmology__mod_af4a7d4dd7b2b7376051938910de6cba7}{ldiswickram}}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00169}00169 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00170}00170 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00171}00171 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00190}\mbox{\hyperlink{namespacecosmology__mod_a31271c834f4a12d4926de4edb12f27a6}{00190}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacecosmology__mod_a31271c834f4a12d4926de4edb12f27a6}{getlookbacktime}}(zplus1,maxRelativeError,nRefinement) \textcolor{keyword}{result}(lookBackTime)}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00191}00191 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00192}00192 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: getLookBackTime}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00193}00193 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00194}00194 \textcolor{preprocessor}{}        use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: output\_unit}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00195}00195         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceintegration__mod}{integration\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespaceintegration__mod_aaa6c6366588ed25ce9ef2c33c6b2d60d}{doquadrombclosed}}, \mbox{\hyperlink{namespaceintegration__mod_af799efaca3f992de2aa611eccc15c929}{errormessage}}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00196}00196         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00197}00197         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00198}00198 \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{intent(in)}            :: zplus1}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00199}00199 \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: maxrelativeerror}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00200}00200         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: nrefinement}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00201}00201 \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{parameter}             :: zplus1\_min = 1.\_rk}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00202}00202 \textcolor{keywordtype}{        real}(rk)                            :: lookbacktime}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00203}00203 \textcolor{keywordtype}{        real}(rk)                            :: maxrelativeerrordefault, relerr}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00204}00204         \textcolor{keywordtype}{integer(IK)}                         :: neval, ierr, nrefinementdefault}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00205}00205 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00206}00206         maxrelativeerrordefault = 1.e-\/6\_rk; \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(maxrelativeerror)) maxrelativeerrordefault = maxrelativeerror}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00207}00207         nrefinementdefault = 7\_ik; \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(nrefinement)) nrefinementdefault = nrefinement}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00208}00208 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00209}00209         \textcolor{keyword}{call }\mbox{\hyperlink{namespaceintegration__mod_aaa6c6366588ed25ce9ef2c33c6b2d60d}{doquadrombclosed}}   ( getfunc           = \mbox{\hyperlink{namespacecosmology__mod_a9bc6dd0253554d8f2739f5974ced51a8}{getlookbacktimedensity}}    \&}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00210}00210                                 , lowerlim          = zplus1\_min                \&}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00211}00211                                 , upperlim          = zplus1                    \&}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00212}00212                                 , maxrelativeerror  = maxrelativeerrordefault   \&}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00213}00213                                 , nrefinement       = nrefinementdefault        \&}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00214}00214                                 , integral          = lookbacktime              \&}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00215}00215                                 , relativeerror     = relerr                    \&}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00216}00216                                 , numfunceval       = neval                     \&}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00217}00217                                 , ierr              = ierr                      \&}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00218}00218                                 )}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00219}00219         \textcolor{keywordflow}{if} (ierr/=0\_ik) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00220}00220             \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00221}00221             \textcolor{keyword}{write}(output\_unit,\textcolor{stringliteral}{"{}(A)"{}}) \mbox{\hyperlink{namespaceintegration__mod_af799efaca3f992de2aa611eccc15c929}{errormessage}}(ierr)}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00222}00222             error stop}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00223}00223             \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00224}00224 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00225}00225         lookbacktime = \mbox{\hyperlink{namespacecosmology__mod_a88147177976dfcd4535b0de03d65e74c}{hubble\_time\_gyrs}} * lookbacktime}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00226}00226 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00227}00227     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecosmology__mod_a31271c834f4a12d4926de4edb12f27a6}{getlookbacktime}}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00228}00228 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00229}00229 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00230}00230 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00250}\mbox{\hyperlink{namespacecosmology__mod_a9bc6dd0253554d8f2739f5974ced51a8}{00250}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacecosmology__mod_a9bc6dd0253554d8f2739f5974ced51a8}{getlookbacktimedensity}}(zplus1) \textcolor{keyword}{result}(lookBackTimeDnesity)}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00251}00251         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00252}00252         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00253}00253 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(in)}    :: zplus1}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00254}00254 \textcolor{keywordtype}{        real}(rk)                :: lookbacktimednesity}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00255}00255         lookbacktimednesity = 1.\_rk / ( zplus1 * sqrt(\mbox{\hyperlink{namespacecosmology__mod_a0c992ad841cb5b96570abeee12ef3013}{omega\_dm}} * zplus1**3 + \mbox{\hyperlink{namespacecosmology__mod_a6e50489a59451cf4609c271bcb9ce277}{omega\_de}}) )}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00256}00256     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecosmology__mod_a9bc6dd0253554d8f2739f5974ced51a8}{getlookbacktimedensity}}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00257}00257 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00258}00258 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00259}00259 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00279}\mbox{\hyperlink{namespacecosmology__mod_a9a6fc3d8593f4776b311ac3608240eba}{00279}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacecosmology__mod_a9a6fc3d8593f4776b311ac3608240eba}{getuniverseagederivative}}(zplus1) \textcolor{keyword}{result}(universeAgeDerivative)}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00280}00280 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00281}00281 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: getUniverseAgeDerivative}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00282}00282 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00283}00283 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00284}00284         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00285}00285 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(in)}    :: zplus1}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00286}00286 \textcolor{keywordtype}{        real}(rk)                :: universeagederivative}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00287}00287         universeagederivative = \mbox{\hyperlink{namespacecosmology__mod_aae33fea33486c8ee9029ef17c6d3f9e3}{inverse\_hubble\_const}} / ( zplus1 * sqrt(\mbox{\hyperlink{namespacecosmology__mod_a0c992ad841cb5b96570abeee12ef3013}{omega\_dm}} * zplus1**3 + \mbox{\hyperlink{namespacecosmology__mod_a6e50489a59451cf4609c271bcb9ce277}{omega\_de}}) )}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00288}00288     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecosmology__mod_a9a6fc3d8593f4776b311ac3608240eba}{getuniverseagederivative}}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00289}00289 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00290}00290 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00291}00291 }
+\DoxyCodeLine{\Hypertarget{Cosmology__mod_8f90_source_l00292}00292 \textcolor{keyword}{end module }Cosmology\_mod}
+
+\end{DoxyCode}

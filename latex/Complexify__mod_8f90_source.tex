@@ -1,0 +1,905 @@
+\hypertarget{Complexify__mod_8f90_source}{}\doxysection{Complexify\+\_\+mod.\+f90}
+\label{Complexify__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/Complexify\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/Complexify\_mod.f90}}
+\mbox{\hyperlink{Complexify__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00001}\mbox{\hyperlink{interfacecomplexify_1_1maxval_a78a643a09db512d0abbe2dc0ce75ff29}{00001}} \textcolor{comment}{!******************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00002}00002 \textcolor{comment}{!   written for Complex-\/Step differentiation}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00003}00003 \textcolor{comment}{!   Adapted from complexify.f90 written by J.R.R.A.Martins 1999}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00004}00004 \textcolor{comment}{!   }}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00005}00005 \textcolor{comment}{!   List of Fortran overloaded operators:}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00006}00006 \textcolor{comment}{!       <, <=, >, >=}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00007}00007 \textcolor{comment}{!       ==, /=  not overloaded since they are already defined for complex types. See comments below}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00008}00008 \textcolor{comment}{!   }}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00009}00009 \textcolor{comment}{!   List of Fortran's overloaded functions:}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00010}00010 \textcolor{comment}{!       ABS, ACOS, ASIN, ATAN, ATAN2, COSH, MAX, MIN, SIGN, DIM, SINH, TAN, LOG10, NINT, EPSILON}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00011}00011 \textcolor{comment}{!                  }}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00012}00012 \textcolor{comment}{!******************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00013}00013 \textcolor{comment}{!}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00014}00014 \textcolor{comment}{! Assume all code is compiled with double precision (-\/r8 compiler flag)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00015}00015 \textcolor{comment}{!}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00017}00017 \textcolor{comment}{!TODO:}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00018}00018 \textcolor{comment}{!     more type combinations: cc, cr, rc, ic ?}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00019}00019 \textcolor{comment}{!     check all fcns}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00020}00020 \textcolor{comment}{!}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00022}\mbox{\hyperlink{namespacecomplexify}{00022}} \textcolor{keyword}{module} \mbox{\hyperlink{namespacecomplexify}{complexify}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00024}00024   \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: ik, rk}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00025}00025   \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00026}00026   }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00027}00027   \textcolor{comment}{! ABS}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00028}\mbox{\hyperlink{interfacecomplexify_1_1abs}{00028}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1abs}{abs}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00029}00029      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a54fdeea30bdad12fa702396f14a2d53b}{abs\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00030}00030   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00032}00032   \textcolor{comment}{! ACOS}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00033}\mbox{\hyperlink{interfacecomplexify_1_1acos}{00033}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1acos}{acos}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00034}00034      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a37ed54af9c5b81ec7fac80476c48aa96}{acos\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00035}00035   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00037}00037   \textcolor{comment}{! ASIN}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00038}\mbox{\hyperlink{interfacecomplexify_1_1asin}{00038}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1asin}{asin}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00039}00039      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a3cbcff7b3a3fc6a41e7400dad71b21f2}{asin\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00040}00040   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00042}00042   \textcolor{comment}{! ATAN}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00043}\mbox{\hyperlink{interfacecomplexify_1_1atan}{00043}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1atan}{atan}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00044}00044      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a0806e818f8156fe1be98b91dba750e30}{atan\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00045}00045   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00047}00047   \textcolor{comment}{! ATAN2}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00048}\mbox{\hyperlink{interfacecomplexify_1_1atan2}{00048}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1atan2}{atan2}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00049}00049      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a2001d1c0cea3593ce0a78a04ba831267}{atan2\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00050}00050   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00052}00052   \textcolor{comment}{! COSH}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00053}\mbox{\hyperlink{interfacecomplexify_1_1cosh}{00053}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1cosh}{cosh}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00054}00054      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_aaf3e762d7d5d682e18303041e939e98e}{cosh\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00055}00055   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00057}00057   \textcolor{comment}{! MAXVAL}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00058}\mbox{\hyperlink{interfacecomplexify_1_1maxval}{00058}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1maxval}{maxval}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00059}00059      \textcolor{keyword}{module procedure} :: maxval\_c}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00060}00060   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00062}00062   \textcolor{comment}{! MAX (limited to 2-\/4 complex args, 2 mixed args)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00063}\mbox{\hyperlink{interfacecomplexify_1_1max}{00063}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1max}{max}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00064}00064      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a2003f5a17f0e82385c7375b019714d7e}{max\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00065}00065      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a6ffae0762d1a5fdeb49bd8ec2a929ae5}{max\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00066}00066      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a633103620933d016eb5c85516c3574e0}{max\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00067}00067      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_adea87f6b034179865d85197848cc84a5}{max\_ccc}}       \textcolor{comment}{! added because of DFLUX.f}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00068}00068      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ab9a63c5d7f0ab29326a8ab52a5646a66}{max\_cccc}}      \textcolor{comment}{! added because of DFLUX.f}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00069}00069   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00071}00071   \textcolor{comment}{! MIN (limited to 2-\/4 complex args, 2 mixed args)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00072}\mbox{\hyperlink{interfacecomplexify_1_1min}{00072}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1min}{min}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00073}00073      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a525303df24a75db812a82c34621a2e8f}{min\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00074}00074      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a7d7f5c3e14d97ceded44660f3c123812}{min\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00075}00075      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a4fc76d16a0651464999d2b335cf47740}{min\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00076}00076      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a02f929feefa4e3442e34add940dfa38b}{min\_ccc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00077}00077      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a87e035936361e6940412e5c9287babb7}{min\_cccc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00078}00078   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00080}00080   \textcolor{comment}{! SIGN}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00081}\mbox{\hyperlink{interfacecomplexify_1_1sign}{00081}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1sign}{sign}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00082}00082      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a91f57f794ecffdc42f75362836228854}{sign\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00083}00083      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ac9be28183a1f6972b20a7c0f139e566e}{sign\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00084}00084      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_aac792321aa0bc8e87863c2cd345cdbb3}{sign\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00085}00085   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00087}00087   \textcolor{comment}{! DIM}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00088}\mbox{\hyperlink{interfacecomplexify_1_1dim}{00088}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1dim}{dim}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00089}00089      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a54a662eec617e4fa21346b743c05f94c}{dim\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00090}00090      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_af9619a3c9ffcc66c730758928f6f6132}{dim\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00091}00091      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ad4193ea2d3afe707e121f9b89497d45c}{dim\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00092}00092   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00094}00094   \textcolor{comment}{! SINH}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00095}\mbox{\hyperlink{interfacecomplexify_1_1sinh}{00095}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1sinh}{sinh}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00096}00096      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a5c53e5ca9754918a72e48021bb2641c0}{sinh\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00097}00097   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00098}00098   }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00099}00099   \textcolor{comment}{! TAN}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00100}\mbox{\hyperlink{interfacecomplexify_1_1tan}{00100}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1tan}{tan}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00101}00101      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_acbea8844f6258c94b451ee24c69e7543}{tan\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00102}00102   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00103}00103   }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00104}00104   \textcolor{comment}{! TANH}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00105}\mbox{\hyperlink{interfacecomplexify_1_1tanh}{00105}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1tanh}{tanh}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00106}00106      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a84533030c912cfb1e2be6b188a7c616a}{tanh\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00107}00107   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00109}00109   \textcolor{comment}{! LOG10}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00110}\mbox{\hyperlink{interfacecomplexify_1_1log10}{00110}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1log10}{log10}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00111}00111      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_aaf4913048716931fab5c997ad654d216}{log10\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00112}00112   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00114}00114   \textcolor{comment}{! NINT}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00115}\mbox{\hyperlink{interfacecomplexify_1_1nint}{00115}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1nint}{nint}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00116}00116      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ad587382869d2d744618c4e99f57f5597}{nint\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00117}00117   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00119}00119   \textcolor{comment}{! EPSILON}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00120}\mbox{\hyperlink{interfacecomplexify_1_1epsilon}{00120}}   \textcolor{keyword}{interface} \mbox{\hyperlink{interfacecomplexify_1_1epsilon}{epsilon}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00121}00121      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a7191259c2de6921cdf97b17f70c86098}{epsilon\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00122}00122   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00124}00124   \textcolor{comment}{! <}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00125}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_3_08}{00125}}   \textcolor{keyword}{interface} \textcolor{keyword}{operator} (<)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00126}00126      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a23224acb987a06bc38c23c74110490bf}{lt\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00127}00127      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_af7c785bc55cdda970f69992093b76d7e}{lt\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00128}00128      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_aaf7f4fa3980d3c7cc5cd635b2841c8af}{lt\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00129}00129      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ae3963d977eb2d894c96de57182a0f2e5}{lt\_ci}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00130}00130      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a45fef09b0c63c59b3ae8be9cd6b6664a}{lt\_ic}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00131}00131   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00133}00133   \textcolor{comment}{! <=}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00134}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_3_0a_08}{00134}}   \textcolor{keyword}{interface} \textcolor{keyword}{operator} (<=)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00135}00135      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a1102ed384b910c69663be00fcc1b868a}{le\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00136}00136      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a6a7536ec24067909ec6cdaef93ec97b4}{le\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00137}00137      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a3b7bc54eb8cdba3523599da519b611f8}{le\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00138}00138      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_aaa331354a6d8f883a308035e98036283}{le\_ci}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00139}00139      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ae9542d2e49f36fd2bf1953ac67341184}{le\_ic}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00140}00140   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00142}00142   \textcolor{comment}{! >}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00143}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_4_08}{00143}}   \textcolor{keyword}{interface} \textcolor{keyword}{operator} (>)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00144}00144      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ac237fea089fdd3475d38b649379e7f90}{gt\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00145}00145      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a7d3907b977fee80b3b0dc9818113c1bf}{gt\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00146}00146      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a440ff00b63c0b0a98e43e17c8b690f45}{gt\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00147}00147      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ac610149b90ee6e380d75d081a317a90c}{gt\_ci}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00148}00148      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ae2487d544487cfef4a09c607e1e56029}{gt\_ic}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00149}00149   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00150}00150 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00151}00151   \textcolor{comment}{!! MIPSpro Compilers: Version 7.30 won't take .ge. and .eq..}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00152}00152   \textcolor{comment}{!! But pgf90 on Linux doesn't complain, go figure.}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00153}00153   \textcolor{comment}{!! It looks like a strict interpretation of FORTRAN should}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00154}00154   \textcolor{comment}{!! not allow overloading of .eq. and .ne. since they already}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00155}00155   \textcolor{comment}{!! have a definition for type complex, so define new operators}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00156}00156   \textcolor{comment}{!! called .ceq., .cne. and, for MIPS, .cge.}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00157}00157   \textcolor{comment}{!!}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00158}00158   \textcolor{comment}{!! comment out (and uncomment) the appropriate versions for}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00159}00159   \textcolor{comment}{!! your compiler}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00160}00160   \textcolor{comment}{!!}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00161}00161   }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00162}00162   \textcolor{comment}{! >= }}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00163}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_4_0a_08}{00163}}   \textcolor{keyword}{interface} \textcolor{keyword}{operator} (>=)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00164}00164      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_aa08e14311e5b5a9bd3be5bf691575f76}{ge\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00165}00165      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ad108c99a8f54fe1912d1145193665713}{ge\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00166}00166      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ad4cd30a00067443d0e28ef54bfc1aeea}{ge\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00167}00167      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a6567b513c6585a578c11beed2f14c0fb}{ge\_ci}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00168}00168      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a0972e91a0d2932e021acf9b212126c4b}{ge\_ic}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00169}00169   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00170}00170   }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00171}00171   \textcolor{comment}{! interface operator (.cge.)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00172}00172   \textcolor{comment}{!    module procedure :: ge\_cc}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00173}00173   \textcolor{comment}{!    module procedure :: ge\_rr}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00174}00174   \textcolor{comment}{!    module procedure :: ge\_ii}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00175}00175   \textcolor{comment}{!    module procedure :: ge\_aa}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00176}00176   \textcolor{comment}{!    module procedure :: ge\_cr}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00177}00177   \textcolor{comment}{!    module procedure :: ge\_rc}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00178}00178   \textcolor{comment}{!    module procedure :: ge\_ci}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00179}00179   \textcolor{comment}{!    module procedure :: ge\_ic}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00180}00180   \textcolor{comment}{!    module procedure :: ge\_ir}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00181}00181   \textcolor{comment}{!    module procedure :: ge\_ri}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00182}00182   \textcolor{comment}{! end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00183}00183 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00184}00184   \textcolor{comment}{! ==}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00185}00185   \textcolor{comment}{!  interface operator (==)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00186}00186   \textcolor{comment}{!     module procedure :: eq\_cc}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00187}00187   \textcolor{comment}{!     module procedure :: eq\_cr}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00188}00188   \textcolor{comment}{!     module procedure :: eq\_rc}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00189}00189   \textcolor{comment}{!     module procedure :: eq\_ci}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00190}00190   \textcolor{comment}{!     module procedure :: eq\_ic}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00191}00191   \textcolor{comment}{!  end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00192}00192   }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00193}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8ceq_8_08}{00193}}   \textcolor{keyword}{interface} \textcolor{keyword}{operator} (.ceq.)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00194}00194      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a524e838ffabd1e124521358a8f82a275}{eq\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00195}00195      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a1ad9a659641a60c0dea9033932f9fd85}{eq\_rr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00196}00196      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ab7bff702b67d8f1f374c6c1789e58e49}{eq\_ii}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00197}00197      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ae50e00bb62e79c98d7e65e9f9bf9e40f}{eq\_aa}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00198}00198      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a3acca26f4072bbbfa530d0311d6eacfa}{eq\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00199}00199      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ae660ef24bb17f1a20b484f39dee46f2f}{eq\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00200}00200      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ae97bc041f1ba5b9d64f5b5d4c042a202}{eq\_ci}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00201}00201      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a24485bb507fb398eee5db2c5a3944fc6}{eq\_ic}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00202}00202      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ae83a27046c5a13198806da8c40da8172}{eq\_ir}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00203}00203      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ab933f2fdcf606d69f9c73ff0eba2f3b0}{eq\_ri}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00204}00204   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00205}00205 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00206}00206   \textcolor{comment}{! /=}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00207}00207   \textcolor{comment}{!interface operator (/=)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00208}00208   \textcolor{comment}{!   module procedure :: ne\_cc}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00209}00209   \textcolor{comment}{!   module procedure :: ne\_cr}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00210}00210   \textcolor{comment}{!   module procedure :: ne\_rc}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00211}00211   \textcolor{comment}{!   module procedure :: ne\_ci}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00212}00212   \textcolor{comment}{!   module procedure :: ne\_ic}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00213}00213   \textcolor{comment}{!end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00214}00214   }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00215}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8cne_8_08}{00215}}   \textcolor{keyword}{interface} \textcolor{keyword}{operator} (.cne.)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00216}00216      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a74cb55e44153d6675e70a241fbc7e050}{ne\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00217}00217      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a59f5815f87bb029ebd4ce0315209d416}{ne\_rr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00218}00218      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a39331abbd1326ae930aee99a82356c22}{ne\_ii}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00219}00219      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_ad3fa886e10f9a55d93b90348cb8977da}{ne\_aa}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00220}00220      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a4fd2dbe6b7d2c5f9bece336d23e30477}{ne\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00221}00221      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_acdb1fb11691023c281fca4722953620a}{ne\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00222}00222      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a73c89f5189ee4856bceb1f465ba80eef}{ne\_ci}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00223}00223      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a2eb4b9994e2715f1a29540f30363a36c}{ne\_ic}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00224}00224      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a5f73a75c62c4f8e5cddc956dc5384deb}{ne\_ir}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00225}00225      \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacecomplexify_a2dd33d9aa1ed9aefb0b4aca98d38e699}{ne\_ri}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00226}00226   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00227}00227 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00228}00228 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00229}00229 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00230}00230 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00231}00231 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00232}00232 \textcolor{comment}{!}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00233}00233 \textcolor{comment}{!   Function definitions}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00234}00234 \textcolor{comment}{!}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00235}00235 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00236}00236 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00237}00237 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00238}00238 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00239}00239 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00240}00240 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00241}00241   \textcolor{comment}{! ABS, intrinsic}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00242}\mbox{\hyperlink{interfacecomplexify_1_1abs_a11befa7ec78748ae0dd8b4b1c77211b3}{00242}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a54fdeea30bdad12fa702396f14a2d53b}{abs\_c}}(val)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00243}00243     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00244}00244     \mbox{\hyperlink{namespacecomplexify_a54fdeea30bdad12fa702396f14a2d53b}{abs\_c}} = val}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00245}00245     \textcolor{keywordflow}{if} (real(val) < 0) \mbox{\hyperlink{namespacecomplexify_a54fdeea30bdad12fa702396f14a2d53b}{abs\_c}} = cmplx(-\/real(val),-\/aimag(val))}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00246}00246     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00247}00247   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a54fdeea30bdad12fa702396f14a2d53b}{abs\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00248}00248 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00249}00249 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00250}00250 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00251}00251 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00252}00252   \textcolor{comment}{! COSD}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00253}00253   \textcolor{comment}{!  complex(RK) function cosd\_c(z)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00254}00254   \textcolor{comment}{!    complex(RK), intent(in) :: z}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00255}00255   \textcolor{comment}{!    cosd\_c = cos(z*3.14159265358979323846/180.)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00256}00256   \textcolor{comment}{!  end function cosd\_c}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00257}00257 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00258}00258 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00259}00259 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00260}00260   }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00261}00261   \textcolor{comment}{! SIND}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00262}00262   \textcolor{comment}{!  complex(RK) function sind\_c(z)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00263}00263   \textcolor{comment}{!    complex(RK), intent(in) :: z}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00264}00264   \textcolor{comment}{!    sind\_c = sin(z*3.14159265358979323846/180.)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00265}00265   \textcolor{comment}{!  end function sind\_c}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00266}00266 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00267}00267 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00268}00268 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00269}00269 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00270}00270   \textcolor{comment}{! ACOS}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00271}\mbox{\hyperlink{interfacecomplexify_1_1acos_af79bba486df7dd20a2c3292494404626}{00271}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a37ed54af9c5b81ec7fac80476c48aa96}{acos\_c}}(z)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00272}00272     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: z}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00273}00273     \textcolor{comment}{!   acos\_c = -\/ cmplx(0., 1.)*log(z+sqrt(z**2-\/1.))}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00274}00274     \textcolor{comment}{!   not general complex valued formula:}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00275}00275     \mbox{\hyperlink{namespacecomplexify_a37ed54af9c5b81ec7fac80476c48aa96}{acos\_c}} = cmplx(\mbox{\hyperlink{interfacecomplexify_1_1acos}{acos}}(real(z)),-\/aimag(z)/sqrt(1.-\/real(z)**2))}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00276}00276     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00277}00277   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a37ed54af9c5b81ec7fac80476c48aa96}{acos\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00278}00278 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00279}00279 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00280}00280 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00281}00281 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00282}00282   \textcolor{comment}{! ASIN}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00283}\mbox{\hyperlink{interfacecomplexify_1_1asin_a5cc2b73d2d1eea6ac66e730aa50afdd3}{00283}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a3cbcff7b3a3fc6a41e7400dad71b21f2}{asin\_c}}(z)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00284}00284     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: z}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00285}00285     \textcolor{comment}{!   asin\_c = -\/ cmplx(0., 1.)*log(cmplx(0.,1.)*z+sqrt(1.-\/z**2))}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00286}00286     \textcolor{comment}{!   not general complex valued formula:}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00287}00287     \mbox{\hyperlink{namespacecomplexify_a3cbcff7b3a3fc6a41e7400dad71b21f2}{asin\_c}} = cmplx(\mbox{\hyperlink{interfacecomplexify_1_1asin}{asin}}(real(z)),aimag(z)/sqrt(1.-\/real(z)**2))}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00288}00288     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00289}00289   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a3cbcff7b3a3fc6a41e7400dad71b21f2}{asin\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00290}00290 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00291}00291 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00292}00292 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00293}00293 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00294}00294   \textcolor{comment}{! ATAN}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00295}\mbox{\hyperlink{interfacecomplexify_1_1atan_a3141bbf575fb9a0b2840f49b731a9394}{00295}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a0806e818f8156fe1be98b91dba750e30}{atan\_c}}(z)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00296}00296     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: z}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00297}00297     \textcolor{comment}{!   complex(RK) z2}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00298}00298     \textcolor{comment}{!   real(RK) pi2, xans, yans, r, r2, x, y}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00299}00299     \textcolor{comment}{!   pi2 = 2.0*atan(1.0)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00300}00300     \textcolor{comment}{!   r      = sqrt(real(z)**2+aimag(z)**2)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00301}00301     \textcolor{comment}{!   x      = real(z)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00302}00302     \textcolor{comment}{!   y      = aimag(z)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00303}00303     \textcolor{comment}{!   r2     = r*r}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00304}00304     \textcolor{comment}{!   xans   = 0.5*atan2 (2.0*x, 1.0-\/r2)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00305}00305     \textcolor{comment}{!   yans   = 0.25*log((r2+2.0*y+1.0)/(r2-\/2.0*y+1.0))}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00306}00306     \textcolor{comment}{!   atan\_c = cmplx (xans, yans)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00307}00307     \textcolor{comment}{!   not general complex valued formula:}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00308}00308     \mbox{\hyperlink{namespacecomplexify_a0806e818f8156fe1be98b91dba750e30}{atan\_c}} = cmplx(\mbox{\hyperlink{interfacecomplexify_1_1atan}{atan}}(real(z)),aimag(z)/(1.+real(z)**2))}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00309}00309     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00310}00310   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a0806e818f8156fe1be98b91dba750e30}{atan\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00311}00311 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00312}00312 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00313}00313 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00314}00314 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00315}00315   \textcolor{comment}{! ATAN2}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00316}\mbox{\hyperlink{interfacecomplexify_1_1atan2_a505ee3941e7176bbe53d8606be6fc750}{00316}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a2001d1c0cea3593ce0a78a04ba831267}{atan2\_cc}}(csn, ccs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00317}00317     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: csn, ccs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00318}00318     \textcolor{comment}{!   real(RK) pi}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00319}00319     \textcolor{comment}{!   pi = 4.0*atan(1.0)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00320}00320     \textcolor{comment}{!   if (sqrt(real(ccs)**2 + aimag(ccs)**2).eq.0.) then      ! abs orig}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00321}00321     \textcolor{comment}{!     if (sqrt(real(csn)**2+aimag(csn)**2).eq.0.) then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00322}00322     \textcolor{comment}{!       atan2\_cc = cmplx(0.0)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00323}00323     \textcolor{comment}{!     else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00324}00324     \textcolor{comment}{!       atan2\_cc = cmplx(sign(0.5*pi,real(csn)), 0.0)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00325}00325     \textcolor{comment}{!     end if}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00326}00326     \textcolor{comment}{!   else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00327}00327     \textcolor{comment}{!     atan2\_cc = atan(csn/ccs)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00328}00328     \textcolor{comment}{!     if (real(ccs).lt.0.) atan2\_cc = atan2\_cc + pi}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00329}00329     \textcolor{comment}{!     if (real(atan2\_cc).gt.pi) atan2\_cc = atan2\_cc -\/ 2.0*pi}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00330}00330     \textcolor{comment}{!   end if}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00331}00331     \textcolor{comment}{!   not general complex valued formula:}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00332}00332 \textcolor{keywordtype}{    real}(rk) a,b,c,d}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00333}00333     a=real(csn)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00334}00334     b=aimag(csn)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00335}00335     c=real(ccs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00336}00336     d=aimag(ccs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00337}00337     \mbox{\hyperlink{namespacecomplexify_a2001d1c0cea3593ce0a78a04ba831267}{atan2\_cc}}=cmplx(\mbox{\hyperlink{interfacecomplexify_1_1atan2}{atan2}}(a,c),(c*b-\/a*d)/(a**2+c**2))}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00338}00338     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00339}00339   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a2001d1c0cea3593ce0a78a04ba831267}{atan2\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00340}00340 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00341}00341 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00342}00342 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00343}00343 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00344}00344   \textcolor{comment}{! COSH}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00345}\mbox{\hyperlink{interfacecomplexify_1_1cosh_ac23d285d3a8a98d49d5c688443113615}{00345}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_aaf3e762d7d5d682e18303041e939e98e}{cosh\_c}}(z)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00346}00346     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: z}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00347}00347     \textcolor{comment}{!   complex(RK) eplus, eminus}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00348}00348     \textcolor{comment}{!   eplus = exp(z)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00349}00349     \textcolor{comment}{!   eminus = exp(z)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00350}00350     \textcolor{comment}{!   cosh\_c = (eplus + eminus)/2.}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00351}00351     \textcolor{comment}{!   not general complex valued formula:}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00352}00352     \mbox{\hyperlink{namespacecomplexify_aaf3e762d7d5d682e18303041e939e98e}{cosh\_c}}=cmplx(\mbox{\hyperlink{interfacecomplexify_1_1cosh}{cosh}}(real(z)),aimag(z)*\mbox{\hyperlink{interfacecomplexify_1_1sinh}{sinh}}(real(z)))}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00353}00353     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00354}00354   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_aaf3e762d7d5d682e18303041e939e98e}{cosh\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00355}00355 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00356}00356 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00357}00357 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00358}00358 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00359}00359   \textcolor{comment}{! SINH}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00360}\mbox{\hyperlink{interfacecomplexify_1_1sinh_a340df5dc8bc48791e6ca09ef6eccfbca}{00360}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a5c53e5ca9754918a72e48021bb2641c0}{sinh\_c}}(z)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00361}00361     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: z}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00362}00362     \textcolor{comment}{!   complex(RK) eplus, eminus}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00363}00363     \textcolor{comment}{!   eplus = exp(z)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00364}00364     \textcolor{comment}{!   eminus = exp(z)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00365}00365     \textcolor{comment}{!   sinh\_c = (eplus -\/ eminus)/2.}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00366}00366     \textcolor{comment}{!   not general complex valued formula:}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00367}00367     \mbox{\hyperlink{namespacecomplexify_a5c53e5ca9754918a72e48021bb2641c0}{sinh\_c}}=cmplx(\mbox{\hyperlink{interfacecomplexify_1_1sinh}{sinh}}(real(z)),aimag(z)*\mbox{\hyperlink{interfacecomplexify_1_1cosh}{cosh}}(real(z)))}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00368}00368     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00369}00369   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a5c53e5ca9754918a72e48021bb2641c0}{sinh\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00370}00370 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00371}00371 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00372}00372 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00373}00373 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00374}00374   \textcolor{comment}{! TAN}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00375}\mbox{\hyperlink{interfacecomplexify_1_1tan_a4d7db854b64928946cdc2bbe18ec3ab8}{00375}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_acbea8844f6258c94b451ee24c69e7543}{tan\_c}}(z)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00376}00376     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: z}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00377}00377     \textcolor{comment}{!   complex(RK) eiplus, eiminus}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00378}00378     \textcolor{comment}{!   eiplus = exp(cmplx(0.,1.)*z)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00379}00379     \textcolor{comment}{!   eiminus = exp(-\/cmplx(0.,1.)*z)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00380}00380     \textcolor{comment}{!   tan\_c = cmplx(0.,1.)*(eiminus -\/ eiplus)/(eiplus + eiminus)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00381}00381     \textcolor{comment}{!   not general complex valued formula:}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00382}00382     \mbox{\hyperlink{namespacecomplexify_acbea8844f6258c94b451ee24c69e7543}{tan\_c}}=cmplx(\mbox{\hyperlink{interfacecomplexify_1_1tan}{tan}}(real(z)),aimag(z)/cos(real(z))**2)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00383}00383     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00384}00384   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_acbea8844f6258c94b451ee24c69e7543}{tan\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00385}00385 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00386}00386 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00387}00387 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00388}00388   }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00389}00389   \textcolor{comment}{! TANH}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00390}\mbox{\hyperlink{interfacecomplexify_1_1tanh_a977bdbe36c263eaa0fe367c924623be4}{00390}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a84533030c912cfb1e2be6b188a7c616a}{tanh\_c}}(a)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00391}00391     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: a}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00392}00392     \textcolor{comment}{!   complex(RK) eplus, eminus}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00393}00393     \textcolor{comment}{!   if(real(a) > 50)then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00394}00394     \textcolor{comment}{!     tanh\_c = 1.}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00395}00395     \textcolor{comment}{!   else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00396}00396     \textcolor{comment}{!     eplus = exp(a)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00397}00397     \textcolor{comment}{!     eminus = exp(-\/a)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00398}00398     \textcolor{comment}{!     tanh\_c = (eplus -\/ eminus)/(eplus + eminus)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00399}00399     \textcolor{comment}{!   end if}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00400}00400     \textcolor{comment}{!   not general complex valued formula:}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00401}00401     \mbox{\hyperlink{namespacecomplexify_a84533030c912cfb1e2be6b188a7c616a}{tanh\_c}}=cmplx(\mbox{\hyperlink{interfacecomplexify_1_1tanh}{tanh}}(real(a)),aimag(a)/\mbox{\hyperlink{interfacecomplexify_1_1cosh}{cosh}}(real(a))**2)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00402}00402     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00403}00403   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a84533030c912cfb1e2be6b188a7c616a}{tanh\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00404}00404 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00405}00405 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00406}00406 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00407}00407 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00408}00408   \textcolor{comment}{! MAXVAL, intrinsic}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00409}00409   \textcolor{comment}{!complex(RK) function maxval\_c(Vector)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00410}00410   \textcolor{comment}{!  complex(RK), intent(in) :: val1, val2}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00411}00411   \textcolor{comment}{!  if (real(val1) > real(val2)) then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00412}00412   \textcolor{comment}{!    max\_cc = val1}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00413}00413   \textcolor{comment}{!  else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00414}00414   \textcolor{comment}{!    max\_cc = val2}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00415}00415   \textcolor{comment}{!  endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00416}00416   \textcolor{comment}{!  return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00417}00417   \textcolor{comment}{!end function max\_cc}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00418}00418 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00419}00419 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00420}00420 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00421}00421 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00422}00422   \textcolor{comment}{! MAX, intrinsic}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00423}\mbox{\hyperlink{interfacecomplexify_1_1max_a3124565a3ead9b0b01c7b8c274787ea6}{00423}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a2003f5a17f0e82385c7375b019714d7e}{max\_cc}}(val1, val2)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00424}00424     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val1, val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00425}00425     \textcolor{keywordflow}{if} (real(val1) > real(val2)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00426}00426       \mbox{\hyperlink{namespacecomplexify_a2003f5a17f0e82385c7375b019714d7e}{max\_cc}} = val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00427}00427     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00428}00428       \mbox{\hyperlink{namespacecomplexify_a2003f5a17f0e82385c7375b019714d7e}{max\_cc}} = val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00429}00429 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00430}00430     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00431}00431   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a2003f5a17f0e82385c7375b019714d7e}{max\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00432}00432   }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00433}\mbox{\hyperlink{interfacecomplexify_1_1max_a957a990bae0c99bb40735771f4938d34}{00433}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a6ffae0762d1a5fdeb49bd8ec2a929ae5}{max\_cr}}(val1, val2)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00434}00434     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val1    }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00435}00435 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: val2    }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00436}00436     \textcolor{keywordflow}{if} (real(val1) > val2) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00437}00437       \mbox{\hyperlink{namespacecomplexify_a6ffae0762d1a5fdeb49bd8ec2a929ae5}{max\_cr}} = val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00438}00438     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00439}00439       \mbox{\hyperlink{namespacecomplexify_a6ffae0762d1a5fdeb49bd8ec2a929ae5}{max\_cr}} = cmplx(val2, 0.)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00440}00440 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00441}00441     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00442}00442   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a6ffae0762d1a5fdeb49bd8ec2a929ae5}{max\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00443}00443   }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00444}\mbox{\hyperlink{interfacecomplexify_1_1max_ac95b013deca9dc8a3656bee3e70e5817}{00444}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a633103620933d016eb5c85516c3574e0}{max\_rc}}(val1, val2)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00445}00445 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00446}00446     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00447}00447     \textcolor{keywordflow}{if} (val1 > real(val2)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00448}00448       \mbox{\hyperlink{namespacecomplexify_a633103620933d016eb5c85516c3574e0}{max\_rc}} = cmplx(val1, 0.)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00449}00449     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00450}00450       \mbox{\hyperlink{namespacecomplexify_a633103620933d016eb5c85516c3574e0}{max\_rc}} = val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00451}00451 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00452}00452     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00453}00453   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a633103620933d016eb5c85516c3574e0}{max\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00454}00454   }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00455}\mbox{\hyperlink{interfacecomplexify_1_1max_a826a87a6dc70eeae792377072e681fd8}{00455}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_adea87f6b034179865d85197848cc84a5}{max\_ccc}}(val1, val2, val3)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00456}00456     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val1, val2, val3}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00457}00457     \textcolor{keywordflow}{if} (real(val1) > real(val2)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00458}00458       \mbox{\hyperlink{namespacecomplexify_adea87f6b034179865d85197848cc84a5}{max\_ccc}} = val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00459}00459     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00460}00460       \mbox{\hyperlink{namespacecomplexify_adea87f6b034179865d85197848cc84a5}{max\_ccc}} = val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00461}00461 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00462}00462     \textcolor{keywordflow}{if} (real(val3) > real(\mbox{\hyperlink{namespacecomplexify_adea87f6b034179865d85197848cc84a5}{max\_ccc}})) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00463}00463       \mbox{\hyperlink{namespacecomplexify_adea87f6b034179865d85197848cc84a5}{max\_ccc}} = val3}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00464}00464 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00465}00465     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00466}00466   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_adea87f6b034179865d85197848cc84a5}{max\_ccc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00467}\mbox{\hyperlink{interfacecomplexify_1_1max_a02f4037aa349f609e57f8ef3adcb1448}{00467}}   \textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ab9a63c5d7f0ab29326a8ab52a5646a66}{max\_cccc}}(val1, val2, val3, val4)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00468}00468     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val1, val2, val3, val4}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00469}00469     \textcolor{keywordtype}{complex(RK)} \mbox{\hyperlink{namespacecomplexify_ab9a63c5d7f0ab29326a8ab52a5646a66}{max\_cccc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00470}00470     \textcolor{keywordtype}{complex(RK)} max\_cccc2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00471}00471     \textcolor{keywordflow}{if} (real(val1) > real(val2)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00472}00472       \mbox{\hyperlink{namespacecomplexify_ab9a63c5d7f0ab29326a8ab52a5646a66}{max\_cccc}} = val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00473}00473     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00474}00474       \mbox{\hyperlink{namespacecomplexify_ab9a63c5d7f0ab29326a8ab52a5646a66}{max\_cccc}} = val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00475}00475 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00476}00476     \textcolor{keywordflow}{if} (real(val3) > real(val4)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00477}00477       max\_cccc2 = val3}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00478}00478     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00479}00479       max\_cccc2 = val4}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00480}00480 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00481}00481     \textcolor{keywordflow}{if} (real(max\_cccc2) > real(\mbox{\hyperlink{namespacecomplexify_ab9a63c5d7f0ab29326a8ab52a5646a66}{max\_cccc}})) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00482}00482       \mbox{\hyperlink{namespacecomplexify_ab9a63c5d7f0ab29326a8ab52a5646a66}{max\_cccc}} = max\_cccc2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00483}00483 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00484}00484     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00485}00485   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ab9a63c5d7f0ab29326a8ab52a5646a66}{max\_cccc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00486}00486 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00487}00487 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00488}00488 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00489}00489 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00490}00490   \textcolor{comment}{! MIN, intrinsic}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00491}\mbox{\hyperlink{interfacecomplexify_1_1min_a9c7b949ba829be6d248079b4606f8c2e}{00491}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a525303df24a75db812a82c34621a2e8f}{min\_cc}}(val1, val2)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00492}00492     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val1, val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00493}00493     \textcolor{keywordflow}{if} (real(val1) < real(val2)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00494}00494       \mbox{\hyperlink{namespacecomplexify_a525303df24a75db812a82c34621a2e8f}{min\_cc}} = val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00495}00495     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00496}00496       \mbox{\hyperlink{namespacecomplexify_a525303df24a75db812a82c34621a2e8f}{min\_cc}} = val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00497}00497 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00498}00498     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00499}00499   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a525303df24a75db812a82c34621a2e8f}{min\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00500}\mbox{\hyperlink{interfacecomplexify_1_1min_a653ae4293258c0038891e985a9aca961}{00500}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a7d7f5c3e14d97ceded44660f3c123812}{min\_cr}}(val1, val2)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00501}00501     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val1    }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00502}00502 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: val2    }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00503}00503     \textcolor{keywordflow}{if} (real(val1) < val2) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00504}00504       \mbox{\hyperlink{namespacecomplexify_a7d7f5c3e14d97ceded44660f3c123812}{min\_cr}} = val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00505}00505     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00506}00506       \mbox{\hyperlink{namespacecomplexify_a7d7f5c3e14d97ceded44660f3c123812}{min\_cr}} = cmplx(val2, 0.)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00507}00507 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00508}00508     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00509}00509   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a7d7f5c3e14d97ceded44660f3c123812}{min\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00510}\mbox{\hyperlink{interfacecomplexify_1_1min_a3fe00774f07b3cdaaed785a5cc1fd877}{00510}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a4fc76d16a0651464999d2b335cf47740}{min\_rc}}(val1, val2)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00511}00511 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00512}00512     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00513}00513     \textcolor{keywordflow}{if} (val1 < real(val2)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00514}00514       \mbox{\hyperlink{namespacecomplexify_a4fc76d16a0651464999d2b335cf47740}{min\_rc}} = cmplx(val1, 0.)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00515}00515     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00516}00516       \mbox{\hyperlink{namespacecomplexify_a4fc76d16a0651464999d2b335cf47740}{min\_rc}} = val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00517}00517 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00518}00518     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00519}00519   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a4fc76d16a0651464999d2b335cf47740}{min\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00520}\mbox{\hyperlink{interfacecomplexify_1_1min_ab94de0051eb795a40fa3908be37ffe64}{00520}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a02f929feefa4e3442e34add940dfa38b}{min\_ccc}}(val1, val2, val3)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00521}00521     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val1, val2, val3}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00522}00522     \textcolor{keywordflow}{if} (real(val1) < real(val2)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00523}00523       \mbox{\hyperlink{namespacecomplexify_a02f929feefa4e3442e34add940dfa38b}{min\_ccc}} = val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00524}00524     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00525}00525       \mbox{\hyperlink{namespacecomplexify_a02f929feefa4e3442e34add940dfa38b}{min\_ccc}} = val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00526}00526 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00527}00527     \textcolor{keywordflow}{if} (real(val3) < real(\mbox{\hyperlink{namespacecomplexify_a02f929feefa4e3442e34add940dfa38b}{min\_ccc}})) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00528}00528       \mbox{\hyperlink{namespacecomplexify_a02f929feefa4e3442e34add940dfa38b}{min\_ccc}} = val3}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00529}00529 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00530}00530     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00531}00531   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a02f929feefa4e3442e34add940dfa38b}{min\_ccc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00532}\mbox{\hyperlink{interfacecomplexify_1_1min_a62298d04b2bfdaa4824aa2eaf2fe4ccb}{00532}}   \textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a87e035936361e6940412e5c9287babb7}{min\_cccc}}(val1, val2, val3, val4)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00533}00533     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val1, val2, val3, val4}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00534}00534     \textcolor{keywordtype}{complex(RK)} \mbox{\hyperlink{namespacecomplexify_a87e035936361e6940412e5c9287babb7}{min\_cccc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00535}00535     \textcolor{keywordtype}{complex(RK)} min\_cccc2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00536}00536     \textcolor{keywordflow}{if} (real(val1) < real(val2)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00537}00537       \mbox{\hyperlink{namespacecomplexify_a87e035936361e6940412e5c9287babb7}{min\_cccc}} = val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00538}00538     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00539}00539       \mbox{\hyperlink{namespacecomplexify_a87e035936361e6940412e5c9287babb7}{min\_cccc}} = val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00540}00540 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00541}00541     \textcolor{keywordflow}{if} (real(val3) < real(val4)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00542}00542       min\_cccc2 = val3}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00543}00543     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00544}00544       min\_cccc2 = val4}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00545}00545 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00546}00546     \textcolor{keywordflow}{if} (real(min\_cccc2) < real(\mbox{\hyperlink{namespacecomplexify_a87e035936361e6940412e5c9287babb7}{min\_cccc}})) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00547}00547       \mbox{\hyperlink{namespacecomplexify_a87e035936361e6940412e5c9287babb7}{min\_cccc}} = min\_cccc2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00548}00548 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00549}00549     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00550}00550   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a87e035936361e6940412e5c9287babb7}{min\_cccc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00551}00551 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00552}00552 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00553}00553 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00554}00554   }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00555}00555   \textcolor{comment}{! SIGN, intrinsic, assume that val1 is always a complex(RK)}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00556}00556   \textcolor{comment}{!                  in reality could be int}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00557}\mbox{\hyperlink{interfacecomplexify_1_1sign_a416571ec7089437ab2496ece967e04be}{00557}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a91f57f794ecffdc42f75362836228854}{sign\_cc}}(val1, val2)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00558}00558     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val1, val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00559}00559 \textcolor{keywordtype}{    real}(rk)  \mbox{\hyperlink{interfacecomplexify_1_1sign}{sign}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00560}00560     \textcolor{keywordflow}{if} (real(val2) < 0.) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00561}00561       \mbox{\hyperlink{interfacecomplexify_1_1sign}{sign}} = -\/1.}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00562}00562     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00563}00563       \mbox{\hyperlink{interfacecomplexify_1_1sign}{sign}} = 1.}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00564}00564 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00565}00565     \mbox{\hyperlink{namespacecomplexify_a91f57f794ecffdc42f75362836228854}{sign\_cc}} = \mbox{\hyperlink{interfacecomplexify_1_1sign}{sign}} * val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00566}00566     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00567}00567   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a91f57f794ecffdc42f75362836228854}{sign\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00568}\mbox{\hyperlink{interfacecomplexify_1_1sign_a8db94b5af3fb9d493d2d5223b56259d4}{00568}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ac9be28183a1f6972b20a7c0f139e566e}{sign\_cr}}(val1, val2)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00569}00569     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00570}00570 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00571}00571 \textcolor{keywordtype}{    real}(rk) :: \mbox{\hyperlink{interfacecomplexify_1_1sign}{sign}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00572}00572     \textcolor{keywordflow}{if} (real(val2) < 0.) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00573}00573       \mbox{\hyperlink{interfacecomplexify_1_1sign}{sign}} = -\/1.}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00574}00574     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00575}00575       \mbox{\hyperlink{interfacecomplexify_1_1sign}{sign}} = 1.}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00576}00576 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00577}00577     \mbox{\hyperlink{namespacecomplexify_ac9be28183a1f6972b20a7c0f139e566e}{sign\_cr}} = \mbox{\hyperlink{interfacecomplexify_1_1sign}{sign}} * val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00578}00578     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00579}00579   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ac9be28183a1f6972b20a7c0f139e566e}{sign\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00580}\mbox{\hyperlink{interfacecomplexify_1_1sign_a610b4d5aa0bd8ce6e66656c495aeaae0}{00580}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_aac792321aa0bc8e87863c2cd345cdbb3}{sign\_rc}}(val1, val2)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00581}00581 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00582}00582     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00583}00583 \textcolor{keywordtype}{    real}(rk) \mbox{\hyperlink{interfacecomplexify_1_1sign}{sign}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00584}00584     \textcolor{keywordflow}{if} (real(val2) < 0.) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00585}00585       \mbox{\hyperlink{interfacecomplexify_1_1sign}{sign}} = -\/1.}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00586}00586     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00587}00587       \mbox{\hyperlink{interfacecomplexify_1_1sign}{sign}} = 1.}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00588}00588 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00589}00589     \mbox{\hyperlink{namespacecomplexify_aac792321aa0bc8e87863c2cd345cdbb3}{sign\_rc}} = \mbox{\hyperlink{interfacecomplexify_1_1sign}{sign}} * val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00590}00590     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00591}00591   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_aac792321aa0bc8e87863c2cd345cdbb3}{sign\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00592}00592 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00593}00593 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00594}00594 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00595}00595 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00596}00596   \textcolor{comment}{! DIM, intrinsic}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00597}\mbox{\hyperlink{interfacecomplexify_1_1dim_ad70a44f478c29032477095cb00f6e8ba}{00597}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a54a662eec617e4fa21346b743c05f94c}{dim\_cc}}(val1, val2)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00598}00598     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val1, val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00599}00599     \textcolor{keywordflow}{if} (val1 > val2) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00600}00600       \mbox{\hyperlink{namespacecomplexify_a54a662eec617e4fa21346b743c05f94c}{dim\_cc}} = val1 -\/ val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00601}00601     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00602}00602       \mbox{\hyperlink{namespacecomplexify_a54a662eec617e4fa21346b743c05f94c}{dim\_cc}} = cmplx(0., 0.)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00603}00603 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00604}00604     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00605}00605   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a54a662eec617e4fa21346b743c05f94c}{dim\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00606}\mbox{\hyperlink{interfacecomplexify_1_1dim_a9c4afb57d700b17f83a7817f654aded9}{00606}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_af9619a3c9ffcc66c730758928f6f6132}{dim\_cr}}(val1, val2)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00607}00607     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00608}00608 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00609}00609     \textcolor{keywordflow}{if} (val1 > val2) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00610}00610       \mbox{\hyperlink{namespacecomplexify_af9619a3c9ffcc66c730758928f6f6132}{dim\_cr}} = val1 -\/ cmplx(val2, 0.)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00611}00611     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00612}00612       \mbox{\hyperlink{namespacecomplexify_af9619a3c9ffcc66c730758928f6f6132}{dim\_cr}} = cmplx(0., 0.)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00613}00613 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00614}00614     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00615}00615   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_af9619a3c9ffcc66c730758928f6f6132}{dim\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00616}\mbox{\hyperlink{interfacecomplexify_1_1dim_a230ac87f1b3095eb0adf0e7bcda37d86}{00616}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ad4193ea2d3afe707e121f9b89497d45c}{dim\_rc}}(val1, val2)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00617}00617 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: val1}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00618}00618     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00619}00619     \textcolor{keywordflow}{if} (val1 > val2) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00620}00620       \mbox{\hyperlink{namespacecomplexify_ad4193ea2d3afe707e121f9b89497d45c}{dim\_rc}} = cmplx(val1, 0.) -\/ val2}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00621}00621     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00622}00622       \mbox{\hyperlink{namespacecomplexify_ad4193ea2d3afe707e121f9b89497d45c}{dim\_rc}} = cmplx(0., 0.)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00623}00623 \textcolor{keywordflow}{    endif}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00624}00624     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00625}00625   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ad4193ea2d3afe707e121f9b89497d45c}{dim\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00626}00626   }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00627}00627 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00628}00628 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00629}00629 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00630}00630   \textcolor{comment}{! LOG10}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00631}\mbox{\hyperlink{interfacecomplexify_1_1log10_a86495da6ad7aebd10984954b226cc339}{00631}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_aaf4913048716931fab5c997ad654d216}{log10\_c}}(z)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00632}00632     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: z}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00633}00633     \mbox{\hyperlink{namespacecomplexify_aaf4913048716931fab5c997ad654d216}{log10\_c}}=log(z)/log((10.0,0.0))}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00634}00634   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_aaf4913048716931fab5c997ad654d216}{log10\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00635}00635 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00636}00636 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00637}00637 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00638}00638 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00639}00639   \textcolor{comment}{! NINT}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00640}\mbox{\hyperlink{interfacecomplexify_1_1nint_acfa0a036863ce8351788d2d186ea4cca}{00640}}   \textcolor{keyword}{integer(IK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ad587382869d2d744618c4e99f57f5597}{nint\_c}}(z)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00641}00641     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: z}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00642}00642     \mbox{\hyperlink{namespacecomplexify_ad587382869d2d744618c4e99f57f5597}{nint\_c}}=\mbox{\hyperlink{interfacecomplexify_1_1nint}{nint}}(real(z))}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00643}00643   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ad587382869d2d744618c4e99f57f5597}{nint\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00644}00644 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00645}00645 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00646}00646 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00647}00647 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00648}00648   \textcolor{comment}{! EPSILON !  ! bad news ulness compiled with -\/r8}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00649}\mbox{\hyperlink{interfacecomplexify_1_1epsilon_a9b092dc7126a42ad6934201d49e09d7b}{00649}}   \textcolor{keyword}{complex(RK) }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a7191259c2de6921cdf97b17f70c86098}{epsilon\_c}}(z)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00650}00650     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: z}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00651}00651     \mbox{\hyperlink{namespacecomplexify_a7191259c2de6921cdf97b17f70c86098}{epsilon\_c}}=\mbox{\hyperlink{interfacecomplexify_1_1epsilon}{epsilon}}(real(z))}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00652}00652   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a7191259c2de6921cdf97b17f70c86098}{epsilon\_c}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00653}00653 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00654}00654 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00655}00655 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00656}00656 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00657}00657   \textcolor{comment}{! <, .lt.}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00658}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_3_08_a554468f7200afb0ac69177aafccca622}{00658}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a23224acb987a06bc38c23c74110490bf}{lt\_cc}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00659}00659     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs, rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00660}00660     \mbox{\hyperlink{namespacecomplexify_a23224acb987a06bc38c23c74110490bf}{lt\_cc}} = real(lhs) < real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00661}00661   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a23224acb987a06bc38c23c74110490bf}{lt\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00662}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_3_08_a7dc72ed445727ef8ab3880d1d7647c3a}{00662}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_af7c785bc55cdda970f69992093b76d7e}{lt\_cr}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00663}00663     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00664}00664 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00665}00665     \mbox{\hyperlink{namespacecomplexify_af7c785bc55cdda970f69992093b76d7e}{lt\_cr}} = real(lhs) < rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00666}00666   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_af7c785bc55cdda970f69992093b76d7e}{lt\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00667}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_3_08_a3b1aecf1d35c81f51588d38a8c518583}{00667}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_aaf7f4fa3980d3c7cc5cd635b2841c8af}{lt\_rc}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00668}00668 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00669}00669     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00670}00670     \mbox{\hyperlink{namespacecomplexify_aaf7f4fa3980d3c7cc5cd635b2841c8af}{lt\_rc}} = lhs < real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00671}00671   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_aaf7f4fa3980d3c7cc5cd635b2841c8af}{lt\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00672}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_3_08_afb4683ff17cefbdd3b2f44c05ee55a16}{00672}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ae3963d977eb2d894c96de57182a0f2e5}{lt\_ci}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00673}00673     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00674}00674     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00675}00675     \mbox{\hyperlink{namespacecomplexify_ae3963d977eb2d894c96de57182a0f2e5}{lt\_ci}} = real(lhs) < rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00676}00676   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ae3963d977eb2d894c96de57182a0f2e5}{lt\_ci}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00677}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_3_08_a7e44fb234ae71d19b4b62f471e99be4e}{00677}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a45fef09b0c63c59b3ae8be9cd6b6664a}{lt\_ic}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00678}00678     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00679}00679     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00680}00680     \mbox{\hyperlink{namespacecomplexify_a45fef09b0c63c59b3ae8be9cd6b6664a}{lt\_ic}} = lhs < real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00681}00681   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a45fef09b0c63c59b3ae8be9cd6b6664a}{lt\_ic}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00682}00682 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00683}00683 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00684}00684 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00685}00685 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00686}00686   \textcolor{comment}{! <=, .le.}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00687}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_3_0a_08_a6aea6f20e1e4e95b019fa150554b7a10}{00687}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a1102ed384b910c69663be00fcc1b868a}{le\_cc}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00688}00688     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs, rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00689}00689     \mbox{\hyperlink{namespacecomplexify_a1102ed384b910c69663be00fcc1b868a}{le\_cc}} = real(lhs) <= real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00690}00690   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a1102ed384b910c69663be00fcc1b868a}{le\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00691}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_3_0a_08_a9e89a0265f62618072abd3a643ae779c}{00691}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a6a7536ec24067909ec6cdaef93ec97b4}{le\_cr}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00692}00692     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00693}00693 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00694}00694     \mbox{\hyperlink{namespacecomplexify_a6a7536ec24067909ec6cdaef93ec97b4}{le\_cr}} = real(lhs) <= rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00695}00695   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a6a7536ec24067909ec6cdaef93ec97b4}{le\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00696}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_3_0a_08_ae0eb5addc8880587d4adffd643d00a47}{00696}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a3b7bc54eb8cdba3523599da519b611f8}{le\_rc}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00697}00697 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00698}00698     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00699}00699     \mbox{\hyperlink{namespacecomplexify_a3b7bc54eb8cdba3523599da519b611f8}{le\_rc}} = lhs <= real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00700}00700   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a3b7bc54eb8cdba3523599da519b611f8}{le\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00701}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_3_0a_08_a7292e360659e9d051b80919325ddcb5d}{00701}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_aaa331354a6d8f883a308035e98036283}{le\_ci}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00702}00702     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00703}00703     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00704}00704     \mbox{\hyperlink{namespacecomplexify_aaa331354a6d8f883a308035e98036283}{le\_ci}} = real(lhs) <= rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00705}00705   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_aaa331354a6d8f883a308035e98036283}{le\_ci}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00706}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_3_0a_08_afa47d0fbbfe8895cd576aee83ecce635}{00706}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ae9542d2e49f36fd2bf1953ac67341184}{le\_ic}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00707}00707     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00708}00708     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00709}00709     \mbox{\hyperlink{namespacecomplexify_ae9542d2e49f36fd2bf1953ac67341184}{le\_ic}} = lhs <= real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00710}00710   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ae9542d2e49f36fd2bf1953ac67341184}{le\_ic}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00711}00711 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00712}00712 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00713}00713 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00714}00714 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00715}00715   \textcolor{comment}{! >, .gt.}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00716}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_4_08_a2734ad9f70159dfa87f0a524054b3c3d}{00716}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ac237fea089fdd3475d38b649379e7f90}{gt\_cc}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00717}00717     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs, rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00718}00718     \mbox{\hyperlink{namespacecomplexify_ac237fea089fdd3475d38b649379e7f90}{gt\_cc}} = real(lhs) > real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00719}00719   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ac237fea089fdd3475d38b649379e7f90}{gt\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00720}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_4_08_a0798c4e604af9b5089e9a1d877f13ca2}{00720}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a7d3907b977fee80b3b0dc9818113c1bf}{gt\_cr}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00721}00721     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00722}00722 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00723}00723     \mbox{\hyperlink{namespacecomplexify_a7d3907b977fee80b3b0dc9818113c1bf}{gt\_cr}} = real(lhs) > rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00724}00724   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a7d3907b977fee80b3b0dc9818113c1bf}{gt\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00725}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_4_08_a774c110246288cf4051976ee017f1076}{00725}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a440ff00b63c0b0a98e43e17c8b690f45}{gt\_rc}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00726}00726 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00727}00727     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00728}00728     \mbox{\hyperlink{namespacecomplexify_a440ff00b63c0b0a98e43e17c8b690f45}{gt\_rc}} = lhs > real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00729}00729   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a440ff00b63c0b0a98e43e17c8b690f45}{gt\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00730}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_4_08_aaef6b4f3cb430d431785d7b22b3bd09d}{00730}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ac610149b90ee6e380d75d081a317a90c}{gt\_ci}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00731}00731     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00732}00732     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00733}00733     \mbox{\hyperlink{namespacecomplexify_ac610149b90ee6e380d75d081a317a90c}{gt\_ci}} = real(lhs) > rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00734}00734   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ac610149b90ee6e380d75d081a317a90c}{gt\_ci}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00735}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_4_08_ae1a961d727e678c80821153a73383ecb}{00735}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ae2487d544487cfef4a09c607e1e56029}{gt\_ic}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00736}00736     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00737}00737     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00738}00738     \mbox{\hyperlink{namespacecomplexify_ae2487d544487cfef4a09c607e1e56029}{gt\_ic}} = lhs > real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00739}00739   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ae2487d544487cfef4a09c607e1e56029}{gt\_ic}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00740}00740 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00741}00741 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00742}00742 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00743}00743 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00744}00744   \textcolor{comment}{!! here are the redefined ones:}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00745}00745   \textcolor{comment}{! >=, .ge.}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00746}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_4_0a_08_abc17b7d0f7f8e26d702a1339dd305268}{00746}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_aa08e14311e5b5a9bd3be5bf691575f76}{ge\_cc}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00747}00747     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs, rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00748}00748     \mbox{\hyperlink{namespacecomplexify_aa08e14311e5b5a9bd3be5bf691575f76}{ge\_cc}} = real(lhs) >= real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00749}00749   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_aa08e14311e5b5a9bd3be5bf691575f76}{ge\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00750}\mbox{\hyperlink{namespacecomplexify_ace79e5f51a08b2bf6a9f61f3dc3c116b}{00750}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ace79e5f51a08b2bf6a9f61f3dc3c116b}{ge\_rr}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00751}00751 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: lhs, rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00752}00752     \mbox{\hyperlink{namespacecomplexify_ace79e5f51a08b2bf6a9f61f3dc3c116b}{ge\_rr}} = lhs >= rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00753}00753   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ace79e5f51a08b2bf6a9f61f3dc3c116b}{ge\_rr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00754}\mbox{\hyperlink{namespacecomplexify_a109648efd0d194f47cacbcb978d0d9d9}{00754}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a109648efd0d194f47cacbcb978d0d9d9}{ge\_ii}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00755}00755     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: lhs, rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00756}00756     \mbox{\hyperlink{namespacecomplexify_a109648efd0d194f47cacbcb978d0d9d9}{ge\_ii}} = lhs >= rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00757}00757   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a109648efd0d194f47cacbcb978d0d9d9}{ge\_ii}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00758}\mbox{\hyperlink{namespacecomplexify_aac68812f7c5d71231a6661c8989486dd}{00758}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_aac68812f7c5d71231a6661c8989486dd}{ge\_aa}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00759}00759     \textcolor{keywordtype}{character(len=*)}, \textcolor{keywordtype}{intent(in)} :: lhs, rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00760}00760     \mbox{\hyperlink{namespacecomplexify_aac68812f7c5d71231a6661c8989486dd}{ge\_aa}} = lhs >= rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00761}00761   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_aac68812f7c5d71231a6661c8989486dd}{ge\_aa}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00762}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_4_0a_08_a7e24895bc94829e6e51f7e2662b23569}{00762}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ad108c99a8f54fe1912d1145193665713}{ge\_cr}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00763}00763     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00764}00764 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00765}00765     \mbox{\hyperlink{namespacecomplexify_ad108c99a8f54fe1912d1145193665713}{ge\_cr}} = real(lhs) >= rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00766}00766   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ad108c99a8f54fe1912d1145193665713}{ge\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00767}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_4_0a_08_acceff53c8beb08212b1cdda23ddb3ddf}{00767}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ad4cd30a00067443d0e28ef54bfc1aeea}{ge\_rc}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00768}00768 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00769}00769     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00770}00770     \mbox{\hyperlink{namespacecomplexify_ad4cd30a00067443d0e28ef54bfc1aeea}{ge\_rc}} = lhs >= real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00771}00771   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ad4cd30a00067443d0e28ef54bfc1aeea}{ge\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00772}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_4_0a_08_ae520aaf9b72fc9090df2a093a5da09f0}{00772}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a6567b513c6585a578c11beed2f14c0fb}{ge\_ci}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00773}00773     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00774}00774     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00775}00775     \mbox{\hyperlink{namespacecomplexify_a6567b513c6585a578c11beed2f14c0fb}{ge\_ci}} = real(lhs) >= rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00776}00776   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a6567b513c6585a578c11beed2f14c0fb}{ge\_ci}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00777}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_4_0a_08_a6a77f998522418c861aa6b8ada8291e3}{00777}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a0972e91a0d2932e021acf9b212126c4b}{ge\_ic}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00778}00778     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00779}00779     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00780}00780     \mbox{\hyperlink{namespacecomplexify_a0972e91a0d2932e021acf9b212126c4b}{ge\_ic}} = lhs >= real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00781}00781   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a0972e91a0d2932e021acf9b212126c4b}{ge\_ic}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00782}\mbox{\hyperlink{namespacecomplexify_a862c0f4c4392a3dc9db13d8079c69d2b}{00782}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a862c0f4c4392a3dc9db13d8079c69d2b}{ge\_ir}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00783}00783     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00784}00784 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00785}00785     \mbox{\hyperlink{namespacecomplexify_a862c0f4c4392a3dc9db13d8079c69d2b}{ge\_ir}} = lhs >= rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00786}00786   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a862c0f4c4392a3dc9db13d8079c69d2b}{ge\_ir}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00787}\mbox{\hyperlink{namespacecomplexify_a6b3747b914c3e4012531a6f4882f9c88}{00787}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a6b3747b914c3e4012531a6f4882f9c88}{ge\_ri}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00788}00788 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00789}00789     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00790}00790     \mbox{\hyperlink{namespacecomplexify_a6b3747b914c3e4012531a6f4882f9c88}{ge\_ri}} = lhs >= rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00791}00791   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a6b3747b914c3e4012531a6f4882f9c88}{ge\_ri}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00792}00792 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00793}00793 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00794}00794 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00795}00795 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00796}00796   \textcolor{comment}{! ==, .eq.}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00797}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8ceq_8_08_a884fd617af2095fce3d28995c18dcad1}{00797}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a524e838ffabd1e124521358a8f82a275}{eq\_cc}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00798}00798     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs, rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00799}00799     \mbox{\hyperlink{namespacecomplexify_a524e838ffabd1e124521358a8f82a275}{eq\_cc}} = real(lhs) == real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00800}00800   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a524e838ffabd1e124521358a8f82a275}{eq\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00801}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8ceq_8_08_ab56cb0f58ba85ae2fa5d1af3add44040}{00801}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a1ad9a659641a60c0dea9033932f9fd85}{eq\_rr}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00802}00802 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: lhs, rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00803}00803     \mbox{\hyperlink{namespacecomplexify_a1ad9a659641a60c0dea9033932f9fd85}{eq\_rr}} = lhs == rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00804}00804   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a1ad9a659641a60c0dea9033932f9fd85}{eq\_rr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00805}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8ceq_8_08_a04b0f89963835b79a8d9393b077b9910}{00805}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ab7bff702b67d8f1f374c6c1789e58e49}{eq\_ii}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00806}00806     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: lhs, rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00807}00807     \mbox{\hyperlink{namespacecomplexify_ab7bff702b67d8f1f374c6c1789e58e49}{eq\_ii}} = lhs == rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00808}00808   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ab7bff702b67d8f1f374c6c1789e58e49}{eq\_ii}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00809}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8ceq_8_08_ad70af7c608e335c6b61f092a944ea302}{00809}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ae50e00bb62e79c98d7e65e9f9bf9e40f}{eq\_aa}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00810}00810     \textcolor{keywordtype}{character(len=*)}, \textcolor{keywordtype}{intent(in)} :: lhs, rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00811}00811     \mbox{\hyperlink{namespacecomplexify_ae50e00bb62e79c98d7e65e9f9bf9e40f}{eq\_aa}} = lhs == rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00812}00812   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ae50e00bb62e79c98d7e65e9f9bf9e40f}{eq\_aa}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00813}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8ceq_8_08_a3b8109cf1dfa7dfbe284f5b3792c1877}{00813}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a3acca26f4072bbbfa530d0311d6eacfa}{eq\_cr}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00814}00814     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00815}00815 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00816}00816     \mbox{\hyperlink{namespacecomplexify_a3acca26f4072bbbfa530d0311d6eacfa}{eq\_cr}} = real(lhs) == rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00817}00817   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a3acca26f4072bbbfa530d0311d6eacfa}{eq\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00818}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8ceq_8_08_aac955c568c94e018ff592f6eab0764b6}{00818}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ae660ef24bb17f1a20b484f39dee46f2f}{eq\_rc}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00819}00819 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00820}00820     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00821}00821     \mbox{\hyperlink{namespacecomplexify_ae660ef24bb17f1a20b484f39dee46f2f}{eq\_rc}} = lhs == real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00822}00822   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ae660ef24bb17f1a20b484f39dee46f2f}{eq\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00823}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8ceq_8_08_a53b5340aff2b108345423068cf044c87}{00823}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ae97bc041f1ba5b9d64f5b5d4c042a202}{eq\_ci}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00824}00824     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00825}00825     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00826}00826     \mbox{\hyperlink{namespacecomplexify_ae97bc041f1ba5b9d64f5b5d4c042a202}{eq\_ci}} = real(lhs) == rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00827}00827   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ae97bc041f1ba5b9d64f5b5d4c042a202}{eq\_ci}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00828}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8ceq_8_08_ad3802f0e4a67463aa89d7676f359e08f}{00828}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a24485bb507fb398eee5db2c5a3944fc6}{eq\_ic}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00829}00829     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00830}00830     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00831}00831     \mbox{\hyperlink{namespacecomplexify_a24485bb507fb398eee5db2c5a3944fc6}{eq\_ic}} = lhs == real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00832}00832   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a24485bb507fb398eee5db2c5a3944fc6}{eq\_ic}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00833}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8ceq_8_08_a2e8d99588a254d8bee6a8d31a001bf26}{00833}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ae83a27046c5a13198806da8c40da8172}{eq\_ir}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00834}00834     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00835}00835 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00836}00836     \mbox{\hyperlink{namespacecomplexify_ae83a27046c5a13198806da8c40da8172}{eq\_ir}} = lhs == rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00837}00837   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ae83a27046c5a13198806da8c40da8172}{eq\_ir}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00838}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8ceq_8_08_a25c2daf6e540f74292a82d8c6ce95a68}{00838}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ab933f2fdcf606d69f9c73ff0eba2f3b0}{eq\_ri}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00839}00839 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00840}00840     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00841}00841     \mbox{\hyperlink{namespacecomplexify_ab933f2fdcf606d69f9c73ff0eba2f3b0}{eq\_ri}} = lhs == rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00842}00842   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ab933f2fdcf606d69f9c73ff0eba2f3b0}{eq\_ri}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00843}00843 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00844}00844 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00845}00845 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00846}00846 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00847}00847   \textcolor{comment}{! /=, .ne.}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00848}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8cne_8_08_a3c4b0ee7640471017c086d547424214a}{00848}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a74cb55e44153d6675e70a241fbc7e050}{ne\_cc}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00849}00849     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs, rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00850}00850     \mbox{\hyperlink{namespacecomplexify_a74cb55e44153d6675e70a241fbc7e050}{ne\_cc}} = real(lhs) /= real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00851}00851   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a74cb55e44153d6675e70a241fbc7e050}{ne\_cc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00852}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8cne_8_08_ad95ef476cd780d9a5c4beb45ec660639}{00852}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a59f5815f87bb029ebd4ce0315209d416}{ne\_rr}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00853}00853 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: lhs, rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00854}00854     \mbox{\hyperlink{namespacecomplexify_a59f5815f87bb029ebd4ce0315209d416}{ne\_rr}} = lhs /= rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00855}00855   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a59f5815f87bb029ebd4ce0315209d416}{ne\_rr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00856}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8cne_8_08_a99d6fb957491a7d3a913bc711ca4f648}{00856}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a39331abbd1326ae930aee99a82356c22}{ne\_ii}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00857}00857     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: lhs, rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00858}00858     \mbox{\hyperlink{namespacecomplexify_a39331abbd1326ae930aee99a82356c22}{ne\_ii}} = lhs /= rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00859}00859   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a39331abbd1326ae930aee99a82356c22}{ne\_ii}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00860}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8cne_8_08_a6cc51dabdd3814e5c03970354ae29ab8}{00860}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_ad3fa886e10f9a55d93b90348cb8977da}{ne\_aa}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00861}00861     \textcolor{keywordtype}{character(len=*)}, \textcolor{keywordtype}{intent(in)} :: lhs, rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00862}00862     \mbox{\hyperlink{namespacecomplexify_ad3fa886e10f9a55d93b90348cb8977da}{ne\_aa}} = lhs /= rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00863}00863   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_ad3fa886e10f9a55d93b90348cb8977da}{ne\_aa}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00864}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8cne_8_08_a7cb374302cc2a16be9b867bacad83894}{00864}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a4fd2dbe6b7d2c5f9bece336d23e30477}{ne\_cr}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00865}00865     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00866}00866 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00867}00867     \mbox{\hyperlink{namespacecomplexify_a4fd2dbe6b7d2c5f9bece336d23e30477}{ne\_cr}} = real(lhs) /= rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00868}00868   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a4fd2dbe6b7d2c5f9bece336d23e30477}{ne\_cr}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00869}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8cne_8_08_a9b1b8548ae3c7d2cea6588cb5f0e685e}{00869}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_acdb1fb11691023c281fca4722953620a}{ne\_rc}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00870}00870 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00871}00871     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00872}00872     \mbox{\hyperlink{namespacecomplexify_acdb1fb11691023c281fca4722953620a}{ne\_rc}} = lhs /= real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00873}00873   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_acdb1fb11691023c281fca4722953620a}{ne\_rc}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00874}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8cne_8_08_ac4c7f992890a1ef317cf086570dbeb5f}{00874}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a73c89f5189ee4856bceb1f465ba80eef}{ne\_ci}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00875}00875     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00876}00876     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00877}00877     \mbox{\hyperlink{namespacecomplexify_a73c89f5189ee4856bceb1f465ba80eef}{ne\_ci}} = real(lhs) /= rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00878}00878   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a73c89f5189ee4856bceb1f465ba80eef}{ne\_ci}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00879}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8cne_8_08_aa6ac3f2542bd361702128ada3130b8d1}{00879}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a2eb4b9994e2715f1a29540f30363a36c}{ne\_ic}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00880}00880     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00881}00881     \textcolor{keywordtype}{complex(RK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00882}00882     \mbox{\hyperlink{namespacecomplexify_a2eb4b9994e2715f1a29540f30363a36c}{ne\_ic}} = lhs /= real(rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00883}00883   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a2eb4b9994e2715f1a29540f30363a36c}{ne\_ic}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00884}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8cne_8_08_a0c67e79b217fd5895df8ff46e168ed35}{00884}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a5f73a75c62c4f8e5cddc956dc5384deb}{ne\_ir}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00885}00885     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00886}00886 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00887}00887     \mbox{\hyperlink{namespacecomplexify_a5f73a75c62c4f8e5cddc956dc5384deb}{ne\_ir}} = lhs /= rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00888}00888   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a5f73a75c62c4f8e5cddc956dc5384deb}{ne\_ir}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00889}\mbox{\hyperlink{interfacecomplexify_1_1operator_07_8cne_8_08_a1a4c6c2b5191e08c0d960585036811fa}{00889}}   \textcolor{keyword}{logical }\textcolor{keyword}{function }\mbox{\hyperlink{namespacecomplexify_a2dd33d9aa1ed9aefb0b4aca98d38e699}{ne\_ri}}(lhs, rhs)}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00890}00890 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: lhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00891}00891     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)} :: rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00892}00892     \mbox{\hyperlink{namespacecomplexify_a2dd33d9aa1ed9aefb0b4aca98d38e699}{ne\_ri}} = lhs /= rhs}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00893}00893   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecomplexify_a2dd33d9aa1ed9aefb0b4aca98d38e699}{ne\_ri}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00894}00894 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00895}00895 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00896}00896 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00897}00897 }
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00898}00898 \textcolor{keyword}{end module }\mbox{\hyperlink{namespacecomplexify}{complexify}}}
+\DoxyCodeLine{\Hypertarget{Complexify__mod_8f90_source_l00899}00899 }
+
+\end{DoxyCode}

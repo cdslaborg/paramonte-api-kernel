@@ -1,0 +1,88 @@
+\hypertarget{______toBeCleared_______2Classification__mod_8f90_source}{}\doxysection{Classification\+\_\+mod.\+f90}
+\label{______toBeCleared_______2Classification__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/Classification\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/Classification\_mod.f90}}
+\mbox{\hyperlink{______toBeCleared_______2Classification__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00001}\mbox{\hyperlink{namespaceclassification}{00001}} \textcolor{keyword}{module} \mbox{\hyperlink{namespaceclassification}{classification}}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00003}00003   \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00004}00004   }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00005}00005   \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00006}00006   }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00007}\mbox{\hyperlink{namespaceclassification_ad55293d0c67cf38c3b75f2af15b2af2e}{00007}} \textcolor{keywordtype}{  real}(rk) :: \mbox{\hyperlink{namespaceclassification_a2a692a4641e0e26b760f96a60b3b21e2}{ndkuniform}}, \mbox{\hyperlink{namespaceclassification_ad55293d0c67cf38c3b75f2af15b2af2e}{btfactor}}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00009}00009   \textcolor{keyword}{interface}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00011}00011     \textcolor{keyword}{module} subroutine getminvolpartition( ncmax, nd, np, stabilizationrequested, maxkvolumelooprecursion \&}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00012}00012                                         , maxallowedkmeansfailure, maxallowedminvolfailure, mahalsqweightexponent \&}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00013}00013                                         , tightness, inclusionfraction, parlogvol, point, ncoptimal, ccenter, csize \&}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00014}00014                                         , cbeinvcovmat, cbecholcov, cbecholdiag, cbevolnormed, cmembership, pointindex \&}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00015}00015                                         , convergencefailurecounter )}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00016}00016       \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(in)}    :: ncmax,nd,np                 \textcolor{comment}{! maximum number of clusters, number of dimensions, number of points}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00017}00017       \textcolor{keywordtype}{logical} , \textcolor{keywordtype}{intent(in)}    :: stabilizationrequested}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00018}00018       \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(in)}    :: maxkvolumelooprecursion}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00019}00019       \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(in)}    :: maxallowedkmeansfailure}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00020}00020       \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(in)}    :: maxallowedminvolfailure}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00021}00021 \textcolor{keywordtype}{      real}(rk), \textcolor{keywordtype}{intent(in)}    :: mahalsqweightexponent}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00022}00022 \textcolor{keywordtype}{      real}(rk), \textcolor{keywordtype}{intent(in)}    :: tightness                   \textcolor{comment}{! the factor deremining how large the bounding ellipsoid can be, compared to the true volume of the ellipsoid.}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00023}00023 \textcolor{keywordtype}{      real}(rk), \textcolor{keywordtype}{intent(in)}    :: inclusionfraction           \textcolor{comment}{! the fraction of non-\/cluster-\/member points that ARE inside the cluster, to be considered in the estimation of the true volume of the cluster.}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00024}00024 \textcolor{keywordtype}{      real}(rk), \textcolor{keywordtype}{intent(in)}    :: parlogvol                   \textcolor{comment}{! input log-\/estimate of the total volume of the points.}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00025}00025 \textcolor{keywordtype}{      real}(rk), \textcolor{keywordtype}{intent(inout)} :: point(nd,np)                \textcolor{comment}{! the input data (points) to be clustered. on output, it is ordered.}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00026}00026 \textcolor{keywordtype}{      real}(rk), \textcolor{keywordtype}{intent(out)}   :: ccenter(nd,ncmax)           \textcolor{comment}{! Centers of the clusters (nd,ncMax)}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00027}00027 \textcolor{keywordtype}{      real}(rk), \textcolor{keywordtype}{intent(out)}   :: cbeinvcovmat(nd,nd,ncmax)   \textcolor{comment}{! CBE: Cluster Bounding Ellipsoid -\/ On output: Full symmetric Inverse Covariance Matrices of the Bounding Ellipsoids of all clusters.}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00028}00028 \textcolor{keywordtype}{      real}(rk), \textcolor{keywordtype}{intent(out)}   :: cbecholcov(nd,nd,ncmax)     \textcolor{comment}{! CBE: Cluster Bounding Ellipsoid -\/ On output: The lower triangle contains the Cholesky factor of the covariance matrix of the input points, the upper triangle maybe the CovMat itself (not needed). On output contains in the lower triangle, the Cholesky factor of all clusters found.}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00029}00029 \textcolor{keywordtype}{      real}(rk), \textcolor{keywordtype}{intent(out)}   :: cbecholdiag(nd,ncmax)       \textcolor{comment}{! CBE: Cluster Bounding Ellipsoid -\/ On output: The diagonal elements of the Cholesky factor of the covariance matrix of the input points, on output, contains the cholesky factor of all found clusters.}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00030}00030 \textcolor{keywordtype}{      real}(rk), \textcolor{keywordtype}{intent(out)}   :: cbevolnormed(ncmax)         \textcolor{comment}{! CBE: Cluster Bounding Ellipsoid -\/ On output: Each element of the array contains the volume of the corresponding Cluster Bounding Ellipsoid.}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00031}00031       \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(out)}   :: ncoptimal                   \textcolor{comment}{! this variable is saved throughout recursive iterations of subroutine}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00032}00032       \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(out)}   :: csize(ncmax)                \textcolor{comment}{! cluster sizes (nCMax)}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00033}00033       \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(out)}   :: cmembership(np)             \textcolor{comment}{! the CMembership id of each point (representing the cluster number to which the point belongs)}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00034}00034       \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(out)}   :: pointindex(np)              \textcolor{comment}{! Vector containing the scrambled indices of Point elements. It represent the mapping from the input Point elements to output scrambled Point vector.}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00035}00035       \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(inout)} :: convergencefailurecounter   \textcolor{comment}{! number of times the algorithm failed to converge.}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00036}00036     \textcolor{keyword}{end subroutine }getminvolpartition}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00038}00038     \textcolor{keyword}{module} subroutine runkmeans(kpp,nc,nd,np,point,ccenter,csize,cmembership,iteration,zcsiteration)}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00039}00039       \textcolor{keywordtype}{logical} , \textcolor{keywordtype}{intent(in)}    :: kpp                   \textcolor{comment}{! if true, initialize kmeans Centers usig kpp algorithm}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00040}00040       \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(in)}    :: nc, nd, np            \textcolor{comment}{! number of clusters, number of dimensions of each point, number of points}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00041}00041 \textcolor{keywordtype}{      real}(rk), \textcolor{keywordtype}{intent(in)}    :: point(nd,np)          \textcolor{comment}{! the input data (points) to be clustered.}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00042}00042 \textcolor{keywordtype}{      real}(rk), \textcolor{keywordtype}{intent(inout)} :: ccenter(nd,nc)        \textcolor{comment}{! initial Centers of the clusters}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00043}00043       \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(out)}   :: cmembership(np)       \textcolor{comment}{! the CMembership id of each point (representing the cluster number to which the point belongs)}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00044}00044       \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(out)}   :: zcsiteration          \textcolor{comment}{! Counts the number of times zero sized clusters are found, zcs stands for zero cluster size}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00045}00045       \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(out)}   :: csize(nc)             \textcolor{comment}{! cluster sizes}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00046}00046       \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(out)}   :: iteration}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00047}00047     \textcolor{keyword}{end subroutine }runkmeans}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00049}00049   \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00051}00051 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00053}00053 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00054}00054 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00056}00056   \textcolor{comment}{!include 'mod\_Classification@maxDenPartition.f90'}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00057}00057   \textcolor{comment}{!include 'mod\_Classification\_maxDenPartition.f90'}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00059}00059 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00060}00060 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00062}00062   \textcolor{comment}{!include 'mod\_Classification\_kvolume.f90'}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00064}00064 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00065}00065 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00067}00067   \textcolor{comment}{!include 'mod\_Classification\_runKvolume.f90'}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00069}00069 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00070}00070 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00072}00072   \textcolor{comment}{!include 'mod\_Classification\_kUniform.f90'}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00074}00074 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00075}00075 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00077}00077   \textcolor{comment}{!include 'mod\_Classification\_xmeans.f90'}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00079}00079 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00080}00080 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Classification__mod_8f90_source_l00082}00082 \textcolor{keyword}{end module }Classification}
+
+\end{DoxyCode}

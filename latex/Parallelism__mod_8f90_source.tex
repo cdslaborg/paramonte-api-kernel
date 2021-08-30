@@ -1,0 +1,466 @@
+\hypertarget{Parallelism__mod_8f90_source}{}\doxysection{Parallelism\+\_\+mod.\+f90}
+\label{Parallelism__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/Parallelism\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/Parallelism\_mod.f90}}
+\mbox{\hyperlink{Parallelism__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00001}00001 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00002}00002 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00003}00003 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00004}00004 \textcolor{comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00005}00005 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00006}00006 \textcolor{comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00007}00007 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00008}00008 \textcolor{comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00009}00009 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00010}00010 \textcolor{comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00011}00011 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00012}00012 \textcolor{comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00013}00013 \textcolor{comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}),}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00014}00014 \textcolor{comment}{!!!!   to deal in the Software without restriction, including without limitation}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00015}00015 \textcolor{comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00016}00016 \textcolor{comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00017}00017 \textcolor{comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00018}00018 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00019}00019 \textcolor{comment}{!!!!   The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00020}00020 \textcolor{comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00021}00021 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00022}00022 \textcolor{comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00023}00023 \textcolor{comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00024}00024 \textcolor{comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00025}00025 \textcolor{comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00026}00026 \textcolor{comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00027}00027 \textcolor{comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00028}00028 \textcolor{comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00029}00029 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00030}00030 \textcolor{comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00031}00031 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00032}00032 \textcolor{comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00033}00033 \textcolor{comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00034}00034 \textcolor{comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00035}00035 \textcolor{comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00036}00036 \textcolor{comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00037}00037 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00038}00038 \textcolor{comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00039}00039 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00040}00040 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00041}00041 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00046}\mbox{\hyperlink{namespaceparallelism__mod}{00046}} \textcolor{keyword}{module} \mbox{\hyperlink{namespaceparallelism__mod}{parallelism\_mod}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00048}00048     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceoptimization__mod}{optimization\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structoptimization__mod_1_1powellminimum__type}{powellminimum\_type}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00049}00049     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00050}00050     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00052}00052     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00054}\mbox{\hyperlink{namespaceparallelism__mod_a6b3f47f6207ef49472d9d9384904a185}{00054}}     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}} = \textcolor{stringliteral}{"{}@Parallelism\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00057}\mbox{\hyperlink{structparallelism__mod_1_1image__type}{00057}}     \textcolor{keyword}{type}                            :: \mbox{\hyperlink{structparallelism__mod_1_1image__type}{image\_type}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00058}\mbox{\hyperlink{structparallelism__mod_1_1image__type_aafa6799c18d548c29669566911f7f316}{00058}}         \textcolor{keywordtype}{integer(IK)}                 :: id}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00059}\mbox{\hyperlink{structparallelism__mod_1_1image__type_a295c514a486d3573189477716ef0c03b}{00059}}         \textcolor{keywordtype}{integer(IK)}                 :: count}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00060}\mbox{\hyperlink{structparallelism__mod_1_1image__type_a328b068fa2ab740ad0565af05e15f1c3}{00060}}         \textcolor{keywordtype}{logical}                     :: isfirst = .false.    }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00061}\mbox{\hyperlink{structparallelism__mod_1_1image__type_ad8f3c67dd88f72c0156250fac39a6c36}{00061}}         \textcolor{keywordtype}{logical}                     :: isnotfirst = .false. }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00062}\mbox{\hyperlink{structparallelism__mod_1_1image__type_a195f7b64f29eed7206fcc9e3ad488ea4}{00062}}         \textcolor{keywordtype}{logical}                     :: isleader = .false.   }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00063}\mbox{\hyperlink{structparallelism__mod_1_1image__type_a53b9f6381b898814628a01a5a6baccb0}{00063}}         \textcolor{keywordtype}{logical}                     :: isrooter = .false.   }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00064}\mbox{\hyperlink{structparallelism__mod_1_1image__type_a575285b62cb2936447f02069946d09bf}{00064}}         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}   :: name}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00065}00065     \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00066}\mbox{\hyperlink{structparallelism__mod_1_1image__type_af7ab6b4fc5ed94e483de1d735110bae4}{00066}}         \textcolor{keywordtype}{procedure}, \textcolor{keywordtype}{nopass}           :: sync => \mbox{\hyperlink{namespaceparallelism__mod_a5e56b0435bda6950975afea9a382a32d}{syncimages}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00067}\mbox{\hyperlink{structparallelism__mod_1_1image__type_a967f8843ad5bd329aa10619521e8c95b}{00067}}         \textcolor{keywordtype}{procedure}, pass             :: query => \mbox{\hyperlink{namespaceparallelism__mod_a40ce1f0eedcf20b24dc85bb41809b94f}{queryimage}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00068}\mbox{\hyperlink{structparallelism__mod_1_1image__type_af0d7370c541f68efe559df0a9c1506a1}{00068}}         \textcolor{keywordtype}{procedure}, \textcolor{keywordtype}{nopass}           :: finalize => \mbox{\hyperlink{namespaceparallelism__mod_ad329b8db2f8dd29163f38c40d4afef9b}{finalizeimages}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00069}00069     \textcolor{keyword}{end type }\mbox{\hyperlink{structparallelism__mod_1_1image__type}{image\_type}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00071}00071     \textcolor{keyword}{type}, \textcolor{keyword}{private} :: maximum\_type}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00072}00072 \textcolor{keywordtype}{        real}(rk)                    :: \textcolor{keywordtype}{value}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00073}00073         \textcolor{keywordtype}{integer(IK)}                 :: nproc}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00074}00074     \textcolor{keyword}{end type }maximum\_type}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00076}00076     \textcolor{keyword}{type}, \textcolor{keyword}{private} :: speedup\_type}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00077}00077         \textcolor{keywordtype}{integer(IK)}                 :: count}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00078}00078 \textcolor{keywordtype}{        real}(rk)                    :: current}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00079}00079         \textcolor{keywordtype}{type}(maximum\_type)          :: maximum}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00080}00080 \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{allocatable}   :: scaling(:)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00081}00081     \textcolor{keyword}{end type }speedup\_type}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00083}00083     \textcolor{keyword}{type}, \textcolor{keyword}{private} :: uniqueprocess\_type}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00084}00084         \textcolor{keywordtype}{integer(IK)}                 :: count}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00085}00085         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{allocatable}   :: identity(:)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00086}00086         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{allocatable}   :: frequency(:)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00087}00087     \textcolor{keyword}{end type }uniqueprocess\_type}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00089}00089     \textcolor{keyword}{type}, \textcolor{keyword}{private}, \textcolor{keyword}{extends}(uniqueprocess\_type) :: contribution\_type}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00090}00090 \textcolor{keywordtype}{        real}(rk) , \textcolor{keywordtype}{allocatable}      :: logfrequency(:)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00091}00091     \textcolor{keyword}{end type }contribution\_type}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00093}00093     \textcolor{keyword}{type}, \textcolor{keyword}{private} :: successprob\_type}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00094}00094 \textcolor{keywordtype}{        real}(rk)                    :: current}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00095}00095 \textcolor{keywordtype}{        real}(rk)                    :: effective}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00096}00096         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structoptimization__mod_1_1powellminimum__type}{powellminimum\_type}})    :: powellminimum}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00098}00098     \textcolor{keyword}{end type }successprob\_type}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00101}\mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{00101}}     \textcolor{keyword}{type} :: \mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{forkjoin\_type}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00102}\mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type_a6038e844e31094f1d83cfdeb314d6171}{00102}}         \textcolor{keywordtype}{type}(uniqueprocess\_type)    :: uniqueprocess}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00103}\mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type_a68270511549852fee9ec048747659293}{00103}}         \textcolor{keywordtype}{type}(contribution\_type)     :: contribution}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00104}\mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type_a9abd58e072287ba96015606f42350f8b}{00104}}         \textcolor{keywordtype}{type}(successprob\_type)      :: successprob}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00105}\mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type_af31fd07baad63cf7864fef8bc5a852ac}{00105}}         \textcolor{keywordtype}{type}(speedup\_type)          :: speedup}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00106}\mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type_ade7c204bc8dd5f7051bca9e8da8a8085}{00106}}         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})              :: err}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00107}00107     \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00108}\mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type_a26d1b6d5f554d6a4e514bcf17915992c}{00108}}         \textcolor{keywordtype}{procedure}   , \textcolor{keywordtype}{nopass}        :: \mbox{\hyperlink{namespaceparallelism__mod_aceda85707c0a0418753f265d1eb310e7}{getforkjoinspeedup}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00109}00109     \textcolor{keyword}{end type }\mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{forkjoin\_type}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00111}00111     \textcolor{keyword}{interface} \mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{forkjoin\_type}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00112}00112         \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespaceparallelism__mod_aabda4b8ad53a2e3734c06f0e913b0170}{constructforkjoin}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00113}00113     \textcolor{keyword}{end interface }\mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{forkjoin\_type}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00115}00115 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00117}00117 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00119}00119 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00131}\mbox{\hyperlink{namespaceparallelism__mod_a40ce1f0eedcf20b24dc85bb41809b94f}{00131}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespaceparallelism__mod_a40ce1f0eedcf20b24dc85bb41809b94f}{queryimage}}(Image)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00132}00132 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00133}00133 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: queryImage}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00134}00134 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00135}00135 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00136}00136         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestring__mod}{string\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{interfacestring__mod_1_1num2str}{num2str}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00137}00137         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00138}00138         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structparallelism__mod_1_1image__type}{image\_type}}), \textcolor{keywordtype}{intent(inout)} :: Image}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00140}00140         \textcolor{comment}{! setup general processor / coarray image variables}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00142}00142 \textcolor{preprocessor}{\#if defined CAF\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00143}00143 \textcolor{preprocessor}{}        image\%id             = this\_image()}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00144}00144         image\%count          = num\_images()}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00145}00145 \textcolor{preprocessor}{\#elif defined MPI\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00146}00146 \textcolor{preprocessor}{}        block}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00147}00147             \textcolor{keywordtype}{use }mpi}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00148}00148             \textcolor{keywordtype}{integer(IK)} :: ierrMPI}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00149}00149             \textcolor{keywordtype}{logical}     :: isInitialized}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00150}00150             \textcolor{keyword}{call }mpi\_initialized( isinitialized, ierrmpi )}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00151}00151             \textcolor{keywordflow}{if} (.not. isinitialized) \textcolor{keyword}{call }mpi\_init(ierrmpi)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00152}00152             \textcolor{keyword}{call }mpi\_comm\_rank(mpi\_comm\_world, image\%id, ierrmpi)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00153}00153             \textcolor{keyword}{call }mpi\_comm\_size(mpi\_comm\_world, image\%count, ierrmpi)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00154}00154             image\%id = image\%id + 1\_ik \textcolor{comment}{! make the ranks consistent with Fortran coarray indexing conventions}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00155}00155         \textcolor{keyword}{end }block}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00156}00156 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00157}00157 \textcolor{preprocessor}{}        image\%id            = 1\_ik}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00158}00158         image\%count         = 1\_ik}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00159}00159 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00160}00160 \textcolor{preprocessor}{}        image\%name          = \textcolor{stringliteral}{"{}@process("{}} // num2str(image\%id) // \textcolor{stringliteral}{"{})"{}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00161}00161         image\%isFirst       = image\%id==1\_ik}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00162}00162         image\%isNotFirst    = image\%id/=1\_ik}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00163}00163         \textcolor{comment}{!Image\%isLeader      = .false.   ! ATTN: this is to be set by the user at runtime, depending on the type of parallelism.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00164}00164         \textcolor{comment}{!Image\%isRooter      = .false.   ! ATTN: this is to be set by the user at runtime, depending on the type of parallelism.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00165}00165 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00166}00166     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespaceparallelism__mod_a40ce1f0eedcf20b24dc85bb41809b94f}{queryimage}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00168}00168 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00169}00169 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00177}\mbox{\hyperlink{namespaceparallelism__mod_a5e56b0435bda6950975afea9a382a32d}{00177}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespaceparallelism__mod_a5e56b0435bda6950975afea9a382a32d}{syncimages}}()}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00178}00178 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00179}00179 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: syncImages}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00180}00180 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00181}00181 \textcolor{preprocessor}{}        \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00182}00182 \textcolor{preprocessor}{\#if defined MPI\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00183}00183 \textcolor{preprocessor}{}        block}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00184}00184             \textcolor{keywordtype}{use }mpi}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00185}00185             \textcolor{keywordtype}{integer(IK)} :: ierrMPI}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00186}00186             \textcolor{comment}{!logical     :: isFinalized}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00187}00187             \textcolor{comment}{!call mpi\_finalized( isFinalized, ierrMPI )}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00188}00188             \textcolor{comment}{!if (.not. isFinalized) then}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00189}00189                 \textcolor{keyword}{call }mpi\_barrier(mpi\_comm\_world,ierrmpi)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00190}00190             \textcolor{comment}{!end if}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00191}00191         \textcolor{keyword}{end }block}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00192}00192 \textcolor{preprocessor}{\#elif defined CAF\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00193}00193 \textcolor{preprocessor}{}        sync all}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00194}00194 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00195}00195 \textcolor{preprocessor}{}    \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespaceparallelism__mod_a5e56b0435bda6950975afea9a382a32d}{syncimages}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00196}00196 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00197}00197 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00198}00198 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00205}\mbox{\hyperlink{namespaceparallelism__mod_ad329b8db2f8dd29163f38c40d4afef9b}{00205}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespaceparallelism__mod_ad329b8db2f8dd29163f38c40d4afef9b}{finalizeimages}}() \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00206}00206 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00207}00207 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: finalizeImages}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00208}00208 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00209}00209 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if defined CAF\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00210}00210 \textcolor{preprocessor}{}        sync all}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00211}00211 \textcolor{preprocessor}{\#elif defined MPI\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00212}00212 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }mpi}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00213}00213         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00214}00214         \textcolor{keywordtype}{integer(IK)} :: ierrMPI}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00215}00215         \textcolor{keywordtype}{logical}     :: isFinalized}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00216}00216         \textcolor{keyword}{call }mpi\_finalized( isfinalized, ierrmpi )}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00217}00217         \textcolor{keywordflow}{if} (.not. isfinalized) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00218}00218             \textcolor{keyword}{call }mpi\_barrier(mpi\_comm\_world,ierrmpi)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00219}00219             \textcolor{keyword}{call }mpi\_finalize(ierrmpi)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00220}00220 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00221}00221 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00222}00222 \textcolor{preprocessor}{}    \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespaceparallelism__mod_ad329b8db2f8dd29163f38c40d4afef9b}{finalizeimages}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00223}00223 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00224}00224 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00225}00225 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00240}\mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type_aa5546dbd73e0dc5dd09bca52a7f28e93}{00240}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespaceparallelism__mod_aabda4b8ad53a2e3734c06f0e913b0170}{constructforkjoin}}(processCount, lenProcessID, ProcessID, successProb, seqSecTime, parSecTime, comSecTime) \textcolor{keyword}{result}(ForkJoin) \textcolor{comment}{! nonpure}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00241}00241 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00242}00242 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: constructForkJoin}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00243}00243 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00244}00244 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacegeocyclicfit__mod}{geocyclicfit\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacegeocyclicfit__mod_a88d66e1fac5af41881bea1fd31e21fb6}{fitgeocycliclogpdf}} \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00245}00245         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk, \mbox{\hyperlink{namespaceconstants__mod_afc77c658ae5ff9ddccb889d197cf6d5e}{sqrt\_eps\_rk}}, \mbox{\hyperlink{namespaceconstants__mod_a003ca934e94dc6a49b0b0d72e36a3967}{neginf\_rk}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00246}00246         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestring__mod}{string\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{interfacestring__mod_1_1num2str}{num2str}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00247}00247         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacemisc__mod}{misc\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{interfacemisc__mod_1_1findunique}{findunique}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00248}00248         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacesort__mod}{sort\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{interfacesort__mod_1_1indexarray}{indexarray}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00249}00249 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00250}00250         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00251}00251 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00252}00252         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}    :: processcount, lenprocessid, processid(lenprocessid)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00253}00253 \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{intent(in)}    :: successprob, seqsectime, parsectime, comsectime}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00254}00254         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structparallelism__mod_1_1forkjoin__type}{forkjoin\_type}})         :: forkjoin}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00255}00255 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00256}00256         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter}     :: procedure\_name = \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}} // \textcolor{stringliteral}{"{}@constructForkJoin()"{}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00257}00257 \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{parameter}     :: log\_half = -\/0.693147180559945\_rk}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00258}00258 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00259}00259         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{allocatable}   :: indx(:)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00260}00260         \textcolor{keywordtype}{integer(IK)}                 :: i}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00261}00261 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00262}00262         \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00263}00263         \textcolor{comment}{! check for invalid input}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00264}00264         \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00265}00265 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00266}00266         forkjoin\%Err\%occurred = .false.}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00267}00267 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00268}00268         \textcolor{keywordflow}{if} (successprob<-\/\mbox{\hyperlink{namespaceconstants__mod_afc77c658ae5ff9ddccb889d197cf6d5e}{sqrt\_eps\_rk}} .or. successprob>1.\_rk+\mbox{\hyperlink{namespaceconstants__mod_afc77c658ae5ff9ddccb889d197cf6d5e}{sqrt\_eps\_rk}}) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00269}00269             forkjoin\%Err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00270}00270             forkjoin\%Err\%msg = procedure\_name // \textcolor{stringliteral}{"{}: successProb must be a number between zero and one. The input value is: "{}} // \mbox{\hyperlink{interfacestring__mod_1_1num2str}{num2str}}(successprob)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00271}00271             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00272}00272 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00273}00273 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00274}00274         \textcolor{keywordflow}{if} (processcount<1\_ik) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00275}00275             forkjoin\%Err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00276}00276             forkjoin\%Err\%msg = procedure\_name // \textcolor{stringliteral}{"{}: processCount cannot be less than one. The input value is: "{}} // \mbox{\hyperlink{interfacestring__mod_1_1num2str}{num2str}}(processcount)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00277}00277             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00278}00278 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00279}00279 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00280}00280         \textcolor{keywordflow}{if} (processcount==1\_ik .or. successprob <= \mbox{\hyperlink{namespaceconstants__mod_afc77c658ae5ff9ddccb889d197cf6d5e}{sqrt\_eps\_rk}} .or. successprob >= 1.\_rk+\mbox{\hyperlink{namespaceconstants__mod_afc77c658ae5ff9ddccb889d197cf6d5e}{sqrt\_eps\_rk}}) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00281}00281             forkjoin\%Speedup\%Maximum\%value = 1.\_rk}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00282}00282             forkjoin\%Speedup\%Maximum\%nproc = 1\_ik}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00283}00283             forkjoin\%Speedup\%current = 1.\_rk}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00284}00284             forkjoin\%Speedup\%count = 1\_ik}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00285}00285             forkjoin\%Speedup\%Scaling = [1.\_rk]}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00286}00286             forkjoin\%Contribution\%count = processcount}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00287}00287             forkjoin\%Contribution\%Identity = [( i, i = 1, processcount )]}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00288}00288             \textcolor{keyword}{allocate}(forkjoin\%Contribution\%Frequency(processcount), source = 0\_ik)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00289}00289             forkjoin\%Contribution\%Frequency(1) = lenprocessid}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00290}00290             \textcolor{keyword}{allocate}(forkjoin\%Contribution\%LogFrequency(processcount), source = \mbox{\hyperlink{namespaceconstants__mod_a003ca934e94dc6a49b0b0d72e36a3967}{neginf\_rk}})}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00291}00291             forkjoin\%Contribution\%LogFrequency(1) = log(real(forkjoin\%Contribution\%Frequency(1),kind=rk))}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00292}00292             forkjoin\%UniqueProcess\%count = 1\_ik}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00293}00293             forkjoin\%UniqueProcess\%Identity = [1\_ik]}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00294}00294             forkjoin\%UniqueProcess\%Frequency = [lenprocessid]}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00295}00295             forkjoin\%SuccessProb\%current = successprob}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00296}00296             forkjoin\%SuccessProb\%effective = successprob}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00297}00297             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00298}00298 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00299}00299 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00300}00300         \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00301}00301         \textcolor{comment}{! compute the effective successProb (MCMC efficiency) from the Process contributions}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00302}00302         \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00303}00303 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00304}00304         \textcolor{keyword}{call }\mbox{\hyperlink{interfacemisc__mod_1_1findunique}{findunique}} ( lenvector = lenprocessid \&}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00305}00305                         , vector = processid \&}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00306}00306                         , uniquevalue = forkjoin\%UniqueProcess\%Identity \&}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00307}00307                         , uniquecount = forkjoin\%UniqueProcess\%Frequency \&}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00308}00308                         , lenunique = forkjoin\%UniqueProcess\%count \&}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00309}00309                         )}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00310}00310         \textcolor{comment}{!maxContributorProcessID = ForkJoin\%UniqueProcess\%Identity(maxloc(ForkJoin\%UniqueProcess\%Frequency))}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00311}00311 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00312}00312         \textcolor{comment}{! Sort ascending. This rearrangement may not be necessary anymore, since fitGeoCyclicLogPDF() is now order-\/agnostic.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00313}00313         \textcolor{comment}{! From the IO report perspective, however, it is important to have it ordered.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00314}00314 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00315}00315         \textcolor{keyword}{allocate}(indx(forkjoin\%UniqueProcess\%count))}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00316}00316         \textcolor{keyword}{call }\mbox{\hyperlink{interfacesort__mod_1_1indexarray}{indexarray}}( n = forkjoin\%UniqueProcess\%count, array = forkjoin\%UniqueProcess\%Identity, indx = indx, err = forkjoin\%Err )}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00317}00317         \textcolor{keywordflow}{if} (forkjoin\%Err\%occurred) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00318}00318             \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00319}00319             forkjoin\%Err\%msg = procedure\_name // forkjoin\%Err\%msg}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00320}00320             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00321}00321             \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00322}00322 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00323}00323 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00324}00324         \textcolor{comment}{! get all processes contributions}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00325}00325 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00326}00326         forkjoin\%UniqueProcess\%Identity(:) = forkjoin\%UniqueProcess\%Identity(indx)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00327}00327         forkjoin\%UniqueProcess\%Frequency(:) = forkjoin\%UniqueProcess\%Frequency(indx)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00328}00328 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00329}00329         \textcolor{keyword}{deallocate}(indx)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00330}00330 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00331}00331         forkjoin\%Contribution\%count = processcount}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00332}00332         \textcolor{keywordflow}{if} (\textcolor{keyword}{allocated}(forkjoin\%Contribution\%LogFrequency)) \textcolor{keyword}{deallocate}(forkjoin\%Contribution\%LogFrequency);}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00333}00333         \textcolor{keyword}{allocate}(forkjoin\%Contribution\%LogFrequency(forkjoin\%Contribution\%count), source = 0.\_rk)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00334}00334         \textcolor{keywordflow}{if} (\textcolor{keyword}{allocated}(forkjoin\%Contribution\%Frequency)) \textcolor{keyword}{deallocate}(forkjoin\%Contribution\%Frequency);}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00335}00335         \textcolor{keyword}{allocate}(forkjoin\%Contribution\%Frequency(forkjoin\%Contribution\%count), source = 0\_ik)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00336}00336         \textcolor{keywordflow}{if} (\textcolor{keyword}{allocated}(forkjoin\%Contribution\%Identity)) \textcolor{keyword}{deallocate}(forkjoin\%Contribution\%Identity);}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00337}00337         \textcolor{keyword}{allocate}(forkjoin\%Contribution\%Identity(forkjoin\%Contribution\%count))}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00338}00338 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00339}00339         forkjoin\%Contribution\%Frequency(forkjoin\%UniqueProcess\%Identity) = forkjoin\%UniqueProcess\%Frequency}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00340}00340         forkjoin\%Contribution\%Identity = [(i, i = 1, forkjoin\%Contribution\%count)]}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00341}00341         \textcolor{keywordflow}{if} (forkjoin\%Contribution\%Frequency(1)==0\_ik) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00342}00342             \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00343}00343             forkjoin\%Err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00344}00344             forkjoin\%Err\%msg = procedure\_name//\textcolor{stringliteral}{"{}: The contribution of the first process to the simulation is zero. This is highly unusual and requires further investigation."{}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00345}00345             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00346}00346             \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00347}00347 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00348}00348         \textcolor{keywordflow}{do} i = 1, forkjoin\%Contribution\%count}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00349}00349             \textcolor{comment}{! TODO: xxx a better solution instead of this ad-\/hoc approach would be to fit for the GeoCyclicCDF. Amir.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00350}00350             \textcolor{keywordflow}{if} (forkjoin\%Contribution\%Frequency(i)/=0\_ik) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00351}00351                 forkjoin\%Contribution\%LogFrequency(i) = log(real(forkjoin\%Contribution\%Frequency(i),kind=rk))}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00352}00352             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00353}00353                 forkjoin\%Contribution\%LogFrequency(i) = forkjoin\%Contribution\%LogFrequency(i-\/1) + log\_half}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00354}00354 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00355}00355 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00356}00356 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00357}00357         forkjoin\%SuccessProb\%current = successprob}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00358}00358 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00359}00359         \textcolor{comment}{! fit for the effective successProb}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00360}00360 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00361}00361         forkjoin\%SuccessProb\%PowellMinimum = \mbox{\hyperlink{namespacegeocyclicfit__mod_a88d66e1fac5af41881bea1fd31e21fb6}{fitgeocycliclogpdf}}( maxnumtrial = processcount \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00362}00362                                                                 , numtrial = forkjoin\%Contribution\%count \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00363}00363                                                                 , successstep = forkjoin\%Contribution\%Identity \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00364}00364                                                                 , logcount = forkjoin\%Contribution\%LogFrequency \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00365}00365                                                                 )}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00366}00366         \textcolor{keywordflow}{if} (forkjoin\%SuccessProb\%PowellMinimum\%Err\%occurred) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00367}00367             \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00368}00368             forkjoin\%Err = forkjoin\%SuccessProb\%PowellMinimum\%Err}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00369}00369             forkjoin\%Err\%msg = procedure\_name // forkjoin\%Err\%msg}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00370}00370             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00371}00371             \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00372}00372 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00373}00373 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00374}00374         forkjoin\%SuccessProb\%effective = forkjoin\%SuccessProb\%PowellMinimum\%xmin(1)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00375}00375 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00376}00376         \textcolor{comment}{! fit for the effective successProb}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00377}00377 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00378}00378         \textcolor{keyword}{call }\mbox{\hyperlink{namespaceparallelism__mod_aceda85707c0a0418753f265d1eb310e7}{getforkjoinspeedup}} ( successprob = forkjoin\%SuccessProb\%effective \&                \textcolor{comment}{! max(mcmcSamplingEfficiency, ForkJoin\%SuccessProb\%PowellMinimum\%xmin(1)) \& ! avoid unstable estimates of the effective efficiency.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00379}00379                                 , seqsectime = epsilon(seqsectime) \&                            \textcolor{comment}{! time cost of the sequential section of the code, which is negligible here.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00380}00380                                 , parsectime = parsectime \&                                     \textcolor{comment}{! the serial runtime for the parallel section of the code.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00381}00381                                 , comsectimeperproc = comsectime / (processcount -\/ 1) \&         \textcolor{comment}{! the communication overhead for each additional image beyond the leader.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00382}00382                                 , minmaxnumproc = 2 * processcount \&                            \textcolor{comment}{! speedup will be computed at least up to this process count, if not more.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00383}00383                                 , speedup = forkjoin\%Speedup\%Scaling \&                          \textcolor{comment}{! returned Speedup.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00384}00384                                 , lenspeedup = forkjoin\%Speedup\%count \&                         \textcolor{comment}{! length of the returned `Speedup\%Scaling` vector.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00385}00385                                 , maxspeedup = forkjoin\%Speedup\%Maximum\%value \&                 \textcolor{comment}{! returned maximum speedup.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00386}00386                                 , maxspeedupnumproc = forkjoin\%Speedup\%Maximum\%nproc \&          \textcolor{comment}{! returned number of processes for maximum speedup.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00387}00387                                 , err = forkjoin\%Err \&}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00388}00388                                 )}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00389}00389         \textcolor{keywordflow}{if} (forkjoin\%Err\%occurred) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00390}00390             \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00391}00391             forkjoin\%Err\%msg = procedure\_name // forkjoin\%Err\%msg}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00392}00392             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00393}00393             \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00394}00394 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00395}00395         forkjoin\%Speedup\%current = forkjoin\%Speedup\%Scaling(processcount)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00396}00396 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00397}00397     \textcolor{keyword}{end function }\mbox{\hyperlink{namespaceparallelism__mod_aabda4b8ad53a2e3734c06f0e913b0170}{constructforkjoin}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00398}00398 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00399}00399 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00400}00400 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00414}\mbox{\hyperlink{namespaceparallelism__mod_aceda85707c0a0418753f265d1eb310e7}{00414}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespaceparallelism__mod_aceda85707c0a0418753f265d1eb310e7}{getforkjoinspeedup}}(successProb, seqSecTime, parSecTime, comSecTimePerProc, minMaxNumProc, Speedup, lenSpeedup, maxSpeedupNumProc, maxSpeedup, Err)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00415}00415 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00416}00416 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: getForkJoinSpeedup}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00417}00417 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00418}00418 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestatistics__mod}{statistics\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacestatistics__mod_a41eca871b4a99852d6c1f2dfce109310}{getlogprobgeocyclic}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00419}00419         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00420}00420         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestring__mod}{string\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{interfacestring__mod_1_1num2str}{num2str}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00421}00421         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacemisc__mod}{misc\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{interfacemisc__mod_1_1resize}{resize}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00422}00422 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00423}00423         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00424}00424 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00425}00425 \textcolor{keywordtype}{        real}(RK)        , \textcolor{keywordtype}{intent(in)}                :: successProb, seqSecTime, parSecTime, comSecTimePerProc}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00426}00426         \textcolor{keywordtype}{integer(IK)}     , \textcolor{keywordtype}{intent(in)}                :: minMaxNumProc \textcolor{comment}{! must be at least 1}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00427}00427 \textcolor{keywordtype}{        real}(RK)        , \textcolor{keywordtype}{intent(out)}, \textcolor{keywordtype}{allocatable}  :: Speedup(:)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00428}00428         \textcolor{keywordtype}{integer(IK)}     , \textcolor{keywordtype}{intent(out)}               :: lenSpeedup}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00429}00429 \textcolor{keywordtype}{        real}(RK)        , \textcolor{keywordtype}{intent(out)}               :: maxSpeedup}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00430}00430         \textcolor{keywordtype}{integer(IK)}     , \textcolor{keywordtype}{intent(out)}               :: maxSpeedupNumProc}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00431}00431         \textcolor{keywordtype}{type}(err\_type)  , \textcolor{keywordtype}{intent(out)}, \textcolor{keywordtype}{optional}     :: Err}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00432}00432 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00433}00433         \textcolor{keywordtype}{character(*)}    , \textcolor{keywordtype}{parameter}                 :: PROCEDURE\_NAME = \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}} // \textcolor{stringliteral}{"{}@constructForkJoin()"{}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00434}00434         \textcolor{keywordtype}{integer(IK)}     , \textcolor{keywordtype}{parameter}                 :: ABS\_MAX\_NUM\_PROC = 1000000\_ik}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00435}00435 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00436}00436 \textcolor{keywordtype}{        real}(RK)                                    :: FirstImageContribution(1)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00437}00437 \textcolor{keywordtype}{        real}(RK)                                    :: serialRuntime, parSecTimePerProc, comSecTime}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00438}00438         \textcolor{keywordtype}{integer(IK)}                                 :: numProc, lenSpeedupNew \textcolor{comment}{!, maxNumProc}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00439}00439         \textcolor{keywordtype}{logical}                                     :: maxSpeedupFound, isPresentErr}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00440}00440         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{parameter}                      :: SuccessStep(*) = [1\_ik]}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00441}00441 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00442}00442         ispresenterr = \textcolor{keyword}{present}(err)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00443}00443         \textcolor{keywordflow}{if} (ispresenterr) err\%occurred = .false.}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00444}00444 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00445}00445         lenspeedup = minmaxnumproc}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00446}00446         \textcolor{keyword}{allocate}(speedup(lenspeedup))}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00447}00447 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00448}00448         numproc = 1}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00449}00449         speedup(numproc) = 1.\_rk}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00450}00450         maxspeedup = speedup(numproc)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00451}00451         maxspeedupnumproc = numproc}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00452}00452         serialruntime = seqsectime + parsectime \textcolor{comment}{! serial runtime of the code per function call}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00453}00453 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00454}00454         maxspeedupfound = .false.}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00455}00455         loopoverproc: \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00456}00456 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00457}00457             numproc = numproc + 1}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00458}00458 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00459}00459             \textcolor{comment}{! resize allocation if needed}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00460}00460 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00461}00461             \textcolor{keywordflow}{if} (numproc>lenspeedup) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00462}00462                 \textcolor{keywordflow}{if} (maxspeedupfound) \textcolor{keywordflow}{exit} loopoverproc}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00463}00463                 lenspeedupnew = 2 * lenspeedup}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00464}00464                 \textcolor{keyword}{call }\mbox{\hyperlink{interfacemisc__mod_1_1resize}{resize}}(speedup, from = lenspeedup, to = lenspeedupnew)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00465}00465                 lenspeedup = lenspeedupnew}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00466}00466 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00467}00467 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00468}00468             \textcolor{comment}{! compute the fraction of work done by the first image}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00469}00469 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00470}00470             \textcolor{keywordflow}{if} (successprob==0.\_rk) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00471}00471                 firstimagecontribution(1) = 1.\_rk / numproc}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00472}00472             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00473}00473 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00474}00474                 firstimagecontribution = exp(\mbox{\hyperlink{namespacestatistics__mod_a41eca871b4a99852d6c1f2dfce109310}{getlogprobgeocyclic}}( successprob = successprob \&}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00475}00475                                                                 , maxnumtrial = numproc \&}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00476}00476                                                                 , numtrial = 1\_ik \&}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00477}00477                                                                 , successstep = successstep \&}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00478}00478                                                                 ) )}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00479}00479 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00480}00480 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00481}00481             \textcolor{comment}{! effective runtime of the parallel-\/section of the code, when executed in parallel on numProc processes}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00482}00482 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00483}00483             parsectimeperproc = parsectime * firstimagecontribution(1)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00484}00484 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00485}00485             \textcolor{comment}{! communication time grows linearly with the number of processes.}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00486}00486 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00487}00487             comsectime = (numproc-\/1\_ik) * comsectimeperproc}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00488}00488 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00489}00489             speedup(numproc) = serialruntime / (seqsectime + parsectimeperproc + comsectime)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00490}00490             \textcolor{keywordflow}{if} (maxspeedup < speedup(numproc)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00491}00491                 maxspeedup = speedup(numproc)}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00492}00492                 maxspeedupnumproc = numproc}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00493}00493             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00494}00494                 maxspeedupfound = .true.}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00495}00495 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00496}00496 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00497}00497             \textcolor{keywordflow}{if} (numproc<abs\_max\_num\_proc) cycle loopoverproc \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00498}00498 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00499}00499             \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00500}00500             \textcolor{keywordflow}{if} (ispresenterr) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00501}00501                 err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00502}00502                 err\%msg =   procedure\_name // \&}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00503}00503                             \textcolor{stringliteral}{"{}: Failed to find the number of processes with which the maximum speedup occurs. The search continued up to "{}} // \&}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00504}00504                             \mbox{\hyperlink{interfacestring__mod_1_1num2str}{num2str}}(abs\_max\_num\_proc) // \textcolor{stringliteral}{"{} processes."{}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00505}00505 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00506}00506             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00507}00507             \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00508}00508 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00509}00509 \textcolor{keywordflow}{        end do} loopoverproc}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00510}00510 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00511}00511     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespaceparallelism__mod_aceda85707c0a0418753f265d1eb310e7}{getforkjoinspeedup}}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00512}00512 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00513}00513 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00514}00514 }
+\DoxyCodeLine{\Hypertarget{Parallelism__mod_8f90_source_l00515}00515 \textcolor{keyword}{end module }\mbox{\hyperlink{namespaceparallelism__mod}{parallelism\_mod}} ! lcov\_excl\_line}
+
+\end{DoxyCode}

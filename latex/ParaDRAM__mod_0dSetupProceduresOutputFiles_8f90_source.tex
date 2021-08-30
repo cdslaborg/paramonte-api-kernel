@@ -1,0 +1,115 @@
+\hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source}{}\doxysection{Para\+DRAM\+\_\+mod@Setup\+Procedures\+Output\+Files.\+f90}
+\label{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/ParaDRAM\_mod"@SetupProceduresOutputFiles.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/ParaDRAM\_mod"@SetupProceduresOutputFiles.f90}}
+\mbox{\hyperlink{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00001}00001 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00002}00002 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00004}\mbox{\hyperlink{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_a1e6ce4b6b0df0eb48817d58e1683a3bd}{00004}}   \textcolor{keyword}{subroutine }\mbox{\hyperlink{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_a1e6ce4b6b0df0eb48817d58e1683a3bd}{write\_getfilelist}}()}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00005}00005     \textcolor{keywordtype}{use }misc, \textcolor{keywordtype}{only}: getfilelist, num2str, write}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00006}00006     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00007}00007     \textcolor{keyword}{call }getfilelist( filelist = smv\_restartfilelist \&}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00008}00008                     , searchtext = pm\%fileBase//smv\_imagesuffix//mp\_restartfilesuffix//\textcolor{stringliteral}{"{}*"{}} \&}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00009}00009                     , order = \textcolor{stringliteral}{"{}date"{}} \&}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00010}00010                     , excludetext = \textcolor{stringliteral}{"{}"{}} \&}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00011}00011                     , releasemoderequested = err\_handling\_requested \&}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00012}00012                     , ierr = pd\%errStat \&}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00013}00013                     , errmsg = pd\%errMsg \&}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00014}00014                     )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00015}00015     \textcolor{keywordflow}{if} (pd\%errStat/=0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00016}00016      \textcolor{keyword}{call }write(pd\%LogFile\%unit,2,0, pd\%Flag\%fatal // \textcolor{stringliteral}{"{}Error occurred while searching for restart files."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00017}00017      \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,0, pd\%Flag\%fatal // \textcolor{stringliteral}{"{}Error code: "{}} // num2str(pd\%errStat) )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00018}00018      \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,2, pd\%Flag\%fatal // \textcolor{stringliteral}{"{}Error message: "{}} // pd\%errMsg )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00019}00019      \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,2, trim(adjustl(pd\%errMsg)) )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00020}00020      \textcolor{keyword}{call }pd\%abort()}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00021}00021 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00022}00022   \textcolor{keyword}{end subroutine }\mbox{\hyperlink{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_a1e6ce4b6b0df0eb48817d58e1683a3bd}{write\_getfilelist}}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00024}00024 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00025}00025 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00027}\mbox{\hyperlink{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_a1f90954aea9a1fcfe6089bf48bf4848a}{00027}}   \textcolor{keyword}{function }\mbox{\hyperlink{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_a1f90954aea9a1fcfe6089bf48bf4848a}{generatefilebase}}()}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00028}00028     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00029}00029     \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable} :: \mbox{\hyperlink{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_a1f90954aea9a1fcfe6089bf48bf4848a}{generatefilebase}}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00030}00030     \textcolor{keywordtype}{character(8)}  :: date}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00031}00031     \textcolor{keywordtype}{character(10)} :: time}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00032}00032     \textcolor{keyword}{call }date\_and\_time(date,time)}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00033}00033     \mbox{\hyperlink{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_a1f90954aea9a1fcfe6089bf48bf4848a}{generatefilebase}} = \textcolor{stringliteral}{"{}ParaDRAM\_run\_"{}} // date // \textcolor{stringliteral}{"{}\_"{}} // time   \textcolor{comment}{!(1:6)}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00034}00034   \textcolor{keyword}{end function }\mbox{\hyperlink{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_a1f90954aea9a1fcfe6089bf48bf4848a}{generatefilebase}}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00036}00036 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00037}00037 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00039}\mbox{\hyperlink{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_ab9a8ffd6e9cd567bd50e853901af73ca}{00039}}   \textcolor{keyword}{subroutine }\mbox{\hyperlink{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_ab9a8ffd6e9cd567bd50e853901af73ca}{checkforrestartfileexistence}}()}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00040}00040     }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00041}00041     \textcolor{keywordtype}{use }misc, \textcolor{keywordtype}{only}: num2str, write}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00042}00042     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00044}00044     ifblockrestart: \textcolor{keywordflow}{if} (\textcolor{keyword}{size}(smv\_restartfilelist)==0) \textcolor{keywordflow}{then}    \textcolor{comment}{! no restart needed}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00046}00046       pd\%restartNeeded = .false.}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00048}00048       \textcolor{comment}{! ensure the files do not exist}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00049}00049       \textcolor{comment}{!critical}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00051}00051         \textcolor{keyword}{call }write(pd\%LogFile\%unit,1,0, pd\%Flag\%brand // \textcolor{stringliteral}{"{}No restart file detected."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00052}00052         \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,1, pd\%Flag\%brand // \textcolor{stringliteral}{"{}Starting a fresh ParaDRAM run."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00054}00054         \textcolor{keywordflow}{if} (pm\%LogFile\%exists .or. pm\%ChainFile\%exists) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00055}00055           \textcolor{keyword}{call }write(pd\%LogFile\%unit,1,0, pd\%Flag\%fatal // \textcolor{stringliteral}{"{}One or more of the following output files already exist in the working directory:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00056}00056           \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,0, pd\%Flag\%fatal // pm\%LogFile\%address )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00057}00057           \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,0, pd\%Flag\%fatal // pm\%ChainFile\%address )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00058}00058           \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,0, pd\%Flag\%fatal // \textcolor{stringliteral}{"{}It appears these files belong to an old simulation."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00059}00059           \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,1, pd\%Flag\%fatal // \textcolor{stringliteral}{"{}Provide an alternative simulation fileBase OR path for the output file names and rerun the program."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00060}00060           \textcolor{keyword}{call }pd\%abort()}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00061}00061 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00062}00062         }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00063}00063         \textcolor{keyword}{call }\mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresOutputFiles_8f90_a6abd476ef6ae2e71d2586e8873a41ab0}{openlogfile}}(status=\textcolor{stringliteral}{"{}new"{}},position=\textcolor{stringliteral}{"{}asis"{}})}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00064}00064         \textcolor{keyword}{call }\mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresOutputFiles_8f90_acabc3234c90ef5550b0157f6d40534aa}{opentimefile}}(status=\textcolor{stringliteral}{"{}new"{}},position=\textcolor{stringliteral}{"{}asis"{}})}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00065}00065         \textcolor{keyword}{call }\mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresOutputFiles_8f90_a07df4dcd8c9fc8b782709ed752c6358b}{openchainfile}}(status=\textcolor{stringliteral}{"{}new"{}},position=\textcolor{stringliteral}{"{}asis"{}})}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00066}00066         }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00067}00067       \textcolor{comment}{!end critical}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00068}00068       }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00069}00069     \textcolor{keywordflow}{else} ifblockrestart    \textcolor{comment}{! restart is needed}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00071}00071       pd\%restartNeeded = .true.}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00072}00072       }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00073}00073       \textcolor{comment}{! ensure the log file does exist}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00074}00074       \textcolor{comment}{!critical}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00076}00076         \textcolor{keyword}{call }write(pd\%LogFile\%unit,1,0, pd\%Flag\%notic // num2str(\textcolor{keyword}{size}(smv\_restartfilelist)) // \textcolor{stringliteral}{"{} restart files detected."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00077}00077         \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,1, pd\%Flag\%notic // \textcolor{stringliteral}{"{}Restarting an old run using the most recent restart file ..."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00078}00078         }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00079}00079         \textcolor{keywordflow}{if} (.not.pm\%LogFile\%addressExists) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00080}00080           \textcolor{keyword}{call }write(pd\%LogFile\%unit,1,0, pd\%Flag\%fatal // \textcolor{stringliteral}{"{}Failed to detect the old output report file: "{}} // pm\%LogFile\%address )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00081}00081           \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,0, pd\%Flag\%fatal // \textcolor{stringliteral}{"{}It appears that the old simulation files do not exist or have been modified."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00082}00082           \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,0, pd\%Flag\%fatal // \textcolor{stringliteral}{"{}Place the original output files in the restart file directory and rerun the program."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00083}00083           \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,0, pd\%Flag\%fatal // \textcolor{stringliteral}{"{}Otherwise remove the restart files and start a fresh run."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00084}00084           \textcolor{keyword}{call }pd\%abort()}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00085}00085           stop}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00086}00086 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00087}00087         }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00088}00088         \textcolor{keyword}{call }\mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresOutputFiles_8f90_a6abd476ef6ae2e71d2586e8873a41ab0}{openlogfile}}(status=\textcolor{stringliteral}{"{}old"{}},position=\textcolor{stringliteral}{"{}append"{}})}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00089}00089         \textcolor{keyword}{call }\mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresOutputFiles_8f90_acabc3234c90ef5550b0157f6d40534aa}{opentimefile}}(status=\textcolor{stringliteral}{"{}old"{}},position=\textcolor{stringliteral}{"{}append"{}})}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00090}00090         \textcolor{keyword}{call }\mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresOutputFiles_8f90_a07df4dcd8c9fc8b782709ed752c6358b}{openchainfile}}(status=\textcolor{stringliteral}{"{}old"{}},position=\textcolor{stringliteral}{"{}append"{}})}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00092}00092         \textcolor{keyword}{call }write(pd\%LogFile\%unit,3,0, pd\%Flag\%alert // \textcolor{stringliteral}{"{}Restarting the simulation from an existing interrupted run ..."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00093}00093         \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,0, pd\%Flag\%alert // \textcolor{stringliteral}{"{}Make sure you run ParaDRAM with exact same options as in previous run."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00094}00094         \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,0, pd\%Flag\%alert // \textcolor{stringliteral}{"{}Otherwise there is no guarantee the results will be correct."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00095}00095         \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,0, pd\%Flag\%alert // \textcolor{stringliteral}{"{}The only option that can be added to restart run, is fileBase."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00096}00096         \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,0, pd\%Flag\%alert // \textcolor{stringliteral}{"{}It is used to determine if restart is needed."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00097}00097         \textcolor{keyword}{call }write(pd\%LogFile\%unit,0,0, pd\%Flag\%alert // \textcolor{stringliteral}{"{}If the restart files do not exist, ParaDRAM starts afresh."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00099}00099         smv\_restartfile = smv\_restartfilelist(1)\%record}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00100}00100         }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00101}00101         \textcolor{comment}{! XX: The following has to be modified in future}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00102}00102         \textcolor{keyword}{call }write(pd\%LogFile\%unit,1,1, pd\%Flag\%fatal // \textcolor{stringliteral}{"{}Restart option not supported yet."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00103}00103         \textcolor{keyword}{call }pd\%abort()}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00104}00104     }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00105}00105       \textcolor{comment}{!end critical}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00107}00107 \textcolor{keywordflow}{    end if} ifblockrestart}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_source_l00109}00109   \textcolor{keyword}{end subroutine }\mbox{\hyperlink{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_ab9a8ffd6e9cd567bd50e853901af73ca}{checkforrestartfileexistence}}}
+
+\end{DoxyCode}

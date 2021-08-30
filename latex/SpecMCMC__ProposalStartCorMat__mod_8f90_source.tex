@@ -1,0 +1,184 @@
+\hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source}{}\doxysection{Spec\+MCMC\+\_\+\+Proposal\+Start\+Cor\+Mat\+\_\+mod.\+f90}
+\label{SpecMCMC__ProposalStartCorMat__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/SpecMCMC\_ProposalStartCorMat\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/SpecMCMC\_ProposalStartCorMat\_mod.f90}}
+\mbox{\hyperlink{SpecMCMC__ProposalStartCorMat__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00001}00001 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00002}00002 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00003}00003 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00004}00004 \textcolor{comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00005}00005 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00006}00006 \textcolor{comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00007}00007 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00008}00008 \textcolor{comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00009}00009 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00010}00010 \textcolor{comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00011}00011 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00012}00012 \textcolor{comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00013}00013 \textcolor{comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}),}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00014}00014 \textcolor{comment}{!!!!   to deal in the Software without restriction, including without limitation}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00015}00015 \textcolor{comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00016}00016 \textcolor{comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00017}00017 \textcolor{comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00018}00018 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00019}00019 \textcolor{comment}{!!!!   The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00020}00020 \textcolor{comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00021}00021 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00022}00022 \textcolor{comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00023}00023 \textcolor{comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00024}00024 \textcolor{comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00025}00025 \textcolor{comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00026}00026 \textcolor{comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00027}00027 \textcolor{comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00028}00028 \textcolor{comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00029}00029 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00030}00030 \textcolor{comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00031}00031 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00032}00032 \textcolor{comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00033}00033 \textcolor{comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00034}00034 \textcolor{comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00035}00035 \textcolor{comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00036}00036 \textcolor{comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00037}00037 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00038}00038 \textcolor{comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00039}00039 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00040}00040 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00041}00041 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00048}\mbox{\hyperlink{namespacespecmcmc__proposalstartcormat__mod}{00048}} \textcolor{keyword}{module} \mbox{\hyperlink{namespacespecmcmc__proposalstartcormat__mod}{specmcmc\_proposalstartcormat\_mod}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00050}00050     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00051}00051     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00053}\mbox{\hyperlink{namespacespecmcmc__proposalstartcormat__mod_a12eb0f43d18964d4cbedff0f29c11444}{00053}}     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter}         :: \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}} = \textcolor{stringliteral}{"{}@SpecMCMC\_ProposalStartCorMat\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00055}\mbox{\hyperlink{namespacespecmcmc__proposalstartcormat__mod_aaf0d2f9b97242eb44373b87550adcd8d}{00055}} \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{allocatable}           :: \mbox{\hyperlink{namespacespecmcmc__proposalstartcormat__mod_aaf0d2f9b97242eb44373b87550adcd8d}{proposalstartcormat}}(:,:) \textcolor{comment}{! namelist input}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00057}\mbox{\hyperlink{structspecmcmc__proposalstartcormat__mod_1_1proposalstartcormat__type}{00057}}     \textcolor{keyword}{type}                            :: \mbox{\hyperlink{structspecmcmc__proposalstartcormat__mod_1_1proposalstartcormat__type}{proposalstartcormat\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00058}\mbox{\hyperlink{structspecmcmc__proposalstartcormat__mod_1_1proposalstartcormat__type_a0686abb452844c3fc5d0148ce4e0539f}{00058}} \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{allocatable}       :: val(:,:)}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00059}\mbox{\hyperlink{structspecmcmc__proposalstartcormat__mod_1_1proposalstartcormat__type_a04e19adc5002190f86e3fc6b76c59e85}{00059}} \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{allocatable}       :: def(:,:)}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00060}\mbox{\hyperlink{structspecmcmc__proposalstartcormat__mod_1_1proposalstartcormat__type_a782df4b03db6c0464a566213c687259e}{00060}} \textcolor{keywordtype}{        real}(rk)                    :: null}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00061}\mbox{\hyperlink{structspecmcmc__proposalstartcormat__mod_1_1proposalstartcormat__type_ab2824c3fc34dc2ea6a7a6c6436c91b3b}{00061}}         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}   :: desc}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00062}00062     \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00063}\mbox{\hyperlink{structspecmcmc__proposalstartcormat__mod_1_1proposalstartcormat__type_afdde48fadb2fc8bb7dad07e20ca7455b}{00063}}         \textcolor{keywordtype}{procedure}, pass             :: \mbox{\hyperlink{tests_2CMakeLists_8txt_ae83e80fd33450b46a25fc28274789f6a}{set}} => setproposalstartcormat, checkforsanity, nullifynamelistvar}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00064}00064     \textcolor{keyword}{end type }\mbox{\hyperlink{structspecmcmc__proposalstartcormat__mod_1_1proposalstartcormat__type}{proposalstartcormat\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00066}00066     \textcolor{keyword}{interface} \mbox{\hyperlink{structspecmcmc__proposalstartcormat__mod_1_1proposalstartcormat__type}{proposalstartcormat\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00067}00067         \textcolor{keyword}{module procedure}            :: constructproposalstartcormat}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00068}00068     \textcolor{keyword}{end interface }\mbox{\hyperlink{structspecmcmc__proposalstartcormat__mod_1_1proposalstartcormat__type}{proposalstartcormat\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00070}00070     \textcolor{keywordtype}{private} :: constructproposalstartcormat, setproposalstartcormat, checkforsanity, nullifynamelistvar}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00072}00072 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00074}00074 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00076}00076 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00078}\mbox{\hyperlink{structspecmcmc__proposalstartcormat__mod_1_1proposalstartcormat__type_a7d24b1dba0de224bba2357949dba797b}{00078}}     \textcolor{keyword}{function }constructproposalstartcormat(nd,methodName) \textcolor{keyword}{result}(self)}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00079}00079 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00080}00080 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: constructProposalStartCorMat}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00081}00081 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00082}00082 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, \mbox{\hyperlink{namespaceconstants__mod_af134c166687aa0d3aed2104dceac8023}{null\_rk}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00083}00083         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestring__mod}{string\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{interfacestring__mod_1_1num2str}{num2str}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00084}00084         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacematrix__mod}{matrix\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacematrix__mod_a4c64c8131a142c7d91e6490c407a5d7a}{geteye}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00085}00085         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00086}00086         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)}         :: nd}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00087}00087         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}        :: methodname}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00088}00088         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structspecmcmc__proposalstartcormat__mod_1_1proposalstartcormat__type}{proposalstartcormat\_type}})  :: self}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00089}00089         \textcolor{keyword}{allocate}( self\%Def(nd,nd) )}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00090}00090         self\%Def    = \mbox{\hyperlink{namespacematrix__mod_a4c64c8131a142c7d91e6490c407a5d7a}{geteye}}(nd,nd)}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00091}00091         self\%null   = \mbox{\hyperlink{namespaceconstants__mod_af134c166687aa0d3aed2104dceac8023}{null\_rk}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00092}00092         self\%desc   = \&}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00093}00093         \textcolor{stringliteral}{"{}proposalStartCorMat is a real-\/valued positive-\/definite matrix of size (ndim,ndim), where ndim is the dimension of the \&}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00094}00094 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&sampling space. It serves as the best-\/guess starting correlation matrix of the proposal distribution used by "{}} \&}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00095}00095         // methodname // \textcolor{stringliteral}{"{}. \&}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00096}00096 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&It is used (along with the input vector ProposalStartStdVec) to construct the covariance matrix of the proposal \&}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00097}00097 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&distribution when the input covariance matrix is missing in the input list of variables. \&}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00098}00098 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&If the covariance matrix is given as input to "{}}//methodname//\textcolor{stringliteral}{"{}, any input values for proposalStartCorMat, \&}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00099}00099 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&as well as ProposalStartStdVec, will be automatically ignored by "{}}//methodname//\textcolor{stringliteral}{"{}. As input to "{}} // methodname // \&}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00100}00100         \textcolor{stringliteral}{"{}, the variable proposalStartCorMat along with ProposalStartStdVec is especially useful in situations where \&}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00101}00101 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&obtaining the best-\/guess covariance matrix is not trivial. The default value of proposalStartCorMat is an ndim-\/by-\/ndim Identity matrix."{}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00102}00102     \textcolor{keyword}{end function }constructproposalstartcormat}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00104}00104 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00105}00105 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00106}00106     \textcolor{keyword}{subroutine }nullifynamelistvar(self,nd)}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00107}00107 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00108}00108 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00109}00109 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00110}00110 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00111}00111         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00112}00112         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structspecmcmc__proposalstartcormat__mod_1_1proposalstartcormat__type}{proposalstartcormat\_type}}), \textcolor{keywordtype}{intent(in)} :: self}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00113}00113         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)}                     :: nd}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00114}00114         \textcolor{keywordflow}{if} (\textcolor{keyword}{allocated}(\mbox{\hyperlink{namespacespecmcmc__proposalstartcormat__mod_aaf0d2f9b97242eb44373b87550adcd8d}{proposalstartcormat}})) \textcolor{keyword}{deallocate}(\mbox{\hyperlink{namespacespecmcmc__proposalstartcormat__mod_aaf0d2f9b97242eb44373b87550adcd8d}{proposalstartcormat}})}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00115}00115         \textcolor{keyword}{allocate}(\mbox{\hyperlink{namespacespecmcmc__proposalstartcormat__mod_aaf0d2f9b97242eb44373b87550adcd8d}{proposalstartcormat}}(nd,nd))}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00116}00116         \mbox{\hyperlink{namespacespecmcmc__proposalstartcormat__mod_aaf0d2f9b97242eb44373b87550adcd8d}{proposalstartcormat}} = self\%null}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00117}00117     \textcolor{keyword}{end subroutine }nullifynamelistvar}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00119}00119 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00121}00121     \textcolor{keyword}{subroutine }setproposalstartcormat(self,proposalStartCorMat)}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00122}00122 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00123}00123 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: setProposalStartCorMat}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00124}00124 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00125}00125 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00126}00126         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00127}00127         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structspecmcmc__proposalstartcormat__mod_1_1proposalstartcormat__type}{proposalstartcormat\_type}}), \textcolor{keywordtype}{intent(inout)}  :: self}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00128}00128 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(in)}                            :: \mbox{\hyperlink{namespacespecmcmc__proposalstartcormat__mod_aaf0d2f9b97242eb44373b87550adcd8d}{proposalstartcormat}}(:,:)}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00129}00129         self\%Val = \mbox{\hyperlink{namespacespecmcmc__proposalstartcormat__mod_aaf0d2f9b97242eb44373b87550adcd8d}{proposalstartcormat}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00130}00130         \textcolor{keywordflow}{where} (self\%Val==self\%null)}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00131}00131             self\%Val = self\%Def}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00132}00132 \textcolor{keywordflow}{        end where}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00133}00133     \textcolor{keyword}{end subroutine }setproposalstartcormat}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00134}00134 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00135}00135 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00137}00137     \textcolor{comment}{! There is no need to check for eyeness of the input correlation matrix. Only positive definiteness is enough.}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00138}00138     \textcolor{comment}{! If the input correlation matrix is problematic, it will eventually lead to a non-\/positive-\/definite covariance matrix.}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00139}00139     \textcolor{keyword}{subroutine }checkforsanity(self,Err,methodName,nd)}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00140}00140 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00141}00141 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: checkForSanity}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00142}00142 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00143}00143 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk, \mbox{\hyperlink{namespaceconstants__mod_ac866701822ea64cf2c6879d500a55924}{spr}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00144}00144         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacematrix__mod}{matrix\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacematrix__mod_a4457ce676fff3d9e4089018b06ca00fe}{isposdef}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00145}00145         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestring__mod}{string\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{interfacestring__mod_1_1num2str}{num2str}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00146}00146         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00147}00147         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00148}00148         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structspecmcmc__proposalstartcormat__mod_1_1proposalstartcormat__type}{proposalstartcormat\_type}}), \textcolor{keywordtype}{intent(in)} :: self}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00149}00149         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)}                     :: nd}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00150}00150         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}                    :: methodname}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00151}00151         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}), \textcolor{keywordtype}{intent(inout)}               :: err}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00152}00152         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter}                     :: procedure\_name = \textcolor{stringliteral}{"{}@checkForSanity()"{}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00153}00153        \textcolor{comment}{!integer(IK)                                 :: i, j}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00154}00154         \textcolor{keywordflow}{if} (.not.\mbox{\hyperlink{namespacematrix__mod_a4457ce676fff3d9e4089018b06ca00fe}{isposdef}}(nd,self\%Val)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00155}00155             err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00156}00156             err\%msg =   err\%msg // \&}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00157}00157                         \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}} // procedure\_name // \textcolor{stringliteral}{"{}: Error occurred. The input requested proposalStartCorMat \&}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00158}00158 \textcolor{stringliteral}{}\textcolor{stringliteral}{                        \&for the proposal of "{}} // methodname // \textcolor{stringliteral}{"{} is not a positive-\/definite matrix.\(\backslash\)n\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00159}00159 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00160}00160         \textcolor{comment}{!do j = 1, nd}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00161}00161         \textcolor{comment}{!    if (abs(proposalStartCorMat(j,j) -\/ 1.\_RK) > 1.e-\/10\_RK) then}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00162}00162         \textcolor{comment}{!        Err\%occurred = .true.}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00163}00163         \textcolor{comment}{!        Err\%msg =   Err\%msg // \&}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00164}00164         \textcolor{comment}{!                    MODULE\_NAME // PROCEDURE\_NAME // "{}: Error occurred. The input requested element \&}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00165}00165         \textcolor{comment}{!                    \&proposalStartCorMat("{}//num2str(j)//"{},"{}//num2str(j)//"{}) = "{}//num2str(proposalStartCorMat(j,j))// \&}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00166}00166         \textcolor{comment}{!                    "{} must be, by definition, equal to one.\(\backslash\)n\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00167}00167         \textcolor{comment}{!    end if}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00168}00168         \textcolor{comment}{!    do i = 1, j-\/1}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00169}00169         \textcolor{comment}{!        if ( abs(proposalStartCorMat(i,j)) >= 1.\_RK ) then}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00170}00170         \textcolor{comment}{!            Err\%occurred = .true.}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00171}00171         \textcolor{comment}{!            Err\%msg =   Err\%msg // \&}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00172}00172         \textcolor{comment}{!                        MODULE\_NAME // PROCEDURE\_NAME // "{}: Error occurred. The input requested element \&}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00173}00173         \textcolor{comment}{!                        \&proposalStartCorMat("{}//num2str(i)//"{},"{}//num2str(j)//"{}) = "{}//num2str(proposalStartCorMat(i,j))// \&}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00174}00174         \textcolor{comment}{!                        "{} must be, by definition, bounded within the open range (-\/1,1).\(\backslash\)n\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00175}00175         \textcolor{comment}{!        end if}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00176}00176         \textcolor{comment}{!    end do}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00177}00177         \textcolor{comment}{!end do}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00178}00178     \textcolor{keyword}{end subroutine }checkforsanity}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00180}00180 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{SpecMCMC__ProposalStartCorMat__mod_8f90_source_l00182}00182 \textcolor{keyword}{end module }\mbox{\hyperlink{namespacespecmcmc__proposalstartcormat__mod}{specmcmc\_proposalstartcormat\_mod}} ! lcov\_excl\_line}
+
+\end{DoxyCode}

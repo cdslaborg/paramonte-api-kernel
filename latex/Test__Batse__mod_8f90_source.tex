@@ -1,0 +1,373 @@
+\hypertarget{Test__Batse__mod_8f90_source}{}\doxysection{Test\+\_\+\+Batse\+\_\+mod.\+f90}
+\label{Test__Batse__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/tests/Test\_Batse\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/tests/Test\_Batse\_mod.f90}}
+\mbox{\hyperlink{Test__Batse__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00001}00001 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00002}00002 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00003}00003 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00004}00004 \textcolor{comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00005}00005 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00006}00006 \textcolor{comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00007}00007 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00008}00008 \textcolor{comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00009}00009 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00010}00010 \textcolor{comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00011}00011 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00012}00012 \textcolor{comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00013}00013 \textcolor{comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}),}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00014}00014 \textcolor{comment}{!!!!   to deal in the Software without restriction, including without limitation}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00015}00015 \textcolor{comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00016}00016 \textcolor{comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00017}00017 \textcolor{comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00018}00018 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00019}00019 \textcolor{comment}{!!!!   The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00020}00020 \textcolor{comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00021}00021 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00022}00022 \textcolor{comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00023}00023 \textcolor{comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00024}00024 \textcolor{comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00025}00025 \textcolor{comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00026}00026 \textcolor{comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00027}00027 \textcolor{comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00028}00028 \textcolor{comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00029}00029 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00030}00030 \textcolor{comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00031}00031 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00032}00032 \textcolor{comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00033}00033 \textcolor{comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00034}00034 \textcolor{comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00035}00035 \textcolor{comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00036}00036 \textcolor{comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00037}00037 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00038}00038 \textcolor{comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00039}00039 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00040}00040 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00041}00041 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00046}\mbox{\hyperlink{namespacetest__batse__mod}{00046}} \textcolor{keyword}{module} \mbox{\hyperlink{namespacetest__batse__mod}{test\_batse\_mod}}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00048}00048     \textcolor{comment}{!use Constants\_mod, only: IK, RK}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00049}00049     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacebatse__mod}{batse\_mod}}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00050}00050     \textcolor{keywordtype}{use }test\_mod, \textcolor{keywordtype}{only}: test\_type}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00051}00051     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00053}00053     \textcolor{keywordtype}{private}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00054}00054     \textcolor{keywordtype}{public} :: \mbox{\hyperlink{namespacetest__batse__mod_a6c17f1f8dce4dcd60e64fde3fb247892}{test\_batse}}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00056}00056     \textcolor{keywordtype}{type}(Test\_type) :: Test}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00058}00058     \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{parameter} :: np = 86}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00059}00059 \textcolor{keywordtype}{    real}(RK)    , \textcolor{keywordtype}{parameter} :: LOG10PBOL = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00060}00060 \textcolor{keywordtype}{    real}(RK)    , \textcolor{keywordtype}{parameter} :: LOG10EPK\_LOG10PH(2,np)   = reshape( \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00061}00061                                                         [ -\/3.0000000000000000\_rk, 4.92000000000000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00062}00062                                                         , -\/2.9000000000000000\_rk, 4.92271550938680\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00063}00063                                                         , -\/2.8000000000000000\_rk, 4.94170723276800\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00064}00064                                                         , -\/2.7000000000000000\_rk, 4.96223780646120\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00065}00065                                                         , -\/2.6000000000000000\_rk, 4.98414439011840\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00066}00066                                                         , -\/2.5000000000000000\_rk, 5.00727609375000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00067}00067                                                         , -\/2.4000000000000000\_rk, 5.03149354874880\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00068}00068                                                         , -\/2.3000000000000000\_rk, 5.05666847891400\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00069}00069                                                         , -\/2.2000000000000000\_rk, 5.08268327147520\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00070}00070                                                         , -\/2.1000000000000000\_rk, 5.10943054811640\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00071}00071                                                         , -\/2.0000000000000000\_rk, 5.13681273600000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00072}00072                                                         , -\/1.9000000000000000\_rk, 5.16474163879080\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00073}00073                                                         , -\/1.8000000000000000\_rk, 5.19313800768000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00074}00074                                                         , -\/1.7000000000000000\_rk, 5.22193111240920\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00075}00075                                                         , -\/1.6000000000000000\_rk, 5.25105831229440\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00076}00076                                                         , -\/1.5000000000000000\_rk, 5.28046462725000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00077}00077                                                         , -\/1.4000000000000000\_rk, 5.31010230881280\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00078}00078                                                         , -\/1.3000000000000000\_rk, 5.33993041116600\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00079}00079                                                         , -\/1.2000000000000000\_rk, 5.36991436216320\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00080}00080                                                         , -\/1.1000000000000000\_rk, 5.40002553435240\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00081}00081                                                         , -\/1.0000000000000000\_rk, 5.43024081600000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00082}00082                                                         , -\/0.9000000000000000\_rk, 5.46054218211480\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00083}00083                                                         , -\/0.8000000000000000\_rk, 5.49091626547200\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00084}00084                                                         , -\/0.7000000000000000\_rk, 5.52135392763720\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00085}00085                                                         , -\/0.6000000000000000\_rk, 5.55184982999040\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00086}00086                                                         , -\/0.5000000000000000\_rk, 5.58240200475000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00087}00087                                                         , -\/0.4000000000000000\_rk, 5.61301142599680\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00088}00088                                                         , -\/0.3000000000000000\_rk, 5.64368158069800\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00089}00089                                                         , -\/0.2000000000000000\_rk, 5.67441803973120\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00090}00090                                                         , -\/0.0999999999999996\_rk, 5.70522802890840\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00091}00091                                                         , 0.00000000000000000\_rk, 5.73612000000000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00092}00092                                                         , 0.10000000000000000\_rk, 5.76710320175880\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00093}00093                                                         , 0.20000000000000000\_rk, 5.79818725094400\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00094}00094                                                         , 0.30000000000000000\_rk, 5.82938170334520\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00095}00095                                                         , 0.40000000000000000\_rk, 5.86069562480640\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00096}00096                                                         , 0.50000000000000000\_rk, 5.89213716225000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00097}00097                                                         , 0.60000000000000000\_rk, 5.92371311470080\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00098}00098                                                         , 0.70000000000000000\_rk, 5.95542850431000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00099}00099                                                         , 0.80000000000000000\_rk, 5.98728614737920\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00100}00100                                                         , 0.90000000000000000\_rk, 6.01928622538440\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00101}00101                                                         , 1.00000000000000000\_rk, 6.05142585600000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00102}00102                                                         , 1.10000000000000000\_rk, 6.08369866412280\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00103}00103                                                         , 1.20000000000000000\_rk, 6.11609435289600\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00104}00104                                                         , 1.30000000000000000\_rk, 6.14859827473320\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00105}00105                                                         , 1.40000000000000000\_rk, 6.18119100234240\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00106}00106                                                         , 1.50000000000000000\_rk, 6.21425921875001\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00107}00107                                                         , 1.60000000000000000\_rk, 6.24740828569600\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00108}00108                                                         , 1.70000000000000000\_rk, 6.27826369177797\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00109}00109                                                         , 1.80000000000000000\_rk, 6.30171825203203\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00110}00110                                                         , 1.90000000000000000\_rk, 6.31516935429406\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00111}00111                                                         , 2.00000000000000000\_rk, 6.31782000000002\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00112}00112                                                         , 2.10000000000000000\_rk, 6.30989986450613\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00113}00113                                                         , 2.20000000000000000\_rk, 6.29197575116811\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00114}00114                                                         , 2.30000000000000000\_rk, 6.26452081342198\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00115}00115                                                         , 2.40000000000000000\_rk, 6.22791191910419\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00116}00116                                                         , 2.50000000000000000\_rk, 6.18562562500000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00117}00117                                                         , 2.60000000000000000\_rk, 6.13382209600000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00118}00118                                                         , 2.70000000000000000\_rk, 6.07721678100000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00119}00119                                                         , 2.80000000000000000\_rk, 6.01662553600000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00120}00120                                                         , 2.90000000000000000\_rk, 5.95282848100000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00121}00121                                                         , 3.00000000000000000\_rk, 5.88657000000000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00122}00122                                                         , 3.10000000000000000\_rk, 5.81855874100000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00123}00123                                                         , 3.20000000000000000\_rk, 5.74946761600000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00124}00124                                                         , 3.30000000000000000\_rk, 5.67993380100000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00125}00125                                                         , 3.40000000000000000\_rk, 5.61055873600000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00126}00126                                                         , 3.50000000000000000\_rk, 5.54190812500000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00127}00127                                                         , 3.60000000000000000\_rk, 5.47451193600000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00128}00128                                                         , 3.70000000000000000\_rk, 5.40886440100000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00129}00129                                                         , 3.80000000000000000\_rk, 5.34542401600000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00130}00130                                                         , 3.90000000000000000\_rk, 5.28461354100000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00131}00131                                                         , 4.00000000000000000\_rk, 5.22495000000000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00132}00132                                                         , 4.10000000000000000\_rk, 5.17119063610000\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00133}00133                                                         , 4.20000000000000000\_rk, 5.12504318720001\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00134}00134                                                         , 4.30000000000000000\_rk, 5.08588032630002\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00135}00135                                                         , 4.40000000000000000\_rk, 5.05301458240003\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00136}00136                                                         , 4.50000000000000000\_rk, 5.02572031250004\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00137}00137                                                         , 4.60000000000000000\_rk, 5.00325567360003\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00138}00138                                                         , 4.70000000000000000\_rk, 4.98488459470005\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00139}00139                                                         , 4.80000000000000000\_rk, 4.96989874879999\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00140}00140                                                         , 4.90000000000000000\_rk, 4.95763952489999\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00141}00141                                                         , 5.00000000000000000\_rk, 4.94752000000006\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00142}00142                                                         , 5.10000000000000000\_rk, 4.93904691110002\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00143}00143                                                         , 5.20000000000000000\_rk, 4.93184262720004\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00144}00144                                                         , 5.30000000000000000\_rk, 4.92566712130003\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00145}00145                                                         , 5.40000000000000000\_rk, 4.92043994240004\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00146}00146                                                         , 5.50000000000000000\_rk, 4.92000000000000\_rk ],shape=shape(log10epk\_log10ph))}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00147}00147 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00148}00148 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00149}00149 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00150}00150 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00151}00151 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00152}00152 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00153}00153 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00154}\mbox{\hyperlink{namespacetest__batse__mod_a6c17f1f8dce4dcd60e64fde3fb247892}{00154}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespacetest__batse__mod_a6c17f1f8dce4dcd60e64fde3fb247892}{test\_batse}}()}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00155}00155         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00156}00156         test = test\_type(modulename=\mbox{\hyperlink{namespacebatse__mod_acfb7a4dafc4e9baf802a426fd713eae2}{module\_name}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00157}00157         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__batse__mod_a7e140d2ade188e0d3847c62fcaf8d1d5}{test\_getlogpf53}},\textcolor{stringliteral}{"{}test\_getLogPF53"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00158}00158         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__batse__mod_a68aaab5adbc7d4baa4fdcb5d4d974f49}{test\_getlogpbol}},\textcolor{stringliteral}{"{}test\_getLogPbol"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00159}00159         \textcolor{keyword}{call }test\%run(test\_getlog10pf53,\textcolor{stringliteral}{"{}test\_getLog10PF53"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00160}00160         \textcolor{keyword}{call }test\%run(test\_readdatagrb\_1,\textcolor{stringliteral}{"{}test\_readDataGRB\_1"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00161}00161         \textcolor{keyword}{call }test\%run(test\_readdatagrb\_2,\textcolor{stringliteral}{"{}test\_readDataGRB\_2"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00162}00162         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__batse__mod_abff5b38e84dab58a3aeada8a10060427}{test\_getlogeffectivepeakphotonflux\_spr\_1}},\textcolor{stringliteral}{"{}test\_getLogEffectivePeakPhotonFlux\_SPR\_1"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00163}00163         \textcolor{keyword}{call }test\%run(test\_getlogeffectivepeakphotonflux\_dpr\_1,\textcolor{stringliteral}{"{}test\_getLogEffectivePeakPhotonFlux\_DPR\_1"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00164}00164         \textcolor{keyword}{call }test\%run(test\_getlogeffectivepeakphotonfluxcorrection\_spr\_1,\textcolor{stringliteral}{"{}test\_getLogEffectivePeakPhotonFluxCorrection\_SPR\_1"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00165}00165         \textcolor{keyword}{call }test\%run(test\_getlogeffectivepeakphotonfluxcorrection\_dpr\_1,\textcolor{stringliteral}{"{}test\_getLogEffectivePeakPhotonFluxCorrection\_DPR\_1"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00166}00166         \textcolor{keyword}{call }test\%finalize()}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00167}00167     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespacetest__batse__mod_a6c17f1f8dce4dcd60e64fde3fb247892}{test\_batse}}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00168}00168 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00169}00169 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00170}00170 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00171}00171     \textcolor{keyword}{function }test\_readdatagrb\_1() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00172}00172         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00173}00173         \textcolor{keywordtype}{logical} :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00174}00174         \textcolor{keyword}{call }\mbox{\hyperlink{namespacebatse__mod_a9af89b37dbc9a04f9f84abbd869f839f}{readdatagrb}}( infilepath = test\%inDir//\textcolor{stringliteral}{"{}/Test\_Batse\_mod@batseDataLGRB1366.in"{}} \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00175}00175                         , outfilepath = test\%outDir//\textcolor{stringliteral}{"{}/Test\_Batse\_mod@batseDataLGRB1366.in"{}} \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00176}00176                         , islgrb = .true. \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00177}00177                         )}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00178}00178         assertion = .true.}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00179}00179     \textcolor{keyword}{end function }test\_readdatagrb\_1}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00180}00180 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00181}00181 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00182}00182 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00183}00183     \textcolor{keyword}{function }test\_readdatagrb\_2() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00184}00184         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00185}00185         \textcolor{keywordtype}{logical} :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00186}00186         \textcolor{keyword}{call }\mbox{\hyperlink{namespacebatse__mod_a9af89b37dbc9a04f9f84abbd869f839f}{readdatagrb}}( infilepath = test\%inDir//\textcolor{stringliteral}{"{}/Test\_Batse\_mod@batseDataSGRB565.in"{}} \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00187}00187                         , outfilepath = test\%outDir//\textcolor{stringliteral}{"{}/Test\_Batse\_mod@batseDataSGRB565.in"{}} \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00188}00188                         , islgrb = .false. \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00189}00189                         )}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00190}00190         assertion = .true.}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00191}00191     \textcolor{keyword}{end function }test\_readdatagrb\_2}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00192}00192 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00193}00193 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00194}00194 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00195}00195     \textcolor{keyword}{function }test\_getlog10pf53() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00196}00196 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00197}00197         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00198}00198         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00199}00199         \textcolor{keywordtype}{logical} :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00200}00200         \textcolor{keywordtype}{integer(IK)} :: ip}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00201}00201 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: tolerance = 1.e-\/12\_rk}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00202}00202 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00203}00203         \textcolor{keywordflow}{do} ip = 1,np}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00204}00204             assertion = abs(log10epk\_log10ph(2,ip)-\/\mbox{\hyperlink{namespacebatse__mod_a2c622fd87e8a2997fb6a5a461e53958d}{getlog10pf53}}(log10epk\_log10ph(1,ip),log10pbol))<tolerance}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00205}00205             \textcolor{keywordflow}{if} (assertion) cycle}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00206}00206             \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00207}00207             \textcolor{keywordflow}{if} (test\%isVerboseMode) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00208}00208                 \textcolor{keyword}{write}(*,\textcolor{stringliteral}{"{}(A)"{}}) \textcolor{stringliteral}{"{}The error with respect to reference value is larger than the tolerance."{}}, new\_line(\textcolor{stringliteral}{"{}a"{}}) \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00209}00209                              , \textcolor{stringliteral}{"{}tolerance, ip, LOG10EPK\_LOG10PH(2,ip), getLog10PF53(LOG10EPK\_LOG10PH(1,ip),LOG10PBOL): "{}} \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00210}00210                              , tolerance, ip, log10epk\_log10ph(2,ip), \mbox{\hyperlink{namespacebatse__mod_a2c622fd87e8a2997fb6a5a461e53958d}{getlog10pf53}}(log10epk\_log10ph(1,ip),log10pbol)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00211}00211 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00212}00212             \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00213}00213 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00214}00214 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00215}00215     \textcolor{keyword}{end function }test\_getlog10pf53}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00216}00216 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00217}00217 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00218}00218 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00219}\mbox{\hyperlink{namespacetest__batse__mod_a7e140d2ade188e0d3847c62fcaf8d1d5}{00219}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__batse__mod_a7e140d2ade188e0d3847c62fcaf8d1d5}{test\_getlogpf53}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00220}00220 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00221}00221         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk, \mbox{\hyperlink{namespaceconstants__mod_a14d9c71223771abb3fbe7ed7617913c6}{ln10}}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00222}00222         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00223}00223         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{parameter} :: np = 86}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00224}00224         \textcolor{keywordtype}{logical}                 :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00225}00225         \textcolor{keywordtype}{integer(IK)}             :: ip}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00226}00226 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: tolerance = 1.e-\/12\_rk}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00227}00227 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00228}00228         \textcolor{keywordflow}{do} ip = 1,np}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00229}00229             assertion = abs( \mbox{\hyperlink{namespacebatse__mod_a2c622fd87e8a2997fb6a5a461e53958d}{getlog10pf53}}(log10epk\_log10ph(1,ip),log10pbol) -\/ \mbox{\hyperlink{namespacebatse__mod_a85f6e2fe2c3bf3623a6f2ba0264dbe3e}{getlogpf53}}(log10epk\_log10ph(1,ip)*\mbox{\hyperlink{namespaceconstants__mod_a14d9c71223771abb3fbe7ed7617913c6}{ln10}},log10pbol)/\mbox{\hyperlink{namespaceconstants__mod_a14d9c71223771abb3fbe7ed7617913c6}{ln10}} ) < tolerance}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00230}00230             \textcolor{keywordflow}{if} (assertion) cycle}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00231}00231             \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00232}00232             \textcolor{keywordflow}{if} (test\%isVerboseMode) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00233}00233                 \textcolor{keyword}{write}(*,\textcolor{stringliteral}{"{}(A)"{}}) \textcolor{stringliteral}{"{}The error with respect to reference value is larger than the tolerance."{}}, new\_line(\textcolor{stringliteral}{"{}a"{}}) \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00234}00234                              , \textcolor{stringliteral}{"{}tolerance, ip, LOG10EPK\_LOG10PH(2,ip), getLog10PF53(LOG10EPK\_LOG10PH(1,ip),LOG10PBOL): "{}} \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00235}00235                              , tolerance, ip, log10epk\_log10ph(2,ip), \mbox{\hyperlink{namespacebatse__mod_a2c622fd87e8a2997fb6a5a461e53958d}{getlog10pf53}}(log10epk\_log10ph(1,ip),log10pbol)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00236}00236 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00237}00237             \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00238}00238 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00239}00239 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00240}00240     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__batse__mod_a7e140d2ade188e0d3847c62fcaf8d1d5}{test\_getlogpf53}}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00241}00241 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00242}00242 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00243}00243 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00244}\mbox{\hyperlink{namespacetest__batse__mod_a68aaab5adbc7d4baa4fdcb5d4d974f49}{00244}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__batse__mod_a68aaab5adbc7d4baa4fdcb5d4d974f49}{test\_getlogpbol}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00245}00245 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00246}00246         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk, \mbox{\hyperlink{namespaceconstants__mod_a14d9c71223771abb3fbe7ed7617913c6}{ln10}}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00247}00247         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00248}00248         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{parameter} :: np = 86}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00249}00249         \textcolor{keywordtype}{logical}                 :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00250}00250         \textcolor{keywordtype}{integer(IK)}             :: ip}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00251}00251 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: tolerance = 1.e-\/12\_rk}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00252}00252 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00253}00253         assertion = .true.}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00254}00254         \textcolor{keywordflow}{do} ip = 1,np}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00255}00255             assertion = abs( \mbox{\hyperlink{namespacebatse__mod_a2c622fd87e8a2997fb6a5a461e53958d}{getlog10pf53}}(log10epk\_log10ph(1,ip),log10pbol) \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00256}00256                             + \mbox{\hyperlink{namespacebatse__mod_abedf25cda5ba51ad232793eb7bb54f2d}{getlogpbol}}(log10epk\_log10ph(1,ip)*\mbox{\hyperlink{namespaceconstants__mod_a14d9c71223771abb3fbe7ed7617913c6}{ln10}},log10pbol) / \mbox{\hyperlink{namespaceconstants__mod_a14d9c71223771abb3fbe7ed7617913c6}{ln10}} \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00257}00257                             -\/ log10pbol \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00258}00258                             ) < tolerance}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00259}00259             \textcolor{keywordflow}{if} (assertion) cycle}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00260}00260             \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00261}00261             \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00262}00262                 \textcolor{keyword}{write}(*,\textcolor{stringliteral}{"{}(A)"{}}) \textcolor{stringliteral}{"{}The error with respect to reference value is larger than the tolerance."{}}, new\_line(\textcolor{stringliteral}{"{}a"{}}) \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00263}00263                              , \textcolor{stringliteral}{"{}tolerance, ip, LOG10EPK\_LOG10PH(2,ip), getLog10PF53(LOG10EPK\_LOG10PH(1,ip),LOG10PBOL): "{}} \&}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00264}00264                              , tolerance, ip, log10epk\_log10ph(2,ip), \mbox{\hyperlink{namespacebatse__mod_a2c622fd87e8a2997fb6a5a461e53958d}{getlog10pf53}}(log10epk\_log10ph(1,ip),log10pbol)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00265}00265 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00266}00266             \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00267}00267 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00268}00268 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00269}00269     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__batse__mod_a68aaab5adbc7d4baa4fdcb5d4d974f49}{test\_getlogpbol}}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00270}00270 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00271}00271 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00272}00272 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00273}\mbox{\hyperlink{namespacetest__batse__mod_abff5b38e84dab58a3aeada8a10060427}{00273}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__batse__mod_abff5b38e84dab58a3aeada8a10060427}{test\_getlogeffectivepeakphotonflux\_spr\_1}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00274}00274         use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: rk => real32}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00275}00275         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00276}00276         \textcolor{keywordtype}{logical}                 :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00277}00277 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: tolerance = sqrt(epsilon(1.\_rk))}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00278}00278 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: logeffectivepeakphotonflux\_ref = -\/real(\mbox{\hyperlink{namespacebatse__mod_a3ab5dfe6d254ce9405d51b5f21bc63bd}{thresh\_erfc\_amp}},rk)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00279}00279 \textcolor{keywordtype}{        real}(rk)                :: logeffectivepeakphotonflux}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00280}00280 \textcolor{keywordtype}{        real}(rk)                :: difference}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00281}00281         logeffectivepeakphotonflux = \mbox{\hyperlink{interfacebatse__mod_1_1getlogeffectivepeakphotonflux}{getlogeffectivepeakphotonflux}}(0.\_rk,real(\mbox{\hyperlink{namespacebatse__mod_adf01986bcf13b16cd9c57f1b6c714ebe}{thresh\_erfc\_avg}},rk))}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00282}00282         difference = abs(logeffectivepeakphotonflux -\/ logeffectivepeakphotonflux\_ref)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00283}00283         assertion = difference < tolerance}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00284}00284         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00285}00285         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00286}00286             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00287}00287             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}}) \textcolor{stringliteral}{"{}logEffectivePeakPhotonFlux\_ref    = "{}}, logeffectivepeakphotonflux\_ref}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00288}00288             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}}) \textcolor{stringliteral}{"{}logEffectivePeakPhotonFlux        = "{}}, logeffectivepeakphotonflux}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00289}00289             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}}) \textcolor{stringliteral}{"{}difference                        = "{}}, difference}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00290}00290             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00291}00291 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00292}00292         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00293}00293     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__batse__mod_abff5b38e84dab58a3aeada8a10060427}{test\_getlogeffectivepeakphotonflux\_spr\_1}}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00294}00294 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00295}00295 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00296}00296 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00297}00297     \textcolor{keyword}{function }test\_getlogeffectivepeakphotonflux\_dpr\_1() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00298}00298         use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: rk => real64}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00299}00299         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00300}00300         \textcolor{keywordtype}{logical}                 :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00301}00301 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: tolerance = sqrt(epsilon(1.\_rk))}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00302}00302 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: logeffectivepeakphotonflux\_ref = -\/real(\mbox{\hyperlink{namespacebatse__mod_a3ab5dfe6d254ce9405d51b5f21bc63bd}{thresh\_erfc\_amp}},rk)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00303}00303 \textcolor{keywordtype}{        real}(rk)                :: logeffectivepeakphotonflux}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00304}00304 \textcolor{keywordtype}{        real}(rk)                :: difference}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00305}00305         logeffectivepeakphotonflux = \mbox{\hyperlink{interfacebatse__mod_1_1getlogeffectivepeakphotonflux}{getlogeffectivepeakphotonflux}}(0.\_rk,real(\mbox{\hyperlink{namespacebatse__mod_adf01986bcf13b16cd9c57f1b6c714ebe}{thresh\_erfc\_avg}},rk))}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00306}00306         difference = abs(logeffectivepeakphotonflux -\/ logeffectivepeakphotonflux\_ref)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00307}00307         assertion = difference < tolerance}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00308}00308         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00309}00309         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00310}00310             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00311}00311             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}}) \textcolor{stringliteral}{"{}logEffectivePeakPhotonFlux\_ref    = "{}}, logeffectivepeakphotonflux\_ref}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00312}00312             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}}) \textcolor{stringliteral}{"{}logEffectivePeakPhotonFlux        = "{}}, logeffectivepeakphotonflux}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00313}00313             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}}) \textcolor{stringliteral}{"{}difference                        = "{}}, difference}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00314}00314             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00315}00315 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00316}00316         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00317}00317     \textcolor{keyword}{end function }test\_getlogeffectivepeakphotonflux\_dpr\_1}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00318}00318 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00319}00319 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00320}00320 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00321}00321     \textcolor{keyword}{function }test\_getlogeffectivepeakphotonfluxcorrection\_spr\_1() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00322}00322         use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: rk => real32}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00323}00323         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00324}00324         \textcolor{keywordtype}{logical}                 :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00325}00325 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: tolerance = sqrt(epsilon(1.\_rk))}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00326}00326 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: logeffectivepeakphotonfluxcorrection\_ref = real(\mbox{\hyperlink{namespacebatse__mod_a3ab5dfe6d254ce9405d51b5f21bc63bd}{thresh\_erfc\_amp}},rk)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00327}00327 \textcolor{keywordtype}{        real}(rk)                :: logeffectivepeakphotonfluxcorrection}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00328}00328 \textcolor{keywordtype}{        real}(rk)                :: difference}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00329}00329         logeffectivepeakphotonfluxcorrection = \mbox{\hyperlink{namespacebatse__mod_ac1c97ede1873c66fde5ad3e07e91af43}{getlogeffectivepeakphotonfluxcorrection\_spr}}(real(\mbox{\hyperlink{namespacebatse__mod_adf01986bcf13b16cd9c57f1b6c714ebe}{thresh\_erfc\_avg}},rk))}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00330}00330         difference = abs(logeffectivepeakphotonfluxcorrection -\/ logeffectivepeakphotonfluxcorrection\_ref)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00331}00331         assertion = difference < tolerance}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00332}00332         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00333}00333         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00334}00334             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00335}00335             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}}) \textcolor{stringliteral}{"{}logEffectivePeakPhotonFluxCorrection\_ref  = "{}}, logeffectivepeakphotonfluxcorrection\_ref}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00336}00336             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}}) \textcolor{stringliteral}{"{}logEffectivePeakPhotonFluxCorrection      = "{}}, logeffectivepeakphotonfluxcorrection}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00337}00337             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}}) \textcolor{stringliteral}{"{}difference                                = "{}}, difference}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00338}00338             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00339}00339 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00340}00340         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00341}00341     \textcolor{keyword}{end function }test\_getlogeffectivepeakphotonfluxcorrection\_spr\_1}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00342}00342 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00343}00343 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00344}00344 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00345}00345     \textcolor{keyword}{function }test\_getlogeffectivepeakphotonfluxcorrection\_dpr\_1() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00346}00346         use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: rk => real64}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00347}00347         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00348}00348         \textcolor{keywordtype}{logical}                 :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00349}00349 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: tolerance = sqrt(epsilon(1.\_rk))}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00350}00350 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter}     :: logeffectivepeakphotonfluxcorrection\_ref = real(\mbox{\hyperlink{namespacebatse__mod_a3ab5dfe6d254ce9405d51b5f21bc63bd}{thresh\_erfc\_amp}},rk)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00351}00351 \textcolor{keywordtype}{        real}(rk)                :: logeffectivepeakphotonfluxcorrection}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00352}00352 \textcolor{keywordtype}{        real}(rk)                :: difference}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00353}00353         logeffectivepeakphotonfluxcorrection = \mbox{\hyperlink{namespacebatse__mod_ac40115bfa9cd53dcfe39aefa72dd95e3}{getlogeffectivepeakphotonfluxcorrection\_dpr}}(real(\mbox{\hyperlink{namespacebatse__mod_adf01986bcf13b16cd9c57f1b6c714ebe}{thresh\_erfc\_avg}},rk))}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00354}00354         difference = abs(logeffectivepeakphotonfluxcorrection -\/ logeffectivepeakphotonfluxcorrection\_ref)}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00355}00355         assertion = difference < tolerance}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00356}00356         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00357}00357         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00358}00358             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00359}00359             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}}) \textcolor{stringliteral}{"{}logEffectivePeakPhotonFluxCorrection\_ref  = "{}}, logeffectivepeakphotonfluxcorrection\_ref}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00360}00360             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}}) \textcolor{stringliteral}{"{}logEffectivePeakPhotonFluxCorrection      = "{}}, logeffectivepeakphotonfluxcorrection}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00361}00361             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}}) \textcolor{stringliteral}{"{}difference                                = "{}}, difference}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00362}00362             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00363}00363 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00364}00364         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00365}00365     \textcolor{keyword}{end function }test\_getlogeffectivepeakphotonfluxcorrection\_dpr\_1}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00366}00366 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00367}00367 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00368}00368 }
+\DoxyCodeLine{\Hypertarget{Test__Batse__mod_8f90_source_l00369}00369 \textcolor{keyword}{end module }Test\_Batse\_mod}
+
+\end{DoxyCode}

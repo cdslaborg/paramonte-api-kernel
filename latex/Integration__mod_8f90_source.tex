@@ -1,0 +1,391 @@
+\hypertarget{Integration__mod_8f90_source}{}\doxysection{Integration\+\_\+mod.\+f90}
+\label{Integration__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/Integration\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/Integration\_mod.f90}}
+\mbox{\hyperlink{Integration__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00001}00001 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00002}00002 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00003}00003 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00004}00004 \textcolor{comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00005}00005 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00006}00006 \textcolor{comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00007}00007 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00008}00008 \textcolor{comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00009}00009 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00010}00010 \textcolor{comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00011}00011 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00012}00012 \textcolor{comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00013}00013 \textcolor{comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}),}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00014}00014 \textcolor{comment}{!!!!   to deal in the Software without restriction, including without limitation}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00015}00015 \textcolor{comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00016}00016 \textcolor{comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00017}00017 \textcolor{comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00018}00018 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00019}00019 \textcolor{comment}{!!!!   The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00020}00020 \textcolor{comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00021}00021 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00022}00022 \textcolor{comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00023}00023 \textcolor{comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00024}00024 \textcolor{comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00025}00025 \textcolor{comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00026}00026 \textcolor{comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00027}00027 \textcolor{comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00028}00028 \textcolor{comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00029}00029 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00030}00030 \textcolor{comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00031}00031 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00032}00032 \textcolor{comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00033}00033 \textcolor{comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00034}00034 \textcolor{comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00035}00035 \textcolor{comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00036}00036 \textcolor{comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00037}00037 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00038}00038 \textcolor{comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00039}00039 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00040}00040 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00041}00041 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00046}00046 \textcolor{keyword}{module} \mbox{\hyperlink{namespaceintegration__mod}{integration\_mod}}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00048}00048     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00050}00050     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00052}\mbox{\hyperlink{namespaceintegration__mod_a3f0d72c327d06a890ba043acb1518368}{00052}}     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}} = \textcolor{stringliteral}{"{}@Integration\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00054}\mbox{\hyperlink{namespaceintegration__mod_a3f0d28d67b91b4193320eac996dd986e}{00054}} \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespaceintegration__mod_a3f0d28d67b91b4193320eac996dd986e}{one\_third}} = 1.\_rk / 3.\_rk}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00056}00056     \textcolor{keywordtype}{character(len=117)}  :: \mbox{\hyperlink{namespaceintegration__mod_af799efaca3f992de2aa611eccc15c929}{errormessage}}(3) = \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00057}00057     [ \textcolor{stringliteral}{"{}@Integration\_mod@doQuadRombClosed(): Too many steps in doQuadRombClosed().                                           "{}} \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00058}00058     , \textcolor{stringliteral}{"{}@Integration\_mod@doQuadRombClosed()@doPolInterp(): Input lowerLim, upperLim to doQuadRombClosed() are likely equal.  "{}} \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00059}00059     , \textcolor{stringliteral}{"{}@Integration\_mod@doQuadRombOpen()@doPolInterp(): Input lowerLim, upperLim to doQuadRombOpen() are likely equal.      "{}} \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00060}00060     ]}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00062}00062     abstract \textcolor{keyword}{interface}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00065}\mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc_a0e159fa6f20a378193098e675366e7c4}{00065}}         \textcolor{keyword}{function }\mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\_proc}}(x) \textcolor{keyword}{result}(integrand)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00066}00066             \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00067}00067             \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00068}00068 \textcolor{keywordtype}{            real}(rk), \textcolor{keywordtype}{intent(in)}  :: x}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00069}00069 \textcolor{keywordtype}{            real}(rk)              :: integrand}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00070}00070         \textcolor{keyword}{end function }\mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\_proc}}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00073}\mbox{\hyperlink{interfaceintegration__mod_1_1integrator__proc_a3e5082b6f2426c49c7908bab8c4a5c5c}{00073}}         \textcolor{keyword}{subroutine }\mbox{\hyperlink{interfaceintegration__mod_1_1integrator__proc}{integrator\_proc}}(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00074}00074             \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00075}00075             \textcolor{keywordtype}{import }:: \mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\_proc}}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00076}00076             \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00077}00077             \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}        :: refinementStage}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00078}00078 \textcolor{keywordtype}{            real}(RK)    , \textcolor{keywordtype}{intent(in)}        :: lowerLim,upperLim}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00079}00079             \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(out)}       :: numFuncEval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00080}00080 \textcolor{keywordtype}{            real}(RK)    , \textcolor{keywordtype}{intent(inout)}     :: integral}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00081}00081             \textcolor{keywordtype}{procedure}(\mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\_proc}})       :: getFunc}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00082}00082         \textcolor{keyword}{end subroutine }\mbox{\hyperlink{interfaceintegration__mod_1_1integrator__proc}{integrator\_proc}}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00084}00084     \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00086}00086 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00088}00088 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00090}00090 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00108}\mbox{\hyperlink{namespaceintegration__mod_af9c975b93e34e434e95398beb6d86c55}{00108}}     \textcolor{keywordtype}{recursive} \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespaceintegration__mod_aaa6c6366588ed25ce9ef2c33c6b2d60d}{doquadrombclosed}}   ( getFunc \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00109}00109                                             , lowerLim \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00110}00110                                             , upperLim \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00111}00111                                             , maxRelativeError \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00112}00112                                             , nRefinement \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00113}00113                                             , integral \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00114}00114                                             , relativeError \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00115}00115                                             , numFuncEval \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00116}00116                                             , ierr \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00117}00117                                             )}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00118}00118         \textcolor{comment}{!checked by Joshua Osborne on 5/28/2020 at 9:06pm}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00119}00119 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00120}00120 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: doQuadRombClosed}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00121}00121 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00122}00122 \textcolor{preprocessor}{}        use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: dpi => int64}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00123}00123         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00124}00124         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}    :: nrefinement}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00125}00125 \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{intent(in)}    :: lowerlim,upperlim,maxrelativeerror}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00126}00126 \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{intent(out)}   :: integral, relativeerror}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00127}00127         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(out)}   :: ierr, numfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00128}00128         \textcolor{keywordtype}{integer(IK)}                 :: refinementstage,km,numfuncevalnew}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00129}00129         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{parameter}      :: nstep = 31\_ik}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00130}00130 \textcolor{keywordtype}{        real}(rk)                    :: h(nstep+1),s(nstep+1)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00131}00131         \textcolor{keywordtype}{procedure}(\mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\_proc}})   :: getfunc}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00132}00132         ierr = 0\_ik}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00133}00133         km = nrefinement -\/ 1\_ik}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00134}00134         h(1) = 1.\_rk}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00135}00135         numfunceval = 0\_ik}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00136}00136         \textcolor{keywordflow}{do} refinementstage = 1, nstep}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00137}00137             \textcolor{keyword}{call }\mbox{\hyperlink{namespaceintegration__mod_abeb3df3d113be1427de701b63b54431a}{doquadtrap}}(getfunc,lowerlim,upperlim,s(refinementstage),refinementstage,numfuncevalnew)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00138}00138             numfunceval = numfunceval + numfuncevalnew}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00139}00139             \textcolor{keywordflow}{if} (refinementstage>=nrefinement) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00140}00140                 \textcolor{keyword}{call }\mbox{\hyperlink{namespaceintegration__mod_a7d59eb7510c781e245e08f2292be9dcd}{dopolinterp}}(h(refinementstage-\/km),s(refinementstage-\/km),nrefinement,0.\_rk,integral,relativeerror,ierr)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00141}00141                 \textcolor{keywordflow}{if} ( abs(relativeerror)<=maxrelativeerror*abs(integral) .or. ierr/=0\_ik ) \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00142}00142 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00143}00143             s(refinementstage+1)=s(refinementstage)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00144}00144             h(refinementstage+1)=0.25\_rk*h(refinementstage)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00145}00145 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00146}00146         ierr = 1\_ik    \textcolor{comment}{! too many steps in doQuadRombClosed()}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00147}00147   \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespaceintegration__mod_aaa6c6366588ed25ce9ef2c33c6b2d60d}{doquadrombclosed}}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00148}00148 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00149}00149 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00150}00150 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00171}\mbox{\hyperlink{namespaceintegration__mod_abf46f3f1e7533c9e4f8ce428ec6f9611}{00171}}     \textcolor{keywordtype}{recursive} \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespaceintegration__mod_a54500d20fa7ace4865286d4fc85100e9}{doquadrombopen}} ( getFunc \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00172}00172                                         , integrate \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00173}00173                                         , lowerLim \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00174}00174                                         , upperLim \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00175}00175                                         , maxRelativeError \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00176}00176                                         , nRefinement \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00177}00177                                         , integral \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00178}00178                                         , relativeError \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00179}00179                                         , numFuncEval \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00180}00180                                         , ierr \&}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00181}00181                                         )}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00182}00182 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00183}00183 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: doQuadRombOpen}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00184}00184 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00185}00185 \textcolor{preprocessor}{}        use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: dpi => int64}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00186}00186         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00187}00187         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}    :: nrefinement}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00188}00188 \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{intent(in)}    :: lowerlim,upperlim,maxrelativeerror}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00189}00189 \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{intent(out)}   :: integral, relativeerror}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00190}00190         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(out)}   :: numfunceval, ierr}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00191}00191         \textcolor{keywordtype}{integer(IK)}                 :: refinementstage,km,numfuncevalnew}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00192}00192         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{parameter}     :: nstep = 20\_ik}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00193}00193 \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{parameter}     :: one\_over\_nine = 1.\_rk / 9.\_rk}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00194}00194 \textcolor{keywordtype}{        real}(rk)                    :: h(nstep+1), s(nstep+1)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00195}00195         \textcolor{keywordtype}{procedure}(\mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\_proc}})   :: getfunc}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00196}00196         \textcolor{keywordtype}{procedure}(\mbox{\hyperlink{interfaceintegration__mod_1_1integrator__proc}{integrator\_proc}})  :: integrate}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00197}00197         ierr = 0\_ik}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00198}00198         km = nrefinement -\/ 1\_ik}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00199}00199         h(1) = 1.\_rk}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00200}00200         numfunceval = 0\_ik}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00201}00201         \textcolor{keywordflow}{do} refinementstage = 1, nstep}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00202}00202             \textcolor{keyword}{call }integrate(getfunc,lowerlim,upperlim,s(refinementstage),refinementstage,numfuncevalnew)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00203}00203             numfunceval = numfunceval + numfuncevalnew}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00204}00204             \textcolor{keywordflow}{if} (refinementstage>=nrefinement) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00205}00205                 \textcolor{keyword}{call }\mbox{\hyperlink{namespaceintegration__mod_a7d59eb7510c781e245e08f2292be9dcd}{dopolinterp}}(h(refinementstage-\/km),s(refinementstage-\/km),nrefinement,0.\_rk,integral,relativeerror,ierr)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00206}00206                 \textcolor{keywordflow}{if} ( abs(relativeerror) <= maxrelativeerror * abs(integral) .or. ierr/=0\_ik ) \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00207}00207 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00208}00208             s(refinementstage+1)=s(refinementstage)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00209}00209             h(refinementstage+1)=h(refinementstage)*one\_over\_nine}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00210}00210 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00211}00211         ierr = 2\_ik    \textcolor{comment}{! too many steps in doQuadRombOpen()}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00212}00212   \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespaceintegration__mod_a54500d20fa7ace4865286d4fc85100e9}{doquadrombopen}}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00213}00213 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00214}00214 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00215}00215 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00216}\mbox{\hyperlink{namespaceintegration__mod_adbae9c8c0a402468af9d952feb584cfd}{00216}}     \textcolor{keywordtype}{recursive} \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespaceintegration__mod_a7d59eb7510c781e245e08f2292be9dcd}{dopolinterp}}(xa,ya,ndata,x,y,dy,ierr)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00217}00217 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00218}00218 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: doPolInterp}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00219}00219 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00220}00220 \textcolor{preprocessor}{}        \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00221}00221         \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(in)}    :: ndata}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00222}00222 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(in)}    :: x,xa(ndata),ya(ndata)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00223}00223 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(out)}   :: dy,y}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00224}00224         \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(out)}   :: ierr}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00225}00225 \textcolor{keywordtype}{        real}(rk)                :: den,dif,dift,ho,hp,w,c(ndata),d(ndata)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00226}00226         \textcolor{keywordtype}{integer}                 :: i,m,ns}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00227}00227         ierr = 0}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00228}00228         ns=1}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00229}00229         dif=abs(x-\/xa(1))}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00230}00230         \textcolor{keywordflow}{do} i=1,ndata}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00231}00231             dift=abs(x-\/xa(i))}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00232}00232             \textcolor{keywordflow}{if} (dift<dif) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00233}00233                 ns=i}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00234}00234                 dif=dift}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00235}00235 \textcolor{keywordflow}{            endif}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00236}00236             c(i)=ya(i)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00237}00237             d(i)=ya(i)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00238}00238 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00239}00239         y=ya(ns)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00240}00240         ns=ns-\/1}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00241}00241         \textcolor{keywordflow}{do} m=1,ndata-\/1}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00242}00242             \textcolor{keywordflow}{do} i=1,ndata-\/m}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00243}00243                 ho=xa(i)-\/x}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00244}00244                 hp=xa(i+m)-\/x}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00245}00245                 w=c(i+1)-\/d(i)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00246}00246                 den=ho-\/hp}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00247}00247                 \textcolor{keywordflow}{if}(den==0.\_rk) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00248}00248                     ierr = 3 \textcolor{comment}{! failure in doPolInterp()}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00249}00249                     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00250}00250 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00251}00251                 den=w/den}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00252}00252                 d(i)=hp*den}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00253}00253                 c(i)=ho*den}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00254}00254 \textcolor{keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00255}00255             \textcolor{keywordflow}{if} (2*ns<ndata-\/m)\textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00256}00256                 dy=c(ns+1)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00257}00257             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00258}00258                 dy=d(ns)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00259}00259                 ns=ns-\/1}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00260}00260 \textcolor{keywordflow}{            endif}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00261}00261             y=y+dy}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00262}00262 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00263}00263     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespaceintegration__mod_a7d59eb7510c781e245e08f2292be9dcd}{dopolinterp}}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00264}00264 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00265}00265 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00266}00266 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00267}\mbox{\hyperlink{namespaceintegration__mod_a6c7db5f1c81e30baf983fcaf1461ac12}{00267}}     \textcolor{keywordtype}{recursive} \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespaceintegration__mod_abeb3df3d113be1427de701b63b54431a}{doquadtrap}}(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00268}00268 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00269}00269 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: doQuadTrap}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00270}00270 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00271}00271 \textcolor{preprocessor}{}        \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00272}00272         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)}     :: refinementstage}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00273}00273 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(in)}        :: lowerlim,upperlim}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00274}00274 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(inout)}     :: integral}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00275}00275         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(out)}    :: numfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00276}00276         \textcolor{keywordtype}{integer(IK)}                 :: ifunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00277}00277 \textcolor{keywordtype}{        real}(rk)                    :: del,sum,tnm,x}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00278}00278         \textcolor{keywordtype}{procedure}(\mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\_proc}})   :: getfunc}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00279}00279         \textcolor{keywordflow}{if} (refinementstage==1) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00280}00280             numfunceval = 2\_ik}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00281}00281             integral = 0.5\_rk * (upperlim -\/ lowerlim) * ( getfunc(lowerlim) + getfunc(upperlim) )}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00282}00282         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00283}00283             numfunceval = 2**(refinementstage-\/2)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00284}00284             tnm = real(numfunceval,kind=rk)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00285}00285             del = (upperlim-\/lowerlim) / tnm}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00286}00286             x = lowerlim + 0.5\_rk * del}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00287}00287             sum = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00288}00288             \textcolor{keywordflow}{do} ifunceval = 1, numfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00289}00289                 sum = sum + getfunc(x)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00290}00290                 x = x + del}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00291}00291 \textcolor{keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00292}00292             integral = 0.5\_rk * (integral + (upperlim-\/lowerlim) * sum / tnm)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00293}00293 \textcolor{keywordflow}{        endif}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00294}00294     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespaceintegration__mod_abeb3df3d113be1427de701b63b54431a}{doquadtrap}}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00295}00295 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00296}00296 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00297}00297 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00315}\mbox{\hyperlink{namespaceintegration__mod_a6f824efc8ae563c5d6ef19bcc5ab8fc4}{00315}}     \textcolor{keywordtype}{recursive} \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespaceintegration__mod_a12a923420db2a8314a4f21fb01b4e513}{midexp}}(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00316}00316 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00317}00317 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: midexp}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00318}00318 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00319}00319 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespaceconstants__mod_a2ce5b1495148376514698c8a6d60a820}{loghuge\_rk}}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00320}00320         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00321}00321         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}    :: refinementstage}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00322}00322 \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{intent(in)}    :: lowerlim,upperlim}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00323}00323         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(out)}   :: numfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00324}00324 \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{intent(inout)} :: integral}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00325}00325         \textcolor{keywordtype}{procedure}(\mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\_proc}})   :: getfunc}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00326}00326 \textcolor{keywordtype}{        real}(rk)                    :: ddel,del,summ,x,lowerlimtrans,upperlimtrans}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00327}00327 \textcolor{keywordtype}{        real}(rk)                    :: inversethreenumfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00328}00328         \textcolor{keywordtype}{integer(IK)}                 :: ifunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00329}00329         upperlimtrans = exp(-\/lowerlim)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00330}00330         lowerlimtrans = 0.\_rk; \textcolor{keywordflow}{if} (upperlim<\mbox{\hyperlink{namespaceconstants__mod_a2ce5b1495148376514698c8a6d60a820}{loghuge\_rk}}) lowerlimtrans = exp(-\/upperlim)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00331}00331         \textcolor{keywordflow}{if} (refinementstage==1\_ik) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00332}00332             numfunceval = 1\_ik}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00333}00333             integral = (upperlimtrans-\/lowerlimtrans)*\mbox{\hyperlink{Integration__mod_01_072_08_8f90_aa580fb740f5edb52de8e06a49de50613}{gettransfunc}}(0.5\_rk*(lowerlimtrans+upperlimtrans))}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00334}00334         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00335}00335             numfunceval = 3**(refinementstage-\/2)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00336}00336             inversethreenumfunceval = \mbox{\hyperlink{namespaceintegration__mod_a3f0d28d67b91b4193320eac996dd986e}{one\_third}} / numfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00337}00337             del = (upperlimtrans-\/lowerlimtrans) * inversethreenumfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00338}00338             ddel = del + del}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00339}00339             x = lowerlimtrans + 0.5\_rk*del}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00340}00340             summ = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00341}00341             \textcolor{keywordflow}{do} ifunceval = 1,numfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00342}00342                 summ = summ + \mbox{\hyperlink{Integration__mod_01_072_08_8f90_aa580fb740f5edb52de8e06a49de50613}{gettransfunc}}(x)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00343}00343                 x = x + ddel}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00344}00344                 summ = summ + \mbox{\hyperlink{Integration__mod_01_072_08_8f90_aa580fb740f5edb52de8e06a49de50613}{gettransfunc}}(x)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00345}00345                 x = x + del}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00346}00346 \textcolor{keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00347}00347             integral = \mbox{\hyperlink{namespaceintegration__mod_a3f0d28d67b91b4193320eac996dd986e}{one\_third}} * integral + (upperlimtrans-\/lowerlimtrans) * summ * inversethreenumfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00348}00348             numfunceval = 2\_ik * numfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00349}00349 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00350}00350     \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00351}\mbox{\hyperlink{Integration__mod_8f90_aa580fb740f5edb52de8e06a49de50613}{00351}}         \textcolor{keyword}{function }\mbox{\hyperlink{Integration__mod_01_072_08_8f90_aa580fb740f5edb52de8e06a49de50613}{gettransfunc}}(x)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00352}00352             \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00353}00353 \textcolor{keywordtype}{            real}(rk), \textcolor{keywordtype}{intent(in)}    :: x}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00354}00354 \textcolor{keywordtype}{            real}(rk)                :: \mbox{\hyperlink{Integration__mod_01_072_08_8f90_aa580fb740f5edb52de8e06a49de50613}{gettransfunc}}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00355}00355             \mbox{\hyperlink{Integration__mod_01_072_08_8f90_aa580fb740f5edb52de8e06a49de50613}{gettransfunc}} = getfunc(-\/log(x)) / x}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00356}00356         \textcolor{keyword}{end function }\mbox{\hyperlink{Integration__mod_01_072_08_8f90_aa580fb740f5edb52de8e06a49de50613}{gettransfunc}}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00357}00357     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespaceintegration__mod_a12a923420db2a8314a4f21fb01b4e513}{midexp}}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00358}00358 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00359}00359 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00360}00360 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00380}\mbox{\hyperlink{namespaceintegration__mod_a11a4361492f991207bd22da85470fac0}{00380}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespaceintegration__mod_a11a4361492f991207bd22da85470fac0}{midinf}}(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00381}00381 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00382}00382 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: midinf}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00383}00383 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00384}00384 \textcolor{preprocessor}{}        \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00385}00385 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(in)}    :: lowerLim,upperLim}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00386}00386         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}    :: refinementStage}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00387}00387         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(out)}   :: numFuncEval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00388}00388 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(inout)} :: integral}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00389}00389         \textcolor{keywordtype}{procedure}(\mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\_proc}})   :: getFunc}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00390}00390 \textcolor{keywordtype}{        real}(RK)                    :: lowerLimTrans, upperLimTrans, del, ddel, summ, x}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00391}00391 \textcolor{keywordtype}{        real}(RK)                    :: inverseThreeNumFuncEval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00392}00392         \textcolor{keywordtype}{integer(IK)}                 :: iFuncEval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00393}00393         upperlimtrans = 1.0\_rk / lowerlim}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00394}00394         lowerlimtrans = 1.0\_rk / upperlim}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00395}00395         \textcolor{keywordflow}{if} (refinementstage == 1\_ik) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00396}00396             numfunceval = 1\_ik}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00397}00397             integral = (upperlimtrans-\/lowerlimtrans) * \mbox{\hyperlink{Integration__mod_01_072_08_8f90_aa580fb740f5edb52de8e06a49de50613}{gettransfunc}}(0.5\_rk * (lowerlimtrans+upperlimtrans))}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00398}00398         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00399}00399             numfunceval = 3**(refinementstage-\/2)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00400}00400             inversethreenumfunceval = \mbox{\hyperlink{namespaceintegration__mod_a3f0d28d67b91b4193320eac996dd986e}{one\_third}} / numfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00401}00401             del = (upperlimtrans-\/lowerlimtrans) * inversethreenumfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00402}00402             ddel = del + del}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00403}00403             x = lowerlimtrans + 0.5\_rk * del}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00404}00404             summ = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00405}00405             \textcolor{keywordflow}{do} ifunceval = 1, numfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00406}00406                 summ = summ + \mbox{\hyperlink{Integration__mod_01_072_08_8f90_aa580fb740f5edb52de8e06a49de50613}{gettransfunc}}(x)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00407}00407                 x = x + ddel}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00408}00408                 summ = summ + \mbox{\hyperlink{Integration__mod_01_072_08_8f90_aa580fb740f5edb52de8e06a49de50613}{gettransfunc}}(x)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00409}00409                 x = x + del}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00410}00410 \textcolor{keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00411}00411             integral = \mbox{\hyperlink{namespaceintegration__mod_a3f0d28d67b91b4193320eac996dd986e}{one\_third}} * integral + (upperlimtrans-\/lowerlimtrans) * summ * inversethreenumfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00412}00412             numfunceval = 2\_ik * numfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00413}00413 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00414}00414     \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00415}00415         \textcolor{keyword}{function }\mbox{\hyperlink{Integration__mod_01_072_08_8f90_aa580fb740f5edb52de8e06a49de50613}{gettransfunc}}(x) \textcolor{keyword}{result}(transFunc)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00416}00416             \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00417}00417 \textcolor{keywordtype}{            real}(RK), \textcolor{keywordtype}{intent(in)}    :: x}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00418}00418 \textcolor{keywordtype}{            real}(RK)                :: transFunc}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00419}00419             transfunc = getfunc(1.\_rk/x) / x**2}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00420}00420         \textcolor{keyword}{end function }\mbox{\hyperlink{Integration__mod_01_072_08_8f90_aa580fb740f5edb52de8e06a49de50613}{gettransfunc}}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00421}00421     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespaceintegration__mod_a11a4361492f991207bd22da85470fac0}{midinf}}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00422}00422 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00423}00423 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00424}00424 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00444}\mbox{\hyperlink{namespaceintegration__mod_a80d9b5405c919f13c6caed9394f4a302}{00444}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespaceintegration__mod_aedc61ce47c249762b7ef89865313cb4a}{midpnt}}(getFunc,lowerLim,upperLim,integral,refinementStage,numFuncEval)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00445}00445 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00446}00446 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: midpnt}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00447}00447 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00448}00448 \textcolor{preprocessor}{}        \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00449}00449         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}    :: refinementStage}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00450}00450 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(in)}    :: lowerLim, upperLim}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00451}00451 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(inout)} :: integral}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00452}00452         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(out)}   :: numFuncEval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00453}00453         \textcolor{keywordtype}{procedure}(\mbox{\hyperlink{interfaceintegration__mod_1_1integrand__proc}{integrand\_proc}})   :: getFunc}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00454}00454         \textcolor{keywordtype}{integer(IK)}                 :: iFuncEval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00455}00455 \textcolor{keywordtype}{        real}(RK)                    :: ddel,del,summ,x}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00456}00456 \textcolor{keywordtype}{        real}(RK)                    :: inverseThreeNumFuncEval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00457}00457         \textcolor{keywordflow}{if} (refinementstage==1) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00458}00458             numfunceval = 1\_ik}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00459}00459             integral = (upperlim-\/lowerlim) * getfunc( 0.5\_rk * (lowerlim+upperlim) )}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00460}00460         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00461}00461             numfunceval = 3\_ik**(refinementstage-\/2)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00462}00462             inversethreenumfunceval = \mbox{\hyperlink{namespaceintegration__mod_a3f0d28d67b91b4193320eac996dd986e}{one\_third}} / numfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00463}00463             del = (upperlim-\/lowerlim) * inversethreenumfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00464}00464             ddel = del+del}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00465}00465             x = lowerlim + 0.5\_rk * del}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00466}00466             summ = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00467}00467             \textcolor{keywordflow}{do} ifunceval = 1, numfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00468}00468                 summ = summ + getfunc(x)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00469}00469                 x = x + ddel}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00470}00470                 summ = summ + getfunc(x)}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00471}00471                 x = x + del}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00472}00472 \textcolor{keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00473}00473             integral = \mbox{\hyperlink{namespaceintegration__mod_a3f0d28d67b91b4193320eac996dd986e}{one\_third}} * integral + (upperlim-\/lowerlim) * summ * inversethreenumfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00474}00474             numfunceval = 2\_ik * numfunceval}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00475}00475 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00476}00476     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespaceintegration__mod_aedc61ce47c249762b7ef89865313cb4a}{midpnt}}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00477}00477 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00478}00478 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00479}00479 }
+\DoxyCodeLine{\Hypertarget{Integration__mod_8f90_source_l00480}00480 \textcolor{keyword}{end module }Integration\_mod}
+
+\end{DoxyCode}

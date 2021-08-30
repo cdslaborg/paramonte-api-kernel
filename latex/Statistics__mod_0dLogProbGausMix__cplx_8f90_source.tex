@@ -1,0 +1,109 @@
+\hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source}{}\doxysection{Statistics\+\_\+mod@Log\+Prob\+Gaus\+Mix\+\_\+cplx.\+f90}
+\label{Statistics__mod_0dLogProbGausMix__cplx_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/Statistics\_mod"@LogProbGausMix\_cplx.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/Statistics\_mod"@LogProbGausMix\_cplx.f90}}
+\mbox{\hyperlink{Statistics__mod_0dLogProbGausMix__cplx_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00001}00001 submodule(\mbox{\hyperlink{namespacestatistics}{statistics}}) logprobgausmix\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00003}00003     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: ik, rk}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00004}00004     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00006}00006 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00008}00008 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00009}00009 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00011}00011   \textcolor{keyword}{module procedure} getlogprobgausmixsdsp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00012}00012     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: ik, rk, \mbox{\hyperlink{namespaceconstants__mod_a08700d4bf701dda7c33df7590075d2e3}{logtiny\_rk}}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00013}00013     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00014}00014     \textcolor{keywordtype}{complex(RK)}             :: normFac\_cplx,LogProb\_cplx(nmode)}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00015}00015     \textcolor{keywordtype}{integer(IK)}             :: imode}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00016}00016     \textcolor{keywordflow}{do} imode = 1, nmode}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00017}00017       logprob\_cplx(imode) = logamplitude\_cplx(imode) + getlogprobnormsp\_cplx(meanvec\_cplx(imode),invcovmat\_cplx(imode),logsqrtdetinvcovmat\_cplx(imode),point\_cplx)}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00018}00018 \textcolor{keywordflow}{    end do}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00019}00019     normfac\_cplx = maxval(real(logprob\_cplx))}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00020}00020     logprob\_cplx = logprob\_cplx -\/ normfac\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00021}00021     \textcolor{keywordflow}{where}(real(logprob\_cplx)<\mbox{\hyperlink{namespaceconstants__mod_a08700d4bf701dda7c33df7590075d2e3}{logtiny\_rk}})}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00022}00022       logprob\_cplx = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00023}00023     \textcolor{keywordflow}{elsewhere}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00024}00024       logprob\_cplx = exp(logprob\_cplx)}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00025}00025 \textcolor{keywordflow}{    end where}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00026}00026     getlogprobgausmixsdsp\_cplx = normfac\_cplx + log(sum(logprob\_cplx))}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00027}00027   \textcolor{keyword}{end }procedure getlogprobgausmixsdsp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00029}00029 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00030}00030 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00032}00032   \textcolor{keyword}{module procedure} getlogprobgausmixsdmp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00033}00033     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: ik, rk, \mbox{\hyperlink{namespaceconstants__mod_a08700d4bf701dda7c33df7590075d2e3}{logtiny\_rk}}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00034}00034     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00035}00035     \textcolor{keywordtype}{complex(RK)}             :: normFac\_cplx(np),LogProb\_cplx(nmode,np)}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00036}00036     \textcolor{keywordtype}{integer(IK)}             :: imode, ip}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00037}00037     \textcolor{keywordflow}{do} imode = 1, nmode}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00038}00038       logprob\_cplx(imode,1:np) = logamplitude\_cplx(imode) + getlogprobnormmp\_cplx(np,meanvec\_cplx(imode),invcovmat\_cplx(imode),logsqrtdetinvcovmat\_cplx(imode),point\_cplx)}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00039}00039 \textcolor{keywordflow}{    end do}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00040}00040     normfac\_cplx = maxval(real(logprob\_cplx),dim=1)}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00041}00041     \textcolor{keywordflow}{do} ip = 1,np}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00042}00042       logprob\_cplx(1:nmode,ip) = logprob\_cplx(1:nmode,ip) -\/ normfac\_cplx(ip)}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00043}00043       \textcolor{keywordflow}{do} imode = 1,nmode}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00044}00044         \textcolor{keywordflow}{if} ( real(logprob\_cplx(imode,ip)) < \mbox{\hyperlink{namespaceconstants__mod_a08700d4bf701dda7c33df7590075d2e3}{logtiny\_rk}} ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00045}00045           logprob\_cplx(imode,ip) = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00046}00046         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00047}00047           logprob\_cplx(imode,ip) = exp( logprob\_cplx(imode,ip) )}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00048}00048 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00049}00049 \textcolor{keywordflow}{      end do}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00050}00050       getlogprobgausmixsdmp\_cplx(ip) = normfac\_cplx(ip) + log(sum(logprob\_cplx(1:nmode,ip)))}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00051}00051 \textcolor{keywordflow}{    end do}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00052}00052   \textcolor{keyword}{end }procedure getlogprobgausmixsdmp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00054}00054 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00055}00055 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00057}00057   \textcolor{keyword}{module procedure} getlogprobgausmixmdsp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00058}00058     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: ik, rk, \mbox{\hyperlink{namespaceconstants__mod_a08700d4bf701dda7c33df7590075d2e3}{logtiny\_rk}}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00059}00059     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00060}00060     \textcolor{keywordtype}{complex(RK)}             :: normFac\_cplx,LogProb\_cplx(nmode)}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00061}00061     \textcolor{keywordtype}{integer(IK)}             :: imode}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00062}00062     \textcolor{keywordflow}{do} imode = 1, nmode}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00063}00063       logprob\_cplx(imode) = logamplitude\_cplx(imode) + getlogprobmvnsp\_cplx(nd,meanvec\_cplx(1:nd,imode),invcovmat\_cplx(1:nd,1:nd,imode),logsqrtdetinvcovmat\_cplx(imode),point\_cplx)}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00064}00064 \textcolor{keywordflow}{    end do}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00065}00065     normfac\_cplx = maxval(real(logprob\_cplx))}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00066}00066     logprob\_cplx = logprob\_cplx -\/ normfac\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00067}00067     \textcolor{keywordflow}{where}(real(logprob\_cplx)<\mbox{\hyperlink{namespaceconstants__mod_a08700d4bf701dda7c33df7590075d2e3}{logtiny\_rk}})}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00068}00068       logprob\_cplx = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00069}00069     \textcolor{keywordflow}{elsewhere}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00070}00070       logprob\_cplx = exp(logprob\_cplx)}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00071}00071 \textcolor{keywordflow}{    end where}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00072}00072     getlogprobgausmixmdsp\_cplx = normfac\_cplx + log(sum(logprob\_cplx))}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00073}00073   \textcolor{keyword}{end }procedure getlogprobgausmixmdsp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00075}00075 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00076}00076 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00078}00078   \textcolor{keyword}{module procedure} getlogprobgausmixmdmp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00079}00079     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: ik, rk, \mbox{\hyperlink{namespaceconstants__mod_a08700d4bf701dda7c33df7590075d2e3}{logtiny\_rk}}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00080}00080     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00081}00081     \textcolor{keywordtype}{complex(RK)}             :: normFac\_cplx(np),LogProb\_cplx(nmode,np)}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00082}00082     \textcolor{keywordtype}{integer(IK)}             :: imode, ip}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00083}00083     \textcolor{keywordflow}{do} imode = 1, nmode}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00084}00084       logprob\_cplx(imode,1:np) = logamplitude\_cplx(imode) + getlogprobmvnmp\_cplx(nd,np,meanvec\_cplx(1:nd,imode),invcovmat\_cplx(1:nd,1:nd,imode),logsqrtdetinvcovmat\_cplx(imode),point\_cplx)}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00085}00085 \textcolor{keywordflow}{    end do}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00086}00086     normfac\_cplx = maxval(real(logprob\_cplx),dim=1)}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00087}00087     \textcolor{keywordflow}{do} ip = 1,np}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00088}00088       logprob\_cplx(1:nmode,ip) = logprob\_cplx(1:nmode,ip) -\/ normfac\_cplx(ip)}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00089}00089       \textcolor{keywordflow}{do} imode = 1,nmode}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00090}00090         \textcolor{keywordflow}{if} ( real(logprob\_cplx(imode,ip))<\mbox{\hyperlink{namespaceconstants__mod_a08700d4bf701dda7c33df7590075d2e3}{logtiny\_rk}} ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00091}00091           logprob\_cplx(imode,ip) = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00092}00092         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00093}00093           logprob\_cplx(imode,ip) = exp( logprob\_cplx(imode,ip) )}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00094}00094 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00095}00095 \textcolor{keywordflow}{      end do}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00096}00096       getlogprobgausmixmdmp\_cplx(ip) = normfac\_cplx(ip) + log(sum(logprob\_cplx(1:nmode,ip)))}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00097}00097 \textcolor{keywordflow}{    end do}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00098}00098   \textcolor{keyword}{end }procedure getlogprobgausmixmdmp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00100}00100 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00101}00101 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGausMix__cplx_8f90_source_l00103}00103 \textcolor{keyword}{end }submodule LogProbGausMix\_cplx}
+
+\end{DoxyCode}

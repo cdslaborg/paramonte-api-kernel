@@ -1,0 +1,71 @@
+\hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source}{}\doxysection{Statistics\+\_\+mod@Log\+Prob\+Gaus\+\_\+cplx.\+f90}
+\label{Statistics__mod_0dLogProbGaus__cplx_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/Statistics\_mod"@LogProbGaus\_cplx.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/Statistics\_mod"@LogProbGaus\_cplx.f90}}
+\mbox{\hyperlink{Statistics__mod_0dLogProbGaus__cplx_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00001}00001 submodule(\mbox{\hyperlink{namespacestatistics}{statistics}}) logprobgaus\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00003}00003     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: ik, rk}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00004}00004     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00006}00006 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00008}00008 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00009}00009 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00010}00010     }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00011}00011   \textcolor{keyword}{module procedure} getlogprobnormsp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00012}00012     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespaceconstants__mod_a208da6c6fd5cf401dd5b542073da1c48}{loginvsqrt2pi}}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00013}00013     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00014}00014     getlogprobnormsp\_cplx = \mbox{\hyperlink{namespaceconstants__mod_a208da6c6fd5cf401dd5b542073da1c48}{loginvsqrt2pi}} + logsqrtinversevariance\_cplx -\/ 0.5\_rk * inversevariance\_cplx * (point\_cplx-\/mean\_cplx)**2}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00015}00015   \textcolor{keyword}{end }procedure getlogprobnormsp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00017}00017 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00018}00018 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00020}00020   \textcolor{keyword}{module procedure} getlogprobnormmp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00021}00021     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespaceconstants__mod_a208da6c6fd5cf401dd5b542073da1c48}{loginvsqrt2pi}}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00022}00022     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00023}00023     getlogprobnormmp\_cplx = \mbox{\hyperlink{namespaceconstants__mod_a208da6c6fd5cf401dd5b542073da1c48}{loginvsqrt2pi}} + logsqrtinversevariance\_cplx -\/ 0.5\_rk * inversevariance\_cplx * (point\_cplx-\/mean\_cplx)**2}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00024}00024   \textcolor{keyword}{end }procedure getlogprobnormmp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00026}00026 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00027}00027 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00029}00029   \textcolor{keyword}{module procedure} getprobmvnsp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00030}00030     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespaceconstants__mod_a8ff80c38dafa8a5c7c3c37aa148ba41c}{invsqrt2pi}}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00031}00031     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00032}00032     getprobmvnsp\_cplx = \mbox{\hyperlink{namespaceconstants__mod_a8ff80c38dafa8a5c7c3c37aa148ba41c}{invsqrt2pi}}**nd * sqrtdetinvcovmat\_cplx * exp( -\/0.5\_rk * getmahalsqsp\_cplx(nd,meanvec\_cplx,invcovmat\_cplx,point\_cplx) )}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00033}00033   \textcolor{keyword}{end }procedure getprobmvnsp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00035}00035 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00036}00036 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00038}00038   \textcolor{keyword}{module procedure} getprobmvnmp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00039}00039     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespaceconstants__mod_a8ff80c38dafa8a5c7c3c37aa148ba41c}{invsqrt2pi}}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00040}00040     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00041}00041     getprobmvnmp\_cplx = \mbox{\hyperlink{namespaceconstants__mod_a8ff80c38dafa8a5c7c3c37aa148ba41c}{invsqrt2pi}}**nd * sqrtdetinvcovmat\_cplx * exp( -\/0.5\_rk * getmahalsqmp\_cplx(nd,np,meanvec\_cplx,invcovmat\_cplx,point\_cplx) )}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00042}00042   \textcolor{keyword}{end }procedure getprobmvnmp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00044}00044 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00045}00045 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00047}00047   \textcolor{keyword}{module procedure} getlogprobmvnsp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00048}00048     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespaceconstants__mod_a208da6c6fd5cf401dd5b542073da1c48}{loginvsqrt2pi}}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00049}00049     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00050}00050     getlogprobmvnsp\_cplx = nd*\mbox{\hyperlink{namespaceconstants__mod_a208da6c6fd5cf401dd5b542073da1c48}{loginvsqrt2pi}} + logsqrtdetinvcovmat\_cplx -\/ 0.5\_rk * getmahalsqsp\_cplx(nd,meanvec\_cplx,invcovmat\_cplx,point\_cplx)}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00051}00051   \textcolor{keyword}{end }procedure getlogprobmvnsp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00053}00053 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00054}00054 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00056}00056   \textcolor{keyword}{module procedure} getlogprobmvnmp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00057}00057     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespaceconstants__mod_a208da6c6fd5cf401dd5b542073da1c48}{loginvsqrt2pi}}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00058}00058     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00059}00059     getlogprobmvnmp\_cplx = nd*\mbox{\hyperlink{namespaceconstants__mod_a208da6c6fd5cf401dd5b542073da1c48}{loginvsqrt2pi}} + logsqrtdetinvcovmat\_cplx -\/ 0.5\_rk * getmahalsqmp\_cplx(nd,np,meanvec\_cplx,invcovmat\_cplx,point\_cplx)}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00060}00060   \textcolor{keyword}{end }procedure getlogprobmvnmp\_cplx}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00062}00062 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00063}00063 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{Statistics__mod_0dLogProbGaus__cplx_8f90_source_l00065}00065 \textcolor{keyword}{end }submodule LogProbGaus\_cplx}
+
+\end{DoxyCode}

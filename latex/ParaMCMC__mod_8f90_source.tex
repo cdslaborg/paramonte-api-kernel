@@ -1,0 +1,98 @@
+\hypertarget{ParaMCMC__mod_8f90_source}{}\doxysection{Para\+MCMC\+\_\+mod.\+f90}
+\label{ParaMCMC__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/ParaMCMC\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/ParaMCMC\_mod.f90}}
+\mbox{\hyperlink{ParaMCMC__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00001}00001 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00002}00002 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00003}00003 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00004}00004 \textcolor{comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00005}00005 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00006}00006 \textcolor{comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00007}00007 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00008}00008 \textcolor{comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00009}00009 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00010}00010 \textcolor{comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00011}00011 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00012}00012 \textcolor{comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00013}00013 \textcolor{comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}),}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00014}00014 \textcolor{comment}{!!!!   to deal in the Software without restriction, including without limitation}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00015}00015 \textcolor{comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00016}00016 \textcolor{comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00017}00017 \textcolor{comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00018}00018 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00019}00019 \textcolor{comment}{!!!!   The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00020}00020 \textcolor{comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00021}00021 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00022}00022 \textcolor{comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00023}00023 \textcolor{comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00024}00024 \textcolor{comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00025}00025 \textcolor{comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00026}00026 \textcolor{comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00027}00027 \textcolor{comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00028}00028 \textcolor{comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00029}00029 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00030}00030 \textcolor{comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00031}00031 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00032}00032 \textcolor{comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00033}00033 \textcolor{comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00034}00034 \textcolor{comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00035}00035 \textcolor{comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00036}00036 \textcolor{comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00037}00037 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00038}00038 \textcolor{comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00039}00039 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00040}00040 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00041}00041 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00046}\mbox{\hyperlink{namespaceparamcmc__mod}{00046}} \textcolor{keyword}{module} \mbox{\hyperlink{namespaceparamcmc__mod}{paramcmc\_mod}}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00048}00048     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00049}00049     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacespecmcmc__mod}{specmcmc\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structspecmcmc__mod_1_1specmcmc__type}{specmcmc\_type}}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00050}00050     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceparamonte__mod}{paramonte\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structparamonte__mod_1_1paramonte__type}{paramonte\_type}}, \mbox{\hyperlink{structparamonte__mod_1_1paramontelogfuncmode__type}{paramontelogfuncmode\_type}}, \mbox{\hyperlink{structparamonte__mod_1_1paramontestatistics__type}{paramontestatistics\_type}}, \mbox{\hyperlink{structparamonte__mod_1_1moment__type}{moment\_type}}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00051}00051     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00053}\mbox{\hyperlink{namespaceparamcmc__mod_a69a9cc3e0308f2fe8a3891efe8bcdbcd}{00053}}     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter}                     :: \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}} = \textcolor{stringliteral}{"{}@ParaMCMC\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00055}\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__chain__type}{00055}}     \textcolor{keyword}{type}                                        :: \mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__chain__type}{paramcmc\_chain\_type}}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00056}\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__chain__type_a1b40d479a64d5a72db6ea9662b945680}{00056}}         \textcolor{keywordtype}{integer(IK)}                             :: compact, verbose}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00057}00057     \textcolor{keyword}{end type }\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__chain__type}{paramcmc\_chain\_type}}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00059}\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__logfuncmode__type}{00059}}     \textcolor{keyword}{type}, \textcolor{keyword}{extends}(\mbox{\hyperlink{structparamonte__mod_1_1paramontelogfuncmode__type}{paramontelogfuncmode\_type}})    :: \mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__logfuncmode__type}{paramcmc\_logfuncmode\_type}}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00060}\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__logfuncmode__type_adb25722dc006033ea80b464fbcca8674}{00060}}         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__chain__type}{paramcmc\_chain\_type}})               :: loc}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00061}00061     \textcolor{keyword}{end type }\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__logfuncmode__type}{paramcmc\_logfuncmode\_type}}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00063}\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__statistics__type}{00063}}     \textcolor{keyword}{type}, \textcolor{keyword}{extends}(\mbox{\hyperlink{structparamonte__mod_1_1paramontestatistics__type}{paramontestatistics\_type}})     :: \mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__statistics__type}{paramcmc\_statistics\_type}}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00064}\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__statistics__type_a6becf03174c85686f77d733a10a724ea}{00064}}         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structparamonte__mod_1_1moment__type}{moment\_type}})                       :: chain}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00065}\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__statistics__type_aabff7fa47b59a00258c0485c3165cdf7}{00065}}         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__chain__type}{paramcmc\_chain\_type}})               :: burninloc}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00066}\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__statistics__type_a12abd0f31bd0d818e59b996fdbbb3dae}{00066}}         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__logfuncmode__type}{paramcmc\_logfuncmode\_type}})         :: logfuncmode}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00067}00067     \textcolor{keyword}{end type }\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__statistics__type}{paramcmc\_statistics\_type}}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00070}\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__type}{00070}}     \textcolor{keyword}{type}, \textcolor{keyword}{extends}(\mbox{\hyperlink{structparamonte__mod_1_1paramonte__type}{paramonte\_type}})               :: \mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__type}{paramcmc\_type}}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00071}\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__type_a014843f4d80af937fca86681a5b34240}{00071}}        \textcolor{keywordtype}{type}(\mbox{\hyperlink{structspecmcmc__mod_1_1specmcmc__type}{specmcmc\_type}})                      :: specmcmc}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00072}00072     \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00073}\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__type_a96afc9b88773eff999be7a421f22d5be}{00073}}         \textcolor{keywordtype}{procedure}, pass                         :: \mbox{\hyperlink{namespaceparamcmc__mod_ad9c690f36fde4c1f0977ae8a49829dcb}{setupparamcmc}}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00074}00074     \textcolor{keyword}{end type }\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__type}{paramcmc\_type}}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00076}00076 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00078}00078 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00080}00080 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00085}\mbox{\hyperlink{namespaceparamcmc__mod_ad9c690f36fde4c1f0977ae8a49829dcb}{00085}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespaceparamcmc__mod_ad9c690f36fde4c1f0977ae8a49829dcb}{setupparamcmc}}(PMPM)}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00086}00086 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00087}00087 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: setupParaMCMC}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00088}00088 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00089}00089 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacespecmcmc__mod}{specmcmc\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structspecmcmc__mod_1_1specmcmc__type}{specmcmc\_type}}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00090}00090         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00091}00091         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structparamcmc__mod_1_1paramcmc__type}{paramcmc\_type}}), \textcolor{keywordtype}{intent(inout)}    :: PMPM}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00092}00092         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: PROCEDURE\_NAME = \textcolor{stringliteral}{"{}@setupParaMCMC()"{}}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00093}00093         pmpm\%SpecMCMC = \mbox{\hyperlink{structspecmcmc__mod_1_1specmcmc__type}{specmcmc\_type}}(nd=pmpm\%nd\%val,methodname=pmpm\%name)}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00094}00094     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespaceparamcmc__mod_ad9c690f36fde4c1f0977ae8a49829dcb}{setupparamcmc}}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00096}00096 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{ParaMCMC__mod_8f90_source_l00098}00098 \textcolor{keyword}{end module }\mbox{\hyperlink{namespaceparamcmc__mod}{paramcmc\_mod}} ! lcov\_excl\_line}
+
+\end{DoxyCode}

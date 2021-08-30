@@ -1,0 +1,159 @@
+\hypertarget{SpecBase__InterfaceType__mod_8f90_source}{}\doxysection{Spec\+Base\+\_\+\+Interface\+Type\+\_\+mod.\+f90}
+\label{SpecBase__InterfaceType__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/SpecBase\_InterfaceType\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/SpecBase\_InterfaceType\_mod.f90}}
+\mbox{\hyperlink{SpecBase__InterfaceType__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00001}00001 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00002}00002 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00003}00003 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00004}00004 \textcolor{comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00005}00005 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00006}00006 \textcolor{comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00007}00007 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00008}00008 \textcolor{comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00009}00009 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00010}00010 \textcolor{comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00011}00011 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00012}00012 \textcolor{comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a }}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00013}00013 \textcolor{comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}), }}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00014}00014 \textcolor{comment}{!!!!   to deal in the Software without restriction, including without limitation }}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00015}00015 \textcolor{comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, }}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00016}00016 \textcolor{comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the }}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00017}00017 \textcolor{comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00018}00018 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00019}00019 \textcolor{comment}{!!!!   The above copyright notice and this permission notice shall be }}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00020}00020 \textcolor{comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00021}00021 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00022}00022 \textcolor{comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, }}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00023}00023 \textcolor{comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF }}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00024}00024 \textcolor{comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. }}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00025}00025 \textcolor{comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, }}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00026}00026 \textcolor{comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR }}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00027}00027 \textcolor{comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE }}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00028}00028 \textcolor{comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00029}00029 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00030}00030 \textcolor{comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00031}00031 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00032}00032 \textcolor{comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00033}00033 \textcolor{comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of }}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00034}00034 \textcolor{comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your }}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00035}00035 \textcolor{comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte }}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00036}00036 \textcolor{comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00037}00037 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00038}00038 \textcolor{comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00039}00039 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00040}00040 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00041}00041 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00048}\mbox{\hyperlink{namespacespecbase__interfacetype__mod}{00048}} \textcolor{keyword}{module} \mbox{\hyperlink{namespacespecbase__interfacetype__mod}{specbase\_interfacetype\_mod}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00050}00050     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00051}00051     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00053}\mbox{\hyperlink{namespacespecbase__interfacetype__mod_af1a0bd3ced38b5b4698cf232ea6158a1}{00053}}     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter}         :: \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}} = \textcolor{stringliteral}{"{}@SpecBase\_InterfaceType\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00054}\mbox{\hyperlink{namespacespecbase__interfacetype__mod_a80868ae20a7d551c50deec84ea731f85}{00054}}     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{parameter}          :: \mbox{\hyperlink{namespacespecbase__interfacetype__mod_a80868ae20a7d551c50deec84ea731f85}{max\_interfacetype\_len}} = 511\_ik}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00056}\mbox{\hyperlink{namespacespecbase__interfacetype__mod_aa44df31abb57750aa1ea50222e901237}{00056}}     \textcolor{keywordtype}{character(:)}    , \textcolor{keywordtype}{allocatable}   :: \mbox{\hyperlink{namespacespecbase__interfacetype__mod_aa44df31abb57750aa1ea50222e901237}{interfacetype}} \textcolor{comment}{! namelist input}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00058}\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type}{00058}}     \textcolor{keyword}{type}                            :: \mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type}{interfacetype\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00059}\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type_a2c3f8785648f76eac42041fb4fb3a3f1}{00059}}         \textcolor{keywordtype}{logical}                     :: isc = .false.}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00060}\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type_ad4de7345f6aee5288addf0cb402795aa}{00060}}         \textcolor{keywordtype}{logical}                     :: iscpp = .false.}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00061}\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type_ab82a23a03720eaa86c03f31683b746a6}{00061}}         \textcolor{keywordtype}{logical}                     :: isfortran = .false.}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00062}\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type_a0a01c7cd1435d99acaa7db287bbc749f}{00062}}         \textcolor{keywordtype}{logical}                     :: ismatlab = .false.}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00063}\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type_afef0c755bf5e15d4973c5f383188c754}{00063}}         \textcolor{keywordtype}{logical}                     :: ispython = .false.}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00064}\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type_a9a82d076f2be746dbe92be8f949541b0}{00064}}         \textcolor{keywordtype}{logical}                     :: isr = .false.}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00065}\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type_a2ba589ae7c34348a859e1fdfb5335d61}{00065}}         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}   :: val}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00066}\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type_ac2a83516c286ccda6d0cfdda394f4a4c}{00066}}         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}   :: def}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00067}\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type_a43a516043f76884eab1ac6e105481e1e}{00067}}         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}   :: null}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00068}\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type_aa52e4fdcc2cbfc297ff570d922fb3bff}{00068}}         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}   :: desc}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00069}00069     \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00070}\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type_a8cd6bafeecd0e266be25ee1f3b3e36e7}{00070}}         \textcolor{keywordtype}{procedure}, pass             :: \mbox{\hyperlink{tests_2CMakeLists_8txt_ae83e80fd33450b46a25fc28274789f6a}{set}} => setinterfacetype, nullifynamelistvar}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00071}00071     \textcolor{keyword}{end type }\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type}{interfacetype\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00073}00073     \textcolor{keyword}{interface} \mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type}{interfacetype\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00074}00074         \textcolor{keyword}{module procedure}            :: constructinterfacetype}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00075}00075     \textcolor{keyword}{end interface }\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type}{interfacetype\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00077}00077     \textcolor{keywordtype}{private} :: constructinterfacetype, setinterfacetype, nullifynamelistvar}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00079}00079 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00081}00081 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00083}00083 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00085}\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type_a95e1cabf6a9cab3bb713da00dbc38ad3}{00085}}     \textcolor{keyword}{function }constructinterfacetype() \textcolor{keyword}{result}(InterfaceTypeObj)}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00086}00086 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00087}00087 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: constructInterfaceType}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00088}00088 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00089}00089 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespaceconstants__mod_a2001bbd51e89da4d5787232deb2628cd}{null\_sk}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00090}00090         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacedecoration__mod}{decoration\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespaceconstants__mod_a52d591d7774a7d3d48a33c82255ab87b}{tab}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00091}00091         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestring__mod}{string\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{interfacestring__mod_1_1num2str}{num2str}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00092}00092         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00093}00093         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type}{interfacetype\_type}}) :: interfacetypeobj}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00094}00094 \textcolor{preprocessor}{\#if defined C\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00095}00095 \textcolor{preprocessor}{}        interfacetypeobj\%def = \textcolor{stringliteral}{"{}The C Programming Language."{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00096}00096         interfacetypeobj\%isC = .true.}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00097}00097 \textcolor{preprocessor}{\#elif defined CPP\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00098}00098 \textcolor{preprocessor}{}        interfacetypeobj\%def = \textcolor{stringliteral}{"{}The C++ Programming Language."{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00099}00099         interfacetypeobj\%isCPP = .true.}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00100}00100 \textcolor{preprocessor}{\#elif defined FORTRAN\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00101}00101 \textcolor{preprocessor}{}        interfacetypeobj\%def = \textcolor{stringliteral}{"{}The Fortran Programming Language."{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00102}00102         interfacetypeobj\%isFortran = .true. \textcolor{comment}{! index(interfaceLowerCase,"{}fortran"{}) /= 0}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00103}00103 \textcolor{preprocessor}{\#elif defined JULIA\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00104}00104 \textcolor{preprocessor}{}        interfacetypeobj\%def = \textcolor{stringliteral}{"{}The Julia Programming Language."{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00105}00105         interfacetypeobj\%isJulia = .true.}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00106}00106 \textcolor{preprocessor}{\#elif defined MATLAB\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00107}00107 \textcolor{preprocessor}{}        interfacetypeobj\%def = \textcolor{stringliteral}{"{}The MATLAB Programming Language."{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00108}00108         interfacetypeobj\%isMATLAB = .true.}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00109}00109 \textcolor{preprocessor}{\#elif defined MATTHEMATICA\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00110}00110 \textcolor{preprocessor}{}        interfacetypeobj\%def = \textcolor{stringliteral}{"{}The Wolfram Mathermatica Programming Language."{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00111}00111         interfacetypeobj\%isMathermatica = .true.}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00112}00112 \textcolor{preprocessor}{\#elif defined PYTHON\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00113}00113 \textcolor{preprocessor}{}        interfacetypeobj\%def = \textcolor{stringliteral}{"{}The Python Programming Language."{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00114}00114         interfacetypeobj\%isPython = .true.}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00115}00115 \textcolor{preprocessor}{\#elif defined R\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00116}00116 \textcolor{preprocessor}{}        interfacetypeobj\%def = \textcolor{stringliteral}{"{}The R Programming Language."{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00117}00117         interfacetypeobj\%isR = .true.}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00118}00118 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00119}00119 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#error "{}Undefined ParaMonte interface type in SpecBase\_InterfaceType\_mod.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00120}00120 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00121}00121 \textcolor{preprocessor}{}        \textcolor{keywordflow}{if} ( \textcolor{keyword}{allocated}(interfacetypeobj\%null) ) \textcolor{keyword}{deallocate}(interfacetypeobj\%null)}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00122}00122         \textcolor{keyword}{allocate}( \textcolor{keywordtype}{character(len=MAX\_INTERFACETYPE\_LEN)} :: interfacetypeobj\%null )}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00123}00123         interfacetypeobj\%null = repeat(\mbox{\hyperlink{namespaceconstants__mod_a2001bbd51e89da4d5787232deb2628cd}{null\_sk}}, \mbox{\hyperlink{namespacespecbase__interfacetype__mod_a80868ae20a7d551c50deec84ea731f85}{max\_interfacetype\_len}})}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00124}00124         interfacetypeobj\%desc = \&}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00125}00125         \textcolor{stringliteral}{"{}This is a ParaMonte internal variable used for providing information about other languages' interface with ParaMonte."{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00126}00126     \textcolor{keyword}{end function }constructinterfacetype}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00128}00128 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00129}00129 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00130}00130     \textcolor{keyword}{subroutine }nullifynamelistvar(InterfaceTypeObj)}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00131}00131 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00132}00132 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00133}00133 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00134}00134 \textcolor{preprocessor}{}        \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00135}00135         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type}{interfacetype\_type}}), \textcolor{keywordtype}{intent(in)} :: interfacetypeobj}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00136}00136         \mbox{\hyperlink{namespacespecbase__interfacetype__mod_aa44df31abb57750aa1ea50222e901237}{interfacetype}} = interfacetypeobj\%null}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00137}00137     \textcolor{keyword}{end subroutine }nullifynamelistvar}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00139}00139 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00141}00141     \textcolor{keyword}{subroutine }setinterfacetype(InterfaceTypeObj,interfaceType)}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00142}00142 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00143}00143 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: setInterfaceType}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00144}00144 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00145}00145 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestring__mod}{string\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacestring__mod_a7b4ad790c8a3a5bb9937ee1b51f3baa2}{getlowercase}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00146}00146         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00147}00147         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structspecbase__interfacetype__mod_1_1interfacetype__type}{interfacetype\_type}}), \textcolor{keywordtype}{intent(inout)}    :: interfacetypeobj}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00148}00148         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}                    :: \mbox{\hyperlink{namespacespecbase__interfacetype__mod_aa44df31abb57750aa1ea50222e901237}{interfacetype}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00149}00149         interfacetypeobj\%val = trim(adjustl(\mbox{\hyperlink{namespacespecbase__interfacetype__mod_aa44df31abb57750aa1ea50222e901237}{interfacetype}}))}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00150}00150         \textcolor{keywordflow}{if} (interfacetypeobj\%val==trim(adjustl(interfacetypeobj\%null))) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00151}00151             interfacetypeobj\%val=interfacetypeobj\%def}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00152}00152 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00153}00153     \textcolor{keyword}{end subroutine }setinterfacetype}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00154}00154 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00155}00155 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{SpecBase__InterfaceType__mod_8f90_source_l00157}00157 \textcolor{keyword}{end module }\mbox{\hyperlink{namespacespecbase__interfacetype__mod}{specbase\_interfacetype\_mod}} ! lcov\_excl\_line}
+
+\end{DoxyCode}

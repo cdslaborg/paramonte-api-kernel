@@ -1,0 +1,54 @@
+\hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source}{}\doxysection{Cosmology\+\_\+mod.\+f90}
+\label{______toBeCleared_______2Cosmology__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/Cosmology\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/Cosmology\_mod.f90}}
+\mbox{\hyperlink{______toBeCleared_______2Cosmology__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00001}\mbox{\hyperlink{namespacecosmology}{00001}} \textcolor{keyword}{module} \mbox{\hyperlink{namespacecosmology}{cosmology}}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00002}00002   }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00003}00003   \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: rk}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00004}00004   \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00005}00005   }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00006}00006   \textcolor{keywordtype}{private}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00007}00007   \textcolor{keywordtype}{public} :: \mbox{\hyperlink{namespacecosmology_a1eac54267e42a107d9251fa04f37ddda}{getlumdiswickram}}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00008}00008   }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00011}00011 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00013}00013 \textcolor{comment}{!*********************************************************************}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00014}00014 \textcolor{comment}{!*********************************************************************}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00015}00015   }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00016}00016   \textcolor{comment}{! returns the luminosity distance in units of Mpc for the given redshift z.}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00017}00017   \textcolor{comment}{! The input parameters is the redshift (z), while the required parameters are taken from module Constants:}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00018}00018   \textcolor{comment}{!     LS2HC: which is the speed of light in units of km/s divided by the Hubble Constant in units of km/s/MPc.}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00019}00019   \textcolor{comment}{! For input redshifts z>zlim=0.1, the luminosity distance will be calculated according to approximation algorithm of Wickramasinghe \& Okwatta (2010).}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00020}00020   \textcolor{comment}{! Note that for redshifts less than 0.1, the error in the calculated luminosity distance grows to more than 0.001.}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00021}00021   \textcolor{comment}{! This algorithm should therefore not be used for z<0.1, and only when the desired accuracy in Lum. dis. is 0.001.}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00022}00022   \textcolor{comment}{! Amir Shahmoradi, Wednesday July 14, 2016, 9:59 PM, ICES, The University of Texas at Austin.}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00023}\mbox{\hyperlink{namespacecosmology_a1eac54267e42a107d9251fa04f37ddda}{00023}}   \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacecosmology_a1eac54267e42a107d9251fa04f37ddda}{getlumdiswickram}}(z)}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00024}00024     }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00025}00025     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: rk, omega\_de, omega\_dm, ls2hc}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00026}00026     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00027}00027     }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00028}00028 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{intent(in)} :: z}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00029}00029 \textcolor{keywordtype}{    real}(rk)             :: alpha,x,psi}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00030}00030 \textcolor{keywordtype}{    real}(rk)             :: \mbox{\hyperlink{namespacecosmology_a1eac54267e42a107d9251fa04f37ddda}{getlumdiswickram}}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00031}00031     }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00032}00032     \textcolor{comment}{! Parameters required for the calculation of Luminosity distance, that are private to this function}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00033}00033 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{parameter}  :: alpha0 = 1.\_rk + 2.\_rk * omega\_de / omega\_dm}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00034}00034 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{parameter}  :: x0 = log( alpha0 + sqrt( alpha0**2 -\/ 1.\_rk ) )}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00035}00035 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{parameter}  :: psi0=x0**0.33333333\_rk*(1.5874010519682\_rk-\/6.2992105236833e-\/3\_rk*x0**2+7.5375168659459e-\/5\_rk*x0**4)}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00036}00036 \textcolor{keywordtype}{    real}(rk), \textcolor{keywordtype}{parameter}  :: lum\_dis\_factor = ls2hc / ( omega\_de**0.16666666\_rk * omega\_dm**0.33333333\_rk )}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00037}00037     }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00038}00038     alpha = 1.\_rk + 2.\_rk * omega\_de / ( omega\_dm * (1.\_rk+z)**3 )}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00039}00039     x     = log( alpha  + sqrt( alpha**2 -\/ 1.\_rk ) )}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00040}00040     psi   = x**0.33333333\_rk  * ( 1.5874010519682\_rk -\/ 6.2992105236833e-\/3\_rk * x**2  + 7.5375168659459e-\/5\_rk * x**4  )}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00041}00041     \mbox{\hyperlink{namespacecosmology_a1eac54267e42a107d9251fa04f37ddda}{getlumdiswickram}} = lum\_dis\_factor * ( 1.\_rk + z ) * ( psi0 -\/ psi )}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00043}00043   \textcolor{keyword}{end function }\mbox{\hyperlink{namespacecosmology_a1eac54267e42a107d9251fa04f37ddda}{getlumdiswickram}}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00045}00045 \textcolor{comment}{!*********************************************************************}}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00046}00046 \textcolor{comment}{!*********************************************************************  }}
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{______toBeCleared_______2Cosmology__mod_8f90_source_l00048}00048 \textcolor{keyword}{end module }Cosmology}
+
+\end{DoxyCode}

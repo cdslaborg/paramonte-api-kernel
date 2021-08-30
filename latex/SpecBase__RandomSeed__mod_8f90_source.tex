@@ -1,0 +1,224 @@
+\hypertarget{SpecBase__RandomSeed__mod_8f90_source}{}\doxysection{Spec\+Base\+\_\+\+Random\+Seed\+\_\+mod.\+f90}
+\label{SpecBase__RandomSeed__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/SpecBase\_RandomSeed\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/SpecBase\_RandomSeed\_mod.f90}}
+\mbox{\hyperlink{SpecBase__RandomSeed__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00001}00001 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00002}00002 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00003}00003 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00004}00004 \textcolor{comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00005}00005 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00006}00006 \textcolor{comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00007}00007 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00008}00008 \textcolor{comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00009}00009 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00010}00010 \textcolor{comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00011}00011 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00012}00012 \textcolor{comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00013}00013 \textcolor{comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}),}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00014}00014 \textcolor{comment}{!!!!   to deal in the Software without restriction, including without limitation}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00015}00015 \textcolor{comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00016}00016 \textcolor{comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00017}00017 \textcolor{comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00018}00018 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00019}00019 \textcolor{comment}{!!!!   The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00020}00020 \textcolor{comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00021}00021 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00022}00022 \textcolor{comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00023}00023 \textcolor{comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00024}00024 \textcolor{comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00025}00025 \textcolor{comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00026}00026 \textcolor{comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00027}00027 \textcolor{comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00028}00028 \textcolor{comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00029}00029 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00030}00030 \textcolor{comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00031}00031 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00032}00032 \textcolor{comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00033}00033 \textcolor{comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00034}00034 \textcolor{comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00035}00035 \textcolor{comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00036}00036 \textcolor{comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00037}00037 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00038}00038 \textcolor{comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00039}00039 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00040}00040 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00041}00041 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00048}\mbox{\hyperlink{namespacespecbase__randomseed__mod}{00048}} \textcolor{keyword}{module} \mbox{\hyperlink{namespacespecbase__randomseed__mod}{specbase\_randomseed\_mod}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00050}00050     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacerandomseed__mod}{randomseed\_mod}}, \textcolor{keywordtype}{only}: randomseed\_t => \mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type}{randomseed\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00051}00051     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00052}00052     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00054}00054 \textcolor{preprocessor}{\#if defined CAF\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00055}00055 \textcolor{preprocessor}{}    \textcolor{comment}{! This must be allocatable, even though it will have only one element.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00056}00056     \textcolor{comment}{! Otherwise, GNU Fortran 10 compiler results in runtime segmentation fault in coarray mode,}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00057}00057     \textcolor{comment}{! when the routine is called multiple times.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00058}\mbox{\hyperlink{namespacespecbase__randomseed__mod_a918ac2ab33a597336850862a36a9a49b}{00058}}     \textcolor{keywordtype}{type}(randomseed\_t), \textcolor{keywordtype}{allocatable} :: \mbox{\hyperlink{namespacespecbase__randomseed__mod_a918ac2ab33a597336850862a36a9a49b}{comv\_randomseed}}(:)[:]}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00059}00059 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00060}00060 \textcolor{preprocessor}{}    \textcolor{keywordtype}{type}(randomseed\_t), \textcolor{keywordtype}{allocatable} :: \mbox{\hyperlink{namespacespecbase__randomseed__mod_a918ac2ab33a597336850862a36a9a49b}{comv\_randomseed}}(:)}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00061}00061 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00062}00062 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00063}\mbox{\hyperlink{namespacespecbase__randomseed__mod_acb0bf3857ead8135b0f879c89d743a20}{00063}}     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}} = \textcolor{stringliteral}{"{}@SpecBase\_RandomSeed\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00065}\mbox{\hyperlink{namespacespecbase__randomseed__mod_ac2ac1cdfd5e910505cce719e9cd745fe}{00065}}     \textcolor{keywordtype}{integer(IK)}                     :: \mbox{\hyperlink{namespacespecbase__randomseed__mod_ac2ac1cdfd5e910505cce719e9cd745fe}{randomseed}} \textcolor{comment}{! namelist input}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00067}\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type}{00067}}     \textcolor{keyword}{type}                            :: \mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type}{randomseed\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00068}\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type_aaaac4777ef0eafc4eb537fe6e3aeb47a}{00068}}         \textcolor{keywordtype}{logical}                     :: isimagedistinct}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00069}\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type_a252017e121cae119c88e166d8fcaf214}{00069}}         \textcolor{keywordtype}{logical}                     :: isrepeatable}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00070}\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type_ab2e5f007ac933bebdb373f94025d1982}{00070}}         \textcolor{keywordtype}{integer(IK)}                 :: userseed}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00071}\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type_a2ec4f2e4b57f99d7003d47a8ebf47f92}{00071}}         \textcolor{keywordtype}{integer(IK)}                 :: nullseed}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00072}\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type_aeb282f7d1a0624bc8b10677d4cc7ea37}{00072}}         \textcolor{keywordtype}{integer(IK)}                 :: sizeseed}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00073}\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type_a22afd175261dc7cb8072b4c98dce4e05}{00073}}         \textcolor{keywordtype}{integer(IK)}                 :: imageid}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00074}\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type_af35bc6b506da6c3bea3bc511d70327f4}{00074}}         \textcolor{keywordtype}{integer(IK)}                 :: imagecount}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00075}\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type_a447cc82c074ebf58d566cae5717ab7df}{00075}}         \textcolor{keywordtype}{integer(IK)}                 :: processid}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00076}\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type_a41f6c6704730b0fe02122ddce3673ca8}{00076}}         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{allocatable}   :: seed(:,:)}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00077}\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type_a00dbe2a7a108c81a37070058c4ae8322}{00077}}         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}   :: desc}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00078}00078     \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00079}\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type_a1516bebc5c1adcb52b44863902ddd56d}{00079}}         \textcolor{keywordtype}{procedure}, pass             :: \mbox{\hyperlink{tests_2CMakeLists_8txt_ae83e80fd33450b46a25fc28274789f6a}{set}} => setrandomseed, nullifynamelistvar   \textcolor{comment}{! , checkForSanity}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00080}00080     \textcolor{keyword}{end type }\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type}{randomseed\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00082}00082     \textcolor{keyword}{interface} \mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type}{randomseed\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00083}00083         \textcolor{keyword}{module procedure}            :: \mbox{\hyperlink{namespacerandomseed__mod_a2c4ef5cb21cb2414a33d61edc1f005f9}{constructrandomseed}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00084}00084     \textcolor{keyword}{end interface }\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type}{randomseed\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00085}00085     \textcolor{keywordtype}{private} :: \mbox{\hyperlink{namespacerandomseed__mod_a2c4ef5cb21cb2414a33d61edc1f005f9}{constructrandomseed}}, setrandomseed, nullifynamelistvar   \textcolor{comment}{! , checkForSanity}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00087}00087 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00089}00089 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00091}00091 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00093}\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type_a23825055e9b5b40bcfcd3908c9102449}{00093}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacerandomseed__mod_a2c4ef5cb21cb2414a33d61edc1f005f9}{constructrandomseed}}(methodName,imageID,imageCount) \textcolor{keyword}{result}(RandomSeedObj)}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00094}00094 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00095}00095 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: constructRandomSeed}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00096}00096 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00097}00097 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, \mbox{\hyperlink{namespaceconstants__mod_ae532809b6541e46e31e3d29681c7abec}{null\_ik}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00098}00098         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00099}00099         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}    :: methodname}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00100}00100         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)}     :: imageid, imagecount}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00101}00101         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type}{randomseed\_type}})       :: randomseedobj}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00102}00102         randomseedobj\%userSeed          = \mbox{\hyperlink{namespaceconstants__mod_ae532809b6541e46e31e3d29681c7abec}{null\_ik}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00103}00103         randomseedobj\%nullSeed          = \mbox{\hyperlink{namespaceconstants__mod_ae532809b6541e46e31e3d29681c7abec}{null\_ik}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00104}00104         randomseedobj\%ProcessID         = \mbox{\hyperlink{namespaceconstants__mod_ae532809b6541e46e31e3d29681c7abec}{null\_ik}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00105}00105         randomseedobj\%isRepeatable      = .false.}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00106}00106         randomseedobj\%isImageDistinct   = .true.}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00107}00107         randomseedobj\%imageID           = imageid}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00108}00108         randomseedobj\%imageCount        = imagecount}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00109}00109         \textcolor{keyword}{call }random\_seed(size=randomseedobj\%sizeSeed)}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00110}00110         \textcolor{keyword}{allocate}(randomseedobj\%Seed(randomseedobj\%sizeSeed,randomseedobj\%imageCount))}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00111}00111         randomseedobj\%desc = \&}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00112}00112         \textcolor{stringliteral}{"{}randomSeed is a scalar 32bit integer that serves as the seed of the random number generator. When it is provided, \&}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00113}00113 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&the seed of the random number generator will be set in a specific deterministic manner to enable future replications \&}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00114}00114 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&of the simulation with the same configuration and input specifications. The default value for randomSeed is an integer \&}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00115}00115 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&vector of processor-\/dependent size and value that will vary from one simulation to another. \&}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00116}00116 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&However, enough care has been taken to assign unique random seed values to the random number generator on \&}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00117}00117 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&each of the parallel threads (or images, processors, cores, ...) at all circumstances."{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00118}00118     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacerandomseed__mod_a2c4ef5cb21cb2414a33d61edc1f005f9}{constructrandomseed}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00120}00120 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00122}00122     \textcolor{keyword}{subroutine }nullifynamelistvar(RandomSeedObj)}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00123}00123 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00124}00124 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00125}00125 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00126}00126 \textcolor{preprocessor}{}        \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00127}00127         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type}{randomseed\_type}}), \textcolor{keywordtype}{intent(in)} :: randomseedobj}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00128}00128         \mbox{\hyperlink{namespacespecbase__randomseed__mod_ac2ac1cdfd5e910505cce719e9cd745fe}{randomseed}} = randomseedobj\%nullSeed}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00129}00129     \textcolor{keyword}{end subroutine }nullifynamelistvar}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00131}00131 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00133}00133     \textcolor{keyword}{subroutine }setrandomseed(RandomSeedObj,randomSeed,Err)}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00134}00134 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00135}00135 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: setRandomSeed}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00136}00136 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00137}00137 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00138}00138         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00139}00139         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00141}00141 \textcolor{preprocessor}{\#if defined CAF\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00142}00142 \textcolor{preprocessor}{}            \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00143}00143             \textcolor{keywordtype}{integer(IK)} :: imageid}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00144}00144 \textcolor{preprocessor}{\#elif defined MPI\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00145}00145 \textcolor{preprocessor}{}            \textcolor{keywordtype}{use }mpi}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00146}00146             \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00147}00147             \textcolor{keywordtype}{integer} :: ierrmpi}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00148}00148             \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{allocatable} :: seed(:,:)}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00149}00149 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00150}00150 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00151}00151         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structspecbase__randomseed__mod_1_1randomseed__type}{randomseed\_type}}), \textcolor{keywordtype}{intent(inout)}   :: randomseedobj}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00152}00152         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)}                 :: \mbox{\hyperlink{namespacespecbase__randomseed__mod_ac2ac1cdfd5e910505cce719e9cd745fe}{randomseed}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00153}00153         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}), \textcolor{keywordtype}{intent(out)}             :: err}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00154}00154 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00155}00155         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: procedure\_name = \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}} // \textcolor{stringliteral}{"{}@setRandomSeed()"{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00157}00157         randomseedobj\%userSeed = \mbox{\hyperlink{namespacespecbase__randomseed__mod_ac2ac1cdfd5e910505cce719e9cd745fe}{randomseed}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00159}00159         \textcolor{comment}{! broadcast all random seed values of all images to all images}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00160}00160 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00161}00161 \textcolor{preprocessor}{\#if defined CAF\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00162}00162 \textcolor{preprocessor}{}        \textcolor{keyword}{allocate}(\mbox{\hyperlink{namespacespecbase__randomseed__mod_a918ac2ab33a597336850862a36a9a49b}{comv\_randomseed}}(1)[*])}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00163}00163 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00164}00164 \textcolor{preprocessor}{}        \textcolor{keyword}{allocate}(\mbox{\hyperlink{namespacespecbase__randomseed__mod_a918ac2ab33a597336850862a36a9a49b}{comv\_randomseed}}(1))}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00165}00165 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00166}00166 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00167}00167         \textcolor{keywordflow}{if} ( randomseedobj\%userSeed == randomseedobj\%nullSeed ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00168}00168             \mbox{\hyperlink{namespacespecbase__randomseed__mod_a918ac2ab33a597336850862a36a9a49b}{comv\_randomseed}}(1) = randomseed\_t( imageid            = randomseedobj\%imageID         \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00169}00169                                                 , isrepeatable       = randomseedobj\%isRepeatable    \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00170}00170                                                 , isimagedistinct    = randomseedobj\%isImageDistinct \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00171}00171                                                 )}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00172}00172         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00173}00173             \mbox{\hyperlink{namespacespecbase__randomseed__mod_a918ac2ab33a597336850862a36a9a49b}{comv\_randomseed}}(1) = randomseed\_t( imageid            = randomseedobj\%imageID         \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00174}00174                                                 , isrepeatable       = randomseedobj\%isRepeatable    \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00175}00175                                                 , isimagedistinct    = randomseedobj\%isImageDistinct \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00176}00176                                                 , inputseed          = randomseedobj\%userSeed        \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00177}00177                                                 )}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00178}00178 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00180}00180 \textcolor{preprocessor}{\#if defined GNU\_COMPILER\_ENABLED \&\& CAF\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00181}00181 \textcolor{preprocessor}{}        \textcolor{comment}{! opencoarrays crashes without this, by somehow setting comv\_RandomSeed(1)\%Err\%occurred = TRUE}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00182}00182         \textcolor{comment}{! likely a result of memory corruption}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00183}00183         \textcolor{comment}{!if (comv\_RandomSeed(1)\%Err\%occurred) write(*,*) "{}"{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00184}00184 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00185}00185 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00186}00186         \textcolor{keywordflow}{if} (\mbox{\hyperlink{namespacespecbase__randomseed__mod_a918ac2ab33a597336850862a36a9a49b}{comv\_randomseed}}(1)\%Err\%occurred) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00187}00187         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00188}00188             err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00189}00189             err\%msg = err\%msg // procedure\_name // \mbox{\hyperlink{namespacespecbase__randomseed__mod_a918ac2ab33a597336850862a36a9a49b}{comv\_randomseed}}(1)\%Err\%msg}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00190}00190             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00191}00191         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00192}00192 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00193}00193 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00194}00194         \textcolor{keyword}{call }\mbox{\hyperlink{namespacespecbase__randomseed__mod_a918ac2ab33a597336850862a36a9a49b}{comv\_randomseed}}(1)\%get()}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00195}00195         randomseedobj\%Seed(:,randomseedobj\%imageID) = \mbox{\hyperlink{namespacespecbase__randomseed__mod_a918ac2ab33a597336850862a36a9a49b}{comv\_randomseed}}(1)\%Value(:)}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00196}00196 \textcolor{preprocessor}{\#if defined CAF\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00197}00197 \textcolor{preprocessor}{}        sync all    \textcolor{comment}{! allow all images to set the seed first, then fetch the values}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00198}00198         \textcolor{keywordflow}{do} imageid = 1, randomseedobj\%imageCount}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00199}00199             \textcolor{keywordflow}{if} (imageid/=randomseedobj\%imageID) randomseedobj\%Seed(:,imageid) = \mbox{\hyperlink{namespacespecbase__randomseed__mod_a918ac2ab33a597336850862a36a9a49b}{comv\_randomseed}}(1)[imageid]\%Value(:)}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00200}00200 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00201}00201 \textcolor{preprocessor}{\#elif defined MPI\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00202}00202 \textcolor{preprocessor}{}        \textcolor{keyword}{allocate}(seed(randomseedobj\%sizeSeed,randomseedobj\%imageCount))}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00203}00203         \textcolor{keyword}{call }mpi\_barrier(mpi\_comm\_world,ierrmpi) \textcolor{comment}{! allow all images to set the seed first, then fetch the values}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00204}00204         \textcolor{keyword}{call }mpi\_allgather  ( randomseedobj\%Seed(:,randomseedobj\%imageID)   \&   \textcolor{comment}{! LCOV\_EXCL\_LINE : send buffer}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00205}00205                             , randomseedobj\%sizeSeed                        \&   \textcolor{comment}{! LCOV\_EXCL\_LINE : send count}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00206}00206                             , mpi\_integer                                   \&   \textcolor{comment}{! LCOV\_EXCL\_LINE : send datatype}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00207}00207                             , seed(:,:)                                     \&   \textcolor{comment}{! LCOV\_EXCL\_LINE : receive buffer}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00208}00208                             , randomseedobj\%sizeSeed                        \&   \textcolor{comment}{! LCOV\_EXCL\_LINE : receive count}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00209}00209                             , mpi\_integer                                   \&   \textcolor{comment}{! LCOV\_EXCL\_LINE : receive datatype}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00210}00210                             , mpi\_comm\_world                                \&   \textcolor{comment}{! LCOV\_EXCL\_LINE : comm}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00211}00211                             , ierrmpi                                       \&   \textcolor{comment}{! LCOV\_EXCL\_LINE : ierr}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00212}00212                             )}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00213}00213         randomseedobj\%Seed(:,:) = seed}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00214}00214         \textcolor{keyword}{deallocate}(seed)}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00215}00215 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00216}00216 \textcolor{preprocessor}{}        \textcolor{keyword}{deallocate}(\mbox{\hyperlink{namespacespecbase__randomseed__mod_a918ac2ab33a597336850862a36a9a49b}{comv\_randomseed}})}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00217}00217 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00218}00218     \textcolor{keyword}{end subroutine }setrandomseed}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00219}00219 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00220}00220 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00221}00221 }
+\DoxyCodeLine{\Hypertarget{SpecBase__RandomSeed__mod_8f90_source_l00222}00222 \textcolor{keyword}{end module }\mbox{\hyperlink{namespacespecbase__randomseed__mod}{specbase\_randomseed\_mod}} ! lcov\_excl\_line}
+
+\end{DoxyCode}

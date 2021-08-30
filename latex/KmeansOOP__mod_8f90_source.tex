@@ -1,0 +1,443 @@
+\hypertarget{KmeansOOP__mod_8f90_source}{}\doxysection{Kmeans\+OOP\+\_\+mod.\+f90}
+\label{KmeansOOP__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/KmeansOOP\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/KmeansOOP\_mod.f90}}
+\mbox{\hyperlink{KmeansOOP__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00001}00001 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00002}00002 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00003}00003 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00004}00004 \textcolor{comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00005}00005 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00006}00006 \textcolor{comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00007}00007 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00008}00008 \textcolor{comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00009}00009 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00010}00010 \textcolor{comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00011}00011 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00012}00012 \textcolor{comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00013}00013 \textcolor{comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}),}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00014}00014 \textcolor{comment}{!!!!   to deal in the Software without restriction, including without limitation}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00015}00015 \textcolor{comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00016}00016 \textcolor{comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00017}00017 \textcolor{comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00018}00018 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00019}00019 \textcolor{comment}{!!!!   The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00020}00020 \textcolor{comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00021}00021 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00022}00022 \textcolor{comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00023}00023 \textcolor{comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00024}00024 \textcolor{comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00025}00025 \textcolor{comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00026}00026 \textcolor{comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00027}00027 \textcolor{comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00028}00028 \textcolor{comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00029}00029 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00030}00030 \textcolor{comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00031}00031 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00032}00032 \textcolor{comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00033}00033 \textcolor{comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00034}00034 \textcolor{comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00035}00035 \textcolor{comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00036}00036 \textcolor{comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00037}00037 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00038}00038 \textcolor{comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00039}00039 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00040}00040 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00041}00041 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00048}\mbox{\hyperlink{namespacekmeansoop__mod}{00048}} \textcolor{keyword}{module} \mbox{\hyperlink{namespacekmeansoop__mod}{kmeansoop\_mod}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00050}00050     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00051}00051     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00053}00053     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00055}\mbox{\hyperlink{namespacekmeansoop__mod_a7a20cfadbecd37b2076223f23754dea4}{00055}}     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}} = \textcolor{stringliteral}{"{}@KmeansOOP\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00057}\mbox{\hyperlink{namespacekmeansoop__mod_a8dfa09bf9fc6d0f2ce65ef3ca3ca36d5}{00057}} \textcolor{keywordtype}{    real}(rk) :: \mbox{\hyperlink{namespacekmeansoop__mod_a24c4f393811b060e0defa39b192dc061}{ndkuniform}}, \mbox{\hyperlink{namespacekmeansoop__mod_a8dfa09bf9fc6d0f2ce65ef3ca3ca36d5}{btfactor}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00059}00059     \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00062}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeanstry__type}{00062}}     \textcolor{keyword}{type} :: \mbox{\hyperlink{structkmeansoop__mod_1_1kmeanstry__type}{kmeanstry\_type}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00063}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeanstry__type_a33e6833a28572c16241b26c9178d5590}{00063}}         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{allocatable}   :: nzsci}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00064}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeanstry__type_afef49cce49c238d6a21e7bb8433fc586}{00064}}         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{allocatable}   :: niter}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00065}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeanstry__type_abdc2c95073c84685c87d7d52cf62d7bd}{00065}}         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{allocatable}   :: size(:)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00066}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeanstry__type_aa0a1b4cd1c32a16fa07314e24184f3d8}{00066}} \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{allocatable}   :: potential}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00067}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeanstry__type_a28bf0d26cd73e6b02018e64853cd2776}{00067}} \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{allocatable}   :: center(:,:)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00068}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeanstry__type_a030824cb5779ee0f519b06e6d2554892}{00068}} \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{allocatable}   :: normedpoint(:,:,:)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00069}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeanstry__type_a26c2f092179fed65aa43048a6eeb482f}{00069}} \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{allocatable}   :: mindistancesq(:)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00070}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeanstry__type_a53b9d62810f6fd224271f7f1f84fb59d}{00070}}         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{allocatable}   :: membership(:)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00071}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeanstry__type_a66e119912d271347251fe005040e4602}{00071}}         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})              :: err}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00072}00072     \textcolor{keyword}{end type }\mbox{\hyperlink{structkmeansoop__mod_1_1kmeanstry__type}{kmeanstry\_type}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00074}00074     \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00077}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type}{00077}}     \textcolor{keyword}{type} :: \mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type}{kmeansoop\_type}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00078}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type_aec4934f41f2b6c771a1746211f80f46e}{00078}}         \textcolor{keywordtype}{logical}                             :: failed}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00079}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type_a8a925aeb44bf645229c97f30f4a85e63}{00079}} \textcolor{keywordtype}{        real}(rk)                            :: reltol = 1.e-\/4\_rk    }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00080}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type_a1dbe5db03647faf60771ced046927669}{00080}}         \textcolor{keywordtype}{integer(IK)}                         :: nd = 0\_ik            }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00081}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type_aba525c99fd5b27c5cd432e6442df0d0d}{00081}}         \textcolor{keywordtype}{integer(IK)}                         :: np = 0\_ik            }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00082}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type_a620ca8c6e238b540915d81d96d1e16a1}{00082}}         \textcolor{keywordtype}{integer(IK)}                         :: nc = 0\_ik            }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00083}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type_a3cca13c5fe48fbf518fbd0144ab9e277}{00083}}         \textcolor{keywordtype}{integer(IK)}                         :: nt = 0\_ik            }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00084}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type_a6c27af4fb6e100a05d3e37957c85b0c8}{00084}}         \textcolor{keywordtype}{integer(IK)}                         :: itopt = 0\_ik         }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00085}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type_a7edde3eda585ef7b608355f4e64525f5}{00085}}         \textcolor{keywordtype}{integer(IK)}                         :: ndmax = 0\_ik         }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00086}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type_ab4dca964c153dd976405ff1e9ce6d20a}{00086}}         \textcolor{keywordtype}{integer(IK)}                         :: npmax = 0\_ik         }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00087}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type_ad74250cbc80c518f93d11930698ce03a}{00087}}         \textcolor{keywordtype}{integer(IK)}                         :: ncmax = 0\_ik         }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00088}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type_a6756b23c4ba43a7df1e34e81b351c98d}{00088}}         \textcolor{keywordtype}{integer(IK)}                         :: ntmax = 0\_ik         }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00089}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type_a3eda5c7f3145a25a8666eb45e9006b33}{00089}}         \textcolor{keywordtype}{integer(IK)}                         :: nitermax = 1000\_ik   }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00090}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type_ab9300aeda770209a3ea919ca28c199e5}{00090}}         \textcolor{keywordtype}{integer(IK)}                         :: nzscimax = 10\_ik     }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00091}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type_a6be71fbdb8303f9a0a624ca8cba16b3c}{00091}}         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structkmeansoop__mod_1_1kmeanstry__type}{kmeanstry\_type}}), \textcolor{keywordtype}{allocatable}   :: try(:)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00092}00092     \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00093}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type_a9e8bd6dba906fcd3ae78073268e80a92}{00093}}         \textcolor{keywordtype}{procedure}, pass :: run => \mbox{\hyperlink{namespacekmeansoop__mod_a2f69bbdfe94d8e0f7e743cb0d78481b4}{runkmeans}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00094}00094         \textcolor{keywordtype}{procedure}, pass, \textcolor{keywordtype}{private} :: allocate => \mbox{\hyperlink{namespacekmeansoop__mod_a3da7bef81ee023e876fe519b451f0d12}{allocatekmeanscomponents}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00095}00095     \textcolor{keyword}{end type }\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type}{kmeansoop\_type}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00097}00097     \textcolor{keyword}{interface} \mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type}{kmeansoop\_type}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00098}00098         \textcolor{keyword}{module procedure} :: \mbox{\hyperlink{namespacekmeansoop__mod_a34809af316fdaa25e188b863c99dc0a1}{constructkmeans}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00099}00099     \textcolor{keyword}{end interface }\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type}{kmeansoop\_type}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00101}00101 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00103}00103 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00105}00105 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00139}00139     \textcolor{comment}{! Amir Shahmoradi, April 03, 2017, 2:16 PM, ICES, UTEXAS}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00140}\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type_afac968fb5bce8538fb671d3b629b9f2f}{00140}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacekmeansoop__mod_a34809af316fdaa25e188b863c99dc0a1}{constructkmeans}}(ndMax, npMax, ncMax, ntMax, niterMax, nzsciMax, relTol) \textcolor{keyword}{result}(Kmeans)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00141}00141 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00142}00142 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: constructKmeans}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00143}00143 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00144}00144 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00145}00145         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00146}00146         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type}{kmeansoop\_type}})                :: kmeans}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00147}00147         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}            :: ndmax, npmax, ncmax, ntmax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00148}00148         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: nitermax, nzscimax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00149}00149 \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: reltol}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00150}00150         \textcolor{keywordtype}{integer(IK)}                         :: it}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00151}00151         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(reltol)) kmeans\%relTol = reltol}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00152}00152         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(nitermax)) kmeans\%niterMax = nitermax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00153}00153         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(nzscimax)) kmeans\%nzsciMax = nzscimax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00154}00154         \textcolor{keyword}{call }kmeans\%allocate(ndmax, npmax, ncmax, ntmax)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00155}00155     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacekmeansoop__mod_a34809af316fdaa25e188b863c99dc0a1}{constructkmeans}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00157}00157 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00159}\mbox{\hyperlink{namespacekmeansoop__mod_a3da7bef81ee023e876fe519b451f0d12}{00159}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespacekmeansoop__mod_a3da7bef81ee023e876fe519b451f0d12}{allocatekmeanscomponents}}(Kmeans, ndMax, npMax, ncMax, ntMax)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00160}00160         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00161}00161         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00162}00162         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type}{kmeansoop\_type}}), \textcolor{keywordtype}{intent(inout)}    :: Kmeans}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00163}00163         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}                :: ndMax, npMax, ncMax, ntMax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00164}00164         \textcolor{keywordtype}{integer(IK)}                             :: it}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00165}00165         kmeans\%nd = ndmax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00166}00166         kmeans\%np = npmax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00167}00167         kmeans\%nc = ncmax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00168}00168         kmeans\%nt = ntmax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00169}00169         kmeans\%ndMax = ndmax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00170}00170         kmeans\%npMax = npmax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00171}00171         kmeans\%ncMax = ncmax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00172}00172         kmeans\%ntMax = ntmax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00173}00173         \textcolor{keywordflow}{if} (\textcolor{keyword}{allocated}(kmeans\%Try)) \textcolor{keyword}{deallocate}(kmeans\%Try)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00174}00174         \textcolor{keyword}{allocate}(kmeans\%Try(ntmax))}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00175}00175         \textcolor{keywordflow}{do} it = 1, kmeans\%ntMax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00176}00176             \textcolor{keyword}{allocate}(kmeans\%Try(it)\%Size(ncmax), source = 0\_ik)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00177}00177             \textcolor{keyword}{allocate}(kmeans\%Try(it)\%Membership(npmax), source = 0\_ik)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00178}00178             \textcolor{keyword}{allocate}(kmeans\%Try(it)\%Center(ndmax,ncmax), source = 0.\_rk)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00179}00179             \textcolor{keyword}{allocate}(kmeans\%Try(it)\%MinDistanceSq(npmax), source = 0.\_rk)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00180}00180             \textcolor{keyword}{allocate}(kmeans\%Try(it)\%NormedPoint(ndmax,npmax,ncmax), source = 0.\_rk)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00181}00181 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00182}00182     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespacekmeansoop__mod_a3da7bef81ee023e876fe519b451f0d12}{allocatekmeanscomponents}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00183}00183 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00184}00184 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00185}00185 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00221}00221     \textcolor{comment}{! Amir Shahmoradi, April 03, 2017, 2:16 PM, ICES, UTEXAS}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00222}\mbox{\hyperlink{namespacekmeansoop__mod_a2f69bbdfe94d8e0f7e743cb0d78481b4}{00222}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespacekmeansoop__mod_a2f69bbdfe94d8e0f7e743cb0d78481b4}{runkmeans}}(Kmeans, Point, nd, np, nc, nt, niterMax, nzsciMax, relTol, InitCenter)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00223}00223 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00224}00224 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: runKmeans}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00225}00225 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00226}00226 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk, \mbox{\hyperlink{namespaceconstants__mod_ab30a3e16f9db4809a0c0a49b5a79d6e1}{neginf\_ik}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00227}00227 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00228}00228         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00229}00229 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00230}00230 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(in)}            :: Point(nd,np)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00231}00231         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}            :: nd, np, nc, nt}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00232}00232         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: niterMax, nzsciMax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00233}00233 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: relTol, InitCenter(nd,nc,nt)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00234}00234         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structkmeansoop__mod_1_1kmeansoop__type}{kmeansoop\_type}})               :: Kmeans}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00235}00235 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00236}00236         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: PROCEDURE\_NAME = \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}}//\textcolor{stringliteral}{"{}@runKmeans()"{}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00237}00237 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00238}00238 \textcolor{keywordtype}{        real}(RK)                :: potential                \textcolor{comment}{! The sum of all minimum distances squared.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00239}00239 \textcolor{keywordtype}{        real}(RK)                :: distanceSq               \textcolor{comment}{! distance of each point ip from a given cluster center.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00240}00240 \textcolor{keywordtype}{        real}(RK)                :: minPotential             \textcolor{comment}{! The minimum of sum of all minimum distances squared across all Kmeans tries.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00241}00241 \textcolor{keywordtype}{        real}(RK)                :: SumPoint(nd,nc)          \textcolor{comment}{! The sum of the points in each cluster.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00242}00242 \textcolor{keywordtype}{        real}(RK)                :: MinDistanceSq(np)        \textcolor{comment}{! minimum distance of each point ip from all centers of the clusters.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00243}00243         \textcolor{keywordtype}{integer(IK)}             :: Membership(np)           \textcolor{comment}{! current (old) Memberships of the clusters.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00244}00244 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00245}00245         \textcolor{keywordtype}{logical}                 :: isPresentInitCenter}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00246}00246         \textcolor{keywordtype}{logical}                 :: convergenceOccurred}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00247}00247         \textcolor{keywordtype}{integer}                 :: i, j, ip, ic, it}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00248}00248 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00249}00249         kmeans\%itopt = 0\_ik}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00250}00250         kmeans\%failed = .true.}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00251}00251 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00252}00252         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(reltol)) kmeans\%relTol = reltol}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00253}00253         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(nitermax)) kmeans\%niterMax = nitermax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00254}00254         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(nzscimax)) kmeans\%nzsciMax = nzscimax}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00255}00255 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00256}00256         \textcolor{keywordflow}{if} (nd > kmeans\%ndMax .or. np > kmeans\%npMax .or. nc > kmeans\%ncMax .or. nt > kmeans\%ntMax) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00257}00257             \textcolor{keyword}{call }kmeans\%allocate(nd, np, nc, nt)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00258}00258         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00259}00259             kmeans\%nd = nd}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00260}00260             kmeans\%np = np}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00261}00261             kmeans\%nc = nc}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00262}00262             kmeans\%nt = nt}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00263}00263 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00264}00264 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00265}00265         minpotential = huge(minpotential)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00266}00266         ispresentinitcenter = \textcolor{keyword}{present}(initcenter)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00267}00267 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00268}00268         loopmultiplekmeanstry: \textcolor{keywordflow}{do} it = 1, kmeans\%nt}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00269}00269 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00270}00270             kmeans\%Try(it)\%Err\%occurred = .false.}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00271}00271             kmeans\%Try(it)\%Err\%stat = \mbox{\hyperlink{namespaceconstants__mod_ab30a3e16f9db4809a0c0a49b5a79d6e1}{neginf\_ik}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00272}00272 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00273}00273             \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00274}00274             \textcolor{comment}{! Find the distances of all points to all cluster centers. If not given, initialize the centers via the Kmeans++ algorithm.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00275}00275             \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00276}00276 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00277}00277             \textcolor{keywordflow}{if}(ispresentinitcenter) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00278}00278                 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00279}00279                 ic = 1}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00280}00280                 \textcolor{keywordflow}{do} ip = 1, np}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00281}00281                     mindistancesq(ip) = sum( (initcenter(1:nd,ic,it) -\/ point(1:nd,ip))**2 )}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00282}00282                     membership(ip) = ic}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00283}00283 \textcolor{keywordflow}{                end do}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00284}00284                 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00285}00285                 \textcolor{keywordflow}{do} ic = 2, nc -\/ 1}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00286}00286                     \textcolor{keywordflow}{do} ip = 1, np}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00287}00287                         distancesq = sum( (initcenter(1:nd,ic,it) -\/ point(1:nd,ip))**2 )}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00288}00288                         \textcolor{keywordflow}{if} (distancesq < mindistancesq(ip)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00289}00289                             mindistancesq(ip) = distancesq}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00290}00290                             membership(ip) = ic}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00291}00291 \textcolor{keywordflow}{                        end if}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00292}00292 \textcolor{keywordflow}{                    end do}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00293}00293 \textcolor{keywordflow}{                end do}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00294}00294                 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00295}00295                 ic = nc}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00296}00296                 sumpoint = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00297}00297                 potential = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00298}00298                 \textcolor{keywordflow}{do} ip = 1, np}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00299}00299                     distancesq = sum( (initcenter(1:nd,ic,it) -\/ point(1:nd,ip))**2 )}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00300}00300                     \textcolor{keywordflow}{if} (distancesq < mindistancesq(ip)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00301}00301                         mindistancesq(ip) = distancesq}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00302}00302                         membership(ip) = ic}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00303}00303 \textcolor{keywordflow}{                    end if}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00304}00304                     sumpoint(1:nd,membership(ip)) = sumpoint(1:nd,membership(ip)) + point(1:nd,ip)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00305}00305                     kmeans\%Try(it)\%Size(membership(ip)) = kmeans\%Try(it)\%Size(membership(ip)) + 1\_ik}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00306}00306                     potential = potential + mindistancesq(ip)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00307}00307 \textcolor{keywordflow}{                end do}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00308}00308                 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00309}00309             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00310}00310                 \textcolor{keyword}{call }\mbox{\hyperlink{namespacekmeansoop__mod_ad1207eca99cdfdf3f176a4f5caf61786}{runkpp}}(nc, nd, np, point, sumpoint, membership, kmeans\%Try(it)\%Size, potential)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00311}00311 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00312}00312 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00313}00313             \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00314}00314             \textcolor{comment}{! Refine all centers until convergence.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00315}00315             \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00316}00316 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00317}00317             kmeans\%Try(it)\%nzsci = 0\_ik}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00318}00318             kmeans\%Try(it)\%niter = 1\_ik}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00319}00319 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00320}00320             loopcenterrefinement: \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00321}00321 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00322}00322                 \textcolor{comment}{! compute the new cluster centers and create the new memberships.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00323}00323 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00324}00324                 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00325}00325                 ic = 1}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00326}00326                 kmeans\%Try(it)\%Center(1:nd,ic) = sumpoint(1:nd,ic) / real(kmeans\%Try(it)\%Size(ic), kind = rk)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00327}00327                 \textcolor{keywordflow}{do} ip = 1, np}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00328}00328                     kmeans\%Try(it)\%NormedPoint(1:nd,ip,ic) = kmeans\%Try(it)\%Center(1:nd,ic) -\/ point(1:nd,ip)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00329}00329                     kmeans\%Try(it)\%MinDistanceSq(ip) = sum( kmeans\%Try(it)\%NormedPoint(1:nd,ip,ic)**2 )}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00330}00330                     kmeans\%Try(it)\%Membership(ip) = ic}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00331}00331 \textcolor{keywordflow}{                end do}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00332}00332                 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00333}00333                 \textcolor{keywordflow}{do} ic = 2, nc -\/ 1}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00334}00334                     kmeans\%Try(it)\%Center(1:nd,ic) = sumpoint(1:nd,ic) / real(kmeans\%Try(it)\%Size(ic), kind = rk)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00335}00335                     \textcolor{keywordflow}{do} ip = 1, np}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00336}00336                         kmeans\%Try(it)\%NormedPoint(1:nd,ip,ic) = kmeans\%Try(it)\%Center(1:nd,ic) -\/ point(1:nd,ip)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00337}00337                         distancesq = sum( kmeans\%Try(it)\%NormedPoint(1:nd,ip,ic)**2 )}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00338}00338                         \textcolor{keywordflow}{if} (distancesq < kmeans\%Try(it)\%MinDistanceSq(ip)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00339}00339                             kmeans\%Try(it)\%MinDistanceSq(ip) = distancesq}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00340}00340                             kmeans\%Try(it)\%Membership(ip) = ic}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00341}00341 \textcolor{keywordflow}{                        end if}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00342}00342 \textcolor{keywordflow}{                    end do}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00343}00343 \textcolor{keywordflow}{                end do}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00344}00344                 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00345}00345                 ic = nc}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00346}00346                 convergenceoccurred = .true.}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00347}00347                 kmeans\%Try(it)\%potential = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00348}00348                 kmeans\%Try(it)\%Center(1:nd,ic) = sumpoint(1:nd,ic) / real(kmeans\%Try(it)\%Size(ic), kind = rk)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00349}00349                 \textcolor{keywordflow}{do} ip = 1, np}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00350}00350                     kmeans\%Try(it)\%NormedPoint(1:nd,ip,ic) = kmeans\%Try(it)\%Center(1:nd,ic) -\/ point(1:nd,ip)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00351}00351                     distancesq = sum( kmeans\%Try(it)\%NormedPoint(1:nd,ip,ic)**2 )}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00352}00352                     \textcolor{keywordflow}{if} (distancesq < kmeans\%Try(it)\%MinDistanceSq(ip)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00353}00353                         kmeans\%Try(it)\%MinDistanceSq(ip) = distancesq}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00354}00354                         kmeans\%Try(it)\%Membership(ip) = ic}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00355}00355 \textcolor{keywordflow}{                    end if}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00356}00356                     \textcolor{keywordflow}{if} (kmeans\%Try(it)\%Membership(ip)/=membership(ip)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00357}00357                         convergenceoccurred = .false.}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00358}00358                         kmeans\%Try(it)\%Size(membership(ip)) = kmeans\%Try(it)\%Size(membership(ip)) -\/ 1\_ik}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00359}00359                         kmeans\%Try(it)\%Size(kmeans\%Try(it)\%Membership(ip)) = kmeans\%Try(it)\%Size(kmeans\%Try(it)\%Membership(ip)) + 1\_ik}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00360}00360 \textcolor{keywordflow}{                    end if}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00361}00361                     kmeans\%Try(it)\%potential = kmeans\%Try(it)\%potential + kmeans\%Try(it)\%MinDistanceSq(ip)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00362}00362 \textcolor{keywordflow}{                end do}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00363}00363                 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00364}00364 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00365}00365                 \textcolor{keywordflow}{if} (any(kmeans\%Try(it)\%Size==0\_ik)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00366}00366 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00367}00367                     kmeans\%Try(it)\%niter = 1\_ik}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00368}00368                     kmeans\%Try(it)\%nzsci = kmeans\%Try(it)\%nzsci + 1\_ik}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00369}00369 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00370}00370                     \textcolor{keywordflow}{if} (kmeans\%Try(it)\%nzsci > kmeans\%nzsciMax) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00371}00371                         \textcolor{comment}{!Kmeans\%Try(it)\%Err\%msg = "{}Kmeans\%Try(it)\%nzsci > Kmeans\%nzsciMax"{}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00372}00372                         kmeans\%Try(it)\%Err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00373}00373                         kmeans\%Try(it)\%Err\%stat = 2\_ik}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00374}00374                         \textcolor{keywordflow}{exit} loopcenterrefinement}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00375}00375 \textcolor{keywordflow}{                    end if}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00376}00376 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00377}00377                     \textcolor{comment}{! find new random Centers and start over.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00378}00378 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00379}00379                     \textcolor{keyword}{call }\mbox{\hyperlink{namespacekmeansoop__mod_ad1207eca99cdfdf3f176a4f5caf61786}{runkpp}}(nc, nd, np, point, sumpoint, membership, kmeans\%Try(it)\%Size, potential)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00380}00380 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00381}00381                     cycle loopcenterrefinement}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00382}00382 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00383}00383 \textcolor{preprocessor}{\#if defined DEBUG\_ENABLED || defined TESTING\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00384}00384 \textcolor{preprocessor}{}                \textcolor{keywordflow}{elseif} (any(kmeans\%Try(it)\%Size<0\_ik)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00385}00385                     block}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00386}00386                         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespaceerr__mod_affd32c7e069ae52378ff433f0b68fcb1}{abort}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00387}00387                         kmeans\%Try(it)\%Err\%msg = procedure\_name//\textcolor{stringliteral}{"{}: Internal error occurred -\/ Kmeans\%Try(it)\%Size < 0. Please report this issue along with circumstances to the developers."{}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00388}00388                         \textcolor{keyword}{call }\mbox{\hyperlink{namespaceerr__mod_affd32c7e069ae52378ff433f0b68fcb1}{abort}}(kmeans\%Try(it)\%Err)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00389}00389                         \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00390}00390                     \textcolor{keyword}{end }block}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00391}00391 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00392}00392 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00393}00393 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00394}00394 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00395}00395                 \textcolor{comment}{! if `niterMax` has reached, quit.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00396}00396 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00397}00397                 \textcolor{keywordflow}{if} (kmeans\%Try(it)\%niter < kmeans\%niterMax) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00398}00398 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00399}00399                     \textcolor{comment}{! If convergence has occurred, exit loopCenterRefinement.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00400}00400 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00401}00401                     \textcolor{keywordflow}{if} (convergenceoccurred .or. abs(kmeans\%Try(it)\%potential-\/potential)/kmeans\%Try(it)\%potential < kmeans\%relTol) \textcolor{keywordflow}{exit} loopcenterrefinement}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00402}00402 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00403}00403                     kmeans\%Try(it)\%niter = kmeans\%Try(it)\%niter + 1\_ik}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00404}00404 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00405}00405                     \textcolor{keywordflow}{do} ip = 1, np}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00406}00406                         sumpoint(1:nd,membership(ip)) = sumpoint(1:nd,membership(ip)) -\/ point(1:nd,ip)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00407}00407                         sumpoint(1:nd,kmeans\%Try(it)\%Membership(ip)) = sumpoint(1:nd,kmeans\%Try(it)\%Membership(ip)) + point(1:nd,ip)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00408}00408                         membership(ip) = kmeans\%Try(it)\%Membership(ip)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00409}00409 \textcolor{keywordflow}{                    end do}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00410}00410                     potential = kmeans\%Try(it)\%potential}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00411}00411 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00412}00412                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00413}00413 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00414}00414                     \textcolor{comment}{!Kmeans\%Try(it)\%Err\%msg = "{}Kmeans\%Try(it)\%niter > Kmeans\%niterMax"{}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00415}00415                     kmeans\%Try(it)\%Err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00416}00416                     kmeans\%Try(it)\%Err\%stat = 1\_ik}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00417}00417                     \textcolor{keywordflow}{exit} loopcenterrefinement}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00418}00418 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00419}00419 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00420}00420 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00421}00421 \textcolor{keywordflow}{            end do} loopcenterrefinement}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00422}00422 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00423}00423             \textcolor{keywordflow}{if} (.not. kmeans\%Try(it)\%Err\%occurred) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00424}00424                 \textcolor{keywordflow}{if} (kmeans\%Try(it)\%potential < minpotential) kmeans\%itopt = it}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00425}00425                 kmeans\%failed = .false.}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00426}00426 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00427}00427 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00428}00428 \textcolor{keywordflow}{        end do} loopmultiplekmeanstry}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00429}00429 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00430}00430     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespacekmeansoop__mod_a2f69bbdfe94d8e0f7e743cb0d78481b4}{runkmeans}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00431}00431 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00432}00432 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00433}00433 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00457}00457     \textcolor{comment}{! Amir Shahmoradi, April 03, 2017, 2:16 PM, ICES, UTEXAS}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00458}\mbox{\hyperlink{namespacekmeansoop__mod_ad1207eca99cdfdf3f176a4f5caf61786}{00458}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespacekmeansoop__mod_ad1207eca99cdfdf3f176a4f5caf61786}{runkpp}}(nc, nd, np, Point, SumPoint, Membership, Size, potential)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00459}00459 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00460}00460 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: runKPP}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00461}00461 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00462}00462 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestatistics__mod}{statistics\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacestatistics__mod_a32bc1c64c03179a6cf9ce25a7fe250da}{getrandint}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00463}00463 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00464}00464         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00465}00465 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00466}00466         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}    :: np, nd, nc}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00467}00467 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(in)}    :: Point(nd,np)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00468}00468 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(out)}   :: SumPoint(nd,nc)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00469}00469         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(out)}   :: Membership(np)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00470}00470         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(out)}   :: Size(nc)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00471}00471 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(out)}   :: potential}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00472}00472 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00473}00473 \textcolor{keywordtype}{        real}(RK)                    :: dummy}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00474}00474 \textcolor{keywordtype}{        real}(RK)                    :: distanceSq}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00475}00475 \textcolor{keywordtype}{        real}(RK)                    :: Center(nd,nc)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00476}00476 \textcolor{keywordtype}{        real}(RK)                    :: MinDistanceSq(np)    \textcolor{comment}{! An array representing the minimum distances of individual points from all clusters.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00477}00477 \textcolor{keywordtype}{        real}(RK)                    :: CumSumDistSq(0:np)   \textcolor{comment}{! sum of distance squared of points up to the given index of the vector.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00478}00478         \textcolor{keywordtype}{integer(IK)}                 :: randomInteger}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00479}00479         \textcolor{keywordtype}{integer(IK)}                 :: ic, ip, i}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00480}00480 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00481}00481         cumsumdistsq(0) = 0.\_rk \textcolor{comment}{! This element must always remain zero.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00482}00482 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00483}00483         ic = 1\_ik}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00484}00484         center(1:nd,ic) = point( 1:nd , \mbox{\hyperlink{namespacestatistics__mod_a32bc1c64c03179a6cf9ce25a7fe250da}{getrandint}}(1,np) ) \textcolor{comment}{! perhaps this random assignment is unnecessary, after all, Point is supposed to be of random order.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00485}00485         \textcolor{keywordflow}{do} ip = 1, np}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00486}00486             mindistancesq(ip) = sum( (center(1:nd,ic) -\/ point(1:nd,ip))**2 ) \textcolor{comment}{! find the distance-\/squared of each point to the \# ic cluster Center.}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00487}00487             cumsumdistsq(ip) = cumsumdistsq(ip-\/1) + mindistancesq(ip)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00488}00488             membership(ip) = ic}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00489}00489 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00490}00490 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00491}00491         ic = 2\_ik}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00492}00492         \textcolor{keyword}{call }random\_number(dummy)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00493}00493         dummy = dummy * cumsumdistsq(np)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00494}00494         center(1:nd,ic) = point( 1:nd, minloc(cumsumdistsq, dim = 1, mask = cumsumdistsq > dummy) -\/ 1 ) \textcolor{comment}{! -\/1 is essential to compensate for the 0 starting index of CumSumDistSq}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00495}00495 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00496}00496         \textcolor{comment}{! find the rest of cluster centers}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00497}00497 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00498}00498         \textcolor{keywordflow}{do} ic = 2, nc -\/ 1}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00499}00499 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00500}00500             \textcolor{keywordflow}{do} ip = 1, np}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00501}00501                 distancesq = sum( (center(1:nd,ic) -\/ point(1:nd,ip))**2 )}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00502}00502                 \textcolor{keywordflow}{if} (distancesq < mindistancesq(ip)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00503}00503                     mindistancesq(ip) = distancesq}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00504}00504                     membership(ip) = ic}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00505}00505 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00506}00506                 cumsumdistsq(ip) = cumsumdistsq(ip-\/1) + mindistancesq(ip)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00507}00507 \textcolor{keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00508}00508 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00509}00509             \textcolor{keyword}{call }random\_number(dummy)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00510}00510             dummy = dummy * cumsumdistsq(np)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00511}00511             center(1:nd,ic+1) = point( 1:nd , minloc(cumsumdistsq, dim = 1, mask = cumsumdistsq > dummy) -\/ 1 )}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00512}00512 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00513}00513 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00514}00514 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00515}00515         \textcolor{keyword}{Size} = 0\_ik}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00516}00516         sumpoint = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00517}00517         potential = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00518}00518         \textcolor{keywordflow}{do} ip = 1, np}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00519}00519             distancesq = sum( (center(1:nd,nc) -\/ point(1:nd,ip))**2 )}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00520}00520             \textcolor{keywordflow}{if} (distancesq < mindistancesq(ip)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00521}00521                 mindistancesq(ip) = distancesq}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00522}00522                 membership(ip) = nc}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00523}00523 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00524}00524             sumpoint(1:nd,membership(ip)) = sumpoint(1:nd,membership(ip)) + point(1:nd,ip)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00525}00525             \textcolor{keyword}{Size}(membership(ip)) = \textcolor{keyword}{Size}(membership(ip)) + 1\_ik}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00526}00526             potential = potential + mindistancesq(ip)}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00527}00527 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00528}00528 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00529}00529     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespacekmeansoop__mod_ad1207eca99cdfdf3f176a4f5caf61786}{runkpp}}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00530}00530 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00531}00531 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00532}00532 }
+\DoxyCodeLine{\Hypertarget{KmeansOOP__mod_8f90_source_l00533}00533 \textcolor{keyword}{end module }\mbox{\hyperlink{namespacekmeansoop__mod}{kmeansoop\_mod}} ! lcov\_excl\_line}
+
+\end{DoxyCode}

@@ -1,0 +1,130 @@
+\hypertarget{DateTime__mod_8f90_source}{}\doxysection{Date\+Time\+\_\+mod.\+f90}
+\label{DateTime__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/DateTime\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/DateTime\_mod.f90}}
+\mbox{\hyperlink{DateTime__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00001}00001 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00002}00002 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00003}00003 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00004}00004 \textcolor{comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00005}00005 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00006}00006 \textcolor{comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00007}00007 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00008}00008 \textcolor{comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00009}00009 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00010}00010 \textcolor{comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00011}00011 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00012}00012 \textcolor{comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00013}00013 \textcolor{comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}),}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00014}00014 \textcolor{comment}{!!!!   to deal in the Software without restriction, including without limitation}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00015}00015 \textcolor{comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00016}00016 \textcolor{comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00017}00017 \textcolor{comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00018}00018 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00019}00019 \textcolor{comment}{!!!!   The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00020}00020 \textcolor{comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00021}00021 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00022}00022 \textcolor{comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00023}00023 \textcolor{comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00024}00024 \textcolor{comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00025}00025 \textcolor{comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00026}00026 \textcolor{comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00027}00027 \textcolor{comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00028}00028 \textcolor{comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00029}00029 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00030}00030 \textcolor{comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00031}00031 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00032}00032 \textcolor{comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00033}00033 \textcolor{comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00034}00034 \textcolor{comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00035}00035 \textcolor{comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00036}00036 \textcolor{comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00037}00037 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00038}00038 \textcolor{comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00039}00039 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00040}00040 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00041}00041 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00046}\mbox{\hyperlink{namespacedatetime__mod}{00046}} \textcolor{keyword}{module} \mbox{\hyperlink{namespacedatetime__mod}{datetime\_mod}}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00048}00048     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00050}00050     \textcolor{keywordtype}{public}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00051}00051     \textcolor{keywordtype}{private} :: querydatetime}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00053}\mbox{\hyperlink{namespacedatetime__mod_a9f012a959efdb204f80e3e516529fd0f}{00053}}     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespacedatetime__mod_a9f012a959efdb204f80e3e516529fd0f}{module\_name}} = \textcolor{stringliteral}{"{}@DateTime\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00056}\mbox{\hyperlink{structdatetime__mod_1_1datetime__type}{00056}}     \textcolor{keyword}{type}, \textcolor{keyword}{public} :: \mbox{\hyperlink{structdatetime__mod_1_1datetime__type}{datetime\_type}}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00057}\mbox{\hyperlink{structdatetime__mod_1_1datetime__type_ad66fb557881df55d97c14e2f08a45154}{00057}}         \textcolor{keywordtype}{character(8)}    :: date}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00058}\mbox{\hyperlink{structdatetime__mod_1_1datetime__type_a1730b4e68da4d39ff074e188cb31368e}{00058}}         \textcolor{keywordtype}{character(10)}   :: time}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00059}\mbox{\hyperlink{structdatetime__mod_1_1datetime__type_abb200fc16614b591fca62108bc68cf01}{00059}}         \textcolor{keywordtype}{character(5)}    :: zone}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00060}\mbox{\hyperlink{structdatetime__mod_1_1datetime__type_a7b73473f7427a4a02398fd94f4a12725}{00060}}         \textcolor{keywordtype}{integer}         :: values(8)}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00061}\mbox{\hyperlink{structdatetime__mod_1_1datetime__type_a5d548dbb93dae6b60f2fd5e5826c55d0}{00061}}         \textcolor{keywordtype}{character(2)}    :: century}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00062}\mbox{\hyperlink{structdatetime__mod_1_1datetime__type_a2e3bebe5346a9fe03055afd297573b85}{00062}}         \textcolor{keywordtype}{character(4)}    :: year}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00063}\mbox{\hyperlink{structdatetime__mod_1_1datetime__type_aee93de00b3ce9fd76c2a591452dd844d}{00063}}         \textcolor{keywordtype}{character(2)}    :: month}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00064}\mbox{\hyperlink{structdatetime__mod_1_1datetime__type_a0668647d25db82c1a7318778f50bfc56}{00064}}         \textcolor{keywordtype}{character(2)}    :: day}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00065}\mbox{\hyperlink{structdatetime__mod_1_1datetime__type_a60d83804ecdbd0e0baff9bbb253e2e6f}{00065}}         \textcolor{keywordtype}{character(2)}    :: hour}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00066}\mbox{\hyperlink{structdatetime__mod_1_1datetime__type_a477d4b7c74c4cc51522bb29ab0b605f3}{00066}}         \textcolor{keywordtype}{character(2)}    :: minute}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00067}\mbox{\hyperlink{structdatetime__mod_1_1datetime__type_ab7db68faa4889b2c39c974c185b76bfc}{00067}}         \textcolor{keywordtype}{character(2)}    :: second}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00068}\mbox{\hyperlink{structdatetime__mod_1_1datetime__type_a1c93100cc8e379cc490d5a7d43fa399a}{00068}}         \textcolor{keywordtype}{character(3)}    :: millisecond}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00069}\mbox{\hyperlink{structdatetime__mod_1_1datetime__type_a8f963ab23114d822fc023e1318f00b89}{00069}}         \textcolor{keywordtype}{character(21)}   :: fancystylebasic}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00070}\mbox{\hyperlink{structdatetime__mod_1_1datetime__type_ab8b003c58df6b91be35f172f43fc14a7}{00070}}         \textcolor{keywordtype}{character(35)}   :: fancystyle}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00071}00071     \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00073}\mbox{\hyperlink{structdatetime__mod_1_1datetime__type_acffe7df72921c0b7aacf942191d79a7e}{00073}}         \textcolor{keywordtype}{procedure}, pass :: query => querydatetime}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00074}00074     \textcolor{keyword}{end type }\mbox{\hyperlink{structdatetime__mod_1_1datetime__type}{datetime\_type}}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00076}00076 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00078}00078 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00080}00080 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00085}00085     \textcolor{keyword}{subroutine }querydatetime(self)}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00086}00086 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00087}00087 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: queryDateTime}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00088}00088 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00089}00089 \textcolor{preprocessor}{}        \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00090}00090         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structdatetime__mod_1_1datetime__type}{datetime\_type}}), \textcolor{keywordtype}{intent(inout)} :: self}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00091}00091         \textcolor{keyword}{call }date\_and\_time( date    = self\%date   \&}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00092}00092                           , time    = self\%time   \&}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00093}00093                           , zone    = self\%zone   \&}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00094}00094                           , values  = self\%Values \&}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00095}00095                           )}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00096}00096         self\%century            = self\%date(1:2)}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00097}00097         self\%year               = self\%date(1:4)}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00098}00098         self\%month              = self\%date(5:6)}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00099}00099         self\%day                = self\%date(7:8)}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00100}00100         self\%hour               = self\%time(1:2)}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00101}00101         self\%minute             = self\%time(3:4)}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00102}00102         self\%second             = self\%time(5:6)}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00103}00103         self\%millisecond        = self\%time(8:10)}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00104}00104         self\%fancyStyleBasic    = self\%year // \textcolor{stringliteral}{"{}/"{}} // \&             \textcolor{comment}{! 5 characters}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00105}00105                                   self\%month // \textcolor{stringliteral}{"{}/"{}} // \&            \textcolor{comment}{! 3 characters}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00106}00106                                   self\%day //\textcolor{stringliteral}{"{} -\/ "{}} // \&             \textcolor{comment}{! 5 characters}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00107}00107                                   self\%hour // \textcolor{stringliteral}{"{}:"{}} // \&             \textcolor{comment}{! 3 characters}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00108}00108                                   self\%minute // \textcolor{stringliteral}{"{}:"{}} // \&           \textcolor{comment}{! 3 characters}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00109}00109                                   self\%second                       \textcolor{comment}{! 2 characters}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00110}00110         self\%fancyStyle         = self\%fancyStyleBasic // \textcolor{stringliteral}{"{}."{}} // \&  \textcolor{comment}{! basic+1 characters}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00111}00111                                   self\%millisecond // \textcolor{stringliteral}{"{} "{}} // \&      \textcolor{comment}{! 4 characters}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00112}00112                                   self\%zone // \textcolor{stringliteral}{"{} UTC"{}}               \textcolor{comment}{! 9 characters}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00113}00113     \textcolor{keyword}{end subroutine }querydatetime}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00115}00115 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00124}\mbox{\hyperlink{namespacedatetime__mod_a09ebd0ce20fc77b8fd908074afc2690f}{00124}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacedatetime__mod_a09ebd0ce20fc77b8fd908074afc2690f}{getnicedatetime}}() \textcolor{keyword}{result}(niceDateTime)}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00125}00125 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00126}00126 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: getNiceDateTime}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00127}00127 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00128}00128 \textcolor{preprocessor}{}        \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00129}00129         \textcolor{keywordtype}{character(len=21)}                        :: nicedatetime}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00130}00130         \textcolor{keywordtype}{character(10)}                            :: time}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00131}00131         \textcolor{keywordtype}{character(8)}                             :: date}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00132}00132         \textcolor{keyword}{call }date\_and\_time(date,time)}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00133}00133         nicedatetime = date(1:4)//\textcolor{stringliteral}{'/'}//date(5:6)//\textcolor{stringliteral}{'/'}//date(7:8)//\textcolor{stringliteral}{' -\/ '}//time(1:2)//\textcolor{stringliteral}{':'}//time(3:4)//\textcolor{stringliteral}{':'}//time(5:6)}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00134}00134     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacedatetime__mod_a09ebd0ce20fc77b8fd908074afc2690f}{getnicedatetime}}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00136}00136 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00137}00137 }
+\DoxyCodeLine{\Hypertarget{DateTime__mod_8f90_source_l00138}00138 \textcolor{keyword}{end module }\mbox{\hyperlink{namespacedatetime__mod}{datetime\_mod}} ! lcov\_excl\_line}
+
+\end{DoxyCode}

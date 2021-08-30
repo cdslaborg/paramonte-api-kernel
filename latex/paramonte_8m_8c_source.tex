@@ -1,0 +1,155 @@
+\hypertarget{paramonte_8m_8c_source}{}\doxysection{paramonte.\+m.\+c}
+\label{paramonte_8m_8c_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/paramonte.m.c@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/paramonte.m.c}}
+\mbox{\hyperlink{paramonte_8m_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00043}00043 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00044}00044 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00045}00045 \textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00047}00047 \textcolor{preprocessor}{\#ifndef PM\_LOG\_FUNC}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00048}\mbox{\hyperlink{paramonte_8m_8c_a7ba66e4eb4dabfc78a93cc11cd1b0413}{00048}} \textcolor{preprocessor}{\#define PM\_LOG\_FUNC}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00049}\mbox{\hyperlink{paramonte_8m_8c_addc3dba55a80d26475519657865e893f}{00049}} \textcolor{keywordtype}{double} \mbox{\hyperlink{paramonte_8m_8c_addc3dba55a80d26475519657865e893f}{getLogFunc}}   (}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00050}00050                     int32\_t ,   \textcolor{comment}{// ndim}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00051}00051                     \textcolor{keywordtype}{double} []   \textcolor{comment}{// Point}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00052}00052                     );}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00053}00053 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00055}00055 \textcolor{preprocessor}{\#ifndef PM\_LOG\_FUNC\_WRAPPER}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00056}\mbox{\hyperlink{paramonte_8m_8c_a9b7ef9027982e6698ab6bde12a25324b}{00056}} \textcolor{preprocessor}{\#define PM\_LOG\_FUNC\_WRAPPER}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00057}\mbox{\hyperlink{paramonte_8m_8c_abbfed6823fae8b7286cd7b28104ba3e0}{00057}} \textcolor{keywordtype}{double} \mbox{\hyperlink{paramonte_8m_8c_abbfed6823fae8b7286cd7b28104ba3e0}{getLogFuncWrapper}}(}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00058}00058                         int32\_t ,   \textcolor{comment}{// ndim}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00059}00059                         \textcolor{keywordtype}{double} []   \textcolor{comment}{// Point}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00060}00060                         );}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00061}00061 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00063}00063 \textcolor{preprocessor}{\#ifndef ParaMonte}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00064}\mbox{\hyperlink{paramonte_8m_8c_affaa628f212f29313a620bbdab882d01}{00064}} \textcolor{preprocessor}{\#define ParaMonte}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00065}\mbox{\hyperlink{paramonte_8m_8c_a2c587477c29c4f7206d97597c5386cbd}{00065}} int32\_t \mbox{\hyperlink{paramonte_8m_8c_a2c587477c29c4f7206d97597c5386cbd}{runParaDRAM}} (}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00066}00066                     \textcolor{comment}{// ndim: dimension of the domain of the LogFunc}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00067}00067                     int32\_t ,}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00068}00068                     \textcolor{comment}{// getLogFunc(ndim, Point(ndim)): procedure pointer to the LogFunc}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00069}00069                     \textcolor{keywordtype}{double} (*)  (}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00070}00070                                 int32\_t ,}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00071}00071                                 \textcolor{keywordtype}{double} []}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00072}00072                                 ),}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00073}00073                     \textcolor{comment}{// inputFilePtr: ParaMonte input file path string, containing a list of all optional input variables and values}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00074}00074                     \textcolor{keywordtype}{char} [],}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00075}00075                     \textcolor{comment}{// inputFilePtrLen: the length of the inputFilePtr char vector: int32\_t inputFilePtrLen = strlen(inputFilePtr);}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00076}00076                     int32\_t}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00077}00077                     );}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00078}00078 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00083}00083 \textcolor{preprocessor}{\#include "{}mex.h"{}}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00084}00084 \textcolor{preprocessor}{\#if defined \_WIN32}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00085}00085 \textcolor{preprocessor}{\#include <Windows.h>}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00086}00086 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00088}\mbox{\hyperlink{paramonte_8m_8c_a59345377bfcf804189fd88ecf5dd11ef}{00088}} \textcolor{preprocessor}{\#define MEX\_ISCMD       prhs[0]}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00089}\mbox{\hyperlink{paramonte_8m_8c_a1208b122fa8eaea197e21378de09f214}{00089}} \textcolor{preprocessor}{\#define MEX\_NDIM        prhs[1]}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00090}\mbox{\hyperlink{paramonte_8m_8c_a80f5d924666271138e64849915c2b34b}{00090}} \textcolor{preprocessor}{\#define MEX\_INPUTFILE   prhs[2]}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00091}\mbox{\hyperlink{paramonte_8m_8c_a2923b3ed96deb49bb73fd45a70eed483}{00091}} \textcolor{preprocessor}{\#define MEX\_GETLOGFUNC  prhs[3]}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00093}\mbox{\hyperlink{paramonte_8m_8c_a9bd9ade32146be0dcdc9cdb8fb7ca111}{00093}} mxArray *\mbox{\hyperlink{paramonte_8m_8c_a9bd9ade32146be0dcdc9cdb8fb7ca111}{MEX\_GETLOGFUNC\_HANDLE}};}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00095}\mbox{\hyperlink{paramonte_8m_8c_a6a215cbfde54f82a3ce599228fc3fce5}{00095}} \textcolor{keywordtype}{void} \mbox{\hyperlink{paramonte_8m_8c_a6a215cbfde54f82a3ce599228fc3fce5}{mexFunction}}( \textcolor{keywordtype}{int} nlhs}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00096}00096                 , mxArray *plhs[]}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00097}00097                 , \textcolor{keywordtype}{int} nrhs}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00098}00098                 , \textcolor{keyword}{const} mxArray *prhs[]}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00099}00099                 )}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00100}00100 \{}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00102}00102 \textcolor{comment}{//\#if defined \_WIN32}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00103}00103 \textcolor{comment}{//    int iscmd = mxGetScalar(MEX\_ISCMD);}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00104}00104 \textcolor{comment}{//    if (iscmd==0) \{}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00105}00105 \textcolor{comment}{//        if (AllocConsole()==0) \{}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00106}00106 \textcolor{comment}{//            freopen("{}CONOUT\$"{}, "{}w"{}, stdout);}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00107}00107 \textcolor{comment}{//            freopen("{}CONOUT\$"{}, "{}w"{}, stderr);}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00108}00108 \textcolor{comment}{//        \}}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00109}00109 \textcolor{comment}{//    \}}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00110}00110 \textcolor{comment}{//\#endif}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00111}00111 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00114}00114     \textcolor{keywordtype}{int} isAnnonymous = 0;}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00115}00115     \textcolor{keywordflow}{if} (nrhs==4) \{}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00116}00116         \textcolor{keywordflow}{if}(!mxIsClass(\mbox{\hyperlink{paramonte_8m_8c_a2923b3ed96deb49bb73fd45a70eed483}{MEX\_GETLOGFUNC}},\textcolor{stringliteral}{"{}function\_handle"{}})) mexErrMsgTxt(\textcolor{stringliteral}{"{}First input argument is not a function handle."{}});}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00117}00117         \mbox{\hyperlink{paramonte_8m_8c_a9bd9ade32146be0dcdc9cdb8fb7ca111}{MEX\_GETLOGFUNC\_HANDLE}} = mxDuplicateArray(\mbox{\hyperlink{paramonte_8m_8c_a2923b3ed96deb49bb73fd45a70eed483}{MEX\_GETLOGFUNC}});}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00118}00118         isAnnonymous = 1;}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00119}00119     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00120}00120         \textcolor{keywordflow}{if} (nrhs!=3) mexErrMsgIdAndTxt( \textcolor{stringliteral}{"{}Mex:ParaMonte:invalidNumInputs"{}}, \textcolor{stringliteral}{"{}Internal ParaMonte library error occurred: input variable mismatch."{}});}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00121}00121     \}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00122}00122     \textcolor{keywordflow}{if}(nlhs>0) mexErrMsgIdAndTxt( \textcolor{stringliteral}{"{}Mex:ParaMonte:maxlhs"{}}, \textcolor{stringliteral}{"{}Internal ParaMonte library error occurred: Too many output arguments."{}});}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00126}00126 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00127}00127     int32\_t ndim = mxGetScalar(\mbox{\hyperlink{paramonte_8m_8c_a1208b122fa8eaea197e21378de09f214}{MEX\_NDIM}});}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00128}00128 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00129}00129     \textcolor{keywordflow}{if} (mxIsChar(\mbox{\hyperlink{paramonte_8m_8c_a80f5d924666271138e64849915c2b34b}{MEX\_INPUTFILE}}) != 1) mexErrMsgIdAndTxt( \textcolor{stringliteral}{"{}Mex:ParaMonte:inputNotString"{}}, \textcolor{stringliteral}{"{}Internal ParaMonte library error occurred: Input \#3 must be a string."{}});}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00130}00130     \textcolor{keywordflow}{if} (mxGetM(\mbox{\hyperlink{paramonte_8m_8c_a80f5d924666271138e64849915c2b34b}{MEX\_INPUTFILE}})!=1) mexErrMsgIdAndTxt( \textcolor{stringliteral}{"{}Mex:ParaMonte:inputNotVector"{}}, \textcolor{stringliteral}{"{}Input must be a row vector."{}});}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00131}00131 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00132}00132     \textcolor{keywordtype}{char} *inputFilePtr;}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00133}00133     inputFilePtr = mxArrayToString(\mbox{\hyperlink{paramonte_8m_8c_a80f5d924666271138e64849915c2b34b}{MEX\_INPUTFILE}});}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00134}00134     \textcolor{keywordflow}{if}(inputFilePtr == NULL) mexErrMsgIdAndTxt( \textcolor{stringliteral}{"{}Mex:ParaMonte:conversionFailed"{}}, \textcolor{stringliteral}{"{}Internal ParaMonte library error occurred: Could not convert input \#2 to string."{}});}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00136}00136     \textcolor{keywordtype}{size\_t} inputFilePtrLen;}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00137}00137     inputFilePtrLen = (mxGetM(\mbox{\hyperlink{paramonte_8m_8c_a80f5d924666271138e64849915c2b34b}{MEX\_INPUTFILE}}) * mxGetN(\mbox{\hyperlink{paramonte_8m_8c_a80f5d924666271138e64849915c2b34b}{MEX\_INPUTFILE}})) + 1;}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00142}00142     int32\_t err;}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00143}00143     \textcolor{keywordflow}{if} (isAnnonymous==1) \{}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00144}00144         err = \mbox{\hyperlink{paramonte_8m_8c_a2c587477c29c4f7206d97597c5386cbd}{runParaDRAM}}   ( ndim}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00145}00145                             , \&\mbox{\hyperlink{paramonte_8m_8c_abbfed6823fae8b7286cd7b28104ba3e0}{getLogFuncWrapper}}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00146}00146                             , inputFilePtr}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00147}00147                             , inputFilePtrLen}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00148}00148                             );}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00149}00149     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00150}00150         err = \mbox{\hyperlink{paramonte_8m_8c_a2c587477c29c4f7206d97597c5386cbd}{runParaDRAM}}   ( ndim}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00151}00151                             , \&\mbox{\hyperlink{paramonte_8m_8c_addc3dba55a80d26475519657865e893f}{getLogFunc}}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00152}00152                             , inputFilePtr}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00153}00153                             , inputFilePtrLen}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00154}00154                             );}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00155}00155     \}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00156}00156     \textcolor{keywordflow}{if} (err!=0) mexErrMsgIdAndTxt( \textcolor{stringliteral}{"{}Mex:ParaMonte"{}}, \textcolor{stringliteral}{"{}Runtime Error Occurred."{}});}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00157}00157 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00158}00158     mxFree(inputFilePtr);}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00159}00159 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00160}00160     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00161}00161 \}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00162}00162 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00165}00165 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00166}\mbox{\hyperlink{paramonte_8m_8c_a8515cce5d9c204c3f43f86bc088d1feb}{00166}} \textcolor{keywordtype}{double} \mbox{\hyperlink{paramonte_8m_8c_addc3dba55a80d26475519657865e893f}{getLogFunc}}   (}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00167}00167                     int32\_t ndim,}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00168}00168                     \textcolor{keywordtype}{double} *Point}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00169}00169                     )}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00170}00170 \{}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00171}00171     mxArray *InputArg2getLogFunc[1];}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00172}00172     InputArg2getLogFunc[0] = mxCreateDoubleMatrix(ndim, 1, mxREAL);}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00173}00173     memcpy( mxGetPr(InputArg2getLogFunc[0]), Point, ndim*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00174}00174 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00175}00175     mxArray *logFuncRaw[1];}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00176}00176     mexCallMATLAB(1,logFuncRaw,1,InputArg2getLogFunc,\textcolor{stringliteral}{"{}getLogFunc"{}});}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00177}00177     \textcolor{keywordtype}{double} logFunc = mxGetScalar( logFuncRaw[0] );}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00178}00178 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00179}00179     \textcolor{keywordflow}{return} logFunc;}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00180}00180 \}}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00184}00184 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00185}\mbox{\hyperlink{paramonte_8m_8c_afc317e5e9e139495b4583d3a6bb4c12e}{00185}} \textcolor{keywordtype}{double} \mbox{\hyperlink{paramonte_8m_8c_abbfed6823fae8b7286cd7b28104ba3e0}{getLogFuncWrapper}}(}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00186}00186                         int32\_t ndim,}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00187}00187                         \textcolor{keywordtype}{double} *Point}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00188}00188                         )}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00189}00189 \{}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00190}00190     mxArray *InputArg2feval[2];}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00191}00191     InputArg2feval[0] = \mbox{\hyperlink{paramonte_8m_8c_a9bd9ade32146be0dcdc9cdb8fb7ca111}{MEX\_GETLOGFUNC\_HANDLE}};}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00192}00192     InputArg2feval[1] = mxCreateDoubleMatrix(ndim, 1, mxREAL);}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00193}00193     memcpy( mxGetPr(InputArg2feval[1]), Point, ndim*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00194}00194 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00195}00195     mxArray *logFuncRaw[1];}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00196}00196     mexCallMATLAB(1,logFuncRaw,2,InputArg2feval,\textcolor{stringliteral}{"{}feval"{}});}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00197}00197     \textcolor{keywordtype}{double} logFunc = mxGetScalar( logFuncRaw[0] );}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00198}00198 }
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00199}00199     \textcolor{keywordflow}{return} logFunc;}
+\DoxyCodeLine{\Hypertarget{paramonte_8m_8c_source_l00200}00200 \}}
+
+\end{DoxyCode}

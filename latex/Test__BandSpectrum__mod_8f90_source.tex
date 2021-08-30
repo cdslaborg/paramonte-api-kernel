@@ -1,0 +1,1119 @@
+\hypertarget{Test__BandSpectrum__mod_8f90_source}{}\doxysection{Test\+\_\+\+Band\+Spectrum\+\_\+mod.\+f90}
+\label{Test__BandSpectrum__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/tests/Test\_BandSpectrum\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/tests/Test\_BandSpectrum\_mod.f90}}
+\mbox{\hyperlink{Test__BandSpectrum__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00001}00001 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00002}00002 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00003}00003 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00004}00004 \textcolor{comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00005}00005 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00006}00006 \textcolor{comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00007}00007 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00008}00008 \textcolor{comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00009}00009 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00010}00010 \textcolor{comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00011}00011 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00012}00012 \textcolor{comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00013}00013 \textcolor{comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}),}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00014}00014 \textcolor{comment}{!!!!   to deal in the Software without restriction, including without limitation}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00015}00015 \textcolor{comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00016}00016 \textcolor{comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00017}00017 \textcolor{comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00018}00018 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00019}00019 \textcolor{comment}{!!!!   The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00020}00020 \textcolor{comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00021}00021 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00022}00022 \textcolor{comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00023}00023 \textcolor{comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00024}00024 \textcolor{comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00025}00025 \textcolor{comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00026}00026 \textcolor{comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00027}00027 \textcolor{comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00028}00028 \textcolor{comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00029}00029 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00030}00030 \textcolor{comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00031}00031 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00032}00032 \textcolor{comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00033}00033 \textcolor{comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00034}00034 \textcolor{comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00035}00035 \textcolor{comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00036}00036 \textcolor{comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00037}00037 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00038}00038 \textcolor{comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00039}00039 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00040}00040 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00041}00041 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00046}\mbox{\hyperlink{namespacetest__bandspectrum__mod}{00046}} \textcolor{keyword}{module} \mbox{\hyperlink{namespacetest__bandspectrum__mod}{test\_bandspectrum\_mod}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00048}00048     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacebandspectrum__mod}{bandspectrum\_mod}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00049}00049     \textcolor{keywordtype}{use }test\_mod, \textcolor{keywordtype}{only}: test\_type}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00050}00050     \textcolor{comment}{!use Constants\_mod, only: RK, IK}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00051}00051     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00053}00053     \textcolor{keywordtype}{private}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00054}00054     \textcolor{keywordtype}{public} :: \mbox{\hyperlink{namespacetest__bandspectrum__mod_ab9cdd77bfc3b1fad0f84bd8b84179c58}{test\_bandspectrum}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00056}00056     \textcolor{keywordtype}{type}(Test\_type) :: Test}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00058}00058     \textcolor{keyword}{type} :: bandspec\_type}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00059}00059 \textcolor{keywordtype}{        real}(RK) :: epk, alpha, beta, ebrk, coef}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00060}00060 \textcolor{keywordtype}{        real}(RK) :: Limit(2)        \textcolor{comment}{! energy window for fluence computation in keV units}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00061}00061 \textcolor{keywordtype}{        real}(RK) :: photonFluence   \textcolor{comment}{! integral of the Band spectrum in the given energy window}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00062}00062 \textcolor{keywordtype}{        real}(RK) :: energyFluence   \textcolor{comment}{! integral of the Band spectrum in the given energy window, in units of keV}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00063}00063 \textcolor{keywordtype}{        real}(RK) :: tolerance       \textcolor{comment}{! acceptable tolerance (accuracy) in the numerical computation of fluence}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00064}00064     \textcolor{keyword}{end type }bandspec\_type}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00066}00066     \textcolor{comment}{! involves integration of both upper and lower tails}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00068}00068     \textcolor{keywordtype}{type}(BandSpec\_type), \textcolor{keywordtype}{parameter} :: BAND\_SPEC1 = bandspec\_type( epk = 700.\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00069}00069                                                                 , alpha = -\/0.5\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00070}00070                                                                 , beta = -\/2.5\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00071}00071                                                                 , ebrk = 9.333333333333334e2\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00072}00072                                                                 , coef = 1.178920689527826e5\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00073}00073                                                                 , limit = [1.\_rk,10000.\_rk] \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00074}00074                                                                 , photonfluence = 37.226409565894123\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00075}00075                                                                 , energyfluence = 1.195755906912896e4\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00076}00076                                                                 , tolerance = 1.e-\/7\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00077}00077                                                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00079}00079     \textcolor{comment}{! involves only the lower tail integration}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00081}00081     \textcolor{keywordtype}{type}(BandSpec\_type), \textcolor{keywordtype}{parameter} :: BAND\_SPEC2 = bandspec\_type( epk = 700.\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00082}00082                                                                 , alpha = -\/0.5\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00083}00083                                                                 , beta = -\/2.5\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00084}00084                                                                 , ebrk = 9.333333333333334e2\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00085}00085                                                                 , coef = 1.178920689527826e5\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00086}00086                                                                 , limit = [1.\_rk,500.\_rk] \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00087}00087                                                                 , photonfluence = 30.806431300618090\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00088}00088                                                                 , energyfluence = 4.079656304178462e3\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00089}00089                                                                 , tolerance = 1.e-\/7\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00090}00090                                                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00092}00092     \textcolor{comment}{! involves only the upper tail integration}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00094}00094     \textcolor{keywordtype}{type}(BandSpec\_type), \textcolor{keywordtype}{parameter} :: BAND\_SPEC3 = bandspec\_type( epk = 700.\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00095}00095                                                                 , alpha = -\/0.5\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00096}00096                                                                 , beta = -\/2.5\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00097}00097                                                                 , ebrk = 9.333333333333334e2\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00098}00098                                                                 , coef = 1.178920689527826e5\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00099}00099                                                                 , limit = [1000.\_rk,10000.\_rk] \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00100}00100                                                                 , photonfluence = 2.406788327100909\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00101}00101                                                                 , energyfluence = 5.098307740152641e3\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00102}00102                                                                 , tolerance = 1.e-\/7\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00103}00103                                                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00105}00105     \textcolor{comment}{! involves integration of both upper and lower tails}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00107}00107     \textcolor{keywordtype}{type}(BandSpec\_type), \textcolor{keywordtype}{parameter} :: BAND\_SPEC4 = bandspec\_type( epk = 700.\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00108}00108                                                                 , alpha = -\/1.9\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00109}00109                                                                 , beta = -\/3.5\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00110}00110                                                                 , ebrk = 1.119999999999999e4\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00111}00111                                                                 , coef = 6.079637221508616e5\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00112}00112                                                                 , limit = [1.\_rk,10000.\_rk] \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00113}00113                                                                 , photonfluence = 1.108858577351433\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00114}00114                                                                 , energyfluence = 12.769650780448401\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00115}00115                                                                 , tolerance = 1.e-\/6\_rk \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00116}00116                                                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00117}00117 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00118}00118 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00120}00120 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00122}00122 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00124}\mbox{\hyperlink{namespacetest__bandspectrum__mod_ab9cdd77bfc3b1fad0f84bd8b84179c58}{00124}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespacetest__bandspectrum__mod_ab9cdd77bfc3b1fad0f84bd8b84179c58}{test\_bandspectrum}}()}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00125}00125         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00126}00126         test = test\_type(modulename=\mbox{\hyperlink{namespacebandspectrum__mod_ad94e59bb9883d6a1147fdf1981c331fd}{module\_name}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00127}00127         \textcolor{keyword}{call }test\%run(test\_getebreak, \textcolor{stringliteral}{"{}test\_getEbreak"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00128}00128         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a53f8780bab18c5381a2b1f4344fe8c3b}{test\_getbandparam\_1}}, \textcolor{stringliteral}{"{}test\_getBandParam\_1"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00129}00129         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a6a2bcc89bec914b2ca555f71469ce3d1}{test\_getphotonflux\_1}}, \textcolor{stringliteral}{"{}test\_getPhotonFlux\_1"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00130}00130         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a91f4ab1653946b1328559983048b98aa}{test\_getphotonflux\_2}}, \textcolor{stringliteral}{"{}test\_getPhotonFlux\_2"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00131}00131         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_afe6f27b0688e55dd20d9937f5df9169f}{test\_getphotonflux\_3}}, \textcolor{stringliteral}{"{}test\_getPhotonFlux\_3"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00132}00132         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_aa58c77d6f3175e7e750355c5d841f460}{test\_getphotonflux\_4}}, \textcolor{stringliteral}{"{}test\_getPhotonFlux\_4"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00133}00133         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_aa66423dc32eeab27fb31c99be4e3efe2}{test\_getphotonfluence\_3}}, \textcolor{stringliteral}{"{}test\_getPhotonFluence\_3"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00134}00134         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_ae7e00524041f7668f105edaf5bb4993e}{test\_getphotonfluence\_5}}, \textcolor{stringliteral}{"{}test\_getPhotonFluence\_5"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00135}00135         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a5f38e2b08ad84425098b453bb2065c62}{test\_getphotonfluence\_6}}, \textcolor{stringliteral}{"{}test\_getPhotonFluence\_6"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00136}00136         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a53034949198d73c176edb4a7ee5720f9}{test\_getphotonfluence\_7}}, \textcolor{stringliteral}{"{}test\_getPhotonFluence\_7"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00137}00137         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_af46f4d046b6a1a7c9d482c23e0d77e95}{test\_getphotonfluence\_8}}, \textcolor{stringliteral}{"{}test\_getPhotonFluence\_8"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00138}00138         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_aa986c9030bd1a6a85a388a5031e12bfb}{test\_getenergyfluence\_3}}, \textcolor{stringliteral}{"{}test\_getEnergyFluence\_3"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00139}00139         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a2b3c3a9ee916fa0b265ea9ae3ae4b693}{test\_getenergyfluence\_6}}, \textcolor{stringliteral}{"{}test\_getEnergyFluence\_6"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00140}00140         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a02e6ecd90d48600ebf6a452ed9c699b4}{test\_getenergyfluence\_7}}, \textcolor{stringliteral}{"{}test\_getEnergyFluence\_7"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00141}00141         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_aae65fbfd23133b33e78bedcf93ca9aa2}{test\_getenergyfluence\_8}}, \textcolor{stringliteral}{"{}test\_getEnergyFluence\_8"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00142}00142         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a09c397e792c81f3e79c716f1095451bc}{test\_getphotonfluxlower\_1}}, \textcolor{stringliteral}{"{}test\_getPhotonFluxLower\_1"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00143}00143         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a3563c6cd7c96e097d4cbf8ada5f420ac}{test\_getphotonfluencefromenergyfluence\_6}}, \textcolor{stringliteral}{"{}test\_getPhotonFluenceFromEnergyFluence\_6"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00144}00144         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_ae7b4b0c636d3652436558d3db3f99619}{test\_getphotonfluencefromenergyfluence\_7}}, \textcolor{stringliteral}{"{}test\_getPhotonFluenceFromEnergyFluence\_7"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00145}00145         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_abefef69d9ba4f4b519edaca15b32ce5c}{test\_getphotonfluencefromenergyfluence\_8}}, \textcolor{stringliteral}{"{}test\_getPhotonFluenceFromEnergyFluence\_8"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00146}00146         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a23cf3658210f8b0d8891dcc2f21947dc}{test\_getphotonfluence\_1}}, \textcolor{stringliteral}{"{}test\_getPhotonFluence\_1"{}}) \textcolor{comment}{! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00147}00147         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a7ab6e83557fc560ada186c7adc2e6aa9}{test\_getphotonfluence\_2}}, \textcolor{stringliteral}{"{}test\_getPhotonFluence\_2"{}}) \textcolor{comment}{! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00148}00148         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a853914d22f302752a5ba89a7939be5ee}{test\_getphotonfluence\_4}}, \textcolor{stringliteral}{"{}test\_getPhotonFluence\_4"{}}) \textcolor{comment}{! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00149}00149         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a91939386cbc713ef0ab27f55585c339d}{test\_getenergyfluence\_1}}, \textcolor{stringliteral}{"{}test\_getEnergyFluence\_1"{}}) \textcolor{comment}{! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00150}00150         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a442b626fe70a10c6bbc2e25da849c682}{test\_getenergyfluence\_2}}, \textcolor{stringliteral}{"{}test\_getEnergyFluence\_2"{}}) \textcolor{comment}{! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00151}00151         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a72380b47acb73cb6c05f769bf161f505}{test\_getenergyfluence\_4}}, \textcolor{stringliteral}{"{}test\_getEnergyFluence\_4"{}}) \textcolor{comment}{! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00152}00152         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_aea09986069100f5117da2113dd86c794}{test\_getphotonfluencefromenergyfluence\_1}}, \textcolor{stringliteral}{"{}test\_getPhotonFluenceFromEnergyFluence\_1"{}}) \textcolor{comment}{! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00153}00153         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a9e8de01f3637d60d714ed228475a5693}{test\_getphotonfluencefromenergyfluence\_2}}, \textcolor{stringliteral}{"{}test\_getPhotonFluenceFromEnergyFluence\_2"{}}) \textcolor{comment}{! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00154}00154         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a8f5ff0dc97f26fbbf9be5ff676854934}{test\_getphotonfluencefromenergyfluence\_3}}, \textcolor{stringliteral}{"{}test\_getPhotonFluenceFromEnergyFluence\_3"{}}) \textcolor{comment}{! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00155}00155         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a3ec88eeb502f13f78c5a601b5aae17a6}{test\_getphotonfluencefromenergyfluence\_4}}, \textcolor{stringliteral}{"{}test\_getPhotonFluenceFromEnergyFluence\_4"{}}) \textcolor{comment}{! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00156}00156         \textcolor{keyword}{call }test\%run(\mbox{\hyperlink{namespacetest__bandspectrum__mod_a8cc1f8041d6cd73adb80814b83324ca4}{test\_getphotonfluencefromenergyfluence\_5}}, \textcolor{stringliteral}{"{}test\_getPhotonFluenceFromEnergyFluence\_5"{}}) \textcolor{comment}{! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00157}00157         \textcolor{keyword}{call }test\%finalize()}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00158}00158     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespacetest__bandspectrum__mod_ab9cdd77bfc3b1fad0f84bd8b84179c58}{test\_bandspectrum}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00159}00159 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00160}00160 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00161}00161 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00162}00162     \textcolor{keyword}{function }test\_getebreak() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00163}00163         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00164}00164         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00165}00165         \textcolor{keywordtype}{logical}  :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00166}00166 \textcolor{keywordtype}{        real}(rk) :: ebrk, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00167}00167         ebrk = \mbox{\hyperlink{namespacebandspectrum__mod_a72b64605c7495f257a19a2c48006f6d6}{getebreak}}(band\_spec1\%epk,band\_spec1\%alpha,band\_spec1\%beta)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00168}00168         difference = 2.\_rk * abs(ebrk -\/ band\_spec1\%ebrk) / (ebrk + band\_spec1\%ebrk)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00169}00169         assertion = difference < 1.e-\/7\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00170}00170         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00171}00171         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00172}00172             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00173}00173             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}Ebreak, Reference Ebreak, difference"{}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00174}00174             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) ebrk, band\_spec1\%ebrk, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00175}00175             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00176}00176 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00177}00177         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00178}00178     \textcolor{keyword}{end function }test\_getebreak}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00180}00180 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00182}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a53f8780bab18c5381a2b1f4344fe8c3b}{00182}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a53f8780bab18c5381a2b1f4344fe8c3b}{test\_getbandparam\_1}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00183}00183 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00184}00184         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00185}00185         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00186}00186 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00187}00187 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: alphaplustwo\_ref = 0.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00188}00188 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: tolerance = 1.e-\/10\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00189}00189 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: ebrk\_ref = 6.e2\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00190}00190 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: coef\_ref = 220.72766470286541\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00191}00191 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: alpha = -\/1.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00192}00192 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: beta = -\/2.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00193}00193 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: epk = 3.e2\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00194}00194 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00195}00195         \textcolor{keywordtype}{logical}  :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00196}00196 \textcolor{keywordtype}{        real}(rk) :: difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00197}00197 \textcolor{keywordtype}{        real}(rk) :: alphaplustwo}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00198}00198 \textcolor{keywordtype}{        real}(rk) :: ebrk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00199}00199 \textcolor{keywordtype}{        real}(rk) :: coef}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00200}00200 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00201}00201         \textcolor{keyword}{call }\mbox{\hyperlink{namespacebandspectrum__mod_a5a8d7bb9f2f6bb5af3b381437f840ee0}{getbandparam}}(epk,alpha,beta,ebrk,coef,alphaplustwo)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00202}00202 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00203}00203         difference = abs( (ebrk -\/ ebrk\_ref) / ebrk\_ref )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00204}00204         assertion = difference < tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00205}00205 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00206}00206         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00207}00207         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00208}00208             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00209}00209             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}ebrk\_ref   "{}}, ebrk\_ref}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00210}00210             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}ebrk       "{}}, ebrk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00211}00211             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}difference "{}}, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00212}00212             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00213}00213 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00214}00214         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00215}00215 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00216}00216         difference = abs( (coef -\/ coef\_ref) / coef\_ref )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00217}00217         assertion = difference < tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00218}00218 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00219}00219         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00220}00220         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00221}00221             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00222}00222             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}coef\_ref   "{}}, coef\_ref}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00223}00223             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}coef       "{}}, coef}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00224}00224             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}difference "{}}, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00225}00225             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00226}00226 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00227}00227         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00228}00228 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00229}00229         difference = abs( (alphaplustwo -\/ alphaplustwo\_ref) / alphaplustwo\_ref )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00230}00230         assertion = difference < tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00231}00231 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00232}00232         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00233}00233         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00234}00234             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00235}00235             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}alphaPlusTwo\_ref   "{}}, alphaplustwo\_ref}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00236}00236             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}alphaPlusTwo       "{}}, alphaplustwo}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00237}00237             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}difference         "{}}, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00238}00238             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00239}00239 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00240}00240         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00241}00241 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00242}00242     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a53f8780bab18c5381a2b1f4344fe8c3b}{test\_getbandparam\_1}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00243}00243 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00244}00244 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00245}00245 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00246}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a09c397e792c81f3e79c716f1095451bc}{00246}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a09c397e792c81f3e79c716f1095451bc}{test\_getphotonfluxlower\_1}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00247}00247 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00248}00248         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00249}00249         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00250}00250 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00251}00251 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: photonfluxlower\_ref = 0.59727709940405714e-\/5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00252}00252 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: alphaplustwo = 0.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00253}00253 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: tolerance = 1.e-\/10\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00254}00254 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: energy = 1.e3\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00255}00255 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: alpha = -\/1.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00256}00256 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: beta = -\/2.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00257}00257 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: coef = 220.72766470286541\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00258}00258 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: ebrk = 6.e2\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00259}00259 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: epk = 3.e2\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00260}00260 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: alphaplustwooverepk = alphaplustwo / epk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00261}00261 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00262}00262         \textcolor{keywordtype}{logical}  :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00263}00263 \textcolor{keywordtype}{        real}(rk) :: difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00264}00264 \textcolor{keywordtype}{        real}(rk) :: photonfluxlower}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00265}00265 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00266}00266         photonfluxlower = \mbox{\hyperlink{namespacebandspectrum__mod_aaba1737b69a7b15b4adb923f975a5a1e}{getphotonfluxlower}}(energy,alpha,alphaplustwooverepk)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00267}00267         assertion = photonfluxlower > 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00268}00268 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00269}00269         difference = abs( (photonfluxlower -\/ photonfluxlower\_ref) / photonfluxlower\_ref )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00270}00270         assertion = assertion .and. difference < tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00271}00271 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00272}00272         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00273}00273         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00274}00274             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00275}00275             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photonFluxLower\_ref"{}}, photonfluxlower\_ref}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00276}00276             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photonFluxLower    "{}}, photonfluxlower}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00277}00277             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}difference         "{}}, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00278}00278             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00279}00279 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00280}00280         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00281}00281 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00282}00282     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a09c397e792c81f3e79c716f1095451bc}{test\_getphotonfluxlower\_1}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00283}00283 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00284}00284 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00285}00285 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00286}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a6a2bcc89bec914b2ca555f71469ce3d1}{00286}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a6a2bcc89bec914b2ca555f71469ce3d1}{test\_getphotonflux\_1}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00287}00287 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00288}00288         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00289}00289         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00290}00290 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00291}00291 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: photonflux\_ref = 0.69800216307100779e-\/5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00292}00292 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: alphaplustwo = 0.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00293}00293 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: tolerance = 1.e-\/10\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00294}00294 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: energy = 1.e3\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00295}00295 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: alpha = -\/1.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00296}00296 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: beta = -\/2.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00297}00297 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: coef = 220.72766470286541\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00298}00298 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: ebrk = 6.e2\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00299}00299 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: epk = 3.e2\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00300}00300 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00301}00301         \textcolor{keywordtype}{logical}  :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00302}00302 \textcolor{keywordtype}{        real}(rk) :: difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00303}00303 \textcolor{keywordtype}{        real}(rk) :: photonflux}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00304}00304 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00305}00305         photonflux = \mbox{\hyperlink{namespacebandspectrum__mod_aa8f4ef1b8ec4a0cf208d5f96f5709311}{getphotonflux}}(energy,epk,alpha,beta,ebrk,coef,alphaplustwo)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00306}00306         assertion = photonflux > 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00307}00307 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00308}00308         difference = abs( (photonflux -\/ photonflux\_ref) / photonflux\_ref )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00309}00309         assertion = assertion .and. difference < tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00310}00310 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00311}00311         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00312}00312         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00313}00313             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00314}00314             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photonFlux\_ref "{}}, photonflux\_ref}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00315}00315             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photonFlux     "{}}, photonflux}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00316}00316             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}difference     "{}}, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00317}00317             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00318}00318 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00319}00319         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00320}00320 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00321}00321     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a6a2bcc89bec914b2ca555f71469ce3d1}{test\_getphotonflux\_1}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00322}00322 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00323}00323 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00324}00324 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00325}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a91f4ab1653946b1328559983048b98aa}{00325}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a91f4ab1653946b1328559983048b98aa}{test\_getphotonflux\_2}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00326}00326 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00327}00327         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00328}00328         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00329}00329 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00330}00330 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: photonflux\_ref = 0.31100098078334186e-\/1\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00331}00331 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: alphaplustwo = 0.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00332}00332 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: tolerance = 1.e-\/10\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00333}00333 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: energy = 1.e1\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00334}00334 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: alpha = -\/1.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00335}00335 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: beta = -\/2.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00336}00336 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: coef = 220.72766470286541\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00337}00337 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: ebrk = 6.e2\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00338}00338 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: epk = 3.e2\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00339}00339 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00340}00340         \textcolor{keywordtype}{logical}  :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00341}00341 \textcolor{keywordtype}{        real}(rk) :: difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00342}00342 \textcolor{keywordtype}{        real}(rk) :: photonflux}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00343}00343 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00344}00344         photonflux = \mbox{\hyperlink{namespacebandspectrum__mod_aa8f4ef1b8ec4a0cf208d5f96f5709311}{getphotonflux}}(energy,epk,alpha,beta,ebrk,coef,alphaplustwo)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00345}00345         assertion = photonflux > 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00346}00346 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00347}00347         difference = abs( (photonflux -\/ photonflux\_ref) / photonflux\_ref )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00348}00348         assertion = assertion .and. difference < tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00349}00349 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00350}00350         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00351}00351         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00352}00352             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00353}00353             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photonFlux\_ref "{}}, photonflux\_ref}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00354}00354             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photonFlux     "{}}, photonflux}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00355}00355             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}difference     "{}}, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00356}00356             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00357}00357 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00358}00358         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00359}00359 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00360}00360     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a91f4ab1653946b1328559983048b98aa}{test\_getphotonflux\_2}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00361}00361 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00362}00362 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00363}00363 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00364}00364     \textcolor{comment}{! alpha < -\/2}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00365}\mbox{\hyperlink{namespacetest__bandspectrum__mod_afe6f27b0688e55dd20d9937f5df9169f}{00365}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_afe6f27b0688e55dd20d9937f5df9169f}{test\_getphotonflux\_3}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00366}00366 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00367}00367         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00368}00368         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00369}00369 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00370}00370 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: alphaplustwo = 0.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00371}00371 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: energy = 1.e1\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00372}00372 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: alpha = -\/3.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00373}00373 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: beta = -\/2.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00374}00374 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: coef = 220.72766470286541\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00375}00375 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: ebrk = 6.e2\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00376}00376 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: epk = 3.e2\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00377}00377 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00378}00378         \textcolor{keywordtype}{logical}  :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00379}00379 \textcolor{keywordtype}{        real}(rk) :: photonflux}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00380}00380 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00381}00381         photonflux = \mbox{\hyperlink{namespacebandspectrum__mod_aa8f4ef1b8ec4a0cf208d5f96f5709311}{getphotonflux}}(energy,epk,alpha,beta,ebrk,coef,alphaplustwo)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00382}00382         assertion = photonflux < 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00383}00383 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00384}00384         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00385}00385         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00386}00386             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00387}00387             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photonFlux     "{}}, photonflux}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00388}00388             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00389}00389 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00390}00390         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00391}00391 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00392}00392     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_afe6f27b0688e55dd20d9937f5df9169f}{test\_getphotonflux\_3}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00393}00393 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00394}00394 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00395}00395 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00396}00396     \textcolor{comment}{! alpha < beta}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00397}\mbox{\hyperlink{namespacetest__bandspectrum__mod_aa58c77d6f3175e7e750355c5d841f460}{00397}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_aa58c77d6f3175e7e750355c5d841f460}{test\_getphotonflux\_4}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00398}00398 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00399}00399         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00400}00400         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00401}00401 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00402}00402 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: alphaplustwo = 0.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00403}00403 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: energy = 1.e1\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00404}00404 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: alpha = -\/1.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00405}00405 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: beta = -\/0.5\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00406}00406 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: coef = 220.72766470286541\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00407}00407 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: ebrk = 6.e2\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00408}00408 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{parameter} :: epk = 3.e2\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00409}00409 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00410}00410         \textcolor{keywordtype}{logical}  :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00411}00411 \textcolor{keywordtype}{        real}(rk) :: photonflux}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00412}00412 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00413}00413         photonflux = \mbox{\hyperlink{namespacebandspectrum__mod_aa8f4ef1b8ec4a0cf208d5f96f5709311}{getphotonflux}}(energy,epk,alpha,beta,ebrk,coef,alphaplustwo)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00414}00414         assertion = photonflux < 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00415}00415 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00416}00416         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00417}00417         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00418}00418             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00419}00419             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photonFlux     "{}}, photonflux}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00420}00420             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00421}00421 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00422}00422         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00423}00423 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00424}00424     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_aa58c77d6f3175e7e750355c5d841f460}{test\_getphotonflux\_4}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00425}00425 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00426}00426 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00427}00427 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00430}\mbox{\hyperlink{namespacetest__bandspectrum__mod_aa66423dc32eeab27fb31c99be4e3efe2}{00430}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_aa66423dc32eeab27fb31c99be4e3efe2}{test\_getphotonfluence\_3}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00431}00431         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00432}00432         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00433}00433         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00434}00434         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00435}00435 \textcolor{keywordtype}{        real}(rk)        :: photonfluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00436}00436         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00437}00437         \textcolor{keyword}{call }getphotonfluence   ( lowerlim      = band\_spec3\%Limit(1)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00438}00438                                 , upperlim      = band\_spec3\%Limit(2)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00439}00439                                 , epk           = band\_spec3\%epk        \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00440}00440                                 , alpha         = band\_spec3\%alpha      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00441}00441                                 , beta          = band\_spec3\%beta       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00442}00442                                 , tolerance     = band\_spec3\%tolerance  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00443}00443                                 , photonfluence = photonfluence         \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00444}00444                                 , err           = err                   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00445}00445                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00446}00446         difference = 2.\_rk * abs( photonfluence -\/ band\_spec3\%photonFluence ) / ( photonfluence + band\_spec3\%photonFluence )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00447}00447         assertion = difference < band\_spec3\%tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00448}00448         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00449}00449         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00450}00450             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00451}00451             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence, Reference photon fluence, difference"{}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00452}00452             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) photonfluence, band\_spec3\%photonFluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00453}00453             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00454}00454 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00455}00455         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00456}00456      \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_aa66423dc32eeab27fb31c99be4e3efe2}{test\_getphotonfluence\_3}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00457}00457 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00458}00458 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00459}00459 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00462}\mbox{\hyperlink{namespacetest__bandspectrum__mod_ae7e00524041f7668f105edaf5bb4993e}{00462}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_ae7e00524041f7668f105edaf5bb4993e}{test\_getphotonfluence\_5}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00463}00463         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00464}00464         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00465}00465         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00466}00466         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00467}00467 \textcolor{keywordtype}{        real}(rk)        :: tolerance = 1.e-\/10\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00468}00468 \textcolor{keywordtype}{        real}(rk)        :: photonfluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00469}00469         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00470}00470         \textcolor{keyword}{call }getphotonfluence   ( lowerlim      = band\_spec3\%Limit(2)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00471}00471                                 , upperlim      = band\_spec3\%Limit(1)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00472}00472                                 , epk           = band\_spec3\%epk        \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00473}00473                                 , alpha         = band\_spec3\%alpha      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00474}00474                                 , beta          = band\_spec3\%beta       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00475}00475                                 , tolerance     = band\_spec3\%tolerance  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00476}00476                                 , photonfluence = photonfluence         \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00477}00477                                 , err           = err                   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00478}00478                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00479}00479         difference = abs( photonfluence -\/ 0.\_rk )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00480}00480         assertion = difference < tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00481}00481         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00482}00482         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00483}00483             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00484}00484             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence, Reference photon fluence, difference"{}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00485}00485             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) photonfluence, band\_spec3\%photonFluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00486}00486             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00487}00487 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00488}00488         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00489}00489      \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_ae7e00524041f7668f105edaf5bb4993e}{test\_getphotonfluence\_5}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00490}00490 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00491}00491 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00492}00492 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00495}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a5f38e2b08ad84425098b453bb2065c62}{00495}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a5f38e2b08ad84425098b453bb2065c62}{test\_getphotonfluence\_6}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00496}00496         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00497}00497         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00498}00498         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00499}00499         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00500}00500 \textcolor{keywordtype}{        real}(rk)        :: photonfluence}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00501}00501         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00502}00502         \textcolor{keyword}{call }getphotonfluence   ( lowerlim      = band\_spec3\%Limit(2)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00503}00503                                 , upperlim      = band\_spec3\%Limit(1)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00504}00504                                 , epk           = band\_spec3\%epk        \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00505}00505                                 , alpha         = band\_spec3\%alpha      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00506}00506                                 , beta          = band\_spec3\%beta       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00507}00507                                 , tolerance     = band\_spec3\%tolerance  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00508}00508                                 , photonfluence = photonfluence         \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00509}00509                                 , err           = err                   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00510}00510                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00511}00511         assertion = abs(photonfluence -\/ 0.\_rk) < 1.e-\/12\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00512}00512         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00513}00513         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00514}00514             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00515}00515             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence"{}}, photonfluence}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00516}00516             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00517}00517 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00518}00518         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00519}00519      \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a5f38e2b08ad84425098b453bb2065c62}{test\_getphotonfluence\_6}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00520}00520 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00521}00521 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00522}00522 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00525}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a53034949198d73c176edb4a7ee5720f9}{00525}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a53034949198d73c176edb4a7ee5720f9}{test\_getphotonfluence\_7}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00526}00526         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00527}00527         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00528}00528         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00529}00529         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00530}00530 \textcolor{keywordtype}{        real}(rk)        :: photonfluence}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00531}00531         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00532}00532         \textcolor{keyword}{call }getphotonfluence   ( lowerlim      = band\_spec3\%Limit(1)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00533}00533                                 , upperlim      = band\_spec3\%Limit(2)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00534}00534                                 , epk           = band\_spec3\%epk        \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00535}00535                                 , alpha         = -\/1.e1\_rk              \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00536}00536                                 , beta          = band\_spec3\%beta       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00537}00537                                 , tolerance     = band\_spec3\%tolerance  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00538}00538                                 , photonfluence = photonfluence         \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00539}00539                                 , err           = err                   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00540}00540                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00541}00541         assertion = err\%occurred .and. photonfluence < 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00542}00542         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00543}00543         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00544}00544             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00545}00545             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence"{}}, photonfluence}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00546}00546             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00547}00547 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00548}00548         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00549}00549      \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a53034949198d73c176edb4a7ee5720f9}{test\_getphotonfluence\_7}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00550}00550 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00551}00551 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00552}00552 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00555}\mbox{\hyperlink{namespacetest__bandspectrum__mod_af46f4d046b6a1a7c9d482c23e0d77e95}{00555}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_af46f4d046b6a1a7c9d482c23e0d77e95}{test\_getphotonfluence\_8}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00556}00556         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00557}00557         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00558}00558         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00559}00559         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00560}00560 \textcolor{keywordtype}{        real}(rk)        :: photonfluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00561}00561         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00562}00562         \textcolor{keyword}{call }getphotonfluence   ( lowerlim      = band\_spec3\%Limit(1)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00563}00563                                 , upperlim      = band\_spec3\%Limit(2)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00564}00564                                 , epk           = band\_spec3\%epk        \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00565}00565                                 , alpha         = band\_spec3\%beta       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00566}00566                                 , beta          = band\_spec3\%alpha      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00567}00567                                 , tolerance     = band\_spec3\%tolerance  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00568}00568                                 , photonfluence = photonfluence         \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00569}00569                                 , err           = err                   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00570}00570                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00571}00571         assertion = err\%occurred .and. photonfluence < 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00572}00572         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00573}00573         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00574}00574             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00575}00575             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence, Reference photon fluence, difference"{}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00576}00576             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) photonfluence, band\_spec3\%photonFluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00577}00577             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00578}00578 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00579}00579         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00580}00580      \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_af46f4d046b6a1a7c9d482c23e0d77e95}{test\_getphotonfluence\_8}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00581}00581 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00582}00582 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00583}00583 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00586}\mbox{\hyperlink{namespacetest__bandspectrum__mod_aa986c9030bd1a6a85a388a5031e12bfb}{00586}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_aa986c9030bd1a6a85a388a5031e12bfb}{test\_getenergyfluence\_3}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00587}00587         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00588}00588         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00589}00589         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00590}00590         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00591}00591 \textcolor{keywordtype}{        real}(rk)        :: energyfluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00592}00592         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00593}00593         \textcolor{keyword}{call }getenergyfluence   ( lowerlim      = band\_spec3\%Limit(1)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00594}00594                                 , upperlim      = band\_spec3\%Limit(2)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00595}00595                                 , epk           = band\_spec3\%epk        \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00596}00596                                 , alpha         = band\_spec3\%alpha      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00597}00597                                 , beta          = band\_spec3\%beta       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00598}00598                                 , tolerance     = band\_spec3\%tolerance  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00599}00599                                 , energyfluence = energyfluence         \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00600}00600                                 , err           = err                   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00601}00601                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00602}00602         difference = 2.\_rk * abs( energyfluence -\/ band\_spec3\%energyFluence ) / ( energyfluence + band\_spec3\%energyFluence )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00603}00603         assertion = difference < band\_spec3\%tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00604}00604         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00605}00605         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00606}00606             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00607}00607             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence, Reference photon fluence, difference"{}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00608}00608             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) energyfluence, band\_spec3\%energyFluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00609}00609             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00610}00610 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00611}00611         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00612}00612     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_aa986c9030bd1a6a85a388a5031e12bfb}{test\_getenergyfluence\_3}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00613}00613 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00614}00614 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00615}00615 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00618}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a2b3c3a9ee916fa0b265ea9ae3ae4b693}{00618}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a2b3c3a9ee916fa0b265ea9ae3ae4b693}{test\_getenergyfluence\_6}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00619}00619         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00620}00620         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00621}00621         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00622}00622         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00623}00623 \textcolor{keywordtype}{        real}(rk)        :: energyfluence}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00624}00624         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00625}00625         \textcolor{keyword}{call }getenergyfluence   ( lowerlim      = band\_spec3\%Limit(2)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00626}00626                                 , upperlim      = band\_spec3\%Limit(1)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00627}00627                                 , epk           = band\_spec3\%epk        \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00628}00628                                 , alpha         = band\_spec3\%alpha      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00629}00629                                 , beta          = band\_spec3\%beta       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00630}00630                                 , tolerance     = band\_spec3\%tolerance  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00631}00631                                 , energyfluence = energyfluence         \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00632}00632                                 , err           = err                   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00633}00633                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00634}00634         assertion = abs(energyfluence -\/ 0.\_rk) < 1.e-\/12\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00635}00635         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00636}00636         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00637}00637             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00638}00638             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}EnergyFluence"{}}, energyfluence}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00639}00639             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00640}00640 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00641}00641         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00642}00642      \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a2b3c3a9ee916fa0b265ea9ae3ae4b693}{test\_getenergyfluence\_6}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00643}00643 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00644}00644 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00645}00645 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00648}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a02e6ecd90d48600ebf6a452ed9c699b4}{00648}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a02e6ecd90d48600ebf6a452ed9c699b4}{test\_getenergyfluence\_7}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00649}00649         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00650}00650         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00651}00651         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00652}00652         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00653}00653 \textcolor{keywordtype}{        real}(rk)        :: energyfluence}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00654}00654         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00655}00655         \textcolor{keyword}{call }getenergyfluence   ( lowerlim      = band\_spec3\%Limit(1)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00656}00656                                 , upperlim      = band\_spec3\%Limit(2)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00657}00657                                 , epk           = band\_spec3\%epk        \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00658}00658                                 , alpha         = -\/1.e1\_rk              \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00659}00659                                 , beta          = band\_spec3\%beta       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00660}00660                                 , tolerance     = band\_spec3\%tolerance  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00661}00661                                 , energyfluence = energyfluence         \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00662}00662                                 , err           = err                   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00663}00663                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00664}00664         assertion = err\%occurred .and. energyfluence < 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00665}00665         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00666}00666         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00667}00667             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00668}00668             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}EnergyFluence"{}}, energyfluence}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00669}00669             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00670}00670 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00671}00671         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00672}00672      \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a02e6ecd90d48600ebf6a452ed9c699b4}{test\_getenergyfluence\_7}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00673}00673 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00674}00674 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00675}00675 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00678}\mbox{\hyperlink{namespacetest__bandspectrum__mod_aae65fbfd23133b33e78bedcf93ca9aa2}{00678}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_aae65fbfd23133b33e78bedcf93ca9aa2}{test\_getenergyfluence\_8}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00679}00679         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00680}00680         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00681}00681         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00682}00682         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00683}00683 \textcolor{keywordtype}{        real}(rk)        :: energyfluence}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00684}00684         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00685}00685         \textcolor{keyword}{call }getenergyfluence   ( lowerlim      = band\_spec3\%Limit(1)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00686}00686                                 , upperlim      = band\_spec3\%Limit(2)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00687}00687                                 , epk           = band\_spec3\%epk        \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00688}00688                                 , alpha         = band\_spec3\%beta       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00689}00689                                 , beta          = band\_spec3\%alpha      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00690}00690                                 , tolerance     = band\_spec3\%tolerance  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00691}00691                                 , energyfluence = energyfluence         \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00692}00692                                 , err           = err                   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00693}00693                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00694}00694         assertion = err\%occurred .and. energyfluence < 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00695}00695         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00696}00696         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00697}00697             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00698}00698             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}EnergyFluence"{}}, energyfluence}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00699}00699             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00700}00700 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00701}00701         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00702}00702      \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_aae65fbfd23133b33e78bedcf93ca9aa2}{test\_getenergyfluence\_8}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00703}00703 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00704}00704 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00705}00705 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00708}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a3563c6cd7c96e097d4cbf8ada5f420ac}{00708}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a3563c6cd7c96e097d4cbf8ada5f420ac}{test\_getphotonfluencefromenergyfluence\_6}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00709}00709         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00710}00710         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00711}00711         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00712}00712         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00713}00713 \textcolor{keywordtype}{        real}(rk)        :: photonfluence}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00714}00714         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00715}00715         \textcolor{keyword}{call }\mbox{\hyperlink{namespacebandspectrum__mod_a47615db63c34be04069b7d8f8a753b5f}{getphotonfluencefromenergyfluence}}  ( energyfluence = band\_spec2\%energyFluence  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00716}00716                                                 , lowerlim      = band\_spec2\%Limit(2)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00717}00717                                                 , upperlim      = band\_spec2\%Limit(1)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00718}00718                                                 , epk           = band\_spec2\%epk            \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00719}00719                                                 , alpha         = band\_spec2\%alpha          \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00720}00720                                                 , beta          = band\_spec2\%alpha          \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00721}00721                                                 , tolerance     = band\_spec2\%tolerance      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00722}00722                                                 , photonfluence = photonfluence             \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00723}00723                                                 , err           = err                       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00724}00724                                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00725}00725         assertion = abs(photonfluence -\/ 0.\_rk) < 1.e-\/12\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00726}00726         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00727}00727         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00728}00728             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00729}00729             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photonFluence"{}}, photonfluence}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00730}00730             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00731}00731 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00732}00732         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00733}00733      \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a3563c6cd7c96e097d4cbf8ada5f420ac}{test\_getphotonfluencefromenergyfluence\_6}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00734}00734 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00735}00735 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00736}00736 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00739}\mbox{\hyperlink{namespacetest__bandspectrum__mod_ae7b4b0c636d3652436558d3db3f99619}{00739}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_ae7b4b0c636d3652436558d3db3f99619}{test\_getphotonfluencefromenergyfluence\_7}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00740}00740         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00741}00741         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00742}00742         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00743}00743         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00744}00744 \textcolor{keywordtype}{        real}(rk)        :: photonfluence}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00745}00745         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00746}00746         \textcolor{keyword}{call }\mbox{\hyperlink{namespacebandspectrum__mod_a47615db63c34be04069b7d8f8a753b5f}{getphotonfluencefromenergyfluence}}  ( energyfluence = band\_spec2\%energyFluence  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00747}00747                                                 , lowerlim      = band\_spec2\%Limit(1)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00748}00748                                                 , upperlim      = band\_spec2\%Limit(2)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00749}00749                                                 , epk           = band\_spec2\%epk            \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00750}00750                                                 , alpha         = -\/1.e1\_rk                  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00751}00751                                                 , beta          = band\_spec2\%beta           \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00752}00752                                                 , tolerance     = band\_spec2\%tolerance      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00753}00753                                                 , photonfluence = photonfluence             \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00754}00754                                                 , err           = err                       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00755}00755                                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00756}00756         assertion = err\%occurred .and. photonfluence < 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00757}00757         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00758}00758         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00759}00759             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00760}00760             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photonFluence"{}}, photonfluence}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00761}00761             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00762}00762 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00763}00763         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00764}00764      \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_ae7b4b0c636d3652436558d3db3f99619}{test\_getphotonfluencefromenergyfluence\_7}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00765}00765 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00766}00766 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00767}00767 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00770}\mbox{\hyperlink{namespacetest__bandspectrum__mod_abefef69d9ba4f4b519edaca15b32ce5c}{00770}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_abefef69d9ba4f4b519edaca15b32ce5c}{test\_getphotonfluencefromenergyfluence\_8}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00771}00771         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00772}00772         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00773}00773         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00774}00774         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00775}00775 \textcolor{keywordtype}{        real}(rk)        :: photonfluence}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00776}00776         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00777}00777         \textcolor{keyword}{call }\mbox{\hyperlink{namespacebandspectrum__mod_a47615db63c34be04069b7d8f8a753b5f}{getphotonfluencefromenergyfluence}}  ( energyfluence = band\_spec2\%energyFluence  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00778}00778                                                 , lowerlim      = band\_spec2\%Limit(1)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00779}00779                                                 , upperlim      = band\_spec2\%Limit(2)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00780}00780                                                 , epk           = band\_spec2\%epk            \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00781}00781                                                 , alpha         = band\_spec2\%beta           \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00782}00782                                                 , beta          = band\_spec2\%alpha          \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00783}00783                                                 , tolerance     = band\_spec2\%tolerance      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00784}00784                                                 , photonfluence = photonfluence             \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00785}00785                                                 , err           = err                       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00786}00786                                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00787}00787         assertion = err\%occurred .and. photonfluence < 0.\_rk}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00788}00788         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00789}00789         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00790}00790             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00791}00791             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photonFluence"{}}, photonfluence}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00792}00792             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00793}00793 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00794}00794         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00795}00795      \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_abefef69d9ba4f4b519edaca15b32ce5c}{test\_getphotonfluencefromenergyfluence\_8}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00796}00796 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00797}00797 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00798}00798 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00799}00799 \textcolor{comment}{!\#if !defined OS\_IS\_WSL || !defined CODECOV\_ENABLED || defined DLL\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00800}00800 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00803}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a23cf3658210f8b0d8891dcc2f21947dc}{00803}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a23cf3658210f8b0d8891dcc2f21947dc}{test\_getphotonfluence\_1}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00804}00804         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00805}00805         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00806}00806         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00807}00807         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00808}00808 \textcolor{keywordtype}{        real}(rk)        :: photonfluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00809}00809         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00810}00810         \textcolor{keyword}{call }getphotonfluence   ( lowerlim      = band\_spec1\%Limit(1)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00811}00811                                 , upperlim      = band\_spec1\%Limit(2)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00812}00812                                 , epk           = band\_spec1\%epk        \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00813}00813                                 , alpha         = band\_spec1\%alpha      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00814}00814                                 , beta          = band\_spec1\%beta       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00815}00815                                 , tolerance     = band\_spec1\%tolerance  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00816}00816                                 , photonfluence = photonfluence         \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00817}00817                                 , err           = err                   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00818}00818                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00819}00819         difference = 2.\_rk * abs( photonfluence -\/ band\_spec1\%photonFluence ) / ( photonfluence + band\_spec1\%photonFluence )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00820}00820         assertion = difference < band\_spec1\%tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00821}00821         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00822}00822         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00823}00823             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00824}00824             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence, Reference photon fluence, difference"{}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00825}00825             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) photonfluence, band\_spec1\%photonFluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00826}00826             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00827}00827 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00828}00828         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00829}00829     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a23cf3658210f8b0d8891dcc2f21947dc}{test\_getphotonfluence\_1}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00830}00830 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00831}00831 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00832}00832 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00835}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a7ab6e83557fc560ada186c7adc2e6aa9}{00835}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a7ab6e83557fc560ada186c7adc2e6aa9}{test\_getphotonfluence\_2}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00836}00836         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00837}00837         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00838}00838         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00839}00839         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00840}00840 \textcolor{keywordtype}{        real}(rk)        :: photonfluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00841}00841         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00842}00842         \textcolor{keyword}{call }getphotonfluence   ( lowerlim      = band\_spec2\%Limit(1)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00843}00843                                 , upperlim      = band\_spec2\%Limit(2)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00844}00844                                 , epk           = band\_spec2\%epk        \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00845}00845                                 , alpha         = band\_spec2\%alpha      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00846}00846                                 , beta          = band\_spec2\%beta       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00847}00847                                 , tolerance     = band\_spec2\%tolerance  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00848}00848                                 , photonfluence = photonfluence         \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00849}00849                                 , err           = err                   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00850}00850                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00851}00851         difference = 2.\_rk * abs( photonfluence -\/ band\_spec2\%photonFluence ) / ( photonfluence + band\_spec2\%photonFluence )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00852}00852         assertion = difference < band\_spec2\%tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00853}00853         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00854}00854         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00855}00855             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00856}00856             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence, Reference photon fluence, difference"{}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00857}00857             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) photonfluence, band\_spec2\%photonFluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00858}00858             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00859}00859 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00860}00860         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00861}00861     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a7ab6e83557fc560ada186c7adc2e6aa9}{test\_getphotonfluence\_2}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00862}00862 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00863}00863 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00864}00864 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00867}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a853914d22f302752a5ba89a7939be5ee}{00867}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a853914d22f302752a5ba89a7939be5ee}{test\_getphotonfluence\_4}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00868}00868         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00869}00869         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00870}00870         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00871}00871         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00872}00872 \textcolor{keywordtype}{        real}(rk)        :: photonfluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00873}00873         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00874}00874 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00875}00875         \textcolor{keyword}{call }getphotonfluence   ( lowerlim      = band\_spec4\%Limit(1)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00876}00876                                 , upperlim      = band\_spec4\%Limit(2)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00877}00877                                 , epk           = band\_spec4\%epk        \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00878}00878                                 , alpha         = band\_spec4\%alpha      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00879}00879                                 , beta          = band\_spec4\%beta       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00880}00880                                 , tolerance     = band\_spec4\%tolerance  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00881}00881                                 , photonfluence = photonfluence         \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00882}00882                                 , err           = err                   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00883}00883                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00884}00884         difference = 2.\_rk * abs( photonfluence -\/ band\_spec4\%photonFluence ) / ( photonfluence + band\_spec4\%photonFluence )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00885}00885         assertion = difference < band\_spec4\%tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00886}00886         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00887}00887         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00888}00888             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00889}00889             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence, Reference photon fluence, difference"{}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00890}00890             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) photonfluence, band\_spec4\%photonFluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00891}00891             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00892}00892 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00893}00893         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00894}00894     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a853914d22f302752a5ba89a7939be5ee}{test\_getphotonfluence\_4}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00895}00895 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00898}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a91939386cbc713ef0ab27f55585c339d}{00898}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a91939386cbc713ef0ab27f55585c339d}{test\_getenergyfluence\_1}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00899}00899         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00900}00900         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00901}00901         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00902}00902         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00903}00903 \textcolor{keywordtype}{        real}(rk)        :: energyfluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00904}00904         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00905}00905         \textcolor{keyword}{call }getenergyfluence   ( lowerlim      = band\_spec1\%Limit(1)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00906}00906                                 , upperlim      = band\_spec1\%Limit(2)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00907}00907                                 , epk           = band\_spec1\%epk        \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00908}00908                                 , alpha         = band\_spec1\%alpha      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00909}00909                                 , beta          = band\_spec1\%beta       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00910}00910                                 , tolerance     = band\_spec1\%tolerance  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00911}00911                                 , energyfluence = energyfluence         \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00912}00912                                 , err           = err                   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00913}00913                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00914}00914         difference = 2.\_rk * abs( energyfluence -\/ band\_spec1\%energyFluence ) / ( energyfluence + band\_spec1\%energyFluence )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00915}00915         assertion = difference < band\_spec1\%tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00916}00916         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00917}00917         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00918}00918             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00919}00919             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence, Reference photon fluence, difference"{}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00920}00920             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) energyfluence, band\_spec1\%energyFluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00921}00921             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00922}00922 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00923}00923         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00924}00924     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a91939386cbc713ef0ab27f55585c339d}{test\_getenergyfluence\_1}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00925}00925 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00926}00926 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00927}00927 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00930}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a442b626fe70a10c6bbc2e25da849c682}{00930}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a442b626fe70a10c6bbc2e25da849c682}{test\_getenergyfluence\_2}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00931}00931         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00932}00932         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00933}00933         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00934}00934         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00935}00935 \textcolor{keywordtype}{        real}(rk)        :: energyfluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00936}00936         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00937}00937         \textcolor{keyword}{call }getenergyfluence   ( lowerlim      = band\_spec2\%Limit(1)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00938}00938                                 , upperlim      = band\_spec2\%Limit(2)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00939}00939                                 , epk           = band\_spec2\%epk        \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00940}00940                                 , alpha         = band\_spec2\%alpha      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00941}00941                                 , beta          = band\_spec2\%beta       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00942}00942                                 , tolerance     = band\_spec2\%tolerance  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00943}00943                                 , energyfluence = energyfluence         \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00944}00944                                 , err           = err                   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00945}00945                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00946}00946         difference = 2.\_rk * abs( energyfluence -\/ band\_spec2\%energyFluence ) / ( energyfluence + band\_spec2\%energyFluence )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00947}00947         assertion = difference < band\_spec2\%tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00948}00948         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00949}00949         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00950}00950             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00951}00951             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence, Reference photon fluence, difference"{}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00952}00952             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) energyfluence, band\_spec2\%energyFluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00953}00953             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00954}00954 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00955}00955         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00956}00956     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a442b626fe70a10c6bbc2e25da849c682}{test\_getenergyfluence\_2}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00957}00957 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00958}00958 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00959}00959 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00962}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a72380b47acb73cb6c05f769bf161f505}{00962}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a72380b47acb73cb6c05f769bf161f505}{test\_getenergyfluence\_4}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00963}00963         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00964}00964         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00965}00965         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00966}00966         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00967}00967 \textcolor{keywordtype}{        real}(rk)        :: energyfluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00968}00968         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00969}00969         \textcolor{keyword}{call }getenergyfluence   ( lowerlim      = band\_spec4\%Limit(1)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00970}00970                                 , upperlim      = band\_spec4\%Limit(2)   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00971}00971                                 , epk           = band\_spec4\%epk        \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00972}00972                                 , alpha         = band\_spec4\%alpha      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00973}00973                                 , beta          = band\_spec4\%beta       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00974}00974                                 , tolerance     = band\_spec4\%tolerance  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00975}00975                                 , energyfluence = energyfluence         \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00976}00976                                 , err           = err                   \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00977}00977                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00978}00978         difference = 2.\_rk * abs( energyfluence -\/ band\_spec4\%energyFluence ) / ( energyfluence + band\_spec4\%energyFluence )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00979}00979         assertion = difference < band\_spec4\%tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00980}00980         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00981}00981         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00982}00982             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00983}00983             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence, Reference photon fluence, difference"{}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00984}00984             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) energyfluence, band\_spec4\%energyFluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00985}00985             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00986}00986 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00987}00987         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00988}00988     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a72380b47acb73cb6c05f769bf161f505}{test\_getenergyfluence\_4}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00989}00989 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00990}00990 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00991}00991 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00992}\mbox{\hyperlink{namespacetest__bandspectrum__mod_aea09986069100f5117da2113dd86c794}{00992}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_aea09986069100f5117da2113dd86c794}{test\_getphotonfluencefromenergyfluence\_1}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00993}00993         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00994}00994         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00995}00995         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00996}00996         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00997}00997 \textcolor{keywordtype}{        real}(rk)        :: photonfluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00998}00998         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l00999}00999         \textcolor{keyword}{call }\mbox{\hyperlink{namespacebandspectrum__mod_a47615db63c34be04069b7d8f8a753b5f}{getphotonfluencefromenergyfluence}}  ( energyfluence = band\_spec1\%energyFluence  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01000}01000                                                 , lowerlim      = band\_spec1\%Limit(1)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01001}01001                                                 , upperlim      = band\_spec1\%Limit(2)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01002}01002                                                 , epk           = band\_spec1\%epk            \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01003}01003                                                 , alpha         = band\_spec1\%alpha          \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01004}01004                                                 , beta          = band\_spec1\%beta           \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01005}01005                                                 , tolerance     = band\_spec1\%tolerance      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01006}01006                                                 , photonfluence = photonfluence             \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01007}01007                                                 , err           = err                       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01008}01008                                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01009}01009         difference = 2.\_rk * abs( photonfluence -\/ band\_spec1\%photonFluence ) / ( photonfluence + band\_spec1\%photonFluence )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01010}01010         assertion = difference < band\_spec1\%tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01011}01011         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01012}01012         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01013}01013             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01014}01014             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence, Reference photon fluence, difference"{}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01015}01015             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) photonfluence, band\_spec1\%photonFluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01016}01016             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01017}01017 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01018}01018         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01019}01019     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_aea09986069100f5117da2113dd86c794}{test\_getphotonfluencefromenergyfluence\_1}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01020}01020 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01021}01021 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01022}01022 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01023}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a9e8de01f3637d60d714ed228475a5693}{01023}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a9e8de01f3637d60d714ed228475a5693}{test\_getphotonfluencefromenergyfluence\_2}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01024}01024         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01025}01025         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01026}01026         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01027}01027         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01028}01028 \textcolor{keywordtype}{        real}(rk)        :: photonfluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01029}01029         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01030}01030         \textcolor{keyword}{call }\mbox{\hyperlink{namespacebandspectrum__mod_a47615db63c34be04069b7d8f8a753b5f}{getphotonfluencefromenergyfluence}}  ( energyfluence = band\_spec2\%energyFluence  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01031}01031                                                 , lowerlim      = band\_spec2\%Limit(1)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01032}01032                                                 , upperlim      = band\_spec2\%Limit(2)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01033}01033                                                 , epk           = band\_spec2\%epk            \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01034}01034                                                 , alpha         = band\_spec2\%alpha          \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01035}01035                                                 , beta          = band\_spec2\%beta           \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01036}01036                                                 , tolerance     = band\_spec2\%tolerance      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01037}01037                                                 , photonfluence = photonfluence             \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01038}01038                                                 , err           = err                       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01039}01039                                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01040}01040         difference = 2.\_rk * abs( photonfluence -\/ band\_spec2\%photonFluence ) / ( photonfluence + band\_spec2\%photonFluence )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01041}01041         assertion = difference < band\_spec2\%tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01042}01042         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01043}01043         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01044}01044             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01045}01045             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence, Reference photon fluence, difference"{}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01046}01046             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) photonfluence, band\_spec2\%photonFluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01047}01047             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01048}01048 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01049}01049         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01050}01050     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a9e8de01f3637d60d714ed228475a5693}{test\_getphotonfluencefromenergyfluence\_2}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01051}01051 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01052}01052 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01053}01053 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01054}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a8f5ff0dc97f26fbbf9be5ff676854934}{01054}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a8f5ff0dc97f26fbbf9be5ff676854934}{test\_getphotonfluencefromenergyfluence\_3}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01055}01055         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01056}01056         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01057}01057         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01058}01058         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01059}01059 \textcolor{keywordtype}{        real}(rk)        :: photonfluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01060}01060         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01061}01061         \textcolor{keyword}{call }\mbox{\hyperlink{namespacebandspectrum__mod_a47615db63c34be04069b7d8f8a753b5f}{getphotonfluencefromenergyfluence}}  ( energyfluence = band\_spec3\%energyFluence  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01062}01062                                                 , lowerlim      = band\_spec3\%Limit(1)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01063}01063                                                 , upperlim      = band\_spec3\%Limit(2)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01064}01064                                                 , epk           = band\_spec3\%epk            \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01065}01065                                                 , alpha         = band\_spec3\%alpha          \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01066}01066                                                 , beta          = band\_spec3\%beta           \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01067}01067                                                 , tolerance     = band\_spec3\%tolerance      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01068}01068                                                 , photonfluence = photonfluence             \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01069}01069                                                 , err           = err                       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01070}01070                                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01071}01071         difference = 2.\_rk * abs( photonfluence -\/ band\_spec3\%photonFluence ) / ( photonfluence + band\_spec3\%photonFluence )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01072}01072         assertion = difference < band\_spec3\%tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01073}01073         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01074}01074         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01075}01075             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01076}01076             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence, Reference photon fluence, difference"{}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01077}01077             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) photonfluence, band\_spec3\%photonFluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01078}01078             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01079}01079 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01080}01080         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01081}01081     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a8f5ff0dc97f26fbbf9be5ff676854934}{test\_getphotonfluencefromenergyfluence\_3}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01082}01082 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01083}01083 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01084}01084 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01085}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a3ec88eeb502f13f78c5a601b5aae17a6}{01085}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a3ec88eeb502f13f78c5a601b5aae17a6}{test\_getphotonfluencefromenergyfluence\_4}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01086}01086         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01087}01087         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01088}01088         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01089}01089         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01090}01090 \textcolor{keywordtype}{        real}(rk)        :: photonfluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01091}01091         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01092}01092         \textcolor{keyword}{call }\mbox{\hyperlink{namespacebandspectrum__mod_a47615db63c34be04069b7d8f8a753b5f}{getphotonfluencefromenergyfluence}}  ( energyfluence = band\_spec4\%energyFluence  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01093}01093                                                 , lowerlim      = band\_spec4\%Limit(1)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01094}01094                                                 , upperlim      = band\_spec4\%Limit(2)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01095}01095                                                 , epk           = band\_spec4\%epk            \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01096}01096                                                 , alpha         = band\_spec4\%alpha          \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01097}01097                                                 , beta          = band\_spec4\%beta           \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01098}01098                                                 , tolerance     = band\_spec4\%tolerance      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01099}01099                                                 , photonfluence = photonfluence             \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01100}01100                                                 , err           = err                       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01101}01101                                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01102}01102         difference = 2 * abs( photonfluence -\/ band\_spec4\%photonFluence ) / ( photonfluence + band\_spec4\%photonFluence )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01103}01103         assertion = difference < band\_spec4\%tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01104}01104         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01105}01105         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01106}01106             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01107}01107             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence, Reference photon fluence, difference"{}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01108}01108             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) photonfluence, band\_spec4\%photonFluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01109}01109             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01110}01110 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01111}01111         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01112}01112     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a3ec88eeb502f13f78c5a601b5aae17a6}{test\_getphotonfluencefromenergyfluence\_4}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01113}01113 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01114}01114 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01115}01115 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01116}\mbox{\hyperlink{namespacetest__bandspectrum__mod_a8cc1f8041d6cd73adb80814b83324ca4}{01116}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a8cc1f8041d6cd73adb80814b83324ca4}{test\_getphotonfluencefromenergyfluence\_5}}() \textcolor{keyword}{result}(assertion)}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01117}01117         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01118}01118         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01119}01119         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01120}01120         \textcolor{keywordtype}{logical}         :: assertion}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01121}01121 \textcolor{keywordtype}{        real}(rk)        :: photonfluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01122}01122         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})  :: err}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01123}01123         \textcolor{keyword}{call }\mbox{\hyperlink{namespacebandspectrum__mod_a47615db63c34be04069b7d8f8a753b5f}{getphotonfluencefromenergyfluence}}  ( energyfluence = band\_spec1\%energyFluence  \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01124}01124                                                 , lowerlim      = band\_spec1\%Limit(1)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01125}01125                                                 , upperlim      = band\_spec1\%Limit(2)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01126}01126                                                 , epk           = band\_spec1\%epk            \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01127}01127                                                 , alpha         = band\_spec1\%alpha          \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01128}01128                                                 , beta          = band\_spec1\%beta           \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01129}01129                                                 , tolerance     = band\_spec1\%tolerance      \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01130}01130                                                 , lowerlimnew   = band\_spec2\%Limit(1)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01131}01131                                                 , upperlimnew   = band\_spec2\%Limit(2)       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01132}01132                                                 , photonfluence = photonfluence             \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01133}01133                                                 , err           = err                       \&}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01134}01134                                                 )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01135}01135         difference = 2.\_rk * abs( photonfluence -\/ band\_spec2\%photonFluence ) / ( photonfluence + band\_spec2\%photonFluence )}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01136}01136         assertion = difference < band\_spec4\%tolerance}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01137}01137         \textcolor{keywordflow}{if} (test\%isVerboseMode .and. .not. assertion) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01138}01138         \textcolor{comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01139}01139             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01140}01140             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) \textcolor{stringliteral}{"{}photon fluence, Reference photon fluence, difference"{}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01141}01141             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}}) photonfluence, band\_spec2\%photonFluence, difference}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01142}01142             \textcolor{keyword}{write}(test\%outputUnit,\textcolor{stringliteral}{"{}(*(g0,:,', '))"{}})}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01143}01143 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01144}01144         \textcolor{comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01145}01145     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacetest__bandspectrum__mod_a8cc1f8041d6cd73adb80814b83324ca4}{test\_getphotonfluencefromenergyfluence\_5}}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01146}01146 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01147}01147 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01148}01148 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01149}01149 \textcolor{comment}{!\#endif}}
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01150}01150 }
+\DoxyCodeLine{\Hypertarget{Test__BandSpectrum__mod_8f90_source_l01151}01151 \textcolor{keyword}{end module }\mbox{\hyperlink{namespacetest__bandspectrum__mod}{test\_bandspectrum\_mod}} ! lcov\_excl\_line}
+
+\end{DoxyCode}

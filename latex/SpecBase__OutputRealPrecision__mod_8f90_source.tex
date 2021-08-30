@@ -1,0 +1,158 @@
+\hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source}{}\doxysection{Spec\+Base\+\_\+\+Output\+Real\+Precision\+\_\+mod.\+f90}
+\label{SpecBase__OutputRealPrecision__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/SpecBase\_OutputRealPrecision\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/SpecBase\_OutputRealPrecision\_mod.f90}}
+\mbox{\hyperlink{SpecBase__OutputRealPrecision__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00001}00001 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00002}00002 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00003}00003 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00004}00004 \textcolor{comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00005}00005 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00006}00006 \textcolor{comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00007}00007 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00008}00008 \textcolor{comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00009}00009 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00010}00010 \textcolor{comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00011}00011 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00012}00012 \textcolor{comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a }}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00013}00013 \textcolor{comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}), }}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00014}00014 \textcolor{comment}{!!!!   to deal in the Software without restriction, including without limitation }}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00015}00015 \textcolor{comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, }}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00016}00016 \textcolor{comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the }}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00017}00017 \textcolor{comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00018}00018 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00019}00019 \textcolor{comment}{!!!!   The above copyright notice and this permission notice shall be }}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00020}00020 \textcolor{comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00021}00021 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00022}00022 \textcolor{comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, }}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00023}00023 \textcolor{comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF }}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00024}00024 \textcolor{comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. }}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00025}00025 \textcolor{comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, }}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00026}00026 \textcolor{comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR }}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00027}00027 \textcolor{comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE }}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00028}00028 \textcolor{comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00029}00029 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00030}00030 \textcolor{comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00031}00031 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00032}00032 \textcolor{comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00033}00033 \textcolor{comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of }}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00034}00034 \textcolor{comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your }}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00035}00035 \textcolor{comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte }}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00036}00036 \textcolor{comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00037}00037 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00038}00038 \textcolor{comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00039}00039 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00040}00040 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00041}00041 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00048}\mbox{\hyperlink{namespacespecbase__outputrealprecision__mod}{00048}} \textcolor{keyword}{module} \mbox{\hyperlink{namespacespecbase__outputrealprecision__mod}{specbase\_outputrealprecision\_mod}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00050}00050     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00051}00051     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00053}\mbox{\hyperlink{namespacespecbase__outputrealprecision__mod_a53ef68d07dd5659933bfcd9008cc9dae}{00053}}     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter}         :: \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}} = \textcolor{stringliteral}{"{}@SpecBase\_OutputRealPrecision\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00055}\mbox{\hyperlink{namespacespecbase__outputrealprecision__mod_a2ba2cfaf9a48fae6a81703f24f653578}{00055}}     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{parameter}          :: \mbox{\hyperlink{namespacespecbase__outputrealprecision__mod_a2ba2cfaf9a48fae6a81703f24f653578}{output\_real\_precision}} = 8}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00057}\mbox{\hyperlink{namespacespecbase__outputrealprecision__mod_a6f2dbdda8a9d1b8c22b087ac0e6221f2}{00057}}     \textcolor{keywordtype}{integer(IK)}                     :: \mbox{\hyperlink{namespacespecbase__outputrealprecision__mod_a6f2dbdda8a9d1b8c22b087ac0e6221f2}{outputrealprecision}} \textcolor{comment}{! namelist input}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00059}\mbox{\hyperlink{structspecbase__outputrealprecision__mod_1_1outputrealprecision__type}{00059}}     \textcolor{keyword}{type}                            :: \mbox{\hyperlink{structspecbase__outputrealprecision__mod_1_1outputrealprecision__type}{outputrealprecision\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00060}\mbox{\hyperlink{structspecbase__outputrealprecision__mod_1_1outputrealprecision__type_a7259b0d4cd21a2b7cf7a2d2e4f523be3}{00060}}         \textcolor{keywordtype}{integer(IK)}                 :: val}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00061}\mbox{\hyperlink{structspecbase__outputrealprecision__mod_1_1outputrealprecision__type_a10d7feca3979b026b75deeee4c81a128}{00061}}         \textcolor{keywordtype}{integer(IK)}                 :: def}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00062}\mbox{\hyperlink{structspecbase__outputrealprecision__mod_1_1outputrealprecision__type_a1c194f2b5362f7227ef3ac17029865fd}{00062}}         \textcolor{keywordtype}{integer(IK)}                 :: null}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00063}\mbox{\hyperlink{structspecbase__outputrealprecision__mod_1_1outputrealprecision__type_a3f242a7e6d87ad4c19227349121f6798}{00063}}         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}   :: str}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00064}\mbox{\hyperlink{structspecbase__outputrealprecision__mod_1_1outputrealprecision__type_a9d7c53c0dfe5bdc0ae4541359918c808}{00064}}         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}   :: desc}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00065}00065     \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00066}\mbox{\hyperlink{structspecbase__outputrealprecision__mod_1_1outputrealprecision__type_a16157566d9f565f92ad85ebccb309f93}{00066}}         \textcolor{keywordtype}{procedure}, pass             :: \mbox{\hyperlink{tests_2CMakeLists_8txt_ae83e80fd33450b46a25fc28274789f6a}{set}} => setoutputrealprecision, \mbox{\hyperlink{namespacespecbase__outputrealprecision__mod_a140e242b7af9705ddc9b17e3d922df4a}{checkforsanity}}, \mbox{\hyperlink{namespacespecbase__outputrealprecision__mod_a3df0efacc2647627b2ae0eb43083d452}{nullifynamelistvar}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00067}00067     \textcolor{keyword}{end type }\mbox{\hyperlink{structspecbase__outputrealprecision__mod_1_1outputrealprecision__type}{outputrealprecision\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00069}00069     \textcolor{keyword}{interface} \mbox{\hyperlink{structspecbase__outputrealprecision__mod_1_1outputrealprecision__type}{outputrealprecision\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00070}00070         \textcolor{keyword}{module procedure}                :: constructoutputrealprecision}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00071}00071     \textcolor{keyword}{end interface }\mbox{\hyperlink{structspecbase__outputrealprecision__mod_1_1outputrealprecision__type}{outputrealprecision\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00073}00073     \textcolor{keywordtype}{private} :: constructoutputrealprecision, setoutputrealprecision}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00075}00075 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00077}00077 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00079}00079 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00081}\mbox{\hyperlink{structspecbase__outputrealprecision__mod_1_1outputrealprecision__type_ad5ba499872176affd6f0907f5b7a6352}{00081}}     \textcolor{keyword}{function }constructoutputrealprecision(methodName) \textcolor{keyword}{result}(OutputRealPrecisionObj)}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00082}00082 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00083}00083 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: constructOutputRealPrecision}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00084}00084 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00085}00085 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespaceconstants__mod_ae532809b6541e46e31e3d29681c7abec}{null\_ik}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00086}00086         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestring__mod}{string\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{interfacestring__mod_1_1num2str}{num2str}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00087}00087         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00088}00088         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}       :: methodname}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00089}00089         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structspecbase__outputrealprecision__mod_1_1outputrealprecision__type}{outputrealprecision\_type}}) :: outputrealprecisionobj}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00090}00090         outputrealprecisionobj\%def = \mbox{\hyperlink{namespacespecbase__outputrealprecision__mod_a2ba2cfaf9a48fae6a81703f24f653578}{output\_real\_precision}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00091}00091         outputrealprecisionobj\%null = \mbox{\hyperlink{namespaceconstants__mod_ae532809b6541e46e31e3d29681c7abec}{null\_ik}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00092}00092         outputrealprecisionobj\%desc = \&}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00093}00093         \textcolor{stringliteral}{"{}The variable outputRealPrecision is a 32-\/bit integer number that determines the precision -\/ that is, the number of \&}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00094}00094 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&significant digits -\/ of the real numbers in the output files of "{}} // methodname // \textcolor{stringliteral}{"{}. Any positive integer is acceptable \&}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00095}00095 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&as the input value of outputRealPrecision. However, any digits of the output real numbers beyond the accuracy of 64-\/bit \&}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00096}00096 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&real numbers (approximately 16 digits of significance) will be meaningless and random. Set this variable to 16 (or larger) \&}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00097}00097 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&if full reproducibility of the simulation is needed in the future. But keep in mind that larger precisions will result in \&}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00098}00098 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&larger-\/size output files. This variable is ignored for binary output (if any occurs during the simulation). \&}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00099}00099 \textcolor{stringliteral}{}\textcolor{stringliteral}{        \&The default value is "{}} // \mbox{\hyperlink{interfacestring__mod_1_1num2str}{num2str}}(outputrealprecisionobj\%def) // \textcolor{stringliteral}{"{}."{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00100}00100     \textcolor{keyword}{end function }constructoutputrealprecision}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00102}00102 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00104}\mbox{\hyperlink{namespacespecbase__outputrealprecision__mod_a3df0efacc2647627b2ae0eb43083d452}{00104}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespacespecbase__outputrealprecision__mod_a3df0efacc2647627b2ae0eb43083d452}{nullifynamelistvar}}(OutputRealPrecisionObj)}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00105}00105 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00106}00106 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00107}00107 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00108}00108 \textcolor{preprocessor}{}        \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00109}00109         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structspecbase__outputrealprecision__mod_1_1outputrealprecision__type}{outputrealprecision\_type}}), \textcolor{keywordtype}{intent(in)}  :: OutputRealPrecisionObj}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00110}00110         \mbox{\hyperlink{namespacespecbase__outputrealprecision__mod_a6f2dbdda8a9d1b8c22b087ac0e6221f2}{outputrealprecision}} = outputrealprecisionobj\%null}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00111}00111     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespacespecbase__outputrealprecision__mod_a3df0efacc2647627b2ae0eb43083d452}{nullifynamelistvar}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00113}00113 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00115}00115     \textcolor{keyword}{subroutine }setoutputrealprecision(OutputRealPrecisionObj,outputRealPrecision)}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00116}00116 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00117}00117 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: setOutputRealPrecision}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00118}00118 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00119}00119 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestring__mod}{string\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{interfacestring__mod_1_1num2str}{num2str}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00120}00120         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00121}00121         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00122}00122         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structspecbase__outputrealprecision__mod_1_1outputrealprecision__type}{outputrealprecision\_type}}), \textcolor{keywordtype}{intent(inout)}  :: OutputRealPrecisionObj}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00123}00123         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)}                         :: outputRealPrecision}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00124}00124         outputrealprecisionobj\%val = outputrealprecision}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00125}00125         \textcolor{keywordflow}{if} (outputrealprecisionobj\%val==outputrealprecisionobj\%null) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00126}00126             outputrealprecisionobj\%val = outputrealprecisionobj\%def}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00127}00127 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00128}00128         outputrealprecisionobj\%str = \mbox{\hyperlink{interfacestring__mod_1_1num2str}{num2str}}(outputrealprecisionobj\%val)}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00129}00129     \textcolor{keyword}{end subroutine }setoutputrealprecision}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00130}00130 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00131}00131 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00133}\mbox{\hyperlink{namespacespecbase__outputrealprecision__mod_a140e242b7af9705ddc9b17e3d922df4a}{00133}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespacespecbase__outputrealprecision__mod_a140e242b7af9705ddc9b17e3d922df4a}{checkforsanity}}(OutputRealPrecisionObj,Err,methodName)}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00134}00134 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00135}00135 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: checkForSanity}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00136}00136 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00137}00137 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00138}00138         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestring__mod}{string\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{interfacestring__mod_1_1num2str}{num2str}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00139}00139         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00140}00140         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structspecbase__outputrealprecision__mod_1_1outputrealprecision__type}{outputrealprecision\_type}}), \textcolor{keywordtype}{intent(in)} :: OutputRealPrecisionObj}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00141}00141         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}               :: methodName}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00142}00142         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}), \textcolor{keywordtype}{intent(inout)}          :: Err}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00143}00143         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter}                :: PROCEDURE\_NAME = \textcolor{stringliteral}{"{}@checkForSanity()"{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00144}00144         \textcolor{keywordflow}{if} ( outputrealprecisionobj\%val<1\_ik ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00145}00145             err\%occurred = .true.}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00146}00146             err\%msg =   err\%msg // \&}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00147}00147                         \mbox{\hyperlink{namespaceerr__mod_a9241a0f1670c98dccd7e3831dd3973b5}{module\_name}} // procedure\_name // \textcolor{stringliteral}{"{}: Error occurred. \&}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00148}00148 \textcolor{stringliteral}{}\textcolor{stringliteral}{                        \&The input value for variable outputRealPrecision must be a positive integer < 16. If you are not sure \&}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00149}00149 \textcolor{stringliteral}{}\textcolor{stringliteral}{                        \&about the appropriate value for this variable, simply drop it from the input. "{}} // \&}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00150}00150                         methodname // \textcolor{stringliteral}{"{} will automatically assign an appropriate value to it.\(\backslash\)n\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00151}00151 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00152}00152     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespacespecbase__outputrealprecision__mod_a140e242b7af9705ddc9b17e3d922df4a}{checkforsanity}}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00153}00153 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00154}00154 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00155}00155 }
+\DoxyCodeLine{\Hypertarget{SpecBase__OutputRealPrecision__mod_8f90_source_l00156}00156 \textcolor{keyword}{end module }\mbox{\hyperlink{namespacespecbase__outputrealprecision__mod}{specbase\_outputrealprecision\_mod}} ! lcov\_excl\_line}
+
+\end{DoxyCode}

@@ -1,0 +1,900 @@
+\hypertarget{ParaNest_0dSetup__mod_8f90_source}{}\doxysection{Para\+Nest@Setup\+\_\+mod.\+f90}
+\label{ParaNest_0dSetup__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/ParaNest"@Setup\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/ParaNest"@Setup\_mod.f90}}
+\mbox{\hyperlink{ParaNest_0dSetup__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00001}00001 submodule(\mbox{\hyperlink{namespaceparanest}{paranest}}) setup}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00002}00002   }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00003}00003   \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00005}00005   \textcolor{keywordtype}{integer}         , \textcolor{keywordtype}{Parameter}        :: smv\_varNameLength = 25}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00006}00006   \textcolor{keywordtype}{character(len=2)}, \textcolor{keywordtype}{Parameter}        :: smv\_outColWidth   = \textcolor{stringliteral}{"{}25"{}}                        \textcolor{comment}{! column width in the formatted output files}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00007}00007   \textcolor{keywordtype}{character(len=1)}, \textcolor{keywordtype}{Parameter}        :: smv\_outPrecision  = \textcolor{stringliteral}{"{}8"{}}                         \textcolor{comment}{! float precision in output files}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00008}00008   \textcolor{keywordtype}{integer}         , \textcolor{keywordtype}{Parameter}        :: smv\_nColEviFile   = 7                           \textcolor{comment}{! number of columns in evidence exlcuding ndim-\/variable columns}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00009}00009   \textcolor{keywordtype}{character(smv\_varNameLength)}       :: smv\_AvailableSamplingMethod(1) = [\textcolor{stringliteral}{"{}rejection"{}}]}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00011}00011   \textcolor{keywordtype}{integer}                            :: smv\_eviFileUnit}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00012}00012   \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}          :: smv\_eviFileFormat   \textcolor{comment}{! evidence file format}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00013}00013   }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00014}00014   \textcolor{comment}{! default options}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00015}00015   \textcolor{keywordtype}{logical}                            :: smv\_writeBinary, smv\_overwriteRestartFile}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00016}00016   \textcolor{keywordtype}{integer}                            :: smv\_np, smv\_iverbose, smv\_ireport}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00017}00017 \textcolor{keywordtype}{  real}(RK)                           :: smv\_tolerance, smv\_posteriorSampleSize}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00018}00018   \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{allocatable}          :: smv\_RandomSeed(:)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00019}00019   \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}          :: smv\_fileBase, smv\_method, smv\_restartFileType}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00020}00020     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00021}00021 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00023}00023 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00024}00024 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00026}00026   \textcolor{keyword}{module} subroutine runparanest( \mbox{\hyperlink{ParaMonte_0drunParaDRAM_8f90_a61612d7f17ad31a757aee8ee361f7fbd}{getlogfunc}}, nd, inputfile, domain, np, tolerance, randomseed, method \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00027}00027                                , posteriorsamplesize, passresult, writebinary \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00028}00028                                , overwriterestartfile, restartfiletype, filebase, iverbose , ireport \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00029}00029                                , ncmax, scalefactor, tightness, inclusionfraction, iupdatecbe \&            \textcolor{comment}{! This line contains CARS-\/specific variables.}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00030}00030                                , maxallowedkmeansfailure, maxallowedminvolfailure, mahalsqweightexponent \& \textcolor{comment}{! This line contains CARS-\/specific variables.}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00031}00031                                , stabilizationrequested, maxkvolumelooprecursion \&                         \textcolor{comment}{! This line contains CARS-\/specific variables.}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00032}00032                                )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00034}00034     use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: output\_unit}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00035}00035     \textcolor{keywordtype}{use }misc, \textcolor{keywordtype}{only}: num2str, getnicedatetime, getslash, splitpath, replacestr}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00036}00036     \textcolor{keywordtype}{use }misc, \textcolor{keywordtype}{only}: charvec\_type, getfilelist, getsysteminfo, getlowercase}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00038}00038     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00039}00039     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00040}00040     \textcolor{comment}{! input variables}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00041}00041     \textcolor{keywordtype}{procedure}(logPDF)                  :: getLogFunc}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00042}00042     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(in)}           :: nd}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00043}00043     \textcolor{keywordtype}{logical}     , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: overwriteRestartFile}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00044}00044     \textcolor{keywordtype}{logical}     , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: writeBinary}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00045}00045     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: ncMax}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00046}00046     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: iupdateCBE  \textcolor{comment}{! every iupdateCBE sampled points, the Clusters Bounding Ellipsoids of the sampled Points will be updated.}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00047}00047     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: np}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00048}00048     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: iverbose}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00049}00049     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: ireport}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00050}00050     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: RandomSeed(:)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00051}00051     \textcolor{keywordtype}{logical}     , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: stabilizationRequested}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00052}00052     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: maxKvolumeLoopRecursion}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00053}00053     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: maxAllowedKmeansFailure}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00054}00054     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: maxAllowedMinVolFailure}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00055}00055 \textcolor{keywordtype}{    real}(RK)    , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: mahalSqWeightExponent}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00056}00056 \textcolor{keywordtype}{    real}(RK)    , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: Domain(nd,2)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00057}00057 \textcolor{keywordtype}{    real}(RK)    , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: scaleFactor,tightness,inclusionFraction}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00058}00058 \textcolor{keywordtype}{    real}(RK)    , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: tolerance}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00059}00059 \textcolor{keywordtype}{    real}(RK)    , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: posteriorSampleSize}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00060}00060     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: fileBase}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00061}00061     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: restartFileType}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00062}00062     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: method}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00063}00063     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: inputFile}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00064}00064     \textcolor{keywordtype}{procedure}(PNoutputter)  , \textcolor{keywordtype}{optional} :: passResult}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00065}00065     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00066}00066     \textcolor{comment}{! Final ParaNest Parameter values, to be passed to the kernel subroutine}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00067}00067     \textcolor{keywordtype}{procedure}(PNoutputter)  , \textcolor{keywordtype}{pointer}  :: passResultDefault}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00068}00068 \textcolor{keywordtype}{    real}(RK)                           :: logDomainSize}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00069}00069     \textcolor{keywordtype}{integer}                            :: logFileUnit   \textcolor{comment}{!, smv\_eviFileUnit}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00070}00070     \textcolor{keywordtype}{integer}                            :: effPosSamSize   \textcolor{comment}{! effective posterior sample size}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00071}00071     \textcolor{keywordtype}{integer}                            :: nCall2LogFuncAccepted, nCall2LogFuncTotal}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00072}00072     \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}          :: directory, filename, resFileExt, resFileFormat}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00073}00073     \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}          :: eviFileName, logFileName, posFileName, resFileName, ndString}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00074}00074     \textcolor{keywordtype}{character(smv\_varNameLength)}       :: VarName(nd)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00075}00075     \textcolor{keywordtype}{type}(CharVec\_type), \textcolor{keywordtype}{allocatable}   :: RestartFileList(:), SystemInfo(:)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00076}00076   }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00077}00077     \textcolor{comment}{! other variables}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00078}00078 \textcolor{keywordtype}{    real}(RK)                           :: startTime, endTime, totalRunTime}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00079}00079     \textcolor{keywordtype}{character(8)}                       :: date}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00080}00080     \textcolor{keywordtype}{character(10)}                      :: time}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00081}00081     \textcolor{keywordtype}{integer}                            :: i, sizeRandomSeed}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00082}00082     \textcolor{keywordtype}{logical}                            :: logFileExists, eviFileExists, posFileExists, passResultExists}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00083}00083     \textcolor{keywordtype}{logical}                            :: inputFileMissing}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00084}00084     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00085}00085     passresultexists = \textcolor{keyword}{present}(passresult)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00086}00086     inputfilemissing = .not. \textcolor{keyword}{present}(inputfile)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00087}00087     \textcolor{keyword}{call }setupgeneraloptions(output\_unit,inputfile)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00088}00088     \textcolor{comment}{! fileBase: setup ParaNest's baseFile and working directory}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00089}00089     \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(filebase) ) \textcolor{keywordflow}{then} \textcolor{comment}{!.and. inputFileMissing) then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00090}00090       smv\_filebase = filebase}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00091}00091 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00093}00093     \textcolor{keywordflow}{if} (len\_trim(smv\_filebase)>0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00094}00094       }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00095}00095       \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00096}00096       \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}  fileBase for ParaNest output files detected."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00097}00097       \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00099}00099       \textcolor{keywordflow}{if} (getslash()==\textcolor{stringliteral}{'\(\backslash\)'}) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00100}00100         smv\_filebase = replacestr(smv\_filebase,\textcolor{stringliteral}{'/'},\textcolor{stringliteral}{'\(\backslash\)'})}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00101}00101 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00103}00103       \textcolor{keyword}{call }splitpath(smv\_filebase,directory,filename)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00104}00104       \textcolor{keywordflow}{if} (len\_trim(directory)/=0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00105}00105         \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00106}00106         \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}  Generating the requested directory for ParaNest output files:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00107}00107         \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00108}00108         \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}    "{}}//directory )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00109}00109         \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00110}00110         \textcolor{keywordflow}{if} (getslash()==\textcolor{stringliteral}{"{}\(\backslash\)"{}}) \textcolor{keywordflow}{then} \textcolor{comment}{! OS is windows}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00111}00111           \textcolor{keyword}{call }execute\_command\_line(\textcolor{stringliteral}{"{}mkdir "{}} // directory)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00112}00112         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00113}00113           \textcolor{keyword}{call }execute\_command\_line(\textcolor{stringliteral}{"{}mkdir -\/p "{}} // directory)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00114}00114 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00115}00115 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00117}00117       \textcolor{keywordflow}{if} (len\_trim(filename)==0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00118}00118         \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00119}00119         \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}  No filename for ParaNest output files detected."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00120}00120         \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00121}00121         \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}  Generating ParaNest default filenames ..."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00122}00122         \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00123}00123         \textcolor{keyword}{call }date\_and\_time(date,time)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00124}00124         smv\_filebase = smv\_filebase // \textcolor{stringliteral}{"{}ParaNest\_run\_"{}} // date // \textcolor{stringliteral}{"{}\_"{}} // time(1:6)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00125}00125 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00126}00126 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00127}00127     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00128}00128 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00129}00129       \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00130}00130       \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}  No fileBase for ParaNest output files detected."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00131}00131       \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00132}00132       \textcolor{keyword}{call }date\_and\_time(date,time)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00133}00133       smv\_filebase = date // \textcolor{stringliteral}{"{}\_"{}} // time(1:6) // \textcolor{stringliteral}{"{}\_ParaNest"{}}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00134}00134 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00135}00135 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00136}00136     \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00137}00137     \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}  ParaNest output files will be prefixed with:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00138}00138     \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00139}00139     \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}    "{}}//smv\_filebase )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00140}00140     \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00141}00141     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00142}00142     \textcolor{comment}{! create output filenames}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00143}00143     logfilename = smv\_filebase // \textcolor{stringliteral}{"{}\_report"{}} // \textcolor{stringliteral}{"{}."{}} // mv\_logfileext}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00144}00144     evifilename = smv\_filebase // \textcolor{stringliteral}{"{}\_evidence"{}} // \textcolor{stringliteral}{"{}."{}} // mv\_evifileext}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00145}00145     posfilename = smv\_filebase // \textcolor{stringliteral}{"{}\_posterior"{}} // \textcolor{stringliteral}{"{}."{}} // mv\_posfileext}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00146}00146     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00147}00147     \textcolor{comment}{! check if files already exist}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00148}00148     \textcolor{keyword}{inquire}(file=logfilename,exist=logfileexists)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00149}00149     \textcolor{keyword}{inquire}(file=evifilename,exist=evifileexists)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00150}00150     \textcolor{keyword}{inquire}(file=posfilename,exist=posfileexists)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00151}00151 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00152}00152     \textcolor{comment}{! check if simulation has to be restarted from an old simulation}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00153}00153     \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00154}00154     \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}  Searching for old restart files to resume from a previous run..."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00155}00155     \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00156}00156     \textcolor{comment}{!RestartFileList = getFileList(smv\_fileBase//'*restart*',order='date')}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00157}00157     block}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00158}00158       \textcolor{keywordtype}{integer} :: ierr}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00159}00159       \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable} :: errMsg}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00160}00160       \textcolor{keyword}{call }getfilelist( filelist = restartfilelist \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00161}00161                       , searchtext = smv\_filebase//\textcolor{stringliteral}{"{}*restart*"{}} \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00162}00162                       , order = \textcolor{stringliteral}{"{}date"{}} \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00163}00163                       , excludetext = \textcolor{stringliteral}{"{}"{}} \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00164}00164                       , releasemoderequested = .false. \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00165}00165                       , ierr = ierr \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00166}00166                       , errmsg = errmsg \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00167}00167                       )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00168}00168     \textcolor{keyword}{end }block}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00169}00169     blockrestart: \textcolor{keywordflow}{if} (\textcolor{keyword}{size}(restartfilelist)==0) \textcolor{keywordflow}{then}     \textcolor{comment}{! no restart needed}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00170}00170 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00171}00171       \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00172}00172       \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}  No restart file detected."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00173}00173       \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00174}00174       \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}  Starting a fresh ParaNest run ..."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00175}00175       \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00176}00176         }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00177}00177       \textcolor{comment}{! ensure the files do not exist}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00178}00178       \textcolor{keywordflow}{if} (logfileexists .or. evifileexists .or. posfileexists) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00179}00179         \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00180}00180         \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}  FATAL: A ParaNest output file with the same name already exists."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00181}00181         \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}         Looks like an old ParaNest simulation output with same name exists in the given path."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00182}00182         \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}         Provide a new simulation name or path for output data and rerun ParaNest."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00183}00183         \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}         Gracefully exiting ParaNest."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00184}00184         stop}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00185}00185 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00186}00186 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00187}00187       \textcolor{keyword}{open}(newunit=logfileunit,file=logfilename, status=\textcolor{stringliteral}{"{}new"{}})}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00188}00188 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00189}00189     \textcolor{keywordflow}{else} blockrestart    \textcolor{comment}{! restart is needed}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00190}00190 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00191}00191       \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00192}00192       \textcolor{keyword}{call }write(output\_unit, num2str(\textcolor{keyword}{size}(restartfilelist)) // \textcolor{stringliteral}{"{} restart files detected."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00193}00193       \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00194}00194       \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}  Restarting an old ParaNest run using the most recent restart file ..."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00195}00195         }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00196}00196       \textcolor{comment}{! ensure the log file does exist}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00197}00197       \textcolor{keywordflow}{if} (.not.logfileexists) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00198}00198         \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00199}00199         \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}  FATAL: Failed to detect the old ParaNest output report file."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00200}00200         \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}         Looks like the old ParaNest simulation files do not exist or have been modified."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00201}00201         \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}         Place the original output files in the restart file directory and rerun ParaNest."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00202}00202         \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}         Otherwise remove the restart files and start a fresh ParaNest run."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00203}00203         \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}         Gracefully exiting ParaNest."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00204}00204         stop}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00205}00205 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00206}00206 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00207}00207       \textcolor{keyword}{open}(newunit=logfileunit, file=logfilename, status=\textcolor{stringliteral}{"{}old"{}}, position=\textcolor{stringliteral}{"{}append"{}})}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00208}00208 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00209}00209       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00210}00210       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00211}00211       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00212}00212       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    WARNING: Restarting ParaNest from an existing interrupted run ..."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00213}00213       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             Make sure you run ParaNest with exact same options as in previous run."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00214}00214       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             Otherwise there is no guarantee the results will be correct."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00215}00215       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             The only option that can be added to restart run, is fileBase."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00216}00216       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             It is used to determine if restart is needed."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00217}00217       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             If the restart files do not exist, ParaNest starts afresh."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00218}00218 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00219}00219       \textcolor{keywordflow}{if} ( passresultexists .and. (evifileexists .or. posfileexists) ) \textcolor{keywordflow}{then}    \textcolor{comment}{! there seems to be some redundancy in output methods}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00220}00220         \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00221}00221         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    FATAL: There seems to be some redundancy in output methods."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00222}00222         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           An old output file appears to exist in the given path."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00223}00223         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           However, user has also provided an outputter function in the restart run."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00224}00224         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           Please be consistent with your output method (and stop challenging ParaNest!)."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00225}00225         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           Please correct the output method and rerun ParaNest."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00226}00226         \textcolor{keyword}{call }abort(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00227}00227 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00228}00228       }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00229}00229       \textcolor{keywordflow}{if} (posfileexists) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00230}00230         \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00231}00231         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    FATAL: A posterior file already appears to exist for this ParaNest run."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00232}00232         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           The previous run already seems to be complete."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00233}00233         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           If a fresh run is needed, first remove the old files."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00234}00234         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           Otherwise, provide a new name for this new run."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00235}00235         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           ParaNest is very conservative in removing old existing files."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00236}00236         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           Leaving existing output files intact."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00237}00237         \textcolor{keyword}{call }abort(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00238}00238 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00239}00239 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00240}00240       resfilename = restartfilelist(1)\%record}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00241}00241       }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00242}00242       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00243}00243       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    FATAL: Restart option not supported yet."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00244}00244       \textcolor{keyword}{call }abort(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00245}00245 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00246}00246 \textcolor{keywordflow}{    end if} blockrestart}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00247}00247 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00248}00248     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00249}00249     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00250}00250     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**                                                                      **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00251}00251     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    ParaNest V 1.0, May 2017                                          **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00252}00252     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    Multiscale Modeling Group                                         **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00253}00253     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    Center for Computational Oncology (CCO)                           **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00254}00254     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    Instititue for Computational Engineering and Sciences (ICES)      **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00255}00255     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    The University of Texas at Austin                                 **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00256}00256     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**                                                                      **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00257}00257     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    For questions and further information, please contact:            **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00258}00258     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    Amir Shahmoradi                                                   **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00259}00259     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    amir@ices.utexas.edu                                              **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00260}00260     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    shahmoradi@utexas.edu                                             **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00261}00261     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    amir@physics.utexas.edu                                           **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00262}00262     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**                                                                      **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00263}00263     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00264}00264     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00265}00265     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00266}00266     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00267}00267     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00268}00268     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00269}00269     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    Compiler Specification                                            **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00270}00270     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00271}00271     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00272}00272     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    no compiler information available"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00273}00273     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00274}00274     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00275}00275     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00276}00276     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00277}00277     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    Platform Specification                                            **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00278}00278     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00279}00279     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00280}00280     systeminfo = getsysteminfo()}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00281}00281     \textcolor{keywordflow}{do} i = 1, \textcolor{keyword}{size}(systeminfo)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00282}00282       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    "{}}//systeminfo(i)\%record )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00283}00283 \textcolor{keywordflow}{    end do}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00284}00284     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00285}00285     \textcolor{keyword}{call }write(logfileunit) }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00286}00286     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00287}00287     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00288}00288     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    Simulation Specification                                          **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00289}00289     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00290}00290     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00291}00291     \textcolor{comment}{! fileBase: write out value}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00292}00292     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00293}00293     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}fileBase (used to identify this ParaNest run, its output directory, and its output file names):"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00294}00294     \textcolor{keyword}{write}(logfileunit,*) smv\_filebase}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00295}00295 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00296}00296     \textcolor{comment}{! nd: write out value}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00297}00297     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00298}00298     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}nd (number of dimensions of the function to be sampled):"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00299}00299     \textcolor{keyword}{write}(logfileunit,*) nd}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00300}00300 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00301}00301     \textcolor{comment}{! np: check for user assignment}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00302}00302     \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(np) .and. inputfilemissing) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00303}00303       smv\_np = np}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00304}00304 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00305}00305     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00306}00306     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}np (number of active points):"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00307}00307     \textcolor{keyword}{write}(logfileunit,*) smv\_np}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00308}00308     \textcolor{keywordflow}{if} (smv\_np<500) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00309}00309       \textcolor{keywordflow}{if}(smv\_np<nd+1) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00310}00310         \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00311}00311         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    FATAL: Invalid input value for np."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00312}00312         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}     Note: np must be always >=nd+1."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00313}00313         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           Reset input np and rerun the program."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00314}00314         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           Otherwise omit the variable on input."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00315}00315         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           The program will automatically assign a value."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00316}00316         \textcolor{keyword}{call }abort(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00317}00317 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00318}00318       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00319}00319       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    WARNING: np < 500."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00320}00320       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             ParaNest recommends you to set 500<np<5000."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00321}00321       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             The number of active points acts as a random mesh on the integration domain."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00322}00322       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             Higher number of points, means finer mesh, which means more accurate results."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00323}00323       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             In general, the higher the number of dimensions, the larger np should be."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00324}00324 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00325}00325         }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00326}00326     \textcolor{comment}{! iverbose: assign value}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00327}00327     \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(iverbose) .and. inputfilemissing) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00328}00328       smv\_iverbose = iverbose}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00329}00329 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00330}00330     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00331}00331     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}iverbose (every iverbose steps, progress is reported in ParaNest report file):"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00332}00332     \textcolor{keyword}{write}(logfileunit,*) smv\_iverbose}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00333}00333     \textcolor{keywordflow}{if}(smv\_iverbose<1) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00334}00334       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00335}00335       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    WARNING: Invalid input value for iverbose."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00336}00336       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             No integration progress report will be output to logFileName."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00337}00337       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             Assuming iverbose = Infinity."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00338}00338       smv\_iverbose = huge(smv\_iverbose)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00339}00339       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}iverbose (every iverbose steps, progress is reported in logFileName):"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00340}00340       \textcolor{keyword}{write}(logfileunit,*) smv\_iverbose}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00341}00341 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00342}00342 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00343}00343     \textcolor{comment}{! ireport: check for accuracy}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00344}00344     \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(ireport) .and. inputfilemissing) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00345}00345       smv\_ireport = ireport}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00346}00346 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00347}00347     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00348}00348     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}ireport (every ireport steps, a restart file is written):"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00349}00349     \textcolor{keyword}{write}(logfileunit,*) smv\_ireport}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00350}00350     \textcolor{keywordflow}{if}(smv\_ireport<1) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00351}00351       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00352}00352       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    WARNING: Invalid input value for ireport."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00353}00353       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             No restart file will be written as output."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00354}00354       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             Assuming ireport = Infinity."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00355}00355       smv\_ireport = huge(smv\_ireport)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00356}00356       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}ireport (every ireport steps, a restart file is written):"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00357}00357       \textcolor{keyword}{write}(logfileunit,*) smv\_ireport}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00358}00358 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00359}00359     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00360}00360     \textcolor{comment}{! tolerance: check for accuracy}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00361}00361     \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(tolerance) .and. inputfilemissing) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00362}00362       smv\_tolerance = tolerance}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00363}00363 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00364}00364     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00365}00365     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}tolerance (factor below which integration convergence is assumed):"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00366}00366     \textcolor{keyword}{write}(logfileunit,*) smv\_tolerance}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00367}00367     \textcolor{keywordflow}{if}(smv\_tolerance<=0.\_rk) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00368}00368       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00369}00369       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    FATAL: Invalid input value for tolerance."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00370}00370       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}     Note: tolerance must always be strictly positive."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00371}00371       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           Reset input tolerance to >0 and rerun the program."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00372}00372       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           Otherwise omit the variable on input. The program will automatically assign a value."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00373}00373       \textcolor{keyword}{call }abort(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00374}00374 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00375}00375     \textcolor{keywordflow}{if}(smv\_tolerance<1.d-\/6) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00376}00376       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00377}00377       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    WARNING: Input value for tolerance may be too small."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00378}00378       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             tolerance<<1 may lead to non-\/converging results and never-\/ending program run."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00379}00379       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             Leaving input tolerance by the user intact."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00380}00380 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00381}00381     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00382}00382     \textcolor{comment}{! RandomSeed: setup seed for random number generator}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00383}00383     \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(randomseed) .and. inputfilemissing) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00384}00384       \textcolor{comment}{!deallocate(smv\_RandomSeed); allocate(smv\_RandomSeed(size(RandomSeed))}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00385}00385       smv\_randomseed = randomseed}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00386}00386 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00387}00387     \textcolor{keyword}{call }random\_seed()}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00388}00388     \textcolor{keyword}{call }random\_seed(size=sizerandomseed)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00389}00389     \textcolor{keywordflow}{if} (\textcolor{keyword}{size}(smv\_randomseed)==sizerandomseed) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00390}00390       \textcolor{keyword}{call }random\_seed(put=smv\_randomseed)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00391}00391     \textcolor{keywordflow}{elseif} (\textcolor{keyword}{size}(smv\_randomseed)==0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00392}00392       \textcolor{keyword}{deallocate}(smv\_randomseed); \textcolor{keyword}{allocate}(smv\_randomseed(sizerandomseed))}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00393}00393       \textcolor{keyword}{call }random\_seed(get=smv\_randomseed)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00394}00394     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00395}00395       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00396}00396       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    FATAL: Invalid vector size for input RandomSeed."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00397}00397       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}     Note: The length of RandomSeed vector is determined by Compiler."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00398}00398       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           Compiler-\/determined RandomSeed vector length: "{}}//num2str(sizerandomseed) )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00399}00399       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           User-\/provided RandomSeed vector length: "{}}//num2str(\textcolor{keyword}{size}(smv\_randomseed)) )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00400}00400       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           Adjust the input RandomSeed to Compiler specifications and rerun the program."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00401}00401       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           Otherwise omit the variable on input. ParaNest will automatically assign a value."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00402}00402       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00403}00403 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00404}00404     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00405}00405     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}RandomSeed vector length:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00406}00406     \textcolor{keyword}{write}(logfileunit,*) sizerandomseed}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00407}00407     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}RandomSeed vector values, used as input to random\_number():"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00408}00408     \textcolor{keyword}{write}(logfileunit,*) smv\_randomseed}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00409}00409     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00410}00410     \textcolor{comment}{! overwriteRestartFile}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00411}00411     \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(overwriterestartfile) .and. inputfilemissing) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00412}00412       smv\_overwriterestartfile = overwriterestartfile}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00413}00413 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00414}00414     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00415}00415     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}overwriteRestartFile (if true, each restart file will be written to a separate new file):"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00416}00416     \textcolor{keyword}{write}(logfileunit,*) smv\_overwriterestartfile}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00417}00417 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00418}00418     \textcolor{comment}{! restartFileType}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00419}00419     \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(restartfiletype) .and. inputfilemissing) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00420}00420       smv\_restartfiletype = getlowercase(restartfiletype)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00421}00421 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00422}00422     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00423}00423     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}restartFileType (if given, restart file(s) will be written out with the requested format):"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00424}00424     \textcolor{keyword}{write}(logfileunit,*) smv\_restartfiletype}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00425}00425     \textcolor{keywordflow}{if} (smv\_restartfiletype==\textcolor{stringliteral}{'matlab'}) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00426}00426       resfileext = \textcolor{stringliteral}{'m'}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00427}00427       resfileformat = \textcolor{stringliteral}{"{}formatted"{}}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00428}00428       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00429}00429       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    NOTE: Restart file(s) will be written in Matlab script files."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00430}00430       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}          Simply run the restart file as Matlab script."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00431}00431       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}          This will load all restart data into predefined Matlab environment variables."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00432}00432     \textcolor{keywordflow}{elseif} (smv\_restartfiletype==\textcolor{stringliteral}{'binary'}) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00433}00433       resfileext = \textcolor{stringliteral}{'binary'}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00434}00434       resfileformat = \textcolor{stringliteral}{"{}unformatted"{}}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00435}00435       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00436}00436       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    NOTE: Restart file(s) will be written in binary format (unformatted)."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00437}00437       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}          These files are generally nonportable,"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00438}00438       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}          depending on the Machine architecture,"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00439}00439       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}          as well as the Compiler used for building ParaNest."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00440}00440     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00441}00441       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00442}00442       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    FATAL: The resuested restartFileType is not supported by ParaNest."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00443}00443       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           Supported file formats are:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00444}00444       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           .m, .binary"{}})}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00445}00445       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           Correct ParaNest's input restartFileType and rerun the program."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00446}00446       \textcolor{keyword}{call }abort(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00447}00447 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00448}00448 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00449}00449     \textcolor{comment}{! setup evidence file if necessary}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00450}00450     blockpassresult: \textcolor{keywordflow}{if} (passresultexists) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00451}00451 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00452}00452       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00453}00453       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    WARNING: User-\/specified outputter function was detected on input."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00454}00454       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             No evidence, Posterior, Summary files will be generated."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00455}00455       }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00456}00456       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00457}00457       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}passResult (outputter function for outputing the results):"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00458}00458       \textcolor{keyword}{write}(logfileunit,*) \textcolor{stringliteral}{"{}User-\/specified"{}}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00459}00459       passresultdefault => passresult}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00460}00460 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00461}00461     \textcolor{keywordflow}{else} blockpassresult}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00462}00462       }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00463}00463       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00464}00464       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    WARNING: No outputter specified by the user."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00465}00465       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             Using ParaNest default outputter."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00466}00466       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             Evidence, Posterior, Summary files will be generated."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00467}00467       }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00468}00468       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00469}00469       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}passResult (outputter function for outputing the results):"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00470}00470       \textcolor{keyword}{write}(logfileunit,*) \textcolor{stringliteral}{"{}ParaNest default outputter."{}}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00471}00471       passresultdefault => writeoutput}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00472}00472 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00473}00473       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00474}00474       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}evidence filename:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00475}00475       \textcolor{keyword}{write}(logfileunit,*) evifilename}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00476}00476       }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00477}00477       \textcolor{comment}{! writeBinary: format of the evidence file}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00478}00478       \textcolor{keywordflow}{if} (inputfilemissing) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00479}00479         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(writebinary) .and. inputfilemissing) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00480}00480           smv\_writebinary = writebinary}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00481}00481         \textcolor{comment}{!else}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00482}00482         \textcolor{comment}{!  call write(logFileUnit)}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00483}00483         \textcolor{comment}{!  call write(logFileUnit, "{}    WARNING: writeBinary not specified by the user."{} )}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00484}00484         \textcolor{comment}{!  call write(logFileUnit, "{}             Assuming ParaNest default value for writeBinary."{} )}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00485}00485 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00486}00486       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00487}00487         }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00488}00488 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00489}00489       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00490}00490       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}writeBinary (if true, large files will be written in binary):"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00491}00491       \textcolor{keyword}{write}(logfileunit,*) smv\_writebinary}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00492}00492 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00493}00493       \textcolor{comment}{! VarName: setup header in evidence file}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00494}00494       \textcolor{keywordflow}{do} i = 1, nd}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00495}00495         varname(i) = \textcolor{stringliteral}{"{}variable\_"{}} // num2str(i)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00496}00496 \textcolor{keywordflow}{      end do}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00497}00497       }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00498}00498       \textcolor{comment}{! open the evidence file formatted/unformatted}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00499}00499       \textcolor{keywordflow}{if} ( \textcolor{keyword}{allocated}(resfilename) ) \textcolor{keywordflow}{then}    \textcolor{comment}{! append existing evidence file}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00500}00500       }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00501}00501         \textcolor{keywordflow}{if} ( smv\_writebinary ) \textcolor{keywordflow}{then}    \textcolor{comment}{! append existing evidence file}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00502}00502           \textcolor{keyword}{open}(newunit=smv\_evifileunit, file=evifilename, form=\textcolor{stringliteral}{"{}unformatted"{}}, status=\textcolor{stringliteral}{"{}old"{}}, position=\textcolor{stringliteral}{"{}append"{}})}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00503}00503         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00504}00504           \textcolor{keyword}{open}(newunit=smv\_evifileunit, file=evifilename, form=\textcolor{stringliteral}{"{}formatted"{}}, status=\textcolor{stringliteral}{"{}old"{}}, position=\textcolor{stringliteral}{"{}append"{}})}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00505}00505 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00506}00506       }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00507}00507       \textcolor{keywordflow}{else}  \textcolor{comment}{! open evidence file as brand new}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00508}00508         }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00509}00509         \textcolor{keywordflow}{if} ( smv\_writebinary ) \textcolor{keywordflow}{then}    \textcolor{comment}{! append existing evidence file}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00510}00510           \textcolor{keyword}{open}(newunit=smv\_evifileunit, file=evifilename, form=\textcolor{stringliteral}{"{}unformatted"{}}, status=\textcolor{stringliteral}{"{}new"{}})}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00511}00511         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00512}00512           \textcolor{keyword}{open}(newunit=smv\_evifileunit, file=evifilename, form=\textcolor{stringliteral}{"{}formatted"{}}, status=\textcolor{stringliteral}{"{}new"{}})}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00513}00513           ndstring = num2str(nd)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00514}00514           smv\_evifileformat = \textcolor{stringliteral}{"{}(9A"{}} // smv\_outcolwidth // \textcolor{stringliteral}{"{},"{}} // ndstring // \textcolor{stringliteral}{"{}A"{}} // smv\_outcolwidth // \textcolor{stringliteral}{"{})"{}}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00515}00515           \textcolor{keyword}{write}(smv\_evifileunit,smv\_evifileformat) \textcolor{stringliteral}{"{}sampleNumber"{}},\textcolor{stringliteral}{"{}totalFunctionCalls"{}},\textcolor{stringliteral}{"{}acceptanceRate"{}},\textcolor{stringliteral}{"{}meanAcceptanceRate"{}}, \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00516}00516           \textcolor{stringliteral}{"{}normedPriorMass"{}},\textcolor{stringliteral}{"{}weight"{}},\textcolor{stringliteral}{"{}loglike"{}},\textcolor{stringliteral}{"{}logEvidence"{}},\textcolor{stringliteral}{"{}logMaxError"{}},(trim(adjustl(varname(i))),i=1,nd)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00517}00517           smv\_evifileformat = \textcolor{stringliteral}{"{}(2I"{}}//smv\_outcolwidth//\textcolor{stringliteral}{"{},"{}}//num2str(nd+smv\_ncolevifile)//\&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00518}00518                               \textcolor{stringliteral}{"{}E"{}}//smv\_outcolwidth//\textcolor{stringliteral}{"{}."{}}//smv\_outprecision//\textcolor{stringliteral}{"{})"{}}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00519}00519 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00520}00520 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00521}00521 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00522}00522 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00523}00523 \textcolor{keywordflow}{    end if} blockpassresult}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00524}00524 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00525}00525 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00526}00526     \textcolor{comment}{! setup ParaNest Constrained Sampler}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00527}00527 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00528}00528     \textcolor{comment}{! method: check if an old restart file is given as input}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00529}00529     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00530}00530     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00531}00531     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00532}00532     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    Sampling Method Specification                                     **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00533}00533     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00534}00534     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00535}00535 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00536}00536     \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(method) .and. inputfilemissing) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00537}00537       smv\_method = trim(adjustl(method))}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00538}00538 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00539}00539     \textcolor{keywordflow}{if} (len\_trim(smv\_method)>0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00540}00540       \textcolor{keywordflow}{if} (smv\_method/=\textcolor{stringliteral}{"{}rejection"{}}) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00541}00541         \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00542}00542         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    FATAL: Requested sampling method is not supported."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00543}00543         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           Available sampling methods are:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00544}00544         \textcolor{keywordflow}{do} i = 1,\textcolor{keyword}{size}(smv\_availablesamplingmethod)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00545}00545         \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}           "{}}//smv\_availablesamplingmethod(i))}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00546}00546 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00547}00547         \textcolor{keyword}{call }abort(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00548}00548 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00549}00549     \textcolor{keywordflow}{else}    \textcolor{comment}{! method is not present}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00550}00550       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00551}00551       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    WARNING: No sampling method has been assigned by user."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00552}00552       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             Assuming default sampling method."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00553}00553       smv\_method = \textcolor{stringliteral}{"{}rejection"{}}   \textcolor{comment}{! This can be made a smart choice, depending on nd, in future.}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00554}00554 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00555}00555     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00556}00556     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}method (used for sampling the function):"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00557}00557     \textcolor{keyword}{write}(logfileunit,*) smv\_method}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00558}00558     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00559}00559     \textcolor{keywordflow}{if} (smv\_method==\textcolor{stringliteral}{"{}rejection"{}}) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00560}00560       \textcolor{keyword}{call }setupcars( smv\_filebase, resfileformat, resfileext, smv\_overwriterestartfile, nd, smv\_np, ncmax \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00561}00561                     , logfileunit, stabilizationrequested, maxkvolumelooprecursion, maxallowedkmeansfailure \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00562}00562                     , maxallowedminvolfailure, mahalsqweightexponent, scalefactor, tightness, inclusionfraction \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00563}00563                     , domain, resfilename, inputfile, iupdatecbe, logdomainsize )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00564}00564 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00565}00565 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00566}00566     \textcolor{comment}{! call ParaNest kernel}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00567}00567     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00568}00568     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00569}00569     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00570}00570     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    Starting ParaNest sampling -\/ "{}}//getnicedatetime()//\textcolor{stringliteral}{"{}                **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00571}00571     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00572}00572     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00573}00573 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00574}00574     \textcolor{keyword}{call }cpu\_time(starttime)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00575}00575     \textcolor{keyword}{call }runlmc( nd, smv\_np, smv\_iverbose, smv\_ireport, log(smv\_tolerance), logdomainsize \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00576}00576                , \mbox{\hyperlink{ParaMonte_0drunParaDRAM_8f90_a61612d7f17ad31a757aee8ee361f7fbd}{getlogfunc}}, passresultdefault, logfileunit, ncall2logfuncaccepted, ncall2logfunctotal )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00577}00577     \textcolor{keyword}{call }cpu\_time(endtime)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00578}00578     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00579}00579     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00580}00580     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00581}00581     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    Exiting ParaNest sampling -\/ "{}}//getnicedatetime()//\textcolor{stringliteral}{"{}                 **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00582}00582     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00583}00583     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00584}00584 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00585}00585     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00586}00586     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}Total number of integration steps:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00587}00587     \textcolor{keyword}{write}(logfileunit,*) ncall2logfuncaccepted}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00588}00588 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00589}00589     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00590}00590     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}Total number of function calls:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00591}00591     \textcolor{keyword}{write}(logfileunit,*) ncall2logfunctotal}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00592}00592 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00593}00593     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00594}00594     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}Overall integration efficiency:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00595}00595     \textcolor{keyword}{write}(logfileunit,*) real(ncall2logfuncaccepted,kind=rk) / real(ncall2logfunctotal,kind=rk)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00596}00596 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00597}00597     totalruntime = endtime -\/ starttime}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00598}00598     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00599}00599     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}Total runtime in seconds:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00600}00600     \textcolor{keyword}{write}(logfileunit,*) totalruntime}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00601}00601 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00602}00602     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00603}00603     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}Average time per integration step, in seconds:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00604}00604     \textcolor{keyword}{write}(logfileunit,*) totalruntime / ncall2logfuncaccepted}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00605}00605 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00606}00606     \textcolor{keyword}{close}(smv\_evifileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00607}00607 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00608}00608     \textcolor{comment}{! Generate posterior file if necessary}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00609}00609     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00610}00610     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00611}00611     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**    Generating poterior sample file -\/ "{}}//getnicedatetime()//\textcolor{stringliteral}{"{}           **"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00612}00612     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}**************************************************************************"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00613}00613     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00614}00614     \textcolor{keywordflow}{if} (passresultexists) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00615}00615 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00616}00616       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00617}00617       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}    WARNING: User outputter function detected."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00618}00618       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}             Skipping posterior file generation."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00619}00619 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00620}00620     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00621}00621       }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00622}00622       \textcolor{comment}{!posFileName = smv\_fileBase // "{}.posterior"{}}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00623}00623       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00624}00624       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}posterior sample filename:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00625}00625       \textcolor{keyword}{write}(logfileunit,*) posfilename}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00626}00626       }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00627}00627       \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(posteriorsamplesize) .and. inputfilemissing) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00628}00628         smv\_posteriorsamplesize = posteriorsamplesize}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00629}00629       \textcolor{comment}{!else}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00630}00630       \textcolor{comment}{!  call write(logFileUnit)}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00631}00631       \textcolor{comment}{!  call write(logFileUnit, "{}WARNING: posteriorSampleSize not set by user"{} )}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00632}00632       \textcolor{comment}{!  call write(logFileUnit, "{}         Assuming default posteriorSampleSize."{} )}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00633}00633       \textcolor{comment}{!  smv\_posteriorSampleSize = 1.\_RK}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00634}00634 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00635}00635 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00636}00636       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00637}00637       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}posteriorSampleSize (in units of the effective posterior sample size):"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00638}00638       \textcolor{keyword}{write}(logfileunit,*) smv\_posteriorsamplesize}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00639}00639       }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00640}00640       \textcolor{keyword}{call }generateposterior( nd, ncall2logfuncaccepted, smv\_posteriorsamplesize, evifilename \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00641}00641                             , posfilename, effpossamsize, smv\_writebinary, logfileunit )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00642}00642 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00643}00643       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00644}00644       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}Effective posterior sample size:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00645}00645       \textcolor{keyword}{write}(logfileunit,*) effpossamsize}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00646}00646 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00647}00647       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00648}00648       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}Output posterior sample size:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00649}00649       \textcolor{keyword}{write}(logfileunit,*) nint(effpossamsize*smv\_posteriorsamplesize)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00650}00650 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00651}00651     \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00652}00652     \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}Effective posterior sampling efficiency:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00653}00653     \textcolor{keyword}{write}(logfileunit,*) real(effpossamsize,kind=rk) / real(ncall2logfunctotal,kind=rk)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00654}00654 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00655}00655 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00656}00656 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00657}00657     \textcolor{keyword}{close}(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00658}00658   }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00659}00659   \textcolor{keyword}{end subroutine }runparanest}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00660}00660 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00661}00661 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00662}00662 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00663}00663 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00664}00664   \textcolor{keyword}{subroutine }setupgeneraloptions(output\_unit,inputFile)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00665}00665     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00666}00666     \textcolor{keywordtype}{use }misc, \textcolor{keywordtype}{only}: getlowercase}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00667}00667     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00668}00668     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00669}00669     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00670}00670     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(in)}           :: output\_unit}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00671}00671     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: inputFile}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00672}00672     \textcolor{keywordtype}{integer}                            :: inputFileUnit}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00673}00673     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00674}00674     \textcolor{keywordtype}{integer}         :: np}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00675}00675     \textcolor{keywordtype}{integer}         :: ireport}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00676}00676     \textcolor{keywordtype}{integer}         :: iverbose}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00677}00677     \textcolor{keywordtype}{logical}         :: writeBinary}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00678}00678     \textcolor{keywordtype}{integer}         :: RandomSeed(2000)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00679}00679     \textcolor{keywordtype}{logical}         :: overwriteRestartFile}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00680}00680 \textcolor{keywordtype}{    real}(RK)        :: posteriorSampleSize}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00681}00681 \textcolor{keywordtype}{    real}(RK)        :: tolerance}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00682}00682     \textcolor{keywordtype}{character(5095)} :: fileBase}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00683}00683     \textcolor{keywordtype}{character(5095)} :: restartFileType}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00684}00684     \textcolor{keywordtype}{character(5095)} :: method}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00685}00685     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00686}00686     namelist /pngeneral/ np, tolerance, randomseed, method}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00687}00687     namelist /pngeneral/ posteriorsamplesize, writebinary, overwriterestartfile}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00688}00688     namelist /pngeneral/ restartfiletype, filebase, iverbose , ireport}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00689}00689     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00690}00690     \textcolor{comment}{! initialize general options}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00691}00691     np                   = 1000}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00692}00692     method               = \textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00693}00693     ireport              = 10000}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00694}00694     iverbose             = 10000}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00695}00695     filebase             = \textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00696}00696     tolerance            = 1.\_rk}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00697}00697     randomseed           = -\/huge(randomseed)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00698}00698     writebinary          = .false.}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00699}00699     restartfiletype      = \textcolor{stringliteral}{"{}matlab"{}}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00700}00700     posteriorsamplesize  = 1.\_rk}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00701}00701     overwriterestartfile = .true.}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00702}00702     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00703}00703     \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(inputfile)) \textcolor{keywordflow}{then} \textcolor{comment}{! inputFile: setup ParaNest's baseFile and working directory}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00704}00704       \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00705}00705       \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}  User's input file for ParaNest options detected."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00706}00706       \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00707}00707       \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}  All ParaNest options will be read from input file."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00708}00708       \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00709}00709       \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}  ParaNest input options file:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00710}00710       \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00711}00711       \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}    "{}}//inputfile )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00712}00712       \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00713}00713       \textcolor{keyword}{open}(newunit=inputfileunit,file=inputfile,status=\textcolor{stringliteral}{'old'})}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00714}00714       \textcolor{keyword}{read}(inputfileunit,nml=pngeneral)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00715}00715       \textcolor{keyword}{close}(inputfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00716}00716 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00717}00717 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00718}00718     smv\_np                   = np}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00719}00719     smv\_method               = trim(adjustl(method))}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00720}00720     smv\_ireport              = ireport}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00721}00721     smv\_iverbose             = iverbose}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00722}00722     smv\_filebase             = trim(adjustl(filebase))}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00723}00723     smv\_tolerance            = tolerance}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00724}00724     smv\_randomseed           = pack( randomseed, randomseed>-\/huge(randomseed) )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00725}00725     smv\_writebinary          = writebinary}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00726}00726     smv\_restartfiletype      = getlowercase( trim(adjustl(restartfiletype)) )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00727}00727     smv\_posteriorsamplesize  = posteriorsamplesize}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00728}00728     smv\_overwriterestartfile = overwriterestartfile}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00729}00729 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00730}00730   \textcolor{keyword}{end subroutine }setupgeneraloptions}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00731}00731 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00732}00732 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00733}00733 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00734}00734 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00735}00735   \textcolor{keyword}{module} subroutine \textcolor{keyword}{write}(fileunit,string)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00736}00736     \textcolor{keywordtype}{use }misc, \textcolor{keywordtype}{only}: num2str}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00737}00737     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00738}00738     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(in)}           :: fileUnit}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00739}00739     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: string}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00740}00740     \textcolor{keywordtype}{character(len=:)}, \textcolor{keywordtype}{allocatable}      :: thisFormat}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00741}00741     \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(string)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00742}00742       thisformat = \textcolor{stringliteral}{"{}(1A"{}} // num2str(len\_trim(string)) // \textcolor{stringliteral}{"{})"{}}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00743}00743       \textcolor{keyword}{write}(fileunit,thisformat) trim(adjustl(string))}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00744}00744     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00745}00745       \textcolor{keyword}{write}(fileunit,*)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00746}00746 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00747}00747   \textcolor{keyword}{end subroutine }write}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00748}00748 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00749}00749 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00750}00750 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00751}00751 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00752}00752   \textcolor{keyword}{module} subroutine abort(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00753}00753     use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: output\_unit}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00754}00754     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00755}00755     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: logFileUnit}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00756}00756     \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(logfileunit)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00757}00757       \textcolor{keyword}{call }write(logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00758}00758       \textcolor{keyword}{call }write(logfileunit, \textcolor{stringliteral}{"{}Gracefully exiting ParaNest."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00759}00759       \textcolor{keywordflow}{if} (logfileunit/=output\_unit) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00760}00760         \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00761}00761         \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}Fatal error occured. For details, please see ParaNest output report file."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00762}00762         \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}Gracefully exiting ParaNest."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00763}00763 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00764}00764     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00765}00765       \textcolor{keyword}{call }write(output\_unit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00766}00766       \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}Fatal error occured. For details, please see ParaNest output report file."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00767}00767       \textcolor{keyword}{call }write(output\_unit, \textcolor{stringliteral}{"{}Gracefully exiting ParaNest."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00768}00768 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00769}00769     stop}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00770}00770   \textcolor{keyword}{end subroutine }abort}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00771}00771 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00772}00772 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00773}00773 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00774}00774 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00775}00775   \textcolor{keyword}{module} subroutine writeoutput( nd, ncall2logfuncaccepted, ncall2logfunctotal, accr, accrmean, domainsizenormed \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00776}00776                                , domaindiffnormed, logfunc, logevidence, logmaxerror, param )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00777}00777     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00778}00778       \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(in)} :: nd, nCall2LogFuncAccepted, nCall2LogFuncTotal}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00779}00779 \textcolor{keywordtype}{      real}(RK), \textcolor{keywordtype}{intent(in)} :: accr, accrMean, domainSizeNormed, domainDiffNormed}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00780}00780 \textcolor{keywordtype}{      real}(RK), \textcolor{keywordtype}{intent(in)} :: logFunc, logEvidence, logMaxError}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00781}00781 \textcolor{keywordtype}{      real}(RK), \textcolor{keywordtype}{intent(in)} :: Param(nd)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00782}00782     \textcolor{keywordflow}{if} (smv\_writebinary) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00783}00783       \textcolor{keyword}{write}(smv\_evifileunit) ncall2logfuncaccepted,ncall2logfunctotal,accr,accrmean,domainsizenormed, \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00784}00784                              domaindiffnormed,logfunc,logevidence,logmaxerror,param}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00785}00785     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00786}00786       \textcolor{keyword}{write}(smv\_evifileunit,smv\_evifileformat) ncall2logfuncaccepted,ncall2logfunctotal,accr,accrmean,domainsizenormed, \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00787}00787                                                domaindiffnormed,logfunc,logevidence,logmaxerror,param}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00788}00788 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00789}00789   \textcolor{keyword}{end subroutine }writeoutput}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00790}00790 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00791}00791 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00792}00792 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00793}00793 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00794}00794   \textcolor{keyword}{module} subroutine generateposterior( nd, ncall2logfuncaccepted, posteriorsamplesize, evifilename \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00795}00795                                      , posfilename, effpossamsize, binaryformat, logfileunit )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00796}00796 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00797}00797     use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: output\_unit}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00798}00798     \textcolor{keywordtype}{use }misc, \textcolor{keywordtype}{only}: num2str, str2int}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00799}00799     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00800}00800     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}            :: eviFileName, posFileName}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00801}00801 \textcolor{keywordtype}{    real}(RK)    , \textcolor{keywordtype}{intent(in)}            :: posteriorSampleSize}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00802}00802     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(in)}            :: nd,nCall2LogFuncAccepted}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00803}00803     \textcolor{keywordtype}{logical}     , \textcolor{keywordtype}{intent(in)}            :: binaryFormat}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00804}00804     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(out)}           :: effPosSamSize}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00805}00805     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: logFileUnit}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00806}00806 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00807}00807     \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{allocatable}           :: Isample(:), IFunctionCall(:)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00808}00808 \textcolor{keywordtype}{    real}(RK)    , \textcolor{keywordtype}{allocatable}           :: accr(:), accrMean(:), PriorMass(:), PriorWeight(:)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00809}00809 \textcolor{keywordtype}{    real}(RK)    , \textcolor{keywordtype}{allocatable}           :: LogFunc(:), LogEvidence(:), LogMaxError(:)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00810}00810     \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}           :: posFileFormat, eviFileFormat}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00811}00811 \textcolor{keywordtype}{    real}(RK)                            :: Point(nd,nCall2LogFuncAccepted), ImportanceWeight(nCall2LogFuncAccepted), maxImportanceWeight, dummy}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00812}00812 \textcolor{keywordtype}{    real}(RK)                            :: ImportanceWeightCDF(0:nCall2LogFuncAccepted)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00813}00813     \textcolor{keywordtype}{integer}                             :: i, ip, eviFileUnit, posFileUnit, counter}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00814}00814     \textcolor{keywordtype}{character(smv\_varNameLength)}        :: VarName(nd)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00815}00815     \textcolor{keywordtype}{character(str2int(smv\_outColWidth))} :: Header(nd+smv\_nColEviFile)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00816}00816 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00817}00817     \textcolor{keyword}{allocate}(isample(ncall2logfuncaccepted), ifunctioncall(ncall2logfuncaccepted))}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00818}00818     \textcolor{keyword}{allocate}( accr(ncall2logfuncaccepted), accrmean(ncall2logfuncaccepted), priormass(ncall2logfuncaccepted), priorweight(ncall2logfuncaccepted), logfunc(ncall2logfuncaccepted) )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00819}00819     \textcolor{keyword}{allocate}( logevidence(ncall2logfuncaccepted), logmaxerror(ncall2logfuncaccepted) )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00820}00820 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00821}00821     maximportanceweight = -\/huge(maximportanceweight)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00822}00822     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00823}00823     \textcolor{keywordflow}{if} (binaryformat) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00824}00824 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00825}00825       \textcolor{keyword}{open}(newunit=evifileunit, file=evifilename, form=\textcolor{stringliteral}{"{}unformatted"{}}, status=\textcolor{stringliteral}{"{}old"{}})}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00826}00826         \textcolor{comment}{!read(eviFileUnit) Header}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00827}00827         \textcolor{keywordflow}{do} ip = 1,ncall2logfuncaccepted}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00828}00828           \textcolor{keyword}{read}(evifileunit) isample(ip),ifunctioncall(ip),accr(ip),accrmean(ip),priormass(ip), \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00829}00829                             priorweight(ip),logfunc(ip),logevidence(ip),logmaxerror(ip),point(1:nd,ip)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00830}00830           importanceweight(ip) = log(priorweight(ip)) + logfunc(ip)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00831}00831           maximportanceweight = max( maximportanceweight , importanceweight(ip) )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00832}00832 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00833}00833       \textcolor{keyword}{close}(evifileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00834}00834 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00835}00835     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00836}00836 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00837}00837       evifileformat = \textcolor{stringliteral}{"{}(2I"{}}//smv\_outcolwidth//\textcolor{stringliteral}{"{},"{}}//num2str(nd+smv\_ncolevifile)//\textcolor{stringliteral}{"{}E"{}}//smv\_outcolwidth//\textcolor{stringliteral}{"{}."{}}//smv\_outprecision//\textcolor{stringliteral}{"{})"{}}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00838}00838       \textcolor{keyword}{open}(newunit=evifileunit, file=evifilename, status=\textcolor{stringliteral}{"{}old"{}})}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00839}00839         \textcolor{keyword}{read}(evifileunit,*) header}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00840}00840         \textcolor{keywordflow}{do} ip = 1,ncall2logfuncaccepted}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00841}00841           \textcolor{keyword}{read}(evifileunit,evifileformat) isample(ip),ifunctioncall(ip),accr(ip),accrmean(ip),priormass(ip), \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00842}00842                                           priorweight(ip),logfunc(ip),logevidence(ip),logmaxerror(ip),point(1:nd,ip)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00843}00843           importanceweight(ip) = log(priorweight(ip)) + logfunc(ip)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00844}00844           maximportanceweight = max( maximportanceweight , importanceweight(ip) )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00845}00845 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00846}00846       \textcolor{keyword}{close}(evifileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00847}00847 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00848}00848     \textcolor{comment}{!else    ! formate status of file cannot be determined (UNKNOWN)}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00849}00849     \textcolor{comment}{!}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00850}00850     \textcolor{comment}{!  if (present(logFileUnit)) then}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00851}00851     \textcolor{comment}{!    i = logFileUnit}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00852}00852     \textcolor{comment}{!  else}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00853}00853     \textcolor{comment}{!    i = output\_unit}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00854}00854     \textcolor{comment}{!  end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00855}00855     \textcolor{comment}{!  call write(i, "{}    FATAL: In ParaNest@Setup@generatePosterior:"{} )}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00856}00856     \textcolor{comment}{!  call write(i, "{}           Unable to inquire the format of the input evidence file:"{} )}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00857}00857     \textcolor{comment}{!  call write(i, "{}           "{}//eviFileName )}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00858}00858     \textcolor{comment}{!  call write(i, "{}           Please ensure the input file is the same intact output from ParaNest."{} )}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00859}00859     \textcolor{comment}{!  call write(i, "{}           evidence file format: "{} // formatted )}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00860}00860     \textcolor{comment}{!  call abort(i)}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00861}00861 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00862}00862 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00863}00863 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00864}00864     importanceweight = exp( importanceweight -\/ maximportanceweight )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00865}00865     effpossamsize = int( sum(importanceweight) )}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00866}00866     importanceweightcdf = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00867}00867     \textcolor{keywordflow}{do} ip = 1,ncall2logfuncaccepted}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00868}00868       importanceweightcdf(ip) = importanceweightcdf(ip-\/1) + importanceweight(ip)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00869}00869 \textcolor{keywordflow}{    end do}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00870}00870     importanceweightcdf = importanceweightcdf / importanceweightcdf(ncall2logfuncaccepted)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00871}00871     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00872}00872     \textcolor{comment}{! write poterior file}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00873}00873     \textcolor{keywordflow}{do} i = 1, nd}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00874}00874       varname(i) = \textcolor{stringliteral}{"{}variable\_"{}} // num2str(i)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00875}00875 \textcolor{keywordflow}{    end do}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00876}00876     posfileformat = \textcolor{stringliteral}{"{}("{}} // num2str(nd+4) // \textcolor{stringliteral}{"{}A"{}} // smv\_outcolwidth // \textcolor{stringliteral}{"{})"{}}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00877}00877     \textcolor{keyword}{open}(newunit=posfileunit,file=posfilename, status=\textcolor{stringliteral}{"{}replace"{}})}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00878}00878     \textcolor{keyword}{write}(posfileunit,posfileformat) \textcolor{stringliteral}{"{}sampleNumber"{}},\textcolor{stringliteral}{"{}evidenceSampleNumber"{}},\textcolor{stringliteral}{"{}ImportanceWeight"{}},\textcolor{stringliteral}{"{}LogFunc"{}}, \&}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00879}00879                                      (trim(adjustl(header(ip))),ip=smv\_ncolevifile+1,nd+smv\_ncolevifile)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00880}00880     posfileformat = \textcolor{stringliteral}{"{}(2I"{}} // smv\_outcolwidth // \textcolor{stringliteral}{"{},"{}} // num2str(nd+2) // \textcolor{stringliteral}{"{}E"{}} // smv\_outcolwidth // \textcolor{stringliteral}{"{}."{}} // smv\_outprecision // \textcolor{stringliteral}{"{})"{}}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00881}00881     }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00882}00882     \textcolor{keywordflow}{do} counter = 1, nint(effpossamsize*posteriorsamplesize)  \textcolor{comment}{! This is the posterior sample count}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00883}00883       \textcolor{keyword}{call }random\_number(dummy)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00884}00884       ip = minloc(importanceweightcdf,1,mask=importanceweightcdf>dummy)-\/1}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00885}00885       \textcolor{keyword}{write}(posfileunit,posfileformat) counter, isample(ip), importanceweight(ip), logfunc(ip), point(1:nd,ip)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00886}00886 \textcolor{keywordflow}{    end do}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00887}00887     \textcolor{keyword}{close}(posfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00888}00888 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00889}00889   \textcolor{keyword}{end subroutine }generateposterior}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00890}00890 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00891}00891 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00892}00892 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00893}00893 }
+\DoxyCodeLine{\Hypertarget{ParaNest_0dSetup__mod_8f90_source_l00894}00894 \textcolor{keyword}{end }submodule Setup}
+
+\end{DoxyCode}

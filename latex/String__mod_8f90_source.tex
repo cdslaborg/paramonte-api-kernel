@@ -1,0 +1,766 @@
+\hypertarget{String__mod_8f90_source}{}\doxysection{String\+\_\+mod.\+f90}
+\label{String__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/String\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/String\_mod.f90}}
+\mbox{\hyperlink{String__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00001}00001 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00002}00002 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00003}00003 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00004}00004 \textcolor{comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00005}00005 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00006}00006 \textcolor{comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00007}00007 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00008}00008 \textcolor{comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00009}00009 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00010}00010 \textcolor{comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00011}00011 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00012}00012 \textcolor{comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00013}00013 \textcolor{comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}),}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00014}00014 \textcolor{comment}{!!!!   to deal in the Software without restriction, including without limitation}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00015}00015 \textcolor{comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00016}00016 \textcolor{comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00017}00017 \textcolor{comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00018}00018 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00019}00019 \textcolor{comment}{!!!!   The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00020}00020 \textcolor{comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00021}00021 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00022}00022 \textcolor{comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00023}00023 \textcolor{comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00024}00024 \textcolor{comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00025}00025 \textcolor{comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00026}00026 \textcolor{comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00027}00027 \textcolor{comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00028}00028 \textcolor{comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00029}00029 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00030}00030 \textcolor{comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00031}00031 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00032}00032 \textcolor{comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00033}00033 \textcolor{comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00034}00034 \textcolor{comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00035}00035 \textcolor{comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00036}00036 \textcolor{comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00037}00037 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00038}00038 \textcolor{comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00039}00039 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00040}00040 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00041}00041 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00046}\mbox{\hyperlink{namespacestring__mod}{00046}} \textcolor{keyword}{module} \mbox{\hyperlink{namespacestring__mod}{string\_mod}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00048}00048     use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: int8}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00049}00049     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00050}00050     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacejaggedarray__mod}{jaggedarray\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structjaggedarray__mod_1_1charvec__type}{charvec\_type}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00051}00051     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00053}00053     \textcolor{keywordtype}{public}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00055}\mbox{\hyperlink{namespacestring__mod_ab6987a49e64486b1b6e8a021a222d91c}{00055}}     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}} = \textcolor{stringliteral}{"{}@String\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00057}\mbox{\hyperlink{namespacestring__mod_a33f2080b84cc9b2d98ff4fede8d8f3d4}{00057}}     \textcolor{keywordtype}{integer(int8)} :: \mbox{\hyperlink{namespacestring__mod_a33f2080b84cc9b2d98ff4fede8d8f3d4}{num2str\_maxlen}} = 63\_int8}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00060}\mbox{\hyperlink{structstring__mod_1_1intstr__type}{00060}}     \textcolor{keyword}{type} :: \mbox{\hyperlink{structstring__mod_1_1intstr__type}{intstr\_type}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00061}\mbox{\hyperlink{structstring__mod_1_1intstr__type_a1bb1798589927bb11cf74a2764a16d27}{00061}}         \textcolor{keywordtype}{integer(IK)}                 :: val}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00062}\mbox{\hyperlink{structstring__mod_1_1intstr__type_a99aa7a4b6de062dcccea1e8a3da62793}{00062}}         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}   :: str}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00063}00063     \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00064}\mbox{\hyperlink{structstring__mod_1_1intstr__type_a0680f8596ce9d15f049369a9ba725242}{00064}}         \textcolor{keywordtype}{procedure}, \textcolor{keywordtype}{nopass}           :: \mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{int322str}}, \mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{int642str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00065}\mbox{\hyperlink{structstring__mod_1_1intstr__type_a6efdb63ddf680b34ce5d4cfc3e667a83}{00065}}         generic                     :: \mbox{\hyperlink{interfacestring__mod_1_1int2str}{int2str}} => \mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{int322str}}, \mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{int642str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00066}00066     \textcolor{keyword}{end type }\mbox{\hyperlink{structstring__mod_1_1intstr__type}{intstr\_type}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00069}\mbox{\hyperlink{structstring__mod_1_1realstr__type}{00069}}     \textcolor{keyword}{type} :: \mbox{\hyperlink{structstring__mod_1_1realstr__type}{realstr\_type}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00070}\mbox{\hyperlink{structstring__mod_1_1realstr__type_ac5736c39fad6fed8662df94a48cbc399}{00070}}         \textcolor{keywordtype}{integer(IK)}                 :: val}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00071}\mbox{\hyperlink{structstring__mod_1_1realstr__type_a0c38edfb58465457ac851afba77e0533}{00071}}         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}   :: str}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00072}00072     \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00073}\mbox{\hyperlink{structstring__mod_1_1realstr__type_a87370f7a4ee1ba5e4e7fc0da04325d49}{00073}}         \textcolor{keywordtype}{procedure}, \textcolor{keywordtype}{nopass}           :: \mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}}, \mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00074}\mbox{\hyperlink{structstring__mod_1_1realstr__type_a10308f2758c3d6d2232e3c58eb9cc0e7}{00074}}         generic                     :: \mbox{\hyperlink{interfacestring__mod_1_1real2str}{real2str}} => \mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}}, \mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00075}00075     \textcolor{keyword}{end type }\mbox{\hyperlink{structstring__mod_1_1realstr__type}{realstr\_type}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00078}\mbox{\hyperlink{structstring__mod_1_1string__type}{00078}}     \textcolor{keyword}{type} :: \mbox{\hyperlink{structstring__mod_1_1string__type}{string\_type}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00079}\mbox{\hyperlink{structstring__mod_1_1string__type_abcd44682f52ab9741b77d1c86279cdc6}{00079}}         \textcolor{keywordtype}{character(:)}      , \textcolor{keywordtype}{allocatable}   :: \textcolor{keywordtype}{value}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00080}\mbox{\hyperlink{structstring__mod_1_1string__type_a31ca673a0c10f8bc575a1ae12850f8c2}{00080}}         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structjaggedarray__mod_1_1charvec__type}{charvec\_type}}), \textcolor{keywordtype}{allocatable}   :: parts(:)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00081}\mbox{\hyperlink{structstring__mod_1_1string__type_a5c4328763e2e501ada46c08911da2861}{00081}}         \textcolor{keywordtype}{integer(IK)}                       :: npart = 0\_ik   }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00082}00082     \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00083}\mbox{\hyperlink{structstring__mod_1_1string__type_ad86604774d00a276fe5e8f1fc784a240}{00083}}         \textcolor{keywordtype}{procedure}, \textcolor{keywordtype}{nopass} :: \mbox{\hyperlink{namespacestring__mod_ab7da41d59fc13225e53244a90fe258f6}{split}}, \mbox{\hyperlink{namespacestring__mod_a6c1958789d670e5ecf3ddea42f853ec2}{replacestr}}, \mbox{\hyperlink{namespacestring__mod_a7b4ad790c8a3a5bb9937ee1b51f3baa2}{getlowercase}}, \mbox{\hyperlink{namespacestring__mod_a4d5ef25637ff0a439f9ced599fbdd705}{getuppercase}}, \mbox{\hyperlink{namespacestring__mod_a25f7f44386f91b5553dabe0a129f27a5}{isinteger}}, \mbox{\hyperlink{namespacestring__mod_afae70a8dd978d39927a6dd7de43ad7b8}{isdigit}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00084}\mbox{\hyperlink{structstring__mod_1_1string__type_a90bb6e0840ea6cbd96f073c32ce11797}{00084}}         \textcolor{keywordtype}{procedure}, \textcolor{keywordtype}{nopass} :: \mbox{\hyperlink{namespacestring__mod_a8d86ef342a50fddbff0bdf11c7de1234}{str2int}}, \mbox{\hyperlink{namespacestring__mod_aba75c4ed4936da7cb10eab54278d8203}{str2real}}, \mbox{\hyperlink{namespacestring__mod_ae965daa119f1e974a1fb7a8b85eba112}{str2int32}}, \mbox{\hyperlink{namespacestring__mod_a0accbe2e1de46c9866441cf4c0c55174}{str2int64}}, \mbox{\hyperlink{namespacestring__mod_a9cfd5d3d41fdeee8efef93f3e974e996}{str2real32}}, \mbox{\hyperlink{namespacestring__mod_aa22095a92558b504e85dfc1887e9414e}{str2real64}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00085}\mbox{\hyperlink{structstring__mod_1_1string__type_a7f32b9a4ebf40fda5f455840c23bedb9}{00085}}         \textcolor{keywordtype}{procedure}, \textcolor{keywordtype}{nopass} :: pad => \mbox{\hyperlink{namespacestring__mod_a6cda1ee2a542f69d020974dfbf506cd8}{padstring}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00086}00086     \textcolor{keyword}{end type }\mbox{\hyperlink{structstring__mod_1_1string__type}{string\_type}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00088}\mbox{\hyperlink{interfacestring__mod_1_1int2str}{00088}}     \textcolor{keyword}{interface} \mbox{\hyperlink{interfacestring__mod_1_1int2str}{int2str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00089}00089         \textcolor{keyword}{module procedure} \mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{int322str}}, \mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{int642str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00090}00090     \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00092}\mbox{\hyperlink{interfacestring__mod_1_1real2str}{00092}}     \textcolor{keyword}{interface} \mbox{\hyperlink{interfacestring__mod_1_1real2str}{real2str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00093}00093         \textcolor{keyword}{module procedure} \mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}}, \mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}}, \mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}}, \mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00094}00094     \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00096}\mbox{\hyperlink{interfacestring__mod_1_1num2str}{00096}}     \textcolor{keyword}{interface} \mbox{\hyperlink{interfacestring__mod_1_1num2str}{num2str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00097}00097         \textcolor{keyword}{module procedure} \mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{int322str}}, \mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{int642str}}, \mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}}, \mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}}, \mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}}, \mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}}, \mbox{\hyperlink{namespacestring__mod_a6d007630e8352cf8387a5750d6b267de}{log2str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00098}00098     \textcolor{keyword}{end interface}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00100}00100 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00102}00102 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00104}00104 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00105}00105 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00121}00121     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00122}\mbox{\hyperlink{namespacestring__mod_a6c1958789d670e5ecf3ddea42f853ec2}{00122}}     \textcolor{keywordtype}{pure} \textcolor{keywordtype}{recursive} \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_a6c1958789d670e5ecf3ddea42f853ec2}{replacestr}}(string,search,substitute) \textcolor{keyword}{result}(modifiedString)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00123}00123 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00124}00124 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: replaceStr}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00125}00125 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00126}00126 \textcolor{preprocessor}{}        \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00127}00127         \textcolor{keywordtype}{character(len=*)}, \textcolor{keywordtype}{intent(in)}  :: string, search, substitute}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00128}00128         \textcolor{keywordtype}{character(len=:)}, \textcolor{keywordtype}{allocatable} :: modifiedstring}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00129}00129         \textcolor{keywordtype}{integer(IK)}                   :: i, stringlen, searchlen}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00130}00130         stringlen = len(string)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00131}00131         searchlen = len(search)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00132}00132         \textcolor{keywordflow}{if} (stringlen==0 .or. searchlen==0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00133}00133             modifiedstring = \textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00134}00134             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00135}00135         \textcolor{keywordflow}{elseif} (stringlen<searchlen) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00136}00136             modifiedstring = string}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00137}00137             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00138}00138 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00139}00139         i = 1}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00140}00140         \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00141}00141             \textcolor{keywordflow}{if} (string(i:i+searchlen-\/1)==search) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00142}00142                 modifiedstring = string(1:i-\/1) // substitute // \mbox{\hyperlink{namespacestring__mod_a6c1958789d670e5ecf3ddea42f853ec2}{replacestr}}(string(i+searchlen:stringlen),search,substitute)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00143}00143                 \textcolor{keywordflow}{exit}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00144}00144 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00145}00145             \textcolor{keywordflow}{if} (i+searchlen>stringlen) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00146}00146                 modifiedstring = string}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00147}00147                 \textcolor{keywordflow}{exit}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00148}00148 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00149}00149             i = i + 1}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00150}00150             cycle}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00151}00151 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00152}00152     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_a6c1958789d670e5ecf3ddea42f853ec2}{replacestr}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00153}00153 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00154}00154 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00155}00155 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00180}00180     \textcolor{comment}{! Amir Shahmoradi, Friday Dec 4, 2020, 11:40 PM, Dallas, TX}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00181}\mbox{\hyperlink{namespacestring__mod_ab7da41d59fc13225e53244a90fe258f6}{00181}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_ab7da41d59fc13225e53244a90fe258f6}{split}}(string,delim,npart) \textcolor{keyword}{result}(Parts)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00182}00182 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00183}00183 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: split}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00184}00184 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00185}00185 \textcolor{preprocessor}{}        \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00186}00186         \textcolor{keywordtype}{character(len=*)}    , \textcolor{keywordtype}{intent(in)}            :: string, delim}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00187}00187         \textcolor{keywordtype}{integer(IK)}         , \textcolor{keywordtype}{intent(out)}, \textcolor{keywordtype}{optional} :: npart}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00188}00188         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structjaggedarray__mod_1_1charvec__type}{charvec\_type}})  , \textcolor{keywordtype}{allocatable}           :: parts(:)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00189}00189         \textcolor{keywordtype}{integer(IK)}         , \textcolor{keywordtype}{allocatable}           :: partend(:)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00190}00190         \textcolor{keywordtype}{integer(IK)}         , \textcolor{keywordtype}{allocatable}           :: partbegin(:)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00191}00191         \textcolor{keywordtype}{integer(IK)}                                 :: dlmlenminusone}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00192}00192         \textcolor{keywordtype}{integer(IK)}                                 :: strlen, dlmlen, npartmax, ipart, ibeg, iend, i}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00193}00193         \textcolor{keywordtype}{logical}                                     :: npartispresent}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00194}00194 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00195}00195         dlmlen = len(delim)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00196}00196         strlen = len(string)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00197}00197         npartispresent = \textcolor{keyword}{present}(npart)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00198}00198 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00199}00199         \textcolor{comment}{! if dlm is empty, return the whole string split character by character}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00200}00200 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00201}00201         \textcolor{keywordflow}{if} (dlmlen==0\_ik) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00202}00202             \textcolor{keyword}{allocate}(parts(strlen))}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00203}00203             \textcolor{keywordflow}{do} ipart = 1, strlen}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00204}00204                 parts(ipart)\%record = string(ipart:ipart)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00205}00205 \textcolor{keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00206}00206             \textcolor{keywordflow}{if} (npartispresent) npart = strlen}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00207}00207             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00208}00208 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00209}00209 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00210}00210         npartmax = 1\_ik + strlen / dlmlen \textcolor{comment}{! There can be at most strlen + 1 splits}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00211}00211         \textcolor{keyword}{allocate}(partbegin(npartmax), partend(npartmax)) \textcolor{comment}{! This will contain the beginning and the ends of the splits.}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00212}00212         dlmlenminusone = dlmlen -\/ 1\_ik}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00213}00213 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00214}00214         ibeg = 0\_ik}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00215}00215         ipart = 1\_ik}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00216}00216         partbegin(ipart) = 1\_ik}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00217}00217         loopparsestring: \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00218}00218 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00219}00219             ibeg = ibeg + 1\_ik}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00220}00220             iend = ibeg + dlmlenminusone}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00221}00221 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00222}00222             \textcolor{keywordflow}{if} (strlen<iend) \textcolor{keywordflow}{then} \textcolor{comment}{! the remaining part of the string is shorter than the delim}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00223}00223                 partend(ipart) = strlen}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00224}00224                 \textcolor{keywordflow}{exit} loopparsestring}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00225}00225             \textcolor{keywordflow}{elseif} ( string(ibeg:iend) == delim ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00226}00226                 partend(ipart) = ibeg -\/ 1\_ik}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00227}00227                 ipart = ipart + 1\_ik}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00228}00228                 partbegin(ipart) = iend + 1\_ik}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00229}00229                 ibeg = iend}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00230}00230 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00231}00231 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00232}00232 \textcolor{keywordflow}{        end do} loopparsestring}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00233}00233 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00234}00234         \textcolor{keyword}{allocate}(parts(ipart))}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00235}00235         \textcolor{keywordflow}{do} i = 1, ipart}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00236}00236             parts(i)\%record = string(partbegin(i):partend(i))}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00237}00237 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00238}00238         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(npart)) npart = ipart}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00239}00239 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00240}00240         \textcolor{keyword}{deallocate}(partbegin, partend)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00241}00241 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00242}00242     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_ab7da41d59fc13225e53244a90fe258f6}{split}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00243}00243 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00244}00244 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00245}00245 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00269}00269     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00270}\mbox{\hyperlink{namespacestring__mod_afc47ccaec86a514b683b21c6b254a035}{00270}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_afc47ccaec86a514b683b21c6b254a035}{splitstr}}(string,delimiter,nPart) \textcolor{keyword}{result}(Parts)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00271}00271 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00272}00272 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: splitStr}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00273}00273 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00274}00274 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00275}00275         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00276}00276         \textcolor{keywordtype}{character(len=*)}    , \textcolor{keywordtype}{intent(in)}            :: string, delimiter}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00277}00277         \textcolor{keywordtype}{integer(IK)}         , \textcolor{keywordtype}{intent(out)}, \textcolor{keywordtype}{optional} :: npart}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00278}00278         \textcolor{keywordtype}{character(len=:)}    , \textcolor{keywordtype}{allocatable}           :: dummystr}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00279}00279         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structjaggedarray__mod_1_1charvec__type}{charvec\_type}})  , \textcolor{keywordtype}{allocatable}           :: parts(:)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00280}00280         \textcolor{keywordtype}{integer(IK)}                                 :: maxnumsplit}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00281}00281         \textcolor{keywordtype}{integer(IK)}                                 :: stringlen, delimlen, splitcounter, currentpos}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00282}00282 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00283}00283         dummystr  = string}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00284}00284         delimlen  = len(delimiter)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00285}00285         stringlen = len(dummystr)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00286}00286 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00287}00287         \textcolor{keywordflow}{if} (delimlen==0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00288}00288             \textcolor{keyword}{allocate}(parts(1))}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00289}00289             parts(1)\%record = string}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00290}00290             \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(npart)) npart = 1\_ik}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00291}00291             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00292}00292 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00293}00293 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00294}00294         maxnumsplit = 1 + stringlen / delimlen}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00295}00295         \textcolor{keyword}{allocate}(parts(maxnumsplit))}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00296}00296         splitcounter = 1}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00297}00297         loopparsestring: \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00298}00298             \textcolor{keywordflow}{if} (stringlen<delimlen) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00299}00299                 parts(splitcounter)\%record = dummystr}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00300}00300                 \textcolor{keywordflow}{exit} loopparsestring}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00301}00301             \textcolor{keywordflow}{elseif} (stringlen==delimlen) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00302}00302                 \textcolor{comment}{! Note that in Fortran: 'amir '=='amir' = .true.}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00303}00303                 \textcolor{comment}{! https://software.intel.com/en-\/us/forums/intel-\/visual-\/fortran-\/compiler-\/for-\/windows/topic/275823)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00304}00304                 \textcolor{keywordflow}{if} (dummystr==delimiter) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00305}00305                     parts(splitcounter)\%record = \textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00306}00306                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00307}00307                     parts(splitcounter)\%record = dummystr}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00308}00308 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00309}00309                 \textcolor{keywordflow}{exit} loopparsestring}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00310}00310             \textcolor{keywordflow}{elseif} (dummystr(1:delimlen)==delimiter) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00311}00311                 dummystr = dummystr(delimlen+1:stringlen)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00312}00312                 stringlen = len(dummystr)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00313}00313                 cycle loopparsestring}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00314}00314             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00315}00315                 currentpos = 2}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00316}00316                 loopsearchstring: \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00317}00317                     \textcolor{keywordflow}{if} (dummystr(currentpos:currentpos+delimlen-\/1)==delimiter) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00318}00318                         parts(splitcounter)\%record = dummystr(1:currentpos-\/1)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00319}00319                         \textcolor{keywordflow}{if} (currentpos+delimlen>stringlen) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00320}00320                             \textcolor{keywordflow}{exit} loopparsestring}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00321}00321                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00322}00322                             splitcounter = splitcounter + 1}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00323}00323                             dummystr = dummystr(currentpos+delimlen:stringlen)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00324}00324                             stringlen = len(dummystr)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00325}00325                             cycle loopparsestring}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00326}00326 \textcolor{keywordflow}{                        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00327}00327                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00328}00328                         currentpos = currentpos + 1}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00329}00329                         \textcolor{keywordflow}{if} (stringlen<currentpos+delimlen-\/1) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00330}00330                             parts(splitcounter)\%record = dummystr}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00331}00331                             \textcolor{keywordflow}{exit} loopparsestring}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00332}00332 \textcolor{keywordflow}{                        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00333}00333                         cycle loopsearchstring}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00334}00334 \textcolor{keywordflow}{                    end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00335}00335 \textcolor{keywordflow}{                end do} loopsearchstring}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00336}00336 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00337}00337 \textcolor{keywordflow}{        end do} loopparsestring}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00338}00338         parts = parts(1:splitcounter)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00339}00339         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(npart)) npart = splitcounter}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00340}00340 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00341}00341     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_afc47ccaec86a514b683b21c6b254a035}{splitstr}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00342}00342 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00343}00343 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00344}00344 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00357}00357     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00358}\mbox{\hyperlink{namespacestring__mod_afae70a8dd978d39927a6dd7de43ad7b8}{00358}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_afae70a8dd978d39927a6dd7de43ad7b8}{isdigit}}(singleChar) \textcolor{keyword}{result}(stringIsDigit)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00359}00359 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00360}00360 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: isDigit}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00361}00361 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00362}00362 \textcolor{preprocessor}{}        \textcolor{keywordtype}{character(1)}, \textcolor{keywordtype}{intent(in)}    :: singlechar}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00363}00363         \textcolor{keywordtype}{logical}                     :: stringisdigit}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00364}00364         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter}     :: digit(10) = [\textcolor{stringliteral}{"{}0"{}},\textcolor{stringliteral}{"{}1"{}},\textcolor{stringliteral}{"{}2"{}},\textcolor{stringliteral}{"{}3"{}},\textcolor{stringliteral}{"{}4"{}},\textcolor{stringliteral}{"{}5"{}},\textcolor{stringliteral}{"{}6"{}},\textcolor{stringliteral}{"{}7"{}},\textcolor{stringliteral}{"{}8"{}},\textcolor{stringliteral}{"{}9"{}}]}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00365}00365         \textcolor{keywordtype}{integer}                     :: j}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00366}00366         stringisdigit = .false.}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00367}00367         loopoverdigit: \textcolor{keywordflow}{do} j = 1,10}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00368}00368             \textcolor{keywordflow}{if} (singlechar==digit(j)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00369}00369                 stringisdigit = .true.}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00370}00370                 \textcolor{keywordflow}{exit} loopoverdigit}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00371}00371 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00372}00372 \textcolor{keywordflow}{        end do} loopoverdigit}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00373}00373     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_afae70a8dd978d39927a6dd7de43ad7b8}{isdigit}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00374}00374 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00375}00375 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00376}00376 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00389}00389     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00390}\mbox{\hyperlink{namespacestring__mod_a25f7f44386f91b5553dabe0a129f27a5}{00390}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_a25f7f44386f91b5553dabe0a129f27a5}{isinteger}}(string) \textcolor{keyword}{result}(stringIsInteger)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00391}00391 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00392}00392 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: isInteger}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00393}00393 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00394}00394 \textcolor{preprocessor}{}        \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}    :: string}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00395}00395         \textcolor{keywordtype}{logical}                     :: stringisinteger}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00396}00396         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter}     :: digit(10) = [\textcolor{stringliteral}{"{}0"{}},\textcolor{stringliteral}{"{}1"{}},\textcolor{stringliteral}{"{}2"{}},\textcolor{stringliteral}{"{}3"{}},\textcolor{stringliteral}{"{}4"{}},\textcolor{stringliteral}{"{}5"{}},\textcolor{stringliteral}{"{}6"{}},\textcolor{stringliteral}{"{}7"{}},\textcolor{stringliteral}{"{}8"{}},\textcolor{stringliteral}{"{}9"{}}]}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00397}00397         \textcolor{keywordtype}{integer}                     :: i, j}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00398}00398         \textcolor{keywordflow}{do} i = 1,len(string)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00399}00399             stringisinteger = .false.}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00400}00400             loopoverdigit: \textcolor{keywordflow}{do} j = 1,10}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00401}00401                 \textcolor{keywordflow}{if} (string(i:i)==digit(j)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00402}00402                     stringisinteger = .true.}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00403}00403                     \textcolor{keywordflow}{exit} loopoverdigit}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00404}00404 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00405}00405 \textcolor{keywordflow}{            end do} loopoverdigit}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00406}00406             \textcolor{keywordflow}{if} (.not.stringisinteger) \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00407}00407 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00408}00408     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_a25f7f44386f91b5553dabe0a129f27a5}{isinteger}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00409}00409 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00410}00410 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00411}00411 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00424}00424     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00425}\mbox{\hyperlink{namespacestring__mod_a7b4ad790c8a3a5bb9937ee1b51f3baa2}{00425}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_a7b4ad790c8a3a5bb9937ee1b51f3baa2}{getlowercase}}(string) \textcolor{keyword}{result}(output)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00426}00426 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00427}00427 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: getLowerCase}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00428}00428 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00429}00429 \textcolor{preprocessor}{}        \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)} :: string}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00430}00430         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{parameter}   :: duc = ichar(\textcolor{stringliteral}{'A'}) -\/ ichar(\textcolor{stringliteral}{'a'})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00431}00431         \textcolor{keywordtype}{character(len(string))}   :: output}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00432}00432         \textcolor{keywordtype}{character}                :: ch}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00433}00433         \textcolor{keywordtype}{integer(IK)}              :: i}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00434}00434         \textcolor{keywordflow}{do} i = 1,len(string)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00435}00435             ch = string(i:i)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00436}00436             \textcolor{keywordflow}{if} (ch>=\textcolor{stringliteral}{'A'} .and. ch<=\textcolor{stringliteral}{'Z'}) ch = char(ichar(ch)-\/duc)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00437}00437             output(i:i) = ch}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00438}00438 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00439}00439     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_a7b4ad790c8a3a5bb9937ee1b51f3baa2}{getlowercase}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00440}00440 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00441}00441 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00442}00442 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00455}00455     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00456}\mbox{\hyperlink{namespacestring__mod_a4d5ef25637ff0a439f9ced599fbdd705}{00456}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_a4d5ef25637ff0a439f9ced599fbdd705}{getuppercase}}(string) \textcolor{keyword}{result}(output)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00457}00457 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00458}00458 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: getUpperCase}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00459}00459 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00460}00460 \textcolor{preprocessor}{}        \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)} :: string}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00461}00461         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{parameter}   :: duc = ichar(\textcolor{stringliteral}{'A'}) -\/ ichar(\textcolor{stringliteral}{'a'})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00462}00462         \textcolor{keywordtype}{character(len(string))}   :: output}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00463}00463         \textcolor{keywordtype}{character}                :: ch}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00464}00464         \textcolor{keywordtype}{integer(IK)}              :: i}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00465}00465         \textcolor{keywordflow}{do} i = 1,len(string)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00466}00466             ch = string(i:i)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00467}00467             \textcolor{keywordflow}{if} (ch>=\textcolor{stringliteral}{'a'} .and. ch<=\textcolor{stringliteral}{'z'}) ch = char(ichar(ch)+duc)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00468}00468             output(i:i) = ch}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00469}00469 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00470}00470     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_a4d5ef25637ff0a439f9ced599fbdd705}{getuppercase}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00471}00471 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00472}00472 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00473}00473 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00474}00474 \textcolor{comment}{!    ! ATTN: legacy code, do not use. The substitute functions are >1 order of magnitude faster. Changes a string to lower case}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00475}00475 \textcolor{comment}{!    pure function getLowerCaseOld(string)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00476}00476 \textcolor{comment}{!\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00477}00477 \textcolor{comment}{!        !DEC\$ ATTRIBUTES DLLEXPORT :: getLowerCaseOld}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00478}00478 \textcolor{comment}{!\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00479}00479 \textcolor{comment}{!        implicit None}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00480}00480 \textcolor{comment}{!        character(*), intent(in) :: string}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00481}00481 \textcolor{comment}{!        character(len(string))   :: getLowerCaseOld}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00482}00482 \textcolor{comment}{!        character(26), parameter :: lowerCase = 'abcdefghijklmnopqrstuvwxyz', upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00483}00483 \textcolor{comment}{!        integer(IK)              :: ic, i}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00484}00484 \textcolor{comment}{!        getLowerCaseOld = string}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00485}00485 \textcolor{comment}{!        do i = 1, len(string)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00486}00486 \textcolor{comment}{!            ic = INDEX(upperCase, string(i:i))}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00487}00487 \textcolor{comment}{!            if (ic > 0) getLowerCaseOld(i:i) = lowerCase(ic:ic)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00488}00488 \textcolor{comment}{!        end do}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00489}00489 \textcolor{comment}{!    end function getLowerCaseOld}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00490}00490 \textcolor{comment}{!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00491}00491 \textcolor{comment}{!!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00492}00492 \textcolor{comment}{!}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00493}00493 \textcolor{comment}{!    ! ATTN: legacy code, do not use. The substitute functions are >1 order of magnitude faster. Changes a string to upper case}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00494}00494 \textcolor{comment}{!    pure function getUpperCaseOld(string)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00495}00495 \textcolor{comment}{!\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00496}00496 \textcolor{comment}{!        !DEC\$ ATTRIBUTES DLLEXPORT :: getUpperCaseOld}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00497}00497 \textcolor{comment}{!\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00498}00498 \textcolor{comment}{!        implicit None}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00499}00499 \textcolor{comment}{!        character(*), intent(in) :: string}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00500}00500 \textcolor{comment}{!        character(len(string))   :: getUpperCaseOld}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00501}00501 \textcolor{comment}{!        character(26), parameter :: lowerCase = 'abcdefghijklmnopqrstuvwxyz', upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00502}00502 \textcolor{comment}{!        integer(IK)              :: ic, i}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00503}00503 \textcolor{comment}{!        getUpperCaseOld = string}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00504}00504 \textcolor{comment}{!        do i = 1, len(string)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00505}00505 \textcolor{comment}{!            ic = INDEX(lowerCase, string(i:i))}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00506}00506 \textcolor{comment}{!            if (ic > 0) getUpperCaseOld(i:i) = upperCase(ic:ic)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00507}00507 \textcolor{comment}{!        end do}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00508}00508 \textcolor{comment}{!    end function getUpperCaseOld}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00509}00509 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00510}00510 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00511}00511 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00524}00524     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00525}\mbox{\hyperlink{interfacestring__mod_1_1num2str_a45664f545a1fec5fc316e9f2770e7609}{00525}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_a6d007630e8352cf8387a5750d6b267de}{log2str}}(logicalIn)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00526}00526 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00527}00527 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: log2str}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00528}00528 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00529}00529 \textcolor{preprocessor}{}        \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00530}00530         \textcolor{keywordtype}{logical}     , \textcolor{keywordtype}{intent(in)}           :: logicalin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00531}00531         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}          :: \mbox{\hyperlink{namespacestring__mod_a6d007630e8352cf8387a5750d6b267de}{log2str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00532}00532         \textcolor{keyword}{allocate}(\textcolor{keywordtype}{character(NUM2STR\_MAXLEN)} :: \mbox{\hyperlink{namespacestring__mod_a6d007630e8352cf8387a5750d6b267de}{log2str}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00533}00533         \textcolor{keywordflow}{if} (logicalin) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00534}00534             \mbox{\hyperlink{namespacestring__mod_a6d007630e8352cf8387a5750d6b267de}{log2str}} = \textcolor{stringliteral}{"{}TRUE"{}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00535}00535         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00536}00536             \mbox{\hyperlink{namespacestring__mod_a6d007630e8352cf8387a5750d6b267de}{log2str}} = \textcolor{stringliteral}{"{}FALSE"{}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00537}00537 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00538}00538     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_a6d007630e8352cf8387a5750d6b267de}{log2str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00539}00539 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00540}00540 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00541}00541 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00560}00560     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00561}\mbox{\hyperlink{interfacestring__mod_1_1int2str_a8492fd5186ea00dea99dcd06046187df}{00561}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{int322str}}(integerIn,formatIn,minLen)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00562}00562 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00563}00563 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: int322str}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00564}00564 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00565}00565 \textcolor{preprocessor}{}        use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: int32}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00566}00566         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00567}00567         \textcolor{keywordtype}{integer(int32)} , \textcolor{keywordtype}{intent(in)}           :: integerin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00568}00568         \textcolor{keywordtype}{character(*)}   , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: formatin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00569}00569         \textcolor{keywordtype}{integer(IK)}    , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: minlen}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00570}00570         \textcolor{keywordtype}{character(:)}   , \textcolor{keywordtype}{allocatable}          :: \mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{int322str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00571}00571         \textcolor{keyword}{allocate}(\textcolor{keywordtype}{character(NUM2STR\_MAXLEN)} :: \mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{int322str}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00572}00572         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(formatin)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00573}00573             \textcolor{keyword}{write}(\mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{int322str}},formatin) integerin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00574}00574         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00575}00575             \textcolor{keyword}{write}(\mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{int322str}},\textcolor{stringliteral}{"{}(I0)"{}}) integerin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00576}00576 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00577}00577         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(minlen)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00578}00578             \mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{int322str}} = adjustl(\mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{int322str}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00579}00579             \mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{int322str}} = \mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{int322str}}(1:minlen)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00580}00580         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00581}00581             \mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{int322str}} = trim(adjustl(\mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{int322str}}))}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00582}00582 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00583}00583     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{int322str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00584}00584 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00585}00585 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00586}00586 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00605}00605     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00606}\mbox{\hyperlink{interfacestring__mod_1_1int2str_a81deaac43b67b36b72159e8c0697fe18}{00606}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{int642str}}(integerIn,formatIn,minLen)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00607}00607 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00608}00608 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: int642str}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00609}00609 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00610}00610 \textcolor{preprocessor}{}        use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: int64}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00611}00611         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00612}00612         \textcolor{keywordtype}{integer(int64)}, \textcolor{keywordtype}{intent(in)}           :: integerin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00613}00613         \textcolor{keywordtype}{character(*)}  , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: formatin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00614}00614         \textcolor{keywordtype}{integer(IK)}   , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: minlen}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00615}00615         \textcolor{keywordtype}{character(:)}  , \textcolor{keywordtype}{allocatable}          :: \mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{int642str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00616}00616         \textcolor{keyword}{allocate}(\textcolor{keywordtype}{character(NUM2STR\_MAXLEN)} :: \mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{int642str}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00617}00617         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(formatin)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00618}00618             \textcolor{keyword}{write}(\mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{int642str}},formatin) integerin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00619}00619         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00620}00620             \textcolor{keyword}{write}(\mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{int642str}},*) integerin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00621}00621 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00622}00622         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(minlen)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00623}00623             \mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{int642str}} = adjustl(\mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{int642str}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00624}00624             \mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{int642str}} = \mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{int642str}}(1:minlen)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00625}00625         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00626}00626             \mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{int642str}} = trim(adjustl(\mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{int642str}}))}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00627}00627 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00628}00628     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{int642str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00629}00629 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00630}00630 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00631}00631 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00646}00646     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00647}\mbox{\hyperlink{interfacestring__mod_1_1real2str_a77633ff1bb5bff137159c372171463d1}{00647}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}}(realIn,formatIn,minLen)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00648}00648 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00649}00649 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: real322str}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00650}00650 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00651}00651 \textcolor{preprocessor}{}        use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: real32}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00652}00652         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00653}00653 \textcolor{keywordtype}{        real}(real32), \textcolor{keywordtype}{intent(in)}            :: realin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00654}00654         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: formatin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00655}00655         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: minlen}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00656}00656         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}           :: dumstr}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00657}00657         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}           :: \mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00658}00658         \textcolor{keywordtype}{integer(IK)}                         :: len\_real322str}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00659}00659         \textcolor{keyword}{allocate}(\textcolor{keywordtype}{character(NUM2STR\_MAXLEN)}  :: \mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00660}00660         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(formatin)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00661}00661             \textcolor{keyword}{write}(\mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}},formatin) realin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00662}00662         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00663}00663             \textcolor{keyword}{write}(\mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}},*) realin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00664}00664 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00665}00665         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(minlen)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00666}00666             \mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}} = adjustl(\mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00667}00667             len\_real322str = len(\mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00668}00668             \textcolor{keywordflow}{if} (minlen>len\_real322str) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00669}00669                 \textcolor{keyword}{allocate}(\textcolor{keywordtype}{character(minLen)} :: dumstr)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00670}00670                 dumstr(1:len\_real322str) = \mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00671}00671                 \textcolor{keyword}{call }move\_alloc(from = dumstr, to = \mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00672}00672             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00673}00673                 \mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}} = \mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}}(1:minlen)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00674}00674 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00675}00675         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00676}00676             \mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}} = trim(adjustl(\mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}}))}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00677}00677 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00678}00678     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{real322str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00679}00679 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00680}00680 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00681}00681 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00696}00696     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00697}\mbox{\hyperlink{interfacestring__mod_1_1real2str_a561e18754ac928a9fb9f2ef491b366cc}{00697}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}}(realIn,formatIn,minLen)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00698}00698 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00699}00699 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: real642str}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00700}00700 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00701}00701 \textcolor{preprocessor}{}        use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: real64}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00702}00702         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00703}00703 \textcolor{keywordtype}{        real}(real64), \textcolor{keywordtype}{intent(in)}            :: realin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00704}00704         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: formatin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00705}00705         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: minlen}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00706}00706         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}           :: dumstr}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00707}00707         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}           :: \mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00708}00708         \textcolor{keywordtype}{integer(IK)}                         :: len\_real642str}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00709}00709         \textcolor{keyword}{allocate}(\textcolor{keywordtype}{character(NUM2STR\_MAXLEN)}  :: \mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00710}00710         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(formatin)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00711}00711             \textcolor{keyword}{write}(\mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}},formatin) realin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00712}00712         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00713}00713             \textcolor{keyword}{write}(\mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}},*) realin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00714}00714 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00715}00715         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(minlen)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00716}00716             \mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}} = adjustl(\mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00717}00717             len\_real642str = len(\mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00718}00718             \textcolor{keywordflow}{if} (minlen>len\_real642str) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00719}00719                 \textcolor{keyword}{allocate}(\textcolor{keywordtype}{character(minLen)} :: dumstr)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00720}00720                 dumstr(1:len\_real642str) = \mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00721}00721                 \textcolor{keyword}{call }move\_alloc(from = dumstr, to = \mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00722}00722             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00723}00723                 \mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}} = \mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}}(1:minlen)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00724}00724 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00725}00725         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00726}00726             \mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}} = trim(adjustl(\mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}}))}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00727}00727 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00728}00728     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{real642str}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00729}00729 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00730}00730 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00731}00731 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00746}00746     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00747}\mbox{\hyperlink{interfacestring__mod_1_1real2str_ace17d582bafa2c8555ac5d77dbbe4a65}{00747}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}}(RealIn,formatIn,minLen)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00748}00748 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00749}00749 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: real642str\_1D}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00750}00750 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00751}00751 \textcolor{preprocessor}{}        use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: real64}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00752}00752         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00753}00753 \textcolor{keywordtype}{        real}(real64), \textcolor{keywordtype}{intent(in)}            :: realin(:)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00754}00754         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: formatin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00755}00755         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: minlen}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00756}00756         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}           :: dumstr}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00757}00757         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}           :: \mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00758}00758         \textcolor{keywordtype}{integer(IK)}                         :: len\_real642str\_1d}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00759}00759         \textcolor{keyword}{allocate}(\textcolor{keywordtype}{character(NUM2STR\_MAXLEN*size(RealIn))} :: \mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00760}00760         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(formatin)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00761}00761             \textcolor{keyword}{write}(\mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}},formatin) realin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00762}00762         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00763}00763             \textcolor{keyword}{write}(\mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}},\textcolor{stringliteral}{"{}(*(g0.15,:,','))"{}}) realin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00764}00764 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00765}00765         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(minlen)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00766}00766             \mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}} = adjustl(\mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00767}00767             len\_real642str\_1d = len(\mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00768}00768             \textcolor{keywordflow}{if} (minlen>len\_real642str\_1d) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00769}00769                 \textcolor{keyword}{allocate}(\textcolor{keywordtype}{character(minLen)} :: dumstr)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00770}00770                 dumstr(1:len\_real642str\_1d) = \mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00771}00771                 \textcolor{keyword}{call }move\_alloc(from = dumstr, to = \mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00772}00772             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00773}00773                 \mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}} = \mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}}(1:minlen)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00774}00774 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00775}00775         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00776}00776             \mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}} = trim(adjustl(\mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}}))}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00777}00777 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00778}00778     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{real642str\_1d}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00779}00779 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00780}00780 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00781}00781 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00796}00796     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00797}\mbox{\hyperlink{interfacestring__mod_1_1real2str_ae13d3b8b33dfb68582901bf85b16cb26}{00797}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}}(RealIn,formatIn,minLen)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00798}00798 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00799}00799 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: real642str\_2D}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00800}00800 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00801}00801 \textcolor{preprocessor}{}        use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: real64}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00802}00802         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00803}00803 \textcolor{keywordtype}{        real}(real64), \textcolor{keywordtype}{intent(in)}            :: realin(:,:)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00804}00804         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: formatin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00805}00805         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: minlen}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00806}00806         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}           :: \mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00807}00807         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}           :: dumstr}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00808}00808         \textcolor{keywordtype}{integer(IK)}                         :: len\_real642str\_2d}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00809}00809         \textcolor{keyword}{allocate}(\textcolor{keywordtype}{character(NUM2STR\_MAXLEN*size(RealIn,1)*size(RealIn,2))} :: \mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00810}00810         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(formatin)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00811}00811             \textcolor{keyword}{write}(\mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}},formatin) realin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00812}00812         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00813}00813             \textcolor{keyword}{write}(\mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}},\textcolor{stringliteral}{"{}(*(g0.15,:,','))"{}}) realin}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00814}00814 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00815}00815         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(minlen)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00816}00816             \mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}} = adjustl(\mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00817}00817             len\_real642str\_2d = len(\mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00818}00818             \textcolor{keywordflow}{if} (minlen>len\_real642str\_2d) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00819}00819                 \textcolor{keyword}{allocate}(\textcolor{keywordtype}{character(minLen)} :: dumstr)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00820}00820                 dumstr(1:len\_real642str\_2d) = \mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00821}00821                 \textcolor{keyword}{call }move\_alloc(from = dumstr, to = \mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}})}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00822}00822             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00823}00823                 \mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}} = \mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}}(1:minlen)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00824}00824 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00825}00825         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00826}00826             \mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}} = trim(adjustl(\mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}}))}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00827}00827 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00828}00828     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{real642str\_2d}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00829}00829 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00830}00830 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00831}00831 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00846}00846     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00847}\mbox{\hyperlink{namespacestring__mod_a8d86ef342a50fddbff0bdf11c7de1234}{00847}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_a8d86ef342a50fddbff0bdf11c7de1234}{str2int}}(str,iostat)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00848}00848 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00849}00849 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: str2int}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00850}00850 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00851}00851 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00852}00852         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00853}00853         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}        :: str}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00854}00854         \textcolor{keywordtype}{integer}, \textcolor{keywordtype}{intent(out)}, \textcolor{keywordtype}{optional}  :: iostat}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00855}00855         \textcolor{keywordtype}{integer(IK)}                     :: \mbox{\hyperlink{namespacestring__mod_a8d86ef342a50fddbff0bdf11c7de1234}{str2int}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00856}00856         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(iostat)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00857}00857             iostat = 0}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00858}00858             \textcolor{keyword}{read}(str,*,iostat=iostat) \mbox{\hyperlink{namespacestring__mod_a8d86ef342a50fddbff0bdf11c7de1234}{str2int}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00859}00859         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00860}00860             \textcolor{keyword}{read}(str,*) \mbox{\hyperlink{namespacestring__mod_a8d86ef342a50fddbff0bdf11c7de1234}{str2int}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00861}00861 \textcolor{keywordflow}{        endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00862}00862     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_a8d86ef342a50fddbff0bdf11c7de1234}{str2int}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00863}00863 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00864}00864 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00865}00865 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00880}00880     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00881}\mbox{\hyperlink{namespacestring__mod_ae965daa119f1e974a1fb7a8b85eba112}{00881}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_ae965daa119f1e974a1fb7a8b85eba112}{str2int32}}(str,iostat)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00882}00882 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00883}00883 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: str2int32}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00884}00884 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00885}00885 \textcolor{preprocessor}{}        use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: int32}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00886}00886         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00887}00887         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}        :: str}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00888}00888         \textcolor{keywordtype}{integer}, \textcolor{keywordtype}{intent(out)}, \textcolor{keywordtype}{optional}  :: iostat}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00889}00889         \textcolor{keywordtype}{integer(int32)}                  :: \mbox{\hyperlink{namespacestring__mod_ae965daa119f1e974a1fb7a8b85eba112}{str2int32}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00890}00890         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(iostat)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00891}00891             iostat = 0}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00892}00892             \textcolor{keyword}{read}(str,*,iostat=iostat) \mbox{\hyperlink{namespacestring__mod_ae965daa119f1e974a1fb7a8b85eba112}{str2int32}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00893}00893         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00894}00894             \textcolor{keyword}{read}(str,*) \mbox{\hyperlink{namespacestring__mod_ae965daa119f1e974a1fb7a8b85eba112}{str2int32}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00895}00895 \textcolor{keywordflow}{        endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00896}00896     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_ae965daa119f1e974a1fb7a8b85eba112}{str2int32}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00897}00897 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00898}00898 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00899}00899 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00914}00914     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00915}\mbox{\hyperlink{namespacestring__mod_a0accbe2e1de46c9866441cf4c0c55174}{00915}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_a0accbe2e1de46c9866441cf4c0c55174}{str2int64}}(str,iostat)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00916}00916 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00917}00917 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: str2int64}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00918}00918 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00919}00919 \textcolor{preprocessor}{}        use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: int64}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00920}00920         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00921}00921         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}        :: str}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00922}00922         \textcolor{keywordtype}{integer}, \textcolor{keywordtype}{intent(out)}, \textcolor{keywordtype}{optional}  :: iostat}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00923}00923         \textcolor{keywordtype}{integer(int64)}                  :: \mbox{\hyperlink{namespacestring__mod_a0accbe2e1de46c9866441cf4c0c55174}{str2int64}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00924}00924         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(iostat)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00925}00925             iostat = 0}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00926}00926             \textcolor{keyword}{read}(str,*,iostat=iostat) \mbox{\hyperlink{namespacestring__mod_a0accbe2e1de46c9866441cf4c0c55174}{str2int64}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00927}00927         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00928}00928             \textcolor{keyword}{read}(str,*) \mbox{\hyperlink{namespacestring__mod_a0accbe2e1de46c9866441cf4c0c55174}{str2int64}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00929}00929 \textcolor{keywordflow}{        endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00930}00930     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_a0accbe2e1de46c9866441cf4c0c55174}{str2int64}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00931}00931 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00932}00932 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00933}00933 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00948}00948     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00949}\mbox{\hyperlink{namespacestring__mod_aba75c4ed4936da7cb10eab54278d8203}{00949}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_aba75c4ed4936da7cb10eab54278d8203}{str2real}}(str,iostat)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00950}00950 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00951}00951 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: str2real}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00952}00952 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00953}00953 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00954}00954         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00955}00955         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}        :: str}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00956}00956         \textcolor{keywordtype}{integer}, \textcolor{keywordtype}{optional}, \textcolor{keywordtype}{intent(out)}  :: iostat}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00957}00957 \textcolor{keywordtype}{        real}(rk)                        :: \mbox{\hyperlink{namespacestring__mod_aba75c4ed4936da7cb10eab54278d8203}{str2real}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00958}00958         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(iostat)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00959}00959             iostat = 0}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00960}00960             \textcolor{keyword}{read}(str,*,iostat=iostat) \mbox{\hyperlink{namespacestring__mod_aba75c4ed4936da7cb10eab54278d8203}{str2real}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00961}00961         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00962}00962             \textcolor{keyword}{read}(str,*) \mbox{\hyperlink{namespacestring__mod_aba75c4ed4936da7cb10eab54278d8203}{str2real}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00963}00963 \textcolor{keywordflow}{        endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00964}00964     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_aba75c4ed4936da7cb10eab54278d8203}{str2real}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00965}00965 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00966}00966 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00967}00967 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00982}00982     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00983}\mbox{\hyperlink{namespacestring__mod_a9cfd5d3d41fdeee8efef93f3e974e996}{00983}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_a9cfd5d3d41fdeee8efef93f3e974e996}{str2real32}}(str,iostat)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00984}00984 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00985}00985 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: str2real32}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00986}00986 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00987}00987 \textcolor{preprocessor}{}        use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: real32}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00988}00988         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00989}00989         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}        :: str}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00990}00990         \textcolor{keywordtype}{integer}, \textcolor{keywordtype}{optional}, \textcolor{keywordtype}{intent(out)}  :: iostat}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00991}00991 \textcolor{keywordtype}{        real}(real32)                    :: \mbox{\hyperlink{namespacestring__mod_a9cfd5d3d41fdeee8efef93f3e974e996}{str2real32}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00992}00992         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(iostat)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00993}00993             iostat = 0}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00994}00994             \textcolor{keyword}{read}(str,*,iostat=iostat) \mbox{\hyperlink{namespacestring__mod_a9cfd5d3d41fdeee8efef93f3e974e996}{str2real32}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00995}00995         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00996}00996             \textcolor{keyword}{read}(str,*) \mbox{\hyperlink{namespacestring__mod_a9cfd5d3d41fdeee8efef93f3e974e996}{str2real32}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00997}00997 \textcolor{keywordflow}{        endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00998}00998     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_a9cfd5d3d41fdeee8efef93f3e974e996}{str2real32}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l00999}00999 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01000}01000 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01001}01001 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01016}01016     \textcolor{comment}{! Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, UT Austin}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01017}\mbox{\hyperlink{namespacestring__mod_aa22095a92558b504e85dfc1887e9414e}{01017}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_aa22095a92558b504e85dfc1887e9414e}{str2real64}}(str,iostat)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01018}01018 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01019}01019 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: str2real64}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01020}01020 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01021}01021 \textcolor{preprocessor}{}        use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: real64}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01022}01022         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01023}01023         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}        :: str}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01024}01024         \textcolor{keywordtype}{integer}, \textcolor{keywordtype}{optional}, \textcolor{keywordtype}{intent(out)}  :: iostat}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01025}01025 \textcolor{keywordtype}{        real}(real64)                    :: \mbox{\hyperlink{namespacestring__mod_aa22095a92558b504e85dfc1887e9414e}{str2real64}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01026}01026         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(iostat)) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01027}01027             iostat = 0}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01028}01028             \textcolor{keyword}{read}(str,*,iostat=iostat) \mbox{\hyperlink{namespacestring__mod_aa22095a92558b504e85dfc1887e9414e}{str2real64}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01029}01029             \textcolor{keywordflow}{if} (iostat/=0) \mbox{\hyperlink{namespacestring__mod_aa22095a92558b504e85dfc1887e9414e}{str2real64}} = -\/huge(1.\_real64)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01030}01030         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01031}01031             \textcolor{keyword}{read}(str,*) \mbox{\hyperlink{namespacestring__mod_aa22095a92558b504e85dfc1887e9414e}{str2real64}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01032}01032 \textcolor{keywordflow}{        endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01033}01033     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_aa22095a92558b504e85dfc1887e9414e}{str2real64}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01034}01034 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01035}01035 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01036}01036 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01049}\mbox{\hyperlink{namespacestring__mod_a6cda1ee2a542f69d020974dfbf506cd8}{01049}}     \textcolor{keywordtype}{pure} \textcolor{keyword}{function }\mbox{\hyperlink{namespacestring__mod_a6cda1ee2a542f69d020974dfbf506cd8}{padstring}}(string, symbol, paddedLen) \textcolor{keyword}{result}(paddedString)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01050}01050 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01051}01051 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: padString}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01052}01052 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01053}01053 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01054}01054         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01055}01055         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}            :: string}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01056}01056         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}            :: symbol}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01057}01057         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}            :: paddedlen}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01058}01058         \textcolor{keywordtype}{character(paddedLen)}                :: paddedstring}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01059}01059         \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}           :: pad}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01060}01060         \textcolor{keywordtype}{integer(IK)}                         :: stringlen, symbollen, symbolcount, diff \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01061}01061         stringlen = len(string) \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01062}01062         \textcolor{keywordflow}{if} (stringlen>=paddedlen) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01063}01063             paddedstring = string}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01064}01064             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01065}01065 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01066}01066         symbollen = len(symbol)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01067}01067         diff = paddedlen -\/ stringlen}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01068}01068         symbolcount = diff / symbollen + 1}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01069}01069         pad = repeat(symbol,symbolcount)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01070}01070         paddedstring = string // pad(1:diff)}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01071}01071     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacestring__mod_a6cda1ee2a542f69d020974dfbf506cd8}{padstring}}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01072}01072 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01073}01073 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01074}01074 }
+\DoxyCodeLine{\Hypertarget{String__mod_8f90_source_l01075}01075 \textcolor{keyword}{end module }\mbox{\hyperlink{namespacestring__mod}{string\_mod}} ! lcov\_excl\_line}
+
+\end{DoxyCode}

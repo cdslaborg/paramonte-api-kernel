@@ -1,0 +1,204 @@
+\hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source}{}\doxysection{Para\+DRAM\+\_\+mod@Kernel\+Singl\+Chain.\+f90}
+\label{ParaDRAM__mod_0dKernelSinglChain_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/ParaDRAM\_mod"@KernelSinglChain.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/ParaDRAM\_mod"@KernelSinglChain.f90}}
+\mbox{\hyperlink{ParaDRAM__mod_0dKernelSinglChain_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00001}00001 submodule(\mbox{\hyperlink{namespaceparadram}{paradram}}) kernelsinglchain}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00002}00002   }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00003}00003   \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00004}00004   }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00005}00005   \textcolor{comment}{!real(RK), save, allocatable :: Chain(:,:)[:]}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00006}00006   \textcolor{comment}{!real(RK), save :: co\_ProposalAccepted[*]}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00008}00008 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00010}00010 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00011}00011 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00012}00012  }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00013}00013   \textcolor{keyword}{module procedure} runkernelsinglchain}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00014}00014     }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00015}00015     \textcolor{keywordtype}{use }misc, \textcolor{keywordtype}{only}: num2str}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00016}00016     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestatistics}{statistics}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacestatistics_ad68af3401aa4557bfbe290649e378aaa}{combinecovmean}}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00017}00017     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: rk, ik, \mbox{\hyperlink{namespaceconstants__mod_a2ce5b1495148376514698c8a6d60a820}{loghuge\_rk}}, \mbox{\hyperlink{namespaceconstants__mod_a08700d4bf701dda7c33df7590075d2e3}{logtiny\_rk}}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00018}00018     \textcolor{keywordtype}{use }paramonte, \textcolor{keywordtype}{only}: getlogfunc\_proc, getgradlogfunc\_proc}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00020}00020     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00022}00022 \textcolor{keywordtype}{    real}(RK), \textcolor{keywordtype}{save}, \textcolor{keywordtype}{allocatable} :: co\_CurrentAndLogFunc(:)[:]}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00023}00023 \textcolor{keywordtype}{    real}(RK), \textcolor{keywordtype}{save}, \textcolor{keywordtype}{allocatable} :: co\_ProposalAndLogFunc(:)[:]}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00024}00024 \textcolor{keywordtype}{    real}(RK), \textcolor{keywordtype}{save}              :: co\_accr[*]}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00025}00025     \textcolor{keywordtype}{logical} , \textcolor{keywordtype}{save}              :: co\_ProposalFound[*]}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00026}00026     \textcolor{keywordtype}{logical} , \textcolor{keywordtype}{save}              :: co\_ProposalAccepted[*]                   \textcolor{comment}{! indicates whether proposal has been found and transferred to the master image or not.}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00027}00027     \textcolor{keywordtype}{logical} , \textcolor{keywordtype}{save}              :: co\_missionAccomplished[*]                \textcolor{comment}{! when the code accomplishes the mission, it is set to .true.}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00028}00028     \textcolor{keywordtype}{logical} , \textcolor{keywordtype}{save}              :: co\_samplerUpdateOccurred[*]}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00029}00029   }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00030}00030     \textcolor{keywordtype}{integer(IK)}                 :: ndPlusOne}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00031}00031     \textcolor{keywordtype}{integer(IK)}                 :: idelayCounter                            \textcolor{comment}{! counter for idelayAdaptiveUpdate}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00032}00032     \textcolor{keywordtype}{integer(IK)}                 :: idelayCounterUniquePoint                 \textcolor{comment}{! counter for idelayAdaptiveUpdate, only updated when new proposals are accepted}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00033}00033     \textcolor{keywordtype}{integer(IK)}                 :: stepCounter                              \textcolor{comment}{! counter for unique sampled points, either unique or non-\/unique, depending on the user's choice equalSampleWeightRequested.}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00034}00034     \textcolor{keywordtype}{integer(IK)}                 :: nAdaptiveUpdateCounter                   \textcolor{comment}{! counter for nAdaptiveUpdate}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00035}00035     \textcolor{keywordtype}{integer(IK)}                 :: ireportProgressCounter                   \textcolor{comment}{! counter for ireportProgress}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00036}00036     \textcolor{keywordtype}{integer(IK)}                 :: sampleWeightMerge                        \textcolor{comment}{! the weight of the last MCMC sample that was written to the output file. This is needed for merging the same point that occurs as the last sample in the previous chain and the first sample in the current chain as a unique point in the output file.}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00037}00037     \textcolor{keywordtype}{integer(IK)}                 :: currentWinnerImageID                     \textcolor{comment}{! winner image ID, for the current MCMC step}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00038}00038     \textcolor{keywordtype}{integer(IK)}                 :: WinnerImageID(idelayAdaptiveUpdate)      \textcolor{comment}{! the ID of the image whose accepted proposal will be used}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00039}00039     \textcolor{keywordtype}{integer(IK)}                 :: SampleWeight(idelayAdaptiveUpdate)       \textcolor{comment}{! the weight of an MCMC accepted point in the sample}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00040}00040 \textcolor{keywordtype}{    real}(RK)                    :: Chain(nd,idelayAdaptiveUpdate)           \textcolor{comment}{! nd-\/long random deviate array drawn initially from the Proposal distribution.}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00041}00041 \textcolor{keywordtype}{    real}(RK)                    :: MeanAccr(idelayAdaptiveUpdate)           \textcolor{comment}{! average acceptance rate up to the current position}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00042}00042 \textcolor{keywordtype}{    real}(RK)                    :: LogFunc(idelayAdaptiveUpdate)            \textcolor{comment}{! the vector of LogFunc values}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00043}00043 \textcolor{keywordtype}{    real}(RK)                    :: uniformRnd                               \textcolor{comment}{! used for random number generation.}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00044}00044 \textcolor{keywordtype}{    real}(RK)                    :: sumAccr                                  \textcolor{comment}{! This to figure out what the average acceptance ratio for the entire chain is.}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00045}00045 \textcolor{keywordtype}{    real}(RK)                    :: logProbDiff                              \textcolor{comment}{! difference between the current and the proposal logFunc values}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00046}00046     \textcolor{keywordtype}{integer(IK)}                 :: image \textcolor{comment}{! , i}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00047}00047     }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00048}00048     co\_missionaccomplished = .false.}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00049}00049     ndplusone = nd + 1}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00051}00051     \textcolor{keywordflow}{if} (\textcolor{keyword}{allocated}(co\_proposalandlogfunc)) \textcolor{keyword}{deallocate}(co\_proposalandlogfunc)}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00052}00052     \textcolor{keywordflow}{if} (\textcolor{keyword}{allocated}(co\_currentandlogfunc)) \textcolor{keyword}{deallocate}(co\_currentandlogfunc)}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00053}00053     \textcolor{keyword}{allocate}(co\_proposalandlogfunc(ndplusone)[*])}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00054}00054     \textcolor{keyword}{allocate}(co\_currentandlogfunc(ndplusone)[*])}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00055}00055     }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00056}00056     \textcolor{keywordflow}{if} (pd\%Image\%isMaster) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00057}00057     }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00058}00058       nfuncall                  = 0     \textcolor{comment}{! Markov Chain counter}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00059}00059       nfuncallaccepted          = 0     \textcolor{comment}{! Markov Chain acceptance counter. 1 stands for first point (StartPoint)}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00060}00060       ireportprogresscounter    = 0     \textcolor{comment}{! nAdaptiveUpdate counter}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00061}00061       nadaptiveupdatecounter    = 0     \textcolor{comment}{! nAdaptiveUpdate counter}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00062}00062       idelaycounter             = 0     \textcolor{comment}{! idelayAdaptiveUpdate counter}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00063}00063       idelaycounteruniquepoint  = 0     \textcolor{comment}{! idelayAdaptiveUpdate counter, only for new points}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00064}00064       sumaccr                   = 0.\_rk \textcolor{comment}{! sum of acceptance rate}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00065}00065       co\_accr                   = 1.\_rk \textcolor{comment}{! acceptance rate}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00066}00066       sampleweight              = 0}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00067}00067       }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00068}00068       co\_proposalandlogfunc(1:nd) = startpoint}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00069}00069       co\_proposalaccepted = .true.}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00070}00070       co\_proposalandlogfunc(ndplusone) = \mbox{\hyperlink{ParaMonte_0drunParaDRAM_8f90_a61612d7f17ad31a757aee8ee361f7fbd}{getlogfunc}}( nd, co\_proposalandlogfunc(1:nd) )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00071}00071       co\_currentandlogfunc = co\_proposalandlogfunc}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00073}00073 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00074}00074     }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00075}00075     sync all}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00077}00077     loopmarkovchain: \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00079}00079       \textcolor{keywordflow}{if} (pd\%Image\%isMaster) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00081}00081         co\_proposalfound = .false.}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00082}00082         }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00083}00083         loopoverimages: \textcolor{keywordflow}{do} image = 1, pd\%numImages}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00085}00085           nfuncall               = nfuncall + 1}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00086}00086           sumaccr                = sumaccr  + co\_accr[image]}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00087}00087           idelaycounter          = idelaycounter + 1}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00088}00088           ireportprogresscounter = ireportprogresscounter + 1}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00089}00089           }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00090}00090           \textcolor{comment}{! On the very first iteration, this block is (and must be) executed for image==1, since it is for the first (starting) point,}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00091}00091           \textcolor{comment}{! which is assumed to have been accepted as the first point in the first coaaray image.}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00092}00092           \textcolor{keywordflow}{if} (co\_proposalaccepted[image]) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00093}00093             co\_proposalfound = .true.}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00094}00094             nfuncallaccepted = nfuncallaccepted + 1}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00095}00095             idelaycounteruniquepoint = idelaycounteruniquepoint + 1}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00096}00096             currentwinnerimageid = image}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00097}00097             \textcolor{keywordflow}{if} (currentwinnerimageid==pd\%Image\%id) \textcolor{keywordflow}{then}  \textcolor{comment}{! Avoid remote connection for something that is available locally.}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00098}00098               co\_currentandlogfunc = co\_proposalandlogfunc}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00099}00099             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00100}00100               co\_currentandlogfunc(:) = co\_proposalandlogfunc(:)[currentwinnerimageid]}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00101}00101 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00102}00102 \textcolor{keywordflow}{          end if}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00104}00104           \textcolor{keywordflow}{if} (idelaycounter==1) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00105}00105             \textcolor{keywordflow}{if} (co\_proposalfound) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00106}00106               sampleweightmerge = 0}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00107}00107             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00108}00108               idelaycounteruniquepoint = 1}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00109}00109 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00110}00110 \textcolor{keywordflow}{          end if}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00111}00111             }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00112}00112           stepcounter = idelaycounteruniquepoint}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00113}00113           \textcolor{keywordflow}{if} (equalsampleweightrequested) stepcounter = idelaycounter}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00115}00115           logfunc(stepcounter)       = co\_currentandlogfunc(ndplusone)}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00116}00116           meanaccr(stepcounter)      = sumaccr / real(nfuncall,kind=rk)}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00117}00117           chain(1:nd,stepcounter)    = co\_currentandlogfunc(1:nd)}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00118}00118           sampleweight(stepcounter)  = sampleweight(stepcounter) + 1}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00119}00119           winnerimageid(stepcounter) = currentwinnerimageid}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00121}00121           \textcolor{keywordflow}{if} (idelaycounter==idelayadaptiveupdate) \textcolor{keywordflow}{then} \textcolor{comment}{! update the proposal if needed}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00122}00122             \textcolor{keywordflow}{if} (equalsampleweightrequested) sampleweightmerge = 0}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00123}00123             \textcolor{keyword}{call }writechainfile( sampleweightmerge, nd, stepcounter, winnerimageid(1:stepcounter), sampleweight(1:stepcounter), meanaccr(1:stepcounter), logfunc(1:stepcounter), chain(1:nd,1:stepcounter) )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00124}00124             sampleweightmerge = sampleweight(stepcounter)}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00125}00125             co\_samplerupdateoccurred = nadaptiveupdatecounter<nadaptiveupdate}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00126}00126             \textcolor{keywordflow}{if} (co\_samplerupdateoccurred) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00127}00127               \textcolor{keyword}{call }dosamplerupdate( nd, stepcounter, idelayadaptiveupdate, nadaptiveupdatecounter, nfuncall, sumaccr, chain(1:nd,1:stepcounter), sampleweight(1:stepcounter) )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00128}00128               nadaptiveupdatecounter = nadaptiveupdatecounter + 1}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00129}00129               \textcolor{comment}{!call writeRestartFile()}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00130}00130 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00131}00131             sampleweight(1:stepcounter) = 0}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00132}00132             idelaycounteruniquepoint = 0}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00133}00133             idelaycounter = 0}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00134}00134           \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00135}00135             co\_samplerupdateoccurred = .false.}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00136}00136 \textcolor{keywordflow}{          end if}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00137}00137           }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00138}00138           \textcolor{keywordflow}{if} ( ireportprogresscounter == ireportprogress ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00139}00139             ireportprogresscounter = 0}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00140}00140             \textcolor{keyword}{call }reportprogress(nfuncall,nfuncallaccepted,sumaccr)}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00141}00141 \textcolor{keywordflow}{          end if}      }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00142}00142 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00143}00143           \textcolor{keywordflow}{if} (co\_proposalfound) \textcolor{keywordflow}{exit} loopoverimages}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00144}00144 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00145}00145 \textcolor{keywordflow}{        end do} loopoverimages}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00146}00146         }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00147}00147         \textcolor{keywordflow}{if} (nfuncallaccepted>=chainsize) co\_missionaccomplished = .true.}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00148}00148 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00149}00149         sync images(*)}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00150}00150 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00151}00151       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00152}00152 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00153}00153         sync images(1)}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00154}00154         \textcolor{keywordflow}{if} (co\_proposalfound[1]) co\_currentandlogfunc = co\_currentandlogfunc(:)[1]}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00155}00155         \textcolor{keywordflow}{if} (co\_samplerupdateoccurred[1]) \textcolor{keyword}{call }getsamplerupdate()}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00157}00157 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00159}00159       \textcolor{keywordflow}{if} (co\_missionaccomplished[1]) \textcolor{keywordflow}{exit} loopmarkovchain   \textcolor{comment}{! we are done}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00160}00160 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00161}00161       \textcolor{keyword}{call }getproposal(nd,co\_currentandlogfunc,co\_proposalandlogfunc,logprobdiff,\mbox{\hyperlink{ParaMonte_0drunParaDRAM_8f90_a61612d7f17ad31a757aee8ee361f7fbd}{getlogfunc}},getgradlogfunc)}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00162}00162       }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00163}00163       \textcolor{comment}{! ensure the new proposal logFunc does not cause overflow or underflow}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00164}00164       \textcolor{keywordflow}{if} (logprobdiff>\mbox{\hyperlink{namespaceconstants__mod_a2ce5b1495148376514698c8a6d60a820}{loghuge\_rk}}) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00165}00165         co\_accr = 1.\_rk}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00166}00166       \textcolor{keywordflow}{elseif} (logprobdiff<\mbox{\hyperlink{namespaceconstants__mod_a08700d4bf701dda7c33df7590075d2e3}{logtiny\_rk}}) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00167}00167         co\_accr = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00168}00168       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00169}00169         co\_accr = min( 1.\_rk , exp(logprobdiff) )}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00170}00170 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00171}00171       }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00172}00172       \textcolor{keyword}{call }random\_number(uniformrnd) \textcolor{comment}{! Now accept the new Proposal with probability co\_accr:}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00173}00173       co\_proposalaccepted = uniformrnd<co\_accr}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00174}00174       \textcolor{comment}{!critical}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00175}00175       \textcolor{comment}{!  write(*,*) PD\%Image\%id, co\_ProposalAccepted, uniformRnd, co\_accr}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00176}00176       \textcolor{comment}{!  write(*,*) PD\%Image\%id, co\_CurrentAndLogFunc}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00177}00177       \textcolor{comment}{!  write(*,*) PD\%Image\%id, co\_ProposalAndLogFunc}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00178}00178       \textcolor{comment}{!end critical}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00180}00180       \textcolor{keywordflow}{if} (pd\%Image\%isMaster) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00181}00181         \textcolor{comment}{!read(*,*)}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00182}00182         sync images(*)}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00183}00183       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00184}00184         sync images(1)}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00185}00185 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00186}00186 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00187}00187       cycle loopmarkovchain}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00188}00188     }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00189}00189 \textcolor{keywordflow}{    end do} loopmarkovchain}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00190}00190     }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00191}00191     sync all}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00192}00192 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00193}00193   \textcolor{keyword}{end }procedure runkernelsinglchain}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00194}00194 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00195}00195 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00196}00196 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00197}00197 }
+\DoxyCodeLine{\Hypertarget{ParaDRAM__mod_0dKernelSinglChain_8f90_source_l00198}00198 \textcolor{keyword}{end }submodule KernelSinglChain}
+
+\end{DoxyCode}

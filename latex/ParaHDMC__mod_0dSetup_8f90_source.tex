@@ -1,0 +1,786 @@
+\hypertarget{ParaHDMC__mod_0dSetup_8f90_source}{}\doxysection{Para\+HDMC\+\_\+mod@Setup.\+f90}
+\label{ParaHDMC__mod_0dSetup_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/ParaHDMC\_mod"@Setup.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/\_\_\_toBeCleared\_\_\_/ParaHDMC\_mod"@Setup.f90}}
+\mbox{\hyperlink{ParaHDMC__mod_0dSetup_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00001}00001 submodule(\mbox{\hyperlink{namespaceparahdmc}{parahdmc}}) setup}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00002}00002   }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00003}00003   \textcolor{keywordtype}{use }misc, \textcolor{keywordtype}{only}: charvec\_type, randomseed\_type, timer\_type}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00004}00004   \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00005}00005   \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00007}00007   \textcolor{comment}{! module name}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00008}00008   \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: smp\_moduleName = mp\_modulename // \textcolor{stringliteral}{"{}@Setup"{}}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00009}00009   }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00010}00010   \textcolor{comment}{! parallel modeling schemes supported:}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00011}00011   \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: smp\_multiChainParallelModel = \textcolor{stringliteral}{"{}multiChain"{}}       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00012}00012   \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: smp\_singlChainParallelModel = \textcolor{stringliteral}{"{}singleChain"{}}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00013}00013   \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: smp\_hybridGaussianProposal = \textcolor{stringliteral}{"{}hybridGaussian"{}}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00014}00014   }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00015}00015   \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{parameter} :: smv\_RANDOM\_SEED\_NULL                      = -\/huge(mp\_nullik)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00016}00016   }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00017}00017   \textcolor{comment}{! default values for the specs:}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00018}00018   \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: smp\_VarNameDefault                        = \textcolor{stringliteral}{"{}variable"{}}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00019}00019 \textcolor{keywordtype}{  real}(RK)    , \textcolor{keywordtype}{parameter} :: smp\_AccRangeDefault(2)                    = [0.2\_rk,0.3\_rk]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00020}00020   \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{parameter} :: smp\_chainSizeDefault                      = 100000}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00021}00021   \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: smp\_ParallelModelDefault                  = \textcolor{stringliteral}{"{}multiChain"{}}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00022}00022   \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: smp\_ProposalModelDefault                  = smp\_hybridgaussianproposal}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00023}00023   \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{parameter} :: smp\_ireportProgressDefault                = 1000}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00024}00024   \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{parameter} :: smp\_nAdaptiveUpdateDefault                = 100}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00025}00025   \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{parameter} :: smp\_idelayAdaptiveUpdateDefault           = 10}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00026}00026   \textcolor{keywordtype}{logical}     , \textcolor{keywordtype}{parameter} :: smp\_inputFileHasPriorityDefault           = .true.}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00027}00027   \textcolor{keywordtype}{logical}     , \textcolor{keywordtype}{parameter} :: smp\_randomStartPointRequestedDefault      = .false.}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00028}00028   \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{parameter} :: smp\_maxNumDomainCheckToWarnDefault        = huge(1)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00029}00029   \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{parameter} :: smp\_maxNumDomainCheckToStopDefault        = 2000}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00030}00030   \textcolor{keywordtype}{logical}     , \textcolor{keywordtype}{parameter} :: smp\_singleRestartFileRequestedDefault     = .true.}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00031}00031   \textcolor{keywordtype}{logical}     , \textcolor{keywordtype}{parameter} :: smp\_equalSampleWeightRequestedDefault     = .true.}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00033}00033   }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00034}00034   \textcolor{comment}{! Formatting variables}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00035}00035   \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable} :: smv\_ndStr, smp\_colWidthStr, smv\_precisionStr, smv\_ndCharFormat, smv\_ndRealFormat}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00037}00037   \textcolor{comment}{! spec definitions}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00038}00038   \textcolor{keywordtype}{character(mp\_colWidth)}, \textcolor{keywordtype}{allocatable}  :: cosmv\_VarName(:)[:]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00039}00039   \textcolor{keywordtype}{character(mp\_maxFilePathLength)}      :: cosmv\_fileBase[*]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00040}00040   \textcolor{keywordtype}{integer(IK)}                          :: cosmv\_chainSize[*]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00041}00041   \textcolor{keywordtype}{integer(IK)}                          :: cosmv\_randomSeed[*]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00042}00042 \textcolor{keywordtype}{  real}(RK), \textcolor{keywordtype}{allocatable}                :: cosmv\_StartPoint(:)[:]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00043}00043   \textcolor{keywordtype}{character(mp\_maxFilePathLength)}      :: cosmv\_parallelModel[*]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00044}00044   \textcolor{keywordtype}{character(mp\_maxFilePathLength)}      :: cosmv\_proposalModel[*]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00045}00045   \textcolor{keywordtype}{integer(IK)}                          :: cosmv\_ireportProgress[*]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00046}00046   \textcolor{keywordtype}{integer(IK)}                          :: cosmv\_nAdaptiveUpdate[*]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00047}00047 \textcolor{keywordtype}{  real}(RK), \textcolor{keywordtype}{allocatable}                :: cosmv\_StartPointDomain(:,:)[:]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00048}00048   \textcolor{keywordtype}{logical}                              :: cosmv\_randomStartPointRequested[*]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00049}00049   \textcolor{keywordtype}{integer(IK)}                          :: cosmv\_idelayAdaptiveUpdate[*]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00050}00050   \textcolor{keywordtype}{logical}                              :: cosmv\_singleRestartFileRequested[*]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00051}00051   \textcolor{keywordtype}{logical}                              :: cosmv\_equalSampleWeightRequested[*]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00052}00052   \textcolor{keywordtype}{logical}                              :: cosmv\_inputFileHasPriority[*]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00053}00053   \textcolor{keywordtype}{type}(RandomSeed\_type)                 :: cosmv\_RandomSeed[*]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00055}00055   \textcolor{comment}{! other}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00056}00056   \textcolor{keywordtype}{integer(IK)}                            :: smv\_restartFileNumber \textcolor{comment}{! used when a restart file is detected.}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00057}00057   \textcolor{keywordtype}{logical}                                :: smv\_logFileExists, smv\_chainFileExists, smv\_restartNeeded}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00058}00058  \textcolor{comment}{!real(RK)                , allocatable  :: smv\_DomainInit(:,:), smv\_StartPointDomainInit(:,:)   ! used for checking the range of StartPointDomain against Domain}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00059}00059   \textcolor{keywordtype}{character(:)}            , \textcolor{keywordtype}{allocatable}  :: smv\_fileBase, smv\_proposalModel, smv\_parallelModel}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00060}00060   \textcolor{keywordtype}{character(:)}            , \textcolor{keywordtype}{allocatable}  :: smv\_logFileFormat, smv\_timeFileFormat, smv\_chainFileFormat}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00061}00061   \textcolor{keywordtype}{character(:)}            , \textcolor{keywordtype}{allocatable}  :: smv\_imageSuffix}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00062}00062   \textcolor{keywordtype}{type}(CharVec\_type), \textcolor{keywordtype}{allocatable}  :: smv\_RestartFileList(:)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00063}00063   \textcolor{keywordtype}{character(:)}            , \textcolor{keywordtype}{allocatable}  :: smv\_logFile, smv\_timeFile, smv\_chainFile, smv\_restartFile}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00064}00064   \textcolor{keywordtype}{integer(IK)}                            :: smv\_nFunCallAccepted, smv\_nFunCall}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00065}00065 \textcolor{keywordtype}{  real}(RK)                               :: smv\_timeStart, smv\_timeEnd, smv\_timeCurrent, smv\_timeLastReport, smv\_totalRunTime}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00066}00066   \textcolor{keywordtype}{type}(Timer\_type)                        :: smv\_timer}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00067}00067   }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00068}00068   \textcolor{comment}{! procedure pointers:}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00069}00069   \textcolor{keywordtype}{procedure}(getProposalProc)     , \textcolor{keywordtype}{pointer} :: getProposal}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00070}00070   \textcolor{keywordtype}{procedure}(doSamplerUpdateProc) , \textcolor{keywordtype}{pointer} :: doSamplerUpdate}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00071}00071   \textcolor{keywordtype}{procedure}(getSamplerUpdateProc), \textcolor{keywordtype}{pointer} :: getSamplerUpdate}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00073}00073 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00074}00074 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00076}00076 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00078}00078 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00079}00079 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00080}00080  }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00081}00081   \textcolor{keyword}{module} subroutine runparahdmc( nd, \mbox{\hyperlink{ParaMonte_0drunParaDRAM_8f90_a61612d7f17ad31a757aee8ee361f7fbd}{getlogfunc}}, getgradlogfunc  \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00082}00082                                , inputfile, proposalmodel, filebase, parallelmodel, varname \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00083}00083                                , chainsize, randomseed, accrange, nadaptiveupdate, idelayadaptiveupdate, ireportprogress \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00084}00084                                , domain, startpoint, startpointdomain, startcovmatgp \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00085}00085                                , randomstartpointrequested, singlerestartfilerequested, equalsampleweightrequested \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00086}00086                                , maxnumdomainchecktowarn, maxnumdomainchecktostop \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00087}00087                                , nstephp, stepsizehp \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00088}00088                                )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00089}00089       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00090}00090       use, \textcolor{keywordtype}{intrinsic} :: iso\_fortran\_env, only: output\_unit, stat\_stopped\_image}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00091}00091       \textcolor{keywordtype}{use }misc, \textcolor{keywordtype}{only}: num2str, getlowercase, splitpath, iswindowsos, replacestr, write}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00092}00092       \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00093}00093       \textcolor{keywordtype}{use }paramonte, \textcolor{keywordtype}{only}: getlogfunc\_proc, getgradlogfunc\_proc}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00094}00094       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00095}00095       \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00096}00096       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00097}00097       \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}                 :: nd}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00098}00098       \textcolor{keywordtype}{procedure}(getLogFunc\_proc)               :: getLogFunc}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00099}00099       \textcolor{keywordtype}{procedure}(GetGradLogFunc\_proc)           :: GetGradLogFunc}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00100}00100       \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}      , \textcolor{keywordtype}{optional} :: inputFile}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00101}00101       \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}      , \textcolor{keywordtype}{optional} :: fileBase, proposalModel, parallelModel, VarName(nd)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00102}00102       \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}      , \textcolor{keywordtype}{optional} :: chainSize, randomSeed, ireportProgress, nAdaptiveUpdate, idelayAdaptiveUpdate}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00103}00103 \textcolor{keywordtype}{      real}(RK)    , \textcolor{keywordtype}{intent(in)}      , \textcolor{keywordtype}{optional} :: AccRange(2), StartPoint(nd), StartPointDomain(nd,2), Domain(nd,2)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00104}00104 \textcolor{keywordtype}{      real}(RK)    , \textcolor{keywordtype}{intent(in)}      , \textcolor{keywordtype}{optional} :: StartCovMatGP(nd,nd)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00105}00105       \textcolor{keywordtype}{logical}     , \textcolor{keywordtype}{intent(in)}      , \textcolor{keywordtype}{optional} :: singleRestartFileRequested, randomStartPointRequested, equalSampleWeightRequested}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00106}00106       \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}      , \textcolor{keywordtype}{optional} :: maxNumDomainCheckToWarn}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00107}00107       \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}      , \textcolor{keywordtype}{optional} :: maxNumDomainCheckToStop}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00108}00108       \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}      , \textcolor{keywordtype}{optional} :: nstepHP    \textcolor{comment}{! number of integration steps in Hamiltonian proposal}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00109}00109 \textcolor{keywordtype}{      real}(RK)    , \textcolor{keywordtype}{intent(in)}      , \textcolor{keywordtype}{optional} :: stepSizeHP \textcolor{comment}{! size of integration steps in Hamiltonian proposal}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00110}00110   }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00111}00111     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00112}00112     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter}   :: PROCEDURE\_NAME = smp\_modulename//\textcolor{stringliteral}{"{}@runParaHDMC()"{}}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00113}00113     \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable} :: directory, filename}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00114}00114     \textcolor{comment}{!character(:), allocatable :: errMsg}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00115}00115     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00116}00116     mv\_errmsg = \textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00117}00117     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00118}00118     mv\_nd = nd}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00119}00119     mv\_logfileunit = output\_unit   \textcolor{comment}{! temporarily set the report file to stdout.}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00120}00120     \textcolor{keyword}{allocate}( cosmv\_startpoint(mv\_nd)[*], comv\_domain(mv\_nd,2)[*], cosmv\_startpointdomain(mv\_nd,2)[*], cosmv\_varname(mv\_nd)[*] )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00121}00121     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00122}00122     \textcolor{comment}{! setup coarray variables}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00123}00123     mv\_imageid     = this\_image()}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00124}00124     mv\_numimages   = num\_images()}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00125}00125     mv\_isnotfirstimage  = mv\_imageid/=1}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00126}00126     mv\_isfirstimage = mv\_imageid==1}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00128}00128     \textcolor{comment}{! setup formatting variables}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00129}00129     smv\_ndstr        = num2str(mv\_nd)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00130}00130     smp\_colwidthstr  = num2str(mp\_colwidth)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00131}00131     smv\_precisionstr = num2str(mp\_outputrealprecision)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00132}00132     smv\_ndcharformat = \textcolor{stringliteral}{'('}//smv\_ndstr//\textcolor{stringliteral}{'A'}//smp\_colwidthstr//\textcolor{stringliteral}{')'}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00133}00133     smv\_ndrealformat = \textcolor{stringliteral}{'('}//smv\_ndstr//\textcolor{stringliteral}{'E'}//smp\_colwidthstr//\textcolor{stringliteral}{'.'}//smv\_precisionstr//\textcolor{stringliteral}{')'}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00134}00134     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00135}00135     \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00136}00136     \textcolor{comment}{! initialize ParaHDMC variables, then read them from the input namelist file, then broadcast all values to all images}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00137}00137     \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00138}00138     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00139}00139     \textcolor{keywordflow}{if} (mv\_isfirstimage) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00140}00140       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00141}00141       \textcolor{keyword}{call }\mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_af2d479f4813048ff07b5c64be0403b69}{addpmintro}}()}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00142}00142       mv\_texttodecorate = \textcolor{stringliteral}{"{}Setting up ParaHDMC variables..."{}}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00143}00143       \textcolor{keyword}{call }decoratelogfileheader()  \textcolor{comment}{! This prints on stdout since logFileUnit still points to output\_unit from iso\_fortran\_env}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00144}00144 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00145}00145       \textcolor{keyword}{call }setupoptionsgeneral(inputfile)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00146}00146       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00147}00147       \textcolor{comment}{! reassign all variables from the procedure argument list if needed}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00148}00148       \textcolor{keyword}{call }alertuseraboutinputpriority(mv\_logfileunit,.not.cosmv\_inputfilehaspriority)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00149}00149       mv\_procargneeded = (.not.cosmv\_inputfilehaspriority) .or. (.not.\textcolor{keyword}{present}(inputfile))}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00150}00150       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00151}00151       \textcolor{keywordflow}{if} (mv\_procargneeded) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00152}00152         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(domain))                       comv\_domain                       = domain}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00153}00153         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(varname))                      cosmv\_varname                      = varname}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00154}00154         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(filebase))                     cosmv\_filebase                     = filebase}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00155}00155         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(accrange))                     comv\_accrange                     = accrange}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00156}00156         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(chainsize))                    cosmv\_chainsize                    = chainsize}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00157}00157         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(randomseed))                   cosmv\_randomseed                   = randomseed}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00158}00158         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(startpoint))                   cosmv\_startpoint                   = startpoint}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00159}00159         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(parallelmodel))                cosmv\_parallelmodel                = parallelmodel}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00160}00160         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(proposalmodel))                cosmv\_proposalmodel                = proposalmodel}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00161}00161         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(ireportprogress))              cosmv\_ireportprogress              = ireportprogress}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00162}00162         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(nadaptiveupdate))              cosmv\_nadaptiveupdate              = nadaptiveupdate}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00163}00163         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(startpointdomain))             cosmv\_startpointdomain             = startpointdomain}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00164}00164         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(idelayadaptiveupdate))         cosmv\_idelayadaptiveupdate         = idelayadaptiveupdate}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00165}00165         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(maxnumdomainchecktowarn))      comv\_maxnumdomainchecktowarn      = maxnumdomainchecktowarn}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00166}00166         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(maxnumdomainchecktostop))      comv\_maxnumdomainchecktostop      = maxnumdomainchecktostop}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00167}00167         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(randomstartpointrequested))    cosmv\_randomstartpointrequested    = randomstartpointrequested}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00168}00168         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(singlerestartfilerequested))   cosmv\_singlerestartfilerequested   = singlerestartfilerequested}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00169}00169         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(equalsampleweightrequested))   cosmv\_equalsampleweightrequested   = equalsampleweightrequested}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00170}00170 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00171}00171 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00172}00172       sync images(*, stat=mv\_syncstat, errmsg=mv\_errmsg)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00173}00173       \textcolor{keyword}{call }checkforsyncerror( when = \textcolor{stringliteral}{"{}While syncing the coarray master image with slave images:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00174}00174       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00175}00175     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00176}00176     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00177}00177       sync images(1, stat=mv\_syncstat, errmsg=mv\_errmsg)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00178}00178       \textcolor{keyword}{call }checkforsyncerror( when = \textcolor{stringliteral}{"{}While syncing the coarray slave image "{}} // num2str(this\_image()) // \textcolor{stringliteral}{"{}with the master image:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00180}00180       comv\_domain                       = comv\_domain(:,:)[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00181}00181       cosmv\_varname                      = cosmv\_varname(:)[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00182}00182       cosmv\_filebase                     = cosmv\_filebase[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00183}00183       comv\_accrange                     = comv\_accrange(:)[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00184}00184       cosmv\_chainsize                    = cosmv\_chainsize[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00185}00185       cosmv\_randomseed                   = cosmv\_randomseed[1] \textcolor{comment}{!+ 100*(mv\_imageID-\/1)}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00186}00186       cosmv\_startpoint                   = cosmv\_startpoint(:)[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00187}00187       cosmv\_parallelmodel                = cosmv\_parallelmodel[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00188}00188       cosmv\_proposalmodel                = cosmv\_proposalmodel[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00189}00189       cosmv\_ireportprogress              = cosmv\_ireportprogress[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00190}00190       cosmv\_nadaptiveupdate              = cosmv\_nadaptiveupdate[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00191}00191       cosmv\_startpointdomain             = cosmv\_startpointdomain(:,:)[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00192}00192       cosmv\_idelayadaptiveupdate         = cosmv\_idelayadaptiveupdate[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00193}00193       cosmv\_inputfilehaspriority         = cosmv\_inputfilehaspriority[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00194}00194       comv\_maxnumdomainchecktowarn      = comv\_maxnumdomainchecktowarn[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00195}00195       comv\_maxnumdomainchecktostop      = comv\_maxnumdomainchecktostop[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00196}00196       cosmv\_randomstartpointrequested    = cosmv\_randomstartpointrequested[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00197}00197       cosmv\_singlerestartfilerequested   = cosmv\_singlerestartfilerequested[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00198}00198       cosmv\_equalsampleweightrequested = cosmv\_singlerestartfilerequested[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00199}00199     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00200}00200 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00201}00201     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00202}00202     smv\_filebase = trim(adjustl(cosmv\_filebase))}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00203}00203     smv\_proposalmodel = getlowercase( trim(adjustl(cosmv\_proposalmodel)) )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00204}00204     smv\_parallelmodel = getlowercase( trim(adjustl(cosmv\_parallelmodel)) )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00205}00205 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00206}00206     \textcolor{comment}{!sync all (stat=mv\_syncStat, errmsg=mv\_errMsg)}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00207}00207     \textcolor{comment}{!call checkForSyncError( when = "{}While syncing all images with each other before setting random seeds:"{} )}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00208}00208 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00209}00209     \textcolor{comment}{!write(*,*) this\_image(), smv\_fileBase}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00210}00210     \textcolor{comment}{!error stop}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00211}00211 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00212}00212     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00213}00213     \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00214}00214     \textcolor{comment}{! setup random seed: This is needed in advance, to ensure that the random}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00215}00215     \textcolor{comment}{! setup random seed: numbers generated on each image are different.}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00216}00216     \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00217}00217 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00218}00218     block}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00219}00219       \textcolor{keywordflow}{if} (cosmv\_randomseed==smv\_random\_seed\_null) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00220}00220         \textcolor{keyword}{call }cosmv\_randomseed\%set(mv\_imageid)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00221}00221       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00222}00222         \textcolor{keyword}{call }cosmv\_randomseed\%set(mv\_imageid,cosmv\_randomseed)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00223}00223 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00224}00224     \textcolor{keyword}{end }block}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00225}00225 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00226}00226     \textcolor{comment}{! get the random seeds from the generator on each processor, for the output report files}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00227}00227     \textcolor{comment}{!cosmv\_RandomSeed\%Vector = getRandomSeed()}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00228}00228     \textcolor{comment}{!block ! get the random seeds from the generator on each processor, for the output report files}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00229}00229     \textcolor{comment}{!  implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00230}00230     \textcolor{comment}{!  integer(IK) :: seedSize}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00231}00231     \textcolor{comment}{!  call random\_seed(size=seedSize)}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00232}00232     \textcolor{comment}{!  allocate(cosmv\_RandomSeed\%Vector(seedSize))}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00233}00233     \textcolor{comment}{!  call random\_seed(get=cosmv\_RandomSeed\%Vector)}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00234}00234     \textcolor{comment}{!end block}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00235}00235 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00236}00236 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00237}00237     \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00238}00238     \textcolor{comment}{! setup parallelModel: The parallelModel variables are needed for setting up}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00239}00239     \textcolor{comment}{! setup parallelModel: the output files and the rest of variables.}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00240}00240     \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00241}00241 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00242}00242     \textcolor{comment}{! setup parallelism model}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00243}00243     \textcolor{keywordflow}{if} (smv\_parallelmodel==\textcolor{stringliteral}{"{}"{}}) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00244}00244       mv\_multichainparallelmodelrequested = .true.}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00245}00245       mv\_singlchainparallelmodelrequested = .false.}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00246}00246       \textcolor{keywordflow}{if} (mv\_isfirstimage) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00247}00247         \textcolor{keyword}{call }write(mv\_logfileunit,1,0, mp\_alert // \textcolor{stringliteral}{"{}parallelModel not set by the user."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00248}00248         \textcolor{keyword}{call }write(mv\_logfileunit,0,1, mp\_alert // \textcolor{stringliteral}{"{}Default value will be used: "{}} // smp\_parallelmodeldefault )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00249}00249 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00250}00250     \textcolor{keywordflow}{elseif} ( smv\_parallelmodel==getlowercase(smp\_singlchainparallelmodel) ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00251}00251       mv\_multichainparallelmodelrequested = .false.}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00252}00252       mv\_singlchainparallelmodelrequested = .true.}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00253}00253     \textcolor{keywordflow}{elseif} ( smv\_parallelmodel==getlowercase(smp\_multichainparallelmodel) ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00254}00254       mv\_multichainparallelmodelrequested = .true.}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00255}00255       mv\_singlchainparallelmodelrequested = .false.}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00256}00256     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00257}00257       \textcolor{keywordflow}{if} (mv\_isfirstimage) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00258}00258         \textcolor{keyword}{call }write(mv\_logfileunit,1,0, mp\_fatal // \textcolor{stringliteral}{"{}The requested parallelModel is not recognized."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00259}00259         \textcolor{keyword}{call }write(mv\_logfileunit,0,0, mp\_fatal // \textcolor{stringliteral}{"{}Please use one of the following two options:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00260}00260         \textcolor{keyword}{call }write(mv\_logfileunit,0,0, mp\_fatal // \textcolor{stringliteral}{"{}parallelModel = "{}} // smp\_multichainparallelmodel // \textcolor{stringliteral}{"{}:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00261}00261         \textcolor{keyword}{call }write(mv\_logfileunit,0,0, mp\_fatal // mp\_space // \textcolor{stringliteral}{"{}This method uses Embarrassingly Parallel Method."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00262}00262         \textcolor{keyword}{call }write(mv\_logfileunit,0,0, mp\_fatal // mp\_space // \textcolor{stringliteral}{"{}Multiple independent chain files will be generated in this case."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00263}00263         \textcolor{keyword}{call }write(mv\_logfileunit,0,0, mp\_fatal // \textcolor{stringliteral}{"{}parallelModel = "{}} // smp\_singlchainparallelmodel // \textcolor{stringliteral}{"{}:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00264}00264         \textcolor{keyword}{call }write(mv\_logfileunit,0,0, mp\_fatal // mp\_space // \textcolor{stringliteral}{"{}This method uses fork-\/style parallelization Method."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00265}00265         \textcolor{keyword}{call }write(mv\_logfileunit,0,1, mp\_fatal // mp\_space // \textcolor{stringliteral}{"{}A single chain file will be generated in this case."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00266}00266 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00267}00267       error stop}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00268}00268 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00269}00269 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00270}00270     \textcolor{keywordflow}{if} ( mv\_multichainparallelmodelrequested .or. (mv\_singlchainparallelmodelrequested .and. mv\_isfirstimage) ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00271}00271       mv\_ismasterimage = .true.}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00272}00272       mv\_isnotmasterimage = .false.}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00273}00273     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00274}00274       mv\_ismasterimage = .false.}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00275}00275       mv\_isnotmasterimage = .true.}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00276}00276 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00277}00277 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00278}00278     sync all(stat=mv\_syncstat, errmsg=mv\_errmsg)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00279}00279     \textcolor{keyword}{call }checkforsyncerror( when = \textcolor{stringliteral}{"{}While syncing all images with each other before setting up the output files:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00280}00280 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00281}00281 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00282}00282     \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00283}00283     \textcolor{comment}{! setup cosmv\_fileBase, and output files}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00284}00284     \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00285}00285     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00286}00286     \textcolor{comment}{!call reportUpdate("{}fileBase"{})}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00287}00287     ifblockfilebaseexistence: \textcolor{keywordflow}{if} (len\_trim(adjustl(smv\_filebase))>0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00288}00288 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00289}00289       \textcolor{keywordflow}{if} (mv\_isfirstimage) \textcolor{keyword}{call }write(mv\_logfileunit,1,1, mp\_brand // \textcolor{stringliteral}{"{}  fileBase for ParaHDMC output files detected."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00290}00290 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00291}00291       \textcolor{keywordflow}{if} (iswindowsos()) smv\_filebase = replacestr(smv\_filebase,\textcolor{stringliteral}{'/'},\textcolor{stringliteral}{'\(\backslash\)'})}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00292}00292 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00293}00293       \textcolor{keyword}{call }splitpath(smv\_filebase,directory,filename)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00294}00294       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00295}00295       \textcolor{keywordflow}{if} (len\_trim(directory)/=0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00296}00296         \textcolor{keywordflow}{if} (mv\_isfirstimage) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00297}00297           \textcolor{keyword}{call }write(mv\_logfileunit,1,0, mp\_brand // \textcolor{stringliteral}{"{}Generating the requested directory for ParaHDMC output files:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00298}00298           \textcolor{keyword}{call }write(mv\_logfileunit,0,1, mp\_brand // directory )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00299}00299           \textcolor{keywordflow}{if} ( iswindowsos() ) \textcolor{keywordflow}{then} \textcolor{comment}{! OS is windows}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00300}00300             \textcolor{keyword}{call }execute\_command\_line(\textcolor{stringliteral}{"{}mkdir "{}} // directory)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00301}00301           \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00302}00302             \textcolor{keyword}{call }execute\_command\_line(\textcolor{stringliteral}{"{}mkdir -\/p "{}} // directory)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00303}00303 \textcolor{keywordflow}{          end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00304}00304           sync images(*, stat=mv\_syncstat, errmsg=mv\_errmsg)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00305}00305             \textcolor{keyword}{call }checkforsyncerror( when = \textcolor{stringliteral}{"{}While syncing the coarray master image with slave images:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00306}00306         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00307}00307             sync images(1, stat=mv\_syncstat, errmsg=mv\_errmsg)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00308}00308             \textcolor{keyword}{call }checkforsyncerror( when = \textcolor{stringliteral}{"{}While syncing the coarray slave image "{}} // num2str(this\_image()) // \textcolor{stringliteral}{"{}with the master image:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00309}00309 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00310}00310 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00311}00311 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00312}00312       \textcolor{keywordflow}{if} (len\_trim(filename)==0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00313}00313         }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00314}00314         \textcolor{keywordflow}{if} (mv\_isfirstimage) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00315}00315           }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00316}00316           \textcolor{keyword}{call }write(mv\_logfileunit,1,1, mp\_brand // \textcolor{stringliteral}{"{}No filename for ParaHDMC output files detected."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00317}00317           \textcolor{keyword}{call }write(mv\_logfileunit,1,1, mp\_brand // \textcolor{stringliteral}{"{}Generating ParaHDMC default filenames from current date and time ..."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00318}00318           smv\_filebase = smv\_filebase // \mbox{\hyperlink{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_a1f90954aea9a1fcfe6089bf48bf4848a}{generatefilebase}}()}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00319}00319           cosmv\_filebase = smv\_filebase}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00320}00320 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00321}00321           sync images(*, stat=mv\_syncstat, errmsg=mv\_errmsg)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00322}00322           \textcolor{keyword}{call }checkforsyncerror( when = \textcolor{stringliteral}{"{}While syncing the coarray master image with slave images:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00323}00323           }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00324}00324         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00325}00325         }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00326}00326           sync images(1, stat=mv\_syncstat, errmsg=mv\_errmsg)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00327}00327           \textcolor{keyword}{call }checkforsyncerror( when = \textcolor{stringliteral}{"{}While syncing the coarray slave image "{}} // num2str(this\_image()) // \textcolor{stringliteral}{"{}with the master image:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00328}00328 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00329}00329           cosmv\_filebase = cosmv\_filebase[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00330}00330           smv\_filebase = trim(adjustl(cosmv\_filebase))}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00331}00331 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00332}00332       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00333}00333 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00334}00334 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00335}00335     \textcolor{keywordflow}{else} ifblockfilebaseexistence   \textcolor{comment}{! no fileBase is provided.}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00336}00336       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00337}00337       \textcolor{keywordflow}{if} (mv\_isfirstimage) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00338}00338         }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00339}00339         \textcolor{keyword}{call }write(mv\_logfileunit,1,0, mp\_brand // \textcolor{stringliteral}{"{}No fileBase for ParaHDMC output files detected."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00340}00340         \textcolor{keyword}{call }write(mv\_logfileunit,0,0, mp\_brand // \textcolor{stringliteral}{"{}All output files will be written to the current working directory."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00341}00341         \textcolor{keyword}{call }write(mv\_logfileunit,0,1, mp\_brand // \textcolor{stringliteral}{"{}Generating ParaHDMC default filenames from current date and time ..."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00342}00342         smv\_filebase = smv\_filebase // \mbox{\hyperlink{ParaDRAM__mod_0dSetupProceduresOutputFiles_8f90_a1f90954aea9a1fcfe6089bf48bf4848a}{generatefilebase}}()}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00343}00343         cosmv\_filebase = smv\_filebase}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00344}00344         }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00345}00345         sync images(*, stat=mv\_syncstat, errmsg=mv\_errmsg)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00346}00346           \textcolor{keyword}{call }checkforsyncerror( when = \textcolor{stringliteral}{"{}While syncing the coarray master image with slave images:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00347}00347           }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00348}00348         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00349}00349         }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00350}00350           sync images(1, stat=mv\_syncstat, errmsg=mv\_errmsg)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00351}00351           \textcolor{keyword}{call }checkforsyncerror( when = \textcolor{stringliteral}{"{}While syncing the coarray slave image "{}} // num2str(this\_image()) // \textcolor{stringliteral}{"{}with the master image:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00352}00352 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00353}00353         cosmv\_filebase = cosmv\_filebase[1]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00354}00354         smv\_filebase = trim(adjustl(cosmv\_filebase))}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00355}00355       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00356}00356 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00357}00357 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00358}00358 \textcolor{keywordflow}{    end if} ifblockfilebaseexistence}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00359}00359 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00360}00360     \textcolor{keywordflow}{if} (mv\_isfirstimage) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00361}00361       \textcolor{keyword}{call }write(mv\_logfileunit,1,0, mp\_brand // \textcolor{stringliteral}{"{}ParaHDMC output files will be prefixed with:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00362}00362       \textcolor{keyword}{call }write(mv\_logfileunit,0,1, mp\_brand // mp\_space // smv\_filebase )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00363}00363       \textcolor{keywordflow}{if} (mv\_multichainparallelmodelrequested) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00364}00364           \textcolor{keyword}{call }write(mv\_logfileunit,1,0, mp\_notic // \textcolor{stringliteral}{"{}In multiChain parallel mode, each output file will be suffixed"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00365}00365         \textcolor{keyword}{call }write(mv\_logfileunit,0,1, mp\_notic // \textcolor{stringliteral}{"{}with the ID of the corresponding executing thread."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00366}00366 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00367}00367 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00368}00368     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00369}00369 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00370}00370     \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00371}00371     \textcolor{comment}{! setup output files}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00372}00372     \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00373}00373 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00374}00374     smv\_imagesuffix = mp\_imagesuffix // num2str(mv\_imageid)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00375}00375 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00376}00376     \textcolor{comment}{! create output filenames}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00377}00377     smv\_logfile     = smv\_filebase // smv\_imagesuffix // mp\_logfilesuffix     // mp\_logfileext}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00378}00378     smv\_timefile    = smv\_filebase // smv\_imagesuffix // mp\_timefilesuffix    // mp\_timefileext}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00379}00379     smv\_chainfile   = smv\_filebase // smv\_imagesuffix // mp\_chainfilesuffix   // mp\_chainfileext}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00380}00380     smv\_restartfile = smv\_filebase // smv\_imagesuffix // mp\_restartfilesuffix // mp\_restartfileext}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00381}00381     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00382}00382     \textcolor{comment}{! check if files already exist}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00383}00383     \textcolor{keyword}{inquire}(file=smv\_logfile,exist=smv\_logfileexists)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00384}00384     \textcolor{keyword}{inquire}(file=smv\_chainfile,exist=smv\_chainfileexists)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00385}00385           }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00386}00386     \textcolor{comment}{! check if simulation has to be restarted from an old simulation}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00387}00387     \textcolor{keywordflow}{if} (mv\_isfirstimage) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00388}00388       \textcolor{keyword}{call }write(mv\_logfileunit,1,1, mp\_brand // \textcolor{stringliteral}{"{}Searching for old restart files to resume from a previous run..."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00389}00389 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00390}00390     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00391}00391     \textcolor{keyword}{call }doforallneeded(\mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresOutputFiles_8f90_a9eca811703544aa1f85d7e521088d0e2}{wrap\_getfilelist}})}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00392}00392     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00393}00393     \textcolor{comment}{! check for restart, open the log file, and chain file}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00394}00394     \textcolor{keyword}{call }doforallneeded(\mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresOutputFiles_8f90_a561f4a2cd498c3ee97a81cc506949b30}{checkforrestart}})}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00395}00395     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00396}00396     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00397}00397     \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00398}00398     \textcolor{comment}{! setup simulation specs}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00399}00399     \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00400}00400     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00401}00401     \textcolor{comment}{!syncErrMsg = "{}                          "{} ! xx}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00402}00402     \textcolor{comment}{!when = "{}SYNC error occurred between coarray images."{}}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00403}00403     \textcolor{comment}{!sync all (stat=syncStat,syncErrMsg=syncErrMsg)}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00404}00404     \textcolor{comment}{!call checkForSyncError( when )}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00405}00405     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00406}00406     mv\_texttodecorate = \textcolor{stringliteral}{"{}Simulation Specification"{}}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00407}00407     \textcolor{keyword}{call }doforallneeded(decoratelogfileheader)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00408}00408 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00409}00409     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_acb8b46796846f485a2fe95b356d813e2}{wrap\_nd}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00410}00410     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_af697884a858a693e7844e7bfaf396fcc}{wrap\_domain}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00411}00411     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_a137ad1dffd2f83a862bdcb2c7c724db5}{wrap\_varname}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00412}00412     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_a7e242b1bd36ee6e2eadb1842a9877005}{wrap\_filebase}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00413}00413     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_a85cc0feeded904fd3796760e0898bf98}{wrap\_accrange}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00414}00414     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_a93246c88e6e0e43cc54e39facd5f8220}{wrap\_chainsize}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00415}00415     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_a50c116999e20f1b6debbe63bf4b9dda4}{wrap\_randomseed}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00416}00416     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_ae748bb8c90ed151ce12f49d8d315b8c4}{wrap\_startpoint}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00417}00417     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_a7f81636cfcbdf5242833b2fbabadc645}{wrap\_parallelmodel}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00418}00418     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_aac63448fa14666590ad21e7a19d209d3}{wrap\_proposalmodel}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00419}00419     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_a34b26fcabc7fd4efa137854b616be834}{wrap\_ireportprogress}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00420}00420     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_aac0c3a17721f2e6a7728db676167a376}{wrap\_nadaptiveupdate}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00421}00421     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_a8b498b3f6320fdffc30a2ef59f7097d5}{wrap\_startpointdomain}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00422}00422     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_ad6766d58e32147790f4576fffa88602a}{wrap\_randomstartpointrequested}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00423}00423     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_af64d3b7e338a3d9e36bc184a5f165ba4}{wrap\_idelayadaptiveupdate}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00424}00424     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_a57d053e7eeb3f6491f0445105ae26bd3}{wrap\_singlerestartfilerequested}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00425}00425     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_ac67f62946cfc7a79c7605f5468c0b535}{wrap\_inputfilehaspriority}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00426}00426     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_a6bc4efbb553c456a91d09f30a498febd}{wrap\_maxnumdomainchecktowarn}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00427}00427     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_aec5126fb164ec1b1ef6e064b90dc990a}{wrap\_maxnumdomainchecktostop}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00428}00428     \textcolor{keyword}{call }doforallneeded( \mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_ae06f7fb0b2a1a37a904aa33a81c79e00}{wrap\_equalsampleweightrequested}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00429}00429     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00430}00430     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00431}00431     \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00432}00432     \textcolor{comment}{! setup proposal distribution}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00433}00433     \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00434}00434 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00435}00435     \textcolor{comment}{!sync all}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00436}00436 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00437}00437     \textcolor{keywordflow}{if} ( smv\_proposalmodel==getlowercase(smp\_hybridgaussianproposal) ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00438}00438       \textcolor{keyword}{call }setupoptionsproposalhybrid( nd = mv\_nd \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00439}00439                                      , nstepin = nstephp \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00440}00440                                      , inputfile = inputfile \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00441}00441                                      , stepsizein = stepsizehp \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00442}00442                                      , getgradlogfunc = getgradlogfunc \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00443}00443                                      )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00444}00444 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00445}00445 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00446}00446     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00447}00447     \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00448}00448     \textcolor{comment}{! start ParaHDMC kernel}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00449}00449     \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00450}00450 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00451}00451     \textcolor{comment}{! call ParaHDMC kernel}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00452}00452     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00453}00453     \textcolor{keyword}{call }doforallneeded(\mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_afe241fc11d48779aa00fb607cc3cc7aa}{wrap\_parahdmcstart}})}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00454}00454     \textcolor{comment}{!if (mv\_multiChainParallelModelRequested) then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00455}00455     \textcolor{comment}{!  call wrap\_ParaHDMCstart()}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00456}00456     \textcolor{comment}{!elseif (mv\_singlChainParallelModelRequested) then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00457}00457     \textcolor{comment}{!  if (mv\_isFirstImage) then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00458}00458     \textcolor{comment}{!    call wrap\_ParaHDMCstart()}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00459}00459     \textcolor{comment}{!    sync images(*)}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00460}00460     \textcolor{comment}{!  else}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00461}00461     \textcolor{comment}{!    sync images(1)}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00462}00462     \textcolor{comment}{!  end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00463}00463     \textcolor{comment}{!end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00464}00464     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00465}00465     sync all}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00466}00466     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00467}00467     \textcolor{comment}{!call cpu\_time(smv\_timeStart)}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00468}00468     \textcolor{keyword}{call }smv\_timer\%tic()}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00469}00469     smv\_timestart = smv\_timer\%toc()}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00470}00470     smv\_timelastreport = smv\_timestart}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00471}00471     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00472}00472     \textcolor{keywordflow}{if} (mv\_multichainparallelmodelrequested) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00473}00473       error stop}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00474}00474     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00475}00475       \textcolor{keywordflow}{if} ( smv\_proposalmodel==getlowercase(smp\_hybridgaussianproposal) ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00476}00476         getproposal      => getproposalhybrid}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00477}00477         dosamplerupdate  => dosamplerupdatehybrid}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00478}00478         getsamplerupdate => getsamplerupdatehybrid}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00479}00479 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00480}00480 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00481}00481     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00482}00482     \textcolor{keyword}{call }runkernelsinglchain( getproposal = getproposal \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00483}00483                             , dosamplerupdate = dosamplerupdate \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00484}00484                             , getsamplerupdate = getsamplerupdate \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00485}00485                             , nd = nd \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00486}00486                             , chainsize = cosmv\_chainsize \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00487}00487                             , startpoint = cosmv\_startpoint \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00488}00488                             , nadaptiveupdate = cosmv\_nadaptiveupdate \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00489}00489                             , ireportprogress = cosmv\_ireportprogress \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00490}00490                             , idelayadaptiveupdate = cosmv\_idelayadaptiveupdate \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00491}00491                             , equalsampleweightrequested = cosmv\_equalsampleweightrequested \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00492}00492                             , nfuncallaccepted = smv\_nfuncallaccepted \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00493}00493                             , nfuncall = smv\_nfuncall \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00494}00494                             , \mbox{\hyperlink{ParaMonte_0drunParaDRAM_8f90_a61612d7f17ad31a757aee8ee361f7fbd}{getlogfunc}} = \mbox{\hyperlink{ParaMonte_0drunParaDRAM_8f90_a61612d7f17ad31a757aee8ee361f7fbd}{getlogfunc}} \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00495}00495                             , getgradlogfunc = getgradlogfunc \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00496}00496                             )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00497}00497     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00498}00498     smv\_timeend = smv\_timer\%toc()}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00499}00499     \textcolor{comment}{!call cpu\_time(smv\_timeEnd)}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00500}00500     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00501}00501     \textcolor{keywordflow}{if} (mv\_multichainparallelmodelrequested) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00502}00502         \textcolor{keyword}{call }\mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_a9fc62b8b864850ee3c17f7095989d96c}{wrap\_parahdmcexit}}()}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00503}00503     \textcolor{keywordflow}{elseif} (mv\_singlchainparallelmodelrequested) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00504}00504       \textcolor{keywordflow}{if} (mv\_isfirstimage) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00505}00505         \textcolor{keyword}{call }\mbox{\hyperlink{ParaHDMC__mod_0dSetupProceduresWrappers_8f90_a9fc62b8b864850ee3c17f7095989d96c}{wrap\_parahdmcexit}}()}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00506}00506         sync images(*)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00507}00507       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00508}00508         sync images(1)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00509}00509 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00510}00510 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00511}00511 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00512}00512     sync all}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00513}00513     \textcolor{keyword}{call }checkforsyncerror( when = \textcolor{stringliteral}{"{}While syncing all images with each other before ending the program:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00514}00514     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00515}00515     \textcolor{keyword}{deallocate}( cosmv\_startpoint, comv\_domain, cosmv\_startpointdomain, cosmv\_varname )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00516}00516     \textcolor{comment}{!deallocate( smv\_StartPointDomainInit, smv\_DomainInit )}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00517}00517     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00518}00518 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00519}00519   \textcolor{keyword}{end subroutine }runparahdmc}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00520}00520 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00521}00521 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00522}00522 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00523}00523 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00524}00524   \textcolor{keyword}{subroutine }setupoptionsgeneral(inputFile)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00525}00525     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00526}00526     \textcolor{keywordtype}{use }misc, \textcolor{keywordtype}{only}: write, getlowercase, num2str}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00527}00527     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00528}00528     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional} :: inputFile}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00529}00529     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter}            :: PROCEDURE\_NAME = smp\_modulename//\textcolor{stringliteral}{"{}@setupOptionsGeneral()"{}}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00530}00530     \textcolor{keywordtype}{integer(IK)}                        :: inputFileUnit, iostat, i}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00531}00531     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00532}00532     \textcolor{comment}{! ParaHDMC input variables}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00533}00533     \textcolor{keywordtype}{integer(IK)}            :: nd, chainSize, ireportProgress, idelayAdaptiveUpdate, nAdaptiveUpdate, randomSeed}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00534}00534     \textcolor{keywordtype}{integer(IK)}            :: maxNumDomainCheckToWarn, maxNumDomainCheckToStop}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00535}00535 \textcolor{keywordtype}{    real}(RK)               :: AccRange(2)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00536}00536 \textcolor{keywordtype}{    real}(RK)               :: StartPoint(mv\_nd), StartPointDomain(mv\_nd,2), Domain(mv\_nd,2)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00537}00537     \textcolor{keywordtype}{logical}                :: randomStartPointRequested, inputFileHasPriority}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00538}00538     \textcolor{keywordtype}{logical}                :: singleRestartFileRequested, equalSampleWeightRequested}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00539}00539     \textcolor{keywordtype}{character(mp\_maxFilePathLength)}     :: fileBase}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00540}00540     \textcolor{keywordtype}{character(mp\_maxFilePathLength)}     :: parallelModel, proposalModel}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00541}00541     \textcolor{keywordtype}{character(mp\_colWidth)} :: VarName(mv\_nd)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00542}00542     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00543}00543     namelist /phgeneral/ nd, chainsize, ireportprogress, idelayadaptiveupdate, nadaptiveupdate, randomseed, accrange}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00544}00544     namelist /phgeneral/ filebase, varname , startpoint, inputfilehaspriority, domain, startpointdomain}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00545}00545     namelist /phgeneral/ singlerestartfilerequested, parallelmodel, proposalmodel, randomstartpointrequested}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00546}00546     namelist /phgeneral/ maxnumdomainchecktowarn, maxnumdomainchecktostop, equalsampleweightrequested}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00547}00547 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00548}00548     \textcolor{comment}{! initialize general options}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00549}00549     nd                         = mp\_nullik}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00550}00550     domain                     = mp\_nullrk}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00551}00551     varname                    = [ (smp\_varnamedefault//num2str(i),i=1,mv\_nd) ]}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00552}00552     accrange                   = smp\_accrangedefault}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00553}00553     filebase                   = mp\_nullck}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00554}00554     chainsize                  = smp\_chainsizedefault}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00555}00555     startpoint                 = mp\_nullrk}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00556}00556     randomseed                 = smv\_random\_seed\_null}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00557}00557     parallelmodel              = smp\_parallelmodeldefault}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00558}00558     proposalmodel              = smp\_proposalmodeldefault}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00559}00559     nadaptiveupdate            = smp\_nadaptiveupdatedefault}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00560}00560     ireportprogress            = smp\_ireportprogressdefault}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00561}00561     startpointdomain           = mp\_nullrk}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00562}00562     idelayadaptiveupdate       = mv\_nd * smp\_idelayadaptiveupdatedefault}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00563}00563     inputfilehaspriority       = smp\_inputfilehasprioritydefault}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00564}00564     maxnumdomainchecktowarn    = smp\_maxnumdomainchecktowarndefault}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00565}00565     maxnumdomainchecktostop    = smp\_maxnumdomainchecktostopdefault}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00566}00566     randomstartpointrequested  = smp\_randomstartpointrequesteddefault }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00567}00567     singlerestartfilerequested = smp\_singlerestartfilerequesteddefault}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00568}00568     equalsampleweightrequested = smp\_equalsampleweightrequesteddefault}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00569}00569     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00570}00570     \textcolor{comment}{!smv\_DomainInit             = Domain}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00571}00571     \textcolor{comment}{!smv\_StartPointDomainInit   = StartPointDomain}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00572}00572     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00573}00573     \textcolor{comment}{! inputFile}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00574}00574     \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(inputfile)) \textcolor{keywordflow}{then} \textcolor{comment}{! inputFile: setup ParaHDMC's baseFile and working directory}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00575}00575       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00576}00576       \textcolor{keyword}{call }write(mv\_logfileunit,1,0, mp\_brand // \textcolor{stringliteral}{"{}User's input file for ParaHDMC options detected."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00577}00577       \textcolor{keyword}{call }write(mv\_logfileunit,0,0, mp\_brand // \textcolor{stringliteral}{"{}All ParaHDMC options will be read from input file."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00578}00578       \textcolor{keyword}{call }write(mv\_logfileunit,0,0, mp\_brand // \textcolor{stringliteral}{"{}ParaHDMC input options file:"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00579}00579       \textcolor{keyword}{call }write(mv\_logfileunit,1,1, mp\_brand // mp\_space // inputfile )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00580}00580 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00581}00581       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00582}00582       \textcolor{keyword}{call }openwitherrorcheck( fileunit=inputfileunit, filename=inputfile, outputunit=mv\_logfileunit, procedurename=procedure\_name, filestatus=\textcolor{stringliteral}{"{}old"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00583}00583       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00584}00584         \textcolor{keywordflow}{if}(mp\_releasemoderequested) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00585}00585           \textcolor{keyword}{read}(inputfileunit,nml=phgeneral,iostat=iostat)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00586}00586           \textcolor{keyword}{call }checkforreaderror( errorid = iostat \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00587}00587                                 , outputunit = mv\_logfileunit \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00588}00588                                 , when = procedure\_name // \textcolor{stringliteral}{"{}: While reading ParaHDMC namelist from file "{}} // inputfile \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00589}00589                                 )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00590}00590         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00591}00591           \textcolor{keyword}{read}(inputfileunit,nml=phgeneral)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00592}00592 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00593}00593 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00594}00594       \textcolor{keyword}{call }closewitherrorcheck( fileunit=inputfileunit, outputunit=mv\_logfileunit, procedurename=procedure\_name, filename=inputfile )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00595}00595 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00596}00596       \textcolor{keywordflow}{if} (nd/=mp\_nullik .and. nd/=mv\_nd) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00597}00597         \textcolor{keyword}{call }write(mv\_logfileunit, 1,1, mp\_fatal // \textcolor{stringliteral}{"{}invalid value for 'nd' in the user input file."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00598}00598         \textcolor{keyword}{call }abortparahdmc(mv\_logfileunit)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00599}00599 \textcolor{keywordflow}{      end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00600}00600       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00601}00601     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00602}00602       }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00603}00603       \textcolor{keyword}{call }write(mv\_logfileunit,1,0, mp\_brand // \textcolor{stringliteral}{"{}No ParaHDMC input file provided by the user."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00604}00604       \textcolor{keyword}{call }write(mv\_logfileunit,0,0, mp\_brand // \textcolor{stringliteral}{"{}Variable values from procedure argument will be used where provided."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00605}00605       \textcolor{keyword}{call }write(mv\_logfileunit,0,1, mp\_brand // \textcolor{stringliteral}{"{}Otherwise, default options will be used."{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00606}00606     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00607}00607 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00608}00608 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00609}00609     \textcolor{comment}{! setup Domain}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00610}00610     \textcolor{keywordflow}{if} ( all(domain==mp\_nullrk) ) \textcolor{keywordflow}{then}    \textcolor{comment}{! Domain has NOT been set by the user}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00611}00611       domain(1:mv\_nd,1) = mp\_rangerk(1)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00612}00612       domain(1:mv\_nd,2) = mp\_rangerk(2)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00613}00613 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00614}00614 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00615}00615     \textcolor{comment}{! setup StartPointDomain, used only when StartPoint is randomized}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00616}00616     \textcolor{keywordflow}{if} ( all(startpointdomain==mp\_nullrk) ) \textcolor{keywordflow}{then}    \textcolor{comment}{! StartPointDomain has NOT been set by the user}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00617}00617       startpointdomain = domain}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00618}00618 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00619}00619 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00620}00620     \textcolor{comment}{! setup StartPoint}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00621}00621     \textcolor{keywordflow}{if} ( all(startpoint==mp\_nullrk) ) \textcolor{keywordflow}{then}    \textcolor{comment}{! StartPoint has NOT been set by the user}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00622}00622       startpoint = domain(:,1)/2.\_rk + domain(:,2)/2.\_rk}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00623}00623 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00624}00624 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00625}00625     comv\_domain                     = domain}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00626}00626     cosmv\_varname                    = varname}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00627}00627     cosmv\_filebase                   = trim(adjustl(filebase))}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00628}00628     comv\_accrange                   = accrange}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00629}00629     cosmv\_chainsize                  = chainsize}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00630}00630     cosmv\_randomseed                 = randomseed \textcolor{comment}{!+ 100*(im-\/1)}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00631}00631     cosmv\_startpoint                 = startpoint}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00632}00632     cosmv\_parallelmodel              = parallelmodel}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00633}00633     cosmv\_proposalmodel              = proposalmodel}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00634}00634     cosmv\_ireportprogress            = ireportprogress}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00635}00635     cosmv\_nadaptiveupdate            = nadaptiveupdate}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00636}00636     cosmv\_startpointdomain           = startpointdomain}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00637}00637     cosmv\_idelayadaptiveupdate       = idelayadaptiveupdate}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00638}00638     cosmv\_inputfilehaspriority       = inputfilehaspriority}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00639}00639     comv\_maxnumdomainchecktowarn    = maxnumdomainchecktowarn}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00640}00640     comv\_maxnumdomainchecktostop    = maxnumdomainchecktostop}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00641}00641     cosmv\_randomstartpointrequested  = randomstartpointrequested}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00642}00642     cosmv\_singlerestartfilerequested = singlerestartfilerequested}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00643}00643     cosmv\_equalsampleweightrequested = equalsampleweightrequested}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00644}00644     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00645}00645   \textcolor{keyword}{end subroutine }setupoptionsgeneral}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00646}00646 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00647}00647 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00648}00648 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00649}00649 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00650}00650   \textcolor{keyword}{module procedure} writechainfile}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00651}00651     \textcolor{keywordtype}{integer(IK)} :: i, iostat}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00652}00652     \textcolor{keywordflow}{if} (sampleweightmerge==0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00653}00653       \textcolor{keywordflow}{do} i = 1,chainsize}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00654}00654         \textcolor{comment}{!block  ! xx remove}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00655}00655         \textcolor{comment}{!  integer(IK), save :: counter=0}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00656}00656         \textcolor{comment}{!  if (SampleWeight(i)==0) then}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00657}00657         \textcolor{comment}{!    counter = counter + 1}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00658}00658         \textcolor{comment}{!    write(*,*) counter, "{}hell no!"{}, i, LogFunc(i)}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00659}00659         \textcolor{comment}{!    !error stop}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00660}00660         \textcolor{comment}{!  end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00661}00661         \textcolor{comment}{!end block}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00662}00662         \textcolor{keyword}{write}(unit=mv\_chainfileunit,fmt=smv\_chainfileformat,iostat=iostat) winnerimageid(i), sampleweight(i), meanaccr(i), logfunc(i), chain(1:nd,i)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00663}00663 \textcolor{keywordflow}{      end do}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00664}00664     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00665}00665       backspace(unit=mv\_chainfileunit,iostat=iostat)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00666}00666       i=1; \textcolor{keyword}{write}(unit=mv\_chainfileunit,fmt=smv\_chainfileformat,iostat=iostat) winnerimageid(i), sampleweightmerge+sampleweight(i), meanaccr(i), logfunc(i), chain(1:nd,i)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00667}00667       \textcolor{keywordflow}{do} i = 2,chainsize}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00668}00668         \textcolor{keyword}{write}(unit=mv\_chainfileunit,fmt=smv\_chainfileformat,iostat=iostat) winnerimageid(i), sampleweight(i), meanaccr(i), logfunc(i), chain(1:nd,i)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00669}00669 \textcolor{keywordflow}{      end do}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00670}00670 \textcolor{keywordflow}{    end if}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00671}00671   \textcolor{keyword}{end }procedure writechainfile}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00672}00672 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00673}00673 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00674}00674 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00675}00675 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00676}00676   \textcolor{keyword}{module} function readpmoutput(filename)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00677}00677     \textcolor{keywordtype}{use }misc, \textcolor{keywordtype}{only}: splitstr, charvec\_type, getnumrecordinfile, num2str}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00678}00678     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00679}00679     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter}    :: PROCEDURE\_NAME = smp\_modulename//\textcolor{stringliteral}{"{}@readPMoutput()"{}}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00680}00680     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}   :: filename}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00681}00681     \textcolor{keywordtype}{type}(PMoutput)             :: readPMoutput}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00682}00682     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00683}00683     \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{parameter}     :: MAX\_RECORD\_LENGTH = 99999}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00684}00684     \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable}  :: header, record, thisFormat}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00685}00685     \textcolor{keywordtype}{integer(IK)}                :: fileUnit, ncol, irow, iostat}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00686}00686     \textcolor{keywordtype}{type}(CharVec\_type), \textcolor{keywordtype}{allocatable} :: TokensInRecord(:)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00687}00687     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00688}00688     readpmoutput\%chainSize = getnumrecordinfile(filename) -\/ 1}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00689}00689     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00690}00690     \textcolor{comment}{!inquire(file=filename,number=fileUnit,iostat=iostat)}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00691}00691     \textcolor{comment}{!call checkForInquireError( iostat, mv\_logFileUnit, PROCEDURE\_NAME//"{}: While inquiring the unit number of the file "{}//filename )}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00692}00692     \textcolor{comment}{!if (inputFileUnit/=-\/1) call closeWithErrorCheck( fileUnit=fileUnit, outputUnit=mv\_logFileUnit, procedureName=PROCEDURE\_NAME, filename=filename )}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00693}00693     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00694}00694     \textcolor{keyword}{call }openwitherrorcheck( fileunit=fileunit, filename=filename, outputunit=mv\_logfileunit, procedurename=procedure\_name, filestatus=\textcolor{stringliteral}{"{}old"{}} )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00695}00695     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00696}00696     \textcolor{keyword}{allocate}(\textcolor{keywordtype}{character(MAX\_RECORD\_LENGTH)} :: header)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00697}00697     \textcolor{keyword}{allocate}(\textcolor{keywordtype}{character(MAX\_RECORD\_LENGTH)} :: record)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00698}00698     thisformat = \textcolor{stringliteral}{'(1A'} // num2str(max\_record\_length) // \textcolor{stringliteral}{')'}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00699}00699     \textcolor{keyword}{read}(fileunit,thisformat) header}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00700}00700     \textcolor{keyword}{read}(fileunit,thisformat) record}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00701}00701     header = trim(adjustl(header))}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00702}00702     record = trim(adjustl(record))}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00703}00703     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00704}00704     tokensinrecord = splitstr(record,\textcolor{stringliteral}{' '})}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00705}00705     ncol = \textcolor{keyword}{size}(tokensinrecord)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00706}00706     readpmoutput\%nd = ncol -\/ mp\_nextracolumninchainfile}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00707}00707     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00708}00708     \textcolor{keyword}{allocate}(readpmoutput\%Header(ncol))}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00709}00709     thisformat = \textcolor{stringliteral}{'('}//num2str(ncol)//\textcolor{stringliteral}{'A'}//num2str(mp\_colwidth)//\textcolor{stringliteral}{')'}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00710}00710     \textcolor{keyword}{read}(header,thisformat) readpmoutput\%Header}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00711}00711     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00712}00712     \textcolor{keyword}{allocate}(readpmoutput\%Chain(readpmoutput\%nd,readpmoutput\%chainSize))}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00713}00713     \textcolor{keyword}{allocate}(readpmoutput\%LogLike(readpmoutput\%chainSize))}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00714}00714     \textcolor{keyword}{allocate}(readpmoutput\%AccRate(readpmoutput\%chainSize))}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00715}00715     \textcolor{keyword}{allocate}(readpmoutput\%nFunCall(readpmoutput\%chainSize))}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00716}00716 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00717}00717     irow = 1}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00718}00718     \textcolor{keyword}{read}(record,*) readpmoutput\%nFunCall(irow), readpmoutput\%LogLike(irow) \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00719}00719                  , readpmoutput\%AccRate(irow) , readpmoutput\%Chain(1:readpmoutput\%nd,irow)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00720}00720     \textcolor{keywordflow}{do} irow = 2,readpmoutput\%chainSize}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00721}00721       \textcolor{keyword}{read}(fileunit,*,iostat=iostat) readpmoutput\%nFunCall(irow), readpmoutput\%LogLike(irow), readpmoutput\%AccRate(irow) , readpmoutput\%Chain(1:readpmoutput\%nd,irow)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00722}00722       \textcolor{keyword}{call }checkforreaderror( errorid = iostat \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00723}00723                             , outputunit = mv\_logfileunit \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00724}00724                             , when = procedure\_name // \textcolor{stringliteral}{"{}: While reading ParaHDMC output at line "{}}// num2str(irow) // \textcolor{stringliteral}{"{} from file "{}} // filename \&}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00725}00725                             )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00726}00726 \textcolor{keywordflow}{    end do}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00727}00727     \textcolor{keyword}{close}(fileunit)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00728}00728   \textcolor{keyword}{end function }readpmoutput  }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00729}00729 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00730}00730 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00731}00731 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00732}00732 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00733}00733   include \textcolor{stringliteral}{'mod\_ParaHDMC@SetupProceduresOutputFiles.f90'}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00734}00734   }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00735}00735 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00736}00736 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00737}00737   }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00738}00738   include \textcolor{stringliteral}{'mod\_ParaHDMC@SetupProceduresWrappers.f90'}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00739}00739 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00740}00740 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00741}00741 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00742}00742 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00743}00743   \textcolor{keyword}{module procedure} reportprogress}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00744}00744   }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00745}00745     \textcolor{comment}{!use, intrinsic :: iso\_fortran\_env, only: output\_unit}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00746}00746     \textcolor{keywordtype}{use }misc, \textcolor{keywordtype}{only}: write, num2str}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00747}00747     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}} \textcolor{keywordtype}{only}: rk, ik}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00748}00748     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00749}00749 \textcolor{keywordtype}{    real}(RK), \textcolor{keywordtype}{save}            :: sumAccrLastReport = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00750}00750     \textcolor{keywordtype}{character(:)}, \textcolor{keywordtype}{allocatable} :: meanAccrStr, nFunCallStr, ireportProgressStr, timeElapsedTotalStr, timeElapsedSinceLastReportStr}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00751}00751 \textcolor{keywordtype}{    real}(RK) :: meanAccrSinceLastReport, timeElapsedSinceLastReport, timeElapsedTotal, predictedRemainingTime}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00752}00752     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00753}00753     nfuncallstr = num2str(nfuncall,formatin=\textcolor{stringliteral}{"{}(1I10)"{}})}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00754}00754     ireportprogressstr = num2str( cosmv\_ireportprogress, formatin=\textcolor{stringliteral}{"{}(1I10)"{}}, minlen=int(len(nfuncallstr),kind=ik) )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00755}00755     \textcolor{comment}{!call cpu\_time(smv\_timeCurrent)}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00756}00756     smv\_timecurrent = smv\_timer\%toc()}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00757}00757     meanaccrsincelastreport = (sumaccr-\/sumaccrlastreport) / real(cosmv\_ireportprogress,kind=rk)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00758}00758     timeelapsedsincelastreport = smv\_timecurrent -\/ smv\_timelastreport}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00759}00759     timeelapsedtotal = smv\_timecurrent -\/ smv\_timestart}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00760}00760     smv\_timelastreport = smv\_timecurrent -\/ smv\_timestart}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00761}00761     timeelapsedtotalstr = num2str(timeelapsedtotal,\textcolor{stringliteral}{"{}(1F10.4)"{}})}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00762}00762     timeelapsedsincelastreportstr = num2str( timeelapsedsincelastreport, \textcolor{stringliteral}{"{}(1F10.4)"{}}, minlen=int(len(timeelapsedtotalstr),kind=ik) )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00763}00763     meanaccrstr = num2str(sumaccr / real(nfuncall,kind=rk),\textcolor{stringliteral}{"{}(1F10.4)"{}})}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00764}00764     predictedremainingtime = real(cosmv\_chainsize-\/nfuncallaccepted,kind=rk)*timeelapsedtotal/real(nfuncallaccepted,kind=rk)}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00765}00765 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00766}00766     \textcolor{keyword}{call }write(mv\_logfileunit,1,0,  mp\_brand // \textcolor{stringliteral}{"{}Accepted / Total number of objective function calls: "{}} // num2str(nfuncallaccepted) // \textcolor{stringliteral}{"{} / "{}} // nfuncallstr )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00767}00767     \textcolor{keyword}{call }write(mv\_logfileunit,0,0,  mp\_brand // \textcolor{stringliteral}{"{}Time-\/elapsed / Acceptance-\/rate for the last   "{}} // ireportprogressstr // \textcolor{stringliteral}{"{} function calls: "{}} // timeelapsedsincelastreportstr // \textcolor{stringliteral}{"{} / "{}} // num2str(meanaccrsincelastreport,\textcolor{stringliteral}{"{}(1F10.4)"{}}) )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00768}00768     \textcolor{keyword}{call }write(mv\_logfileunit,0,1,  mp\_brand // \textcolor{stringliteral}{"{}Time-\/elapsed / Acceptance-\/rate for the entire "{}} // nfuncallstr // \textcolor{stringliteral}{"{} function calls: "{}} // timeelapsedtotalstr // \textcolor{stringliteral}{"{} / "{}} // meanaccrstr )}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00769}00769     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00770}00770     \textcolor{keyword}{write}(mv\_timefileunit,smv\_timefileformat) nfuncall, meanaccrsincelastreport, timeelapsedsincelastreport, timeelapsedtotal, predictedremainingtime}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00771}00771     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00772}00772     smv\_timelastreport = smv\_timecurrent}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00773}00773     sumaccrlastreport = sumaccr}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00774}00774     }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00775}00775   \textcolor{keyword}{end }procedure reportprogress}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00776}00776 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00777}00777 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00778}00778 \textcolor{comment}{!****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00779}00779 }
+\DoxyCodeLine{\Hypertarget{ParaHDMC__mod_0dSetup_8f90_source_l00780}00780 \textcolor{keyword}{end }submodule Setup}
+
+\end{DoxyCode}

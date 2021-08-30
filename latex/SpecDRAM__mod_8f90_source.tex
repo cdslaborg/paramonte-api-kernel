@@ -1,0 +1,291 @@
+\hypertarget{SpecDRAM__mod_8f90_source}{}\doxysection{Spec\+DRAM\+\_\+mod.\+f90}
+\label{SpecDRAM__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/SpecDRAM\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/SpecDRAM\_mod.f90}}
+\mbox{\hyperlink{SpecDRAM__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00001}00001 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00002}00002 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00003}00003 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00004}00004 \textcolor{comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00005}00005 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00006}00006 \textcolor{comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00007}00007 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00008}00008 \textcolor{comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00009}00009 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00010}00010 \textcolor{comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00011}00011 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00012}00012 \textcolor{comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a }}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00013}00013 \textcolor{comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}), }}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00014}00014 \textcolor{comment}{!!!!   to deal in the Software without restriction, including without limitation }}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00015}00015 \textcolor{comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, }}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00016}00016 \textcolor{comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the }}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00017}00017 \textcolor{comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00018}00018 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00019}00019 \textcolor{comment}{!!!!   The above copyright notice and this permission notice shall be }}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00020}00020 \textcolor{comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00021}00021 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00022}00022 \textcolor{comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, }}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00023}00023 \textcolor{comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF }}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00024}00024 \textcolor{comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. }}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00025}00025 \textcolor{comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, }}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00026}00026 \textcolor{comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR }}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00027}00027 \textcolor{comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE }}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00028}00028 \textcolor{comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00029}00029 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00030}00030 \textcolor{comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00031}00031 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00032}00032 \textcolor{comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00033}00033 \textcolor{comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of }}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00034}00034 \textcolor{comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your }}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00035}00035 \textcolor{comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte }}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00036}00036 \textcolor{comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00037}00037 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00038}00038 \textcolor{comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00039}00039 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00040}00040 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00041}00041 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00048}\mbox{\hyperlink{namespacespecdram__mod}{00048}} \textcolor{keyword}{module} \mbox{\hyperlink{namespacespecdram__mod}{specdram\_mod}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00050}00050     \textcolor{comment}{! ParaDRAM Spec variable types}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00051}00051     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacespecdram__adaptiveupdatecount__mod}{specdram\_adaptiveupdatecount\_mod}}                , \textcolor{keywordtype}{only}: \mbox{\hyperlink{structspecdram__adaptiveupdatecount__mod_1_1adaptiveupdatecount__type}{adaptiveupdatecount\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00052}00052     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacespecdram__adaptiveupdateperiod__mod}{specdram\_adaptiveupdateperiod\_mod}}               , \textcolor{keywordtype}{only}: \mbox{\hyperlink{structspecdram__adaptiveupdateperiod__mod_1_1adaptiveupdateperiod__type}{adaptiveupdateperiod\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00053}00053     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacespecdram__greedyadaptationcount__mod}{specdram\_greedyadaptationcount\_mod}}              , \textcolor{keywordtype}{only}: \mbox{\hyperlink{structspecdram__greedyadaptationcount__mod_1_1greedyadaptationcount__type}{greedyadaptationcount\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00054}00054     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacespecdram__delayedrejectioncount__mod}{specdram\_delayedrejectioncount\_mod}}              , \textcolor{keywordtype}{only}: \mbox{\hyperlink{structspecdram__delayedrejectioncount__mod_1_1delayedrejectioncount__type}{delayedrejectioncount\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00055}00055     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacespecdram__burninadaptationmeasure__mod}{specdram\_burninadaptationmeasure\_mod}}            , \textcolor{keywordtype}{only}: \mbox{\hyperlink{structspecdram__burninadaptationmeasure__mod_1_1burninadaptationmeasure__type}{burninadaptationmeasure\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00056}00056     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacespecdram__delayedrejectionscalefactorvec__mod}{specdram\_delayedrejectionscalefactorvec\_mod}}     , \textcolor{keywordtype}{only}: \mbox{\hyperlink{structspecdram__delayedrejectionscalefactorvec__mod_1_1delayedrejectionscalefactorvec__type}{delayedrejectionscalefactorvec\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00058}00058     \textcolor{comment}{! ParaDRAM namelist variables}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00059}00059     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacespecdram__adaptiveupdatecount__mod}{specdram\_adaptiveupdatecount\_mod}}                , \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacespecdram__adaptiveupdatecount__mod_a70db01c94d26e6043219b3467a77c713}{adaptiveupdatecount}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00060}00060     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacespecdram__adaptiveupdateperiod__mod}{specdram\_adaptiveupdateperiod\_mod}}               , \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacespecdram__adaptiveupdateperiod__mod_ada9b86f390760d5d54fbfaeccf2c1195}{adaptiveupdateperiod}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00061}00061     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacespecdram__greedyadaptationcount__mod}{specdram\_greedyadaptationcount\_mod}}              , \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacespecdram__greedyadaptationcount__mod_a05c73bd5b78d3756455ba17a7edb41ba}{greedyadaptationcount}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00062}00062     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacespecdram__delayedrejectioncount__mod}{specdram\_delayedrejectioncount\_mod}}              , \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacespecdram__delayedrejectioncount__mod_aeea33871c4de2ea3153558d094bcb90b}{delayedrejectioncount}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00063}00063     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacespecdram__burninadaptationmeasure__mod}{specdram\_burninadaptationmeasure\_mod}}            , \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacespecdram__burninadaptationmeasure__mod_a0bbc9d90259c77e8bebed54820140fee}{burninadaptationmeasure}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00064}00064     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacespecdram__delayedrejectionscalefactorvec__mod}{specdram\_delayedrejectionscalefactorvec\_mod}}     , \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacespecdram__delayedrejectionscalefactorvec__mod_aaef8212da7996b125764a62de5cd4f80}{delayedrejectionscalefactorvec}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00066}00066     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00068}\mbox{\hyperlink{structspecdram__mod_1_1specdram__type}{00068}}     \textcolor{keyword}{type}                                                :: \mbox{\hyperlink{structspecdram__mod_1_1specdram__type}{specdram\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00069}\mbox{\hyperlink{structspecdram__mod_1_1specdram__type_aca1cab2cce7d9ee67c9f739b5bff0c84}{00069}}         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structspecdram__adaptiveupdatecount__mod_1_1adaptiveupdatecount__type}{adaptiveupdatecount\_type}})                  :: \mbox{\hyperlink{namespacespecdram__adaptiveupdatecount__mod_a70db01c94d26e6043219b3467a77c713}{adaptiveupdatecount}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00070}\mbox{\hyperlink{structspecdram__mod_1_1specdram__type_ac44b7409692f6432c63ea2d9af8517b3}{00070}}         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structspecdram__adaptiveupdateperiod__mod_1_1adaptiveupdateperiod__type}{adaptiveupdateperiod\_type}})                 :: \mbox{\hyperlink{namespacespecdram__adaptiveupdateperiod__mod_ada9b86f390760d5d54fbfaeccf2c1195}{adaptiveupdateperiod}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00071}\mbox{\hyperlink{structspecdram__mod_1_1specdram__type_a8ce211fd34277cba258b2850c29c3d6d}{00071}}         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structspecdram__greedyadaptationcount__mod_1_1greedyadaptationcount__type}{greedyadaptationcount\_type}})                :: \mbox{\hyperlink{namespacespecdram__greedyadaptationcount__mod_a05c73bd5b78d3756455ba17a7edb41ba}{greedyadaptationcount}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00072}\mbox{\hyperlink{structspecdram__mod_1_1specdram__type_a6d1b3467a23b95db4c9df47d1613ba93}{00072}}         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structspecdram__delayedrejectioncount__mod_1_1delayedrejectioncount__type}{delayedrejectioncount\_type}})                :: \mbox{\hyperlink{namespacespecdram__delayedrejectioncount__mod_aeea33871c4de2ea3153558d094bcb90b}{delayedrejectioncount}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00073}\mbox{\hyperlink{structspecdram__mod_1_1specdram__type_a401dc4e588be614251ffafbcca442697}{00073}}         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structspecdram__burninadaptationmeasure__mod_1_1burninadaptationmeasure__type}{burninadaptationmeasure\_type}})              :: \mbox{\hyperlink{namespacespecdram__burninadaptationmeasure__mod_a0bbc9d90259c77e8bebed54820140fee}{burninadaptationmeasure}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00074}\mbox{\hyperlink{structspecdram__mod_1_1specdram__type_aa5eac5fd015c8ef4e83eadd92b646e87}{00074}}         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structspecdram__delayedrejectionscalefactorvec__mod_1_1delayedrejectionscalefactorvec__type}{delayedrejectionscalefactorvec\_type}})       :: \mbox{\hyperlink{namespacespecdram__delayedrejectionscalefactorvec__mod_aaef8212da7996b125764a62de5cd4f80}{delayedrejectionscalefactorvec}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00075}00075     \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00076}\mbox{\hyperlink{structspecdram__mod_1_1specdram__type_a05d7813a14ea02fd4e602eddfd8222f1}{00076}}         \textcolor{keywordtype}{procedure}, pass                                 :: nullifynamelistvar}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00077}\mbox{\hyperlink{structspecdram__mod_1_1specdram__type_a3684167fcf04d72dba181ac76f1022f4}{00077}}         \textcolor{keywordtype}{procedure}, pass                                 :: \mbox{\hyperlink{namespacespecdram__mod_acb1694fe22b90b4f251cac4be50475f8}{setfrominputfile}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00078}\mbox{\hyperlink{structspecdram__mod_1_1specdram__type_af1ccd1d8a9d9e30fbfd8f5dbe716109c}{00078}}         \textcolor{keywordtype}{procedure}, pass                                 :: \mbox{\hyperlink{namespacespecdram__mod_a7aaea538d09856f855d52622910afce6}{setfrominputargs}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00079}\mbox{\hyperlink{structspecdram__mod_1_1specdram__type_acadb63dbc8df281fa99529055cacaa47}{00079}}         \textcolor{keywordtype}{procedure}, pass                                 :: \mbox{\hyperlink{namespacespecdram__mod_a0dd243778405aacfa5c67859657cd3e3}{reportvalues}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00080}\mbox{\hyperlink{structspecdram__mod_1_1specdram__type_af99795285731b43826ce244775cd7cb9}{00080}}         \textcolor{keywordtype}{procedure}, pass                                 :: checkforsanity}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00081}00081     \textcolor{keyword}{end type }\mbox{\hyperlink{structspecdram__mod_1_1specdram__type}{specdram\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00083}00083     \textcolor{keyword}{interface} \mbox{\hyperlink{structspecdram__mod_1_1specdram__type}{specdram\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00084}00084         \textcolor{keyword}{module procedure}                                :: \mbox{\hyperlink{namespacespecdram__mod_a60329ff2146139abb4aa5a79347d9af6}{constructspecdram}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00085}00085     \textcolor{keyword}{end interface }\mbox{\hyperlink{structspecdram__mod_1_1specdram__type}{specdram\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00087}00087 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00089}00089 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00091}00091 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00093}\mbox{\hyperlink{structspecdram__mod_1_1specdram__type_a9b293f7780165186709fe663a8865a9d}{00093}}     \textcolor{keyword}{function }\mbox{\hyperlink{namespacespecdram__mod_a60329ff2146139abb4aa5a79347d9af6}{constructspecdram}}  ( nd \&}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00094}00094                                 , methodName \&}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00095}00095                                 !, chainSizeDef}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00096}00096                                 ) \textcolor{keyword}{result}(SpecDRAM)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00097}00097 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00098}00098 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: constructSpecDRAM}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00099}00099 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00100}00100 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00101}00101         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00102}00102         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)}     :: nd}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00103}00103         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}    :: methodname}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00104}00104        \textcolor{comment}{!integer(IK), intent(in)     :: chainSizeDef}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00105}00105         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structspecdram__mod_1_1specdram__type}{specdram\_type}})         :: specdram}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00106}00106         specdram\%AdaptiveUpdatePeriod                   = \mbox{\hyperlink{structspecdram__adaptiveupdateperiod__mod_1_1adaptiveupdateperiod__type}{adaptiveupdateperiod\_type}}(nd,methodname)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00107}00107         \textcolor{comment}{! ATTN: AdaptiveUpdateCount has to be constructed after AdaptiveUpdatePeriod. It depends on it.}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00108}00108         specdram\%AdaptiveUpdateCount                    = \mbox{\hyperlink{structspecdram__adaptiveupdatecount__mod_1_1adaptiveupdatecount__type}{adaptiveupdatecount\_type}}(methodname) \textcolor{comment}{! ,chainSizeDef,SpecDRAM\%AdaptiveUpdatePeriod\%def)}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00109}00109         specdram\%GreedyAdaptationCount                  = \mbox{\hyperlink{structspecdram__greedyadaptationcount__mod_1_1greedyadaptationcount__type}{greedyadaptationcount\_type}}(methodname)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00110}00110         specdram\%DelayedRejectionCount                  = \mbox{\hyperlink{structspecdram__delayedrejectioncount__mod_1_1delayedrejectioncount__type}{delayedrejectioncount\_type}}(methodname)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00111}00111         specdram\%BurninAdaptationMeasure                = \mbox{\hyperlink{structspecdram__burninadaptationmeasure__mod_1_1burninadaptationmeasure__type}{burninadaptationmeasure\_type}}(methodname)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00112}00112         specdram\%DelayedRejectionScaleFactorVec         = \mbox{\hyperlink{structspecdram__delayedrejectionscalefactorvec__mod_1_1delayedrejectionscalefactorvec__type}{delayedrejectionscalefactorvec\_type}}(nd,methodname)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00113}00113     \textcolor{keyword}{end function }\mbox{\hyperlink{namespacespecdram__mod_a60329ff2146139abb4aa5a79347d9af6}{constructspecdram}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00115}00115 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00117}\mbox{\hyperlink{namespacespecdram__mod_a478c1d7546a19a753daa53f8f3f04372}{00117}}     \textcolor{keyword}{subroutine }nullifynamelistvar( SpecDRAM , nd )}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00118}00118 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00119}00119 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: nullifyNameListVar}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00120}00120 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00121}00121 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00122}00122         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00123}00123         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structspecdram__mod_1_1specdram__type}{specdram\_type}}), \textcolor{keywordtype}{intent(in)}    :: SpecDRAM}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00124}00124         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)}             :: nd}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00125}00125         \textcolor{comment}{! nullify SpecDRAM variables to be read form the input namelist file}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00126}00126         \textcolor{keyword}{call }specdram\%AdaptiveUpdateCount           \%nullifyNameListVar()}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00127}00127         \textcolor{keyword}{call }specdram\%AdaptiveUpdatePeriod          \%nullifyNameListVar()}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00128}00128         \textcolor{keyword}{call }specdram\%GreedyAdaptationCount         \%nullifyNameListVar()}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00129}00129         \textcolor{keyword}{call }specdram\%DelayedRejectionCount         \%nullifyNameListVar()}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00130}00130         \textcolor{keyword}{call }specdram\%BurninAdaptationMeasure       \%nullifyNameListVar()}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00131}00131         \textcolor{keyword}{call }specdram\%DelayedRejectionScaleFactorVec\%nullifyNameListVar()}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00132}00132     \textcolor{keyword}{end subroutine }nullifynamelistvar}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00133}00133 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00134}00134 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00136}\mbox{\hyperlink{namespacespecdram__mod_acb1694fe22b90b4f251cac4be50475f8}{00136}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespacespecdram__mod_acb1694fe22b90b4f251cac4be50475f8}{setfrominputfile}}( SpecDRAM, Err )}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00137}00137 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00138}00138 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: setFromInputFile}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00139}00139 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00140}00140 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00141}00141         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00142}00142         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00143}00143         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structspecdram__mod_1_1specdram__type}{specdram\_type}}), \textcolor{keywordtype}{intent(inout)} :: SpecDRAM}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00144}00144         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}), \textcolor{keywordtype}{intent(out)}         :: Err}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00145}00145         err\%occurred = .false.}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00146}00146         err\%msg = \textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00147}00147         \textcolor{keyword}{call }specdram\%AdaptiveUpdateCount           \%set(\mbox{\hyperlink{namespacespecdram__adaptiveupdatecount__mod_a70db01c94d26e6043219b3467a77c713}{adaptiveupdatecount}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00148}00148         \textcolor{keyword}{call }specdram\%AdaptiveUpdatePeriod          \%set(\mbox{\hyperlink{namespacespecdram__adaptiveupdateperiod__mod_ada9b86f390760d5d54fbfaeccf2c1195}{adaptiveupdateperiod}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00149}00149         \textcolor{keyword}{call }specdram\%GreedyAdaptationCount         \%set(\mbox{\hyperlink{namespacespecdram__greedyadaptationcount__mod_a05c73bd5b78d3756455ba17a7edb41ba}{greedyadaptationcount}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00150}00150         \textcolor{keyword}{call }specdram\%DelayedRejectionCount         \%set(\mbox{\hyperlink{namespacespecdram__delayedrejectioncount__mod_aeea33871c4de2ea3153558d094bcb90b}{delayedrejectioncount}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00151}00151         \textcolor{keyword}{call }specdram\%BurninAdaptationMeasure       \%set(\mbox{\hyperlink{namespacespecdram__burninadaptationmeasure__mod_a0bbc9d90259c77e8bebed54820140fee}{burninadaptationmeasure}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00152}00152         \textcolor{keyword}{call }specdram\%DelayedRejectionScaleFactorVec\%set(\mbox{\hyperlink{namespacespecdram__delayedrejectioncount__mod_aeea33871c4de2ea3153558d094bcb90b}{delayedrejectioncount}}, \mbox{\hyperlink{namespacespecdram__delayedrejectionscalefactorvec__mod_aaef8212da7996b125764a62de5cd4f80}{delayedrejectionscalefactorvec}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00153}00153     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespacespecdram__mod_acb1694fe22b90b4f251cac4be50475f8}{setfrominputfile}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00154}00154 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00155}00155 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00157}\mbox{\hyperlink{namespacespecdram__mod_a7aaea538d09856f855d52622910afce6}{00157}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespacespecdram__mod_a7aaea538d09856f855d52622910afce6}{setfrominputargs}} ( SpecDRAM \&}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00158}00158                                 ! input arguments to the specific ParaDRAM routine}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00159}00159                                 , adaptiveUpdateCount               \&}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00160}00160                                 , adaptiveUpdatePeriod              \&}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00161}00161                                 , greedyAdaptationCount             \&}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00162}00162                                 , delayedRejectionCount             \&}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00163}00163                                 , burninAdaptationMeasure           \&}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00164}00164                                 , delayedRejectionScaleFactorVec    \&}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00165}00165                                 )}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00166}00166 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00167}00167 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: setFromInputArgs}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00168}00168 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00169}00169 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00170}00170         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00171}00171         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00172}00172         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structspecdram__mod_1_1specdram__type}{specdram\_type}}), \textcolor{keywordtype}{intent(inout)} :: SpecDRAM}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00173}00173 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00174}00174         \textcolor{comment}{! ParaDRAM variables}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00175}00175         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: adaptiveUpdateCount}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00176}00176         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: adaptiveUpdatePeriod}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00177}00177         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: greedyAdaptationCount}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00178}00178         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: delayedRejectionCount}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00179}00179 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: burninAdaptationMeasure}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00180}00180 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(in)}, \textcolor{keywordtype}{optional}  :: delayedRejectionScaleFactorVec(:)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00182}00182         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(adaptiveupdatecount))               \textcolor{keyword}{call }specdram\%AdaptiveUpdateCount           \%set(adaptiveupdatecount)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00183}00183         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(adaptiveupdateperiod))              \textcolor{keyword}{call }specdram\%AdaptiveUpdatePeriod          \%set(adaptiveupdateperiod)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00184}00184         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(greedyadaptationcount))             \textcolor{keyword}{call }specdram\%GreedyAdaptationCount         \%set(greedyadaptationcount)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00185}00185         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(delayedrejectioncount))             \textcolor{keyword}{call }specdram\%DelayedRejectionCount         \%set(delayedrejectioncount)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00186}00186         \textcolor{keywordflow}{if} (\textcolor{keyword}{present}(burninadaptationmeasure))           \textcolor{keyword}{call }specdram\%BurninAdaptationMeasure       \%set(burninadaptationmeasure)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00187}00187         \textcolor{keyword}{call }specdram\%delayedRejectionScaleFactorVec\%set(specdram\%DelayedRejectionCount\%val, delayedrejectionscalefactorvec)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00188}00188 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00189}00189     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespacespecdram__mod_a7aaea538d09856f855d52622910afce6}{setfrominputargs}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00190}00190 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00191}00191 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00192}00192 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00193}\mbox{\hyperlink{namespacespecdram__mod_a0dd243778405aacfa5c67859657cd3e3}{00193}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespacespecdram__mod_a0dd243778405aacfa5c67859657cd3e3}{reportvalues}} ( SpecDRAM              \&}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00194}00194                             , prefix                \&}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00195}00195                             , outputUnit            \&}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00196}00196                             , isLeaderImage         \&}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00197}00197                             , splashModeRequested   \&}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00198}00198                             )}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00199}00199 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00200}00200 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: reportValues}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00201}00201 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00202}00202 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacedecoration__mod}{decoration\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00203}00203         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacedecoration__mod}{decoration\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacedecoration__mod_a7cc5402c3618f513bc16af539404c597}{generic\_tabbed\_format}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00204}00204         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk, \mbox{\hyperlink{namespaceconstants__mod_ab2e7423c0f84ee598b29017c70ae9788}{undefined}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00205}00205         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespaceerr__mod_a14fabd4143b04ee0102b311c57b392e1}{note}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00206}00206         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00207}00207         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structspecdram__mod_1_1specdram__type}{specdram\_type}}), \textcolor{keywordtype}{intent(in)}    :: SpecDRAM}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00208}00208         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}            :: prefix}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00209}00209         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)}             :: outputUnit}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00210}00210         \textcolor{keywordtype}{logical}, \textcolor{keywordtype}{intent(in)}                 :: isLeaderImage, splashModeRequested}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00211}00211         \textcolor{keywordtype}{integer(IK)}                         :: i}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00212}00212 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00213}00213         \textcolor{keywordflow}{if} (isleaderimage) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00214}00214 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00215}00215             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00216}00216             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}}) \textcolor{stringliteral}{"{}adaptiveUpdatePeriod"{}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00217}00217             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00218}00218             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_a7cc5402c3618f513bc16af539404c597}{generic\_tabbed\_format}}) specdram\%AdaptiveUpdatePeriod\%val}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00219}00219             \textcolor{keywordflow}{if} (splashmoderequested) \textcolor{keyword}{call }\mbox{\hyperlink{namespaceerr__mod_a14fabd4143b04ee0102b311c57b392e1}{note}}( prefix = prefix, outputunit = outputunit, newline = \textcolor{stringliteral}{"{}\(\backslash\)n"{}}, msg = specdram\%AdaptiveUpdatePeriod\%desc )}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00220}00220 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00221}00221 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00222}00222             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00223}00223             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}}) \textcolor{stringliteral}{"{}adaptiveUpdateCount"{}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00224}00224             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00225}00225             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_a7cc5402c3618f513bc16af539404c597}{generic\_tabbed\_format}}) specdram\%AdaptiveUpdateCount\%val}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00226}00226             \textcolor{keywordflow}{if} (splashmoderequested) \textcolor{keyword}{call }\mbox{\hyperlink{namespaceerr__mod_a14fabd4143b04ee0102b311c57b392e1}{note}}( prefix = prefix, outputunit = outputunit, newline = \textcolor{stringliteral}{"{}\(\backslash\)n"{}}, msg = specdram\%AdaptiveUpdateCount\%desc )}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00227}00227 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00228}00228 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00229}00229             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00230}00230             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}}) \textcolor{stringliteral}{"{}greedyAdaptationCount"{}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00231}00231             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00232}00232             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_a7cc5402c3618f513bc16af539404c597}{generic\_tabbed\_format}}) specdram\%GreedyAdaptationCount\%val}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00233}00233             \textcolor{keywordflow}{if} (splashmoderequested) \textcolor{keyword}{call }\mbox{\hyperlink{namespaceerr__mod_a14fabd4143b04ee0102b311c57b392e1}{note}}( prefix = prefix, outputunit = outputunit, newline = \textcolor{stringliteral}{"{}\(\backslash\)n"{}}, msg = specdram\%GreedyAdaptationCount\%desc )}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00234}00234 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00235}00235 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00236}00236             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00237}00237             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}}) \textcolor{stringliteral}{"{}burninAdaptationMeasure"{}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00238}00238             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00239}00239             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_a7cc5402c3618f513bc16af539404c597}{generic\_tabbed\_format}}) specdram\%BurninAdaptationMeasure\%val}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00240}00240             \textcolor{keywordflow}{if} (splashmoderequested) \textcolor{keyword}{call }\mbox{\hyperlink{namespaceerr__mod_a14fabd4143b04ee0102b311c57b392e1}{note}}( prefix = prefix, outputunit = outputunit, newline = \textcolor{stringliteral}{"{}\(\backslash\)n"{}}, msg = specdram\%BurninAdaptationMeasure\%desc )}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00241}00241 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00242}00242 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00243}00243             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00244}00244             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}}) \textcolor{stringliteral}{"{}delayedRejectionCount"{}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00245}00245             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00246}00246             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_a7cc5402c3618f513bc16af539404c597}{generic\_tabbed\_format}}) specdram\%DelayedRejectionCount\%val}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00247}00247             \textcolor{keywordflow}{if} (splashmoderequested) \textcolor{keyword}{call }\mbox{\hyperlink{namespaceerr__mod_a14fabd4143b04ee0102b311c57b392e1}{note}}( prefix = prefix, outputunit = outputunit, newline = \textcolor{stringliteral}{"{}\(\backslash\)n"{}}, msg = specdram\%DelayedRejectionCount\%desc )}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00248}00248 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00249}00249 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00250}00250             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00251}00251             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}}) \textcolor{stringliteral}{"{}delayedRejectionScaleFactorVec"{}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00252}00252             \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{generic\_output\_format}})}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00253}00253             \textcolor{keywordflow}{if} ( \textcolor{keyword}{size}(specdram\%DelayedRejectionScaleFactorVec\%Val) == 0 ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00254}00254                 \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_a7cc5402c3618f513bc16af539404c597}{generic\_tabbed\_format}}) \mbox{\hyperlink{namespaceconstants__mod_ab2e7423c0f84ee598b29017c70ae9788}{undefined}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00255}00255             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00256}00256                 \textcolor{keywordflow}{do} i = 1, \textcolor{keyword}{size}(specdram\%DelayedRejectionScaleFactorVec\%Val)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00257}00257                     \textcolor{keyword}{write}(outputunit,\mbox{\hyperlink{namespacedecoration__mod_a7cc5402c3618f513bc16af539404c597}{generic\_tabbed\_format}}) specdram\%DelayedRejectionScaleFactorVec\%Val(i)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00258}00258 \textcolor{keywordflow}{                end do}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00259}00259 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00260}00260             \textcolor{keywordflow}{if} (splashmoderequested) \textcolor{keyword}{call }\mbox{\hyperlink{namespaceerr__mod_a14fabd4143b04ee0102b311c57b392e1}{note}}( prefix = prefix, outputunit = outputunit, newline = \textcolor{stringliteral}{"{}\(\backslash\)n"{}}, msg = specdram\%DelayedRejectionScaleFactorVec\%desc )}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00261}00261 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00262}00262 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00263}00263 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00264}00264     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespacespecdram__mod_a0dd243778405aacfa5c67859657cd3e3}{reportvalues}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00265}00265 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00266}00266 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00267}00267 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00268}\mbox{\hyperlink{namespacespecdram__mod_ad76b47e74dbef35621f660e4ddb10894}{00268}}     \textcolor{keyword}{subroutine }checkforsanity(SpecDRAM,Err,methodName,nd)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00269}00269 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& defined DLL\_ENABLED \&\& (OS\_IS\_WINDOWS || defined OS\_IS\_DARWIN)}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00270}00270 \textcolor{preprocessor}{}        \textcolor{comment}{!DEC\$ ATTRIBUTES DLLEXPORT :: checkForSanity}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00271}00271 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00272}00272 \textcolor{preprocessor}{}        \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00273}00273         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00274}00274         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00275}00275         \textcolor{keywordtype}{class}(\mbox{\hyperlink{structspecdram__mod_1_1specdram__type}{specdram\_type}}), \textcolor{keywordtype}{intent(inout)} :: SpecDRAM}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00276}00276         \textcolor{keywordtype}{integer(IK)}, \textcolor{keywordtype}{intent(in)}             :: nd}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00277}00277         \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{intent(in)}            :: methodName}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00278}00278         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}), \textcolor{keywordtype}{intent(inout)}       :: Err}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00279}00279         \textcolor{keyword}{call }specdram\%AdaptiveUpdateCount\%checkForSanity            (err,methodname)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00280}00280         \textcolor{keyword}{call }specdram\%AdaptiveUpdatePeriod\%checkForSanity           (err,methodname)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00281}00281         \textcolor{keyword}{call }specdram\%GreedyAdaptationCount\%checkForSanity          (err,methodname)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00282}00282         \textcolor{keyword}{call }specdram\%DelayedRejectionCount\%checkForSanity          (err,methodname)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00283}00283         \textcolor{keyword}{call }specdram\%BurninAdaptationMeasure\%checkForSanity        (err,methodname)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00284}00284         \textcolor{keyword}{call }specdram\%DelayedRejectionScaleFactorVec\%checkForSanity (err,methodname,specdram\%DelayedRejectionCount\%val)}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00285}00285     \textcolor{keyword}{end subroutine }checkforsanity}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00286}00286 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00287}00287 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00288}00288 }
+\DoxyCodeLine{\Hypertarget{SpecDRAM__mod_8f90_source_l00289}00289 \textcolor{keyword}{end module }\mbox{\hyperlink{namespacespecdram__mod}{specdram\_mod}} ! lcov\_excl\_line}
+
+\end{DoxyCode}

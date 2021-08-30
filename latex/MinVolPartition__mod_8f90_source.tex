@@ -1,0 +1,661 @@
+\hypertarget{MinVolPartition__mod_8f90_source}{}\doxysection{Min\+Vol\+Partition\+\_\+mod.\+f90}
+\label{MinVolPartition__mod_8f90_source}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/MinVolPartition\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/MinVolPartition\_mod.f90}}
+\mbox{\hyperlink{MinVolPartition__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00001}00001 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00002}00002 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00003}00003 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00004}00004 \textcolor{comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00005}00005 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00006}00006 \textcolor{comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00007}00007 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00008}00008 \textcolor{comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00009}00009 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00010}00010 \textcolor{comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00011}00011 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00012}00012 \textcolor{comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00013}00013 \textcolor{comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}),}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00014}00014 \textcolor{comment}{!!!!   to deal in the Software without restriction, including without limitation}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00015}00015 \textcolor{comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00016}00016 \textcolor{comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00017}00017 \textcolor{comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00018}00018 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00019}00019 \textcolor{comment}{!!!!   The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00020}00020 \textcolor{comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00021}00021 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00022}00022 \textcolor{comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00023}00023 \textcolor{comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00024}00024 \textcolor{comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00025}00025 \textcolor{comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00026}00026 \textcolor{comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00027}00027 \textcolor{comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00028}00028 \textcolor{comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00029}00029 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00030}00030 \textcolor{comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00031}00031 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00032}00032 \textcolor{comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00033}00033 \textcolor{comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00034}00034 \textcolor{comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00035}00035 \textcolor{comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00036}00036 \textcolor{comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00037}00037 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00038}00038 \textcolor{comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00039}00039 \textcolor{comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00040}00040 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00041}00041 \textcolor{comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00048}\mbox{\hyperlink{namespaceminvolpartition__mod}{00048}} \textcolor{keyword}{module} \mbox{\hyperlink{namespaceminvolpartition__mod}{minvolpartition\_mod}}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00050}00050     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceconstants__mod}{constants\_mod}}, \textcolor{keywordtype}{only}: ik, rk}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00051}00051     \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00053}00053     \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00055}\mbox{\hyperlink{namespaceminvolpartition__mod_acfc91d3e6720662967db55d25e5195f8}{00055}}     \textcolor{keywordtype}{character(*)}, \textcolor{keywordtype}{parameter} :: \mbox{\hyperlink{namespaceconstants__mod_a7facbdd6f237b77f9c08c94fbe98e847}{module\_name}} = \textcolor{stringliteral}{"{}@MinVolPartition\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00058}\mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type}{00058}}     \textcolor{keyword}{type} :: \mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type}{minvolpartition\_type}}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00059}00059         \textcolor{comment}{!type(Ellipsoid\_type)        :: Backup}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00060}\mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type_af991c27a0123a4dd51af0ed4db68f56c}{00060}}         \textcolor{keywordtype}{integer(IK)}                 :: neoptimal}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00061}\mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type_ad9b444c760ef0fc4ef2fd5db0f8f19ee}{00061}}         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{allocatable}   :: membership(:)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00062}\mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type_ad5b5a917b71d078257e995fa55a4f113}{00062}}         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{allocatable}   :: pointindex(:)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00063}\mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type_ab08d85130ff60411f56a72a64aa5346e}{00063}}         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{allocatable}   :: size(:)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00064}\mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type_acfb5a584815acc86804cd851be5537dd}{00064}}         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{allocatable}   :: ellindex(:)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00065}\mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type_a43c712d5b4a29bf44ac0be737b2c8c91}{00065}} \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{allocatable}   :: center(:,:)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00066}\mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type_a9860831e2d231bc81b130b3f99fd76ab}{00066}} \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{allocatable}   :: logvolnormed(:)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00067}\mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type_a7cb04698c2a3fb8d79cc953923da4fba}{00067}} \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{allocatable}   :: invcovmat(:,:,:)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00068}\mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type_a84ed97c92d63f6e4855293093bb6a074}{00068}} \textcolor{keywordtype}{        real}(rk)    , \textcolor{keywordtype}{allocatable}   :: choldiaglower(:,:,:)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00070}\mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type_a12370526e66144be8b13dca56b9a7414}{00070}}         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})              :: err}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00071}00071     \textcolor{keyword}{end type }\mbox{\hyperlink{structminvolpartition__mod_1_1minvolpartition__type}{minvolpartition\_type}}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00073}00073 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00075}00075 \textcolor{keyword}{contains}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00077}00077 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00079}\mbox{\hyperlink{namespaceminvolpartition__mod_a82a4bdaa5cd0b54252e4b6d47b1dc2bb}{00079}}     \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespaceminvolpartition__mod_a82a4bdaa5cd0b54252e4b6d47b1dc2bb}{runminvolpartition}}   ( ncMax, nd, np \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00080}00080                                     , maxKvolumeLoopRecursion \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00081}00081                                     , maxAllowedKmeansFailure \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00082}00082                                     , maxAllowedMinVolFailure \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00083}00083                                     , stabilizationRequested \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00084}00084                                     , mahalSqWeightExponent \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00085}00085                                     , tightness \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00086}00086                                     , inclusionFraction \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00087}00087                                     , parLogVol \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00088}00088                                     ! inout}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00089}00089                                     , Point \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00090}00090                                     ! output}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00091}00091                                     , ncOptimal \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00092}00092                                     , CCenter \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00093}00093                                     , CSize \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00094}00094                                     , CBEInvCovMat \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00095}00095                                     , CBECholCov \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00096}00096                                     , CBECholDiag \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00097}00097                                     , CBEVolNormed \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00098}00098                                     , CMembership \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00099}00099                                     , PointIndex \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00100}00100                                     , convergenceFailureCounter \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00101}00101                                     )}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00102}00102         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestatistics__mod}{statistics\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacestatistics__mod_ae321c1cfb8f2d0f3e4980b2fa12dbde1}{getsamcholfac}}, \mbox{\hyperlink{interfacestatistics__mod_1_1getmahalsq}{getmahalsq}}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00103}00103         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacematrix__mod}{matrix\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacematrix__mod_a1281fcb5ff0398b841570144bf8765fd}{getinvmatfromcholfac}}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00104}00104         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00105}00105         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}    :: ncMax,nd,np                 \textcolor{comment}{! maximum number of clusters, number of dimensions, number of points}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00106}00106         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}    :: maxKvolumeLoopRecursion}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00107}00107         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}    :: maxAllowedKmeansFailure}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00108}00108         \textcolor{keywordtype}{integer(IK)} , \textcolor{keywordtype}{intent(in)}    :: maxAllowedMinVolFailure}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00109}00109         \textcolor{keywordtype}{logical}     , \textcolor{keywordtype}{intent(in)}    :: stabilizationRequested}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00110}00110 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(in)}    :: mahalSqWeightExponent}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00111}00111 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(in)}    :: tightness                    \textcolor{comment}{! the factor deremining how large the bounding ellipsoid can be, compared to the true volume of the ellipsoid.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00112}00112 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(in)}    :: inclusionFraction            \textcolor{comment}{! the fraction of non-\/cluster-\/member points that ARE inside the cluster, to be considered in the estimation of the true volume of the cluster.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00113}00113 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(in)}    :: parLogVol                    \textcolor{comment}{! input log-\/estimate of the total volume of the points.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00114}00114 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(inout)} :: Point(nd,np)                 \textcolor{comment}{! the input data (points) to be clustered. on output, it is ordered.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00115}00115 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(out)}   :: CCenter(nd,ncMax)            \textcolor{comment}{! Centers of the clusters (nd,ncMax)}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00116}00116 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(out)}   :: CBEInvCovMat(nd,nd,ncMax)    \textcolor{comment}{! CBE: Cluster Bounding Ellipsoid -\/ On output: Full symmetric Inverse Covariance Matrices of the Bounding Ellipsoids of all clusters.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00117}00117 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(out)}   :: CBECholCov(nd,nd,ncMax)      \textcolor{comment}{! CBE: Cluster Bounding Ellipsoid -\/ On output: The lower triangle contains the Cholesky factor of the covariance matrix of the input points, the upper triangle maybe the CovMat itself (not needed). On output contains in the lower triangle, the Cholesky factor of all clusters found.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00118}00118 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(out)}   :: CBECholDiag(nd,ncMax)        \textcolor{comment}{! CBE: Cluster Bounding Ellipsoid -\/ On output: The diagonal elements of the Cholesky factor of the covariance matrix of the input points, on output, contains the cholesky factor of all found clusters.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00119}00119 \textcolor{keywordtype}{        real}(RK)    , \textcolor{keywordtype}{intent(out)}   :: CBEVolNormed(ncMax)          \textcolor{comment}{! CBE: Cluster Bounding Ellipsoid -\/ On output: Each element of the array contains the volume of the corresponding Cluster Bounding Ellipsoid.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00120}00120         \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(out)}   :: ncOptimal                    \textcolor{comment}{! this variable is saved throughout recursive iterations of subroutine}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00121}00121         \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(out)}   :: CSize(ncMax)                 \textcolor{comment}{! cluster sizes (nCMax)}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00122}00122         \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(out)}   :: CMembership(np)              \textcolor{comment}{! the CMembership id of each point (representing the cluster number to which the point belongs)}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00123}00123         \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(out)}   :: PointIndex(np)               \textcolor{comment}{! Vector containing the scrambled indices of Point elements. It represent the mapping from the input Point elements to output scrambled Point vector.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00124}00124         \textcolor{keywordtype}{integer}     , \textcolor{keywordtype}{intent(inout)} :: convergenceFailureCounter    \textcolor{comment}{! number of times the algorithm failed to converge.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00125}00125         \textcolor{keywordtype}{integer}                     :: i,j}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00126}00126 \textcolor{keywordtype}{        real}(RK)                    :: parVolNormed                 \textcolor{comment}{! LogVolume of parent ellipsoid}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00127}00127 \textcolor{keywordtype}{        real}(RK)                    :: logNormFac, scaleFac}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00128}00128         \textcolor{comment}{!ncMax = np/(nd+1)}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00129}00129 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00130}00130         ccenter(1:nd,1) = 0.\_rk}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00131}00131         \textcolor{keywordflow}{do} j = 1,np}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00132}00132           ccenter(1:nd,1) = ccenter(1:nd,1) + point(1:nd,j)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00133}00133           pointindex(j) = j}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00134}00134 \textcolor{keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00135}00135         ccenter(1:nd,1) = ccenter(1:nd,1) / real(np,kind=rk)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00137}00137         \textcolor{keyword}{call }\mbox{\hyperlink{namespacestatistics__mod_ae321c1cfb8f2d0f3e4980b2fa12dbde1}{getsamcholfac}}( nd, np, ccenter(1:nd,1), point, cbecholcov(1:nd,1:nd,1), cbecholdiag(1:nd,1) )   \textcolor{comment}{! get Cholesky Factor of cluster samples}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00138}00138         \textcolor{keywordflow}{if} (cbecholdiag(1,1)<0.\_rk) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00139}00139             \textcolor{keyword}{write}(*,*) \textcolor{stringliteral}{'getCholeskyFactor() failed in getSamCholFac() in runMinVolPartition()'}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00140}00140             \textcolor{keyword}{write}(*,*) \textcolor{stringliteral}{'Max cluster number, dimension, total points:'}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00141}00141             \textcolor{keyword}{write}(*,*) ncmax, nd, np}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00142}00142             stop}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00143}00143 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00144}00144         cbeinvcovmat(1:nd,1:nd,1) = \mbox{\hyperlink{namespacematrix__mod_a1281fcb5ff0398b841570144bf8765fd}{getinvmatfromcholfac}}(nd,cbecholcov(1:nd,1:nd,1),cbecholdiag(1:nd,1))}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00145}00145         scalefac = sqrt( maxval(\mbox{\hyperlink{interfacestatistics__mod_1_1getmahalsq}{getmahalsq}}(nd, np, ccenter(1:nd,1), cbeinvcovmat(1:nd,1:nd,1), point)) )}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00146}00146         cbevolnormed(1) = sum(log(cbecholdiag(1:nd,1))) + nd*log(scalefac)   \textcolor{comment}{! Get the LogVolume of the first cluster. This will be used to normalize the volumes of all child clusters.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00147}00147         \textcolor{keywordflow}{if} (cbevolnormed(1)>parlogvol) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00148}00148             lognormfac = cbevolnormed(1)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00149}00149             cbevolnormed(1) = 1.\_rk}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00150}00150             parvolnormed = exp( parlogvol -\/ lognormfac )}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00151}00151         \textcolor{keywordflow}{else}    \textcolor{comment}{! enlarge the bounding ellipsoid}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00152}00152             \textcolor{comment}{!write(*,*) 'no no no no!'}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00153}00153             lognormfac = parlogvol}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00154}00154             \textcolor{comment}{!scaleFac = scaleFac * exp( 0.5\_RK*(logNormFac-\/CBEVolNormed(1))/nd )}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00155}00155             scalefac = scalefac * exp( (lognormfac-\/cbevolnormed(1))/nd )}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00156}00156             cbevolnormed(1) = 1.\_rk}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00157}00157             parvolnormed = 1.\_rk}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00158}00158 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00159}00159 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00160}00160         \textcolor{keywordflow}{if} (ncmax > 1 .and. cbevolnormed(1)>tightness*parvolnormed) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00161}00161             \textcolor{comment}{!convergenceFailureCounter = 0}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00162}00162             \textcolor{keyword}{call }\mbox{\hyperlink{namespaceminvolpartition__mod_ae2644d3f5cfc00e7e7e10015da6ac603}{runminvolkernel}}( ncmax = ncmax \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00163}00163                                 , nd = nd \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00164}00164                                 , np = np \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00165}00165                                 , stabilizationrequested = stabilizationrequested \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00166}00166                                 , maxkvolumelooprecursion = maxkvolumelooprecursion \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00167}00167                                 , maxallowedkmeansfailure = maxallowedkmeansfailure \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00168}00168                                 , maxallowedminvolfailure = maxallowedminvolfailure \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00169}00169                                 , mahalsqweightexponent = mahalsqweightexponent \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00170}00170                                 , tightness = tightness \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00171}00171                                 , inclusionfraction = inclusionfraction \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00172}00172                                 , parvolnormed = parvolnormed \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00173}00173                                 , lognormfac = lognormfac \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00174}00174                                 , point = point \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00175}00175                                 , ncoptimal = ncoptimal \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00176}00176                                 , ccenter = ccenter \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00177}00177                                 , csize = csize \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00178}00178                                 , cbeinvcovmat = cbeinvcovmat \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00179}00179                                 , cbecholcov = cbecholcov \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00180}00180                                 , cbecholdiag = cbecholdiag \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00181}00181                                 , cbevolnormed = cbevolnormed \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00182}00182                                 , cmembership = cmembership \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00183}00183                                 , pointindex = pointindex \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00184}00184                                 , convergencefailurecounter = convergencefailurecounter \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00185}00185                                 )}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00186}00186         \textcolor{keywordflow}{else} \textcolor{comment}{! There is only one cluster}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00187}00187             ncoptimal = 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00188}00188 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00189}00189 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00190}00190         \textcolor{keywordflow}{if} (ncoptimal==1) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00191}00191             \textcolor{keywordflow}{do} j = 1,nd-\/1 \textcolor{comment}{! Now rescale Cholesky factor and its diagonals, such that they describe the bounding ellipsoid of the cluster}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00192}00192                 cbecholdiag(j,1) = cbecholdiag(j,1) * scalefac}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00193}00193                 \textcolor{keywordflow}{do} i = j+1,nd}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00194}00194                     cbecholcov(i,j,1) = cbecholcov(i,j,1) * scalefac}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00195}00195 \textcolor{keywordflow}{                end do}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00196}00196 \textcolor{keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00197}00197             cbecholdiag(nd,1) = cbecholdiag(nd,1) * scalefac}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00198}00198             cbeinvcovmat(1:nd,1:nd,1) = cbeinvcovmat(1:nd,1:nd,1) / scalefac**2}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00199}00199 \textcolor{keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00200}00200 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00201}00201     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespaceminvolpartition__mod_a82a4bdaa5cd0b54252e4b6d47b1dc2bb}{runminvolpartition}}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00202}00202 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00203}00203 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00204}00204 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00205}00205     \textcolor{comment}{! This code assumes that ncMax > 1 on input.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00206}00206     \textcolor{comment}{! important input requirements:}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00207}\mbox{\hyperlink{namespaceminvolpartition__mod_ae2644d3f5cfc00e7e7e10015da6ac603}{00207}}     \textcolor{keywordtype}{recursive} \textcolor{keyword}{subroutine }\mbox{\hyperlink{namespaceminvolpartition__mod_ae2644d3f5cfc00e7e7e10015da6ac603}{runminvolkernel}}( ncMax \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00208}00208                                         , nd \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00209}00209                                         , np \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00210}00210                                         , stabilizationRequested \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00211}00211                                         , maxKvolumeLoopRecursion \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00212}00212                                         , maxAllowedKmeansFailure \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00213}00213                                         , maxAllowedMinVolFailure \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00214}00214                                         , mahalSqWeightExponent \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00215}00215                                         , tightness \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00216}00216                                         , inclusionFraction \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00217}00217                                         , parVolNormed \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00218}00218                                         , logNormFac \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00219}00219                                         , Point \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00220}00220                                         , ncOptimal \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00221}00221                                         , CCenter \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00222}00222                                         , CSize \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00223}00223                                         , CBEInvCovMat \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00224}00224                                         , CBECholCov \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00225}00225                                         , CBECholDiag \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00226}00226                                         , CBEVolNormed \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00227}00227                                         , CMembership \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00228}00228                                         , PointIndex \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00229}00229                                         , convergenceFailureCounter \& ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00230}00230                                         )}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00231}00231 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00232}00232         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacestatistics__mod}{statistics\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacestatistics__mod_ae321c1cfb8f2d0f3e4980b2fa12dbde1}{getsamcholfac}}, \mbox{\hyperlink{interfacestatistics__mod_1_1getmahalsq}{getmahalsq}}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00233}00233         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacematrix__mod}{matrix\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacematrix__mod_a1281fcb5ff0398b841570144bf8765fd}{getinvmatfromcholfac}}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00234}00234         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespacekmeans__mod}{kmeans\_mod}}, \textcolor{keywordtype}{only}: \mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{runkmeans}}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00235}00235         \textcolor{keywordtype}{use }\mbox{\hyperlink{namespaceerr__mod}{err\_mod}}, \textcolor{keywordtype}{only}:  \mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00236}00236         \textcolor{keywordtype}{implicit none}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00237}00237         \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{save}          :: ncall = 0}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00238}00238         \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(in)}    :: ncmax                             \textcolor{comment}{! maximum number of clusters determined from the nd and np}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00239}00239         \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(in)}    :: nd,np                             \textcolor{comment}{! number of dimensions, number of points}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00240}00240         \textcolor{keywordtype}{logical} , \textcolor{keywordtype}{intent(in)}    :: stabilizationrequested}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00241}00241         \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(in)}    :: maxkvolumelooprecursion}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00242}00242         \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(in)}    :: maxallowedkmeansfailure}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00243}00243         \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(in)}    :: maxallowedminvolfailure}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00244}00244 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(in)}    :: mahalsqweightexponent}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00245}00245 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(in)}    :: tightness                         \textcolor{comment}{! the factor deremining how large the bounding ellipsoid can be, compared to the true volume of the ellipsoid.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00246}00246 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(in)}    :: inclusionfraction                 \textcolor{comment}{! the fraction of non-\/cluster-\/member points that ARE inside the cluster, to be considered in the estimation of the true volume of the cluster.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00247}00247 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(in)}    :: parvolnormed                      \textcolor{comment}{! parent's sqrt(det(invCovMat)), where invCovMat is the inverse covariance matrix of the bounding ellipsoid of the input points.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00248}00248 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(in)}    :: lognormfac                        \textcolor{comment}{! parent's sqrt(det(invCovMat)), where invCovMat is the inverse covariance matrix of the bounding ellipsoid of the input points.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00249}00249         \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(out)}   :: ncoptimal                         \textcolor{comment}{! this variable is saved throughout recursive iterations of subroutine}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00250}00250         \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(out)}   :: csize(ncmax)                      \textcolor{comment}{! cluster sizes (nCMax)}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00251}00251         \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(inout)} :: convergencefailurecounter         \textcolor{comment}{! returns the number of times the algorithm failed to converge.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00252}00252         \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(inout)} :: cmembership(np)                   \textcolor{comment}{! the CMembership id of each point (representing the cluster number to which the point belongs)}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00253}00253         \textcolor{keywordtype}{integer} , \textcolor{keywordtype}{intent(inout)} :: pointindex(np)                    \textcolor{comment}{! Vector containing the scrambled indices of Point elements. It represent the mapping from the input Point elements to output scrambled Point vector.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00254}00254 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(inout)} :: point(nd,np)                      \textcolor{comment}{! the input data (points) to be clustered.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00255}00255 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(inout)} :: ccenter(nd,ncmax)                 \textcolor{comment}{! Centers of the clusters (nd,ncMax)}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00256}00256 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(inout)} :: cbecholcov(nd,nd,ncmax)           \textcolor{comment}{! CBE: Cluster Bounding Ellipsoid -\/ On input: The lower triangle contains the Cholesky factor of the covariance matrix of the input points, the upper triangle maybe the CovMat itself (not needed). On output contains in the lower triangle, the Cholesky factor of all clusters found.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00257}00257 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(inout)} :: cbeinvcovmat(nd,nd,ncmax)         \textcolor{comment}{! CBE: Cluster Bounding Ellipsoid -\/ On input: The lower triangle contains the Cholesky factor of the covariance matrix of the input points, the upper triangle maybe the CovMat itself (not needed). On output contains in the lower triangle, the Cholesky factor of all clusters found.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00258}00258 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(inout)} :: cbecholdiag(nd,ncmax)             \textcolor{comment}{! CBE: Cluster Bounding Ellipsoid -\/ On input: The diagonal elements of the Cholesky factor of the covariance matrix of the input points, on output, contains the cholesky factor of all found clusters.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00259}00259 \textcolor{keywordtype}{        real}(rk), \textcolor{keywordtype}{intent(inout)} :: cbevolnormed(ncmax)               \textcolor{comment}{! CBE: Cluster Bounding Ellipsoid -\/ On input: The volume of the Bounding Ellipsoid of the parent cluster. On output: The Bounding volume of all child clusters.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00260}00260 \textcolor{keywordtype}{        real}(rk)                :: ckcenter(nd,2)                    \textcolor{comment}{! Cluster Centers for nc=2 Kmeans algorithm}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00261}00261 \textcolor{keywordtype}{        real}(rk)                :: ckbecholcov(nd,nd,2)              \textcolor{comment}{! Covariance Matrices of the bounding ellipsoid of the Kmeans' 2 clusters, reported in the upper triangle. The lower triangle contains the Cholesky factors}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00262}00262 \textcolor{keywordtype}{        real}(rk)                :: ckbeinvcovmat(nd,nd,2)            \textcolor{comment}{! Inverse of the Covariance Matrices of the bounding ellipsoid of the Kmeans' 2 clusters.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00263}00263 \textcolor{keywordtype}{        real}(rk)                :: ckbecholdiag(nd,2)                \textcolor{comment}{! determinants of the inverse covariance matrices of the bounding ellipsoids of the Kmeans' 2 clusters.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00264}00264 \textcolor{keywordtype}{        real}(rk)                :: ckmahalsq(np,2)                   \textcolor{comment}{! Vector of Maximum Mahalanobis distances for each cluster}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00265}00265 \textcolor{keywordtype}{        real}(rk)                :: ckbevolnormed(2)                  \textcolor{comment}{! New Cluster Bounding Ellisoid Volumes}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00266}00266 \textcolor{keywordtype}{        real}(rk)                :: ckparvolnormed(2)                 \textcolor{comment}{! New Cluster Volume estimates}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00267}00267 \textcolor{keywordtype}{        real}(rk)                :: scalefacsq(2),scalefac(2)         \textcolor{comment}{! The factor by which determinant must be multiplied in order for the ellipsoid to become a bounding ellipsoid.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00268}00268 \textcolor{keywordtype}{        real}(rk)                :: ckpoint(nd,np)                    \textcolor{comment}{! Cluster Points in 2-\/means partition result}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00269}00269 \textcolor{keywordtype}{        real}(rk)                :: mahalsqweight(2)                  \textcolor{comment}{! MahalSqWeight definition of Lu et al 2007}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00270}00270         \textcolor{keywordtype}{integer}                 :: ckpointindex(np)                  \textcolor{comment}{! Vector containing the scrambled indices of Point elements. It represent the mapping from the input Point elements to output scrambled Point vector.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00271}00271         \textcolor{keywordtype}{integer}                 :: cksize(2)                         \textcolor{comment}{! cluster sizes for nc=2 Kmeans algorithm}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00272}00272         \textcolor{keywordtype}{integer}                 :: numpointinck(2)                   \textcolor{comment}{! cluster sizes for nc=2 Kmeans algorithm}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00273}00273         \textcolor{keywordtype}{integer}                 :: cksizedummy(2)                    \textcolor{comment}{! cluster sizes for nc=2 Kmeans algorithm}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00274}00274         \textcolor{keywordtype}{integer}                 :: ckncmax(2)                        \textcolor{comment}{! maximum allowed number of clusters in each of the two K-\/means clusters.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00275}00275         \textcolor{keywordtype}{integer}                 :: ckncoptimal(2)                    \textcolor{comment}{! optimal number of clusters in each of the child clusters}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00276}00276         \textcolor{keywordtype}{integer}                 :: cmembercounter(2)                 \textcolor{comment}{! cluster member counter}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00277}00277         \textcolor{keywordtype}{integer}                 :: zcsiteration                      \textcolor{comment}{! Counts the number of times zero sized clusters are found, zcs stands for zero cluster size}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00278}00278         \textcolor{keywordtype}{integer}                 :: ipstart(2),ipend(2)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00279}00279         \textcolor{keywordtype}{integer}                 :: i,j,ip,ic,icother,iteration,ndeffective}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00280}00280         \textcolor{keywordtype}{integer}                 :: icstart,icend,recursioncounter,kmeansfailurecounter,minvolfailurecounter}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00281}00281         \textcolor{keywordtype}{logical}                 :: reclusteringneeded}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00282}00282         \textcolor{keywordtype}{integer}                 :: minclustersize}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00283}00283 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00284}00284         \textcolor{comment}{! stabilization variables:}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00285}00285 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00286}00286 \textcolor{keywordtype}{        real}(rk)                :: ckcenterold(nd,2)            \textcolor{comment}{! Cluster Centers for nc=2 Kmeans algorithm}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00287}00287 \textcolor{keywordtype}{        real}(rk)                :: ckbecholcovold(nd,nd,2)      \textcolor{comment}{! Covariance Matrices of the bounding ellipsoid of the Kmeans' 2 clusters, reported in the upper triangle. The lower triangle contains the Cholesky factors}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00288}00288 \textcolor{keywordtype}{        real}(rk)                :: ckbeinvcovmatold(nd,nd,2)    \textcolor{comment}{! Inverse of the Covariance Matrices of the bounding ellipsoid of the Kmeans' 2 clusters.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00289}00289 \textcolor{keywordtype}{        real}(rk)                :: ckbecholdiagold(nd,2)        \textcolor{comment}{! determinants of the inverse covariance matrices of the bounding ellipsoids of the Kmeans' 2 clusters.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00290}00290 \textcolor{keywordtype}{        real}(rk)                :: cknormedpoint(nd,np,2)       \textcolor{comment}{! Vector of Maximum Mahalanobis distances for each cluster}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00291}00291 \textcolor{keywordtype}{        real}(rk)                :: ckmindistancesq(np)          \textcolor{comment}{! Vector of Maximum Mahalanobis distances for each cluster}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00292}00292 \textcolor{keywordtype}{        real}(rk)                :: ckmahalsqold(np,2)           \textcolor{comment}{! Vector of Maximum Mahalanobis distances for each cluster}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00293}00293 \textcolor{keywordtype}{        real}(rk)                :: ckbevolnormedold(2)          \textcolor{comment}{! New Cluster Bounding Ellisoid Volumes}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00294}00294 \textcolor{keywordtype}{        real}(rk)                :: scalefacsqold(2)             \textcolor{comment}{! The factor by which determinant must be multiplied in order for the ellipsoid to become a bounding ellipsoid.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00295}00295 \textcolor{keywordtype}{        real}(rk)                :: scalefacold(2)               \textcolor{comment}{! The factor by which determinant must be multiplied in order for the ellipsoid to become a bounding ellipsoid.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00296}00296 \textcolor{keywordtype}{        real}(rk)                :: potential                    \textcolor{comment}{! The factor by which determinant must be multiplied in order for the ellipsoid to become a bounding ellipsoid.}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00297}00297         \textcolor{keywordtype}{type}(\mbox{\hyperlink{structerr__mod_1_1err__type}{err\_type}})          :: err}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00298}00298 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00299}00299         minclustersize = nd + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00300}00300         ndeffective = np / ncmax + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00301}00301         ncall = ncall + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00302}00302 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00303}00303         kmeansfailurecounter = 0}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00304}00304         looprunkmeans: \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00305}00305             \textcolor{keyword}{call }\mbox{\hyperlink{namespacekmeans__mod_a217c43a3940ffade09cf8f2a1fcd9837}{runkmeans}}  ( nd = nd \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00306}00306                             , np = np \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00307}00307                             , nc = 2\_ik \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00308}00308                             , point = point \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00309}00309                             , \textcolor{keyword}{Size} = cksize \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00310}00310                             , center = ckcenter \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00311}00311                             , membership = cmembership \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00312}00312                             , normedpoint = cknormedpoint \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00313}00313                             , mindistancesq = ckmindistancesq \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00314}00314                             , potential = potential \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00315}00315                             , niter = iteration \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00316}00316                             , nzsci = zcsiteration \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00317}00317                             , err = err \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00318}00318                             \textcolor{comment}{!, niterMax \& ! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00319}00319                             \textcolor{comment}{!, nzsciMax \& ! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00320}00320                             \textcolor{comment}{!, relTol \& ! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00321}00321                             )}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00322}00322             \textcolor{keywordflow}{if} ( any(cksize<minclustersize) ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00323}00323                 kmeansfailurecounter = kmeansfailurecounter + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00324}00324                 \textcolor{keywordflow}{if} (kmeansfailurecounter>maxallowedkmeansfailure) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00325}00325                     ncoptimal = 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00326}00326                     cmembership = 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00327}00327                     csize(1) = np}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00328}00328                     convergencefailurecounter = convergencefailurecounter + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00329}00329                     \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00330}00330 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00331}00331                 cycle looprunkmeans}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00332}00332 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00333}00333             \textcolor{keywordflow}{exit} looprunkmeans}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00334}00334 \textcolor{keywordflow}{        end do} looprunkmeans}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00335}00335 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00336}00336         \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00337}00337 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00338}00338         ckbevolnormedold = huge(0.\_rk)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00339}00339         recursioncounter = 0}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00340}00340         minvolfailurecounter = 0}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00341}00341 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00342}00342         looprecursiverunminvolkernel: \textcolor{keywordflow}{do}    \textcolor{comment}{! find two approximately minimum-\/volume sub-\/cllusters recursively}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00343}00343 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00344}00344             recursioncounter = recursioncounter + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00345}00345             \textcolor{keywordflow}{if}(mod(recursioncounter,maxkvolumelooprecursion)==0) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00346}00346                 \textcolor{keyword}{write}(*,*) \textcolor{stringliteral}{'recursionCounter: '}, recursioncounter}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00347}00347                 ncoptimal = 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00348}00348                 cmembership = 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00349}00349                 csize(1) = np}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00350}00350                 convergencefailurecounter = convergencefailurecounter + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00351}00351                 \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00352}00352 \textcolor{keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00353}00353 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00354}00354             cmembercounter(1) = 0}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00355}00355             cmembercounter(2) = cksize(1)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00356}00356             \textcolor{keywordflow}{do} ip = 1,np}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00357}00357                 \textcolor{keywordflow}{if} (cmembership(ip)==1) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00358}00358                     cmembercounter(1) = cmembercounter(1) + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00359}00359                     ckpoint(1:nd,cmembercounter(1)) = point(1:nd,ip)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00360}00360                     ckpointindex(cmembercounter(1)) = pointindex(ip)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00361}00361                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00362}00362                     cmembercounter(2) = cmembercounter(2) + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00363}00363                     ckpoint(1:nd,cmembercounter(2)) = point(1:nd,ip)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00364}00364                     ckpointindex(cmembercounter(2)) = pointindex(ip)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00365}00365 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00366}00366 \textcolor{keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00367}00367             point = ckpoint           \textcolor{comment}{! Point is now ordered}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00368}00368             pointindex = ckpointindex \textcolor{comment}{! PointIndex is now ordered}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00369}00369 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00370}00370             ipstart(1) = 1             ; ipend(1) = cksize(1)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00371}00371             ipstart(2) = cksize(1) + 1 ; ipend(2) = np}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00372}00372 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00373}00373             \textcolor{keywordflow}{do} ic = 1,2   \textcolor{comment}{! Get scaled Mahalanobis distances}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00374}00374 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00375}00375                 icother = 3 -\/ ic}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00376}00376 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00377}00377                 \textcolor{comment}{! get Cholesky Factor of cluster samples}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00378}00378 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00379}00379                 \textcolor{keyword}{call }\mbox{\hyperlink{namespacestatistics__mod_ae321c1cfb8f2d0f3e4980b2fa12dbde1}{getsamcholfac}}  ( nd \&}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00380}00380                                     , cksize(ic) \&}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00381}00381                                     , ckcenter(1:nd,ic) \&}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00382}00382                                     , point(1:nd,ipstart(ic):ipend(ic)) \&}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00383}00383                                     , ckbecholcov(1:nd,1:nd,ic) \&}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00384}00384                                     , ckbecholdiag(1:nd,ic) \&}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00385}00385                                     )}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00386}00386                 \textcolor{keywordflow}{if} (ckbecholdiag(1,ic)<0.\_rk) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00387}00387                     \textcolor{keyword}{write}(*,*) \textcolor{stringliteral}{"{}    FATAL: runMinVolKernel() @ getSamCholFac() @ getCholeskyFactor() failed."{}}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00388}00388                     \textcolor{keyword}{write}(*,*) \textcolor{stringliteral}{"{}           Cluster id, dimension, size:"{}}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00389}00389                     \textcolor{keyword}{write}(*,*) ic, nd, cksize(ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00390}00390                     stop}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00391}00391 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00392}00392 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00393}00393                 ckbeinvcovmat(1:nd,1:nd,ic) = \mbox{\hyperlink{namespacematrix__mod_a1281fcb5ff0398b841570144bf8765fd}{getinvmatfromcholfac}}( nd, ckbecholcov(1:nd,1:nd,ic), ckbecholdiag(1:nd,ic) )}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00394}00394                 ckmahalsq(1:np,ic) = \mbox{\hyperlink{interfacestatistics__mod_1_1getmahalsq}{getmahalsq}}( nd, np, ckcenter(1:nd,ic), ckbeinvcovmat(1:nd,1:nd,ic), point )}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00395}00395                 scalefacsq(ic) = maxval(ckmahalsq(ipstart(ic):ipend(ic),ic))}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00396}00396                 scalefac(ic) = sqrt( scalefacsq(ic) )}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00397}00397                 ckmahalsq(1:np,ic) = ckmahalsq(1:np,ic) / scalefacsq(ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00398}00398                 ckbevolnormed(ic) = exp( nd*log(scalefac(ic)) + sum(log(ckbecholdiag(1:nd,ic))) -\/ lognormfac ) \textcolor{comment}{! Get the LogVolume of the cluster}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00399}00399                 numpointinck(ic) = cksize(ic) + inclusionfraction*count(ckmahalsq(ipstart(icother):ipend(icother),ic)<1.\_rk)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00400}00400                 ckparvolnormed(ic) = real(numpointinck(ic),kind=rk) * parvolnormed / real(np,kind=rk)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00401}00401 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00402}00402                 blockstabilitycheck: \textcolor{keywordflow}{if} (stabilizationrequested) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00403}00403 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00404}00404                     \textcolor{keywordflow}{if} ( ckbevolnormed(ic) > ckbevolnormedold(ic) ) \textcolor{keywordflow}{then}    \textcolor{comment}{! This is to ensure the convergence of the algorithm}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00405}00405 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00406}00406                         ckcenter(1:nd,ic) = ckcenterold(1:nd,ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00407}00407                         ckbecholcov(1:nd,1:nd,ic) = ckbecholcovold(1:nd,1:nd,ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00408}00408                         ckbecholdiag(1:nd,ic) = ckbecholdiagold(1:nd,ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00409}00409                         ckbeinvcovmat(1:nd,1:nd,ic) = ckbeinvcovmatold(1:nd,1:nd,ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00410}00410                         scalefacsq(ic) = scalefacsqold(ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00411}00411                         scalefac(ic) = scalefacold(ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00412}00412                         ckbevolnormed(ic) = ckbevolnormedold(ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00413}00413 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00414}00414                         cmembercounter(1) = 0}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00415}00415                         cmembercounter(2) = cksize(1)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00416}00416                         \textcolor{keywordflow}{do} ip = 1,np}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00417}00417                             \textcolor{keywordflow}{if} (cmembership(ip)==1) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00418}00418                                 cmembercounter(1) = cmembercounter(1) + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00419}00419                                 ckmahalsq(cmembercounter(1),ic) = ckmahalsqold(ip,ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00420}00420                             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00421}00421                                 cmembercounter(2) = cmembercounter(2) + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00422}00422                                 ckmahalsq(cmembercounter(2),ic) = ckmahalsqold(ip,ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00423}00423 \textcolor{keywordflow}{                            end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00424}00424 \textcolor{keywordflow}{                        end do}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00425}00425                         ckmahalsqold(1:np,ic) = ckmahalsq(1:np,ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00426}00426 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00427}00427                     \textcolor{keywordflow}{else}  \textcolor{comment}{! no stability correction is required. Everything just fine...}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00428}00428 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00429}00429                         ckcenterold(1:nd,ic) = ckcenter(1:nd,ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00430}00430                         ckbecholcovold(1:nd,1:nd,ic) = ckbecholcov(1:nd,1:nd,ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00431}00431                         ckbecholdiagold(1:nd,ic) = ckbecholdiag(1:nd,ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00432}00432                         ckbeinvcovmatold(1:nd,1:nd,ic) = ckbeinvcovmat(1:nd,1:nd,ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00433}00433                         ckmahalsqold(1:np,ic) = ckmahalsq(1:np,ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00434}00434                         scalefacsqold(ic) = scalefacsq(ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00435}00435                         scalefacold(ic) = scalefac(ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00436}00436                         ckbevolnormedold(ic) = ckbevolnormed(ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00437}00437 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00438}00438 \textcolor{keywordflow}{                    end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00439}00439 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00440}00440 \textcolor{keywordflow}{                end if} blockstabilitycheck}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00441}00441 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00442}00442                 \textcolor{comment}{!if (CKBEVolNormed(ic)<CKParVolNormed(ic)) then  ! enlarge the bounding ellipsoid}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00443}00443                 \textcolor{comment}{!  !write(*,*) 'enlargement happening...'}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00444}00444                 \textcolor{comment}{!  scaleFacSq(ic) = scaleFacSq(ic) * (CKParVolNormed(ic)/CKBEVolNormed(ic))**(2.\_RK/nd)  ! ATTN: (1.\_RK/nd) this should likely be (2.\_RK/nd)}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00445}00445                 \textcolor{comment}{!  scaleFac(ic) = sqrt(scaleFacSq(ic))}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00446}00446                 \textcolor{comment}{!  CKBEVolNormed(ic) = CKParVolNormed(ic)}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00447}00447                 \textcolor{comment}{!end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00448}00448 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00449}00449 \textcolor{preprocessor}{\#if defined DEBUG\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00450}00450 \textcolor{preprocessor}{}                debugvolnorm: block}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00451}00451 \textcolor{keywordtype}{                    real}(rk) :: dummy}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00452}00452                     dummy = real(cksize(ic),kind=rk)*parvolnormed/real(np,kind=rk)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00453}00453                     \textcolor{keywordflow}{if} ( ckbevolnormed(ic) < dummy ) \textcolor{keywordflow}{then}  \textcolor{comment}{! enlarge the bounding ellipsoid}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00454}00454                         \textcolor{comment}{!write(*,*) 'enlargement happening...'}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00455}00455                         scalefacsq(ic) = scalefacsq(ic) * (dummy/ckbevolnormed(ic))**(2.\_rk/nd)  \textcolor{comment}{! ATTN: (1.\_RK/nd) this should likely be (2.\_RK/nd)}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00456}00456                         scalefac(ic) = sqrt(scalefacsq(ic))}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00457}00457                         ckbevolnormed(ic) = dummy}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00458}00458 \textcolor{keywordflow}{                    end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00459}00459                 \textcolor{keyword}{end }block debugvolnorm}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00460}00460 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00461}00461 \textcolor{preprocessor}{}              \textcolor{comment}{!end if blockStabilityCheck}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00462}00462 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00463}00463 \textcolor{keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00464}00464 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00465}00465             \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00466}00466 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00467}00467             \textcolor{comment}{! Reassign points to clusters if needed}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00468}00468             mahalsqweight = ( ckbevolnormed / ckparvolnormed )**mahalsqweightexponent}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00469}00469             reclusteringneeded = .false.}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00470}00470             ckcenter(1:nd,1) = ckcenter(1:nd,1) * cksize(1)  \textcolor{comment}{! Now it is sum instead of mean}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00471}00471             ckcenter(1:nd,2) = ckcenter(1:nd,2) * cksize(2)  \textcolor{comment}{! Now it is sum instead of mean}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00472}00472             ic = 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00473}00473             icother = 2}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00474}00474             \textcolor{keywordflow}{do} ip = ipstart(ic),ipend(ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00475}00475                 cmembership(ip) = ic    \textcolor{comment}{! This has not been assigned correctly in the past, here is the first attempt}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00476}00476                 \textcolor{keywordflow}{if} ( mahalsqweight(ic)*ckmahalsq(ip,ic) >= mahalsqweight(icother)*ckmahalsq(ip,icother) ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00477}00477                     cmembership(ip) = icother}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00478}00478                     cksize(ic) = cksize(ic) -\/ 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00479}00479                     cksize(icother) = cksize(icother) + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00480}00480                     ckcenter(1:nd,ic) = ckcenter(1:nd,ic) -\/ point(1:nd,ip)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00481}00481                     ckcenter(1:nd,icother) = ckcenter(1:nd,icother) + point(1:nd,ip)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00482}00482                     reclusteringneeded = .true.}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00483}00483 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00484}00484 \textcolor{keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00485}00485 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00486}00486             ic = 2}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00487}00487             icother = 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00488}00488             \textcolor{keywordflow}{do} ip = ipstart(ic),ipend(ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00489}00489                 cmembership(ip) = ic    \textcolor{comment}{! This has not been assigned correctly in the past, here is the first attempt}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00490}00490                 \textcolor{keywordflow}{if} ( mahalsqweight(ic)*ckmahalsq(ip,ic) > mahalsqweight(icother)*ckmahalsq(ip,icother) ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00491}00491                     cmembership(ip) = icother}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00492}00492                     cksize(ic) = cksize(ic) -\/ 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00493}00493                     cksize(icother) = cksize(icother) + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00494}00494                     ckcenter(1:nd,ic) = ckcenter(1:nd,ic) -\/ point(1:nd,ip)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00495}00495                     ckcenter(1:nd,icother) = ckcenter(1:nd,icother) + point(1:nd,ip)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00496}00496                     reclusteringneeded = .true.}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00497}00497 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00498}00498 \textcolor{keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00499}00499 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00500}00500             blockreclusteringneeded: \textcolor{keywordflow}{if} (reclusteringneeded) \textcolor{keywordflow}{then}  \textcolor{comment}{! perform reassignment}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00501}00501 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00502}00502                 blockillegalclustersize: \textcolor{keywordflow}{if} ( any(cksize<minclustersize) ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00503}00503 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00504}00504                     minvolfailurecounter = minvolfailurecounter + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00505}00505                     \textcolor{keywordflow}{if} (minvolfailurecounter>maxallowedminvolfailure) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00506}00506                         ncoptimal = 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00507}00507                         cmembership = 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00508}00508                         csize(1) = np}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00509}00509                         convergencefailurecounter = convergencefailurecounter + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00510}00510                         \textcolor{comment}{!debugMinVolFailureCounter: block}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00511}00511                         \textcolor{comment}{!  write(*,*) 'minVolFailureCounter: ', minVolFailureCounter}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00512}00512                         \textcolor{comment}{!end block debugMinVolFailureCounter}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00513}00513                         \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00514}00514 \textcolor{keywordflow}{                    end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00515}00515 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00516}00516                     kmeansfailurecounter = 0}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00517}00517                     looprerunkmeans: \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00518}00518                         \textcolor{keyword}{call }runkmeans  ( nd = nd \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00519}00519                                         , np = np \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00520}00520                                         , nc = 2\_ik \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00521}00521                                         , point = point \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00522}00522                                         , \textcolor{keyword}{Size} = cksize \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00523}00523                                         , center = ckcenter \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00524}00524                                         , membership = cmembership \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00525}00525                                         , normedpoint = cknormedpoint \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00526}00526                                         , mindistancesq = ckmindistancesq \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00527}00527                                         , potential = potential \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00528}00528                                         , niter = iteration \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00529}00529                                         , nzsci = zcsiteration \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00530}00530                                         , err = err \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00531}00531                                         \textcolor{comment}{!, niterMax \& ! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00532}00532                                         \textcolor{comment}{!, nzsciMax \& ! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00533}00533                                         \textcolor{comment}{!, relTol \& ! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00534}00534                                         )}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00535}00535                         \textcolor{keywordflow}{if} ( any(cksize<minclustersize) ) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00536}00536                         kmeansfailurecounter = kmeansfailurecounter + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00537}00537                         \textcolor{keywordflow}{if} (kmeansfailurecounter>maxallowedkmeansfailure) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00538}00538                             ncoptimal = 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00539}00539                             cmembership = 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00540}00540                             csize(1) = np}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00541}00541                             convergencefailurecounter = convergencefailurecounter + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00542}00542                             \textcolor{comment}{!debugKmeansFailureCounter: block}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00543}00543                             \textcolor{comment}{!  write(*,*) 'kmeansFailureCounter: ', kmeansFailureCounter}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00544}00544                             \textcolor{comment}{!end block debugKmeansFailureCounter}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00545}00545                             \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00546}00546 \textcolor{keywordflow}{                        end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00547}00547                         cycle looprerunkmeans}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00548}00548 \textcolor{keywordflow}{                        end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00549}00549                         \textcolor{keywordflow}{exit} looprerunkmeans}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00550}00550 \textcolor{keywordflow}{                    end do} looprerunkmeans}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00551}00551 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00552}00552                     ckbevolnormedold = huge(0.\_rk)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00553}00553                     cycle looprecursiverunminvolkernel}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00554}00554 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00555}00555 \textcolor{keywordflow}{                end if} blockillegalclustersize}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00556}00556 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00557}00557                 ckcenter(1:nd,1) = ckcenter(1:nd,1) / cksize(1)  \textcolor{comment}{! Now it is sum instead of mean}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00558}00558                 ckcenter(1:nd,2) = ckcenter(1:nd,2) / cksize(2)  \textcolor{comment}{! Now it is sum instead of mean}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00559}00559 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00560}00560                 cycle looprecursiverunminvolkernel}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00561}00561 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00562}00562 \textcolor{keywordflow}{            end if} blockreclusteringneeded}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00563}00563 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00564}00564             ckcenter(1:nd,1) = ckcenter(1:nd,1) / cksize(1)  \textcolor{comment}{! Now it is sum instead of mean}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00565}00565             ckcenter(1:nd,2) = ckcenter(1:nd,2) / cksize(2)  \textcolor{comment}{! Now it is sum instead of mean}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00566}00566 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00567}00567             \textcolor{keywordflow}{exit} looprecursiverunminvolkernel}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00568}00568 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00569}00569 \textcolor{keywordflow}{        end do} looprecursiverunminvolkernel}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00570}00570 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00571}00571         \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00572}00572 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00573}00573         furtherclusteringcheck: \textcolor{keywordflow}{if} (sum(ckbevolnormed)<cbevolnormed(1) .or. cbevolnormed(1)>tightness*parvolnormed) \textcolor{keywordflow}{then} \textcolor{comment}{! at least two clusters is better than one. now search for more child clusters}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00574}00574 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00575}00575             ckncmax(1) = max( cksize(1)/(ndeffective+1) , 1 )}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00576}00576             ckncmax(2) = max( cksize(2)/(ndeffective+1) , 1 )}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00577}00577 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00578}00578             ipstart(1) = 1             ; ipend(1) = cksize(1)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00579}00579             ipstart(2) = cksize(1) + 1 ; ipend(2) = np}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00580}00580 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00581}00581             loopsearchforchildren: \textcolor{keywordflow}{do} ic = 1,2   \textcolor{comment}{! Search for more grand-\/child clusters}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00582}00582 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00583}00583                 \textcolor{keywordflow}{if} (ic==1) \textcolor{keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00584}00584                     icstart = 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00585}00585                     icend = ckncmax(1)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00586}00586                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00587}00587                     icstart = ckncoptimal(1) + 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00588}00588                     icend = ckncoptimal(1) + ckncmax(2)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00589}00589 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00590}00590 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00591}00591                 cbevolnormed(icstart) = ckbevolnormed(ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00592}00592                 \textcolor{keywordflow}{if} (ckncmax(ic)>1) \textcolor{keywordflow}{then} \textcolor{comment}{! .and. CKBEVolNormed(ic)>1.1\_RK*CKParVolNormed(ic)) then}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00593}00593                     \textcolor{keyword}{call }\mbox{\hyperlink{namespaceminvolpartition__mod_ae2644d3f5cfc00e7e7e10015da6ac603}{runminvolkernel}}( ncmax = ckncmax(ic) \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00594}00594                                         , nd = nd \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00595}00595                                         , np = cksize(ic) \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00596}00596                                         , stabilizationrequested = stabilizationrequested \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00597}00597                                         , maxkvolumelooprecursion = maxkvolumelooprecursion \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00598}00598                                         , maxallowedkmeansfailure = maxallowedkmeansfailure \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00599}00599                                         , maxallowedminvolfailure = maxallowedminvolfailure \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00600}00600                                         , mahalsqweightexponent = mahalsqweightexponent \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00601}00601                                         , tightness = tightness \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00602}00602                                         , inclusionfraction = inclusionfraction \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00603}00603                                         , parvolnormed = ckparvolnormed(ic) \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00604}00604                                         , lognormfac = lognormfac \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00605}00605                                         , point = point(1:nd,ipstart(ic):ipend(ic)) \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00606}00606                                         , ncoptimal = ckncoptimal(ic) \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00607}00607                                         , ccenter = ccenter(1:nd,icstart:icend) \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00608}00608                                         , csize = csize(icstart:icend) \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00609}00609                                         , cbeinvcovmat = cbeinvcovmat(1:nd,1:nd,icstart:icend) \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00610}00610                                         , cbecholcov = cbecholcov(1:nd,1:nd,icstart:icend) \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00611}00611                                         , cbecholdiag = cbecholdiag(1:nd,icstart:icend) \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00612}00612                                         , cbevolnormed = cbevolnormed(icstart:icend) \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00613}00613                                         , cmembership = cmembership(ipstart(ic):ipend(ic)) \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00614}00614                                         , pointindex = pointindex(ipstart(ic):ipend(ic)) \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00615}00615                                         , convergencefailurecounter = convergencefailurecounter \& \textcolor{comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00616}00616                                         )}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00617}00617                     \textcolor{keywordflow}{if} (ic==2) cmembership(ipstart(ic):ipend(ic)) = cmembership(ipstart(ic):ipend(ic)) + icstart -\/ 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00618}00618                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00619}00619                     ckncoptimal(ic)=1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00620}00620 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00621}00621 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00622}00622                 \textcolor{keywordflow}{if} ( ckncoptimal(ic)==1 .or. ckncmax(ic)==1 ) \textcolor{keywordflow}{then} \textcolor{comment}{! There is only one cluster here}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00623}00623                     ckncoptimal(ic) = 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00624}00624                     ccenter(1:nd,icstart) = ckcenter(1:nd,ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00625}00625                     csize(icstart) = cksize(ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00626}00626                     cbeinvcovmat(1:nd,1:nd,icstart) = ckbeinvcovmat(1:nd,1:nd,ic) / scalefacsq(ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00627}00627                     cbecholcov(1:nd,1:nd,icstart) = ckbecholcov(1:nd,1:nd,ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00628}00628                     cbecholdiag(1:nd,icstart) = ckbecholdiag(1:nd,ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00629}00629                     \textcolor{keywordflow}{do} j = 1,nd-\/1 \textcolor{comment}{! Now rescale Cholesky factor and its diagonals, such that they describe the bounding ellipsoid of the cluster}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00630}00630                         cbecholdiag(j,icstart) = cbecholdiag(j,icstart) * scalefac(ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00631}00631                         \textcolor{keywordflow}{do} i = j+1,nd}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00632}00632                             cbecholcov(i,j,icstart) = cbecholcov(i,j,icstart) * scalefac(ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00633}00633 \textcolor{keywordflow}{                        end do}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00634}00634 \textcolor{keywordflow}{                    end do}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00635}00635                     cbecholdiag(nd,icstart) = cbecholdiag(nd,icstart) * scalefac(ic)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00636}00636 \textcolor{keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00637}00637 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00638}00638 \textcolor{keywordflow}{            end do} loopsearchforchildren}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00639}00639 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00640}00640             ncoptimal = sum(ckncoptimal)}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00641}00641 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00642}00642         \textcolor{keywordflow}{else} furtherclusteringcheck  \textcolor{comment}{! one cluster is better}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00643}00643 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00644}00644             ncoptimal = 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00645}00645             cmembership = 1}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00646}00646             csize(1) = np}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00647}00647 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00648}00648 \textcolor{keywordflow}{        end if} furtherclusteringcheck}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00649}00649 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00650}00650         \textcolor{comment}{!write(*,*) 'ncMax: ', ncMax}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00651}00651         \textcolor{comment}{!write(*,*) 'ncOptimal: ', ncOptimal}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00652}00652         \textcolor{comment}{!write(*,*) 'CSize: ', CSize(1:ncOptimal)}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00653}00653         \textcolor{comment}{!write(*,*) 'CCenter: ', CCenter(:,1:ncOptimal)}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00654}00654         \textcolor{comment}{!write(*,*) 'Membership: ', CMembership(:)}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00655}00655         \textcolor{comment}{!read(*,*)}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00656}00656 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00657}00657     \textcolor{keyword}{end subroutine }\mbox{\hyperlink{namespaceminvolpartition__mod_ae2644d3f5cfc00e7e7e10015da6ac603}{runminvolkernel}}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00658}00658 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00659}00659 \textcolor{comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00660}00660 }
+\DoxyCodeLine{\Hypertarget{MinVolPartition__mod_8f90_source_l00661}00661   \textcolor{keyword}{end module }MinVolPartition\_mod}
+
+\end{DoxyCode}
