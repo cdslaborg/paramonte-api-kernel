@@ -1,28 +1,28 @@
 <div align="center">
 
-    <a href="https://cdslaborg.github.io/paramonte-kernel-doc/html/" target="_blank">
-        <img alt="paramonte-kernel-doc" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png" width="80%">
-    </a>
+<a href="https://cdslaborg.github.io/paramonte-kernel-doc/html/" target="_blank">
+    <img alt="paramonte-kernel-doc" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png" width="80%">
+</a>
 
-    <h2>
-        The ParaMonte Kernel API Documentation
-    </h2>
+<h2>
+    The ParaMonte Kernel API Documentation
+</h2>
 
-    This project contains the 
-    <a href="https://cdslaborg.github.io/paramonte-kernel-doc/html/" target="_blank">
-        Application Programming Interface documentation
-    </a>
-    of the 
-    <a href="https://github.com/cdslaborg/paramonte" target="_blank">
-        ParaMonte kernel library
-    </a>
-    .
-    <br>
-    For full documentation visit the
-    <a href="https://www.cdslab.org/paramonte/" target="_blank">
-        ParaMonte library's documentation website
-    </a>
-    .
+This project contains the 
+<a href="https://cdslaborg.github.io/paramonte-kernel-doc/html/" target="_blank">
+    Application Programming Interface documentation
+</a>
+of the 
+<a href="https://github.com/cdslaborg/paramonte" target="_blank">
+    ParaMonte kernel library
+</a>
+.
+<br>
+For full documentation visit the
+<a href="https://www.cdslab.org/paramonte/" target="_blank">
+    ParaMonte library's documentation website
+</a>
+.
 
 </div>
 
