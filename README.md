@@ -15,6 +15,7 @@ For full documentation visit the [ParaMonte library's documentation website](htt
 ### Instructions to regenerate the documentation  
 
 +   Install [Doxygen](https://www.doxygen.nl/download.html) on your system.  
+
 +   To regenerate the ParaMonte documentation from source,  
     +   Create a fork of the [ParaMonte project](https://github.com/cdslaborg/paramonte/)
         on your personal GitHub account and clone the forked ParaMonte repository on your system.  
@@ -22,10 +23,7 @@ For full documentation visit the [ParaMonte library's documentation website](htt
         GitHub account and clone it inside the [src folder](https://github.com/cdslaborg/paramonte/tree/main/src) of the ParaMonte repository.  
     +   When cloning is done, you should see a new subfolder `/paramonte-kernel-doc` in the `/src` folder of your local copy of ParaMonte Project.  
     +   Make any adjustments/updates as needed to the source of the documentation in the source files in `/src/kernel` subfolder.  
-    +   Open a Bash terminal inside `/src/paramonte-kernel-doc` and checkout the `gh-pages` branch of the documentation project,  
-        ```bash
-        git checkout gh-pages
-        ```  
+    +   Open a Bash terminal inside `/src/paramonte-kernel-doc` and make sure you are on the `main` branch of the documentation project,  
     +   Rebuild the new `ParaMonte::Kernel` documentation by calling the following script on the Bash command-line,  
         ```bash
         ./build.sh
