@@ -4,9 +4,9 @@
     <img alt="paramonte-kernel-doc" src="https://cdslaborg.github.io/paramonte-kernel-doc/html/logo.png" width="80%">
 </a>
 
-<h2>
+<h1>
     The ParaMonte Kernel API Documentation
-</h2>
+</h1>
 
 This project contains the 
 <a href="https://cdslaborg.github.io/paramonte-kernel-doc/html/" target="_blank">
