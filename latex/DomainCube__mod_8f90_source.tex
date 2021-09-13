@@ -1,0 +1,150 @@
+\hypertarget{DomainCube__mod_8f90_source}{}\doxysection{Domain\+Cube\+\_\+mod.\+f90}
+\label{DomainCube__mod_8f90_source}\index{/home/amir/git/paramonte/src/kernel/DomainCube\_mod.f90@{/home/amir/git/paramonte/src/kernel/DomainCube\_mod.f90}}
+\mbox{\hyperlink{DomainCube__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00001}00001 \textcolor{fortran_comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00002}00002 \textcolor{fortran_comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00003}00003 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00004}00004 \textcolor{fortran_comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00005}00005 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00006}00006 \textcolor{fortran_comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00007}00007 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00008}00008 \textcolor{fortran_comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00009}00009 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00010}00010 \textcolor{fortran_comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00011}00011 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00012}00012 \textcolor{fortran_comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a }}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00013}00013 \textcolor{fortran_comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}), }}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00014}00014 \textcolor{fortran_comment}{!!!!   to deal in the Software without restriction, including without limitation }}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00015}00015 \textcolor{fortran_comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense, }}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00016}00016 \textcolor{fortran_comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the }}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00017}00017 \textcolor{fortran_comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00018}00018 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00019}00019 \textcolor{fortran_comment}{!!!!   The above copyright notice and this permission notice shall be }}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00020}00020 \textcolor{fortran_comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00021}00021 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00022}00022 \textcolor{fortran_comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, }}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00023}00023 \textcolor{fortran_comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF }}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00024}00024 \textcolor{fortran_comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. }}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00025}00025 \textcolor{fortran_comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, }}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00026}00026 \textcolor{fortran_comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR }}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00027}00027 \textcolor{fortran_comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE }}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00028}00028 \textcolor{fortran_comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00029}00029 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00030}00030 \textcolor{fortran_comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00031}00031 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00032}00032 \textcolor{fortran_comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00033}00033 \textcolor{fortran_comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of }}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00034}00034 \textcolor{fortran_comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your }}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00035}00035 \textcolor{fortran_comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte }}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00036}00036 \textcolor{fortran_comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00037}00037 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00038}00038 \textcolor{fortran_comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00039}00039 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00040}00040 \textcolor{fortran_comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00041}00041 \textcolor{fortran_comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00048}\mbox{\hyperlink{namespaceDomainCube__mod}{00048}} \textcolor{fortran_statement}{module} \mbox{\hyperlink{namespaceDomainCube__mod}{DomainCube\_mod}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00050}00050     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00051}00051     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceDomain__mod}{Domain\_mod}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00052}00052     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00054}\mbox{\hyperlink{namespaceDomainCube__mod_a9a33f5e5300422dd669db9bf858322a5}{00054}}     \textcolor{fortran_statement}{character}(\textcolor{fortran_operator_symbols}{*})    ,\textcolor{fortran_attribute}{ parameter             }:: \mbox{\hyperlink{namespaceConstants__mod_ade87ed33b235f099b65904dc21cbe01e}{MODULE\_NAME}}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}@DomainCube\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00056}\mbox{\hyperlink{structDomainCube__mod_1_1CubeLimit__type}{00056}}     \textcolor{fortran_statement}{type}                                    :: \mbox{\hyperlink{structDomainCube__mod_1_1CubeLimit__type}{CubeLimit\_type}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00057}\mbox{\hyperlink{structDomainCube__mod_1_1CubeLimit__type_afb1ca18e90a45e998045b2cbc094c224}{00057}} \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})    ,\textcolor{fortran_attribute}{ allocatable           }:: Upper(:), Lower(:)}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00058}00058     \textcolor{fortran_statement}{end type }\mbox{\hyperlink{structDomainCube__mod_1_1CubeLimit__type}{CubeLimit\_type}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00062}\mbox{\hyperlink{structDomainCube__mod_1_1DomainCube__type}{00062}}     \textcolor{fortran_statement}{type}, \textcolor{fortran_attribute}{extends}(\mbox{\hyperlink{structDomain__mod_1_1Domain__type}{Domain\_type}})              :: \mbox{\hyperlink{structDomainCube__mod_1_1DomainCube__type}{DomainCube\_type}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00063}\mbox{\hyperlink{structDomainCube__mod_1_1DomainCube__type_ac92df0c00d43cf34bdcd5bba2df3ea53}{00063}} \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})    ,\textcolor{fortran_attribute}{ allocatable           }::\textcolor{fortran_function}{ Size}(:)}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00064}\mbox{\hyperlink{structDomainCube__mod_1_1DomainCube__type_ae42c2426b3289d02f5e265e6453dd61d}{00064}}         \textcolor{fortran_statement}{type}(\mbox{\hyperlink{structDomainCube__mod_1_1CubeLimit__type}{CubeLimit\_type}})                :: Limit}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00065}00065 \textcolor{fortran_statement}{    contains}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00066}\mbox{\hyperlink{structDomainCube__mod_1_1DomainCube__type_ad26f894e97be8ee7b1db0dbbcc917d1d}{00066}}         \textcolor{fortran_prefix}{procedure   }, pass                  :: \mbox{\hyperlink{namespaceDomainCube__mod_ace2238f305cfbc4b6da79396a036fa7f}{contains}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00067}\mbox{\hyperlink{structDomainCube__mod_1_1DomainCube__type_a3efa85b727e262b34dde960d4c2b0b3f}{00067}}         \textcolor{fortran_prefix}{procedure   }, pass                  :: \mbox{\hyperlink{namespaceDomainCube__mod_a78e84adcc78119aea1fa0db09639d18a}{getRandUnif}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00068}00068     \textcolor{fortran_statement}{end type }\mbox{\hyperlink{structDomainCube__mod_1_1DomainCube__type}{DomainCube\_type}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00070}00070     \textcolor{fortran_statement}{interface} \mbox{\hyperlink{structDomainCube__mod_1_1DomainCube__type}{DomainCube\_type}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00071}00071 \textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceDomainCube__mod_a6c2e8cea13644b876677d059a91f2ebc}{construct}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00072}00072     \textcolor{fortran_statement}{end interface }\mbox{\hyperlink{structDomainCube__mod_1_1DomainCube__type}{DomainCube\_type}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00074}00074 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00076}00076 \textcolor{fortran_statement}{contains}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00078}00078 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00095}\mbox{\hyperlink{structDomainCube__mod_1_1DomainCube__type_a14bff959383d2371588f0bca42b03635}{00095}} \textcolor{fortran_statement}{    function} \mbox{\hyperlink{namespaceDomainCube__mod_a6c2e8cea13644b876677d059a91f2ebc}{construct}}(ndim, LimitLower, LimitUpper, Err)\textcolor{fortran_statement}{ result}(self)}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00096}00096 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00097}00097 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceDomainCube__mod_a6c2e8cea13644b876677d059a91f2ebc}{construct}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00098}00098 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00099}00099 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMatrix__mod}{Matrix\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceMatrix__mod_a82e9e7b3271150c5803defbc92f75485}{getInvPosDefMat}}, \mbox{\hyperlink{interfaceMatrix__mod_1_1genEye}{genEye}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00100}00100         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceErr__mod}{Err\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\_type}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00101}00101         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}})     ,\textcolor{fortran_attribute}{ intent(in)                }:: ndim}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00102}00102 \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})        ,\textcolor{fortran_attribute}{ intent(in)    },\textcolor{fortran_attribute}{ optional  }:: LimitLower(ndim)}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00103}00103 \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})        ,\textcolor{fortran_attribute}{ intent(in)    },\textcolor{fortran_attribute}{ optional  }:: LimitUpper(ndim)}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00104}00104         \textcolor{fortran_statement}{type}(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\_type}})  ,\textcolor{fortran_attribute}{ intent(out)   },\textcolor{fortran_attribute}{ optional  }:: Err}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00105}00105         \textcolor{fortran_statement}{type}(\mbox{\hyperlink{structDomainCube__mod_1_1DomainCube__type}{DomainCube\_type}})                       :: self}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00106}00106         \textcolor{fortran_statement}{character}(:)    ,\textcolor{fortran_attribute}{ allocatable               }:: msg}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00107}00107         self\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_spcifier}{ndim}\textcolor{fortran_operator_symbols}{ = }ndim}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00108}00108         \textcolor{fortran_keywordflow}{if} (\textcolor{fortran_function}{present}(LimitLower)) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00109}00109             self\textcolor{fortran_operator_symbols}{\%}Limit\textcolor{fortran_operator_symbols}{\%}Lower\textcolor{fortran_operator_symbols}{ = }LimitLower}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00110}00110         \textcolor{fortran_keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00111}00111 \textcolor{fortran_statement}{            allocate}(self\textcolor{fortran_operator_symbols}{\%}Limit\textcolor{fortran_operator_symbols}{\%}Lower(ndim),\textcolor{fortran_spcifier}{ source}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.\_RK})}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00112}00112 \textcolor{fortran_keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00113}00113         \textcolor{fortran_keywordflow}{if} (\textcolor{fortran_function}{present}(LimitUpper)) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00114}00114             self\textcolor{fortran_operator_symbols}{\%}Limit\textcolor{fortran_operator_symbols}{\%}Upper\textcolor{fortran_operator_symbols}{ = }LimitUpper}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00115}00115         \textcolor{fortran_keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00116}00116 \textcolor{fortran_statement}{            allocate}(self\textcolor{fortran_operator_symbols}{\%}Limit\textcolor{fortran_operator_symbols}{\%}Upper(ndim),\textcolor{fortran_spcifier}{ source}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1.\_RK})}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00117}00117 \textcolor{fortran_keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00118}00118         \textcolor{fortran_keywordflow}{if} (\textcolor{fortran_function}{any}(self\textcolor{fortran_operator_symbols}{\%}Limit\textcolor{fortran_operator_symbols}{\%}Upper\textcolor{fortran_operator_symbols}{ <}\textcolor{fortran_operator_symbols}{= }self\textcolor{fortran_operator_symbols}{\%}Limit\textcolor{fortran_operator_symbols}{\%}Lower)) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00119}00119             msg\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceConstants__mod_ade87ed33b235f099b65904dc21cbe01e}{MODULE\_NAME}}\textcolor{fortran_operator_symbols}{/}\textcolor{fortran_operator_symbols}{/}\textcolor{fortran_string}{"{}@construct(): The upper limits of the domain cannot be smaller than the lower limits."{}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00120}00120             \textcolor{fortran_keywordflow}{if} (\textcolor{fortran_function}{present}(Err)) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00121}00121                 Err\textcolor{fortran_operator_symbols}{\%}occurred\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00122}00122                 Err\textcolor{fortran_operator_symbols}{\%}msg\textcolor{fortran_operator_symbols}{ = }msg}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00123}00123             \textcolor{fortran_keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00124}00124 \textcolor{fortran_statement}{                write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) msg}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00125}00125 \textcolor{fortran_statement}{                error stop}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00126}00126 \textcolor{fortran_keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00127}00127         \textcolor{fortran_keywordflow}{elseif} (\textcolor{fortran_function}{present}(Err)) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00128}00128             Err\textcolor{fortran_operator_symbols}{\%}occurred\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.false.}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00129}00129 \textcolor{fortran_keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00130}00130         self\textcolor{fortran_operator_symbols}{\%}Size\textcolor{fortran_operator_symbols}{ = }self\textcolor{fortran_operator_symbols}{\%}Limit\textcolor{fortran_operator_symbols}{\%}Upper\textcolor{fortran_operator_symbols}{ -\/ }self\textcolor{fortran_operator_symbols}{\%}Limit\textcolor{fortran_operator_symbols}{\%}Lower}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00131}00131         self\textcolor{fortran_operator_symbols}{\%}logVol\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{sum}(\textcolor{fortran_function}{log}(self\textcolor{fortran_operator_symbols}{\%}Size))}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00132}00132     \textcolor{fortran_statement}{end function }\mbox{\hyperlink{namespaceDomainCube__mod_a6c2e8cea13644b876677d059a91f2ebc}{construct}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00133}00133 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00134}00134 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00136}\mbox{\hyperlink{namespaceDomainCube__mod_ace2238f305cfbc4b6da79396a036fa7f}{00136}}     \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function}\textcolor{fortran_statement}{ contains}(self, Point)\textcolor{fortran_statement}{ result}(isContained)}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00137}00137 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00138}00138 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }::\textcolor{fortran_statement}{ contains}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00139}00139 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00140}00140 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{class}(\mbox{\hyperlink{structDomainCube__mod_1_1DomainCube__type}{DomainCube\_type}})  ,\textcolor{fortran_attribute}{ intent(in)    }:: self}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00141}00141 \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})                ,\textcolor{fortran_attribute}{ intent(in)    }:: Point(self\%ndim)}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00142}00142 \textcolor{fortran_statement}{        logical}                                 :: isContained}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00143}00143         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}})                             :: i}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00144}00144         loopContainmentCheck: \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, self\textcolor{fortran_operator_symbols}{\%}ndim}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00145}00145             isContained\textcolor{fortran_operator_symbols}{ = }self\textcolor{fortran_operator_symbols}{\%}Limit\textcolor{fortran_operator_symbols}{\%}Lower(i)\textcolor{fortran_operator_symbols}{ <}\textcolor{fortran_operator_symbols}{= }Point(i) \textcolor{fortran_operator_logical}{.and.} Point(i)\textcolor{fortran_operator_symbols}{ <}\textcolor{fortran_operator_symbols}{= }self\textcolor{fortran_operator_symbols}{\%}Limit\textcolor{fortran_operator_symbols}{\%}Upper(i)}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00146}00146             \textcolor{fortran_keywordflow}{if} (isContained)\textcolor{fortran_statement}{ cycle} loopContainmentCheck}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00147}00147 \textcolor{fortran_statement}{            return}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00148}00148 \textcolor{fortran_keywordflow}{        end do} loopContainmentCheck}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00149}00149     \textcolor{fortran_statement}{end function }\mbox{\hyperlink{namespaceDomainCube__mod_ace2238f305cfbc4b6da79396a036fa7f}{contains}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00150}00150 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00151}00151 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00152}00152 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00153}\mbox{\hyperlink{namespaceDomainCube__mod_a78e84adcc78119aea1fa0db09639d18a}{00153}} \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{namespaceDomainCube__mod_a78e84adcc78119aea1fa0db09639d18a}{getRandUnif}}(self,Point)}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00154}00154 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00155}00155 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceDomainCube__mod_a78e84adcc78119aea1fa0db09639d18a}{getRandUnif}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00156}00156 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00157}00157 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{class}(\mbox{\hyperlink{structDomainCube__mod_1_1DomainCube__type}{DomainCube\_type}})  ,\textcolor{fortran_attribute}{ intent(in)    }:: self}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00158}00158 \textcolor{fortran_statement}{        real}(RK)                ,\textcolor{fortran_attribute}{ intent(inout) }:: Point(self\%ndim)}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00159}00159 \textcolor{fortran_statement}{        call}\textcolor{fortran_subroutine}{ random\_number}(Point)}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00160}00160         Point\textcolor{fortran_operator_symbols}{ = }self\textcolor{fortran_operator_symbols}{\%}Limit\textcolor{fortran_operator_symbols}{\%}Lower\textcolor{fortran_operator_symbols}{ + }Point\textcolor{fortran_operator_symbols}{ * }self\textcolor{fortran_operator_symbols}{\%}Size}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00161}00161     \textcolor{fortran_statement}{end subroutine }\mbox{\hyperlink{namespaceDomainCube__mod_a78e84adcc78119aea1fa0db09639d18a}{getRandUnif}}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00162}00162 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00163}00163 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00164}00164 }
+\DoxyCodeLine{\Hypertarget{DomainCube__mod_8f90_source_l00165}00165 \textcolor{fortran_statement}{end module }\mbox{\hyperlink{namespaceDomainCube__mod}{DomainCube\_mod}} ! LCOV\_EXCL\_LINE}
+
+\end{DoxyCode}

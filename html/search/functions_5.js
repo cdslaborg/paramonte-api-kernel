@@ -1,11 +1,12 @@
 var searchData=
 [
-  ['finalize_2345',['finalize',['../structparallelism__mod_1_1image__type.html#af0d7370c541f68efe559df0a9c1506a1',1,'parallelism_mod::image_type']]],
-  ['finalizeimages_2346',['finalizeimages',['../namespaceparallelism__mod.html#ad329b8db2f8dd29163f38c40d4afef9b',1,'parallelism_mod']]],
-  ['findunique_5fik_2347',['findunique_ik',['../interfacemisc__mod_1_1findunique.html#a95f97d0b147957fa44bdbe01d2628d24',1,'misc_mod::findunique::findunique_ik()'],['../namespacemisc__mod.html#afc0ac70c6b4ac6e1bd5fdecb4e244eeb',1,'misc_mod::findunique_ik()']]],
-  ['fit_2348',['fit',['../structgeocyclicfit__mod_1_1geocyclicfit__type.html#aed3f34fa0b8a8c55c99b216353b1a318',1,'geocyclicfit_mod::geocyclicfit_type']]],
-  ['fitgeocycliclogpdf_2349',['fitgeocycliclogpdf',['../namespacegeocyclicfit__mod.html#a88d66e1fac5af41881bea1fd31e21fb6',1,'geocyclicfit_mod']]],
-  ['flatten_5f2d_2350',['flatten_2d',['../interfacestatistics__mod_1_1flatten.html#a6faf02e11d85958cfbe01b08015ae72c',1,'statistics_mod::flatten::flatten_2d()'],['../namespacestatistics__mod.html#a5cd4978ab3f37bbe69a6c8535773e51f',1,'statistics_mod::flatten_2d()']]],
-  ['four1_2351',['four1',['../namespacecrosscorr__mod.html#a8f893aae01f0ccb0cfb7ebf5a89df126',1,'crosscorr_mod']]],
-  ['fourrow_2352',['fourrow',['../namespacecrosscorr__mod.html#acdb5c41e158196bce3e2060fe3991c40',1,'crosscorr_mod']]]
+  ['finalize_0',['finalize',['../structParallelism__mod_1_1Image__type.html#a7d6e1a633c0827eaa72388a3dbf42f89',1,'Parallelism_mod::Image_type']]],
+  ['finalizeimages_1',['finalizeImages',['../namespaceParallelism__mod.html#aa7f8ae5589e49d51a94bf69386e4e2dd',1,'Parallelism_mod']]],
+  ['finduniquevaluecount_5fik_2',['findUniqueValueCount_IK',['../interfaceUnique__mod_1_1findUnique.html#a94cd419832a7967266ce09be6c9b5243',1,'Unique_mod::findUnique::findUniqueValueCount_IK()'],['../namespaceUnique__mod.html#a7fc2b3f81d575f9a544ee7a6a25852f6',1,'Unique_mod::findUniqueValueCount_IK()']]],
+  ['fit_3',['fit',['../structFitGeoCyclic__mod_1_1FitGeoCyclic__type.html#ad3605288df5a1e05505f65200cb6924f',1,'FitGeoCyclic_mod::FitGeoCyclic_type']]],
+  ['fitgeocycliclogpdf_4',['fitGeoCyclicLogPDF',['../namespaceFitGeoCyclic__mod.html#a1a460b8ee015e2e9353625bb0cc3569d',1,'FitGeoCyclic_mod']]],
+  ['flatten_5f1d_5',['flatten_1D',['../interfaceArray__mod_1_1flatten.html#a2acc0c495de44151bb8885227b901089',1,'Array_mod::flatten::flatten_1D()'],['../namespaceArray__mod.html#afdc50d0d3485c3ba486865f4e5e796ab',1,'Array_mod::flatten_1D()']]],
+  ['flatten_5f2d_6',['flatten_2D',['../interfaceArray__mod_1_1flatten.html#ae39bb111431789c2a410365ae56589e7',1,'Array_mod::flatten::flatten_2D()'],['../namespaceArray__mod.html#a5f73c12626f32f3da12149969fdd9d1d',1,'Array_mod::flatten_2D()']]],
+  ['four1_7',['four1',['../namespaceCrossCorr__mod.html#a23ced55aaf636ca29f41c5de2c0c6b2e',1,'CrossCorr_mod']]],
+  ['fourrow_8',['fourrow',['../namespaceCrossCorr__mod.html#a7c559228d666b2c30a59769694cdda09',1,'CrossCorr_mod']]]
 ];

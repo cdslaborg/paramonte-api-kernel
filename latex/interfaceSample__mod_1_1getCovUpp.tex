@@ -1,0 +1,126 @@
+\hypertarget{interfaceSample__mod_1_1getCovUpp}{}\doxysection{Sample\+\_\+mod\+::get\+Cov\+Upp Interface Reference}
+\label{interfaceSample__mod_1_1getCovUpp}\index{Sample\_mod::getCovUpp@{Sample\_mod::getCovUpp}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+real(RK), dimension(\+:,\+:), allocatable \mbox{\hyperlink{interfaceSample__mod_1_1getCovUpp_aada75fd99bf8e19fdc01640f0261bd8a}{get\+Cov\+Upp}} (Normed\+Sample)
+\begin{DoxyCompactList}\small\item\em Return the {\bfseries{upper triangle}} covariance matrix of the input normalized sample {\ttfamily Normed\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:,\+:), allocatable \mbox{\hyperlink{interfaceSample__mod_1_1getCovUpp_a315654cc5914a1670d04f438522a9fe8}{get\+Cov\+Upp\+Weighted\+\_\+\+WIK}} (Normed\+Sample, Weight)
+\begin{DoxyCompactList}\small\item\em Return the {\bfseries{upper triangle}} covariance matrix of the input normalized weighted sample {\ttfamily Normed\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:,\+:), allocatable \mbox{\hyperlink{interfaceSample__mod_1_1getCovUpp_aeab3c0e3ce2e927a752b9bfbad1aefb5}{get\+Cov\+Upp\+Weighted\+\_\+\+WRK}} (Normed\+Sample, Weight)
+\begin{DoxyCompactList}\small\item\em Return the {\bfseries{upper triangle}} covariance matrix of the input normalized weighted sample {\ttfamily Normed\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00081}{81}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{interfaceSample__mod_1_1getCovUpp_aada75fd99bf8e19fdc01640f0261bd8a}\label{interfaceSample__mod_1_1getCovUpp_aada75fd99bf8e19fdc01640f0261bd8a}} 
+\index{Sample\_mod::getCovUpp@{Sample\_mod::getCovUpp}!getCovUpp@{getCovUpp}}
+\index{getCovUpp@{getCovUpp}!Sample\_mod::getCovUpp@{Sample\_mod::getCovUpp}}
+\doxysubsubsection{\texorpdfstring{getCovUpp()}{getCovUpp()}}
+{\footnotesize\ttfamily real(RK), dimension(\+:,\+:), allocatable Sample\+\_\+mod\+::get\+Cov\+Upp\+::get\+Cov\+Upp (\begin{DoxyParamCaption}\item[{real(RK)}]{Normed\+Sample }\end{DoxyParamCaption})}
+
+
+
+Return the {\bfseries{upper triangle}} covariance matrix of the input normalized sample {\ttfamily Normed\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Normed\+Sample} & \+: The contiguous array of shape {\ttfamily (\+:,\+:)} containing the sample.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Cov\+Upp} \+: The upper covariance matrix of shape {\ttfamily (nd,nd)} of the input normalized sample.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+If needed, the sample normalization before passing it to this procedure can be done by calling the appropriate function under the generic interface \mbox{\hyperlink{interfaceSample__mod_1_1getNormedSample}{Sample\+\_\+mod\+::get\+Normed\+Sample()}}.
+
+If the full symmetric covariance matrix is needed, it can be obtained by passing the output of this procedure to the subroutine \mbox{\hyperlink{interfaceMatrix__mod_1_1symmetrizeUpperMatrix}{Matrix\+\_\+mod\+::symmetrize\+Upper\+Matrix()}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Saturday 2\+:48 AM, August 22, 2021, Dallas, TX
+\end{DoxyAuthor}
+\begin{DoxyWarning}{Warning}
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in release build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00620}{620}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{interfaceSample__mod_1_1getCovUpp_a315654cc5914a1670d04f438522a9fe8}\label{interfaceSample__mod_1_1getCovUpp_a315654cc5914a1670d04f438522a9fe8}} 
+\index{Sample\_mod::getCovUpp@{Sample\_mod::getCovUpp}!getCovUppWeighted\_WIK@{getCovUppWeighted\_WIK}}
+\index{getCovUppWeighted\_WIK@{getCovUppWeighted\_WIK}!Sample\_mod::getCovUpp@{Sample\_mod::getCovUpp}}
+\doxysubsubsection{\texorpdfstring{getCovUppWeighted\_WIK()}{getCovUppWeighted\_WIK()}}
+{\footnotesize\ttfamily real(RK), dimension(\+:,\+:), allocatable Sample\+\_\+mod\+::get\+Cov\+Upp\+::get\+Cov\+Upp\+Weighted\+\_\+\+WIK (\begin{DoxyParamCaption}\item[{real(RK)}]{Normed\+Sample,  }\item[{integer(IK)}]{Weight }\end{DoxyParamCaption})}
+
+
+
+Return the {\bfseries{upper triangle}} covariance matrix of the input normalized weighted sample {\ttfamily Normed\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Normed\+Sample} & \+: The contiguous array of shape {\ttfamily (\+:,\+:)} containing the sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The contiguous array of shape {\ttfamily (\+:)} containing the sample weights.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Cov\+Upp} \+: The upper triangle of the covariance matrix of shape {\ttfamily (nd,nd)} of the input normalized sample.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+If needed, the sample normalization before passing it to this procedure can be done by calling the appropriate function under the generic interface \mbox{\hyperlink{interfaceSample__mod_1_1getNormedSample}{Sample\+\_\+mod\+::get\+Normed\+Sample()}}.
+
+If the full symmetric covariance matrix is needed, it can be obtained by passing the output of this procedure to the subroutine \mbox{\hyperlink{interfaceMatrix__mod_1_1symmetrizeUpperMatrix}{Matrix\+\_\+mod\+::symmetrize\+Upper\+Matrix()}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Saturday 2\+:48 AM, August 22, 2021, Dallas, TX
+\end{DoxyAuthor}
+\begin{DoxyWarning}{Warning}
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in release build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00688}{688}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{interfaceSample__mod_1_1getCovUpp_aeab3c0e3ce2e927a752b9bfbad1aefb5}\label{interfaceSample__mod_1_1getCovUpp_aeab3c0e3ce2e927a752b9bfbad1aefb5}} 
+\index{Sample\_mod::getCovUpp@{Sample\_mod::getCovUpp}!getCovUppWeighted\_WRK@{getCovUppWeighted\_WRK}}
+\index{getCovUppWeighted\_WRK@{getCovUppWeighted\_WRK}!Sample\_mod::getCovUpp@{Sample\_mod::getCovUpp}}
+\doxysubsubsection{\texorpdfstring{getCovUppWeighted\_WRK()}{getCovUppWeighted\_WRK()}}
+{\footnotesize\ttfamily real(RK), dimension(\+:,\+:), allocatable Sample\+\_\+mod\+::get\+Cov\+Upp\+::get\+Cov\+Upp\+Weighted\+\_\+\+WRK (\begin{DoxyParamCaption}\item[{real(RK)}]{Normed\+Sample,  }\item[{real(RK)}]{Weight }\end{DoxyParamCaption})}
+
+
+
+Return the {\bfseries{upper triangle}} covariance matrix of the input normalized weighted sample {\ttfamily Normed\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Normed\+Sample} & \+: The contiguous array of shape {\ttfamily (\+:,\+:)} containing the sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The contiguous array of shape {\ttfamily (\+:)} containing the sample weights.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Cov\+Upp} \+: The upper triangle of the covariance matrix of shape {\ttfamily (nd,nd)} of the input normalized sample.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+If needed, the sample normalization before passing it to this procedure can be done by calling the appropriate function under the generic interface \mbox{\hyperlink{interfaceSample__mod_1_1getNormedSample}{Sample\+\_\+mod\+::get\+Normed\+Sample()}}.
+
+If the full symmetric covariance matrix is needed, it can be obtained by passing the output of this procedure to the subroutine \mbox{\hyperlink{interfaceMatrix__mod_1_1symmetrizeUpperMatrix}{Matrix\+\_\+mod\+::symmetrize\+Upper\+Matrix()}}. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00650}{650}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{Sample__mod_8f90}{Sample\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

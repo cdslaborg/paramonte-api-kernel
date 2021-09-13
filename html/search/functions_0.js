@@ -1,9 +1,14 @@
 var searchData=
 [
-  ['aaaa_2260',['aaaa',['../namespacequadpackspr__mod.html#a7c4acba9fbbffe17a92a52b35d7e3093',1,'quadpackspr_mod']]],
-  ['abort_2261',['abort',['../structparamonte__mod_1_1paramonte__type.html#aba152ca625603d6ebe30cfa731ed853a',1,'paramonte_mod::paramonte_type::abort()'],['../namespaceerr__mod.html#affd32c7e069ae52378ff433f0b68fcb1',1,'err_mod::abort()']]],
-  ['addcompilerplatforminfo_2262',['addcompilerplatforminfo',['../structparamonte__mod_1_1paramonte__type.html#a05550e47c2760765b57e37e438d1aa4b',1,'paramonte_mod::paramonte_type::addcompilerplatforminfo()'],['../namespaceparamonte__mod.html#a0266e8a274ab591543b76b085796443c',1,'paramonte_mod::addcompilerplatforminfo()']]],
-  ['addsplashscreen_2263',['addsplashscreen',['../structparamonte__mod_1_1paramonte__type.html#aa48a60681a37f04c58087b25a1636070',1,'paramonte_mod::paramonte_type::addsplashscreen()'],['../namespaceparamonte__mod.html#a087d490790746279f7b3d6fb6a4482b5',1,'paramonte_mod::addsplashscreen()']]],
-  ['arth_5fik_2264',['arth_ik',['../interfacemisc__mod_1_1arth.html#a0c2f351157d667a50894a6de11a4abcc',1,'misc_mod::arth::arth_ik()'],['../namespacemisc__mod.html#ab63f53955769166f1b5048e0561e6272',1,'misc_mod::arth_ik()']]],
-  ['arth_5frk_2265',['arth_rk',['../interfacemisc__mod_1_1arth.html#a2b7a141afc9a42197f238613004f8f67',1,'misc_mod::arth::arth_rk()'],['../namespacemisc__mod.html#aff1479d7dfe500fb2296fb5d70dcb83c',1,'misc_mod::arth_rk()']]]
+  ['aaaa_0',['aaaa',['../namespaceQuadPackRK32__mod.html#aa62919b4b2aec46187bb76303c86e464',1,'QuadPackRK32_mod']]],
+  ['abort_1',['abort',['../structParaMonte__mod_1_1ParaMonte__type.html#a1b1651a1df03ab9670ec810445cebe23',1,'ParaMonte_mod::ParaMonte_type::abort()'],['../namespaceErr__mod.html#a05e7cb435943afd957ea3b003d655b23',1,'Err_mod::abort()']]],
+  ['addcompilerplatforminfo_2',['addCompilerPlatformInfo',['../structParaMonte__mod_1_1ParaMonte__type.html#afb35a3e713ae696cade4304750c0cbd5',1,'ParaMonte_mod::ParaMonte_type::addCompilerPlatformInfo()'],['../namespaceParaMonte__mod.html#a85e35271e66936533dbbaf4b1745591d',1,'ParaMonte_mod::addCompilerPlatformInfo()']]],
+  ['addsplashscreen_3',['addSplashScreen',['../structParaMonte__mod_1_1ParaMonte__type.html#a81531068c667a4b420c86ec4f7e6eaf6',1,'ParaMonte_mod::ParaMonte_type::addSplashScreen()'],['../namespaceParaMonte__mod.html#a6b2b1bf83a81b710b86bf048839e8868',1,'ParaMonte_mod::addSplashScreen()']]],
+  ['allocate_4',['allocate',['../structKmeans__mod_1_1Prop__type.html#a29f43efd7b935190375d69a4f249ad2f',1,'Kmeans_mod::Prop_type']]],
+  ['allocatekmeans_5',['allocateKmeans',['../structKmeans__mod_1_1Kmeans__type.html#ad94154472ba4174072c77ea081a80f86',1,'Kmeans_mod::Kmeans_type::allocateKmeans()'],['../namespaceKmeans__mod.html#afca84bc6104956be83d232478b1e0d1d',1,'Kmeans_mod::allocateKmeans()']]],
+  ['allocatekmeanscomponents_6',['allocateKmeansComponents',['../namespaceKmeansOOP__mod.html#adaa2e1bfd0ebf0febdda572f3f9ea25e',1,'KmeansOOP_mod']]],
+  ['allocatekmeansprop_7',['allocateKmeansProp',['../namespaceKmeans__mod.html#ad8b3b0fdff3dd016e9b42d5ae6d6ed59',1,'Kmeans_mod']]],
+  ['arth_5fik_8',['arth_IK',['../interfaceMisc__mod_1_1arth.html#aed68661a0f6c8fb602c96dc950e312b1',1,'Misc_mod::arth::arth_IK()'],['../namespaceMisc__mod.html#a30f530e01cf3629f4feb767c83f2cab3',1,'Misc_mod::arth_IK()']]],
+  ['arth_5frk_9',['arth_RK',['../interfaceMisc__mod_1_1arth.html#ae6d700122b2302dc833cfb5ce515d742',1,'Misc_mod::arth::arth_RK()'],['../namespaceMisc__mod.html#af312cc540a21287fd1efb26a60aed9df',1,'Misc_mod::arth_RK()']]],
+  ['assert_10',['assert',['../namespaceErr__mod.html#a36a83db6a4f7bbdd52e4e1a4da550e31',1,'Err_mod']]]
 ];

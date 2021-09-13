@@ -1,0 +1,544 @@
+\hypertarget{SetTheory__mod_8f90_source}{}\doxysection{Set\+Theory\+\_\+mod.\+f90}
+\label{SetTheory__mod_8f90_source}\index{/home/amir/git/paramonte/src/kernel/SetTheory\_mod.f90@{/home/amir/git/paramonte/src/kernel/SetTheory\_mod.f90}}
+\mbox{\hyperlink{SetTheory__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00001}00001 \textcolor{fortran_comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00002}00002 \textcolor{fortran_comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00003}00003 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00004}00004 \textcolor{fortran_comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00005}00005 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00006}00006 \textcolor{fortran_comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00007}00007 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00008}00008 \textcolor{fortran_comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00009}00009 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00010}00010 \textcolor{fortran_comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00011}00011 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00012}00012 \textcolor{fortran_comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00013}00013 \textcolor{fortran_comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}),}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00014}00014 \textcolor{fortran_comment}{!!!!   to deal in the Software without restriction, including without limitation}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00015}00015 \textcolor{fortran_comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00016}00016 \textcolor{fortran_comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00017}00017 \textcolor{fortran_comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00018}00018 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00019}00019 \textcolor{fortran_comment}{!!!!   The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00020}00020 \textcolor{fortran_comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00021}00021 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00022}00022 \textcolor{fortran_comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00023}00023 \textcolor{fortran_comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00024}00024 \textcolor{fortran_comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00025}00025 \textcolor{fortran_comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00026}00026 \textcolor{fortran_comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00027}00027 \textcolor{fortran_comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00028}00028 \textcolor{fortran_comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00029}00029 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00030}00030 \textcolor{fortran_comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00031}00031 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00032}00032 \textcolor{fortran_comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00033}00033 \textcolor{fortran_comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00034}00034 \textcolor{fortran_comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00035}00035 \textcolor{fortran_comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00036}00036 \textcolor{fortran_comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00037}00037 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00038}00038 \textcolor{fortran_comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00039}00039 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00040}00040 \textcolor{fortran_comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00041}00041 \textcolor{fortran_comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00048}00048 \textcolor{fortran_comment}{! \(\backslash\)warning}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00049}00049 \textcolor{fortran_comment}{! \(\backslash\)todo}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00050}00050 \textcolor{fortran_comment}{! xxx The following macro definitions must be removed later once they are defined from within the build script.}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00052}00052 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00054}\mbox{\hyperlink{namespaceSetTheory__mod}{00054}} \textcolor{fortran_statement}{module} \mbox{\hyperlink{namespaceSetTheory__mod}{SetTheory\_mod}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00056}00056     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}}, \mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}}, \mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}}, \mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00057}00057     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00059}\mbox{\hyperlink{namespaceSetTheory__mod_ab193057885f7cb24e029bd291bca7130}{00059}}     \textcolor{fortran_statement}{character}(\textcolor{fortran_operator_symbols}{*}),\textcolor{fortran_attribute}{ parameter }:: \mbox{\hyperlink{namespaceConstants__mod_ade87ed33b235f099b65904dc21cbe01e}{MODULE\_NAME}}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}@SetTheory\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00061}00061 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00062}00062 \textcolor{fortran_comment}{!\%\%\%\% Difference of sets.}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00063}00063 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00077}\mbox{\hyperlink{interfaceSetTheory__mod_1_1operator_07_8minus_8_08}{00077}}     \textcolor{fortran_statement}{interface} \textcolor{fortran_statement}{operator}(.minus.)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00078}00078 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00079}00079 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_af2d4f407951200e70bd492b85066af92}{subtract\_IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00080}00080 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00081}00081 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00082}00082 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a000527ec19180fdb1e79e27f30220a9f}{subtract\_IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00083}00083 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00084}00084 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00085}00085 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_aaad44af5b3f2170c729fe5f40ad98bd4}{subtract\_IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00086}00086 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00087}00087 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00088}00088 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a6683fcab941f91be495c81dd7b7dbb84}{subtract\_IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00089}00089 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00090}00090 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end interface}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00109}\mbox{\hyperlink{interfaceSetTheory__mod_1_1subtract}{00109}}     \textcolor{fortran_statement}{interface} \mbox{\hyperlink{interfaceSetTheory__mod_1_1subtract}{subtract}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00110}00110 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00111}00111 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_af2d4f407951200e70bd492b85066af92}{subtract\_IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00112}00112 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00113}00113 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00114}00114 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a000527ec19180fdb1e79e27f30220a9f}{subtract\_IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00115}00115 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00116}00116 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00117}00117 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_aaad44af5b3f2170c729fe5f40ad98bd4}{subtract\_IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00118}00118 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00119}00119 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00120}00120 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a6683fcab941f91be495c81dd7b7dbb84}{subtract\_IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00121}00121 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00122}00122 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end interface}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00124}00124 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00125}00125 \textcolor{fortran_comment}{!\%\%\%\% Difference of ordered sets.}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00126}00126 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00140}\mbox{\hyperlink{interfaceSetTheory__mod_1_1operator_07_8ominus_8_08}{00140}}     \textcolor{fortran_statement}{interface} \textcolor{fortran_statement}{operator}(.ominus.)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00141}00141 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00142}00142 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_aaaad153e4f878298a98db0f07917add0}{subtractOrdered\_IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00143}00143 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00144}00144 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00145}00145 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a95e4a5f14a8025be7e432680664fa6a6}{subtractOrdered\_IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00146}00146 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00147}00147 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00148}00148 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a23a6a241a7878bdbb44e21611a37c803}{subtractOrdered\_IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00149}00149 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00150}00150 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00151}00151 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a4e83cd173f093869bf6ec44b00e78322}{subtractOrdered\_IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00152}00152 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00153}00153 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end interface}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00154}00154 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00170}\mbox{\hyperlink{interfaceSetTheory__mod_1_1subtractOrdered}{00170}}     \textcolor{fortran_statement}{interface} \mbox{\hyperlink{interfaceSetTheory__mod_1_1subtractOrdered}{subtractOrdered}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00171}00171 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00172}00172 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_aaaad153e4f878298a98db0f07917add0}{subtractOrdered\_IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00173}00173 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00174}00174 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00175}00175 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a95e4a5f14a8025be7e432680664fa6a6}{subtractOrdered\_IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00176}00176 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00177}00177 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00178}00178 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a23a6a241a7878bdbb44e21611a37c803}{subtractOrdered\_IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00179}00179 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00180}00180 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00181}00181 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a4e83cd173f093869bf6ec44b00e78322}{subtractOrdered\_IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00182}00182 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00183}00183 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end interface}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00184}00184 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00185}00185 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00186}00186 \textcolor{fortran_comment}{!\%\%\%\% Complement of a set.}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00187}00187 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00188}00188 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00210}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complement}{00210}}     \textcolor{fortran_statement}{interface} \mbox{\hyperlink{interfaceSetTheory__mod_1_1complement}{complement}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00211}00211 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00212}00212 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a336bd44580c16c251b7429e1bd08d23d}{complement\_IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00213}00213 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00214}00214 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00215}00215 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_ab5d00cf9db1ae20ff74c2c032ed304f1}{complement\_IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00216}00216 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00217}00217 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00218}00218 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_aacf108599c311cf3ae6190f40c8cf653}{complement\_IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00219}00219 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00220}00220 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00221}00221 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_aebba491298f0d421f51d5b29784130b3}{complement\_IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00222}00222 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00223}00223 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end interface}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00224}00224 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00225}00225 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00226}00226 \textcolor{fortran_comment}{!\%\%\%\% Complement of an ordered set.}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00227}00227 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00228}00228 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00252}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complementOrdered}{00252}}     \textcolor{fortran_statement}{interface} \mbox{\hyperlink{interfaceSetTheory__mod_1_1complementOrdered}{complementOrdered}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00253}00253 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00254}00254 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a67323f28b5ae553546e620f0bca45b28}{complementOrdered\_IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00255}00255 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00256}00256 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00257}00257 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a72b1415ccbbce61ca7cbd2dea7dbd828}{complementOrdered\_IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00258}00258 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00259}00259 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00260}00260 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a16a61589601b12055ce3de2de0d4bcef}{complementOrdered\_IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00261}00261 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00262}00262 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00263}00263 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a6eba2292e14fa56de87747b70af6fec1}{complementOrdered\_IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00264}00264 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00265}00265 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end interface}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00266}00266 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00267}00267 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00268}00268 \textcolor{fortran_comment}{!\%\%\%\% Complement of a set via a range as the superset.}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00269}00269 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00270}00270 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00271}00271     \textcolor{fortran_statement}{interface} \mbox{\hyperlink{interfaceSetTheory__mod_1_1complement}{complement}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00272}00272 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00273}00273 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a5a208fcda084da9eb71954df71047821}{complementRange\_IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00274}00274 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00275}00275 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00276}00276 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_af97b611926a1306764bfb4b6218f1b0b}{complementRange\_IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00277}00277 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00278}00278 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00279}00279 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a528f1f5e9060f5654863b59dcb08fc0e}{complementRange\_IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00280}00280 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00281}00281 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00282}00282 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a8fc0a07f3c2a6a419a461b6d5f313f5d}{complementRange\_IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00283}00283 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00284}00284 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end interface }\mbox{\hyperlink{interfaceSetTheory__mod_1_1complement}{complement}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00285}00285 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00308}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complementRange}{00308}}     \textcolor{fortran_statement}{interface} \mbox{\hyperlink{interfaceSetTheory__mod_1_1complementRange}{complementRange}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00309}00309 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00310}00310 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a5a208fcda084da9eb71954df71047821}{complementRange\_IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00311}00311 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00312}00312 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00313}00313 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_af97b611926a1306764bfb4b6218f1b0b}{complementRange\_IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00314}00314 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00315}00315 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00316}00316 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a528f1f5e9060f5654863b59dcb08fc0e}{complementRange\_IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00317}00317 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00318}00318 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00319}00319 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a8fc0a07f3c2a6a419a461b6d5f313f5d}{complementRange\_IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00320}00320 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00321}00321 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end interface}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00322}00322 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00323}00323 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00324}00324 \textcolor{fortran_comment}{!\%\%\%\% Complement of an ordered set via a range as the superset.}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00325}00325 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00326}00326 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00327}00327     \textcolor{fortran_statement}{interface} \mbox{\hyperlink{interfaceSetTheory__mod_1_1complementOrdered}{complementOrdered}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00328}00328 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00329}00329 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a67f2edbca6f35f9a0c2df8824793fae7}{complementRangeOrdered\_IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00330}00330 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00331}00331 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00332}00332 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a6e99e5bc61dc6de0b5ee149cc0a3ccd5}{complementRangeOrdered\_IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00333}00333 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00334}00334 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00335}00335 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_ad05c7b6247beab005b6ecb5c1be39f2c}{complementRangeOrdered\_IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00336}00336 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00337}00337 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00338}00338 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a1788755338b6184ee621d92094f97bf8}{complementRangeOrdered\_IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00339}00339 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00340}00340 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end interface }\mbox{\hyperlink{interfaceSetTheory__mod_1_1complementOrdered}{complementOrdered}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00341}00341 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00364}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complementRangeOrdered}{00364}}     \textcolor{fortran_statement}{interface} \mbox{\hyperlink{interfaceSetTheory__mod_1_1complementRangeOrdered}{complementRangeOrdered}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00365}00365 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00366}00366 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a67f2edbca6f35f9a0c2df8824793fae7}{complementRangeOrdered\_IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00367}00367 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00368}00368 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00369}00369 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a6e99e5bc61dc6de0b5ee149cc0a3ccd5}{complementRangeOrdered\_IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00370}00370 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00371}00371 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00372}00372 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_ad05c7b6247beab005b6ecb5c1be39f2c}{complementRangeOrdered\_IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00373}00373 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00374}00374 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00375}00375 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceSetTheory__mod_a1788755338b6184ee621d92094f97bf8}{complementRangeOrdered\_IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00376}00376 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00377}00377 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end interface}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00378}00378 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00379}00379 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00380}00380 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00381}00381 \textcolor{fortran_statement}{contains}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00382}00382 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00383}00383 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00384}00384 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00385}00385 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00386}\mbox{\hyperlink{interfaceSetTheory__mod_1_1operator_07_8minus_8_08_a95f3ccf22e5a2de3ba5a579079116e53}{00386}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_af2d4f407951200e70bd492b85066af92}{subtract\_IK8}}(SetA, SetB)\textcolor{fortran_statement}{ result}(SetDiff)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00387}00387 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00388}00388 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_af2d4f407951200e70bd492b85066af92}{subtract\_IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00389}00389 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00390}00390 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: KIND\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00391}00391         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: SetA(:), SetB(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00392}00392         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ allocatable               }:: SetDiff(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00393}00393         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ allocatable               }:: SetDiffTemp(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00394}00394 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@subtract.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00395}00395 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00396}00396 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00397}00397 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00398}00398 \textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00399}\mbox{\hyperlink{interfaceSetTheory__mod_1_1operator_07_8minus_8_08_aa212218b29f09ef9988eb60e1e45c746}{00399}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_a000527ec19180fdb1e79e27f30220a9f}{subtract\_IK16}}(SetA, SetB)\textcolor{fortran_statement}{ result}(SetDiff)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00400}00400 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00401}00401 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_a000527ec19180fdb1e79e27f30220a9f}{subtract\_IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00402}00402 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00403}00403 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: KIND\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00404}00404         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: SetA(:), SetB(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00405}00405         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ allocatable               }:: SetDiff(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00406}00406         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ allocatable               }:: SetDiffTemp(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00407}00407 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@subtract.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00408}00408 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00409}00409 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00410}00410 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00411}00411 \textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00412}\mbox{\hyperlink{interfaceSetTheory__mod_1_1operator_07_8minus_8_08_a491f1e4189114491ff271b0018fc0e28}{00412}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_aaad44af5b3f2170c729fe5f40ad98bd4}{subtract\_IK32}}(SetA, SetB)\textcolor{fortran_statement}{ result}(SetDiff)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00413}00413 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00414}00414 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_aaad44af5b3f2170c729fe5f40ad98bd4}{subtract\_IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00415}00415 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00416}00416 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: KIND\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00417}00417         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: SetA(:), SetB(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00418}00418         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ allocatable               }:: SetDiff(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00419}00419         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ allocatable               }:: SetDiffTemp(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00420}00420 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@subtract.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00421}00421 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00422}00422 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00423}00423 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00424}00424 \textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00425}\mbox{\hyperlink{interfaceSetTheory__mod_1_1operator_07_8minus_8_08_a6bffb06a0fe02663d6bfce218317659c}{00425}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_a6683fcab941f91be495c81dd7b7dbb84}{subtract\_IK64}}(SetA, SetB)\textcolor{fortran_statement}{ result}(SetDiff)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00426}00426 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00427}00427 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_a6683fcab941f91be495c81dd7b7dbb84}{subtract\_IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00428}00428 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00429}00429 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: KIND\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00430}00430         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: SetA(:), SetB(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00431}00431         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ allocatable               }:: SetDiff(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00432}00432         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ allocatable               }:: SetDiffTemp(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00433}00433 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@subtract.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00434}00434 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00435}00435 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00436}00436 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00437}00437 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00438}00438 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00439}00439 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00440}\mbox{\hyperlink{interfaceSetTheory__mod_1_1operator_07_8ominus_8_08_aca370f84fd0b2d9ddcb5590258cd5d02}{00440}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_aaaad153e4f878298a98db0f07917add0}{subtractOrdered\_IK8}}(OrderedSetA, OrderedSetB)\textcolor{fortran_statement}{ result}(OrderedSetDiff)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00441}00441 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00442}00442 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_aaaad153e4f878298a98db0f07917add0}{subtractOrdered\_IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00443}00443 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00444}00444 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: KIND\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00445}00445         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: OrderedSetA(:), OrderedSetB(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00446}00446         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ allocatable               }:: OrderedSetDiff(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00447}00447         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ allocatable               }:: OrderedSetDiffTemp(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00448}00448 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@subtractOrdered.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00449}00449 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00450}00450 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00451}00451 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00452}00452 \textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00453}\mbox{\hyperlink{interfaceSetTheory__mod_1_1operator_07_8ominus_8_08_a7f282be1edff737d835203f36f3e7909}{00453}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_a95e4a5f14a8025be7e432680664fa6a6}{subtractOrdered\_IK16}}(OrderedSetA, OrderedSetB)\textcolor{fortran_statement}{ result}(OrderedSetDiff)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00454}00454 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00455}00455 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_a95e4a5f14a8025be7e432680664fa6a6}{subtractOrdered\_IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00456}00456 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00457}00457 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: KIND\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00458}00458         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: OrderedSetA(:), OrderedSetB(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00459}00459         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ allocatable               }:: OrderedSetDiff(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00460}00460         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ allocatable               }:: OrderedSetDiffTemp(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00461}00461 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@subtractOrdered.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00462}00462 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00463}00463 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00464}00464 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00465}00465 \textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00466}\mbox{\hyperlink{interfaceSetTheory__mod_1_1operator_07_8ominus_8_08_a6899327b5a01978d5516bb67aadfa7f0}{00466}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_a23a6a241a7878bdbb44e21611a37c803}{subtractOrdered\_IK32}}(OrderedSetA, OrderedSetB)\textcolor{fortran_statement}{ result}(OrderedSetDiff)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00467}00467 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00468}00468 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_a23a6a241a7878bdbb44e21611a37c803}{subtractOrdered\_IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00469}00469 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00470}00470 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: KIND\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00471}00471         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: OrderedSetA(:), OrderedSetB(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00472}00472         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ allocatable               }:: OrderedSetDiff(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00473}00473         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ allocatable               }:: OrderedSetDiffTemp(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00474}00474 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@subtractOrdered.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00475}00475 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00476}00476 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00477}00477 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00478}00478 \textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00479}\mbox{\hyperlink{interfaceSetTheory__mod_1_1operator_07_8ominus_8_08_a3caee69986e879767716390229dd65d1}{00479}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_a4e83cd173f093869bf6ec44b00e78322}{subtractOrdered\_IK64}}(OrderedSetA, OrderedSetB)\textcolor{fortran_statement}{ result}(OrderedSetDiff)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00480}00480 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00481}00481 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_a4e83cd173f093869bf6ec44b00e78322}{subtractOrdered\_IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00482}00482 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00483}00483 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: KIND\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00484}00484         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: OrderedSetA(:), OrderedSetB(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00485}00485         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ allocatable               }:: OrderedSetDiff(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00486}00486         \textcolor{fortran_statement}{integer}(KIND)   ,\textcolor{fortran_attribute}{ allocatable               }:: OrderedSetDiffTemp(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00487}00487 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@subtractOrdered.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00488}00488 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00489}00489 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00490}00490 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00491}00491 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00492}00492 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00493}00493 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00494}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complement_a33e4a3a7b3402c56f86ebc68762d0506}{00494}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_a336bd44580c16c251b7429e1bd08d23d}{complement\_IK8}}(Set, SuperSet)\textcolor{fortran_statement}{ result}(Complement)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00495}00495 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00496}00496 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_a336bd44580c16c251b7429e1bd08d23d}{complement\_IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00497}00497 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00498}00498 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}})    ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: Set(:), SuperSet(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00499}00499         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}})    ,\textcolor{fortran_attribute}{ allocatable               }:: Complement(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00500}00500 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@complement.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00501}00501 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00502}00502 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00503}00503 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00504}00504 \textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00505}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complement_aeea3522c8836f65363d0acfd88b6b970}{00505}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_ab5d00cf9db1ae20ff74c2c032ed304f1}{complement\_IK16}}(Set, SuperSet)\textcolor{fortran_statement}{ result}(Complement)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00506}00506 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00507}00507 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_ab5d00cf9db1ae20ff74c2c032ed304f1}{complement\_IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00508}00508 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00509}00509 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}})   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: Set(:), SuperSet(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00510}00510         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}})   ,\textcolor{fortran_attribute}{ allocatable               }:: Complement(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00511}00511 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@complement.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00512}00512 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00513}00513 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00514}00514 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00515}00515 \textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00516}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complement_a751bcdf6194239da16d0b87477c13df6}{00516}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_aacf108599c311cf3ae6190f40c8cf653}{complement\_IK32}}(Set, SuperSet)\textcolor{fortran_statement}{ result}(Complement)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00517}00517 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00518}00518 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_aacf108599c311cf3ae6190f40c8cf653}{complement\_IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00519}00519 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00520}00520 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}})   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: Set(:), SuperSet(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00521}00521         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}})   ,\textcolor{fortran_attribute}{ allocatable               }:: Complement(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00522}00522 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@complement.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00523}00523 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00524}00524 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00525}00525 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00526}00526 \textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00527}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complement_a284a205f5681c00d8a85eee3a6c3dea4}{00527}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_aebba491298f0d421f51d5b29784130b3}{complement\_IK64}}(Set, SuperSet)\textcolor{fortran_statement}{ result}(Complement)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00528}00528 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00529}00529 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_aebba491298f0d421f51d5b29784130b3}{complement\_IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00530}00530 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00531}00531 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}})   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: Set(:), SuperSet(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00532}00532         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}})   ,\textcolor{fortran_attribute}{ allocatable               }:: Complement(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00533}00533 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@complement.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00534}00534 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00535}00535 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00536}00536 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00537}00537 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00538}00538 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00539}00539 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00540}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complementOrdered_a84c7bd4d69f9b5a9645a39c6c3f0a9b0}{00540}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_a67323f28b5ae553546e620f0bca45b28}{complementOrdered\_IK8}}(OrderedSet, OrderedSuperSet)\textcolor{fortran_statement}{ result}(Complement)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00541}00541 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00542}00542 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_a67323f28b5ae553546e620f0bca45b28}{complementOrdered\_IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00543}00543 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00544}00544 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}})    ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: OrderedSet(:), OrderedSuperSet(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00545}00545         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}})    ,\textcolor{fortran_attribute}{ allocatable               }:: Complement(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00546}00546 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@complementOrdered.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00547}00547 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00548}00548 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00549}00549 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00550}00550 \textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00551}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complementOrdered_aa7fd064314b603f36de031be5873c96c}{00551}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_a72b1415ccbbce61ca7cbd2dea7dbd828}{complementOrdered\_IK16}}(OrderedSet, OrderedSuperSet)\textcolor{fortran_statement}{ result}(Complement)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00552}00552 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00553}00553 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_a72b1415ccbbce61ca7cbd2dea7dbd828}{complementOrdered\_IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00554}00554 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00555}00555 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}})   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: OrderedSet(:), OrderedSuperSet(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00556}00556         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}})   ,\textcolor{fortran_attribute}{ allocatable               }:: Complement(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00557}00557 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@complementOrdered.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00558}00558 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00559}00559 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00560}00560 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00561}00561 \textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00562}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complementOrdered_a52150292f5d96ff698bc14ba942c9ddf}{00562}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_a16a61589601b12055ce3de2de0d4bcef}{complementOrdered\_IK32}}(OrderedSet, OrderedSuperSet)\textcolor{fortran_statement}{ result}(Complement)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00563}00563 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00564}00564 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_a16a61589601b12055ce3de2de0d4bcef}{complementOrdered\_IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00565}00565 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00566}00566 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}})   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: OrderedSet(:), OrderedSuperSet(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00567}00567         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}})   ,\textcolor{fortran_attribute}{ allocatable               }:: Complement(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00568}00568 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@complementOrdered.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00569}00569 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00570}00570 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00571}00571 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00572}00572 \textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00573}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complementOrdered_a7c259b80ff7ef27fb36673c46698e7b7}{00573}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_a6eba2292e14fa56de87747b70af6fec1}{complementOrdered\_IK64}}(OrderedSet, OrderedSuperSet)\textcolor{fortran_statement}{ result}(Complement)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00574}00574 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00575}00575 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_a6eba2292e14fa56de87747b70af6fec1}{complementOrdered\_IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00576}00576 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00577}00577 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}})   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: OrderedSet(:), OrderedSuperSet(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00578}00578         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}})   ,\textcolor{fortran_attribute}{ allocatable               }:: Complement(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00579}00579 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@complementOrdered.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00580}00580 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00581}00581 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00582}00582 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00583}00583 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00584}00584 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00585}00585 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00586}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complement_a16cc721de1c056f78dbdc4d45766cbc1}{00586}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_a5a208fcda084da9eb71954df71047821}{complementRange\_IK8}}(Set, lower, upper)\textcolor{fortran_statement}{ result}(Complement)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00587}00587 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00588}00588 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_a5a208fcda084da9eb71954df71047821}{complementRange\_IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00589}00589 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00590}00590 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}})    ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: Set(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00591}00591         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}})    ,\textcolor{fortran_attribute}{ intent(in)                }:: lower, upper}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00592}00592         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}})    ,\textcolor{fortran_attribute}{ allocatable               }:: Complement(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00593}00593 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@complementRange.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00594}00594 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00595}00595 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00596}00596 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00597}00597 \textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00598}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complement_aefc781924abdc093873b856bdea86e55}{00598}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_af97b611926a1306764bfb4b6218f1b0b}{complementRange\_IK16}}(Set, lower, upper)\textcolor{fortran_statement}{ result}(Complement)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00599}00599 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00600}00600 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_af97b611926a1306764bfb4b6218f1b0b}{complementRange\_IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00601}00601 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00602}00602 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}})   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: Set(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00603}00603         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}})   ,\textcolor{fortran_attribute}{ intent(in)                }:: lower, upper}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00604}00604         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}})   ,\textcolor{fortran_attribute}{ allocatable               }:: Complement(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00605}00605 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@complementRange.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00606}00606 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00607}00607 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00608}00608 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00609}00609 \textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00610}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complement_acfcd752da93ca2e6f83006ab1d48a987}{00610}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_a528f1f5e9060f5654863b59dcb08fc0e}{complementRange\_IK32}}(Set, lower, upper)\textcolor{fortran_statement}{ result}(Complement)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00611}00611 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00612}00612 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_a528f1f5e9060f5654863b59dcb08fc0e}{complementRange\_IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00613}00613 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00614}00614 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}})   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: Set(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00615}00615         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}})   ,\textcolor{fortran_attribute}{ intent(in)                }:: lower, upper}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00616}00616         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}})   ,\textcolor{fortran_attribute}{ allocatable               }:: Complement(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00617}00617 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@complementRange.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00618}00618 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00619}00619 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00620}00620 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00621}00621 \textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00622}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complement_a9402e9f1ab516868059cb7ba3528d722}{00622}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_a8fc0a07f3c2a6a419a461b6d5f313f5d}{complementRange\_IK64}}(Set, lower, upper)\textcolor{fortran_statement}{ result}(Complement)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00623}00623 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00624}00624 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_a8fc0a07f3c2a6a419a461b6d5f313f5d}{complementRange\_IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00625}00625 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00626}00626 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}})   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: Set(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00627}00627         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}})   ,\textcolor{fortran_attribute}{ intent(in)                }:: lower, upper}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00628}00628         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}})   ,\textcolor{fortran_attribute}{ allocatable               }:: Complement(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00629}00629 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@complementRange.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00630}00630 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00631}00631 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00632}00632 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00633}00633 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00634}00634 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00635}00635 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00636}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complementOrdered_af887fa77da05ff7117ea247471917b7f}{00636}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_a67f2edbca6f35f9a0c2df8824793fae7}{complementRangeOrdered\_IK8}}(OrderedSet, lower, upper)\textcolor{fortran_statement}{ result}(Complement)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00637}00637 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00638}00638 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_a67f2edbca6f35f9a0c2df8824793fae7}{complementRangeOrdered\_IK8}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00639}00639 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00640}00640 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}})    ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: OrderedSet(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00641}00641         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}})    ,\textcolor{fortran_attribute}{ intent(in)                }:: lower, upper}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00642}00642         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}})    ,\textcolor{fortran_attribute}{ allocatable               }:: Complement(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00643}00643 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@complementRangeOrdered.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00644}00644 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00645}00645 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00646}00646 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00647}00647 \textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00648}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complementOrdered_adfa6a091fb2603baeca4d3ac44f2b12e}{00648}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_a6e99e5bc61dc6de0b5ee149cc0a3ccd5}{complementRangeOrdered\_IK16}}(OrderedSet, lower, upper)\textcolor{fortran_statement}{ result}(Complement)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00649}00649 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00650}00650 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_a6e99e5bc61dc6de0b5ee149cc0a3ccd5}{complementRangeOrdered\_IK16}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00651}00651 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00652}00652 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}})   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: OrderedSet(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00653}00653         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}})   ,\textcolor{fortran_attribute}{ intent(in)                }:: lower, upper}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00654}00654         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}})   ,\textcolor{fortran_attribute}{ allocatable               }:: Complement(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00655}00655 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@complementRangeOrdered.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00656}00656 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00657}00657 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00658}00658 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00659}00659 \textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00660}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complementOrdered_ac2a5285c0bb6f52cfb034b551e11aaa9}{00660}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_ad05c7b6247beab005b6ecb5c1be39f2c}{complementRangeOrdered\_IK32}}(OrderedSet, lower, upper)\textcolor{fortran_statement}{ result}(Complement)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00661}00661 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00662}00662 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_ad05c7b6247beab005b6ecb5c1be39f2c}{complementRangeOrdered\_IK32}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00663}00663 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00664}00664 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}})   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: OrderedSet(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00665}00665         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}})   ,\textcolor{fortran_attribute}{ intent(in)                }:: lower, upper}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00666}00666         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}})   ,\textcolor{fortran_attribute}{ allocatable               }:: Complement(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00667}00667 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@complementRangeOrdered.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00668}00668 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00669}00669 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00670}00670 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00671}00671 \textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00672}\mbox{\hyperlink{interfaceSetTheory__mod_1_1complementOrdered_ae7dfd056f05bff3ceeb8ac4958b214f1}{00672}} \textcolor{preprocessor}{}    \textcolor{fortran_attribute}{pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceSetTheory__mod_a1788755338b6184ee621d92094f97bf8}{complementRangeOrdered\_IK64}}(OrderedSet, lower, upper)\textcolor{fortran_statement}{ result}(Complement)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00673}00673 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00674}00674 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceSetTheory__mod_a1788755338b6184ee621d92094f97bf8}{complementRangeOrdered\_IK64}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00675}00675 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00676}00676 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}})   ,\textcolor{fortran_attribute}{ intent(in), }\textcolor{fortran_attribute}{contiguous    }:: OrderedSet(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00677}00677         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}})   ,\textcolor{fortran_attribute}{ intent(in)                }:: lower, upper}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00678}00678         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}})   ,\textcolor{fortran_attribute}{ allocatable               }:: Complement(:)}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00679}00679 \textcolor{preprocessor}{\#include "{}SetTheory\_mod@complementRangeOrdered.inc.f90"{}}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00680}00680 \textcolor{preprocessor}{}    \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00681}00681 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00682}00682 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00683}00683 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00684}00684 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00685}00685 }
+\DoxyCodeLine{\Hypertarget{SetTheory__mod_8f90_source_l00686}00686 \textcolor{fortran_statement}{end module }\mbox{\hyperlink{namespaceSetTheory__mod}{SetTheory\_mod}}}
+
+\end{DoxyCode}

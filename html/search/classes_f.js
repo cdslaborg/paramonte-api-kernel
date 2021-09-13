@@ -1,22 +1,12 @@
 var searchData=
 [
-  ['samplefile_5ftype_1953',['samplefile_type',['../structparamonte__mod_1_1samplefile__type.html',1,'paramonte_mod']]],
-  ['samplerefinementcount_5ftype_1954',['samplerefinementcount_type',['../structspecmcmc__samplerefinementcount__mod_1_1samplerefinementcount__type.html',1,'specmcmc_samplerefinementcount_mod']]],
-  ['samplerefinementmethod_5ftype_1955',['samplerefinementmethod_type',['../structspecmcmc__samplerefinementmethod__mod_1_1samplerefinementmethod__type.html',1,'specmcmc_samplerefinementmethod_mod']]],
-  ['samplesize_5ftype_1956',['samplesize_type',['../structspecbase__samplesize__mod_1_1samplesize__type.html',1,'specbase_samplesize_mod']]],
-  ['scalefactor_5ftype_1957',['scalefactor_type',['../structspecmcmc__scalefactor__mod_1_1scalefactor__type.html',1,'specmcmc_scalefactor_mod']]],
-  ['shell_5ftype_1958',['shell_type',['../structsystem__mod_1_1shell__type.html',1,'system_mod']]],
-  ['sign_5ftype_1959',['sign_type',['../structfile__mod_1_1sign__type.html',1,'file_mod']]],
-  ['silentmoderequested_5ftype_1960',['silentmoderequested_type',['../structspecbase__silentmoderequested__mod_1_1silentmoderequested__type.html',1,'specbase_silentmoderequested_mod']]],
-  ['sortarray_1961',['sortarray',['../interfacesort__mod_1_1sortarray.html',1,'sort_mod']]],
-  ['sortascending_1962',['sortascending',['../interfacesort__mod_1_1sortascending.html',1,'sort_mod']]],
-  ['specbase_5ftype_1963',['specbase_type',['../structspecbase__mod_1_1specbase__type.html',1,'specbase_mod']]],
-  ['specdram_5ftype_1964',['specdram_type',['../structspecdram__mod_1_1specdram__type.html',1,'specdram_mod']]],
-  ['specmcmc_5ftype_1965',['specmcmc_type',['../structspecmcmc__mod_1_1specmcmc__type.html',1,'specmcmc_mod']]],
-  ['startpointvec_5ftype_1966',['startpointvec_type',['../structspecmcmc__startpointvec__mod_1_1startpointvec__type.html',1,'specmcmc_startpointvec_mod']]],
-  ['string_5ftype_1967',['string_type',['../structstring__mod_1_1string__type.html',1,'string_mod']]],
-  ['swap_1968',['swap',['../interfacemisc__mod_1_1swap.html',1,'misc_mod']]],
-  ['syscmd_5ftype_1969',['syscmd_type',['../structsystem__mod_1_1syscmd__type.html',1,'system_mod']]],
-  ['systeminfo_5ftype_1970',['systeminfo_type',['../structsystem__mod_1_1systeminfo__type.html',1,'system_mod']]],
-  ['systeminfofilepath_5ftype_1971',['systeminfofilepath_type',['../structspecbase__systeminfofilepath__mod_1_1systeminfofilepath__type.html',1,'specbase_systeminfofilepath_mod']]]
+  ['randomfilename_5ftype_0',['RandomFileName_type',['../structSystem__mod_1_1RandomFileName__type.html',1,'System_mod']]],
+  ['randomseed_5ftype_1',['RandomSeed_type',['../structRandomSeed__mod_1_1RandomSeed__type.html',1,'RandomSeed_mod::RandomSeed_type'],['../structSpecBase__RandomSeed__mod_1_1RandomSeed__type.html',1,'SpecBase_RandomSeed_mod::RandomSeed_type']]],
+  ['real2str_2',['real2str',['../interfaceString__mod_1_1real2str.html',1,'String_mod']]],
+  ['realstr_5ftype_3',['RealStr_type',['../structString__mod_1_1RealStr__type.html',1,'String_mod']]],
+  ['realvec_5ftype_4',['RealVec_type',['../structArrayJagged__mod_1_1RealVec__type.html',1,'ArrayJagged_mod']]],
+  ['resize_5',['resize',['../interfaceMisc__mod_1_1resize.html',1,'Misc_mod']]],
+  ['resizevector_6',['resizeVector',['../interfaceMisc__mod_1_1resizeVector.html',1,'Misc_mod']]],
+  ['restartfile_5ftype_7',['RestartFile_type',['../structParaMonte__mod_1_1RestartFile__type.html',1,'ParaMonte_mod']]],
+  ['round_5ftype_8',['Round_type',['../structFile__mod_1_1Round__type.html',1,'File_mod']]]
 ];

@@ -1,0 +1,92 @@
+\hypertarget{Sample__mod_8f90}{}\doxysection{/home/amir/git/paramonte/src/kernel/\+Sample\+\_\+mod.f90 File Reference}
+\label{Sample__mod_8f90}\index{/home/amir/git/paramonte/src/kernel/Sample\_mod.f90@{/home/amir/git/paramonte/src/kernel/Sample\_mod.f90}}
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfaceSample__mod_1_1getMean}{Sample\+\_\+mod\+::get\+Mean}}
+\item 
+interface \mbox{\hyperlink{interfaceSample__mod_1_1getNormedSample}{Sample\+\_\+mod\+::get\+Normed\+Sample}}
+\item 
+interface \mbox{\hyperlink{interfaceSample__mod_1_1normalize}{Sample\+\_\+mod\+::normalize}}
+\item 
+interface \mbox{\hyperlink{interfaceSample__mod_1_1getVariance}{Sample\+\_\+mod\+::get\+Variance}}
+\item 
+interface \mbox{\hyperlink{interfaceSample__mod_1_1getCovUpp}{Sample\+\_\+mod\+::get\+Cov\+Upp}}
+\item 
+interface \mbox{\hyperlink{interfaceSample__mod_1_1transform}{Sample\+\_\+mod\+::transform}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespaceSample__mod}{Sample\+\_\+mod}}
+\begin{DoxyCompactList}\small\item\em This module contains the classes and procedures for computing various statistical properties of data samples. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+pure real(RK) function \mbox{\hyperlink{namespaceSample__mod_a950554741c7df6e1335f0af674ef1a35}{Sample\+\_\+mod\+::get\+Mean\+\_\+1D}} (Sample)
+\begin{DoxyCompactList}\small\item\em Return the mean of the input 1-\/dimensional {\ttfamily Sample}. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceSample__mod_af7a2b578b214cc8a42a8e96d50b218d4}{Sample\+\_\+mod\+::get\+Weighted\+Mean\+\_\+1\+D\+\_\+\+WIK}} (Sample, Weight)
+\begin{DoxyCompactList}\small\item\em Return the mean of the input 1-\/dimensional weighted {\ttfamily Sample}. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceSample__mod_a767a42ce2302528f9fe9b36055274129}{Sample\+\_\+mod\+::get\+Weighted\+Mean\+\_\+1\+D\+\_\+\+WRK}} (Sample, Weight)
+\begin{DoxyCompactList}\small\item\em Return the mean of the input 1-\/dimensional weighted {\ttfamily Sample}. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_aefbdba5a062643c4ee0ad538603925cc}{Sample\+\_\+mod\+::get\+Mean\+\_\+2D}} (Sample, dim)
+\begin{DoxyCompactList}\small\item\em Return the mean of the input Sample. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_a6270f0642bab7c66ef31f5f8964d715b}{Sample\+\_\+mod\+::get\+Weighted\+Mean\+\_\+2\+D\+\_\+\+WIK}} (Sample, Weight, dim)
+\begin{DoxyCompactList}\small\item\em Return the weighted mean of the input Sample according to the input integer {\ttfamily Weight}. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_aa9de7d94b9a584e3547b785e64e3df6a}{Sample\+\_\+mod\+::get\+Weighted\+Mean\+\_\+2\+D\+\_\+\+WRK}} (Sample, Weight, dim)
+\begin{DoxyCompactList}\small\item\em Return the weighted mean of the input Sample according to the input integer {\ttfamily Weight}. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_af9550bc1f0f1e728ff139355c5c76364}{Sample\+\_\+mod\+::get\+Normed\+Sample\+\_\+2D}} (Sample, Mean, dim, tenabled)
+\begin{DoxyCompactList}\small\item\em Return the normalized sample of shape {\ttfamily (nd,np)} (default) or {\ttfamily (np,nd)} with respect to the input mean vector of length {\ttfamily nd}, where {\ttfamily nd} represents the number of dimensions (data attributes) of the input {\ttfamily Sample} and {\ttfamily np} represents the number of data points in the {\ttfamily Sample}. \end{DoxyCompactList}\item 
+PURE subroutine \mbox{\hyperlink{namespaceSample__mod_a7adca2810f8d4d58d809eb330ef44859}{Sample\+\_\+mod\+::normalize\+\_\+2D}} (Sample, Mean, dim)
+\begin{DoxyCompactList}\small\item\em Return the normalized sample of shape {\ttfamily (nd,np)} (default) or {\ttfamily (np,nd)} with respect to the input mean vector of length {\ttfamily nd}, where {\ttfamily nd} represents the number of dimensions (data attributes) of the input {\ttfamily Sample} and {\ttfamily np} represents the number of data points in the {\ttfamily Sample}. \end{DoxyCompactList}\item 
+PURE real(RK) function \mbox{\hyperlink{namespaceSample__mod_a4499dfbfa2c71254b7eafb575e9a86c7}{Sample\+\_\+mod\+::get\+Variance\+\_\+1D}} (np, mean, Sample, Weight, sum\+Weight)
+\begin{DoxyCompactList}\small\item\em Return the variance of the input vector of values of length {\ttfamily np}. \end{DoxyCompactList}\item 
+real(RK), dimension(nd) \mbox{\hyperlink{namespaceSample__mod_af9fa8c0f4bb169efcbaaddbd972eba24}{Sample\+\_\+mod\+::get\+Variance\+\_\+2D}} (nd, np, Mean, Sample, Weight)
+\begin{DoxyCompactList}\small\item\em Return the vector of variance of a set of {\ttfamily np} points of {\ttfamily nd} dimensions. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_a0db67f10f2014553fe9abce9d3a191ea}{Sample\+\_\+mod\+::get\+Inv\+Cov\+Mat}} (Normed\+Sample, Weight, failed)
+\begin{DoxyCompactList}\small\item\em Return the full inverse covariance matrix of the input normalized sample {\ttfamily Normed\+Sample} whose shape is assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_ae6e61ca2f02c934ea209ddcfe1ab384d}{Sample\+\_\+mod\+::get\+Cov\+Upp}} (Normed\+Sample)
+\begin{DoxyCompactList}\small\item\em Return the {\bfseries{upper triangle}} covariance matrix of the input normalized sample {\ttfamily Normed\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_acdf4455344712b02ea9cbb792c2c75f8}{Sample\+\_\+mod\+::get\+Cov\+Upp\+Weighted\+\_\+\+WRK}} (Normed\+Sample, Weight)
+\begin{DoxyCompactList}\small\item\em Return the {\bfseries{upper triangle}} covariance matrix of the input normalized weighted sample {\ttfamily Normed\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_a8c04a9961285f846f34e80e0c15a02a7}{Sample\+\_\+mod\+::get\+Cov\+Upp\+Weighted\+\_\+\+WIK}} (Normed\+Sample, Weight)
+\begin{DoxyCompactList}\small\item\em Return the {\bfseries{upper triangle}} covariance matrix of the input normalized weighted sample {\ttfamily Normed\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. \end{DoxyCompactList}\item 
+pure subroutine \mbox{\hyperlink{namespaceSample__mod_a1942971b64332fc7c4860112a244764c}{Sample\+\_\+mod\+::get\+Cho\+Low\+Cov\+Upp}} (nd, np, Mean, Sample, Cho\+Low\+Cov\+Upp, Cho\+Dia)
+\begin{DoxyCompactList}\small\item\em Return the lower triangle Cholesky Factor of the covariance matrix of a set of points in the lower part of {\ttfamily Cho\+Low\+Cov\+Upp}. The upper part of {\ttfamily Cho\+Low\+Cov\+Upp}, including the diagonal elements of it, will contain the covariance matrix of the sample. The output argument {\ttfamily Cho\+Dia}, contains the diagonal terms of Cholesky Factor. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceSample__mod_a1e5daab49859d9c21c4ec3c916ec963d}{Sample\+\_\+mod\+::get\+Cho\+Low\+Cov\+Upp\+High\+Dim}} (nd, np, Mean, Sample, Cho\+Low\+Cov\+Upp, Cho\+Dia)
+\begin{DoxyCompactList}\small\item\em Return the lower triangle Cholesky Factor of the covariance matrix of a set of points in the lower part of {\ttfamily Cho\+Low\+Cov\+Upp}. The upper part of {\ttfamily Cho\+Low\+Cov\+Upp}, including the diagonal elements of it, will contain the covariance matrix of the sample. The output argument {\ttfamily Cho\+Dia}, contains the diagonal terms of Cholesky Factor. This routine delivers the same functionality of \mbox{\hyperlink{namespaceSample__mod_a1942971b64332fc7c4860112a244764c}{get\+Cho\+Low\+Cov\+Upp()}}. However, it is considerably faster, by a few factors, for {\ttfamily nd \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} 10}. Furthermore, it requires significantly less runtime memory, by about half. The exact amount of speedup depends heavily on the architecture and memory layout of the runtime system. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceSample__mod_a5f2a3ba527c41a88f8afefabf3385a9e}{Sample\+\_\+mod\+::get\+Mean\+Cov}} (np, nd, Sample, Cov\+Mat, Mean, Mahal\+Sq, Inv\+Cov\+Mat, sqrt\+Det\+Inv\+Cov\+Mat)
+\begin{DoxyCompactList}\small\item\em Return the sample mean, covariance matrix, the Mahalanobis distances squared of the points with respect to the sample, and the square root of the determinant of the inverse covariance matrix of the sample. \end{DoxyCompactList}\item 
+PURE subroutine \mbox{\hyperlink{namespaceSample__mod_ab54f1da8d61065ad511b74648331cdab}{Sample\+\_\+mod\+::get\+Mean\+Cov\+Trans}} (np, nd, Sample, Cov\+Mat, Mean, Mahal\+Sq, Inv\+Cov\+Mat, sqrt\+Det\+Inv\+Cov\+Mat)
+\begin{DoxyCompactList}\small\item\em Return the sample mean, covariance matrix, the Mahalanobis distances squared of the points with respect to the sample, and the square root of the determinant of the inverse covariance matrix of the sample. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceSample__mod_ae9487a1bd8fb8e417b2ad4b193e63c41}{Sample\+\_\+mod\+::get\+Mean\+Cov\+Upp\+Trans}} (nd, np, Sample, Cov\+Upp, Mean)
+\begin{DoxyCompactList}\small\item\em Return the sample mean and the upper triangle of the covariance matrix of the input sample. \end{DoxyCompactList}\item 
+PURE subroutine \mbox{\hyperlink{namespaceSample__mod_a69fe9bd0741ff89ecef392e6c4df1308}{Sample\+\_\+mod\+::get\+Mean\+Cov\+Upp\+Trans\+Weighted}} (nd, np, Sample, Cov\+Upp, Mean, Weight, sum\+Weight)
+\begin{DoxyCompactList}\small\item\em Return the mean and the upper triangle of the covariance matrix of the input {\itshape weighted} sample. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceSample__mod_a64b836f780040d4b71c0a63c77ea5231}{Sample\+\_\+mod\+::merge\+Mean\+Cov}} (nd, npA, MeanA, Cov\+MatA, npB, MeanB, Cov\+MatB, Mean\+AB, Cov\+Mat\+AB)
+\begin{DoxyCompactList}\small\item\em Given two input sample means and covariance matrices, return the combination of them as a single mean and covariance matrix. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceSample__mod_ab6c8a951bf35c59402a30d6d17a6d193}{Sample\+\_\+mod\+::merge\+Mean\+Cov\+Upp}} (nd, npA, MeanA, Cov\+UppA, npB, MeanB, Cov\+UppB, Mean\+AB, Cov\+Upp\+AB)
+\begin{DoxyCompactList}\small\item\em Given two input sample means and covariance matrices, return the combination of them as a single mean and covariance matrix. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceSample__mod_a81524ddc27a48db65744d80cfad9b348}{Sample\+\_\+mod\+::merge\+Mean\+Cov\+Upp\+Dense}} (nd, npA, MeanA, Cov\+UppA, npB, MeanB, Cov\+UppB)
+\begin{DoxyCompactList}\small\item\em Given two input sample means and covariance matrices, return the combination of them as a single mean and covariance matrix. \end{DoxyCompactList}\item 
+real(RK), dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_afef53f644b364cd1d8cdc81cf4067d93}{Sample\+\_\+mod\+::get\+Cor\+Upp\+From\+Cov\+Upp}} (nd, Cov\+Upp)
+\begin{DoxyCompactList}\small\item\em Convert the upper-\/triangle covariance matrix to the upper-\/triangle correlation matrix. \end{DoxyCompactList}\item 
+real(RK), dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_a1ac8121947f9c9b0ee57af23cb5d31d1}{Sample\+\_\+mod\+::get\+Cov\+Upp\+From\+Cor\+Upp}} (nd, Std\+Vec, Cor\+Upp)
+\begin{DoxyCompactList}\small\item\em Convert the upper-\/triangle correlation matrix to the upper-\/triangle covariance matrix. \end{DoxyCompactList}\item 
+real(RK), dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_a5e9557a5cb20a39b97f2e8048d6e78aa}{Sample\+\_\+mod\+::get\+Cov\+Upp\+From\+Cor\+Low}} (nd, Std\+Vec, Cor\+Low)
+\begin{DoxyCompactList}\small\item\em Convert the lower-\/triangle correlation matrix to the upper-\/triangle covariance matrix. \end{DoxyCompactList}\item 
+real(RK), dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_a1f204036fc183113ad4791413ff2ce95}{Sample\+\_\+mod\+::get\+Cov\+Low\+From\+Cor\+Upp}} (nd, Std\+Vec, Cor\+Upp)
+\begin{DoxyCompactList}\small\item\em Convert the upper-\/triangle correlation matrix to the lower-\/triangle covariance matrix. \end{DoxyCompactList}\item 
+real(RK), dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_a2e3bc598648e51e77577c37074a97893}{Sample\+\_\+mod\+::get\+Cov\+Low\+From\+Cor\+Low}} (nd, Std\+Vec, Cor\+Low)
+\begin{DoxyCompactList}\small\item\em Convert the lower-\/triangle correlation matrix to the lower-\/triangle covariance matrix. \end{DoxyCompactList}\item 
+real(RK), dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_a89969921ffcbaa325d81da62000af1c4}{Sample\+\_\+mod\+::get\+Cov\+Mat\+From\+Cor\+Upp}} (nd, Std\+Vec, Cor\+Upp)
+\begin{DoxyCompactList}\small\item\em Convert the input correlation matrix to the output covariance matrix. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_a96fb7975f90fad7546243f6e1c059cf9}{Sample\+\_\+mod\+::transform\+\_\+2D}} (Sample, Cho\+Low, Cho\+Dia, dim, tenabled)
+\begin{DoxyCompactList}\small\item\em Return the transformed sample according to the input Cholesky factorization. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_a85482481f2884f9daf80a4bdb7e35574}{Sample\+\_\+mod\+::transform\+\_\+1D}} (Point, Cho\+Low, Cho\+Dia)
+\begin{DoxyCompactList}\small\item\em Return the transformed sample according to the input Cholesky factorization. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character(len= $\ast$), parameter \mbox{\hyperlink{namespaceSample__mod_a09a467371587c98f96236755496f7f13}{Sample\+\_\+mod\+::\+MODULE\+\_\+\+NAME}} = \char`\"{}@Sample\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}

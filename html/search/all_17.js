@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['xmin_1816',['xmin',['../structoptimization__mod_1_1brentminimum__type.html#ab7865cb54a11b945f5f5fc5afd4e48e4',1,'optimization_mod::brentminimum_type::xmin()'],['../structoptimization__mod_1_1powellminimum__type.html#aa9f626e8ba2deb5732580d13e7c22d5e',1,'optimization_mod::powellminimum_type::xmin()']]],
-  ['xtol_1817',['xtol',['../structoptimization__mod_1_1brentminimum__type.html#ae4ac8f4822aae3062b5e94d1cd7b8219',1,'optimization_mod::brentminimum_type']]]
+  ['xmin_0',['xmin',['../structOptimization__mod_1_1BrentMinimum__type.html#a187f912f76b42b860de8a1f3c78c68ed',1,'Optimization_mod::BrentMinimum_type::xmin()'],['../structOptimization__mod_1_1PowellMinimum__type.html#a2985a282d3b970dc83d17b399b7cb232',1,'Optimization_mod::PowellMinimum_type::xmin()']]],
+  ['xtol_1',['xtol',['../structOptimization__mod_1_1BrentMinimum__type.html#a556fa06c8d64d6d2cbf7c4741c9906f2',1,'Optimization_mod::BrentMinimum_type']]]
 ];

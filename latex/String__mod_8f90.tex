@@ -1,74 +1,116 @@
-\hypertarget{String__mod_8f90}{}\doxysection{D\+:/\+Dropbox/\+Projects/20180101\+\_\+\+Para\+Monte/git/src/kernel/\+String\+\_\+mod.f90 File Reference}
-\label{String__mod_8f90}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/String\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/String\_mod.f90}}
+\hypertarget{String__mod_8f90}{}\doxysection{/home/amir/git/paramonte/src/kernel/\+String\+\_\+mod.f90 File Reference}
+\label{String__mod_8f90}\index{/home/amir/git/paramonte/src/kernel/String\_mod.f90@{/home/amir/git/paramonte/src/kernel/String\_mod.f90}}
 \doxysubsection*{Data Types}
 \begin{DoxyCompactItemize}
 \item 
-type \mbox{\hyperlink{structstring__mod_1_1intstr__type}{string\+\_\+mod\+::intstr\+\_\+type}}
-\begin{DoxyCompactList}\small\item\em The {\ttfamily Int\+Str\+\_\+type} class for converting integers to strings. \end{DoxyCompactList}\item 
-type \mbox{\hyperlink{structstring__mod_1_1realstr__type}{string\+\_\+mod\+::realstr\+\_\+type}}
-\begin{DoxyCompactList}\small\item\em The {\ttfamily Real\+Str\+\_\+type} class for converting real numbers to strings. \end{DoxyCompactList}\item 
-type \mbox{\hyperlink{structstring__mod_1_1string__type}{string\+\_\+mod\+::string\+\_\+type}}
-\begin{DoxyCompactList}\small\item\em The {\ttfamily String\+\_\+type} class for manipulating strings. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfacestring__mod_1_1int2str}{string\+\_\+mod\+::int2str}}
+type \mbox{\hyperlink{structString__mod_1_1IntStr__type}{String\+\_\+mod\+::\+Int\+Str\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structString__mod_1_1IntStr__type}{Int\+Str\+\_\+type}}} class for converting integers to strings. \end{DoxyCompactList}\item 
+type \mbox{\hyperlink{structString__mod_1_1RealStr__type}{String\+\_\+mod\+::\+Real\+Str\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structString__mod_1_1RealStr__type}{Real\+Str\+\_\+type}}} class for converting real numbers to strings. \end{DoxyCompactList}\item 
+type \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+mod\+::\+String\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}} class for manipulating strings. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceString__mod_1_1operator_07_8has_8_08}{String\+\_\+mod\+::operator(.\+has.)}}
 \item 
-interface \mbox{\hyperlink{interfacestring__mod_1_1real2str}{string\+\_\+mod\+::real2str}}
+interface \mbox{\hyperlink{interfaceString__mod_1_1lower}{String\+\_\+mod\+::lower}}
 \item 
-interface \mbox{\hyperlink{interfacestring__mod_1_1num2str}{string\+\_\+mod\+::num2str}}
-\end{DoxyCompactItemize}
+interface \mbox{\hyperlink{interfaceString__mod_1_1upper}{String\+\_\+mod\+::upper}}
+\item 
+interface \mbox{\hyperlink{interfaceString__mod_1_1int2str}{String\+\_\+mod\+::int2str}}
+\item 
+interface \mbox{\hyperlink{interfaceString__mod_1_1real2str}{String\+\_\+mod\+::real2str}}
+\item 
+interface \mbox{\hyperlink{interfaceString__mod_1_1num2str}{String\+\_\+mod\+::num2str}}
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Modules}
 \begin{DoxyCompactItemize}
 \item 
-module \mbox{\hyperlink{namespacestring__mod}{string\+\_\+mod}}
+module \mbox{\hyperlink{namespaceString__mod}{String\+\_\+mod}}
 \begin{DoxyCompactList}\small\item\em This module contains the classes and procedures for various string manipulations. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
-pure recursive character(len=\+:) function, allocatable \mbox{\hyperlink{namespacestring__mod_a6c1958789d670e5ecf3ddea42f853ec2}{string\+\_\+mod\+::replacestr}} (string, search, substitute)
+logical \mbox{\hyperlink{namespaceString__mod_a2c39e6c7f863594b41633422f11c2f40}{String\+\_\+mod\+::contains}} (string, search)
+\begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} is the input string contains the input {\ttfamily search} substring, otherwise return {\ttfamily .false.}. \end{DoxyCompactList}\item 
+character(len=\+:), allocatable \mbox{\hyperlink{namespaceString__mod_ad742cc30c9aa2fcfcb08a8e1e71a83c3}{String\+\_\+mod\+::replace}} (string, search, substitute)
 \begin{DoxyCompactList}\small\item\em Replace the input {\ttfamily search} string with the input {\ttfamily substitute} in the input {\ttfamily string} and return the result. \end{DoxyCompactList}\item 
-type(charvec\+\_\+type) function, dimension(\+:), allocatable \mbox{\hyperlink{namespacestring__mod_ab7da41d59fc13225e53244a90fe258f6}{string\+\_\+mod\+::split}} (string, delim, npart)
+type(Char\+Vec\+\_\+type), dimension(\+:), allocatable \mbox{\hyperlink{namespaceString__mod_a82dc022b7bc38527269f09592151b039}{String\+\_\+mod\+::split}} (string, delim, npart)
 \begin{DoxyCompactList}\small\item\em Split the input string string with the input {\ttfamily substitute} in the input {\ttfamily string} and return the result. \end{DoxyCompactList}\item 
-type(charvec\+\_\+type) function, dimension(\+:), allocatable \mbox{\hyperlink{namespacestring__mod_afc47ccaec86a514b683b21c6b254a035}{string\+\_\+mod\+::splitstr}} (string, delimiter, n\+Part)
+type(Char\+Vec\+\_\+type), dimension(\+:), allocatable \mbox{\hyperlink{namespaceString__mod_aeeed305e4b601b60dd0c2e150225ba4b}{String\+\_\+mod\+::split\+Str}} (string, delimiter, n\+Part)
 \begin{DoxyCompactList}\small\item\em Split the input string string with the input {\ttfamily substitute} in the input {\ttfamily string} and return the result. \end{DoxyCompactList}\item 
-pure logical function \mbox{\hyperlink{namespacestring__mod_afae70a8dd978d39927a6dd7de43ad7b8}{string\+\_\+mod\+::isdigit}} (single\+Char)
+logical \mbox{\hyperlink{namespaceString__mod_a434ff4ffb551a418738f576ff5477ded}{String\+\_\+mod\+::is\+Digit}} (single\+Char)
 \begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} if the input single character is a digit\+: {\ttfamily \mbox{[}\char`\"{}0\char`\"{},\char`\"{}1\char`\"{},\char`\"{}2\char`\"{},\char`\"{}3\char`\"{},\char`\"{}4\char`\"{},\char`\"{}5\char`\"{},\char`\"{}6\char`\"{},\char`\"{}7\char`\"{},\char`\"{}8\char`\"{},\char`\"{}9\char`\"{}\mbox{]}}. \end{DoxyCompactList}\item 
-pure logical function \mbox{\hyperlink{namespacestring__mod_a25f7f44386f91b5553dabe0a129f27a5}{string\+\_\+mod\+::isinteger}} (string)
+logical \mbox{\hyperlink{namespaceString__mod_aa098989d9cce4254352b8c387dfb55ea}{String\+\_\+mod\+::is\+Integer}} (string)
 \begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} if the input string is an integer containing only\+: {\ttfamily \mbox{[}\char`\"{}0\char`\"{},\char`\"{}1\char`\"{},\char`\"{}2\char`\"{},\char`\"{}3\char`\"{},\char`\"{}4\char`\"{},\char`\"{}5\char`\"{},\char`\"{}6\char`\"{},\char`\"{}7\char`\"{},\char`\"{}8\char`\"{},\char`\"{}9\char`\"{}\mbox{]}}. \end{DoxyCompactList}\item 
-pure character(len(string)) function \mbox{\hyperlink{namespacestring__mod_a7b4ad790c8a3a5bb9937ee1b51f3baa2}{string\+\_\+mod\+::getlowercase}} (string)
+pure character(len(string)) function \mbox{\hyperlink{namespaceString__mod_abfddeba5c2ace7f957ba6f0a91b0a361}{String\+\_\+mod\+::get\+Lower\+Case}} (string)
 \begin{DoxyCompactList}\small\item\em Return the lowercase of the input string. \end{DoxyCompactList}\item 
-pure character(len(string)) function \mbox{\hyperlink{namespacestring__mod_a4d5ef25637ff0a439f9ced599fbdd705}{string\+\_\+mod\+::getuppercase}} (string)
+pure character(len(string)) function \mbox{\hyperlink{namespaceString__mod_aed5463dcbadf3d472bfd4a37bd8e84de}{String\+\_\+mod\+::get\+Upper\+Case}} (string)
 \begin{DoxyCompactList}\small\item\em Return the uppercase of the input string. \end{DoxyCompactList}\item 
-pure character(\+:) function, allocatable \mbox{\hyperlink{namespacestring__mod_a6d007630e8352cf8387a5750d6b267de}{string\+\_\+mod\+::log2str}} (logical\+In)
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_ae6466d5ac218cfc89e869bebdec2ddd3}{String\+\_\+mod\+::log2str}} (value)
 \begin{DoxyCompactList}\small\item\em Convert the input logical value to string and return the result. \end{DoxyCompactList}\item 
-pure character(\+:) function, allocatable \mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{string\+\_\+mod\+::int322str}} (integer\+In, format\+In, min\+Len)
-\begin{DoxyCompactList}\small\item\em Convert the input 32-\/bit integer value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
-pure character(\+:) function, allocatable \mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{string\+\_\+mod\+::int642str}} (integer\+In, format\+In, min\+Len)
-\begin{DoxyCompactList}\small\item\em Convert the input 64-\/bit integer value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
-pure character(\+:) function, allocatable \mbox{\hyperlink{namespacestring__mod_a2f49e84f25a89c8c9abab2181cb42b9f}{string\+\_\+mod\+::real322str}} (real\+In, format\+In, min\+Len)
-\begin{DoxyCompactList}\small\item\em Convert the input 32-\/bit real value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
-pure character(\+:) function, allocatable \mbox{\hyperlink{namespacestring__mod_ad7d5062313af20fcc27b0417cd363720}{string\+\_\+mod\+::real642str}} (real\+In, format\+In, min\+Len)
-\begin{DoxyCompactList}\small\item\em Convert the input 64-\/bit real value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
-pure character(\+:) function, allocatable \mbox{\hyperlink{namespacestring__mod_a0ba3bd2c487e475886526b44a17b6185}{string\+\_\+mod\+::real642str\+\_\+1d}} (Real\+In, format\+In, min\+Len)
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_ab4043e71c3f65cf76cbce673c8670747}{String\+\_\+mod\+::num2str\+\_\+\+IK8\+\_\+0D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a7fb3b6f9afda5286f281c68fc5049edc}{String\+\_\+mod\+::num2str\+\_\+\+IK16\+\_\+0D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a36467b15a98c00416ee08fee87961057}{String\+\_\+mod\+::num2str\+\_\+\+IK32\+\_\+0D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_ae46fbf908958e970fef203c34527be7f}{String\+\_\+mod\+::num2str\+\_\+\+IK64\+\_\+0D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_ac0a51ba5bff2cc63c4460e46da98bb3f}{String\+\_\+mod\+::num2str\+\_\+\+RK32\+\_\+0D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a6984c87947660e986674092d7fc9cbee}{String\+\_\+mod\+::num2str\+\_\+\+RK64\+\_\+0D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a495a7ccc1a4d5303f1f6ee03029e89e0}{String\+\_\+mod\+::num2str\+\_\+\+RK128\+\_\+0D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a6109d922b103fecd7c28776719db9402}{String\+\_\+mod\+::num2str\+\_\+\+IK8\+\_\+1D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a6a7e105ffa3279f8d3ab367d94b4a63e}{String\+\_\+mod\+::num2str\+\_\+\+IK16\+\_\+1D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a5aba16d0403e5f9451f622e3ce997f12}{String\+\_\+mod\+::num2str\+\_\+\+IK32\+\_\+1D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_abe178453556dcff19227a381481687c4}{String\+\_\+mod\+::num2str\+\_\+\+IK64\+\_\+1D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a4858faef8e1d70989bff615cd19eafdb}{String\+\_\+mod\+::num2str\+\_\+\+RK32\+\_\+1D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_aa8cb323d3d4922d00e7a1fa0c9492a83}{String\+\_\+mod\+::num2str\+\_\+\+RK64\+\_\+1D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a6fe325f94a9204562330933f11ae6bf8}{String\+\_\+mod\+::num2str\+\_\+\+RK128\+\_\+1D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_af9041054f43586538e5d41b518d60a08}{String\+\_\+mod\+::num2str\+\_\+\+IK8\+\_\+2D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a1b89c7e7aae561bc912bb0df357f4e28}{String\+\_\+mod\+::num2str\+\_\+\+IK16\+\_\+2D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a1bc028e3b42ef36fa53742045bbf8c7b}{String\+\_\+mod\+::num2str\+\_\+\+IK32\+\_\+2D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a7dfe63921250a38d77c32ebbb9477cfa}{String\+\_\+mod\+::num2str\+\_\+\+IK64\+\_\+2D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_ac9a0d0993580aa839ef7862ac719ad26}{String\+\_\+mod\+::num2str\+\_\+\+RK32\+\_\+2D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a4772680d471f39f7e5aabd1a781e1767}{String\+\_\+mod\+::num2str\+\_\+\+RK64\+\_\+2D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a70939dd2a03fecfc763ee3b337a3eb3f}{String\+\_\+mod\+::num2str\+\_\+\+RK128\+\_\+2D}} (value, format, strlen)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_ab86a76d0c60fc8eb29812c87d716f459}{String\+\_\+mod\+::num2str\+\_\+\+RK64\+\_\+1D}} (Value, format, strlen)
 \begin{DoxyCompactList}\small\item\em Convert an input vector of 64-\/bit real values to string, with the requested format, if provided. \end{DoxyCompactList}\item 
-pure character(\+:) function, allocatable \mbox{\hyperlink{namespacestring__mod_a79a5145d2c53e193e8450b053ef50b95}{string\+\_\+mod\+::real642str\+\_\+2d}} (Real\+In, format\+In, min\+Len)
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_aa500b1783272103680b7507aab713b3d}{String\+\_\+mod\+::num2str\+\_\+\+RK64\+\_\+2D}} (Value, format, strlen)
 \begin{DoxyCompactList}\small\item\em Convert an input 2D matrix of 64-\/bit real values to string, with the requested format, if provided. \end{DoxyCompactList}\item 
-integer(ik) function \mbox{\hyperlink{namespacestring__mod_a8d86ef342a50fddbff0bdf11c7de1234}{string\+\_\+mod\+::str2int}} (str, iostat)
+integer(IK) function \mbox{\hyperlink{namespaceString__mod_a55af862003e7bfe5f92b4c956e02a295}{String\+\_\+mod\+::str2int}} (str, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input string to integer. \end{DoxyCompactList}\item 
-integer(int32) function \mbox{\hyperlink{namespacestring__mod_ae965daa119f1e974a1fb7a8b85eba112}{string\+\_\+mod\+::str2int32}} (str, iostat)
+integer(IK32) function \mbox{\hyperlink{namespaceString__mod_a24acb0a5348b7aa0855dec7a718fa372}{String\+\_\+mod\+::str2int32}} (str, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input string to 32-\/bit integer. \end{DoxyCompactList}\item 
-integer(int64) function \mbox{\hyperlink{namespacestring__mod_a0accbe2e1de46c9866441cf4c0c55174}{string\+\_\+mod\+::str2int64}} (str, iostat)
+integer(IK64) function \mbox{\hyperlink{namespaceString__mod_a0e4aa52e3e113da797c16c7eb7862237}{String\+\_\+mod\+::str2int64}} (str, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input string to 64-\/bit integer. \end{DoxyCompactList}\item 
-real(rk) function \mbox{\hyperlink{namespacestring__mod_aba75c4ed4936da7cb10eab54278d8203}{string\+\_\+mod\+::str2real}} (str, iostat)
+real(RK) function \mbox{\hyperlink{namespaceString__mod_a52ff19a5dc32c49da274c004ba17b859}{String\+\_\+mod\+::str2real}} (str, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input string to real value. \end{DoxyCompactList}\item 
-real(real32) function \mbox{\hyperlink{namespacestring__mod_a9cfd5d3d41fdeee8efef93f3e974e996}{string\+\_\+mod\+::str2real32}} (str, iostat)
+real(RK32) function \mbox{\hyperlink{namespaceString__mod_aea08b2be1134f2f7f97f3c72b82e66aa}{String\+\_\+mod\+::str2real32}} (str, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input string to 32-\/bit real value. \end{DoxyCompactList}\item 
-real(real64) function \mbox{\hyperlink{namespacestring__mod_aa22095a92558b504e85dfc1887e9414e}{string\+\_\+mod\+::str2real64}} (str, iostat)
+real(RK64) function \mbox{\hyperlink{namespaceString__mod_a0fff62deca77d66a2647e8fb6bdc0592}{String\+\_\+mod\+::str2real64}} (str, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input string to 64-\/bit real value. \end{DoxyCompactList}\item 
-pure character(paddedlen) function \mbox{\hyperlink{namespacestring__mod_a6cda1ee2a542f69d020974dfbf506cd8}{string\+\_\+mod\+::padstring}} (string, symbol, padded\+Len)
+character(padded\+Len) \mbox{\hyperlink{namespaceString__mod_a124a7f81250988e1c80f192231033a41}{String\+\_\+mod\+::pad\+String}} (string, symbol, padded\+Len)
 \begin{DoxyCompactList}\small\item\em Pad the input {\ttfamily string} with the input {\ttfamily symbol} string for a length of {\ttfamily padded\+Len} and return the resulting new string. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-character($\ast$), parameter \mbox{\hyperlink{namespacestring__mod_ab6987a49e64486b1b6e8a021a222d91c}{string\+\_\+mod\+::module\+\_\+name}} = \char`\"{}@String\+\_\+mod\char`\"{}
+character($\ast$), parameter \mbox{\hyperlink{namespaceString__mod_aea8d1ba3c565ed766a8924deb4d69b3f}{String\+\_\+mod\+::\+MODULE\+\_\+\+NAME}} = \char`\"{}@String\+\_\+mod\char`\"{}
 \item 
-integer(int8) \mbox{\hyperlink{namespacestring__mod_a33f2080b84cc9b2d98ff4fede8d8f3d4}{string\+\_\+mod\+::num2str\+\_\+maxlen}} = 63\+\_\+int8
-\end{DoxyCompactItemize}
+integer(IK) \mbox{\hyperlink{namespaceString__mod_a0950b33c5078c9d41b4edd71eac49de0}{String\+\_\+mod\+::\+NUM2\+STR\+\_\+\+MAXLEN}} = 127\+\_\+\+IK
+\begin{DoxyCompactList}\small\item\em The maximum possible length of the string output from the functions under the generic interface {\ttfamily \mbox{\hyperlink{interfaceString__mod_1_1num2str}{num2str}}}. Note that {\ttfamily NUM2\+STR\+\_\+\+MAXLEN = 127} is very generous given that,. \end{DoxyCompactList}\end{DoxyCompactItemize}

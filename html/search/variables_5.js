@@ -1,11 +1,14 @@
 var searchData=
 [
-  ['fancystyle_3258',['fancystyle',['../structdatetime__mod_1_1datetime__type.html#ab8b003c58df6b91be35f172f43fc14a7',1,'datetime_mod::datetime_type']]],
-  ['fancystylebasic_3259',['fancystylebasic',['../structdatetime__mod_1_1datetime__type.html#a8f963ab23114d822fc023e1318f00b89',1,'datetime_mod::datetime_type']]],
-  ['file_3260',['file',['../structfilelist__mod_1_1filelist__type.html#accfd9aae136fa369907e4cdf702076b4',1,'filelist_mod::filelist_type']]],
-  ['file_5ftype_3261',['file_type',['../namespaceconstants__mod.html#abcafd5ba0ae10f2b0456f4f5daf74a86',1,'constants_mod']]],
-  ['fmin_3262',['fmin',['../structoptimization__mod_1_1brentminimum__type.html#a00a4f92f9c5ac358ed1e46f556b996ca',1,'optimization_mod::brentminimum_type::fmin()'],['../structoptimization__mod_1_1powellminimum__type.html#ac579f47ae56206587f34e7c3eac4712a',1,'optimization_mod::powellminimum_type::fmin()']]],
-  ['form_3263',['form',['../structfile__mod_1_1file__type.html#a2c864a6857556f6ee337a70e05ea3048',1,'file_mod::file_type']]],
-  ['format_3264',['format',['../structfile__mod_1_1file__type.html#a626f6c468365ff24570579233cac0314',1,'file_mod::file_type']]],
-  ['ftol_3265',['ftol',['../structoptimization__mod_1_1powellminimum__type.html#acfa79ecc1478aee97e23cec340f96ca1',1,'optimization_mod::powellminimum_type']]]
+  ['failed_0',['failed',['../structKmeansOOP__mod_1_1KmeansOOP__type.html#af421841f141effa93e0c6507b0ec7eae',1,'KmeansOOP_mod::KmeansOOP_type']]],
+  ['fancystyle_1',['fancyStyle',['../structDateTime__mod_1_1DateTime__type.html#ae94a815178636ad4af7d0e69a79711b5',1,'DateTime_mod::DateTime_type']]],
+  ['fancystylebasic_2',['fancyStyleBasic',['../structDateTime__mod_1_1DateTime__type.html#ae117a5544b3708ebb1ca076684cb1c0f',1,'DateTime_mod::DateTime_type']]],
+  ['file_3',['File',['../structFileList__mod_1_1FileList__type.html#a29cfe3265a8ead327931ad45a8571af7',1,'FileList_mod::FileList_type']]],
+  ['file_5ftype_4',['FILE_TYPE',['../namespaceConstants__mod.html#a1cfd72d968e460b809b8a9e007a6c0b0',1,'Constants_mod']]],
+  ['fisherinfo_5',['FisherInfo',['../structDistUniNorm__mod_1_1DistUniNorm__type.html#a508919664d6036423130f12d99799f91',1,'DistUniNorm_mod::DistUniNorm_type']]],
+  ['fmin_6',['fmin',['../structOptimization__mod_1_1BrentMinimum__type.html#ac93abb03dba8ca44ea2e185e5ebca175',1,'Optimization_mod::BrentMinimum_type::fmin()'],['../structOptimization__mod_1_1PowellMinimum__type.html#ad7febe909535aa485b125144d3f8e132',1,'Optimization_mod::PowellMinimum_type::fmin()']]],
+  ['form_7',['Form',['../structFile__mod_1_1File__type.html#a0625d56dedef91667230998038822de9',1,'File_mod::File_type']]],
+  ['format_8',['format',['../structFile__mod_1_1File__type.html#a7875a171134d09dca8432907aa8e4fa8',1,'File_mod::File_type']]],
+  ['fortran_9',['Fortran',['../structConstants__mod_1_1LangIs__type.html#a6ace0ff2bc8812a9f4dfa443c5e88531',1,'Constants_mod::LangIs_type']]],
+  ['ftol_10',['ftol',['../structOptimization__mod_1_1PowellMinimum__type.html#a169975fd77b63098e4d18e13ef8e2306',1,'Optimization_mod::PowellMinimum_type']]]
 ];

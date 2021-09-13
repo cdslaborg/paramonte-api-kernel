@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ifport_1992',['ifport',['../namespaceifport.html',1,'']]],
-  ['integration_5fmod_1993',['integration_mod',['../namespaceintegration__mod.html',1,'']]]
+  ['histogram_5fmod_0',['Histogram_mod',['../namespaceHistogram__mod.html',1,'']]],
+  ['hypotest_5fmod_1',['HypoTest_mod',['../namespaceHypoTest__mod.html',1,'']]]
 ];

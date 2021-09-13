@@ -1,0 +1,42 @@
+\hypertarget{DomainEllipsoid__mod_8f90}{}\doxysection{/home/amir/git/paramonte/src/kernel/\+Domain\+Ellipsoid\+\_\+mod.f90 File Reference}
+\label{DomainEllipsoid__mod_8f90}\index{/home/amir/git/paramonte/src/kernel/DomainEllipsoid\_mod.f90@{/home/amir/git/paramonte/src/kernel/DomainEllipsoid\_mod.f90}}
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+mod\+::\+Domain\+Ellipsoid\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The class for Hyper-\/ellipsoidal domain. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1getRand}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespaceDomainEllipsoid__mod}{Domain\+Ellipsoid\+\_\+mod}}
+\begin{DoxyCompactList}\small\item\em This module contains the classes and procedures for setting up the domain attribute of samplers of class \mbox{\hyperlink{structParaMonte__mod_1_1ParaMonte__type}{Para\+Monte\+\_\+type}}. For more information, see the description of this attribute in the body of the module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+type(Domain\+Ellipsoid\+\_\+type) function \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a04f383a111e2e4f71ff799575662f2f2}{Domain\+Ellipsoid\+\_\+mod\+::construct}} (ndim, Center, Cov\+Upp, Err)
+\begin{DoxyCompactList}\small\item\em Construct an object of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}. \end{DoxyCompactList}\item 
+logical \mbox{\hyperlink{namespaceDomainEllipsoid__mod_ad6ef75d83c99832d3bce6cb15f01dda6}{Domain\+Ellipsoid\+\_\+mod\+::contains}} (self, Point)
+\item 
+subroutine \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a92e18edcdf999a006e8ce2044627fa98}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unif}} (self, Point)
+\item 
+real(RK), dimension(nd) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a3e1e740aa58603709ce157c49d86efdc}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unit\+Volume\+MVU}} (nd, log\+Vol\+Unit\+Ball)
+\begin{DoxyCompactList}\small\item\em Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. \end{DoxyCompactList}\item 
+real(RK), dimension(nd, np) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a37ab3e9c48e1b5e562c85af52276a04f}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unit\+Volume\+MVU\+\_\+vector}} (nd, np, log\+Vol\+Unit\+Ball)
+\begin{DoxyCompactList}\small\item\em Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. \end{DoxyCompactList}\item 
+real(RK), dimension(nd) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_af8b7bb6f4a7187929560cf43e212c465}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unit\+Radius\+MVU}} (nd)
+\begin{DoxyCompactList}\small\item\em Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. \end{DoxyCompactList}\item 
+real(RK), dimension(nd, np) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_ae48f30d6426788b50d5d44092470de0d}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unit\+Radius\+MVU\+\_\+vector}} (nd, np)
+\begin{DoxyCompactList}\small\item\em Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. \end{DoxyCompactList}\item 
+real(RK), dimension(nd) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a7994bc9592eb20e21a154695a85ec086}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+MVU}} (nd, Mean, Cho\+Low, Cho\+Dia)
+\begin{DoxyCompactList}\small\item\em Given the Cholesky Lower triangle and diagonals of a given covariance matrix, this function return one point uniformly randomly drawn from inside of an {\ttfamily nd}-\/ellipsoid, whose {\ttfamily nd} elements {\ttfamily Rand\+MVU(i), i=1\+:nd} are guaranteed to be in the range\+: \end{DoxyCompactList}\item 
+real(RK), dimension(nd, np) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a45a8415fa299f8218304d85eea4ae865}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+MVU\+\_\+vector}} (nd, Mean, Cho\+Low, Cho\+Dia, np)
+\begin{DoxyCompactList}\small\item\em Given the Cholesky Lower triangle and diagonals of a given covariance matrix, this function return one point uniformly randomly drawn from inside of an {\ttfamily nd}-\/ellipsoid, whose {\ttfamily nd} elements {\ttfamily Rand\+MVU(i), i=1\+:nd} are guaranteed to be in the range\+: \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceDomainEllipsoid__mod_ab571d2419abf322c3c594a9c1bf1eacf}{Domain\+Ellipsoid\+\_\+mod\+::get\+MVUDev}} (nd, Mean, Cov\+Mat, X)
+\begin{DoxyCompactList}\small\item\em Amir Shahmoradi, April 25, 2016, 2\+:21 PM, IFS, University of Texas at Austin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a4a6063a90dabc1e4d9f683a82ba66edf}{Domain\+Ellipsoid\+\_\+mod\+::\+MODULE\+\_\+\+NAME}} = \char`\"{}@Domain\+Ellipsoid\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}

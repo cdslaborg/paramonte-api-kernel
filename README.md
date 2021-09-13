@@ -42,7 +42,7 @@ For full documentation visit the
         ```bash
         ./build.sh
         ```  
-    +   Inspect the message log of Doxygen printed in the Bash terminal for any potential documentation errors.
+    +   Inspect the message warning log of Doxygen in the output file `READ_THESE_BUILD_WARNINGS.txt` for any potential documentation errors.
     +   Inspect the generated documentation by navigating to the `/src/paramonte-kernel-doc/html` folder and
         opening the `index.html` via a web browser. Make sure all new changes look fine in the browser.
     +   If everything looks good, then stage, commit, and push the new documentation to your fork of

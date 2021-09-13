@@ -1,0 +1,126 @@
+\hypertarget{namespaceFileContents__mod}{}\doxysection{File\+Contents\+\_\+mod Module Reference}
+\label{namespaceFileContents__mod}\index{FileContents\_mod@{FileContents\_mod}}
+
+
+This module contains classes and procedures contents of external files.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structFileContents__mod_1_1FileContents__type}{File\+Contents\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{structFileContents__mod_1_1FileContents__type}{File\+Contents\+\_\+type}} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+type(\mbox{\hyperlink{structFileContents__mod_1_1FileContents__type}{File\+Contents\+\_\+type}}) \mbox{\hyperlink{namespaceFileContents__mod_ad9dc8b408e90b1195d4c6ef1dacf3ffa}{construct\+File\+Contents}} (file\+Path, del\+Enabled)
+\begin{DoxyCompactList}\small\item\em The constructor of the \mbox{\hyperlink{structFileContents__mod_1_1FileContents__type}{File\+Contents\+\_\+type}} class. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceFileContents__mod_a7d25f3c513493e0fb6e2f78a1f4d871f}{get\+File\+Contents}} (path, Contents, num\+Record, Err, del\+Enabled)
+\begin{DoxyCompactList}\small\item\em Returns the entire content of a file as an array of strings. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceFileContents__mod_a3ebba2a91e43cae6e9fafe6250c0ed76}{get\+Num\+Record\+In\+File}} (file\+Path, num\+Record, Err, exclude)
+\begin{DoxyCompactList}\small\item\em Returns the number of lines in a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceFileContents__mod_a827680e78a1b2f28111902b8afafedc5}{MODULE\+\_\+\+NAME}} = \char`\"{}@File\+Contents\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains classes and procedures contents of external files. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceFileContents__mod_ad9dc8b408e90b1195d4c6ef1dacf3ffa}\label{namespaceFileContents__mod_ad9dc8b408e90b1195d4c6ef1dacf3ffa}} 
+\index{FileContents\_mod@{FileContents\_mod}!constructFileContents@{constructFileContents}}
+\index{constructFileContents@{constructFileContents}!FileContents\_mod@{FileContents\_mod}}
+\doxysubsubsection{\texorpdfstring{constructFileContents()}{constructFileContents()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structFileContents__mod_1_1FileContents__type}{File\+Contents\+\_\+type}}) File\+Contents\+\_\+mod\+::construct\+File\+Contents (\begin{DoxyParamCaption}\item[{character($\ast$)}]{file\+Path,  }\item[{logical}]{del\+Enabled }\end{DoxyParamCaption})}
+
+
+
+The constructor of the \mbox{\hyperlink{structFileContents__mod_1_1FileContents__type}{File\+Contents\+\_\+type}} class. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em file\+Path} & \+: The path to the file. \\
+\hline
+\mbox{\texttt{ in}}  & {\em del\+Enabled} & \+: A logical flag indicating whether the file should be deleted upon return ({\bfseries{optional}}, default = {\ttfamily .false.}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily File\+Contents} \+: An object of \mbox{\hyperlink{structFileContents__mod_1_1FileContents__type}{File\+Contents\+\_\+type}} class. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{FileContents__mod_8f90_source_l00082}{82}} of file \mbox{\hyperlink{FileContents__mod_8f90_source}{File\+Contents\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceFileContents__mod_a7d25f3c513493e0fb6e2f78a1f4d871f}\label{namespaceFileContents__mod_a7d25f3c513493e0fb6e2f78a1f4d871f}} 
+\index{FileContents\_mod@{FileContents\_mod}!getFileContents@{getFileContents}}
+\index{getFileContents@{getFileContents}!FileContents\_mod@{FileContents\_mod}}
+\doxysubsubsection{\texorpdfstring{getFileContents()}{getFileContents()}}
+{\footnotesize\ttfamily subroutine File\+Contents\+\_\+mod\+::get\+File\+Contents (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{path,  }\item[{type(\mbox{\hyperlink{structArrayJagged__mod_1_1CharVec__type}{Char\+Vec\+\_\+type}})}]{Contents,  }\item[{integer}]{num\+Record,  }\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err,  }\item[{logical}]{del\+Enabled }\end{DoxyParamCaption})}
+
+
+
+Returns the entire content of a file as an array of strings. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em path} & \+: The path to the file. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Contents} & \+: A list of lines in the file. Each array element corresponds to one line (record) in the file. \\
+\hline
+\mbox{\texttt{ out}}  & {\em num\+Record} & \+: The number of lines in the file. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Err} & \+: An object of \mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}} indicating whether error has occurred during the file IO. \\
+\hline
+\mbox{\texttt{ out}}  & {\em del\+Enabled} & \+: An optional logical value indicating whether the file should be deleted upon successful reading of it. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{FileContents__mod_8f90_source_l00104}{104}} of file \mbox{\hyperlink{FileContents__mod_8f90_source}{File\+Contents\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceFileContents__mod_a3ebba2a91e43cae6e9fafe6250c0ed76}\label{namespaceFileContents__mod_a3ebba2a91e43cae6e9fafe6250c0ed76}} 
+\index{FileContents\_mod@{FileContents\_mod}!getNumRecordInFile@{getNumRecordInFile}}
+\index{getNumRecordInFile@{getNumRecordInFile}!FileContents\_mod@{FileContents\_mod}}
+\doxysubsubsection{\texorpdfstring{getNumRecordInFile()}{getNumRecordInFile()}}
+{\footnotesize\ttfamily subroutine File\+Contents\+\_\+mod\+::get\+Num\+Record\+In\+File (\begin{DoxyParamCaption}\item[{character(len=$\ast$)}]{file\+Path,  }\item[{integer(IK)}]{num\+Record,  }\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err,  }\item[{character($\ast$), intent(in), optional}]{exclude }\end{DoxyParamCaption})}
+
+
+
+Returns the number of lines in a file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em file\+Path} & \+: The path to the file. \\
+\hline
+\mbox{\texttt{ out}}  & {\em num\+Record} & \+: The number of lines in the file. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Err} & \+: An object of \mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}} indicating whether error has occurred during the file IO. \\
+\hline
+\mbox{\texttt{ in}}  & {\em exclude} & \+: A string. If any line matches {\ttfamily exclude}, it will NOT be counted. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{FileContents__mod_8f90_source_l00225}{225}} of file \mbox{\hyperlink{FileContents__mod_8f90_source}{File\+Contents\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceFileContents__mod_a827680e78a1b2f28111902b8afafedc5}\label{namespaceFileContents__mod_a827680e78a1b2f28111902b8afafedc5}} 
+\index{FileContents\_mod@{FileContents\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!FileContents\_mod@{FileContents\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character($\ast$), parameter File\+Contents\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@File\+Contents\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{FileContents__mod_8f90_source_l00052}{52}} of file \mbox{\hyperlink{FileContents__mod_8f90_source}{File\+Contents\+\_\+mod.\+f90}}.
+

@@ -1,0 +1,261 @@
+\hypertarget{namespaceErr__mod}{}\doxysection{Err\+\_\+mod Module Reference}
+\label{namespaceErr__mod}\index{Err\_mod@{Err\_mod}}
+
+
+This module contains classes and procedures for reporting and handling errors.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The error type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \mbox{\hyperlink{namespaceErr__mod_a36a83db6a4f7bbdd52e4e1a4da550e31}{assert}} (assertion, msg, renabled)
+\begin{DoxyCompactList}\small\item\em Verify the assertion holds. If not, print the (optional) input message on stdout and return or error-\/stop halt the program. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceErr__mod_a05e7cb435943afd957ea3b003d655b23}{abort}} (Err, prefix, newline, output\+Unit, renabled)
+\begin{DoxyCompactList}\small\item\em Terminate or report the occurrence a fatal error and potentially terminate the program (if requested). \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceErr__mod_a17084f2f49e559916bd2717137d51f7b}{warn}} (msg, prefix, newline, output\+Unit, margin\+Top, margin\+Bot)
+\begin{DoxyCompactList}\small\item\em Report warning message. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceErr__mod_aff582a134cd1ff0a142c42aec5971fa5}{note}} (msg, prefix, newline, output\+Unit, margin\+Top, margin\+Bot)
+\begin{DoxyCompactList}\small\item\em Report a note. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceErr__mod_a34b3a8957a4e9d9c5d29f93612cca3be}{inform\+User}} (msg, prefix, newline, output\+Unit, wrap\+Split, wrap\+Width, margin\+Top, margin\+Bot)
+\begin{DoxyCompactList}\small\item\em Write the input message to the output file unit. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceErr__mod_a8cadb32b1543eaedea2e1a69403e0cd7}{bcast\+Err}} (Err)
+\begin{DoxyCompactList}\small\item\em Broadcast the error condition from all images to all images. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceErr__mod_a658759f4402b77a47bad9adf07ea44fa}{MODULE\+\_\+\+NAME}} = \char`\"{}@Err\+\_\+mod\char`\"{}
+\item 
+logical, parameter \mbox{\hyperlink{namespaceErr__mod_a6a088d087917f9370ad8b6abcf8853d6}{ERR\+\_\+\+HANDLING\+\_\+\+REQUESTED}} = .false.
+\item 
+logical, parameter \mbox{\hyperlink{namespaceErr__mod_a028f989881c8fd12a772c6b01f5c55c7}{SOFT\+\_\+\+EXIT\+\_\+\+ENABLED}} = .false.
+\item 
+logical \mbox{\hyperlink{namespaceErr__mod_afc7579946377ee7e5fa42635ed900c0c}{mv\+\_\+is\+Testing\+Mode}} = .false.
+\begin{DoxyCompactList}\small\item\em A logical flag, only to be used and set for testing purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains classes and procedures for reporting and handling errors. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceErr__mod_a05e7cb435943afd957ea3b003d655b23}\label{namespaceErr__mod_a05e7cb435943afd957ea3b003d655b23}} 
+\index{Err\_mod@{Err\_mod}!abort@{abort}}
+\index{abort@{abort}!Err\_mod@{Err\_mod}}
+\doxysubsubsection{\texorpdfstring{abort()}{abort()}}
+{\footnotesize\ttfamily subroutine Err\+\_\+mod\+::abort (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err,  }\item[{character($\ast$), intent(in), optional}]{prefix,  }\item[{character($\ast$), intent(in), optional}]{newline,  }\item[{integer(IK)}]{output\+Unit,  }\item[{logical, intent(in), optional}]{renabled }\end{DoxyParamCaption})}
+
+
+
+Terminate or report the occurrence a fatal error and potentially terminate the program (if requested). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Err} & \+: An object of type \mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}} containing the error information. \\
+\hline
+\mbox{\texttt{ in}}  & {\em prefix} & \+: The string to prepend to the error message ({\bfseries{optional}}, default = dynamically set). \\
+\hline
+\mbox{\texttt{ in}}  & {\em newline} & \+: The substring representing the newline character in the error message ({\bfseries{optional}}, default = \char`\"{}\textbackslash{}n\char`\"{}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em output\+Unit} & \+: The output file unit ({\bfseries{optional}}, default = stdout). \\
+\hline
+\mbox{\texttt{ in}}  & {\em renabled} & \+: A logical value standing for {\ttfamily return\+Enabled}. If {\ttfamily .false.}, the program will abruptly terminate. If {\ttfamily .true.}, the program will NOT abruptly terminate. Instead, the control is returned to the calling routine. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Err__mod_8f90_source_l00112}{112}} of file \mbox{\hyperlink{Err__mod_8f90_source}{Err\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceErr__mod_a36a83db6a4f7bbdd52e4e1a4da550e31}\label{namespaceErr__mod_a36a83db6a4f7bbdd52e4e1a4da550e31}} 
+\index{Err\_mod@{Err\_mod}!assert@{assert}}
+\index{assert@{assert}!Err\_mod@{Err\_mod}}
+\doxysubsubsection{\texorpdfstring{assert()}{assert()}}
+{\footnotesize\ttfamily subroutine Err\+\_\+mod\+::assert (\begin{DoxyParamCaption}\item[{logical, intent(in)}]{assertion,  }\item[{character($\ast$), intent(in), optional}]{msg,  }\item[{logical, intent(in), optional}]{renabled }\end{DoxyParamCaption})}
+
+
+
+Verify the assertion holds. If not, print the (optional) input message on stdout and return or error-\/stop halt the program. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em assertion} & \+: An input logical value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em msg} & \+: Any message to be printed to the stdout if assertion is {\ttfamily .false.}, before stopping the program. \+: ({\bfseries{optional}}, default = {\ttfamily \char`\"{}\char`\"{}}) \\
+\hline
+\mbox{\texttt{ in}}  & {\em renabled} & \+: A logical input value. If it is {\ttfamily .true.}, the program-\/control will be returned to the calling routine, \+: otherwise, the program will stop with an error flag passed to the operating system. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Err__mod_8f90_source_l00084}{84}} of file \mbox{\hyperlink{Err__mod_8f90_source}{Err\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceErr__mod_a8cadb32b1543eaedea2e1a69403e0cd7}\label{namespaceErr__mod_a8cadb32b1543eaedea2e1a69403e0cd7}} 
+\index{Err\_mod@{Err\_mod}!bcastErr@{bcastErr}}
+\index{bcastErr@{bcastErr}!Err\_mod@{Err\_mod}}
+\doxysubsubsection{\texorpdfstring{bcastErr()}{bcastErr()}}
+{\footnotesize\ttfamily subroutine Err\+\_\+mod\+::bcast\+Err (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err }\end{DoxyParamCaption})}
+
+
+
+Broadcast the error condition from all images to all images. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Err} & \+: An object of type \mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}} containing the error information.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+This subroutine must be called in parallel by ALL images or NONE.
+
+This function solely exist for soft handling of fatal errors in parallel testing mode and should therefore must never be defined and used in production builds. This function is defined by either {\ttfamily CODECOV\+\_\+\+ENABLED} or {\ttfamily SAMPLER\+\_\+\+TEST\+\_\+\+ENABLED} preprocessor flags in parallel builds and if defined, it will SIGNIFICANTLY degrade the parallel performance of the code. Therefore, $\ast$$\ast${\ttfamily SAMPLER\+\_\+\+TEST\+\_\+\+ENABLED} should never be defined when building for production$\ast$$\ast$. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{Err__mod_8f90_source_l00412}{412}} of file \mbox{\hyperlink{Err__mod_8f90_source}{Err\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceErr__mod_a34b3a8957a4e9d9c5d29f93612cca3be}\label{namespaceErr__mod_a34b3a8957a4e9d9c5d29f93612cca3be}} 
+\index{Err\_mod@{Err\_mod}!informUser@{informUser}}
+\index{informUser@{informUser}!Err\_mod@{Err\_mod}}
+\doxysubsubsection{\texorpdfstring{informUser()}{informUser()}}
+{\footnotesize\ttfamily subroutine Err\+\_\+mod\+::inform\+User (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{msg,  }\item[{character($\ast$), intent(in), optional}]{prefix,  }\item[{character($\ast$), intent(in), optional}]{newline,  }\item[{integer(IK)}]{output\+Unit,  }\item[{character($\ast$)}]{wrap\+Split,  }\item[{integer(IK)}]{wrap\+Width,  }\item[{integer(IK)}]{margin\+Top,  }\item[{integer(IK)}]{margin\+Bot }\end{DoxyParamCaption})}
+
+
+
+Write the input message to the output file unit. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em msg} & \+: The warning message. \\
+\hline
+\mbox{\texttt{ in}}  & {\em prefix} & \+: The string to prepend to the error message ({\bfseries{optional}}, default = dynamically set). \\
+\hline
+\mbox{\texttt{ in}}  & {\em newline} & \+: The substring representing the newline character in the error message ({\bfseries{optional}}, default = \char`\"{}\textbackslash{}n\char`\"{}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em output\+Unit} & \+: The output file unit ({\bfseries{optional}}, default = stdout). \\
+\hline
+\mbox{\texttt{ in}}  & {\em wrap\+Split} & \+: The substring at which the input {\ttfamily msg} can be wrapped and continued on the next line ({\bfseries{optional}}, default = \char`\"{} \char`\"{}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em wrap\+Width} & \+: The maximum width of the line beyond which the input {\ttfamily msg} is wrapped and continued on the next line ({\bfseries{optional}}, default = 100). \\
+\hline
+\mbox{\texttt{ in}}  & {\em margin\+Top} & \+: The number of empty lines before printing the message to the output ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em margin\+Bot} & \+: The number of empty lines after printing the message to the output ({\bfseries{optional}}). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Err__mod_8f90_source_l00322}{322}} of file \mbox{\hyperlink{Err__mod_8f90_source}{Err\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceErr__mod_aff582a134cd1ff0a142c42aec5971fa5}\label{namespaceErr__mod_aff582a134cd1ff0a142c42aec5971fa5}} 
+\index{Err\_mod@{Err\_mod}!note@{note}}
+\index{note@{note}!Err\_mod@{Err\_mod}}
+\doxysubsubsection{\texorpdfstring{note()}{note()}}
+{\footnotesize\ttfamily subroutine Err\+\_\+mod\+::note (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{msg,  }\item[{character($\ast$), intent(in), optional}]{prefix,  }\item[{character($\ast$), intent(in), optional}]{newline,  }\item[{integer(IK)}]{output\+Unit,  }\item[{integer(IK)}]{margin\+Top,  }\item[{integer(IK)}]{margin\+Bot }\end{DoxyParamCaption})}
+
+
+
+Report a note. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em msg} & \+: The warning message. \\
+\hline
+\mbox{\texttt{ in}}  & {\em prefix} & \+: The string to prepend to the error message ({\bfseries{optional}}, default = dynamically set). \\
+\hline
+\mbox{\texttt{ in}}  & {\em newline} & \+: The substring representing the newline character in the error message ({\bfseries{optional}}, default = \char`\"{}\textbackslash{}n\char`\"{}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em output\+Unit} & \+: The output file unit ({\bfseries{optional}}, default = stdout). \\
+\hline
+\mbox{\texttt{ in}}  & {\em margin\+Top} & \+: The number of empty lines before printing the message to the output ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em margin\+Bot} & \+: The number of empty lines after printing the message to the output ({\bfseries{optional}}). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Err__mod_8f90_source_l00283}{283}} of file \mbox{\hyperlink{Err__mod_8f90_source}{Err\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceErr__mod_a17084f2f49e559916bd2717137d51f7b}\label{namespaceErr__mod_a17084f2f49e559916bd2717137d51f7b}} 
+\index{Err\_mod@{Err\_mod}!warn@{warn}}
+\index{warn@{warn}!Err\_mod@{Err\_mod}}
+\doxysubsubsection{\texorpdfstring{warn()}{warn()}}
+{\footnotesize\ttfamily subroutine Err\+\_\+mod\+::warn (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{msg,  }\item[{character($\ast$), intent(in), optional}]{prefix,  }\item[{character($\ast$), intent(in), optional}]{newline,  }\item[{integer(IK)}]{output\+Unit,  }\item[{integer(IK)}]{margin\+Top,  }\item[{integer(IK)}]{margin\+Bot }\end{DoxyParamCaption})}
+
+
+
+Report warning message. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em msg} & \+: The warning message. \\
+\hline
+\mbox{\texttt{ in}}  & {\em prefix} & \+: The string to prepend to the error message ({\bfseries{optional}}, default = dynamically set). \\
+\hline
+\mbox{\texttt{ in}}  & {\em newline} & \+: The substring representing the newline character in the error message ({\bfseries{optional}}, default = \char`\"{}\textbackslash{}n\char`\"{}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em output\+Unit} & \+: The output file unit ({\bfseries{optional}}, default = stdout). \\
+\hline
+\mbox{\texttt{ in}}  & {\em margin\+Top} & \+: The number of empty lines before printing the message to the output ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em margin\+Bot} & \+: The number of empty lines after printing the message to the output ({\bfseries{optional}}). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Err__mod_8f90_source_l00246}{246}} of file \mbox{\hyperlink{Err__mod_8f90_source}{Err\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceErr__mod_a6a088d087917f9370ad8b6abcf8853d6}\label{namespaceErr__mod_a6a088d087917f9370ad8b6abcf8853d6}} 
+\index{Err\_mod@{Err\_mod}!ERR\_HANDLING\_REQUESTED@{ERR\_HANDLING\_REQUESTED}}
+\index{ERR\_HANDLING\_REQUESTED@{ERR\_HANDLING\_REQUESTED}!Err\_mod@{Err\_mod}}
+\doxysubsubsection{\texorpdfstring{ERR\_HANDLING\_REQUESTED}{ERR\_HANDLING\_REQUESTED}}
+{\footnotesize\ttfamily logical, parameter Err\+\_\+mod\+::\+ERR\+\_\+\+HANDLING\+\_\+\+REQUESTED = .false.}
+
+
+
+Definition at line \mbox{\hyperlink{Err__mod_8f90_source_l00054}{54}} of file \mbox{\hyperlink{Err__mod_8f90_source}{Err\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceErr__mod_a658759f4402b77a47bad9adf07ea44fa}\label{namespaceErr__mod_a658759f4402b77a47bad9adf07ea44fa}} 
+\index{Err\_mod@{Err\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!Err\_mod@{Err\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character($\ast$), parameter Err\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Err\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{Err__mod_8f90_source_l00052}{52}} of file \mbox{\hyperlink{Err__mod_8f90_source}{Err\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceErr__mod_afc7579946377ee7e5fa42635ed900c0c}\label{namespaceErr__mod_afc7579946377ee7e5fa42635ed900c0c}} 
+\index{Err\_mod@{Err\_mod}!mv\_isTestingMode@{mv\_isTestingMode}}
+\index{mv\_isTestingMode@{mv\_isTestingMode}!Err\_mod@{Err\_mod}}
+\doxysubsubsection{\texorpdfstring{mv\_isTestingMode}{mv\_isTestingMode}}
+{\footnotesize\ttfamily logical Err\+\_\+mod\+::mv\+\_\+is\+Testing\+Mode = .false.}
+
+
+
+A logical flag, only to be used and set for testing purposes. 
+
+
+
+Definition at line \mbox{\hyperlink{Err__mod_8f90_source_l00070}{70}} of file \mbox{\hyperlink{Err__mod_8f90_source}{Err\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceErr__mod_a028f989881c8fd12a772c6b01f5c55c7}\label{namespaceErr__mod_a028f989881c8fd12a772c6b01f5c55c7}} 
+\index{Err\_mod@{Err\_mod}!SOFT\_EXIT\_ENABLED@{SOFT\_EXIT\_ENABLED}}
+\index{SOFT\_EXIT\_ENABLED@{SOFT\_EXIT\_ENABLED}!Err\_mod@{Err\_mod}}
+\doxysubsubsection{\texorpdfstring{SOFT\_EXIT\_ENABLED}{SOFT\_EXIT\_ENABLED}}
+{\footnotesize\ttfamily logical, parameter Err\+\_\+mod\+::\+SOFT\+\_\+\+EXIT\+\_\+\+ENABLED = .false.}
+
+
+
+Definition at line \mbox{\hyperlink{Err__mod_8f90_source_l00059}{59}} of file \mbox{\hyperlink{Err__mod_8f90_source}{Err\+\_\+mod.\+f90}}.
+

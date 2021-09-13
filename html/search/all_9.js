@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['jaggedarray_5fmod_645',['jaggedarray_mod',['../namespacejaggedarray__mod.html',1,'']]],
-  ['jaggedarray_5fmod_2ef90_646',['JaggedArray_mod.f90',['../JaggedArray__mod_8f90.html',1,'']]]
+  ['java_0',['Java',['../structConstants__mod_1_1LangIs__type.html#a6518c7c03daba4b22e69f197c2a9f70c',1,'Constants_mod::LangIs_type']]],
+  ['julia_1',['Julia',['../structConstants__mod_1_1LangIs__type.html#a2c0b983d2d1d4f148b206696cd7db56c',1,'Constants_mod::LangIs_type']]]
 ];

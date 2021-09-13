@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['delta_2333',['delta',['../structtimer__mod_1_1timer__type.html#adbe8beb58cf70243338819027adf8455',1,'timer_mod::timer_type']]],
-  ['doks1_2334',['doks1',['../namespacestatistics__mod.html#a409cc82c19b5d1bb53f002ce16990fe1',1,'statistics_mod']]],
-  ['dopolinterp_2335',['dopolinterp',['../namespaceintegration__mod.html#adbae9c8c0a402468af9d952feb584cfd',1,'integration_mod']]],
-  ['doquadrombclosed_2336',['doquadrombclosed',['../namespaceintegration__mod.html#af9c975b93e34e434e95398beb6d86c55',1,'integration_mod']]],
-  ['doquadrombopen_2337',['doquadrombopen',['../namespaceintegration__mod.html#abf46f3f1e7533c9e4f8ce428ec6f9611',1,'integration_mod']]],
-  ['doquadtrap_2338',['doquadtrap',['../namespaceintegration__mod.html#a6c7db5f1c81e30baf983fcaf1461ac12',1,'integration_mod']]],
-  ['dosortedks2_2339',['dosortedks2',['../namespacestatistics__mod.html#aab2feb1252040721a5f0641887fd50b4',1,'statistics_mod']]],
-  ['douniformks1_2340',['douniformks1',['../namespacestatistics__mod.html#a8451ef021ccb875ccf34da2c41f8102a',1,'statistics_mod']]]
+  ['delta_0',['delta',['../structTimer__mod_1_1Timer__type.html#a04095d016383197e9cf17803a0288c97',1,'Timer_mod::Timer_type']]],
+  ['doks1_1',['doKS1',['../namespaceHypoTest__mod.html#a69bced9db8db083e5d5b1df177f85a63',1,'HypoTest_mod']]],
+  ['dopolinterp_2',['doPolInterp',['../namespaceIntegration__mod.html#abb4313bcbd7ffb3ccfce4a3d584bb2a0',1,'Integration_mod']]],
+  ['doquadrombclosed_3',['doQuadRombClosed',['../namespaceIntegration__mod.html#af8fc3f43e7948c94594041ed0ce3b2a3',1,'Integration_mod']]],
+  ['doquadrombopen_4',['doQuadRombOpen',['../namespaceIntegration__mod.html#a2afac450765cc9aeecb83147d5edd584',1,'Integration_mod']]],
+  ['doquadtrap_5',['doQuadTrap',['../namespaceIntegration__mod.html#a5a20f6d4a6161dd4fff687c5c790dc9c',1,'Integration_mod']]],
+  ['dosortedks2_6',['doSortedKS2',['../namespaceHypoTest__mod.html#a9b1713b6e4a561a1efa87a81f526d550',1,'HypoTest_mod']]],
+  ['douniformks1_7',['doUniformKS1',['../namespaceHypoTest__mod.html#a71353e6680d92e25c775f8c7b52924c2',1,'HypoTest_mod']]]
 ];

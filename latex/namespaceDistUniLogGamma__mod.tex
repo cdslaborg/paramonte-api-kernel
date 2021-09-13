@@ -1,0 +1,160 @@
+\hypertarget{namespaceDistUniLogGamma__mod}{}\doxysection{Dist\+Uni\+Log\+Gamma\+\_\+mod Module Reference}
+\label{namespaceDistUniLogGamma__mod}\index{DistUniLogGamma\_mod@{DistUniLogGamma\_mod}}
+
+
+This module contains the classes and procedures for setting up and computing a grid-\/like objective function that is formed by multiple (potentially elongated) Multivariate Normal (MVN) Distributions.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structDistUniLogGamma__mod_1_1DistUniLogGamma__type}{Dist\+Uni\+Log\+Gamma\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+type(\mbox{\hyperlink{structDistUniLogGamma__mod_1_1DistUniLogGamma__type}{Dist\+Uni\+Log\+Gamma\+\_\+type}}) function \mbox{\hyperlink{namespaceDistUniLogGamma__mod_ae5302b5e7c101f496435f2bb7ef7f759}{construct}} (loc, scale, shape)
+\begin{DoxyCompactList}\small\item\em Set the Dist\+Uni\+Log\+Gamma properties and return an object of type \mbox{\hyperlink{structDistUniLogGamma__mod_1_1DistUniLogGamma__type}{Dist\+Uni\+Log\+Gamma\+\_\+type}} containing the objective function with the requested properties. \end{DoxyCompactList}\item 
+real(RK) \mbox{\hyperlink{namespaceDistUniLogGamma__mod_ac30dac361f8a4f56f1b2b402be625fbe}{get\+Log\+Norm\+Fac\+PDF}} (shape, scale)
+\begin{DoxyCompactList}\small\item\em Return the natural logarithm of the normalization factor of the Probability Density Function (PDF) of the Log\+Gamma distribution. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceDistUniLogGamma__mod_acc20acc9cfe256cba884dca266f6e190}{logpdf}} (self, x)
+\begin{DoxyCompactList}\small\item\em Return the normalized (integrating to one) log-\/value of the Log\+Gamma PDF. \end{DoxyCompactList}\item 
+real(RK) \mbox{\hyperlink{namespaceDistUniLogGamma__mod_ae25384c911a3d5261ac6403896204cc3}{get\+Log\+PDF}} (x, shape, log\+Norm\+Fac\+PDF)
+\begin{DoxyCompactList}\small\item\em Return the natural logarithm of probability density function (PDF) of the Log\+Gamma distribution. \end{DoxyCompactList}\item 
+real(RK) function \mbox{\hyperlink{namespaceDistUniLogGamma__mod_acc6e60c6fa66c784f1f801eb419ecbff}{rand}} (self)
+\begin{DoxyCompactList}\small\item\em Return a random number deviate given the current parameters of the distribution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains the classes and procedures for setting up and computing a grid-\/like objective function that is formed by multiple (potentially elongated) Multivariate Normal (MVN) Distributions. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceDistUniLogGamma__mod_ae5302b5e7c101f496435f2bb7ef7f759}\label{namespaceDistUniLogGamma__mod_ae5302b5e7c101f496435f2bb7ef7f759}} 
+\index{DistUniLogGamma\_mod@{DistUniLogGamma\_mod}!construct@{construct}}
+\index{construct@{construct}!DistUniLogGamma\_mod@{DistUniLogGamma\_mod}}
+\doxysubsubsection{\texorpdfstring{construct()}{construct()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structDistUniLogGamma__mod_1_1DistUniLogGamma__type}{Dist\+Uni\+Log\+Gamma\+\_\+type}}) function Dist\+Uni\+Log\+Gamma\+\_\+mod\+::construct (\begin{DoxyParamCaption}\item[{real(RK), intent(in), optional}]{loc,  }\item[{real(RK), intent(in), optional}]{scale,  }\item[{real(RK), intent(in), optional}]{shape }\end{DoxyParamCaption})}
+
+
+
+Set the Dist\+Uni\+Log\+Gamma properties and return an object of type \mbox{\hyperlink{structDistUniLogGamma__mod_1_1DistUniLogGamma__type}{Dist\+Uni\+Log\+Gamma\+\_\+type}} containing the objective function with the requested properties. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em loc} & \+: The location parameter of the log-\/gamma distribution ({\bfseries{optional}}, default = {\ttfamily 0.}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em scale} & \+: The scale parameter of the log-\/gamma distribution ({\bfseries{optional}}, default = {\ttfamily 1.}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em shape} & \+: An shape parameter of the log-\/gamma distribution ({\bfseries{optional}}, default = {\ttfamily 1.}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily self} \+: An object of type \mbox{\hyperlink{structDistUniLogGamma__mod_1_1DistUniLogGamma__type}{Dist\+Uni\+Log\+Gamma\+\_\+type}} containing the objective function with the requested characteristics. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DistUniLogGamma__mod_8f90_source_l00089}{89}} of file \mbox{\hyperlink{DistUniLogGamma__mod_8f90_source}{Dist\+Uni\+Log\+Gamma\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistUniLogGamma__mod_ac30dac361f8a4f56f1b2b402be625fbe}\label{namespaceDistUniLogGamma__mod_ac30dac361f8a4f56f1b2b402be625fbe}} 
+\index{DistUniLogGamma\_mod@{DistUniLogGamma\_mod}!getLogNormFacPDF@{getLogNormFacPDF}}
+\index{getLogNormFacPDF@{getLogNormFacPDF}!DistUniLogGamma\_mod@{DistUniLogGamma\_mod}}
+\doxysubsubsection{\texorpdfstring{getLogNormFacPDF()}{getLogNormFacPDF()}}
+{\footnotesize\ttfamily real(RK) Dist\+Uni\+Log\+Gamma\+\_\+mod\+::get\+Log\+Norm\+Fac\+PDF (\begin{DoxyParamCaption}\item[{real(RK), intent(in)}]{shape,  }\item[{real(RK), intent(in)}]{scale }\end{DoxyParamCaption})}
+
+
+
+Return the natural logarithm of the normalization factor of the Probability Density Function (PDF) of the Log\+Gamma distribution. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em shape} & \+: The shape parameter of the Log\+Gamma distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em scale} & \+: The scale parameter of the Log\+Gamma distribution.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily log\+Norm\+Fac\+PDF} \+: The natural logarithm of the normalization factor of the PDF of the Log\+Gamma distribution. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DistUniLogGamma__mod_8f90_source_l00126}{126}} of file \mbox{\hyperlink{DistUniLogGamma__mod_8f90_source}{Dist\+Uni\+Log\+Gamma\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistUniLogGamma__mod_ae25384c911a3d5261ac6403896204cc3}\label{namespaceDistUniLogGamma__mod_ae25384c911a3d5261ac6403896204cc3}} 
+\index{DistUniLogGamma\_mod@{DistUniLogGamma\_mod}!getLogPDF@{getLogPDF}}
+\index{getLogPDF@{getLogPDF}!DistUniLogGamma\_mod@{DistUniLogGamma\_mod}}
+\doxysubsubsection{\texorpdfstring{getLogPDF()}{getLogPDF()}}
+{\footnotesize\ttfamily real(RK) Dist\+Uni\+Log\+Gamma\+\_\+mod\+::get\+Log\+PDF (\begin{DoxyParamCaption}\item[{real(RK), intent(in)}]{x,  }\item[{real(RK), intent(in)}]{shape,  }\item[{real(RK)}]{log\+Norm\+Fac\+PDF }\end{DoxyParamCaption})}
+
+
+
+Return the natural logarithm of probability density function (PDF) of the Log\+Gamma distribution. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & \+: The standardized point at which the PDF must be computed. \\
+\hline
+\mbox{\texttt{ in}}  & {\em shape} & \+: The shape parameter of the Log\+Gamma distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Norm\+Fac\+PDF} & \+: The natural logarithm of the normalization factor of the PDF. This value can be obtained by calling {\ttfamily \mbox{\hyperlink{namespaceDistUniLogGamma__mod_ac30dac361f8a4f56f1b2b402be625fbe}{get\+Log\+Norm\+Fac\+PDF()}}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily log\+PDF} \+: The log-\/value of the objective function (normalized such that it integrates to one). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DistUniLogGamma__mod_8f90_source_l00168}{168}} of file \mbox{\hyperlink{DistUniLogGamma__mod_8f90_source}{Dist\+Uni\+Log\+Gamma\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistUniLogGamma__mod_acc20acc9cfe256cba884dca266f6e190}\label{namespaceDistUniLogGamma__mod_acc20acc9cfe256cba884dca266f6e190}} 
+\index{DistUniLogGamma\_mod@{DistUniLogGamma\_mod}!logpdf@{logpdf}}
+\index{logpdf@{logpdf}!DistUniLogGamma\_mod@{DistUniLogGamma\_mod}}
+\doxysubsubsection{\texorpdfstring{logpdf()}{logpdf()}}
+{\footnotesize\ttfamily pure real(RK) function Dist\+Uni\+Log\+Gamma\+\_\+mod\+::logpdf (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structDistUniLogGamma__mod_1_1DistUniLogGamma__type}{Dist\+Uni\+Log\+Gamma\+\_\+type}}), intent(in)}]{self,  }\item[{real(RK), intent(in)}]{x }\end{DoxyParamCaption})}
+
+
+
+Return the normalized (integrating to one) log-\/value of the Log\+Gamma PDF. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em self} & \+: An object of class \mbox{\hyperlink{structDistUniLogGamma__mod_1_1DistUniLogGamma__type}{Dist\+Uni\+Log\+Gamma\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em x} & \+: The point at which the objective function will be computed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily logval} \+: The log-\/value of the objective function (normalized such that it integrates to one). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DistUniLogGamma__mod_8f90_source_l00146}{146}} of file \mbox{\hyperlink{DistUniLogGamma__mod_8f90_source}{Dist\+Uni\+Log\+Gamma\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistUniLogGamma__mod_acc6e60c6fa66c784f1f801eb419ecbff}\label{namespaceDistUniLogGamma__mod_acc6e60c6fa66c784f1f801eb419ecbff}} 
+\index{DistUniLogGamma\_mod@{DistUniLogGamma\_mod}!rand@{rand}}
+\index{rand@{rand}!DistUniLogGamma\_mod@{DistUniLogGamma\_mod}}
+\doxysubsubsection{\texorpdfstring{rand()}{rand()}}
+{\footnotesize\ttfamily real(RK) function Dist\+Uni\+Log\+Gamma\+\_\+mod\+::rand (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structDistUniLogGamma__mod_1_1DistUniLogGamma__type}{Dist\+Uni\+Log\+Gamma\+\_\+type}}), intent(in)}]{self }\end{DoxyParamCaption})}
+
+
+
+Return a random number deviate given the current parameters of the distribution. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em self} & \+: An object of class \mbox{\hyperlink{structDistUniLogGamma__mod_1_1DistUniLogGamma__type}{Dist\+Uni\+Log\+Gamma\+\_\+type}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily logval} \+: The log-\/value of the objective function (normalized such that it integrates to one). 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]The random number generator of Log-\/\+Gamma distribution should be implemented here. \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{DistUniLogGamma__mod_8f90_source_l00188}{188}} of file \mbox{\hyperlink{DistUniLogGamma__mod_8f90_source}{Dist\+Uni\+Log\+Gamma\+\_\+mod.\+f90}}.
+

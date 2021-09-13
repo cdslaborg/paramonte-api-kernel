@@ -1,0 +1,155 @@
+\hypertarget{structOptimization__mod_1_1BrentMinimum__type}{}\doxysection{Optimization\+\_\+mod\+::Brent\+Minimum\+\_\+type Interface Reference}
+\label{structOptimization__mod_1_1BrentMinimum__type}\index{Optimization\_mod::BrentMinimum\_type@{Optimization\_mod::BrentMinimum\_type}}
+
+
+The Brent minimizer class.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+type(\mbox{\hyperlink{structOptimization__mod_1_1BrentMinimum__type}{Brent\+Minimum\+\_\+type}}) \mbox{\hyperlink{structOptimization__mod_1_1BrentMinimum__type_acea82d4e884c3c7f6b05bce1e38c7496}{minimize\+Brent}} (get\+Func, x0, x1, x2, \mbox{\hyperlink{structOptimization__mod_1_1BrentMinimum__type_a556fa06c8d64d6d2cbf7c4741c9906f2}{xtol}})
+\begin{DoxyCompactList}\small\item\em The constructor of the class \mbox{\hyperlink{structOptimization__mod_1_1BrentMinimum__type}{Brent\+Minimum\+\_\+type}}. Compute the minimum of the input 1-\/dimensional function isolated to a fractional precision of about xtol using Brent\textquotesingle{}s method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+integer(IK) \mbox{\hyperlink{structOptimization__mod_1_1BrentMinimum__type_a1ccd78ff2230b221feda20f273baae5c}{niter}}
+\begin{DoxyCompactList}\small\item\em the number of iterations to reach the minimum of the function \end{DoxyCompactList}\item 
+real(RK), dimension(3) \mbox{\hyperlink{structOptimization__mod_1_1BrentMinimum__type_a156249b10733e7af9bb01c6d7bc89313}{Bracket}}
+\begin{DoxyCompactList}\small\item\em the initial 3 Bracketing points that envelop the minimum \end{DoxyCompactList}\item 
+real(RK) \mbox{\hyperlink{structOptimization__mod_1_1BrentMinimum__type_a556fa06c8d64d6d2cbf7c4741c9906f2}{xtol}} = sqrt(epsilon(1.\+\_\+\+RK))
+\begin{DoxyCompactList}\small\item\em the stopping rule tolerance \end{DoxyCompactList}\item 
+real(RK) \mbox{\hyperlink{structOptimization__mod_1_1BrentMinimum__type_a187f912f76b42b860de8a1f3c78c68ed}{xmin}}
+\begin{DoxyCompactList}\small\item\em the x-\/value at the minimum of the function \end{DoxyCompactList}\item 
+real(RK) \mbox{\hyperlink{structOptimization__mod_1_1BrentMinimum__type_ac93abb03dba8ca44ea2e185e5ebca175}{fmin}}
+\begin{DoxyCompactList}\small\item\em the minimum of the function \end{DoxyCompactList}\item 
+type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}}) \mbox{\hyperlink{structOptimization__mod_1_1BrentMinimum__type_a9f287c9d6575db7a44e3d76e51d2e9d2}{Err}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The Brent minimizer class. 
+
+Definition at line \mbox{\hyperlink{Optimization__mod_8f90_source_l00064}{64}} of file \mbox{\hyperlink{Optimization__mod_8f90_source}{Optimization\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{structOptimization__mod_1_1BrentMinimum__type_acea82d4e884c3c7f6b05bce1e38c7496}\label{structOptimization__mod_1_1BrentMinimum__type_acea82d4e884c3c7f6b05bce1e38c7496}} 
+\index{Optimization\_mod::BrentMinimum\_type@{Optimization\_mod::BrentMinimum\_type}!minimizeBrent@{minimizeBrent}}
+\index{minimizeBrent@{minimizeBrent}!Optimization\_mod::BrentMinimum\_type@{Optimization\_mod::BrentMinimum\_type}}
+\doxysubsubsection{\texorpdfstring{minimizeBrent()}{minimizeBrent()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structOptimization__mod_1_1BrentMinimum__type}{Brent\+Minimum\+\_\+type}}) Optimization\+\_\+mod\+::\+Brent\+Minimum\+\_\+type\+::minimize\+Brent (\begin{DoxyParamCaption}\item[{procedure(\mbox{\hyperlink{interfaceOptimization__mod_1_1getFunc1D__proc}{get\+Func1\+D\+\_\+proc}})}]{get\+Func,  }\item[{real(RK), intent(in), optional}]{x0,  }\item[{real(RK), intent(in), optional}]{x1,  }\item[{real(RK), intent(in), optional}]{x2,  }\item[{real(RK), intent(in), optional}]{xtol }\end{DoxyParamCaption})}
+
+
+
+The constructor of the class \mbox{\hyperlink{structOptimization__mod_1_1BrentMinimum__type}{Brent\+Minimum\+\_\+type}}. Compute the minimum of the input 1-\/dimensional function isolated to a fractional precision of about xtol using Brent\textquotesingle{}s method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em get\+Func} & \+: The 1-\/dimensional function which will have to be minimized. \\
+\hline
+\mbox{\texttt{ in}}  & {\em x0} & \+: The lower point in the set of optional bracketing triplet of abscissas that bracket the minimum of the function such that, {\ttfamily x0 \texorpdfstring{$<$}{<} x1 \texorpdfstring{$<$}{<} x2} and {\ttfamily get\+Func(x0) \texorpdfstring{$>$}{>} get\+Func(x1) \texorpdfstring{$<$}{<} get\+Func(x2)} ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em x1} & \+: The middle point in the set of optional bracketing triplet of abscissas that bracket the minimum of the function such that, {\ttfamily x0 \texorpdfstring{$<$}{<} x1 \texorpdfstring{$<$}{<} x2} and {\ttfamily get\+Func(x0) \texorpdfstring{$>$}{>} get\+Func(x1) \texorpdfstring{$<$}{<} get\+Func(x2)} ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em x2} & \+: The upper point in the set of optional bracketing triplet of abscissas that bracket the minimum of the function such that, {\ttfamily x0 \texorpdfstring{$<$}{<} x1 \texorpdfstring{$<$}{<} x2} and {\ttfamily get\+Func(x0) \texorpdfstring{$>$}{>} get\+Func(x1) \texorpdfstring{$<$}{<} get\+Func(x2)} ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em xtol} & \+: An optional fractional precision within which is the minimum is returned. The default value is sqrt(epsilon(1.\+\_\+\+RK)).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Brent\+Minimum} \+: An object of class \mbox{\hyperlink{structOptimization__mod_1_1BrentMinimum__type}{Brent\+Minimum\+\_\+type}} that contains the minimum of the function ({\ttfamily xmin}) and the function value at the minimum ({\ttfamily fmin}) as well as other relevant information. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Optimization__mod_8f90_source_l00150}{150}} of file \mbox{\hyperlink{Optimization__mod_8f90_source}{Optimization\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structOptimization__mod_1_1BrentMinimum__type_a156249b10733e7af9bb01c6d7bc89313}\label{structOptimization__mod_1_1BrentMinimum__type_a156249b10733e7af9bb01c6d7bc89313}} 
+\index{Optimization\_mod::BrentMinimum\_type@{Optimization\_mod::BrentMinimum\_type}!Bracket@{Bracket}}
+\index{Bracket@{Bracket}!Optimization\_mod::BrentMinimum\_type@{Optimization\_mod::BrentMinimum\_type}}
+\doxysubsubsection{\texorpdfstring{Bracket}{Bracket}}
+{\footnotesize\ttfamily real(RK), dimension(3) Optimization\+\_\+mod\+::\+Brent\+Minimum\+\_\+type\+::\+Bracket}
+
+
+
+the initial 3 Bracketing points that envelop the minimum 
+
+
+
+Definition at line \mbox{\hyperlink{Optimization__mod_8f90_source_l00066}{66}} of file \mbox{\hyperlink{Optimization__mod_8f90_source}{Optimization\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structOptimization__mod_1_1BrentMinimum__type_a9f287c9d6575db7a44e3d76e51d2e9d2}\label{structOptimization__mod_1_1BrentMinimum__type_a9f287c9d6575db7a44e3d76e51d2e9d2}} 
+\index{Optimization\_mod::BrentMinimum\_type@{Optimization\_mod::BrentMinimum\_type}!Err@{Err}}
+\index{Err@{Err}!Optimization\_mod::BrentMinimum\_type@{Optimization\_mod::BrentMinimum\_type}}
+\doxysubsubsection{\texorpdfstring{Err}{Err}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}}) Optimization\+\_\+mod\+::\+Brent\+Minimum\+\_\+type\+::\+Err}
+
+
+
+Definition at line \mbox{\hyperlink{Optimization__mod_8f90_source_l00070}{70}} of file \mbox{\hyperlink{Optimization__mod_8f90_source}{Optimization\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structOptimization__mod_1_1BrentMinimum__type_ac93abb03dba8ca44ea2e185e5ebca175}\label{structOptimization__mod_1_1BrentMinimum__type_ac93abb03dba8ca44ea2e185e5ebca175}} 
+\index{Optimization\_mod::BrentMinimum\_type@{Optimization\_mod::BrentMinimum\_type}!fmin@{fmin}}
+\index{fmin@{fmin}!Optimization\_mod::BrentMinimum\_type@{Optimization\_mod::BrentMinimum\_type}}
+\doxysubsubsection{\texorpdfstring{fmin}{fmin}}
+{\footnotesize\ttfamily real(RK) Optimization\+\_\+mod\+::\+Brent\+Minimum\+\_\+type\+::fmin}
+
+
+
+the minimum of the function 
+
+
+
+Definition at line \mbox{\hyperlink{Optimization__mod_8f90_source_l00069}{69}} of file \mbox{\hyperlink{Optimization__mod_8f90_source}{Optimization\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structOptimization__mod_1_1BrentMinimum__type_a1ccd78ff2230b221feda20f273baae5c}\label{structOptimization__mod_1_1BrentMinimum__type_a1ccd78ff2230b221feda20f273baae5c}} 
+\index{Optimization\_mod::BrentMinimum\_type@{Optimization\_mod::BrentMinimum\_type}!niter@{niter}}
+\index{niter@{niter}!Optimization\_mod::BrentMinimum\_type@{Optimization\_mod::BrentMinimum\_type}}
+\doxysubsubsection{\texorpdfstring{niter}{niter}}
+{\footnotesize\ttfamily integer(IK) Optimization\+\_\+mod\+::\+Brent\+Minimum\+\_\+type\+::niter}
+
+
+
+the number of iterations to reach the minimum of the function 
+
+
+
+Definition at line \mbox{\hyperlink{Optimization__mod_8f90_source_l00065}{65}} of file \mbox{\hyperlink{Optimization__mod_8f90_source}{Optimization\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structOptimization__mod_1_1BrentMinimum__type_a187f912f76b42b860de8a1f3c78c68ed}\label{structOptimization__mod_1_1BrentMinimum__type_a187f912f76b42b860de8a1f3c78c68ed}} 
+\index{Optimization\_mod::BrentMinimum\_type@{Optimization\_mod::BrentMinimum\_type}!xmin@{xmin}}
+\index{xmin@{xmin}!Optimization\_mod::BrentMinimum\_type@{Optimization\_mod::BrentMinimum\_type}}
+\doxysubsubsection{\texorpdfstring{xmin}{xmin}}
+{\footnotesize\ttfamily real(RK) Optimization\+\_\+mod\+::\+Brent\+Minimum\+\_\+type\+::xmin}
+
+
+
+the x-\/value at the minimum of the function 
+
+
+
+Definition at line \mbox{\hyperlink{Optimization__mod_8f90_source_l00068}{68}} of file \mbox{\hyperlink{Optimization__mod_8f90_source}{Optimization\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structOptimization__mod_1_1BrentMinimum__type_a556fa06c8d64d6d2cbf7c4741c9906f2}\label{structOptimization__mod_1_1BrentMinimum__type_a556fa06c8d64d6d2cbf7c4741c9906f2}} 
+\index{Optimization\_mod::BrentMinimum\_type@{Optimization\_mod::BrentMinimum\_type}!xtol@{xtol}}
+\index{xtol@{xtol}!Optimization\_mod::BrentMinimum\_type@{Optimization\_mod::BrentMinimum\_type}}
+\doxysubsubsection{\texorpdfstring{xtol}{xtol}}
+{\footnotesize\ttfamily real(RK) Optimization\+\_\+mod\+::\+Brent\+Minimum\+\_\+type\+::xtol = sqrt(epsilon(1.\+\_\+\+RK))}
+
+
+
+the stopping rule tolerance 
+
+
+
+Definition at line \mbox{\hyperlink{Optimization__mod_8f90_source_l00067}{67}} of file \mbox{\hyperlink{Optimization__mod_8f90_source}{Optimization\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{Optimization__mod_8f90}{Optimization\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

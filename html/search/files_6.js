@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ifport_2ef90_2119',['ifport.f90',['../ifport_8f90.html',1,'']]],
-  ['integration_5fmod_2ef90_2120',['Integration_mod.f90',['../Integration__mod_8f90.html',1,'']]]
+  ['histogram_5fmod_2ef90_0',['Histogram_mod.f90',['../Histogram__mod_8f90.html',1,'']]],
+  ['hypotest_5fmod_2ef90_1',['HypoTest_mod.f90',['../HypoTest__mod_8f90.html',1,'']]]
 ];

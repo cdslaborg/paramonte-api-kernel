@@ -1,0 +1,414 @@
+\hypertarget{namespaceCosmology__mod}{}\doxysection{Cosmology\+\_\+mod Module Reference}
+\label{namespaceCosmology__mod}\index{Cosmology\_mod@{Cosmology\_mod}}
+
+
+This module contains procedures and constants for cosmological calculations.  
+
+
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+pure real(RK) function \mbox{\hyperlink{namespaceCosmology__mod_a9510b3e5c6963dda74a1987aec957315}{getlogdvdz}} (zplus1, logzplus1, twice\+Log\+Lum\+Dis\+Mpc)
+\begin{DoxyCompactList}\small\item\em Return the natural logarithm of the differential comoving volume of cosmos. \end{DoxyCompactList}\item 
+real(RK) \mbox{\hyperlink{namespaceCosmology__mod_abcbca49137b91ccf83b54abd08073044}{get\+Log\+Lum\+Dis\+Wic\+Mpc}} (zplus1)
+\begin{DoxyCompactList}\small\item\em Return the approximate logarithm of the cosmological luminosity distance in units of MPc. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceCosmology__mod_acfc42ca9dec91f28cd3fbf271fbf8f5f}{ldiswickram}} (zplus1)
+\begin{DoxyCompactList}\small\item\em Return the approximation to the cosmological luminosity distance. \end{DoxyCompactList}\item 
+real(RK) \mbox{\hyperlink{namespaceCosmology__mod_aad7938da1eda2e235e20620a0a2242c0}{get\+Look\+Back\+Time}} (zplus1, max\+Relative\+Error, n\+Refinement)
+\begin{DoxyCompactList}\small\item\em Return the cosmological lookback time in GYrs at the given redshift for the assumed cosmological parameters. \end{DoxyCompactList}\item 
+real(RK) \mbox{\hyperlink{namespaceCosmology__mod_ab8d921cc81fa10b405c2113b6d011b4c}{get\+Look\+Back\+Time\+Density}} (zplus1)
+\begin{DoxyCompactList}\small\item\em Return the {\bfseries{differential}} (w.\+r.\+t. {\ttfamily z}) cosmological lookback time in GYrs at the given redshift for the assumed cosmological parameters. \end{DoxyCompactList}\item 
+real(RK) \mbox{\hyperlink{namespaceCosmology__mod_ab7b1656d9eb01abbb603cf5856e9e9e1}{get\+Universe\+Age\+Derivative}} (zplus1)
+\begin{DoxyCompactList}\small\item\em Return the derivative of the age of the Universe, w.\+r.\+t. redshift for a given input redshift + 1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceCosmology__mod_ad9dfda7aaa14cc447dae93d2a28de364}{MODULE\+\_\+\+NAME}} = \char`\"{}@Cosmology\+\_\+mod\char`\"{}
+\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a432241a9826656bc0c127f84813a0d78}{LIGHT\+\_\+\+SPEED}} = 3.e5\+\_\+\+RK
+\begin{DoxyCompactList}\small\item\em LIGHT\+\_\+\+SPEED is the speed of light (Km/s). \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a98c50f34f1ed59379555d7e79bdd833d}{HUBBLE\+\_\+\+CONST}} = 7.\+1e1\+\_\+\+RK
+\begin{DoxyCompactList}\small\item\em HUBBLE\+\_\+\+CONST is the Hubble constant in units of km/s/\+MPc. \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a8afef45edb135ba0ad223989b8f19a44}{HUBBLE\+\_\+\+TIME\+\_\+\+GYRS}} = 13.\+8\+\_\+\+RK
+\begin{DoxyCompactList}\small\item\em hubble time (liddle 2003, page 57) in units of gyrs \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a7c1e723f9c26f62866139dc4f9cc9913}{INVERSE\+\_\+\+HUBBLE\+\_\+\+CONST}} = 1.\+\_\+\+RK / \mbox{\hyperlink{namespaceCosmology__mod_a98c50f34f1ed59379555d7e79bdd833d}{HUBBLE\+\_\+\+CONST}}
+\begin{DoxyCompactList}\small\item\em inverse of HUBBLE\+\_\+\+CONST\+: 0.\+014084507042254 \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a006b3969504835887a1b6fa1f7e7d03d}{LS2\+HC}} = \mbox{\hyperlink{namespaceCosmology__mod_a432241a9826656bc0c127f84813a0d78}{LIGHT\+\_\+\+SPEED}} / \mbox{\hyperlink{namespaceCosmology__mod_a98c50f34f1ed59379555d7e79bdd833d}{HUBBLE\+\_\+\+CONST}}
+\begin{DoxyCompactList}\small\item\em the speed of light in units of km/s divided by the Hubble constant. \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a0a035864b5c70fb1634e36510d38b8bf}{LOGLS2\+HC}} = log(\mbox{\hyperlink{namespaceCosmology__mod_a432241a9826656bc0c127f84813a0d78}{LIGHT\+\_\+\+SPEED}}) -\/ log(\mbox{\hyperlink{namespaceCosmology__mod_a98c50f34f1ed59379555d7e79bdd833d}{HUBBLE\+\_\+\+CONST}})
+\begin{DoxyCompactList}\small\item\em log speed of light in units of km/s divided by the Hubble constant. \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_ad6795a27c87d65c2d4fe40cc63755b3e}{MPC2\+CM}} = 3.\+09e24\+\_\+\+RK
+\begin{DoxyCompactList}\small\item\em 1 Mega Parsec = MPC2\+CM centimeters. \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a8c386dad47bf7975248bf902bd6a435e}{LOGMPC2\+CMSQ4\+PI}} = log(4.\+\_\+\+RK$\ast$PI) + 2.\+\_\+\+RK$\ast$log(\mbox{\hyperlink{namespaceCosmology__mod_ad6795a27c87d65c2d4fe40cc63755b3e}{MPC2\+CM}})
+\begin{DoxyCompactList}\small\item\em log(\+Mega\+Parsec2centimeters). \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a4807afbc83558792b63b5cc1c267e340}{LOG10\+MPC2\+CMSQ4\+PI}} = log10(4.\+\_\+\+RK$\ast$PI) + 2.\+\_\+\+RK$\ast$log10(\mbox{\hyperlink{namespaceCosmology__mod_ad6795a27c87d65c2d4fe40cc63755b3e}{MPC2\+CM}})
+\begin{DoxyCompactList}\small\item\em log10(\+Mega\+Parsec2centimeters). \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_aac3091a5680fb8c29a8702e87b565963}{OMEGA\+\_\+\+DE}} = 0.\+7\+\_\+\+RK
+\begin{DoxyCompactList}\small\item\em Dark Energy density. \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a8f3e1b9d3e515bd28fe15c5f516d6317}{OMEGA\+\_\+\+DM}} = 0.\+3\+\_\+\+RK
+\begin{DoxyCompactList}\small\item\em Dark Matter density. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains procedures and constants for cosmological calculations. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceCosmology__mod_a9510b3e5c6963dda74a1987aec957315}\label{namespaceCosmology__mod_a9510b3e5c6963dda74a1987aec957315}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!getlogdvdz@{getlogdvdz}}
+\index{getlogdvdz@{getlogdvdz}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{getlogdvdz()}{getlogdvdz()}}
+{\footnotesize\ttfamily pure real(RK) function Cosmology\+\_\+mod\+::getlogdvdz (\begin{DoxyParamCaption}\item[{real(RK), intent(in)}]{zplus1,  }\item[{real(RK), intent(in)}]{logzplus1,  }\item[{real(RK)}]{twice\+Log\+Lum\+Dis\+Mpc }\end{DoxyParamCaption})}
+
+
+
+Return the natural logarithm of the differential comoving volume of cosmos. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em zplus1} & \+: The redshift plus 1. \\
+\hline
+\mbox{\texttt{ in}}  & {\em logzplus1} & \+: The logarithm of redshift plus 1. \\
+\hline
+\mbox{\texttt{ in}}  & {\em twice\+Log\+Lum\+Dis\+Mpc} & \+: The term representing the logarithm of the luminosity distance squared.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily logdvdz} \+: The natural logarithm of the differential comoving volume of cosmos. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00083}{83}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCosmology__mod_abcbca49137b91ccf83b54abd08073044}\label{namespaceCosmology__mod_abcbca49137b91ccf83b54abd08073044}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!getLogLumDisWicMpc@{getLogLumDisWicMpc}}
+\index{getLogLumDisWicMpc@{getLogLumDisWicMpc}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{getLogLumDisWicMpc()}{getLogLumDisWicMpc()}}
+{\footnotesize\ttfamily real(RK) Cosmology\+\_\+mod\+::get\+Log\+Lum\+Dis\+Wic\+Mpc (\begin{DoxyParamCaption}\item[{real(RK), intent(in)}]{zplus1 }\end{DoxyParamCaption})}
+
+
+
+Return the approximate logarithm of the cosmological luminosity distance in units of MPc. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em zplus1} & \+: The redshift plus 1.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily log\+Lum\+Dis\+Wic\+Mpc} \+: The approximate logarithm of the cosmological luminosity distance.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The approximation is accurate with a relative error of 0.\+001 for any redshift above 0.\+1, or {\ttfamily zplus1 \texorpdfstring{$>$}{>}= 1.\+1}. Note that for redshifts less than 0.\+1, the error in the calculated luminosity distance grows to more than 0.\+001. This algorithm should therefore not be used for zplus1\texorpdfstring{$<$}{<}0.\+1.
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+The distance is calculated according to approximate algorithm of Wickramasinghe \& Okwatta (2010). 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00112}{112}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCosmology__mod_aad7938da1eda2e235e20620a0a2242c0}\label{namespaceCosmology__mod_aad7938da1eda2e235e20620a0a2242c0}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!getLookBackTime@{getLookBackTime}}
+\index{getLookBackTime@{getLookBackTime}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{getLookBackTime()}{getLookBackTime()}}
+{\footnotesize\ttfamily real(RK) Cosmology\+\_\+mod\+::get\+Look\+Back\+Time (\begin{DoxyParamCaption}\item[{real(RK), intent(in)}]{zplus1,  }\item[{real(RK)}]{max\+Relative\+Error,  }\item[{integer(IK)}]{n\+Refinement }\end{DoxyParamCaption})}
+
+
+
+Return the cosmological lookback time in GYrs at the given redshift for the assumed cosmological parameters. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em zplus1} & \+: The redshift plus 1. \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+Relative\+Error} & \+: The maximum tolerance for error in the numerical integration ({\bfseries{optional}}, default = 1.\+e-\/6). \\
+\hline
+\mbox{\texttt{ in}}  & {\em n\+Refinement} & \+: The number of refinements in the Romberg numerical integration ({\bfseries{optional}}, default = 5). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily look\+Back\+Time} \+: The cosmological lookback time in GYrs at the given redshift.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The rest of the required parameters are taken from the module\+:
+\begin{DoxyItemize}
+\item {\ttfamily HUBBLE\+\_\+\+TIME\+\_\+\+GYRS} \+: The Hubble time in units of Gyrs (Giga Years). It should be a number close to 13.\+8 Gyrs (Liddle, 2003, Page 57).
+\end{DoxyItemize}
+
+The integrations are performed using the Romberg integration method.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Sunday 2\+:31 PM, January 6, 2013, IFS, The University of Texas at Austin. 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00190}{190}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCosmology__mod_ab8d921cc81fa10b405c2113b6d011b4c}\label{namespaceCosmology__mod_ab8d921cc81fa10b405c2113b6d011b4c}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!getLookBackTimeDensity@{getLookBackTimeDensity}}
+\index{getLookBackTimeDensity@{getLookBackTimeDensity}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{getLookBackTimeDensity()}{getLookBackTimeDensity()}}
+{\footnotesize\ttfamily real(RK) Cosmology\+\_\+mod\+::get\+Look\+Back\+Time\+Density (\begin{DoxyParamCaption}\item[{real(RK), intent(in)}]{zplus1 }\end{DoxyParamCaption})}
+
+
+
+Return the {\bfseries{differential}} (w.\+r.\+t. {\ttfamily z}) cosmological lookback time in GYrs at the given redshift for the assumed cosmological parameters. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em zplus1} & \+: The redshift plus 1. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily look\+Back\+Time\+Dnesity} \+: The cosmological lookback time in GYrs at the given redshift.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The rest of the required parameters are taken from the module\+:
+\begin{DoxyItemize}
+\item {\ttfamily OMEGA\+\_\+\+DE} \+: the dark energy density,
+\item {\ttfamily OMEGA\+\_\+\+DM} \+: the dark matter density.
+\end{DoxyItemize}
+
+This function could have become an internal function within \mbox{\hyperlink{namespaceCosmology__mod_aad7938da1eda2e235e20620a0a2242c0}{get\+Look\+Back\+Time()}}. However, the library yields segmentation fault error when compiled and run on the Windows Subsystem for Linux Ubuntu with GFortran. As such, it is implemented as an independent function.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Sunday 2\+:31 PM, January 6, 2013, IFS, The University of Texas at Austin. 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00250}{250}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCosmology__mod_ab7b1656d9eb01abbb603cf5856e9e9e1}\label{namespaceCosmology__mod_ab7b1656d9eb01abbb603cf5856e9e9e1}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!getUniverseAgeDerivative@{getUniverseAgeDerivative}}
+\index{getUniverseAgeDerivative@{getUniverseAgeDerivative}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{getUniverseAgeDerivative()}{getUniverseAgeDerivative()}}
+{\footnotesize\ttfamily real(RK) Cosmology\+\_\+mod\+::get\+Universe\+Age\+Derivative (\begin{DoxyParamCaption}\item[{real(RK), intent(in)}]{zplus1 }\end{DoxyParamCaption})}
+
+
+
+Return the derivative of the age of the Universe, w.\+r.\+t. redshift for a given input redshift + 1. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em zplus1} & \+: The redshift plus 1.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily universe\+Age\+Derivative} \+: The derivative of the age of the Universe, w.\+r.\+t. redshift for a given input {\ttfamily zplus1}.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The rest of the required parameters are taken from the module\+:
+\begin{DoxyItemize}
+\item {\ttfamily INVERSE\+\_\+\+HUBBLE\+\_\+\+CONST}
+\item {\ttfamily OMEGA\+\_\+\+DE}
+\item {\ttfamily OMEGA\+\_\+\+DM}
+\end{DoxyItemize}
+
+The integrations are performed using the Romberg integration method.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Sunday 2\+:31 PM, January 6, 2013, IFS, The University of Texas at Austin. 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00279}{279}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCosmology__mod_acfc42ca9dec91f28cd3fbf271fbf8f5f}\label{namespaceCosmology__mod_acfc42ca9dec91f28cd3fbf271fbf8f5f}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!ldiswickram@{ldiswickram}}
+\index{ldiswickram@{ldiswickram}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{ldiswickram()}{ldiswickram()}}
+{\footnotesize\ttfamily pure real(RK) function Cosmology\+\_\+mod\+::ldiswickram (\begin{DoxyParamCaption}\item[{real(RK), intent(in)}]{zplus1 }\end{DoxyParamCaption})}
+
+
+
+Return the approximation to the cosmological luminosity distance. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em zplus1} & \+: The redshift plus 1.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily ldiswickram} \+: The approximate cosmological luminosity distance.
+\end{DoxyReturn}
+The approximation is accurate with a relative error of 0.\+001 for any redshift above 0.\+1.
+
+\begin{DoxyRemark}{Remarks}
+This function is the same as \mbox{\hyperlink{namespaceCosmology__mod_abcbca49137b91ccf83b54abd08073044}{get\+Log\+Lum\+Dis\+Wic\+Mpc()}} function, except for the fact that it return the natural value, as opposed to the natural logarithm. It is kept only for legacy reasons and should not be used in new code. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00153}{153}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceCosmology__mod_a98c50f34f1ed59379555d7e79bdd833d}\label{namespaceCosmology__mod_a98c50f34f1ed59379555d7e79bdd833d}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!HUBBLE\_CONST@{HUBBLE\_CONST}}
+\index{HUBBLE\_CONST@{HUBBLE\_CONST}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{HUBBLE\_CONST}{HUBBLE\_CONST}}
+{\footnotesize\ttfamily real(RK), parameter Cosmology\+\_\+mod\+::\+HUBBLE\+\_\+\+CONST = 7.\+1e1\+\_\+\+RK}
+
+
+
+HUBBLE\+\_\+\+CONST is the Hubble constant in units of km/s/\+MPc. 
+
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00057}{57}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCosmology__mod_a8afef45edb135ba0ad223989b8f19a44}\label{namespaceCosmology__mod_a8afef45edb135ba0ad223989b8f19a44}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!HUBBLE\_TIME\_GYRS@{HUBBLE\_TIME\_GYRS}}
+\index{HUBBLE\_TIME\_GYRS@{HUBBLE\_TIME\_GYRS}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{HUBBLE\_TIME\_GYRS}{HUBBLE\_TIME\_GYRS}}
+{\footnotesize\ttfamily real(RK), parameter Cosmology\+\_\+mod\+::\+HUBBLE\+\_\+\+TIME\+\_\+\+GYRS = 13.\+8\+\_\+\+RK}
+
+
+
+hubble time (liddle 2003, page 57) in units of gyrs 
+
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00058}{58}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCosmology__mod_a7c1e723f9c26f62866139dc4f9cc9913}\label{namespaceCosmology__mod_a7c1e723f9c26f62866139dc4f9cc9913}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!INVERSE\_HUBBLE\_CONST@{INVERSE\_HUBBLE\_CONST}}
+\index{INVERSE\_HUBBLE\_CONST@{INVERSE\_HUBBLE\_CONST}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{INVERSE\_HUBBLE\_CONST}{INVERSE\_HUBBLE\_CONST}}
+{\footnotesize\ttfamily real(RK), parameter Cosmology\+\_\+mod\+::\+INVERSE\+\_\+\+HUBBLE\+\_\+\+CONST = 1.\+\_\+\+RK / \mbox{\hyperlink{namespaceCosmology__mod_a98c50f34f1ed59379555d7e79bdd833d}{HUBBLE\+\_\+\+CONST}}}
+
+
+
+inverse of HUBBLE\+\_\+\+CONST\+: 0.\+014084507042254 
+
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00059}{59}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCosmology__mod_a432241a9826656bc0c127f84813a0d78}\label{namespaceCosmology__mod_a432241a9826656bc0c127f84813a0d78}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!LIGHT\_SPEED@{LIGHT\_SPEED}}
+\index{LIGHT\_SPEED@{LIGHT\_SPEED}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{LIGHT\_SPEED}{LIGHT\_SPEED}}
+{\footnotesize\ttfamily real(RK), parameter Cosmology\+\_\+mod\+::\+LIGHT\+\_\+\+SPEED = 3.e5\+\_\+\+RK}
+
+
+
+LIGHT\+\_\+\+SPEED is the speed of light (Km/s). 
+
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00056}{56}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCosmology__mod_a4807afbc83558792b63b5cc1c267e340}\label{namespaceCosmology__mod_a4807afbc83558792b63b5cc1c267e340}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!LOG10MPC2CMSQ4PI@{LOG10MPC2CMSQ4PI}}
+\index{LOG10MPC2CMSQ4PI@{LOG10MPC2CMSQ4PI}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{LOG10MPC2CMSQ4PI}{LOG10MPC2CMSQ4PI}}
+{\footnotesize\ttfamily real(RK), parameter Cosmology\+\_\+mod\+::\+LOG10\+MPC2\+CMSQ4\+PI = log10(4.\+\_\+\+RK$\ast$PI) + 2.\+\_\+\+RK$\ast$log10(\mbox{\hyperlink{namespaceCosmology__mod_ad6795a27c87d65c2d4fe40cc63755b3e}{MPC2\+CM}})}
+
+
+
+log10(\+Mega\+Parsec2centimeters). 
+
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00064}{64}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCosmology__mod_a0a035864b5c70fb1634e36510d38b8bf}\label{namespaceCosmology__mod_a0a035864b5c70fb1634e36510d38b8bf}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!LOGLS2HC@{LOGLS2HC}}
+\index{LOGLS2HC@{LOGLS2HC}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{LOGLS2HC}{LOGLS2HC}}
+{\footnotesize\ttfamily real(RK), parameter Cosmology\+\_\+mod\+::\+LOGLS2\+HC = log(\mbox{\hyperlink{namespaceCosmology__mod_a432241a9826656bc0c127f84813a0d78}{LIGHT\+\_\+\+SPEED}}) -\/ log(\mbox{\hyperlink{namespaceCosmology__mod_a98c50f34f1ed59379555d7e79bdd833d}{HUBBLE\+\_\+\+CONST}})}
+
+
+
+log speed of light in units of km/s divided by the Hubble constant. 
+
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00061}{61}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCosmology__mod_a8c386dad47bf7975248bf902bd6a435e}\label{namespaceCosmology__mod_a8c386dad47bf7975248bf902bd6a435e}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!LOGMPC2CMSQ4PI@{LOGMPC2CMSQ4PI}}
+\index{LOGMPC2CMSQ4PI@{LOGMPC2CMSQ4PI}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{LOGMPC2CMSQ4PI}{LOGMPC2CMSQ4PI}}
+{\footnotesize\ttfamily real(RK), parameter Cosmology\+\_\+mod\+::\+LOGMPC2\+CMSQ4\+PI = log(4.\+\_\+\+RK$\ast$PI) + 2.\+\_\+\+RK$\ast$log(\mbox{\hyperlink{namespaceCosmology__mod_ad6795a27c87d65c2d4fe40cc63755b3e}{MPC2\+CM}})}
+
+
+
+log(\+Mega\+Parsec2centimeters). 
+
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00063}{63}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCosmology__mod_a006b3969504835887a1b6fa1f7e7d03d}\label{namespaceCosmology__mod_a006b3969504835887a1b6fa1f7e7d03d}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!LS2HC@{LS2HC}}
+\index{LS2HC@{LS2HC}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{LS2HC}{LS2HC}}
+{\footnotesize\ttfamily real(RK), parameter Cosmology\+\_\+mod\+::\+LS2\+HC = \mbox{\hyperlink{namespaceCosmology__mod_a432241a9826656bc0c127f84813a0d78}{LIGHT\+\_\+\+SPEED}} / \mbox{\hyperlink{namespaceCosmology__mod_a98c50f34f1ed59379555d7e79bdd833d}{HUBBLE\+\_\+\+CONST}}}
+
+
+
+the speed of light in units of km/s divided by the Hubble constant. 
+
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00060}{60}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCosmology__mod_ad9dfda7aaa14cc447dae93d2a28de364}\label{namespaceCosmology__mod_ad9dfda7aaa14cc447dae93d2a28de364}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character($\ast$), parameter Cosmology\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Cosmology\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00052}{52}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCosmology__mod_ad6795a27c87d65c2d4fe40cc63755b3e}\label{namespaceCosmology__mod_ad6795a27c87d65c2d4fe40cc63755b3e}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!MPC2CM@{MPC2CM}}
+\index{MPC2CM@{MPC2CM}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{MPC2CM}{MPC2CM}}
+{\footnotesize\ttfamily real(RK), parameter Cosmology\+\_\+mod\+::\+MPC2\+CM = 3.\+09e24\+\_\+\+RK}
+
+
+
+1 Mega Parsec = MPC2\+CM centimeters. 
+
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00062}{62}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCosmology__mod_aac3091a5680fb8c29a8702e87b565963}\label{namespaceCosmology__mod_aac3091a5680fb8c29a8702e87b565963}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!OMEGA\_DE@{OMEGA\_DE}}
+\index{OMEGA\_DE@{OMEGA\_DE}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{OMEGA\_DE}{OMEGA\_DE}}
+{\footnotesize\ttfamily real(RK), parameter Cosmology\+\_\+mod\+::\+OMEGA\+\_\+\+DE = 0.\+7\+\_\+\+RK}
+
+
+
+Dark Energy density. 
+
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00065}{65}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCosmology__mod_a8f3e1b9d3e515bd28fe15c5f516d6317}\label{namespaceCosmology__mod_a8f3e1b9d3e515bd28fe15c5f516d6317}} 
+\index{Cosmology\_mod@{Cosmology\_mod}!OMEGA\_DM@{OMEGA\_DM}}
+\index{OMEGA\_DM@{OMEGA\_DM}!Cosmology\_mod@{Cosmology\_mod}}
+\doxysubsubsection{\texorpdfstring{OMEGA\_DM}{OMEGA\_DM}}
+{\footnotesize\ttfamily real(RK), parameter Cosmology\+\_\+mod\+::\+OMEGA\+\_\+\+DM = 0.\+3\+\_\+\+RK}
+
+
+
+Dark Matter density. 
+
+
+
+Definition at line \mbox{\hyperlink{Cosmology__mod_8f90_source_l00066}{66}} of file \mbox{\hyperlink{Cosmology__mod_8f90_source}{Cosmology\+\_\+mod.\+f90}}.
+

@@ -1,4 +1,4 @@
-/* The standard CSS for doxygen 1.8.20 */
+/* The standard CSS for doxygen 1.9.3 */
 
 body, table, div, p, dl {
 	font: 400 14px/22px Roboto,sans-serif;
@@ -103,29 +103,95 @@ caption {
 }
 
 span.legend {
-        font-size: 70%;
-        text-align: center;
-}
-
-h3.version {
-        font-size: 90%;
-        text-align: center;
-}
-
-div.qindex, div.navtab{
-	background-color: #FEEEE3;
-	border: 1px solid #FEAE7C;
+	font-size: 70%;
 	text-align: center;
 }
 
-div.qindex, div.navpath {
-	width: 100%;
-	line-height: 140%;
+h3.version {
+	font-size: 90%;
+	text-align: center;
 }
 
 div.navtab {
-	margin-right: 15px;
+	border-right: 1px solid #FEAE7C;
+	padding-right: 15px;
+	text-align: right;
+	line-height: 110%;
 }
+
+div.navtab table {
+	border-spacing: 0;
+}
+
+td.navtab {
+	padding-right: 6px;
+	padding-left: 6px;
+}
+td.navtabHL {
+	background-image: url('tab_a.png');
+	background-repeat:repeat-x;
+	padding-right: 6px;
+	padding-left: 6px;
+}
+
+td.navtabHL a, td.navtabHL a:visited {
+	color: #fff;
+	text-shadow: 0px 1px 1px rgba(0, 0, 0, 1.0);
+}
+
+a.navtab {
+	font-weight: bold;
+}
+
+div.qindex{
+	text-align: center;
+	width: 100%;
+	line-height: 140%;
+	font-size: 130%;
+	color: #A0A0A0;
+}
+
+dt.alphachar{
+	font-size: 180%;
+	font-weight: bold;
+}
+
+.alphachar a{
+	color: black;
+}
+
+.alphachar a:hover, .alphachar a:visited{
+	text-decoration: none;
+}
+
+.classindex dl {
+	padding: 25px;
+	column-count:1
+}
+
+.classindex dd {
+	display:inline-block;
+	margin-left: 50px;
+	width: 90%;
+	line-height: 1.15em;
+}
+
+.classindex dl.odd {
+	background-color: #FFF9F5;
+}
+
+@media(min-width: 1120px) {
+	.classindex dl {
+		column-count:2
+	}
+}
+
+@media(min-width: 1320px) {
+	.classindex dl {
+		column-count:3
+	}
+}
+
 
 /* @group Link Styling */
 
@@ -141,17 +207,6 @@ a {
 
 a:hover {
 	text-decoration: underline;
-}
-
-a.qindex {
-	font-weight: bold;
-}
-
-a.qindexHL {
-	font-weight: bold;
-	background-color: #FFA771;
-	color: #FFFFFF;
-	border: 1px double #FF9452;
 }
 
 .contents a.qindexHL:visited {
@@ -172,6 +227,33 @@ a.code, a.code:visited, a.line, a.line:visited {
 a.codeRef, a.codeRef:visited, a.lineRef, a.lineRef:visited {
 	color: #E95900; 
 }
+
+a.code.hl_class { /* style for links to class names in code snippets */ }
+a.code.hl_struct { /* style for links to struct names in code snippets */ }
+a.code.hl_union { /* style for links to union names in code snippets */ }
+a.code.hl_interface { /* style for links to interface names in code snippets */ }
+a.code.hl_protocol { /* style for links to protocol names in code snippets */ }
+a.code.hl_category { /* style for links to category names in code snippets */ }
+a.code.hl_exception { /* style for links to exception names in code snippets */ }
+a.code.hl_service { /* style for links to service names in code snippets */ }
+a.code.hl_singleton { /* style for links to singleton names in code snippets */ }
+a.code.hl_concept { /* style for links to concept names in code snippets */ }
+a.code.hl_namespace { /* style for links to namespace names in code snippets */ }
+a.code.hl_package { /* style for links to package names in code snippets */ }
+a.code.hl_define { /* style for links to macro names in code snippets */ }
+a.code.hl_function { /* style for links to function names in code snippets */ }
+a.code.hl_variable { /* style for links to variable names in code snippets */ }
+a.code.hl_typedef { /* style for links to typedef names in code snippets */ }
+a.code.hl_enumvalue { /* style for links to enum value names in code snippets */ }
+a.code.hl_enumeration { /* style for links to enumeration names in code snippets */ }
+a.code.hl_signal { /* style for links to Qt signal names in code snippets */ }
+a.code.hl_slot { /* style for links to Qt slot names in code snippets */ }
+a.code.hl_friend { /* style for links to friend names in code snippets */ }
+a.code.hl_dcop { /* style for links to KDE3 DCOP names in code snippets */ }
+a.code.hl_property { /* style for links to property names in code snippets */ }
+a.code.hl_event { /* style for links to event names in code snippets */ }
+a.code.hl_sequence { /* style for links to sequence names in code snippets */ }
+a.code.hl_dictionary { /* style for links to dictionary names in code snippets */ }
 
 /* @end */
 
@@ -258,6 +340,7 @@ div.line.glow {
 
 span.lineno {
 	padding-right: 4px;
+        margin-right: 9px;
 	text-align: right;
 	border-right: 2px solid #0F0;
 	background-color: #E8E8E8;
@@ -384,6 +467,12 @@ img.footer {
 	vertical-align: middle;
 }
 
+.compoundTemplParams {
+	color: #E95900;
+	font-size: 80%;
+	line-height: 120%;
+}
+
 /* @group Code Colorization */
 
 span.keyword {
@@ -429,6 +518,139 @@ span.vhdlkeyword {
 span.vhdllogic { 
 	color: #ff0000 
 }
+
+/* Begin Fortran Code Colorization */
+
+span.fortran_keywordflow {
+    /* dull orange
+	color: #e08000
+	color: #FF6600 bright orange
+    */
+	color: #ff8000
+}
+
+span.fortran_statement {
+    /* deep blue */
+	color: #0000EE
+}
+
+span.fortran_function {
+    /* purple */
+	color: #8000ff
+}
+
+span.fortran_subroutine {
+    /* purple */
+	color: #8000ff
+}
+
+span.fortran_named_const {
+    /* solid red */
+	color: #FF0000
+}
+
+span.fortran_numeric_literal {
+    /* solid red */
+	color: #FF0000
+}
+
+span.fortran_operator_logical {
+    /* solid red */
+	color: #FF1493
+}
+
+span.fortran_operator_symbols {
+    /* solid red */
+	color: #FF1493
+}
+
+span.fortran_inrinsic_module {
+    /* solid red
+    */
+	color: #FF0000
+    /* deep red
+	color: #9e0202
+    */
+}
+
+span.fortran_inrinsic_dtype {
+    /* solid red
+    */
+	color: #FF0000
+    /* deep red
+	color: #9e0202
+    */
+}
+
+span.fortran_attribute {
+    /* pink */
+	color: #FF1493
+}
+
+span.fortran_spcifier {
+    font-style: italic;
+    /* dark gray */
+	color: #820000
+    /* 
+	color: #4d4d54
+    */
+}
+
+span.fortran_prefix {
+    /* deep blue */
+	color: #0000EE
+}
+
+span.fortran_suffix {
+    /* deep blue */
+	color: #0000EE
+}
+
+span.fortran_string {
+    /* green */
+    /* 
+	color: #008080;
+	color: #00B000;
+    */
+	color: #00B000;
+}
+
+span.fortran_comment {
+    /* green */
+	color: #008000
+}
+
+span.fortran_directive_omp {
+    /* preprocessor color */
+	color: #02b4cc
+}
+
+span.fortran_mpi {
+    /* preprocessor color */
+	color: #A52A2A
+}
+
+span.fortran_directive_intel {
+    /* preprocessor color */
+    /* 
+	color: #806020
+	color: #04D4F0
+	color: #059DC0
+    */
+	color: #02b4cc
+}
+
+span.fortran_directive_intel_statement {
+    /* pink */
+	color: #02b4cc
+}
+
+span.fortran_directive_intel_attribute {
+    /* pink */
+	color: #FF1493
+}
+
+/* End Fortran Code Colorization */
 
 blockquote {
         background-color: #FFF8F3;
@@ -1267,6 +1489,11 @@ dl.section dd {
 }
 
 
+#projectrow
+{
+	height: 56px;
+}
+
 #projectlogo
 {
 	text-align: center;
@@ -1282,18 +1509,19 @@ dl.section dd {
 #projectalign
 {
         vertical-align: middle;
+        padding-left: 0.5em;
 }
 
 #projectname
 {
-	font: 300% Tahoma, Arial,sans-serif;
+	font: 200% Tahoma, Arial,sans-serif;
 	margin: 0px;
 	padding: 2px 0px;
 }
     
 #projectbrief
 {
-	font: 120% Tahoma, Arial,sans-serif;
+	font: 90% Tahoma, Arial,sans-serif;
 	margin: 0px;
 	padding: 0px;
 }
@@ -1424,6 +1652,12 @@ div.toc li.level3 {
 
 div.toc li.level4 {
         margin-left: 45px;
+}
+
+span.emoji {
+        /* font family used at the site: https://unicode.org/emoji/charts/full-emoji-list.html
+         * font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", Times, Symbola, Aegyptus, Code2000, Code2001, Code2002, Musica, serif, LastResort;
+         */
 }
 
 .PageDocRTL-title div.toc li.level1 {

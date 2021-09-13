@@ -1,0 +1,46 @@
+\hypertarget{Array__mod_8f90}{}\doxysection{/home/amir/git/paramonte/src/kernel/\+Array\+\_\+mod.f90 File Reference}
+\label{Array__mod_8f90}\index{/home/amir/git/paramonte/src/kernel/Array\_mod.f90@{/home/amir/git/paramonte/src/kernel/Array\_mod.f90}}
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfaceArray__mod_1_1flatten}{Array\+\_\+mod\+::flatten}}
+\item 
+interface \mbox{\hyperlink{interfaceArray__mod_1_1getCumSum}{Array\+\_\+mod\+::get\+Cum\+Sum}}
+\item 
+interface \mbox{\hyperlink{interfaceArray__mod_1_1getCumSumNormedExp}{Array\+\_\+mod\+::get\+Cum\+Sum\+Normed\+Exp}}
+\item 
+interface \mbox{\hyperlink{interfaceArray__mod_1_1getExpCDF}{Array\+\_\+mod\+::get\+Exp\+CDF}}
+\item 
+interface \mbox{\hyperlink{interfaceArray__mod_1_1getCumSumReverse}{Array\+\_\+mod\+::get\+Cum\+Sum\+Reverse}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespaceArray__mod}{Array\+\_\+mod}}
+\begin{DoxyCompactList}\small\item\em This module contains procedures and interfaces for manipulating arrays. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+real(RK), dimension(\+:), allocatable \mbox{\hyperlink{namespaceArray__mod_adc03ea78286b00b7bc1e22c7ef8df836}{Array\+\_\+mod\+::gen\+Lin\+Space}} (x1, x2, count, fopen, lopen)
+\begin{DoxyCompactList}\small\item\em Returns {\ttfamily count} evenly spaced points over the interval {\ttfamily \mbox{[}x1, x2\mbox{]}} if {\ttfamily x1 \texorpdfstring{$<$}{<} x2}, or {\ttfamily \mbox{[}x2, x1\mbox{]}} if {\ttfamily x2 \texorpdfstring{$<$}{<} x1}. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:), allocatable \mbox{\hyperlink{namespaceArray__mod_a215f73567d5ad6e1751f96a0e185efd4}{Array\+\_\+mod\+::gen\+Log\+Space}} (logx1, logx2, count, fopen, lopen, base)
+\begin{DoxyCompactList}\small\item\em Returns {\ttfamily count} evenly-\/logarithmically-\/spaced points over the interval {\ttfamily \mbox{[}base$\ast$$\ast$logx1, base$\ast$$\ast$logx2\mbox{]}} if {\ttfamily logx1 \texorpdfstring{$<$}{<} logx2}, or over the interval {\ttfamily \mbox{[}logx2, logx1\mbox{]}} if {\ttfamily logx2 \texorpdfstring{$<$}{<} logx1}. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:), allocatable \mbox{\hyperlink{namespaceArray__mod_afdc50d0d3485c3ba486865f4e5e796ab}{Array\+\_\+mod\+::flatten\+\_\+1D}} (Point, Weight, sum\+Weight)
+\begin{DoxyCompactList}\small\item\em Flatten the input {\ttfamily Point} array such that each element of the output {\ttfamily Flattened\+Point} array has the same unity weight as elements in the array. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceArray__mod_a5f73c12626f32f3da12149969fdd9d1d}{Array\+\_\+mod\+::flatten\+\_\+2D}} (Point, Weight, sum\+Weight)
+\begin{DoxyCompactList}\small\item\em Flatten the input {\ttfamily Point} array such that each element of the output {\ttfamily Flattened\+Point} array has the same unity weight as elements in the array. \end{DoxyCompactList}\item 
+integer(IK), dimension(len\+Array) \mbox{\hyperlink{namespaceArray__mod_a26cd1e70fee33f505353d76c3fa9ed3b}{Array\+\_\+mod\+::get\+Cum\+Sum\+\_\+\+IK}} (len\+Array, Array)
+\begin{DoxyCompactList}\small\item\em Return the cumulative sum of the input array. \end{DoxyCompactList}\item 
+real(RK), dimension(len\+Array) \mbox{\hyperlink{namespaceArray__mod_a0d068b058503167461dd95c31a964df3}{Array\+\_\+mod\+::get\+Cum\+Sum\+\_\+\+RK}} (len\+Array, Array)
+\begin{DoxyCompactList}\small\item\em Return the cumulative sum of the input array. \end{DoxyCompactList}\item 
+integer(IK), dimension(len\+Array) \mbox{\hyperlink{namespaceArray__mod_aeca97664d9469a6868b0f271e8f3c5d1}{Array\+\_\+mod\+::get\+Cum\+Sum\+Reverse\+\_\+\+IK}} (len\+Array, Array)
+\begin{DoxyCompactList}\small\item\em Return the cumulative sum of the input integer array, in the backward direction. \end{DoxyCompactList}\item 
+real(RK), dimension(len\+Array) \mbox{\hyperlink{namespaceArray__mod_af7734ae37addbab57ba1d23826660ebb}{Array\+\_\+mod\+::get\+Cum\+Sum\+Reverse\+\_\+\+RK}} (len\+Array, Array)
+\begin{DoxyCompactList}\small\item\em Return the cumulative sum of the input real array, in the backward direction. \end{DoxyCompactList}\item 
+real(RK), dimension(len\+Log\+Value) \mbox{\hyperlink{namespaceArray__mod_ad19e89ad6f266f0cba2d07f10396815f}{Array\+\_\+mod\+::get\+Cum\+Sum\+Normed\+Exp\+\_\+\+RK}} (len\+Log\+Value, Log\+Value, max\+Log\+Value)
+\begin{DoxyCompactList}\small\item\em Return the normalized cumulative sum (i.\+e., Cumulative Density Function (CDF)) of the exponentials of the input real vector robustly (without overflow or underflow). The last element of the returned vector is one. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceArray__mod_ab61502fe8ce3b44504d3e29999a1a625}{Array\+\_\+mod\+::\+MODULE\+\_\+\+NAME}} = \char`\"{}@Array\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}

@@ -1,0 +1,52 @@
+\hypertarget{DistMultiNorm__mod_8f90}{}\doxysection{/home/amir/git/paramonte/src/kernel/\+Dist\+Multi\+Norm\+\_\+mod.f90 File Reference}
+\label{DistMultiNorm__mod_8f90}\index{/home/amir/git/paramonte/src/kernel/DistMultiNorm\_mod.f90@{/home/amir/git/paramonte/src/kernel/DistMultiNorm\_mod.f90}}
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structDistMultiNorm__mod_1_1DistMultiNorm__type}{Dist\+Multi\+Norm\+\_\+mod\+::\+Dist\+Multi\+Norm\+\_\+type}}
+\item 
+interface \mbox{\hyperlink{interfaceDistMultiNorm__mod_1_1getLogPDF}{Dist\+Multi\+Norm\+\_\+mod\+::get\+Log\+PDF}}
+\item 
+interface \mbox{\hyperlink{interfaceDistMultiNorm__mod_1_1getLogProbDenMVN}{Dist\+Multi\+Norm\+\_\+mod\+::get\+Log\+Prob\+Den\+MVN}}
+\item 
+interface \mbox{\hyperlink{interfaceDistMultiNorm__mod_1_1getRand}{Dist\+Multi\+Norm\+\_\+mod\+::get\+Rand}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespaceDistMultiNorm__mod}{Dist\+Multi\+Norm\+\_\+mod}}
+\begin{DoxyCompactList}\small\item\em This module contains the classes and procedures for setting up and computing the properties of the Multi\+Variate Normal (MVN) Distribution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+type(Dist\+Multi\+Norm\+\_\+type) function \mbox{\hyperlink{namespaceDistMultiNorm__mod_abb330245d1e0ea8ff69522a14d223bbe}{Dist\+Multi\+Norm\+\_\+mod\+::construct}} (ndim, Mean, Cov\+Upp, Std, Err)
+\begin{DoxyCompactList}\small\item\em Set the Dist\+Multi\+Norm properties and return an object of type \mbox{\hyperlink{structDistMultiNorm__mod_1_1DistMultiNorm__type}{Dist\+Multi\+Norm\+\_\+type}} containing the properties of the specified Multi\+Variate Normal (MVN) distribution in {\ttfamily ndim} dimensions. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceDistMultiNorm__mod_abc50852f3f4a65e6dee14e501df15a60}{Dist\+Multi\+Norm\+\_\+mod\+::logpdf}} (self, Point)
+\begin{DoxyCompactList}\small\item\em Return the log-\/value of the probability density function (PDF). Note that a PDF is, by definition, normalized and integrates to one over the support of the distribution. \end{DoxyCompactList}\item 
+real(RK) \mbox{\hyperlink{namespaceDistMultiNorm__mod_afc9fae8e16a207215436f70cac68e0c0}{Dist\+Multi\+Norm\+\_\+mod\+::get\+Log\+Norm\+Fac\+PDF}} (ndim, log\+Det\+Inv\+Cov\+Mat)
+\begin{DoxyCompactList}\small\item\em Return the natural logarithm of the normalization factor of the Probability Density Function (PDF) of the MVN distribution. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceDistMultiNorm__mod_a00ea83257b95afc9e7c23500cfa561ac}{Dist\+Multi\+Norm\+\_\+mod\+::get\+Entropy}} (ndim, log\+Det\+Inv\+Cov\+Mat)
+\begin{DoxyCompactList}\small\item\em Return the natural logarithm of the normalization factor of the Probability Density Function (PDF) of the MVN distribution. \end{DoxyCompactList}\item 
+real(RK) \mbox{\hyperlink{namespaceDistMultiNorm__mod_a7e168784a9dba4f4c461a75ee6648231}{Dist\+Multi\+Norm\+\_\+mod\+::get\+Log\+Prob\+Den\+MVNSP\+\_\+\+RK}} (nd, Mean, Inv\+Cov\+Mat, log\+Sqrt\+Det\+Inv\+Cov\+Mat, Point)
+\item 
+real(RK), dimension(np) \mbox{\hyperlink{namespaceDistMultiNorm__mod_a36537933b31c0f7785057b842905b34e}{Dist\+Multi\+Norm\+\_\+mod\+::get\+Log\+Prob\+Den\+MVNMP\+\_\+\+RK}} (nd, np, Mean, Inv\+Cov\+Mat, log\+Sqrt\+Det\+Inv\+Cov\+Mat, Point)
+\item 
+complex(CK) \mbox{\hyperlink{namespaceDistMultiNorm__mod_a3c8b9a3e83c4b43e290fe2f49987f10e}{Dist\+Multi\+Norm\+\_\+mod\+::get\+Log\+Prob\+Den\+MVNSP\+\_\+\+CK}} (nd, Mean, Inv\+Cov\+Mat, log\+Sqrt\+Det\+Inv\+Cov\+Mat, Point)
+\item 
+complex(CK), dimension(np) \mbox{\hyperlink{namespaceDistMultiNorm__mod_a8986781369eae9a4a0aa482ea88b7e9b}{Dist\+Multi\+Norm\+\_\+mod\+::get\+Log\+Prob\+Den\+MVNMP\+\_\+\+CK}} (nd, np, Mean, Inv\+Cov\+Mat, log\+Sqrt\+Det\+Inv\+Cov\+Mat, Point)
+\item 
+real(RK), dimension(nd) \mbox{\hyperlink{namespaceDistMultiNorm__mod_aa635211667bf48a886860aacbf5c0cb5}{Dist\+Multi\+Norm\+\_\+mod\+::get\+Rand\+Stan\+MVN}} (nd)
+\begin{DoxyCompactList}\small\item\em Return a Standard Multi\+Variate Normal (MVN) random vector with the zero mean and identity covariance matrix. \end{DoxyCompactList}\item 
+real(RK), dimension(nd) \mbox{\hyperlink{namespaceDistMultiNorm__mod_a37e79d85f33390f3a2ec82b45e523f21}{Dist\+Multi\+Norm\+\_\+mod\+::get\+Rand\+Shifted\+MVN}} (nd, Mean)
+\begin{DoxyCompactList}\small\item\em Return a Standard Multi\+Variate Normal (MVN) random vector with the given mean and identity covariance matrix. \end{DoxyCompactList}\item 
+real(RK), dimension(nd) \mbox{\hyperlink{namespaceDistMultiNorm__mod_a120f53334a3601b47b8135cdb45fcc5f}{Dist\+Multi\+Norm\+\_\+mod\+::get\+Rand\+Scaled\+MVN}} (nd, Cho\+Low, Cho\+Dia)
+\begin{DoxyCompactList}\small\item\em Return a scaled Multi\+Variate Normal (MVN) random vector with the zero mean and covariance matrix represented by the the input Cholesky factorization. \end{DoxyCompactList}\item 
+real(RK), dimension(nd) \mbox{\hyperlink{namespaceDistMultiNorm__mod_a169c123a70e05906784f3c30daf8dd41}{Dist\+Multi\+Norm\+\_\+mod\+::get\+Rand\+MVN}} (nd, Mean, Cho\+Low, Cho\+Dia)
+\begin{DoxyCompactList}\small\item\em Return a Multi\+Variate Normal (MVN) random vector with the given mean and covariance matrix represented by the the input Cholesky factorization. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceDistMultiNorm__mod_a7ef22189560de1556d5440a1de51dada}{Dist\+Multi\+Norm\+\_\+mod\+::get\+MVNDev}} (nd, Mean, Cov\+Mat, X)
+\begin{DoxyCompactList}\small\item\em Amir Shahmoradi, March 22, 2012, 2\+:21 PM, Institute for Fusion Studies, University of Texas at Austin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceDistMultiNorm__mod_aa8ed981bf95ade8385103e854da084ce}{Dist\+Multi\+Norm\+\_\+mod\+::\+MODULE\+\_\+\+NAME}} = \char`\"{}@Dist\+Multi\+Norm\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}

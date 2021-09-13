@@ -1,70 +1,99 @@
 
 \begin{DoxyRefList}
-\item[Subprogram \mbox{\hyperlink{namespacegeocyclicfit__mod_a88d66e1fac5af41881bea1fd31e21fb6}{geocyclicfit\+\_\+mod\+::fitgeocycliclogpdf}} (max\+Num\+Trial, num\+Trial, Success\+Step, Log\+Count)]\label{todo__todo000001}%
+\item[Subprogram \mbox{\hyperlink{namespaceDistUniLogGamma__mod_acc6e60c6fa66c784f1f801eb419ecbff}{Dist\+Uni\+Log\+Gamma\+\_\+mod\+::rand}} (self)]\label{todo__todo000001}%
 \Hypertarget{todo__todo000001}%
- Update\+: Amir Shahmoradi, Sunday Nov 29, 2020, 11\+:19 pm, Dallas, TX The current implementation of the objective function relies on the definitions of module variables. Although inefficient and ugly, this was necessary to resolve the viscous Segmentation Fault error that happens with internal function calls on Windows Subsystem for Linux Ubuntu with G\+Fortran. Once this error of unknown origin is resolved, the external module function {\ttfamily get\+Sum\+Dist\+Sq()} must be converted back to an internal function within \mbox{\hyperlink{namespacegeocyclicfit__mod_a88d66e1fac5af41881bea1fd31e21fb6}{fit\+Geo\+Cyclic\+Log\+P\+DF}} and subsequently, all module variables must be removed. update (Dec 16, 2020)\+: ~\newline
- The source of the error was identified to be a bug in W\+S\+L1. This problem is now resolved in W\+S\+L2. However, the code will be kept intact for future compatibility with W\+S\+L1 and those who still use it. 
-\item[Subprogram \mbox{\hyperlink{namespacestatistics__mod_ae0ef3a61c55dfcfe454859ecb2c37735}{statistics\+\_\+mod\+::getsamcholfac}} (nd, np, Mean, Point, Cholesky\+Lower, Diagonal)]\label{todo__todo000004}%
+ The random number generator of Log-\/\+Gamma distribution should be implemented here.  
+\item[Subprogram \mbox{\hyperlink{namespaceDomainEllipsoid__mod_af8b7bb6f4a7187929560cf43e212c465}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unit\+Radius\+MVU}} (nd)]\label{todo__todo000003}%
+\Hypertarget{todo__todo000003}%
+ This algorithm is not robust for very large values of {\ttfamily nd \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} 100}. 
+\item[Subprogram \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a3e1e740aa58603709ce157c49d86efdc}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unit\+Volume\+MVU}} (nd, log\+Vol\+Unit\+Ball)]\label{todo__todo000002}%
+\Hypertarget{todo__todo000002}%
+ This algorithm is not robust for very large values of {\ttfamily nd \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} 100}. 
+\item[Subprogram \mbox{\hyperlink{namespaceFitGeoCyclic__mod_a1a460b8ee015e2e9353625bb0cc3569d}{Fit\+Geo\+Cyclic\+\_\+mod\+::fit\+Geo\+Cyclic\+Log\+PDF}} (max\+Num\+Trial, num\+Trial, Success\+Step, Log\+Count)]\label{todo__todo000004}%
 \Hypertarget{todo__todo000004}%
- The efficiency of this code can be further improved.  
-\item[Subprogram \mbox{\hyperlink{namespacestatistics__mod_ae3a68b874274f39e5e4b86c73797ee9b}{statistics\+\_\+mod\+::mergemeancovupper}} (nd, npA, Mean\+VecA, Cov\+Mat\+UpperA, npB, Mean\+VecB, Cov\+Mat\+UpperB, Mean\+Vec\+AB, Cov\+Mat\+Upper\+AB)]\label{todo__todo000005}%
+ Update\+: Amir Shahmoradi, Sunday Nov 29, 2020, 11\+:19 pm, Dallas, TX The current implementation of the objective function relies on the definitions of module variables. Although inefficient and ugly, this was necessary to resolve the viscous Segmentation Fault error that happens with internal function calls on Windows Subsystem for Linux Ubuntu with GFortran. Once this error of unknown origin is resolved, the external module function {\ttfamily \mbox{\hyperlink{FitGeoCyclic__mod_8f90_a4c961cfd8f5acd4f093f7124880203cd}{get\+Sum\+Dist\+Sq()}}} must be converted back to an internal function within \mbox{\hyperlink{namespaceFitGeoCyclic__mod_a1a460b8ee015e2e9353625bb0cc3569d}{fit\+Geo\+Cyclic\+Log\+PDF}} and subsequently, all module variables must be removed. update (Dec 16, 2020)\+: ~\newline
+ The source of the error was identified to be a bug in WSL1. This problem is now resolved in WSL2. However, the code will be kept intact for future compatibility with WSL1 and those who still use it. 
+\item[Subprogram \mbox{\hyperlink{namespaceHistogram__mod_ad80a9c34cbdd54d1c6b5d652c4def668}{Histogram\+\_\+mod\+::get\+Bin}} (x, lower\+Bound, nbin, binsize)]\label{todo__todo000005}%
 \Hypertarget{todo__todo000005}%
- The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector. 
-\item[Subprogram \mbox{\hyperlink{namespacestatistics__mod_a523d288d53f9a12bce86fdb78014e363}{statistics\+\_\+mod\+::mergemeancovupperdense}} (nd, npA, Mean\+VecA, Cov\+Mat\+UpperA, npB, Mean\+VecB, Cov\+Mat\+UpperB)]\label{todo__todo000006}%
-\Hypertarget{todo__todo000006}%
- The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector. 
-\item[Subprogram \mbox{\hyperlink{namespacestatistics__mod_a00b98933f2edfb603faac8f0acd2814a}{statistics\+\_\+mod\+::getrandpointonellipsoid}} (nd, Mean\+Vec, Cholesky\+Lower, Diagonal)]\label{todo__todo000007}%
-\Hypertarget{todo__todo000007}%
- The performance of this algorithm can be further improved. 
-\item[Subprogram \mbox{\hyperlink{namespacestatistics__mod_a78eb375779f207363b4d13702a62dd75}{statistics\+\_\+mod\+::getbetacdf\+\_\+spr}} (alpha, beta, x)]\label{todo__todo000008}%
-\Hypertarget{todo__todo000008}%
- The efficiency of this code can be improved by making {\ttfamily x} a vector on input. 
-\item[Subprogram \mbox{\hyperlink{namespacestatistics__mod_a14ba13bfa061b8eb57d81963503a5d4a}{statistics\+\_\+mod\+::getbetacdf\+\_\+dpr}} (alpha, beta, x)]\label{todo__todo000009}%
-\Hypertarget{todo__todo000009}%
- The efficiency of this code can be improved by making {\ttfamily x} a vector on input. 
-\item[Subprogram \mbox{\hyperlink{namespacestatistics__mod_ad156e88b1d8c329706aaff7032a0c2c1}{statistics\+\_\+mod\+::getbin}} (x, lower\+Bound, nbin, binsize)]\label{todo__todo000010}%
-\Hypertarget{todo__todo000010}%
  The performance and interface of this routine can be significantly improved. It is more sensible to pass a contiguous array of bin edges as input instead of {\ttfamily lower\+Bound} and {\ttfamily binsize}. If the input point is not within any bins, an index of zero should be returned. 
-\item[Subprogram \mbox{\hyperlink{namespacestring__mod_aee6182818ef976fd03b132acff1ee6b0}{string\+\_\+mod\+::int322str}} (integer\+In, format\+In, min\+Len)]\label{todo__todo000011}%
+\item[Subprogram \mbox{\hyperlink{namespaceKmeans__mod_ac4b9beeaf1a19b79cfd5aacb8915fb02}{Kmeans\+\_\+mod\+::run\+KPP}} (nc, nd, np, Point, Sum\+Point, Membership, Size, potential)]\label{todo__todo000006}%
+\Hypertarget{todo__todo000006}%
+ All {\ttfamily minloc} queries in this procedure can be replaced with more efficient bin search algorithms.
+
+\label{todo__todo000007}%
+\Hypertarget{todo__todo000007}%
+ The variable {\ttfamily Cum\+Sum\+Dist\+Sq} does not have to be defined as {\ttfamily real64}. 
+\item[Subprogram \mbox{\hyperlink{namespaceKmeansOOP__mod_af12decb1817c7b3691239edf3ef79eff}{Kmeans\+OOP\+\_\+mod\+::run\+KPP}} (nc, nd, np, Point, Sum\+Point, Membership, Size, potential)]\label{todo__todo000008}%
+\Hypertarget{todo__todo000008}%
+ All {\ttfamily minloc} queries in this procedure can be replaced with more efficient bin search algorithms.
+
+\label{todo__todo000009}%
+\Hypertarget{todo__todo000009}%
+ The variable {\ttfamily Cum\+Sum\+Dist\+Sq} does not have to be defined as {\ttfamily real64}. 
+\item[Subprogram \mbox{\hyperlink{namespaceMath__mod_ae081a3ee17e2f763cf4aefc94c040a6a}{Math\+\_\+mod\+::get\+Log\+Sum\+Exp\+\_\+\+CK}} (Log\+Value, max\+Log\+Value)]\label{todo__todo000011}%
 \Hypertarget{todo__todo000011}%
- Currently, {\ttfamily min\+Len} must be smaller than {\ttfamily N\+U\+M2\+S\+T\+R\+\_\+\+M\+A\+X\+L\+EN}, for the code to function properly. This has to be improved, similar to the {\ttfamily \mbox{\hyperlink{interfacestring__mod_1_1real2str}{real2str}}} procedures. 
-\item[Subprogram \mbox{\hyperlink{namespacestring__mod_a7da657dc69639627fc4f1e9487ef0592}{string\+\_\+mod\+::int642str}} (integer\+In, format\+In, min\+Len)]\label{todo__todo000012}%
+ This function should be modified to rely on {\ttfamily \mbox{\hyperlink{namespaceMath__mod_aec8bb7750a5254fcf8d1dd417f99aab9}{get\+Sum\+Exp\+\_\+\+RK()}}}.  
+\item[Subprogram \mbox{\hyperlink{namespaceMath__mod_a21698565f7104f71efa6012780a53e48}{Math\+\_\+mod\+::get\+Log\+Sum\+Exp\+\_\+\+RK}} (Log\+Value, max\+Log\+Value)]\label{todo__todo000010}%
+\Hypertarget{todo__todo000010}%
+ This function should be modified to rely on {\ttfamily \mbox{\hyperlink{namespaceMath__mod_aec8bb7750a5254fcf8d1dd417f99aab9}{get\+Sum\+Exp\+\_\+\+RK()}}}.  
+\item[Subprogram \mbox{\hyperlink{namespaceMath__mod_aec8bb7750a5254fcf8d1dd417f99aab9}{Math\+\_\+mod\+::get\+Sum\+Exp\+\_\+\+RK}} (Log\+Value, max\+Log\+Value)]\label{todo__todo000012}%
 \Hypertarget{todo__todo000012}%
- Currently, {\ttfamily min\+Len} must be smaller than {\ttfamily N\+U\+M2\+S\+T\+R\+\_\+\+M\+A\+X\+L\+EN}, for the code to function properly. This has to be improved, similar to the {\ttfamily \mbox{\hyperlink{interfacestring__mod_1_1real2str}{real2str}}} procedures. 
-\item[Subprogram \mbox{\hyperlink{namespacesystem__mod_afd53f477deeaf2fcf3657b5ea400e153}{system\+\_\+mod\+::getsysteminfo}} (List, Err, OS, count, cache\+File)]\label{todo__todo000013}%
-\Hypertarget{todo__todo000013}%
- This code can be improved. See the extensive note in the body of the procedure.  
-\item[Subprogram \mbox{\hyperlink{namespacesystem__mod_abfece8ed7e774b1376409cfdd2198f8c}{system\+\_\+mod\+::copyfile}} (path\+Old, path\+New, is\+Unix\+Shell, Err)]\label{todo__todo000014}%
-\Hypertarget{todo__todo000014}%
- This code can be improved. See the extensive note in the body of the procedure.  
-\item[Subprogram \mbox{\hyperlink{namespacetest__system__mod_a40668a840b8eb874b50a3325a042ea25}{test\+\_\+system\+\_\+mod\+::test\+\_\+envvar\+\_\+type\+\_\+2}} ()]\label{todo__todo000019}%
+ This function should be modified to avoid underflow checking in release mode on {\ttfamily \mbox{\hyperlink{namespaceMath__mod_aec8bb7750a5254fcf8d1dd417f99aab9}{get\+Sum\+Exp\+\_\+\+RK()}}}.  
+\item[Subprogram \mbox{\hyperlink{namespaceSample__mod_a1942971b64332fc7c4860112a244764c}{Sample\+\_\+mod\+::get\+Cho\+Low\+Cov\+Upp}} (nd, np, Mean, Sample, Cho\+Low\+Cov\+Upp, Cho\+Dia)]\label{todo__todo000016}%
+\Hypertarget{todo__todo000016}%
+ The efficiency of this code can be further improved.  
+\item[Subprogram \mbox{\hyperlink{namespaceSample__mod_a1e5daab49859d9c21c4ec3c916ec963d}{Sample\+\_\+mod\+::get\+Cho\+Low\+Cov\+Upp\+High\+Dim}} (nd, np, Mean, Sample, Cho\+Low\+Cov\+Upp, Cho\+Dia)]\label{todo__todo000017}%
+\Hypertarget{todo__todo000017}%
+ The efficiency of this code can be further improved.  
+\item[Subprogram \mbox{\hyperlink{namespaceSample__mod_ab6c8a951bf35c59402a30d6d17a6d193}{Sample\+\_\+mod\+::merge\+Mean\+Cov\+Upp}} (nd, npA, MeanA, Cov\+UppA, npB, MeanB, Cov\+UppB, Mean\+AB, Cov\+Upp\+AB)]\label{todo__todo000018}%
+\Hypertarget{todo__todo000018}%
+ The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector. 
+\item[Subprogram \mbox{\hyperlink{namespaceSample__mod_a81524ddc27a48db65744d80cfad9b348}{Sample\+\_\+mod\+::merge\+Mean\+Cov\+Upp\+Dense}} (nd, npA, MeanA, Cov\+UppA, npB, MeanB, Cov\+UppB)]\label{todo__todo000019}%
 \Hypertarget{todo__todo000019}%
- This test needs further improvements in the future. See comments in the body of the test.  
-\item[Subprogram \mbox{\hyperlink{namespacetest__system__mod_ae31ca43945c2bb5390181c30e74435af}{test\+\_\+system\+\_\+mod\+::test\+\_\+envvar\+\_\+type\+\_\+3}} ()]\label{todo__todo000020}%
-\Hypertarget{todo__todo000020}%
- This test needs further improvements in the future. See comments in the body of the test.  
-\item[Subprogram \mbox{\hyperlink{namespacetest__system__mod_a77fdc1060526949311477aa365dfb501}{test\+\_\+system\+\_\+mod\+::test\+\_\+cmdarg\+\_\+type\+\_\+1}} ()]\label{todo__todo000021}%
-\Hypertarget{todo__todo000021}%
- This test needs further improvements in the future. See comments in the body of the test.  
-\item[Subprogram \mbox{\hyperlink{namespacetest__system__mod_a80b5f80b4c4a2e4034b2a9b0c5e7b888}{test\+\_\+system\+\_\+mod\+::test\+\_\+os\+\_\+type\+\_\+1}} ()]\label{todo__todo000022}%
-\Hypertarget{todo__todo000022}%
- This test needs further improvements in the future. See comments in the body of the test.  
-\item[Subprogram \mbox{\hyperlink{namespacetest__system__mod_a38ed98af363dec1279b079570c24105b}{test\+\_\+system\+\_\+mod\+::test\+\_\+os\+\_\+type\+\_\+2}} ()]\label{todo__todo000023}%
+ The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector. 
+\item[Subprogram \mbox{\hyperlink{namespaceSpecBase__mod_a44ba6ab2cfcce307ab0b89dd2d4933f3}{Spec\+Base\+\_\+mod\+::set\+From\+Input\+Args}} (Spec\+Base, Err, output\+Sample\+Size, random\+Seed, description, output\+File\+Name, output\+Delimiter, output\+Chain\+File\+Format, domain\+Axes\+Name\+List, output\+Restart\+File\+Format, output\+Column\+Width, output\+Overwrite\+Enabled, output\+Real\+Precision, output\+Silent\+Mode\+Enabled, domain\+Cube\+Limit\+Lower, domain\+Cube\+Limit\+Upper, domain\+Ellipsoid\+Center, domain\+Ellipsoid\+Cov\+Mat, domain\+Ellipsoid\+Cor\+Mat, domain\+Ellipsoid\+Std\+Vec, domain, parallelism, output\+Progress\+Report\+Period, Target\+Acceptance\+Rate, parallelism\+Mpi\+Finalize\+Enabled, domain\+Max\+Num\+Check\+To\+Warn, domain\+Max\+Num\+Check\+To\+Stop)]\label{todo__todo000023}%
 \Hypertarget{todo__todo000023}%
- This test needs further improvements in the future. See comments in the body of the test.  
-\item[Subprogram \mbox{\hyperlink{namespacetest__system__mod_a4fdd1321521a11347b42f80bb85189af}{test\+\_\+system\+\_\+mod\+::test\+\_\+os\+\_\+type\+\_\+3}} ()]\label{todo__todo000024}%
+perhaps all {\ttfamily set()} methods should take optional input arguments.  
+\item[Subprogram \mbox{\hyperlink{namespaceStatistics__mod_ac37c1980561187288683263024c3c2f5}{Statistics\+\_\+mod\+::get\+Beta\+CDF\+\_\+\+RK32}} (alpha, beta, x)]\label{todo__todo000024}%
 \Hypertarget{todo__todo000024}%
- This test needs further improvements in the future. See comments in the body of the test.  
-\item[Subprogram \mbox{\hyperlink{namespacetest__system__mod_a231fa64534d810b5e8e1c96e77e7e254}{test\+\_\+system\+\_\+mod\+::test\+\_\+syscmd\+\_\+type\+\_\+1}} ()]\label{todo__todo000025}%
+ The efficiency of this code can be improved by making {\ttfamily x} a vector on input. 
+\item[Subprogram \mbox{\hyperlink{namespaceStatistics__mod_a7da6074960554ef7e40b04a2342fbff7}{Statistics\+\_\+mod\+::get\+Beta\+CDF\+\_\+\+RK64}} (alpha, beta, x)]\label{todo__todo000025}%
 \Hypertarget{todo__todo000025}%
- This test needs further improvements in the future. See comments in the body of the test.  
-\item[Subprogram \mbox{\hyperlink{namespacetest__system__mod_ad3628bdc53886a25eaaeed8a21fa4f30}{test\+\_\+system\+\_\+mod\+::test\+\_\+executecmd\+\_\+1}} ()]\label{todo__todo000026}%
-\Hypertarget{todo__todo000026}%
- This test needs further improvements in the future. See comments in the body of the test.  
-\item[Subprogram \mbox{\hyperlink{namespacetest__system__mod_ad33f793a941b64ab6ab4a6eb6904ffc2}{test\+\_\+system\+\_\+mod\+::test\+\_\+executecmd\+\_\+2}} ()]\label{todo__todo000027}%
+ The efficiency of this code can be improved by making {\ttfamily x} a vector on input. 
+\item[Subprogram \mbox{\hyperlink{namespaceSystem__mod_a8f999de90840ba33f9cf7f30edd41b3d}{System\+\_\+mod\+::copy\+File}} (path\+Old, path\+New, is\+Unix\+Shell, Err)]\label{todo__todo000027}%
 \Hypertarget{todo__todo000027}%
+ This code can be improved. See the extensive note in the body of the procedure.  
+\item[Subprogram \mbox{\hyperlink{namespaceSystem__mod_acdbe0231b40135bc08ab285fc69f2b80}{System\+\_\+mod\+::get\+System\+Info}} (List, Err, OS, count, cache\+File)]\label{todo__todo000026}%
+\Hypertarget{todo__todo000026}%
+ This code can be improved. See the extensive note in the body of the procedure.  
+\item[Subprogram \mbox{\hyperlink{namespaceTest__System__mod_a56a58918b2888e7ea0fa691de93cdeb3}{Test\+\_\+\+System\+\_\+mod\+::test\+\_\+\+Cmd\+Arg\+\_\+type\+\_\+1}} ()]\label{todo__todo000034}%
+\Hypertarget{todo__todo000034}%
  This test needs further improvements in the future. See comments in the body of the test.  
-\item[Subprogram \mbox{\hyperlink{namespacetest__system__mod_a0dc8162005f27942e79c44fca822834e}{test\+\_\+system\+\_\+mod\+::test\+\_\+getsysteminfo\+\_\+1}} ()]\label{todo__todo000028}%
-\Hypertarget{todo__todo000028}%
+\item[Subprogram \mbox{\hyperlink{namespaceTest__System__mod_ab0121f340538dae91c97cc5cdcba0a7b}{Test\+\_\+\+System\+\_\+mod\+::test\+\_\+\+Env\+Var\+\_\+type\+\_\+2}} ()]\label{todo__todo000032}%
+\Hypertarget{todo__todo000032}%
+ This test needs further improvements in the future. See comments in the body of the test.  
+\item[Subprogram \mbox{\hyperlink{namespaceTest__System__mod_a26054fb4e3bf2d05710adc7965bc8431}{Test\+\_\+\+System\+\_\+mod\+::test\+\_\+\+Env\+Var\+\_\+type\+\_\+3}} ()]\label{todo__todo000033}%
+\Hypertarget{todo__todo000033}%
+ This test needs further improvements in the future. See comments in the body of the test.  
+\item[Subprogram \mbox{\hyperlink{namespaceTest__System__mod_a8d37f80583c104a3dfb6b99a897feb26}{Test\+\_\+\+System\+\_\+mod\+::test\+\_\+execute\+Cmd\+\_\+1}} ()]\label{todo__todo000039}%
+\Hypertarget{todo__todo000039}%
+ This test needs further improvements in the future. See comments in the body of the test.  
+\item[Subprogram \mbox{\hyperlink{namespaceTest__System__mod_a733db17082cd5058dbc8d19e6f620909}{Test\+\_\+\+System\+\_\+mod\+::test\+\_\+execute\+Cmd\+\_\+2}} ()]\label{todo__todo000040}%
+\Hypertarget{todo__todo000040}%
+ This test needs further improvements in the future. See comments in the body of the test.  
+\item[Subprogram \mbox{\hyperlink{namespaceTest__System__mod_a9a276bf5a7b9db66c140bd2202ebc7e9}{Test\+\_\+\+System\+\_\+mod\+::test\+\_\+get\+System\+Info\+\_\+1}} ()]\label{todo__todo000041}%
+\Hypertarget{todo__todo000041}%
+ This test needs further improvements in the future. See comments in the body of the test.  
+\item[Subprogram \mbox{\hyperlink{namespaceTest__System__mod_aabfd080659733c4a852c62ccd400599b}{Test\+\_\+\+System\+\_\+mod\+::test\+\_\+\+OS\+\_\+type\+\_\+1}} ()]\label{todo__todo000035}%
+\Hypertarget{todo__todo000035}%
+ This test needs further improvements in the future. See comments in the body of the test.  
+\item[Subprogram \mbox{\hyperlink{namespaceTest__System__mod_a86976d55b3a779d9a8c0064155e9cd4a}{Test\+\_\+\+System\+\_\+mod\+::test\+\_\+\+OS\+\_\+type\+\_\+2}} ()]\label{todo__todo000036}%
+\Hypertarget{todo__todo000036}%
+ This test needs further improvements in the future. See comments in the body of the test.  
+\item[Subprogram \mbox{\hyperlink{namespaceTest__System__mod_ada729e6f3789a1df730ac21f58d5a334}{Test\+\_\+\+System\+\_\+mod\+::test\+\_\+\+OS\+\_\+type\+\_\+3}} ()]\label{todo__todo000037}%
+\Hypertarget{todo__todo000037}%
+ This test needs further improvements in the future. See comments in the body of the test.  
+\item[Subprogram \mbox{\hyperlink{namespaceTest__System__mod_a6ba8a4348e2457b775dd061d40f33cb8}{Test\+\_\+\+System\+\_\+mod\+::test\+\_\+\+Sys\+Cmd\+\_\+type\+\_\+1}} ()]\label{todo__todo000038}%
+\Hypertarget{todo__todo000038}%
  This test needs further improvements in the future. See comments in the body of the test. 
 \end{DoxyRefList}

@@ -1,9 +1,15 @@
 var searchData=
 [
-  ['undefined_1772',['undefined',['../namespaceconstants__mod.html#ab2e7423c0f84ee598b29017c70ae9788',1,'constants_mod']]],
-  ['uniform_1773',['uniform',['../structspecmcmc__proposalmodel__mod_1_1proposalmodel__type.html#a251faa6a1ebcc974f49219a5d92f528e',1,'specmcmc_proposalmodel_mod::proposalmodel_type']]],
-  ['uniqueprocess_1774',['uniqueprocess',['../structparallelism__mod_1_1forkjoin__type.html#a6038e844e31094f1d83cfdeb314d6171',1,'parallelism_mod::forkjoin_type']]],
-  ['unit_1775',['unit',['../structfile__mod_1_1file__type.html#a5a92f9f83a02252156afd67eff2e53d7',1,'file_mod::file_type::unit()'],['../structtimer__mod_1_1time__type.html#a6e01a84694cdcec1bcfce05595399720',1,'timer_mod::time_type::unit()'],['../structtimercpu__mod_1_1time__type.html#ad3806d6a07f9e3e526175e4ee6b730ef',1,'timercpu_mod::time_type::unit()']]],
-  ['unroll_2em_1776',['unroll.m',['../unroll_8m.html',1,'']]],
-  ['userseed_1777',['userseed',['../structspecbase__randomseed__mod_1_1randomseed__type.html#ab2e5f007ac933bebdb373f94025d1982',1,'specbase_randomseed_mod::randomseed_type']]]
+  ['undefined_0',['UNDEFINED',['../namespaceConstants__mod.html#af64bc01940d37897d4b8a5bd04c78e52',1,'Constants_mod']]],
+  ['uniform_1',['uniform',['../structSpecMCMC__Proposal__mod_1_1Proposal__type.html#a363fce934603299e4369c20bd2b2dbe6',1,'SpecMCMC_Proposal_mod::Proposal_type']]],
+  ['unique_5fmod_2',['Unique_mod',['../namespaceUnique__mod.html',1,'']]],
+  ['unique_5fmod_2ef90_3',['Unique_mod.f90',['../Unique__mod_8f90.html',1,'']]],
+  ['unique_5fmod_40genunique_5fsmod_2ef90_4',['Unique_mod@genUnique_smod.f90',['../Unique__mod_0dgenUnique__smod_8f90.html',1,'']]],
+  ['unique_5fmod_40genunique_5fsmod_2einc_2ef90_5',['Unique_mod@genUnique_smod.inc.f90',['../Unique__mod_0dgenUnique__smod_8inc_8f90.html',1,'']]],
+  ['uniqueprocess_6',['UniqueProcess',['../structParallelism__mod_1_1ForkJoin__type.html#af091fa0457099a02e91228eb3705e3f0',1,'Parallelism_mod::ForkJoin_type']]],
+  ['unit_7',['unit',['../structFile__mod_1_1File__type.html#ad385a243fe0e4f97183bae9693097a7a',1,'File_mod::File_type::unit()'],['../structTimer__mod_1_1Time__type.html#ab39b1cf581b2d18b81970868391fb070',1,'Timer_mod::Time_type::unit()'],['../structTimerCPU__mod_1_1Time__type.html#adb77ad527b76704919a45ae56d38cead',1,'TimerCPU_mod::Time_type::unit()']]],
+  ['upper_8',['upper',['../interfaceString__mod_1_1upper.html',1,'String_mod']]],
+  ['upper_9',['Upper',['../structDomainCube__mod_1_1CubeLimit__type.html#ab19b92ef3f0bb72a9ec984c25c030795',1,'DomainCube_mod::CubeLimit_type']]],
+  ['upper2lower_10',['upper2lower',['../namespaceMatrix__mod.html#ad0d5afa8a6927d6bdebcf7ce3845558c',1,'Matrix_mod']]],
+  ['userseed_11',['userSeed',['../structSpecBase__RandomSeed__mod_1_1RandomSeed__type.html#a8bdf76b707dbad148c03bbe482e4a9a9',1,'SpecBase_RandomSeed_mod::RandomSeed_type']]]
 ];

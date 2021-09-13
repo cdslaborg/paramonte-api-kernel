@@ -1,56 +1,70 @@
-\hypertarget{Decoration__mod_8f90}{}\doxysection{D\+:/\+Dropbox/\+Projects/20180101\+\_\+\+Para\+Monte/git/src/kernel/\+Decoration\+\_\+mod.f90 File Reference}
-\label{Decoration__mod_8f90}\index{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/Decoration\_mod.f90@{D:/Dropbox/Projects/20180101\_ParaMonte/git/src/kernel/Decoration\_mod.f90}}
+\hypertarget{Decoration__mod_8f90}{}\doxysection{/home/amir/git/paramonte/src/kernel/\+Decoration\+\_\+mod.f90 File Reference}
+\label{Decoration__mod_8f90}\index{/home/amir/git/paramonte/src/kernel/Decoration\_mod.f90@{/home/amir/git/paramonte/src/kernel/Decoration\_mod.f90}}
 \doxysubsection*{Data Types}
 \begin{DoxyCompactItemize}
 \item 
-type \mbox{\hyperlink{structdecoration__mod_1_1ansi__type}{decoration\+\_\+mod\+::ansi\+\_\+type}}
+type \mbox{\hyperlink{structDecoration__mod_1_1Ansi__type}{Decoration\+\_\+mod\+::\+Ansi\+\_\+type}}
 \item 
-interface \mbox{\hyperlink{structdecoration__mod_1_1decoration__type}{decoration\+\_\+mod\+::decoration\+\_\+type}}
+interface \mbox{\hyperlink{structDecoration__mod_1_1decoration__type}{Decoration\+\_\+mod\+::decoration\+\_\+type}}
 \begin{DoxyCompactList}\small\item\em The decoration class. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{structdecoration__mod_1_1decoration__type}{decoration\+\_\+mod\+::decoration\+\_\+type}}
-\begin{DoxyCompactList}\small\item\em The decoration class. \end{DoxyCompactList}\item 
-type \mbox{\hyperlink{structdecoration__mod_1_1wrapper__type}{decoration\+\_\+mod\+::wrapper\+\_\+type}}
-\end{DoxyCompactItemize}
+type \mbox{\hyperlink{structDecoration__mod_1_1wrapper__type}{Decoration\+\_\+mod\+::wrapper\+\_\+type}}
+\item 
+interface \mbox{\hyperlink{interfaceDecoration__mod_1_1constructDecoration}{Decoration\+\_\+mod\+::construct\+Decoration}}
+\begin{DoxyCompactList}\small\item\em The constructor of the \mbox{\hyperlink{structDecoration__mod_1_1decoration__type}{Decoration\+\_\+type}} class. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceDecoration__mod_1_1write}{Decoration\+\_\+mod\+::write}}
+\begin{DoxyCompactList}\small\item\em Write the decorated text to the output. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceDecoration__mod_1_1writeDecoratedText}{Decoration\+\_\+mod\+::write\+Decorated\+Text}}
+\begin{DoxyCompactList}\small\item\em Given a text and the requested characteristics, this function wraps the text to within the maximum width specified. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceDecoration__mod_1_1writeDecoratedList}{Decoration\+\_\+mod\+::write\+Decorated\+List}}
+\begin{DoxyCompactList}\small\item\em Given a list of lines and the requested characteristics, this function wraps the text to within the maximum width specified. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceDecoration__mod_1_1drawLine}{Decoration\+\_\+mod\+::draw\+Line}}
+\begin{DoxyCompactList}\small\item\em Return a string which is a pattern repetition for the requested width. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceDecoration__mod_1_1sandwich}{Decoration\+\_\+mod\+::sandwich}}
+\begin{DoxyCompactList}\small\item\em Sandwich the input string with the input symbol for the requested thickness on both ends of the string. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceDecoration__mod_1_1getListOfLines}{Decoration\+\_\+mod\+::get\+List\+Of\+Lines}}
+\begin{DoxyCompactList}\small\item\em Convert a string to a list of lines. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceDecoration__mod_1_1wrapText}{Decoration\+\_\+mod\+::wrap\+Text}}
+\begin{DoxyCompactList}\small\item\em Wrap the input text to fit it within the requested line width. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Modules}
 \begin{DoxyCompactItemize}
 \item 
-module \mbox{\hyperlink{namespacedecoration__mod}{decoration\+\_\+mod}}
+module \mbox{\hyperlink{namespaceDecoration__mod}{Decoration\+\_\+mod}}
 \begin{DoxyCompactList}\small\item\em This module contains classes and procedures for decorating and outputting text. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
-character(\+:) function, allocatable \mbox{\hyperlink{namespacedecoration__mod_a376b87799b3d94c980ef662cc896f963}{decoration\+\_\+mod\+::style}} (string, attr, clfg, clbg)
-\begin{DoxyCompactList}\small\item\em Wrap the input text with A\+N\+S\+I/\+V\+T100 Control sequences to stylize and color the string. \end{DoxyCompactList}\item 
-pure character(\+:) function, allocatable \mbox{\hyperlink{namespacedecoration__mod_a601b1fabffcceed179423b63e227e204}{decoration\+\_\+mod\+::getgenericformat}} (width, precision, delim, prefix)
+character(\+:), allocatable \mbox{\hyperlink{namespaceDecoration__mod_a7bbbd1d0c72d99d807d2431b694b1c17}{Decoration\+\_\+mod\+::style}} (string, attr, clfg, clbg)
+\begin{DoxyCompactList}\small\item\em Wrap the input text with ANSI/\+VT100 Control sequences to stylize and color the string. \end{DoxyCompactList}\item 
+character(\+:), allocatable \mbox{\hyperlink{namespaceDecoration__mod_ab320d3aabd088d7597ef1156de18bf5a}{Decoration\+\_\+mod\+::get\+Generic\+Format}} (width, precision, delim, prefix)
 \begin{DoxyCompactList}\small\item\em Return an IO Fortran format given the input characteristics. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-character($\ast$), parameter \mbox{\hyperlink{namespacedecoration__mod_ad6a53f927175e1a9158042cc1292c60e}{decoration\+\_\+mod\+::module\+\_\+name}} = \char`\"{}@Decoration\+\_\+mod\char`\"{}
+character($\ast$), parameter \mbox{\hyperlink{namespaceDecoration__mod_a7c54f238f6226d3c2ec0c5484e8c4809}{Decoration\+\_\+mod\+::\+MODULE\+\_\+\+NAME}} = \char`\"{}@Decoration\+\_\+mod\char`\"{}
 \item 
-integer(ik), parameter \mbox{\hyperlink{namespacedecoration__mod_a364f19d6489e9c4fe378539200797232}{decoration\+\_\+mod\+::decoration\+\_\+width}} = 132
+integer(IK), parameter \mbox{\hyperlink{namespaceDecoration__mod_a7581ab9b285da37ce4ff35f896bbec16}{Decoration\+\_\+mod\+::\+DECORATION\+\_\+\+WIDTH}} = 132
 \item 
-integer(ik), parameter \mbox{\hyperlink{namespacedecoration__mod_ae12ae9ebb07fce76d6b2afd6e1f4e43e}{decoration\+\_\+mod\+::decoration\+\_\+thickness\+\_\+horz}} = 4
+integer(IK), parameter \mbox{\hyperlink{namespaceDecoration__mod_a6e42aba3cd2c19809270105096df5271}{Decoration\+\_\+mod\+::\+DECORATION\+\_\+\+THICKNESS\+\_\+\+HORZ}} = 4
 \item 
-integer(ik), parameter \mbox{\hyperlink{namespacedecoration__mod_aeda4975e87a8295fe0a7c7d27def138f}{decoration\+\_\+mod\+::decoration\+\_\+thickness\+\_\+vert}} = 1
+integer(IK), parameter \mbox{\hyperlink{namespaceDecoration__mod_a274cb9f0dc8093763f326c386309c84a}{Decoration\+\_\+mod\+::\+DECORATION\+\_\+\+THICKNESS\+\_\+\+VERT}} = 1
 \item 
-character($\ast$), parameter \mbox{\hyperlink{namespacedecoration__mod_a9ffb20f6292c7c95526f8eb5a46abf36}{decoration\+\_\+mod\+::star}} = \char`\"{}$\ast$\char`\"{}
+character($\ast$), parameter \mbox{\hyperlink{namespaceDecoration__mod_a716a4138da51089963cf7f1e2b64e52e}{Decoration\+\_\+mod\+::\+STAR}} = \char`\"{}$\ast$\char`\"{}
 \item 
-character($\ast$), parameter \mbox{\hyperlink{namespacedecoration__mod_a7bbe14a4863aacbfee0ce513711ac285}{decoration\+\_\+mod\+::tab}} = \char`\"{} \char`\"{}
+character($\ast$), parameter \mbox{\hyperlink{namespaceDecoration__mod_a966ffab0d973c2468db2418bb4edb8f3}{Decoration\+\_\+mod\+::\+TAB}} = \char`\"{} \char`\"{}
 \item 
-character($\ast$), parameter \mbox{\hyperlink{namespacedecoration__mod_a8bee6ade167f6651caf5d7b3436ddc49}{decoration\+\_\+mod\+::indent}} = T\+AB // T\+AB
+character($\ast$), parameter \mbox{\hyperlink{namespaceDecoration__mod_aea447b213bf4cdeab2803976af2b2cc5}{Decoration\+\_\+mod\+::\+INDENT}} = TAB // TAB
 \item 
-character($\ast$), parameter \mbox{\hyperlink{namespacedecoration__mod_ac50926047a4cc8880b53bcdb47366790}{decoration\+\_\+mod\+::generic\+\_\+output\+\_\+format}} = \char`\"{}($\ast$(g0,\+:,\textquotesingle{} \textquotesingle{}))\char`\"{}
+character($\ast$), parameter \mbox{\hyperlink{namespaceDecoration__mod_ab4b61a550d316d81125ec2327e82c319}{Decoration\+\_\+mod\+::\+GENERIC\+\_\+\+OUTPUT\+\_\+\+FORMAT}} = \char`\"{}($\ast$(g0,\+:,\textquotesingle{} \textquotesingle{}))\char`\"{}
 \item 
-character($\ast$), parameter \mbox{\hyperlink{namespacedecoration__mod_a7cc5402c3618f513bc16af539404c597}{decoration\+\_\+mod\+::generic\+\_\+tabbed\+\_\+format}} = \char`\"{}(\textquotesingle{}\char`\"{} // T\+AB // T\+AB // \char`\"{}\textquotesingle{},$\ast$(g0,\+:,\textquotesingle{} \textquotesingle{}))\char`\"{}
+character($\ast$), parameter \mbox{\hyperlink{namespaceDecoration__mod_aa802c33655995e2b0c3770126e15bc52}{Decoration\+\_\+mod\+::\+GENERIC\+\_\+\+TABBED\+\_\+\+FORMAT}} = \char`\"{}(\textquotesingle{}\char`\"{} // TAB // TAB // \char`\"{}\textquotesingle{},$\ast$(g0,\+:,\textquotesingle{} \textquotesingle{}))\char`\"{}
 \item 
-integer(ik), parameter \mbox{\hyperlink{namespacedecoration__mod_a85130bf279b9c59b98b5bace272263e0}{decoration\+\_\+mod\+::ansi\+\_\+attribute\+\_\+list\+\_\+len}} = 8
+integer(IK), parameter \mbox{\hyperlink{namespaceDecoration__mod_ab5dc18e43abeae43d031aefee1c3c1ef}{Decoration\+\_\+mod\+::\+ANSI\+\_\+\+ATTRIBUTE\+\_\+\+LIST\+\_\+\+LEN}} = 8
 \item 
-integer(ik), parameter \mbox{\hyperlink{namespacedecoration__mod_a972929ba6ea01b5cb196c2dee99c7e2e}{decoration\+\_\+mod\+::ansi\+\_\+color\+\_\+list\+\_\+len}} = 16
+integer(IK), parameter \mbox{\hyperlink{namespaceDecoration__mod_a8b826bd2207e65adce9abd7d13b991b2}{Decoration\+\_\+mod\+::\+ANSI\+\_\+\+COLOR\+\_\+\+LIST\+\_\+\+LEN}} = 16
 \item 
-type(ansi\+\_\+type), dimension(\+:), allocatable \mbox{\hyperlink{namespacedecoration__mod_a2161b3c974646d1022a09b709bb0d888}{decoration\+\_\+mod\+::mc\+\_\+ansiattributelist}}
+type(Ansi\+\_\+type), dimension(\+:), allocatable \mbox{\hyperlink{namespaceDecoration__mod_a68d020d1e5239ba03959d2737de6ca7f}{Decoration\+\_\+mod\+::mc\+\_\+\+Ansi\+Attribute\+List}}
 \item 
-type(ansi\+\_\+type), dimension(\+:), allocatable \mbox{\hyperlink{namespacedecoration__mod_a1f597dee5b2e90f864a432163aeed7d9}{decoration\+\_\+mod\+::mc\+\_\+ansiforegroundcolorlist}}
+type(Ansi\+\_\+type), dimension(\+:), allocatable \mbox{\hyperlink{namespaceDecoration__mod_a8c9abddbf07a96cb42e3e499d7caba54}{Decoration\+\_\+mod\+::mc\+\_\+\+Ansi\+Foreground\+Color\+List}}
 \item 
-type(ansi\+\_\+type), dimension(\+:), allocatable \mbox{\hyperlink{namespacedecoration__mod_ad50f33fad5fb1c0e7e714f3230033907}{decoration\+\_\+mod\+::mc\+\_\+ansibackgroundcolorlist}}
+type(Ansi\+\_\+type), dimension(\+:), allocatable \mbox{\hyperlink{namespaceDecoration__mod_a66a1afb7d429666f5117dadb4277eda6}{Decoration\+\_\+mod\+::mc\+\_\+\+Ansi\+Background\+Color\+List}}
 \end{DoxyCompactItemize}
