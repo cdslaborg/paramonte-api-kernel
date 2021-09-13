@@ -23,14 +23,14 @@ interface \mbox{\hyperlink{interfaceMatrix__mod_1_1symmetrizeUpperMatrix}{symmet
 \begin{DoxyCompactItemize}
 \item 
 pure real(RK) function, dimension(n, m) \mbox{\hyperlink{namespaceMatrix__mod_ad2bf798f82cfa14da6cdd4c36bc56212}{gen\+Eye\+Mat}} (n, m, diag, offdiag)
-\begin{DoxyCompactList}\small\item\em Return an eye matrix of sahpe {\ttfamily (n,m)}. Note that all elements of the output matrix are equal. To generate a matrix with unequal diagonal elements, use \mbox{\hyperlink{namespaceMatrix__mod_a415f1b3b6b9ea0c24eae905526abc229}{Matrix\+\_\+mod\+::gen\+Diag\+Mat()}}. \end{DoxyCompactList}\item 
-real(RK), dimension(\+:), allocatable \mbox{\hyperlink{namespaceMatrix__mod_a9e356497aa8a24abb2553f43247a6f46}{get\+Diag}} (Matrix)
+\begin{DoxyCompactList}\small\item\em Return an eye matrix of sahpe {\ttfamily (n,m)}. Note that all elements of the output matrix are equal. To generate a matrix with unequal diagonal elements, use \mbox{\hyperlink{namespaceMatrix__mod_a38b6183d46d9c14c48b1f2ecf779a3ec}{Matrix\+\_\+mod\+::gen\+Diag\+Mat()}}. \end{DoxyCompactList}\item 
+pure real(RK) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceMatrix__mod_afb7526c517e2a843299178999f726074}{get\+Diag}} (Matrix)
 \begin{DoxyCompactList}\small\item\em Return the diagonal elements of the input matrix of shape {\ttfamily (n,m)}. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a5bda432e1784184b0bb5ac704aa8f322}{set\+Diag}} (Matrix, Diag)
 \begin{DoxyCompactList}\small\item\em Set the diagonal elements of the input matrix of shape {\ttfamily (n,m)} to the input {\ttfamily Diag} values. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a0ad8376152ddc2ca46cba4648159f7dc}{set\+Diag\+Off\+Diag}} (Matrix, Diag, offdiag)
 \begin{DoxyCompactList}\small\item\em Set the diagonal elements of the input matrix of shape {\ttfamily (n,m)} to the input values. \end{DoxyCompactList}\item 
-real(RK), dimension(n, m) \mbox{\hyperlink{namespaceMatrix__mod_a415f1b3b6b9ea0c24eae905526abc229}{gen\+Diag\+Mat}} (n, m, Diag, offdiag)
+pure real(RK) function, dimension(n, m) \mbox{\hyperlink{namespaceMatrix__mod_a38b6183d46d9c14c48b1f2ecf779a3ec}{gen\+Diag\+Mat}} (n, m, Diag, offdiag)
 \begin{DoxyCompactList}\small\item\em Return a diagonal matrix of shape {\ttfamily (n,m)} with the input diagonal and off-\/diagonal values. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a27fc4376b7f8526656dbe8c33f1685c1}{get\+Cho\+Low}} (nd, Cho\+Low\+Cov\+Upp, Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Return the Cholesky factorization of the input positive-\/definite matrix. \end{DoxyCompactList}\item 
@@ -42,19 +42,19 @@ subroutine \mbox{\hyperlink{namespaceMatrix__mod_a38fe64ed0bf75bbf51aa55d6985c3e
 \begin{DoxyCompactList}\small\item\em Solve the linear equation system of the form\+: $ \texttt{PosDefMat} \times \texttt{InputSolution} = \texttt{Intercept} $. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a7ceb43e999f59625832640d989fddd30}{get\+Inv\+Pos\+Def\+Mat\+Sqrt\+Det}} (nd, Mat\+Inv\+Mat, sqrt\+Det\+Inv\+Pos\+Def\+Mat)
 \begin{DoxyCompactList}\small\item\em Return the inverse matrix of a symmetric-\/positive-\/definite input matrix, which is given in the upper triangle of {\ttfamily Mat\+Inv\+Mat}. On output {\ttfamily Mat\+Inv\+Mat} is completely overwritten by in the inverse of the matrix. Also, return the square root of determinant of the inverse matrix. \end{DoxyCompactList}\item 
-real(RK), dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a7793d3a8bbd6d08c4cbdcd7c4bad9968}{get\+Inv\+Mat\+From\+Cho\+Low}} (nd, Cho\+Low, Cho\+Dia)
+pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a89ca7c850a574d7e9f4987e5637cf1b5}{get\+Inv\+Mat\+From\+Cho\+Low}} (nd, Cho\+Low, Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Return the inverse matrix of a symmetric-\/positive-\/definite matrix, whose Cholesky Lower triangle is given in the lower part of {\ttfamily Cho\+Low} and and its diagonal elements in {\ttfamily Cho\+Dia}. \end{DoxyCompactList}\item 
-real(RK), dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_adafdc0e07fc2cc3161359163fe096817}{get\+Inv\+Low\+From\+Cho\+Low}} (nd, Cho\+Low, Cho\+Dia)
+pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_ab13f6048b3a33245a6a23595c9505f65}{get\+Inv\+Low\+From\+Cho\+Low}} (nd, Cho\+Low, Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Return the lower-\/triangle and diagonals of the inverse matrix of a symmetric-\/positive-\/definite matrix whose Cholesky Lower triangle is given in the lower part of {\ttfamily Cho\+Low} and and its diagonal elements in {\ttfamily Cho\+Dia}. \end{DoxyCompactList}\item 
-real(RK), dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a82e9e7b3271150c5803defbc92f75485}{get\+Inv\+Pos\+Def\+Mat}} (nd, Pos\+Def\+Mat)
+pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a6005f4cd5da6c1e685806bf0426fc064}{get\+Inv\+Pos\+Def\+Mat}} (nd, Pos\+Def\+Mat)
 \begin{DoxyCompactList}\small\item\em Return the inverse matrix of an input symmetric-\/positive-\/definite matrix {\ttfamily Pos\+Def\+Mat}. \end{DoxyCompactList}\item 
 subroutine \mbox{\hyperlink{namespaceMatrix__mod_a18cc44398fdcac382cc9c1f505f4e9c9}{get\+Inv\+Mat\+Det}} (nd, Matrix\+LU, Inverse\+Matrix, det\+Inv\+Mat)
 \begin{DoxyCompactList}\small\item\em Return the inverse matrix {\ttfamily Inverse\+Matrix} of a {\ttfamily (nd,nd)} input matrix {\ttfamily Matrix\+LU}, and its determinant, using {\ttfamily LU} decomposition. \end{DoxyCompactList}\item 
-real(RK), dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_abeba90234223ca9edebab96c5dadb613}{get\+Inv\+Mat}} (nd, Matrix)
+real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_ab31601d34b331ca88c7f39798d55e5d7}{get\+Inv\+Mat}} (nd, Matrix)
 \begin{DoxyCompactList}\small\item\em Return the inverse matrix {\ttfamily Inverse\+Matrix} of a {\ttfamily (nd,nd)} input matrix {\ttfamily Matrix}, and its determinant, using {\ttfamily LU} decomposition. \end{DoxyCompactList}\item 
-real(RK), dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a7574373d33fe7ed5f57a7a674c6519d8}{get\+Inv\+Mat\+Low}} (nd, Mat\+Low)
+pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_ac4da2daaf72208e60fc976af978098cb}{get\+Inv\+Mat\+Low}} (nd, Mat\+Low)
 \begin{DoxyCompactList}\small\item\em Return the inverse matrix {\ttfamily Inv\+Mat\+Low} of an input lower-\/triangle matrix of shape {\ttfamily (nd,nd)}. The upper triangle of the input matrix will not be used. \end{DoxyCompactList}\item 
-real(RK), dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_ae895d3dcb5b7f4882dedf141a018885b}{get\+Inv\+Cho\+Low}} (nd, Mat\+Low, Diagonal)
+pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a017f6ff4937d8047379365d3fde6039f}{get\+Inv\+Cho\+Low}} (nd, Mat\+Low, Diagonal)
 \begin{DoxyCompactList}\small\item\em Return the inverse matrix {\ttfamily Inv\+Mat\+Low} of an input lower-\/triangle matrix of shape {\ttfamily (nd,nd)} whose diagonal elements are given separately as the input {\ttfamily Diagonal} of length {\ttfamily nd}. The upper triangle of the input matrix will not be used. \end{DoxyCompactList}\item 
 subroutine \mbox{\hyperlink{namespaceMatrix__mod_a70f8d873407d9148cea3a6d44436c816}{solve\+Linear\+System}} (nd, LU, Permutation, Input\+Solution)
 \begin{DoxyCompactList}\small\item\em Solve the set of {\ttfamily nd} linear equations {\ttfamily Matrix $\ast$ X = Input\+Solution}. \end{DoxyCompactList}\item 
@@ -64,21 +64,21 @@ subroutine \mbox{\hyperlink{namespaceMatrix__mod_ab5fdddf828a95d49d960001885b3ec
 \begin{DoxyCompactList}\small\item\em Return the product of two matrices. The product of two matrices is defined by {\ttfamily c(i,j) = a(i,1)$\ast$b(1,j) + a(i,2)$\ast$b(2,j) + ... + a(i,n)$\ast$b(n,j)}. \end{DoxyCompactList}\item 
 real(RK) function \mbox{\hyperlink{namespaceMatrix__mod_a9a103c679b76ca9d9d727a70d6d87556}{get\+Determinant}} (nd, Matrix)
 \begin{DoxyCompactList}\small\item\em Return the determinant of a given the matrix of shape {\ttfamily (nd,nd)} via LU factorization. \end{DoxyCompactList}\item 
-real(RK) \mbox{\hyperlink{namespaceMatrix__mod_a9c8995ab04648e070cf8d48d66311207}{get\+Sqrt\+Det\+Pos\+Def\+Mat}} (nd, Pos\+Def\+Mat)
+real(RK) function \mbox{\hyperlink{namespaceMatrix__mod_a45e68338cec49abd49773a909a9835ac}{get\+Sqrt\+Det\+Pos\+Def\+Mat}} (nd, Pos\+Def\+Mat)
 \begin{DoxyCompactList}\small\item\em Return the square root of the determinant of a given positive-\/definite square matrix {\ttfamily Pos\+Def\+Mat} of shape {\ttfamily (nd,nd)} using Cholesky factorization. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_aae657307af71e1630308b5409711e123}{get\+Log\+Sqrt\+Det\+Pos\+Def\+Mat}} (nd, Pos\+Def\+Mat, log\+Sqrt\+Det\+Pos\+Def\+Mat, failed)
 \begin{DoxyCompactList}\small\item\em Return the natural logarithm of the square root of the determinant of a given positive-\/definite matrix {\ttfamily Pos\+Def\+Mat} of shape {\ttfamily (nd,nd)} using Cholesky factorization. \end{DoxyCompactList}\item 
 pure logical function \mbox{\hyperlink{namespaceMatrix__mod_abe639c9192bfff252cad932b2d2fe4aa}{is\+Pos\+Def}} (nd, Matrix)
 \begin{DoxyCompactList}\small\item\em Return {\ttfamily .false.} value for {\ttfamily is\+Pos\+Def}, if the Cholesky decomposition of the input matrix fails (i.\+e. matrix is not positive definite), otherwise return {\ttfamily .true.}. \end{DoxyCompactList}\item 
-real(RK), dimension(size(Vector1), size(Vector2)) \mbox{\hyperlink{namespaceMatrix__mod_a6f8043fd1c567de18c7068b8e9ff8f1e}{get\+Outer\+Prod}} (Vector1, Vector2)
+pure real(RK) function, dimension(size(Vector1), size(Vector2)) \mbox{\hyperlink{namespaceMatrix__mod_a2172179ac9756b3742936694ebf512d6}{get\+Outer\+Prod}} (Vector1, Vector2)
 \begin{DoxyCompactList}\small\item\em Return the outer product of the two input matrices. \end{DoxyCompactList}\item 
-real(RK), dimension(rank, rank) \mbox{\hyperlink{namespaceMatrix__mod_ae9c1212a4fc1ba30b6918b6d0f47ddca}{sort\+Pos\+Def\+Mat}} (rank, Pos\+Def\+Mat\+Upper, len\+Col\+Indx, Col\+Indx, Col\+Indx\+Map)
+pure real(RK) function, dimension(rank, rank) \mbox{\hyperlink{namespaceMatrix__mod_a38d91288dc4f554b00c51645ffa10a3c}{sort\+Pos\+Def\+Mat}} (rank, Pos\+Def\+Mat\+Upper, len\+Col\+Indx, Col\+Indx, Col\+Indx\+Map)
 \begin{DoxyCompactList}\small\item\em Return an ordered matrix of the input matrix by rearranging the columns corresponding to {\ttfamily Col\+Indx} to into the corresponding columns in {\ttfamily Col\+Indx\+Map}, while keeping the rest of the matrix structure intact, such that if it is positive-\/definite, it remains positive-\/definite. For example,. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a39d89c1ab4f02e87d2623187a2dc75b2}{symmetrize\+Upper\+Matrix\+With\+Diag}} (nd, Upper\+Square\+Matrix, Diagonal)
 \begin{DoxyCompactList}\small\item\em Symmetrize an input upper-\/triangular square matrix by copying the upper triangle to the lower triangle and copying its diagonals from the input diagonal. \end{DoxyCompactList}\item 
-real(RK), dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_ad0d5afa8a6927d6bdebcf7ce3845558c}{upper2lower}} (nd, Upper, diag\+Enabled)
+pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_ae5041886aff22e0b46f5bb74da04dc67}{upper2lower}} (nd, Upper, diag\+Enabled)
 \begin{DoxyCompactList}\small\item\em Convert an upper square triangular matrix to a lower square triangular matrix. \end{DoxyCompactList}\item 
-real(RK), dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a35c5301af13b2e440931186074aa24ce}{lower2lower}} (nd, Lower, diag\+Enabled)
+pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_ae748510d2a3cde7afcd7ca75b466986c}{lower2lower}} (nd, Lower, diag\+Enabled)
 \begin{DoxyCompactList}\small\item\em Convert a lower square triangular matrix to a lower square triangular matrix. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a5d135cdb555c88e3ca472dcb9ebd6f1b}{symmetrize\+Lower\+Matrix\+With\+Diag}} (nd, Lower\+Square\+Matrix, Diagonal)
 \begin{DoxyCompactList}\small\item\em Symmetrize an input lower-\/triangular square matrix by copying the lower triangle to the upper triangle and copying its diagonals from the input diagonal. \end{DoxyCompactList}\item 
@@ -108,11 +108,11 @@ Amir Shahmoradi, Friday 1\+:54 AM, April 21, 2017, ICES, The University of Texas
 
 
 \doxysubsection{Function/\+Subroutine Documentation}
-\mbox{\Hypertarget{namespaceMatrix__mod_a415f1b3b6b9ea0c24eae905526abc229}\label{namespaceMatrix__mod_a415f1b3b6b9ea0c24eae905526abc229}} 
+\mbox{\Hypertarget{namespaceMatrix__mod_a38b6183d46d9c14c48b1f2ecf779a3ec}\label{namespaceMatrix__mod_a38b6183d46d9c14c48b1f2ecf779a3ec}} 
 \index{Matrix\_mod@{Matrix\_mod}!genDiagMat@{genDiagMat}}
 \index{genDiagMat@{genDiagMat}!Matrix\_mod@{Matrix\_mod}}
 \doxysubsubsection{\texorpdfstring{genDiagMat()}{genDiagMat()}}
-{\footnotesize\ttfamily real(RK), dimension(n,m) Matrix\+\_\+mod\+::gen\+Diag\+Mat (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{n,  }\item[{integer(IK), intent(in)}]{m,  }\item[{real(RK)}]{Diag,  }\item[{real(RK), intent(in), optional}]{offdiag }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure real(RK) function, dimension(n,m) Matrix\+\_\+mod\+::gen\+Diag\+Mat (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{n,  }\item[{integer(IK), intent(in)}]{m,  }\item[{real(RK)}]{Diag,  }\item[{real(RK), intent(in), optional}]{offdiag }\end{DoxyParamCaption})}
 
 
 
@@ -147,7 +147,7 @@ Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00234}{234}} of fil
 
 
 
-Return an eye matrix of sahpe {\ttfamily (n,m)}. Note that all elements of the output matrix are equal. To generate a matrix with unequal diagonal elements, use \mbox{\hyperlink{namespaceMatrix__mod_a415f1b3b6b9ea0c24eae905526abc229}{Matrix\+\_\+mod\+::gen\+Diag\+Mat()}}. 
+Return an eye matrix of sahpe {\ttfamily (n,m)}. Note that all elements of the output matrix are equal. To generate a matrix with unequal diagonal elements, use \mbox{\hyperlink{namespaceMatrix__mod_a38b6183d46d9c14c48b1f2ecf779a3ec}{Matrix\+\_\+mod\+::gen\+Diag\+Mat()}}. 
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -225,7 +225,7 @@ If {\ttfamily nd = 1}, {\ttfamily Cho\+Upp\+Cov\+Low} will not be touched, only 
 If Cholesky factorization fails, {\ttfamily Cho\+Dia(1)} will be set to {\ttfamily -\/1} to indicate error on return.
 \end{DoxyWarning}
 \begin{DoxyRemark}{Remarks}
-This routine is particularly useful for computing the Cholesky upper triangle of lower-\/triangle inverse matrices returned by \mbox{\hyperlink{namespaceMatrix__mod_adafdc0e07fc2cc3161359163fe096817}{Matrix\+\_\+mod\+::get\+Inv\+Low\+From\+Cho\+Low()}}.
+This routine is particularly useful for computing the Cholesky upper triangle of lower-\/triangle inverse matrices returned by \mbox{\hyperlink{namespaceMatrix__mod_ab13f6048b3a33245a6a23595c9505f65}{Matrix\+\_\+mod\+::get\+Inv\+Low\+From\+Cho\+Low()}}.
 \end{DoxyRemark}
 Returns in the upper triangle of {\ttfamily Cho\+Upp\+Cov\+Low}, the Cholesky factorization L$^\wedge$T of $\texttt{ChoUppCovLow} = L.L^T$. On input, the lower triangle of {\ttfamily Cho\+Upp\+Cov\+Low} should be given, which remains intact on output. 
 
@@ -258,11 +258,11 @@ Amir Shahmoradi, Oct 18, 2009, 4\+:10 PM, Houghton, Michigan
 
 Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01047}{1047}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceMatrix__mod_a9e356497aa8a24abb2553f43247a6f46}\label{namespaceMatrix__mod_a9e356497aa8a24abb2553f43247a6f46}} 
+\mbox{\Hypertarget{namespaceMatrix__mod_afb7526c517e2a843299178999f726074}\label{namespaceMatrix__mod_afb7526c517e2a843299178999f726074}} 
 \index{Matrix\_mod@{Matrix\_mod}!getDiag@{getDiag}}
 \index{getDiag@{getDiag}!Matrix\_mod@{Matrix\_mod}}
 \doxysubsubsection{\texorpdfstring{getDiag()}{getDiag()}}
-{\footnotesize\ttfamily real(RK), dimension(\+:), allocatable \mbox{\hyperlink{interfaceMatrix__mod_1_1getDiag}{Matrix\+\_\+mod\+::get\+Diag}} (\begin{DoxyParamCaption}\item[{real(RK)}]{Matrix }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure real(RK) function, dimension(\+:), allocatable \mbox{\hyperlink{interfaceMatrix__mod_1_1getDiag}{Matrix\+\_\+mod\+::get\+Diag}} (\begin{DoxyParamCaption}\item[{real(RK)}]{Matrix }\end{DoxyParamCaption})}
 
 
 
@@ -283,11 +283,11 @@ Amir Shahmoradi, Friday 1\+:49 AM, August 27, 2021, Dallas, TX
 
 Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00150}{150}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceMatrix__mod_ae895d3dcb5b7f4882dedf141a018885b}\label{namespaceMatrix__mod_ae895d3dcb5b7f4882dedf141a018885b}} 
+\mbox{\Hypertarget{namespaceMatrix__mod_a017f6ff4937d8047379365d3fde6039f}\label{namespaceMatrix__mod_a017f6ff4937d8047379365d3fde6039f}} 
 \index{Matrix\_mod@{Matrix\_mod}!getInvChoLow@{getInvChoLow}}
 \index{getInvChoLow@{getInvChoLow}!Matrix\_mod@{Matrix\_mod}}
 \doxysubsubsection{\texorpdfstring{getInvChoLow()}{getInvChoLow()}}
-{\footnotesize\ttfamily real(RK), dimension(nd,nd) Matrix\+\_\+mod\+::get\+Inv\+Cho\+Low (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mat\+Low,  }\item[{real(RK)}]{Diagonal }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure real(RK) function, dimension(nd,nd) Matrix\+\_\+mod\+::get\+Inv\+Cho\+Low (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mat\+Low,  }\item[{real(RK)}]{Diagonal }\end{DoxyParamCaption})}
 
 
 
@@ -318,11 +318,11 @@ Amir Shahmoradi, Tuesday 3\+:46 AM, August 24, 2021, Dallas, TX
 
 Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00825}{825}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceMatrix__mod_adafdc0e07fc2cc3161359163fe096817}\label{namespaceMatrix__mod_adafdc0e07fc2cc3161359163fe096817}} 
+\mbox{\Hypertarget{namespaceMatrix__mod_ab13f6048b3a33245a6a23595c9505f65}\label{namespaceMatrix__mod_ab13f6048b3a33245a6a23595c9505f65}} 
 \index{Matrix\_mod@{Matrix\_mod}!getInvLowFromChoLow@{getInvLowFromChoLow}}
 \index{getInvLowFromChoLow@{getInvLowFromChoLow}!Matrix\_mod@{Matrix\_mod}}
 \doxysubsubsection{\texorpdfstring{getInvLowFromChoLow()}{getInvLowFromChoLow()}}
-{\footnotesize\ttfamily real(RK), dimension(nd,nd) Matrix\+\_\+mod\+::get\+Inv\+Low\+From\+Cho\+Low (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Cho\+Low,  }\item[{real(RK)}]{Cho\+Dia }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure real(RK) function, dimension(nd,nd) Matrix\+\_\+mod\+::get\+Inv\+Low\+From\+Cho\+Low (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Cho\+Low,  }\item[{real(RK)}]{Cho\+Dia }\end{DoxyParamCaption})}
 
 
 
@@ -350,11 +350,11 @@ Amir Shahmoradi, Apr 21, 2017, 1\+:54 AM, ICES, The University of Texas at Austi
 
 Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00560}{560}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceMatrix__mod_abeba90234223ca9edebab96c5dadb613}\label{namespaceMatrix__mod_abeba90234223ca9edebab96c5dadb613}} 
+\mbox{\Hypertarget{namespaceMatrix__mod_ab31601d34b331ca88c7f39798d55e5d7}\label{namespaceMatrix__mod_ab31601d34b331ca88c7f39798d55e5d7}} 
 \index{Matrix\_mod@{Matrix\_mod}!getInvMat@{getInvMat}}
 \index{getInvMat@{getInvMat}!Matrix\_mod@{Matrix\_mod}}
 \doxysubsubsection{\texorpdfstring{getInvMat()}{getInvMat()}}
-{\footnotesize\ttfamily real(RK), dimension(nd,nd) Matrix\+\_\+mod\+::get\+Inv\+Mat (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Matrix }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily real(RK) function, dimension(nd,nd) Matrix\+\_\+mod\+::get\+Inv\+Mat (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Matrix }\end{DoxyParamCaption})}
 
 
 
@@ -435,7 +435,7 @@ Return the inverse matrix {\ttfamily Inverse\+Matrix} of a {\ttfamily (nd,nd)} i
 Do not call this routine when {\ttfamily nd = 1}. For {\ttfamily nd = 1}\+: {\ttfamily Inverse\+Matrix = det\+Inv\+Mat = 1.\+\_\+\+RK / Inverse\+Matrix}.
 \end{DoxyWarning}
 \begin{DoxyRemark}{Remarks}
-This routine has the same functionality as the function \mbox{\hyperlink{namespaceMatrix__mod_abeba90234223ca9edebab96c5dadb613}{get\+Inv\+Mat()}}, but returns the result as a function output. According to the timing tests, {\ttfamily compare\+\_\+\+Inv\+Mat\+Routines\+\_\+1()}, the function version of this code \mbox{\hyperlink{namespaceMatrix__mod_abeba90234223ca9edebab96c5dadb613}{get\+Inv\+Mat()}} appears to be 15-\/30\% faster than this subroutine version.
+This routine has the same functionality as the function \mbox{\hyperlink{namespaceMatrix__mod_ab31601d34b331ca88c7f39798d55e5d7}{get\+Inv\+Mat()}}, but returns the result as a function output. According to the timing tests, {\ttfamily compare\+\_\+\+Inv\+Mat\+Routines\+\_\+1()}, the function version of this code \mbox{\hyperlink{namespaceMatrix__mod_ab31601d34b331ca88c7f39798d55e5d7}{get\+Inv\+Mat()}} appears to be 15-\/30\% faster than this subroutine version.
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Oct 18, 2009, 1\+:54 AM, Houghton, Michigan 
@@ -444,11 +444,11 @@ Amir Shahmoradi, Oct 18, 2009, 1\+:54 AM, Houghton, Michigan
 
 Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00694}{694}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceMatrix__mod_a7793d3a8bbd6d08c4cbdcd7c4bad9968}\label{namespaceMatrix__mod_a7793d3a8bbd6d08c4cbdcd7c4bad9968}} 
+\mbox{\Hypertarget{namespaceMatrix__mod_a89ca7c850a574d7e9f4987e5637cf1b5}\label{namespaceMatrix__mod_a89ca7c850a574d7e9f4987e5637cf1b5}} 
 \index{Matrix\_mod@{Matrix\_mod}!getInvMatFromChoLow@{getInvMatFromChoLow}}
 \index{getInvMatFromChoLow@{getInvMatFromChoLow}!Matrix\_mod@{Matrix\_mod}}
 \doxysubsubsection{\texorpdfstring{getInvMatFromChoLow()}{getInvMatFromChoLow()}}
-{\footnotesize\ttfamily real(RK), dimension(nd,nd) Matrix\+\_\+mod\+::get\+Inv\+Mat\+From\+Cho\+Low (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Cho\+Low,  }\item[{real(RK)}]{Cho\+Dia }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure real(RK) function, dimension(nd,nd) Matrix\+\_\+mod\+::get\+Inv\+Mat\+From\+Cho\+Low (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Cho\+Low,  }\item[{real(RK)}]{Cho\+Dia }\end{DoxyParamCaption})}
 
 
 
@@ -476,11 +476,11 @@ Amir Shahmoradi, Apr 21, 2017, 1\+:54 AM, ICES, The University of Texas at Austi
 
 Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00499}{499}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceMatrix__mod_a7574373d33fe7ed5f57a7a674c6519d8}\label{namespaceMatrix__mod_a7574373d33fe7ed5f57a7a674c6519d8}} 
+\mbox{\Hypertarget{namespaceMatrix__mod_ac4da2daaf72208e60fc976af978098cb}\label{namespaceMatrix__mod_ac4da2daaf72208e60fc976af978098cb}} 
 \index{Matrix\_mod@{Matrix\_mod}!getInvMatLow@{getInvMatLow}}
 \index{getInvMatLow@{getInvMatLow}!Matrix\_mod@{Matrix\_mod}}
 \doxysubsubsection{\texorpdfstring{getInvMatLow()}{getInvMatLow()}}
-{\footnotesize\ttfamily real(RK), dimension(nd,nd) \mbox{\hyperlink{interfaceMatrix__mod_1_1getInvMatLow}{Matrix\+\_\+mod\+::get\+Inv\+Mat\+Low}} (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mat\+Low }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure real(RK) function, dimension(nd,nd) \mbox{\hyperlink{interfaceMatrix__mod_1_1getInvMatLow}{Matrix\+\_\+mod\+::get\+Inv\+Mat\+Low}} (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mat\+Low }\end{DoxyParamCaption})}
 
 
 
@@ -506,11 +506,11 @@ Amir Shahmoradi, Tuesday 3\+:06 AM, August 24, 2021, Dallas, TX
 
 Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00779}{779}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceMatrix__mod_a82e9e7b3271150c5803defbc92f75485}\label{namespaceMatrix__mod_a82e9e7b3271150c5803defbc92f75485}} 
+\mbox{\Hypertarget{namespaceMatrix__mod_a6005f4cd5da6c1e685806bf0426fc064}\label{namespaceMatrix__mod_a6005f4cd5da6c1e685806bf0426fc064}} 
 \index{Matrix\_mod@{Matrix\_mod}!getInvPosDefMat@{getInvPosDefMat}}
 \index{getInvPosDefMat@{getInvPosDefMat}!Matrix\_mod@{Matrix\_mod}}
 \doxysubsubsection{\texorpdfstring{getInvPosDefMat()}{getInvPosDefMat()}}
-{\footnotesize\ttfamily real(RK), dimension(nd,nd) Matrix\+\_\+mod\+::get\+Inv\+Pos\+Def\+Mat (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Pos\+Def\+Mat }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure real(RK) function, dimension(nd,nd) Matrix\+\_\+mod\+::get\+Inv\+Pos\+Def\+Mat (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Pos\+Def\+Mat }\end{DoxyParamCaption})}
 
 
 
@@ -633,11 +633,11 @@ Amir Shahmoradi, Apr 21, 2017, 1\+:43 PM, ICES, The University of Texas at Austi
 
 Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00911}{911}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceMatrix__mod_a6f8043fd1c567de18c7068b8e9ff8f1e}\label{namespaceMatrix__mod_a6f8043fd1c567de18c7068b8e9ff8f1e}} 
+\mbox{\Hypertarget{namespaceMatrix__mod_a2172179ac9756b3742936694ebf512d6}\label{namespaceMatrix__mod_a2172179ac9756b3742936694ebf512d6}} 
 \index{Matrix\_mod@{Matrix\_mod}!getOuterProd@{getOuterProd}}
 \index{getOuterProd@{getOuterProd}!Matrix\_mod@{Matrix\_mod}}
 \doxysubsubsection{\texorpdfstring{getOuterProd()}{getOuterProd()}}
-{\footnotesize\ttfamily real(RK), dimension(size(Vector1), size(Vector2)) Matrix\+\_\+mod\+::get\+Outer\+Prod (\begin{DoxyParamCaption}\item[{real(RK)}]{Vector1,  }\item[{real(RK)}]{Vector2 }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure real(RK) function, dimension(size(Vector1), size(Vector2)) Matrix\+\_\+mod\+::get\+Outer\+Prod (\begin{DoxyParamCaption}\item[{real(RK)}]{Vector1,  }\item[{real(RK)}]{Vector2 }\end{DoxyParamCaption})}
 
 
 
@@ -685,11 +685,11 @@ Amir Shahmoradi, Apr 21, 2017, 4\+:10 PM, ICES, UT
 
 Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01532}{1532}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceMatrix__mod_a9c8995ab04648e070cf8d48d66311207}\label{namespaceMatrix__mod_a9c8995ab04648e070cf8d48d66311207}} 
+\mbox{\Hypertarget{namespaceMatrix__mod_a45e68338cec49abd49773a909a9835ac}\label{namespaceMatrix__mod_a45e68338cec49abd49773a909a9835ac}} 
 \index{Matrix\_mod@{Matrix\_mod}!getSqrtDetPosDefMat@{getSqrtDetPosDefMat}}
 \index{getSqrtDetPosDefMat@{getSqrtDetPosDefMat}!Matrix\_mod@{Matrix\_mod}}
 \doxysubsubsection{\texorpdfstring{getSqrtDetPosDefMat()}{getSqrtDetPosDefMat()}}
-{\footnotesize\ttfamily real(RK) Matrix\+\_\+mod\+::get\+Sqrt\+Det\+Pos\+Def\+Mat (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Pos\+Def\+Mat }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily real(RK) function Matrix\+\_\+mod\+::get\+Sqrt\+Det\+Pos\+Def\+Mat (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Pos\+Def\+Mat }\end{DoxyParamCaption})}
 
 
 
@@ -745,11 +745,11 @@ Amir Shahmoradi, Apr 21, 2017, 4\+:10 PM, ICES, UT
 
 Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01162}{1162}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceMatrix__mod_a35c5301af13b2e440931186074aa24ce}\label{namespaceMatrix__mod_a35c5301af13b2e440931186074aa24ce}} 
+\mbox{\Hypertarget{namespaceMatrix__mod_ae748510d2a3cde7afcd7ca75b466986c}\label{namespaceMatrix__mod_ae748510d2a3cde7afcd7ca75b466986c}} 
 \index{Matrix\_mod@{Matrix\_mod}!lower2lower@{lower2lower}}
 \index{lower2lower@{lower2lower}!Matrix\_mod@{Matrix\_mod}}
 \doxysubsubsection{\texorpdfstring{lower2lower()}{lower2lower()}}
-{\footnotesize\ttfamily real(RK), dimension(nd,nd) Matrix\+\_\+mod\+::lower2lower (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Lower,  }\item[{logical}]{diag\+Enabled }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure real(RK) function, dimension(nd,nd) Matrix\+\_\+mod\+::lower2lower (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Lower,  }\item[{logical}]{diag\+Enabled }\end{DoxyParamCaption})}
 
 
 
@@ -913,11 +913,11 @@ Amir Shahmoradi, Apr 8, 2017, 1\+:54 PM, Houghton, Michigan
 
 Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00869}{869}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceMatrix__mod_ae9c1212a4fc1ba30b6918b6d0f47ddca}\label{namespaceMatrix__mod_ae9c1212a4fc1ba30b6918b6d0f47ddca}} 
+\mbox{\Hypertarget{namespaceMatrix__mod_a38d91288dc4f554b00c51645ffa10a3c}\label{namespaceMatrix__mod_a38d91288dc4f554b00c51645ffa10a3c}} 
 \index{Matrix\_mod@{Matrix\_mod}!sortPosDefMat@{sortPosDefMat}}
 \index{sortPosDefMat@{sortPosDefMat}!Matrix\_mod@{Matrix\_mod}}
 \doxysubsubsection{\texorpdfstring{sortPosDefMat()}{sortPosDefMat()}}
-{\footnotesize\ttfamily real(RK), dimension(rank,rank) Matrix\+\_\+mod\+::sort\+Pos\+Def\+Mat (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{rank,  }\item[{real(RK)}]{Pos\+Def\+Mat\+Upper,  }\item[{integer(IK)}]{len\+Col\+Indx,  }\item[{integer(IK)}]{Col\+Indx,  }\item[{integer(IK)}]{Col\+Indx\+Map }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure real(RK) function, dimension(rank,rank) Matrix\+\_\+mod\+::sort\+Pos\+Def\+Mat (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{rank,  }\item[{real(RK)}]{Pos\+Def\+Mat\+Upper,  }\item[{integer(IK)}]{len\+Col\+Indx,  }\item[{integer(IK)}]{Col\+Indx,  }\item[{integer(IK)}]{Col\+Indx\+Map }\end{DoxyParamCaption})}
 
 
 
@@ -1072,11 +1072,11 @@ Amir Shahmoradi, Apr 21, 2017, 4\+:10 PM, ICES, UT
 
 Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01302}{1302}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceMatrix__mod_ad0d5afa8a6927d6bdebcf7ce3845558c}\label{namespaceMatrix__mod_ad0d5afa8a6927d6bdebcf7ce3845558c}} 
+\mbox{\Hypertarget{namespaceMatrix__mod_ae5041886aff22e0b46f5bb74da04dc67}\label{namespaceMatrix__mod_ae5041886aff22e0b46f5bb74da04dc67}} 
 \index{Matrix\_mod@{Matrix\_mod}!upper2lower@{upper2lower}}
 \index{upper2lower@{upper2lower}!Matrix\_mod@{Matrix\_mod}}
 \doxysubsubsection{\texorpdfstring{upper2lower()}{upper2lower()}}
-{\footnotesize\ttfamily real(RK), dimension(nd,nd) Matrix\+\_\+mod\+::upper2lower (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Upper,  }\item[{logical}]{diag\+Enabled }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure real(RK) function, dimension(nd,nd) Matrix\+\_\+mod\+::upper2lower (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Upper,  }\item[{logical}]{diag\+Enabled }\end{DoxyParamCaption})}
 
 
 

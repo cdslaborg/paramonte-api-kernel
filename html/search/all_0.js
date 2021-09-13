@@ -14,7 +14,7 @@ var searchData=
   ['addcompilerplatforminfo_11',['addCompilerPlatformInfo',['../namespaceParaMonte__mod.html#a85e35271e66936533dbbaf4b1745591d',1,'ParaMonte_mod::addCompilerPlatformInfo()'],['../structParaMonte__mod_1_1ParaMonte__type.html#afb35a3e713ae696cade4304750c0cbd5',1,'ParaMonte_mod::ParaMonte_type::addCompilerPlatformInfo']]],
   ['addsplashscreen_12',['addSplashScreen',['../structParaMonte__mod_1_1ParaMonte__type.html#a81531068c667a4b420c86ec4f7e6eaf6',1,'ParaMonte_mod::ParaMonte_type::addSplashScreen()'],['../namespaceParaMonte__mod.html#a6b2b1bf83a81b710b86bf048839e8868',1,'ParaMonte_mod::addSplashScreen()']]],
   ['allocate_13',['allocate',['../structKmeans__mod_1_1Prop__type.html#a29f43efd7b935190375d69a4f249ad2f',1,'Kmeans_mod::Prop_type']]],
-  ['allocatekmeans_14',['allocateKmeans',['../structKmeans__mod_1_1Kmeans__type.html#ad94154472ba4174072c77ea081a80f86',1,'Kmeans_mod::Kmeans_type::allocateKmeans()'],['../namespaceKmeans__mod.html#afca84bc6104956be83d232478b1e0d1d',1,'Kmeans_mod::allocateKmeans()']]],
+  ['allocatekmeans_14',['allocateKmeans',['../structKmeans__mod_1_1Kmeans__type.html#aed716c6593051372ad50b8ce4d20b71b',1,'Kmeans_mod::Kmeans_type::allocateKmeans()'],['../namespaceKmeans__mod.html#a5fb9bb4b4505ce4fce10ba73e509af2f',1,'Kmeans_mod::allocateKmeans()']]],
   ['allocatekmeanscomponents_15',['allocateKmeansComponents',['../namespaceKmeansOOP__mod.html#adaa2e1bfd0ebf0febdda572f3f9ea25e',1,'KmeansOOP_mod']]],
   ['allocatekmeansprop_16',['allocateKmeansProp',['../namespaceKmeans__mod.html#ad8b3b0fdff3dd016e9b42d5ae6d6ed59',1,'Kmeans_mod']]],
   ['alpha_5fdefault_17',['ALPHA_DEFAULT',['../namespaceBandSpectrum__mod.html#a273925620de54bd626fb2e9810a289b0',1,'BandSpectrum_mod']]],

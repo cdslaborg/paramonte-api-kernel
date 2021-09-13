@@ -11,7 +11,7 @@ var searchData=
   ['bcasterr_8',['bcastErr',['../namespaceErr__mod.html#a8cadb32b1543eaedea2e1a69403e0cd7',1,'Err_mod']]],
   ['beta_5fdefault_9',['BETA_DEFAULT',['../namespaceBandSpectrum__mod.html#a2bff3bf84c2280fc748e04fba6d29d62',1,'BandSpectrum_mod']]],
   ['bin_10',['bin',['../interfaceHistogram__mod_1_1bin.html',1,'Histogram_mod']]],
-  ['bin_5frk_11',['bin_RK',['../namespaceHistogram__mod.html#aff66d39ddd6e799738f8202ca80d0ba2',1,'Histogram_mod::bin_RK()'],['../interfaceHistogram__mod_1_1bin.html#ace47aca5d4f6b0bcc2d49ce647968cc1',1,'Histogram_mod::bin::bin_RK()']]],
+  ['bin_5frk_11',['bin_RK',['../namespaceHistogram__mod.html#ab8bbaf2cb2e876b7773238f5dc69a148',1,'Histogram_mod::bin_RK()'],['../interfaceHistogram__mod_1_1bin.html#a446799730fd0b00ce17042b8b73367aa',1,'Histogram_mod::bin::bin_RK()']]],
   ['binary_12',['binary',['../structSpecBase__OutputChainFileFormat__mod_1_1OutputChainFileFormat__type.html#a88b7b4c07f024fb0062db890a20d40e4',1,'SpecBase_OutputChainFileFormat_mod::OutputChainFileFormat_type::binary()'],['../structSpecBase__OutputRestartFileFormat__mod_1_1OutputRestartFileFormat__type.html#aa3503e0976868067869eb5d06b9f467b',1,'SpecBase_OutputRestartFileFormat_mod::OutputRestartFileFormat_type::binary()']]],
   ['blank_13',['Blank',['../structFile__mod_1_1File__type.html#a675f7a72048835ac0d9551fa1e29e467',1,'File_mod::File_type']]],
   ['blank_5ftype_14',['Blank_type',['../structFile__mod_1_1Blank__type.html',1,'File_mod']]],

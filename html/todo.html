@@ -80,12 +80,12 @@ $(function() {
 <div class="textblock"><dl class="reflist">
 <dt>Subprogram <a class="el" href="namespaceDistUniLogGamma__mod.html#acc6e60c6fa66c784f1f801eb419ecbff">DistUniLogGamma_mod::rand</a>  (self)</dt>
 <dd><a class="anchor" id="_todo000001"></a> The random number generator of Log-Gamma distribution should be implemented here.  </dd>
-<dt>Subprogram <a class="el" href="namespaceDomainEllipsoid__mod.html#af8b7bb6f4a7187929560cf43e212c465">DomainEllipsoid_mod::getRandUnitRadiusMVU</a>  (nd)</dt>
+<dt>Subprogram <a class="el" href="namespaceDomainEllipsoid__mod.html#a72fca483051eb7635ac24fd51f5baf25">DomainEllipsoid_mod::getRandUnitRadiusMVU</a>  (nd)</dt>
 <dd><a class="anchor" id="_todo000003"></a> This algorithm is not robust for very large values of <code>nd &gt;&gt; 100</code>. </dd>
-<dt>Subprogram <a class="el" href="namespaceDomainEllipsoid__mod.html#a3e1e740aa58603709ce157c49d86efdc">DomainEllipsoid_mod::getRandUnitVolumeMVU</a>  (nd, logVolUnitBall)</dt>
+<dt>Subprogram <a class="el" href="namespaceDomainEllipsoid__mod.html#a8b144d1013f139e56669c1797a7421db">DomainEllipsoid_mod::getRandUnitVolumeMVU</a>  (nd, logVolUnitBall)</dt>
 <dd><a class="anchor" id="_todo000002"></a> This algorithm is not robust for very large values of <code>nd &gt;&gt; 100</code>. </dd>
-<dt>Subprogram <a class="el" href="namespaceFitGeoCyclic__mod.html#a1a460b8ee015e2e9353625bb0cc3569d">FitGeoCyclic_mod::fitGeoCyclicLogPDF</a>  (maxNumTrial, numTrial, SuccessStep, LogCount)</dt>
-<dd><a class="anchor" id="_todo000004"></a> Update: Amir Shahmoradi, Sunday Nov 29, 2020, 11:19 pm, Dallas, TX The current implementation of the objective function relies on the definitions of module variables. Although inefficient and ugly, this was necessary to resolve the viscous Segmentation Fault error that happens with internal function calls on Windows Subsystem for Linux Ubuntu with GFortran. Once this error of unknown origin is resolved, the external module function <code><a class="el" href="FitGeoCyclic__mod_8f90.html#a4c961cfd8f5acd4f093f7124880203cd">getSumDistSq()</a></code> must be converted back to an internal function within <a class="el" href="namespaceFitGeoCyclic__mod.html#a1a460b8ee015e2e9353625bb0cc3569d">fitGeoCyclicLogPDF</a> and subsequently, all module variables must be removed. update (Dec 16, 2020): <br  />
+<dt>Subprogram <a class="el" href="namespaceFitGeoCyclic__mod.html#a1c31498edcd69664be787f9942aaecea">FitGeoCyclic_mod::fitGeoCyclicLogPDF</a>  (maxNumTrial, numTrial, SuccessStep, LogCount)</dt>
+<dd><a class="anchor" id="_todo000004"></a> Update: Amir Shahmoradi, Sunday Nov 29, 2020, 11:19 pm, Dallas, TX The current implementation of the objective function relies on the definitions of module variables. Although inefficient and ugly, this was necessary to resolve the viscous Segmentation Fault error that happens with internal function calls on Windows Subsystem for Linux Ubuntu with GFortran. Once this error of unknown origin is resolved, the external module function <code><a class="el" href="FitGeoCyclic__mod_8f90.html#aaf19ced31038d8a6fb7c3582c05a054b">getSumDistSq()</a></code> must be converted back to an internal function within <a class="el" href="namespaceFitGeoCyclic__mod.html#a1c31498edcd69664be787f9942aaecea">fitGeoCyclicLogPDF</a> and subsequently, all module variables must be removed. update (Dec 16, 2020): <br  />
  The source of the error was identified to be a bug in WSL1. This problem is now resolved in WSL2. However, the code will be kept intact for future compatibility with WSL1 and those who still use it. </dd>
 <dt>Subprogram <a class="el" href="namespaceHistogram__mod.html#ad80a9c34cbdd54d1c6b5d652c4def668">Histogram_mod::getBin</a>  (x, lowerBound, nbin, binsize)</dt>
 <dd><a class="anchor" id="_todo000005"></a> The performance and interface of this routine can be significantly improved. It is more sensible to pass a contiguous array of bin edges as input instead of <code>lowerBound</code> and <code>binsize</code>. If the input point is not within any bins, an index of zero should be returned. </dd>
@@ -97,12 +97,12 @@ $(function() {
 <dd><p class="startdd"><a class="anchor" id="_todo000008"></a> All <code>minloc</code> queries in this procedure can be replaced with more efficient bin search algorithms.</p>
 <p class="enddd"><a class="anchor" id="_todo000009"></a> The variable <code>CumSumDistSq</code> does not have to be defined as <code>real64</code>. </p>
 </dd>
-<dt>Subprogram <a class="el" href="namespaceMath__mod.html#ae081a3ee17e2f763cf4aefc94c040a6a">Math_mod::getLogSumExp_CK</a>  (LogValue, maxLogValue)</dt>
-<dd><a class="anchor" id="_todo000011"></a> This function should be modified to rely on <code><a class="el" href="namespaceMath__mod.html#aec8bb7750a5254fcf8d1dd417f99aab9" title="Return the logarithm of the sum of the exponential of the input real vector robustly (without overflo...">getSumExp_RK()</a></code>.  </dd>
-<dt>Subprogram <a class="el" href="namespaceMath__mod.html#a21698565f7104f71efa6012780a53e48">Math_mod::getLogSumExp_RK</a>  (LogValue, maxLogValue)</dt>
-<dd><a class="anchor" id="_todo000010"></a> This function should be modified to rely on <code><a class="el" href="namespaceMath__mod.html#aec8bb7750a5254fcf8d1dd417f99aab9" title="Return the logarithm of the sum of the exponential of the input real vector robustly (without overflo...">getSumExp_RK()</a></code>.  </dd>
-<dt>Subprogram <a class="el" href="namespaceMath__mod.html#aec8bb7750a5254fcf8d1dd417f99aab9">Math_mod::getSumExp_RK</a>  (LogValue, maxLogValue)</dt>
-<dd><a class="anchor" id="_todo000012"></a> This function should be modified to avoid underflow checking in release mode on <code><a class="el" href="namespaceMath__mod.html#aec8bb7750a5254fcf8d1dd417f99aab9" title="Return the logarithm of the sum of the exponential of the input real vector robustly (without overflo...">getSumExp_RK()</a></code>.  </dd>
+<dt>Subprogram <a class="el" href="namespaceMath__mod.html#aca2a61850d983f469ecb90acc253a58c">Math_mod::getLogSumExp_CK</a>  (LogValue, maxLogValue)</dt>
+<dd><a class="anchor" id="_todo000011"></a> This function should be modified to rely on <code><a class="el" href="namespaceMath__mod.html#a3974fffdcda7a33913960e0999a34b96" title="Return the logarithm of the sum of the exponential of the input real vector robustly (without overflo...">getSumExp_RK()</a></code>.  </dd>
+<dt>Subprogram <a class="el" href="namespaceMath__mod.html#a19c8ee19b0f93d3586bf2de1c464f249">Math_mod::getLogSumExp_RK</a>  (LogValue, maxLogValue)</dt>
+<dd><a class="anchor" id="_todo000010"></a> This function should be modified to rely on <code><a class="el" href="namespaceMath__mod.html#a3974fffdcda7a33913960e0999a34b96" title="Return the logarithm of the sum of the exponential of the input real vector robustly (without overflo...">getSumExp_RK()</a></code>.  </dd>
+<dt>Subprogram <a class="el" href="namespaceMath__mod.html#a3974fffdcda7a33913960e0999a34b96">Math_mod::getSumExp_RK</a>  (LogValue, maxLogValue)</dt>
+<dd><a class="anchor" id="_todo000012"></a> This function should be modified to avoid underflow checking in release mode on <code><a class="el" href="namespaceMath__mod.html#a3974fffdcda7a33913960e0999a34b96" title="Return the logarithm of the sum of the exponential of the input real vector robustly (without overflo...">getSumExp_RK()</a></code>.  </dd>
 <dt>Subprogram <a class="el" href="namespaceSample__mod.html#a1942971b64332fc7c4860112a244764c">Sample_mod::getChoLowCovUpp</a>  (nd, np, Mean, Sample, ChoLowCovUpp, ChoDia)</dt>
 <dd><a class="anchor" id="_todo000016"></a> The efficiency of this code can be further improved.  </dd>
 <dt>Subprogram <a class="el" href="namespaceSample__mod.html#a1e5daab49859d9c21c4ec3c916ec963d">Sample_mod::getChoLowCovUppHighDim</a>  (nd, np, Mean, Sample, ChoLowCovUpp, ChoDia)</dt>
@@ -113,9 +113,9 @@ $(function() {
 <dd><a class="anchor" id="_todo000019"></a> The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector. </dd>
 <dt>Subprogram <a class="el" href="namespaceSpecBase__mod.html#a44ba6ab2cfcce307ab0b89dd2d4933f3">SpecBase_mod::setFromInputArgs</a>  (SpecBase, Err, outputSampleSize, randomSeed, description, outputFileName, outputDelimiter, outputChainFileFormat, domainAxesNameList, outputRestartFileFormat, outputColumnWidth, outputOverwriteEnabled, outputRealPrecision, outputSilentModeEnabled, domainCubeLimitLower, domainCubeLimitUpper, domainEllipsoidCenter, domainEllipsoidCovMat, domainEllipsoidCorMat, domainEllipsoidStdVec, domain, parallelism, outputProgressReportPeriod, TargetAcceptanceRate, parallelismMpiFinalizeEnabled, domainMaxNumCheckToWarn, domainMaxNumCheckToStop)</dt>
 <dd><a class="anchor" id="_todo000023"></a>perhaps all <code>set()</code> methods should take optional input arguments.  </dd>
-<dt>Subprogram <a class="el" href="namespaceStatistics__mod.html#ac37c1980561187288683263024c3c2f5">Statistics_mod::getBetaCDF_RK32</a>  (alpha, beta, x)</dt>
+<dt>Subprogram <a class="el" href="namespaceStatistics__mod.html#a1fd519cf4d71eb72a8b096f60398b46f">Statistics_mod::getBetaCDF_RK32</a>  (alpha, beta, x)</dt>
 <dd><a class="anchor" id="_todo000024"></a> The efficiency of this code can be improved by making <code>x</code> a vector on input. </dd>
-<dt>Subprogram <a class="el" href="namespaceStatistics__mod.html#a7da6074960554ef7e40b04a2342fbff7">Statistics_mod::getBetaCDF_RK64</a>  (alpha, beta, x)</dt>
+<dt>Subprogram <a class="el" href="namespaceStatistics__mod.html#a6f2bac87eb4e963f359c89840f4702a3">Statistics_mod::getBetaCDF_RK64</a>  (alpha, beta, x)</dt>
 <dd><a class="anchor" id="_todo000025"></a> The efficiency of this code can be improved by making <code>x</code> a vector on input. </dd>
 <dt>Subprogram <a class="el" href="namespaceSystem__mod.html#a8f999de90840ba33f9cf7f30edd41b3d">System_mod::copyFile</a>  (pathOld, pathNew, isUnixShell, Err)</dt>
 <dd><a class="anchor" id="_todo000027"></a> This code can be improved. See the extensive note in the body of the procedure.  </dd>
@@ -155,7 +155,7 @@ $(function() {
     </div>
     <address class="footer">
         <small>
-            Generated on Sun Sep 12 2021 20:17:55 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
+            Generated on Sun Sep 12 2021 23:16:16 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
             <!--
             1.9.3
             -->

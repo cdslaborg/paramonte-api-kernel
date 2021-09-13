@@ -12,9 +12,9 @@ pure real(RK) function \mbox{\hyperlink{namespaceBandSpectrum__mod_aacdf6105c20f
 \begin{DoxyCompactList}\small\item\em Return {\ttfamily epk$\ast$(alpha-\/beta)/(alpha+2)}, which is the normalization factor in the exponent of the first component of the Band model. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceBandSpectrum__mod_ad4f321f7f5a9a79b9dc27ceefe754623}{get\+Band\+Param}} (epk, alpha, beta, ebrk, coef, alpha\+Plus\+Two)
 \begin{DoxyCompactList}\small\item\em Compute the break energy {\ttfamily ebrk} of the Band model, as well as the coefficient by which the high energy component of the Band model must be multiplied in order to get a smooth function (assuming the normalization coefficient of the lower energy component is unity). \end{DoxyCompactList}\item 
-real(RK) \mbox{\hyperlink{namespaceBandSpectrum__mod_aa8080eb9101a4f57bbc9dc3fa34a9579}{get\+Photon\+Flux}} (energy, epk, alpha, beta, ebrk, coef, alpha\+Plus\+Two)
+pure real(RK) function \mbox{\hyperlink{namespaceBandSpectrum__mod_a3b894a1fd2110b1f9009d08d153a4524}{get\+Photon\+Flux}} (energy, epk, alpha, beta, ebrk, coef, alpha\+Plus\+Two)
 \begin{DoxyCompactList}\small\item\em Compute the differential photon flux according to the Band differential spectrum at the given input {\ttfamily energy} value. \end{DoxyCompactList}\item 
-real(RK) \mbox{\hyperlink{namespaceBandSpectrum__mod_a06e17fa0777b798a723f8f91af1b609a}{get\+Photon\+Flux\+Lower}} (energy, alpha, alpha\+Plus\+Two\+Over\+Epk)
+pure real(RK) function \mbox{\hyperlink{namespaceBandSpectrum__mod_aaddc0780d391a46158e66d33b2d2e7b8}{get\+Photon\+Flux\+Lower}} (energy, alpha, alpha\+Plus\+Two\+Over\+Epk)
 \begin{DoxyCompactList}\small\item\em Compute the differential photon flux according to the lower component of the Band spectrum at the given input {\ttfamily energy} value. \end{DoxyCompactList}\item 
 subroutine \mbox{\hyperlink{namespaceBandSpectrum__mod_ad1fb81977b81a97aca16e68c58337c60}{get\+Photon\+Fluence\+From\+Energy\+Fluence}} (energy\+Fluence, lower\+Lim, upper\+Lim, epk, alpha, beta, tolerance, photon\+Fluence, Err, lower\+Lim\+New, upper\+Lim\+New)
 \begin{DoxyCompactList}\small\item\em Convert an {\bfseries{input energy fluence}} in {\ttfamily \mbox{[}lower\+Lim, upper\+Lim\mbox{]}} energy window, all in units of keV (or ALL in some other units), {\bfseries{to photon fluence}}, within the same energy range, or if {\ttfamily \mbox{[}lower\+Lim\+New, upper\+Lim\+New\mbox{]}} is provided, then in that range. The input {\ttfamily tolerance} is passed to integrators as a measure of the desired accuracy for the computation of {\ttfamily photon\+Fluence}. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -137,11 +137,11 @@ If the optional {\ttfamily \mbox{[}lower\+Lim\+New, upper\+Lim\+New\mbox{]}} are
 
 Definition at line \mbox{\hyperlink{BandSpectrum__mod_8f90_source_l00511}{511}} of file \mbox{\hyperlink{BandSpectrum__mod_8f90_source}{Band\+Spectrum\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceBandSpectrum__mod_aa8080eb9101a4f57bbc9dc3fa34a9579}\label{namespaceBandSpectrum__mod_aa8080eb9101a4f57bbc9dc3fa34a9579}} 
+\mbox{\Hypertarget{namespaceBandSpectrum__mod_a3b894a1fd2110b1f9009d08d153a4524}\label{namespaceBandSpectrum__mod_a3b894a1fd2110b1f9009d08d153a4524}} 
 \index{BandSpectrum\_mod@{BandSpectrum\_mod}!getPhotonFlux@{getPhotonFlux}}
 \index{getPhotonFlux@{getPhotonFlux}!BandSpectrum\_mod@{BandSpectrum\_mod}}
 \doxysubsubsection{\texorpdfstring{getPhotonFlux()}{getPhotonFlux()}}
-{\footnotesize\ttfamily real(RK) Band\+Spectrum\+\_\+mod\+::get\+Photon\+Flux (\begin{DoxyParamCaption}\item[{real(RK), intent(in)}]{energy,  }\item[{real(RK), intent(in)}]{epk,  }\item[{real(RK), intent(in)}]{alpha,  }\item[{real(RK), intent(in)}]{beta,  }\item[{real(RK), intent(in)}]{ebrk,  }\item[{real(RK), intent(in)}]{coef,  }\item[{real(RK)}]{alpha\+Plus\+Two }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure real(RK) function Band\+Spectrum\+\_\+mod\+::get\+Photon\+Flux (\begin{DoxyParamCaption}\item[{real(RK), intent(in)}]{energy,  }\item[{real(RK), intent(in)}]{epk,  }\item[{real(RK), intent(in)}]{alpha,  }\item[{real(RK), intent(in)}]{beta,  }\item[{real(RK), intent(in)}]{ebrk,  }\item[{real(RK), intent(in)}]{coef,  }\item[{real(RK)}]{alpha\+Plus\+Two }\end{DoxyParamCaption})}
 
 
 
@@ -176,11 +176,11 @@ The input energy values {\ttfamily energy}, {\ttfamily epk}, {\ttfamily ebrk}, m
 
 Definition at line \mbox{\hyperlink{BandSpectrum__mod_8f90_source_l00175}{175}} of file \mbox{\hyperlink{BandSpectrum__mod_8f90_source}{Band\+Spectrum\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceBandSpectrum__mod_a06e17fa0777b798a723f8f91af1b609a}\label{namespaceBandSpectrum__mod_a06e17fa0777b798a723f8f91af1b609a}} 
+\mbox{\Hypertarget{namespaceBandSpectrum__mod_aaddc0780d391a46158e66d33b2d2e7b8}\label{namespaceBandSpectrum__mod_aaddc0780d391a46158e66d33b2d2e7b8}} 
 \index{BandSpectrum\_mod@{BandSpectrum\_mod}!getPhotonFluxLower@{getPhotonFluxLower}}
 \index{getPhotonFluxLower@{getPhotonFluxLower}!BandSpectrum\_mod@{BandSpectrum\_mod}}
 \doxysubsubsection{\texorpdfstring{getPhotonFluxLower()}{getPhotonFluxLower()}}
-{\footnotesize\ttfamily real(RK) Band\+Spectrum\+\_\+mod\+::get\+Photon\+Flux\+Lower (\begin{DoxyParamCaption}\item[{real(RK), intent(in)}]{energy,  }\item[{real(RK), intent(in)}]{alpha,  }\item[{real(RK)}]{alpha\+Plus\+Two\+Over\+Epk }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure real(RK) function Band\+Spectrum\+\_\+mod\+::get\+Photon\+Flux\+Lower (\begin{DoxyParamCaption}\item[{real(RK), intent(in)}]{energy,  }\item[{real(RK), intent(in)}]{alpha,  }\item[{real(RK)}]{alpha\+Plus\+Two\+Over\+Epk }\end{DoxyParamCaption})}
 
 
 

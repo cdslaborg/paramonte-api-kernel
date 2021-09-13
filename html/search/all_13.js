@@ -692,8 +692,8 @@ var searchData=
   ['trangaus_5fmod_689',['TranGaus_mod',['../namespaceTranGaus__mod.html',1,'']]],
   ['trangaus_5fmod_2ef90_690',['TranGaus_mod.f90',['../TranGaus__mod_8f90.html',1,'']]],
   ['transform_691',['transform',['../interfaceSample__mod_1_1transform.html',1,'Sample_mod']]],
-  ['transform_5f1d_692',['transform_1D',['../interfaceSample__mod_1_1transform.html#a8deb5869094c68cd468e2edf5c143ddb',1,'Sample_mod::transform::transform_1D()'],['../namespaceSample__mod.html#a85482481f2884f9daf80a4bdb7e35574',1,'Sample_mod::transform_1D(Point, ChoLow, ChoDia)']]],
-  ['transform_5f2d_693',['transform_2D',['../namespaceSample__mod.html#a96fb7975f90fad7546243f6e1c059cf9',1,'Sample_mod::transform_2D()'],['../interfaceSample__mod_1_1transform.html#a0ecb87f92288762e58f06b504783dd7c',1,'Sample_mod::transform::transform_2D()']]],
+  ['transform_5f1d_692',['transform_1D',['../interfaceSample__mod_1_1transform.html#afb23790be963ee637cd56f66bb0063e6',1,'Sample_mod::transform::transform_1D()'],['../namespaceSample__mod.html#ae3f7288e349a6a7f5150a35a96194361',1,'Sample_mod::transform_1D(Point, ChoLow, ChoDia)']]],
+  ['transform_5f2d_693',['transform_2D',['../namespaceSample__mod.html#a864d7c57c9dbfac5186cdc337985d48e',1,'Sample_mod::transform_2D()'],['../interfaceSample__mod_1_1transform.html#a7f1b449d4cb8c7bf8ad6cff5ca8aaf42',1,'Sample_mod::transform::transform_2D()']]],
   ['trigger_694',['Trigger',['../namespaceBatse__mod.html#a722b03912fd55b8a232d3db1b5ffa7be',1,'Batse_mod']]],
   ['try_695',['Try',['../structKmeansOOP__mod_1_1KmeansOOP__type.html#abc9fa78a245ca8e27119270972ea0d5f',1,'KmeansOOP_mod::KmeansOOP_type']]],
   ['two_5fpi_696',['TWO_PI',['../namespaceConstants__mod.html#a63ecc0699bb6b3846448e77dda82a119',1,'Constants_mod']]]
