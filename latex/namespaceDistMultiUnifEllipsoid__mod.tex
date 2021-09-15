@@ -1,0 +1,309 @@
+\hypertarget{namespaceDistMultiUnifEllipsoid__mod}{}\doxysection{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod Module Reference}
+\label{namespaceDistMultiUnifEllipsoid__mod}\index{DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}}
+
+
+This module contains the classes and procedures for setting up and computing the properties of the Multi\+Variate Uniform (MVU) Distribution.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em This type creates objects for representing Multi\+Variate Uniform distribution with ellipsoidal support (domain of definition). \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceDistMultiUnifEllipsoid__mod_1_1genLogPDF}{gen\+Log\+PDF}}
+\item 
+interface \mbox{\hyperlink{interfaceDistMultiUnifEllipsoid__mod_1_1genRand}{gen\+Rand}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+type(\mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+type}}) function \mbox{\hyperlink{namespaceDistMultiUnifEllipsoid__mod_ace3b259da32ad32a069234e5957968d4}{construct}} (ndim, Mean, Cov\+Upp, Err)
+\begin{DoxyCompactList}\small\item\em Construct an object of type \mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+type}} containing the properties of the specified Multi\+Variate Uniform (MVU) distribution in {\ttfamily ndim} dimensions. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceDistMultiUnifEllipsoid__mod_aa224cadaec29a130844fa9a4c1f1a849}{logpdf}} (self, Point)
+\begin{DoxyCompactList}\small\item\em Return the log-\/value of the probability density function (PDF). Note that a PDF is, by definition, normalized and integrates to one over the support of the distribution. \end{DoxyCompactList}\item 
+real(RK) function, dimension(self\%ndim) \mbox{\hyperlink{namespaceDistMultiUnifEllipsoid__mod_adeb53a68d0abf9a3f83e0fca97db619c}{rand}} (self)
+\begin{DoxyCompactList}\small\item\em Return a random number deviate given the current parameters of the distribution. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceDistMultiUnifEllipsoid__mod_aee4bcf52d45c9790083d405012ffb824}{gen\+Log\+Prob\+Den\+From\+Det\+Inv\+Rep\+Mat\+\_\+\+RK}} (log\+Vol\+Unit\+Ball, log\+Det\+Inv\+Rep\+Mat)
+\begin{DoxyCompactList}\small\item\em Return the probability density function of the Multivariate Uniform distribution whose representative matrix has determinant of {\ttfamily log\+Det\+Inv\+Rep\+Mat}. \end{DoxyCompactList}\item 
+real(RK) function \mbox{\hyperlink{namespaceDistMultiUnifEllipsoid__mod_ac0dea9a89162bb07f6e3e3084b886408}{gen\+Log\+Prob\+Den\+With\+Support\+Lim\+\_\+\+RK}} (Support\+Lower, Support\+Upper)
+\begin{DoxyCompactList}\small\item\em Return the probability density function of the Multivariate Uniform distribution whose support limits along each dimension are given by the input contiguous vectors {\ttfamily Support\+Lower} and {\ttfamily Support\+Upper}. \end{DoxyCompactList}\item 
+real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDistMultiUnifEllipsoid__mod_aaf52e8a7b74d4ff5180c3824a17ddd6c}{gen\+Rand\+Stan\+MVU}} (nd)
+\begin{DoxyCompactList}\small\item\em Return a Standard Multi\+Variate Uniform (MVU) random vector from within a cube of unit volume. \end{DoxyCompactList}\item 
+real(RK) function, dimension(size(Mean)) \mbox{\hyperlink{namespaceDistMultiUnifEllipsoid__mod_a1163fd1f5109dfa713d2ce1bdbc03345}{gen\+Rand\+Shifted\+MVU}} (Mean)
+\begin{DoxyCompactList}\small\item\em Return a Standard Multi\+Variate Uniform (MVU) random vector from within a cube of unit volume that is centered at {\ttfamily Mean}. \end{DoxyCompactList}\item 
+real(RK) function, dimension(size(Support\+Size)) \mbox{\hyperlink{namespaceDistMultiUnifEllipsoid__mod_a80b66ae8058ff6e31746eff39d3dae60}{gen\+Rand\+Scaled\+MVU}} (Support\+Size)
+\begin{DoxyCompactList}\small\item\em Return a scaled Multi\+Variate Uniform (MVU) random vector with the zero mean and the input ellipsoidal {\ttfamily Support\+Size}. \end{DoxyCompactList}\item 
+real(RK) function, dimension(size(Support\+Lower)) \mbox{\hyperlink{namespaceDistMultiUnifEllipsoid__mod_afa7a1194a1ee266f34f5bd5aada705da}{gen\+Rand\+MVU}} (Support\+Lower, Support\+Upper)
+\begin{DoxyCompactList}\small\item\em Return a Multi\+Variate Uniform (MVU) random vector within the specified input support. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceDistMultiUnifEllipsoid__mod_a7eaa88ee61c8a20b421260ff0d2f4e20}{MODULE\+\_\+\+NAME}} = \char`\"{}@Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains the classes and procedures for setting up and computing the properties of the Multi\+Variate Uniform (MVU) Distribution. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Thursday 2\+:45 AM, August 19, 2021, Dallas, TX 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceDistMultiUnifEllipsoid__mod_ace3b259da32ad32a069234e5957968d4}\label{namespaceDistMultiUnifEllipsoid__mod_ace3b259da32ad32a069234e5957968d4}} 
+\index{DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}!construct@{construct}}
+\index{construct@{construct}!DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{construct()}{construct()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+type}}) function Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::construct (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{ndim,  }\item[{real(RK)}]{Mean,  }\item[{real(RK)}]{Cov\+Upp,  }\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err }\end{DoxyParamCaption})}
+
+
+
+Construct an object of type \mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+type}} containing the properties of the specified Multi\+Variate Uniform (MVU) distribution in {\ttfamily ndim} dimensions. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ndim} & \+: The number of dimensions of the domain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Mean} & \+: The mean (center) of the distribution ({\bfseries{optional}}, default = A vector of all zeros). \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cov\+Upp} & \+: The upper triangle and diagonal elements of the covariance matrix of the ellipsoidal domain. The lower triangle is not used ({\bfseries{optional}}, default = Identity matrix). \\
+\hline
+\mbox{\texttt{ in}}  & {\em Err} & \+: An object of type \mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+mod\+::Err\+\_\+type}} containing error information. ({\bfseries{optional}}, if not provided and an error occurs, it will lead to a complete program halt).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily self} \+: An object of type \mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+type}}.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+If not readily available, the input covariance matrix {\ttfamily Cov\+Upp} can be constructed by calling \mbox{\hyperlink{namespaceSample__mod_a5b778f2293799f85c38eaba8fad2850f}{get\+Cov\+Upp\+From\+Cor\+Upp()}}.
+
+This routine computes the inverse of the input covariance matrix. As such, if an error occurs, the first element of {\ttfamily selfCho\+Low} ({\ttfamily selfCho\+Low(1,1)}) will be set to a negative number. Additionally, if the input argument {\ttfamily Err} is present, an error message will be returned in {\ttfamily Errmsg} and {\ttfamily Erroccurred = .true.}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
+
+Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas at Austin. 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00135}{135}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistMultiUnifEllipsoid__mod_aee4bcf52d45c9790083d405012ffb824}\label{namespaceDistMultiUnifEllipsoid__mod_aee4bcf52d45c9790083d405012ffb824}} 
+\index{DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}!genLogProbDenFromDetInvRepMat\_RK@{genLogProbDenFromDetInvRepMat\_RK}}
+\index{genLogProbDenFromDetInvRepMat\_RK@{genLogProbDenFromDetInvRepMat\_RK}!DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{genLogProbDenFromDetInvRepMat\_RK()}{genLogProbDenFromDetInvRepMat\_RK()}}
+{\footnotesize\ttfamily pure real(RK) function Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::gen\+Log\+Prob\+Den\+From\+Det\+Inv\+Rep\+Mat\+\_\+\+RK (\begin{DoxyParamCaption}\item[{real(RK)}]{log\+Vol\+Unit\+Ball,  }\item[{real(RK)}]{log\+Det\+Inv\+Rep\+Mat }\end{DoxyParamCaption})}
+
+
+
+Return the probability density function of the Multivariate Uniform distribution whose representative matrix has determinant of {\ttfamily log\+Det\+Inv\+Rep\+Mat}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em log\+Det\+Inv\+Rep\+Mat} & \+: The natural logarithm of the determinant of the inverse of the representative matrix of the of the ellipsoidal MVU. \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Vol\+Unit\+Ball} & \+: The natural logarithm of the volume of a hyper-\/sphere of unit-\/radius in {\ttfamily nd} dimensions. This number can be computed by calling get\+Log\+Vol\+Unit\+Ba\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily log\+Prob\+Den} \+: The natural logarithm of the PDF of the distribution.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00222}{222}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistMultiUnifEllipsoid__mod_ac0dea9a89162bb07f6e3e3084b886408}\label{namespaceDistMultiUnifEllipsoid__mod_ac0dea9a89162bb07f6e3e3084b886408}} 
+\index{DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}!genLogProbDenWithSupportLim\_RK@{genLogProbDenWithSupportLim\_RK}}
+\index{genLogProbDenWithSupportLim\_RK@{genLogProbDenWithSupportLim\_RK}!DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{genLogProbDenWithSupportLim\_RK()}{genLogProbDenWithSupportLim\_RK()}}
+{\footnotesize\ttfamily real(RK) function Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::gen\+Log\+Prob\+Den\+With\+Support\+Lim\+\_\+\+RK (\begin{DoxyParamCaption}\item[{real(RK)}]{Support\+Lower,  }\item[{real(RK)}]{Support\+Upper }\end{DoxyParamCaption})}
+
+
+
+Return the probability density function of the Multivariate Uniform distribution whose support limits along each dimension are given by the input contiguous vectors {\ttfamily Support\+Lower} and {\ttfamily Support\+Upper}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Support\+Lower} & \+: An contiguous array containing the lower limits of the ellipsoidal support of the multivariate uniform distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Support\+Upper} & \+: An contiguous array containing the upper limits of the ellipsoidal support of the multivariate uniform distribution.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily log\+Prob\+Den} \+: The natural logarithm of the PDF of the distribution.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00246}{246}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistMultiUnifEllipsoid__mod_afa7a1194a1ee266f34f5bd5aada705da}\label{namespaceDistMultiUnifEllipsoid__mod_afa7a1194a1ee266f34f5bd5aada705da}} 
+\index{DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}!genRandMVU@{genRandMVU}}
+\index{genRandMVU@{genRandMVU}!DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{genRandMVU()}{genRandMVU()}}
+{\footnotesize\ttfamily real(RK) function, dimension(size(Support\+Lower)) Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::gen\+Rand\+MVU (\begin{DoxyParamCaption}\item[{real(RK)}]{Support\+Lower,  }\item[{real(RK)}]{Support\+Upper }\end{DoxyParamCaption})}
+
+
+
+Return a Multi\+Variate Uniform (MVU) random vector within the specified input support. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Support\+Lower} & \+: The contiguous vector of the lower limits of the support of the distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Support\+Upper} & \+: The vector of length {\ttfamily size(\+Support\+Lower)} of the upper limits of the support of the distribution.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+MVU} \+: The randomly generated MVU vector.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00336}{336}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistMultiUnifEllipsoid__mod_a80b66ae8058ff6e31746eff39d3dae60}\label{namespaceDistMultiUnifEllipsoid__mod_a80b66ae8058ff6e31746eff39d3dae60}} 
+\index{DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}!genRandScaledMVU@{genRandScaledMVU}}
+\index{genRandScaledMVU@{genRandScaledMVU}!DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{genRandScaledMVU()}{genRandScaledMVU()}}
+{\footnotesize\ttfamily real(RK) function, dimension(size(Support\+Size)) Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Scaled\+MVU (\begin{DoxyParamCaption}\item[{real(RK)}]{Support\+Size }\end{DoxyParamCaption})}
+
+
+
+Return a scaled Multi\+Variate Uniform (MVU) random vector with the zero mean and the input ellipsoidal {\ttfamily Support\+Size}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Support\+Size} & \+: A contiguous vector of size {\ttfamily nd}, each element of which represents the extent of the support of the distribution along the corresponding dimension.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+MVU} \+: The randomly generated vector.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00313}{313}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistMultiUnifEllipsoid__mod_a1163fd1f5109dfa713d2ce1bdbc03345}\label{namespaceDistMultiUnifEllipsoid__mod_a1163fd1f5109dfa713d2ce1bdbc03345}} 
+\index{DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}!genRandShiftedMVU@{genRandShiftedMVU}}
+\index{genRandShiftedMVU@{genRandShiftedMVU}!DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{genRandShiftedMVU()}{genRandShiftedMVU()}}
+{\footnotesize\ttfamily real(RK) function, dimension(size(Mean)) Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Shifted\+MVU (\begin{DoxyParamCaption}\item[{real(RK)}]{Mean }\end{DoxyParamCaption})}
+
+
+
+Return a Standard Multi\+Variate Uniform (MVU) random vector from within a cube of unit volume that is centered at {\ttfamily Mean}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Mean} & \+: The contiguous vector representing the mean of the distribution.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+MVU} \+: The randomly generated vector of length {\ttfamily size(\+Mean)}.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00290}{290}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistMultiUnifEllipsoid__mod_aaf52e8a7b74d4ff5180c3824a17ddd6c}\label{namespaceDistMultiUnifEllipsoid__mod_aaf52e8a7b74d4ff5180c3824a17ddd6c}} 
+\index{DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}!genRandStanMVU@{genRandStanMVU}}
+\index{genRandStanMVU@{genRandStanMVU}!DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{genRandStanMVU()}{genRandStanMVU()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd) Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Stan\+MVU (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd }\end{DoxyParamCaption})}
+
+
+
+Return a Standard Multi\+Variate Uniform (MVU) random vector from within a cube of unit volume. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the domain of the distribution.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+MVU} \+: The randomly generated MVU vector.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00268}{268}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistMultiUnifEllipsoid__mod_aa224cadaec29a130844fa9a4c1f1a849}\label{namespaceDistMultiUnifEllipsoid__mod_aa224cadaec29a130844fa9a4c1f1a849}} 
+\index{DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}!logpdf@{logpdf}}
+\index{logpdf@{logpdf}!DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{logpdf()}{logpdf()}}
+{\footnotesize\ttfamily pure real(RK) function Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::logpdf (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+type}}), intent(in)}]{self,  }\item[{real(RK)}]{Point }\end{DoxyParamCaption})}
+
+
+
+Return the log-\/value of the probability density function (PDF). Note that a PDF is, by definition, normalized and integrates to one over the support of the distribution. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em self} & \+: An object of class \mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: An array of length {\ttfamily ndim} at which the objective function will be computed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily logval} \+: The natural logarithm of the PDF of the distribution.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is only provided for the sake of consistency with the interfaces of other distributions. Otherwise, note that the PDF of uniform distribution is constants for all supported values in the domain. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00178}{178}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistMultiUnifEllipsoid__mod_adeb53a68d0abf9a3f83e0fca97db619c}\label{namespaceDistMultiUnifEllipsoid__mod_adeb53a68d0abf9a3f83e0fca97db619c}} 
+\index{DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}!rand@{rand}}
+\index{rand@{rand}!DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{rand()}{rand()}}
+{\footnotesize\ttfamily real(RK) function, dimension(self\%ndim) Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::rand (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+type}}), intent(in)}]{self }\end{DoxyParamCaption})}
+
+
+
+Return a random number deviate given the current parameters of the distribution. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em self} & \+: An object of class \mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+type}}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Randev} \+: The random deviate vector of length {\ttfamily selfndim}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00195}{195}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceDistMultiUnifEllipsoid__mod_a7eaa88ee61c8a20b421260ff0d2f4e20}\label{namespaceDistMultiUnifEllipsoid__mod_a7eaa88ee61c8a20b421260ff0d2f4e20}} 
+\index{DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!DistMultiUnifEllipsoid\_mod@{DistMultiUnifEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character($\ast$), parameter Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00058}{58}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+

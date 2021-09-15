@@ -1,0 +1,103 @@
+\hypertarget{interfaceDistMultiUnifEllipsoid__mod_1_1genRand}{}\doxysection{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::gen\+Rand Interface Reference}
+\label{interfaceDistMultiUnifEllipsoid__mod_1_1genRand}\index{DistMultiUnifEllipsoid\_mod::genRand@{DistMultiUnifEllipsoid\_mod::genRand}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+real(RK) function, dimension(nd) \mbox{\hyperlink{interfaceDistMultiUnifEllipsoid__mod_1_1genRand_a2ad982a2ea79d1b6dbd1399991af8dcd}{gen\+Rand\+Stan\+MVU}} (nd)
+\begin{DoxyCompactList}\small\item\em Return a Standard Multi\+Variate Uniform (MVU) random vector from within a cube of unit volume. \end{DoxyCompactList}\item 
+real(RK) function, dimension(size(Support\+Size)) \mbox{\hyperlink{interfaceDistMultiUnifEllipsoid__mod_1_1genRand_a690f1dd8e067b215fa6403c576f66eea}{gen\+Rand\+Scaled\+MVU}} (Support\+Size)
+\begin{DoxyCompactList}\small\item\em Return a scaled Multi\+Variate Uniform (MVU) random vector with the zero mean and the input ellipsoidal {\ttfamily Support\+Size}. \end{DoxyCompactList}\item 
+real(RK) function, dimension(size(Support\+Lower)) \mbox{\hyperlink{interfaceDistMultiUnifEllipsoid__mod_1_1genRand_ade1b2940dd8d4ab1957621c5477596d8}{gen\+Rand\+MVU}} (Support\+Lower, Support\+Upper)
+\begin{DoxyCompactList}\small\item\em Return a Multi\+Variate Uniform (MVU) random vector within the specified input support. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00092}{92}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{interfaceDistMultiUnifEllipsoid__mod_1_1genRand_ade1b2940dd8d4ab1957621c5477596d8}\label{interfaceDistMultiUnifEllipsoid__mod_1_1genRand_ade1b2940dd8d4ab1957621c5477596d8}} 
+\index{DistMultiUnifEllipsoid\_mod::genRand@{DistMultiUnifEllipsoid\_mod::genRand}!genRandMVU@{genRandMVU}}
+\index{genRandMVU@{genRandMVU}!DistMultiUnifEllipsoid\_mod::genRand@{DistMultiUnifEllipsoid\_mod::genRand}}
+\doxysubsubsection{\texorpdfstring{genRandMVU()}{genRandMVU()}}
+{\footnotesize\ttfamily real(RK) function, dimension(size(Support\+Lower)) Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::gen\+Rand\+::gen\+Rand\+MVU (\begin{DoxyParamCaption}\item[{real(RK)}]{Support\+Lower,  }\item[{real(RK)}]{Support\+Upper }\end{DoxyParamCaption})}
+
+
+
+Return a Multi\+Variate Uniform (MVU) random vector within the specified input support. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Support\+Lower} & \+: The contiguous vector of the lower limits of the support of the distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Support\+Upper} & \+: The vector of length {\ttfamily size(\+Support\+Lower)} of the upper limits of the support of the distribution.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+MVU} \+: The randomly generated MVU vector.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00336}{336}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{interfaceDistMultiUnifEllipsoid__mod_1_1genRand_a690f1dd8e067b215fa6403c576f66eea}\label{interfaceDistMultiUnifEllipsoid__mod_1_1genRand_a690f1dd8e067b215fa6403c576f66eea}} 
+\index{DistMultiUnifEllipsoid\_mod::genRand@{DistMultiUnifEllipsoid\_mod::genRand}!genRandScaledMVU@{genRandScaledMVU}}
+\index{genRandScaledMVU@{genRandScaledMVU}!DistMultiUnifEllipsoid\_mod::genRand@{DistMultiUnifEllipsoid\_mod::genRand}}
+\doxysubsubsection{\texorpdfstring{genRandScaledMVU()}{genRandScaledMVU()}}
+{\footnotesize\ttfamily real(RK) function, dimension(size(Support\+Size)) Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::gen\+Rand\+::gen\+Rand\+Scaled\+MVU (\begin{DoxyParamCaption}\item[{real(RK)}]{Support\+Size }\end{DoxyParamCaption})}
+
+
+
+Return a scaled Multi\+Variate Uniform (MVU) random vector with the zero mean and the input ellipsoidal {\ttfamily Support\+Size}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Support\+Size} & \+: A contiguous vector of size {\ttfamily nd}, each element of which represents the extent of the support of the distribution along the corresponding dimension.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+MVU} \+: The randomly generated vector.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00313}{313}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{interfaceDistMultiUnifEllipsoid__mod_1_1genRand_a2ad982a2ea79d1b6dbd1399991af8dcd}\label{interfaceDistMultiUnifEllipsoid__mod_1_1genRand_a2ad982a2ea79d1b6dbd1399991af8dcd}} 
+\index{DistMultiUnifEllipsoid\_mod::genRand@{DistMultiUnifEllipsoid\_mod::genRand}!genRandStanMVU@{genRandStanMVU}}
+\index{genRandStanMVU@{genRandStanMVU}!DistMultiUnifEllipsoid\_mod::genRand@{DistMultiUnifEllipsoid\_mod::genRand}}
+\doxysubsubsection{\texorpdfstring{genRandStanMVU()}{genRandStanMVU()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd) Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::gen\+Rand\+::gen\+Rand\+Stan\+MVU (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd }\end{DoxyParamCaption})}
+
+
+
+Return a Standard Multi\+Variate Uniform (MVU) random vector from within a cube of unit volume. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the domain of the distribution.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+MVU} \+: The randomly generated MVU vector.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00268}{268}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

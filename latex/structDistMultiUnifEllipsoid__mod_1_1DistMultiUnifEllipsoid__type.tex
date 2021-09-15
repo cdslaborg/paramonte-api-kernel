@@ -1,0 +1,161 @@
+\hypertarget{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}{}\doxysection{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::Dist\+Multi\+Unif\+Ellipsoid\+\_\+type Interface Reference}
+\label{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}\index{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type@{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type}}
+
+
+This type creates objects for representing Multi\+Variate Uniform distribution with ellipsoidal support (domain of definition).  
+
+
+Inheritance diagram for Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::Dist\+Multi\+Unif\+Ellipsoid\+\_\+type\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+procedure, pass \mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a6d834745c496f20ce3cd36e5aa33754f}{logpdf}}
+\item 
+type(\mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+type}}) function \mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a3c60083365e49fb228b369249e699166}{construct}} (\mbox{\hyperlink{structDistMulti__mod_1_1DistMulti__type_af2ced864835b36c61bfb22c299b0ee3a}{ndim}}, Mean, Cov\+Upp, Err)
+\begin{DoxyCompactList}\small\item\em Construct an object of type \mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+type}} containing the properties of the specified Multi\+Variate Uniform (MVU) distribution in {\ttfamily ndim} dimensions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+real(RK) \mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a17267c831ec542c2ec11486185161a7d}{log\+Det\+Inv\+Cov\+Mat}}
+\begin{DoxyCompactList}\small\item\em The natural logarithm of the determinant of the inverse of the covariance matrix of the distribution. \end{DoxyCompactList}\item 
+real(RK) \mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a0cb9a1b39464ec83954e78b242e4cc8f}{logpdfval}}
+\begin{DoxyCompactList}\small\item\em The natural logarithm of the PDF of the distribution (the PDF is a constant in case of uniform distribution). \end{DoxyCompactList}\item 
+real(RK), dimension(\+:), allocatable \mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a720efbdd4974f1590bf17eed4a69feae}{Std}}
+\begin{DoxyCompactList}\small\item\em An array of shape {\ttfamily (ndim)} representing the standard deviation of the distribution along each dimension. \end{DoxyCompactList}\item 
+type(\mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}) \mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a82f5ebd5e7f77f2c198efc4cfe08fcfa}{Support}}
+\begin{DoxyCompactList}\small\item\em An object of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}} containing information about the support of the distribution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This type creates objects for representing Multi\+Variate Uniform distribution with ellipsoidal support (domain of definition). 
+
+\begin{DoxyRemark}{Remarks}
+Unlike other multivariate distributions, the covariance matrix along with its inverse and Cholesky factorization are not components of this type since they already exist as components of the {\ttfamily Support} component of this type, which is an object of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Tuesday 2\+:02 PM, September 14, 2021, Dallas, TX 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00070}{70}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a3c60083365e49fb228b369249e699166}\label{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a3c60083365e49fb228b369249e699166}} 
+\index{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type@{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type}!construct@{construct}}
+\index{construct@{construct}!DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type@{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type}}
+\doxysubsubsection{\texorpdfstring{construct()}{construct()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+type}}) function Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::\+Dist\+Multi\+Unif\+Ellipsoid\+\_\+type\+::construct (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{ndim,  }\item[{real(RK)}]{Mean,  }\item[{real(RK)}]{Cov\+Upp,  }\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err }\end{DoxyParamCaption})}
+
+
+
+Construct an object of type \mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+type}} containing the properties of the specified Multi\+Variate Uniform (MVU) distribution in {\ttfamily ndim} dimensions. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ndim} & \+: The number of dimensions of the domain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Mean} & \+: The mean (center) of the distribution ({\bfseries{optional}}, default = A vector of all zeros). \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cov\+Upp} & \+: The upper triangle and diagonal elements of the covariance matrix of the ellipsoidal domain. The lower triangle is not used ({\bfseries{optional}}, default = Identity matrix). \\
+\hline
+\mbox{\texttt{ in}}  & {\em Err} & \+: An object of type \mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+mod\+::Err\+\_\+type}} containing error information. ({\bfseries{optional}}, if not provided and an error occurs, it will lead to a complete program halt).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily self} \+: An object of type \mbox{\hyperlink{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+type}}.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+If not readily available, the input covariance matrix {\ttfamily Cov\+Upp} can be constructed by calling \mbox{\hyperlink{namespaceSample__mod_a5b778f2293799f85c38eaba8fad2850f}{get\+Cov\+Upp\+From\+Cor\+Upp()}}.
+
+This routine computes the inverse of the input covariance matrix. As such, if an error occurs, the first element of {\ttfamily selfCho\+Low} ({\ttfamily selfCho\+Low(1,1)}) will be set to a negative number. Additionally, if the input argument {\ttfamily Err} is present, an error message will be returned in {\ttfamily Errmsg} and {\ttfamily Erroccurred = .true.}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
+
+Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas at Austin. 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00135}{135}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a6d834745c496f20ce3cd36e5aa33754f}\label{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a6d834745c496f20ce3cd36e5aa33754f}} 
+\index{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type@{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type}!logpdf@{logpdf}}
+\index{logpdf@{logpdf}!DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type@{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type}}
+\doxysubsubsection{\texorpdfstring{logpdf()}{logpdf()}}
+{\footnotesize\ttfamily procedure, pass Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::\+Dist\+Multi\+Unif\+Ellipsoid\+\_\+type\+::logpdf}
+
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00077}{77}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a17267c831ec542c2ec11486185161a7d}\label{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a17267c831ec542c2ec11486185161a7d}} 
+\index{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type@{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type}!logDetInvCovMat@{logDetInvCovMat}}
+\index{logDetInvCovMat@{logDetInvCovMat}!DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type@{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type}}
+\doxysubsubsection{\texorpdfstring{logDetInvCovMat}{logDetInvCovMat}}
+{\footnotesize\ttfamily real(RK) Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::\+Dist\+Multi\+Unif\+Ellipsoid\+\_\+type\+::log\+Det\+Inv\+Cov\+Mat}
+
+
+
+The natural logarithm of the determinant of the inverse of the covariance matrix of the distribution. 
+
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00071}{71}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a0cb9a1b39464ec83954e78b242e4cc8f}\label{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a0cb9a1b39464ec83954e78b242e4cc8f}} 
+\index{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type@{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type}!logpdfval@{logpdfval}}
+\index{logpdfval@{logpdfval}!DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type@{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type}}
+\doxysubsubsection{\texorpdfstring{logpdfval}{logpdfval}}
+{\footnotesize\ttfamily real(RK) Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::\+Dist\+Multi\+Unif\+Ellipsoid\+\_\+type\+::logpdfval}
+
+
+
+The natural logarithm of the PDF of the distribution (the PDF is a constant in case of uniform distribution). 
+
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00072}{72}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a720efbdd4974f1590bf17eed4a69feae}\label{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a720efbdd4974f1590bf17eed4a69feae}} 
+\index{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type@{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type}!Std@{Std}}
+\index{Std@{Std}!DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type@{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type}}
+\doxysubsubsection{\texorpdfstring{Std}{Std}}
+{\footnotesize\ttfamily real(RK), dimension(\+:), allocatable Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::\+Dist\+Multi\+Unif\+Ellipsoid\+\_\+type\+::\+Std}
+
+
+
+An array of shape {\ttfamily (ndim)} representing the standard deviation of the distribution along each dimension. 
+
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00073}{73}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a82f5ebd5e7f77f2c198efc4cfe08fcfa}\label{structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type_a82f5ebd5e7f77f2c198efc4cfe08fcfa}} 
+\index{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type@{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type}!Support@{Support}}
+\index{Support@{Support}!DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type@{DistMultiUnifEllipsoid\_mod::DistMultiUnifEllipsoid\_type}}
+\doxysubsubsection{\texorpdfstring{Support}{Support}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}) Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod\+::\+Dist\+Multi\+Unif\+Ellipsoid\+\_\+type\+::\+Support}
+
+
+
+An object of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}} containing information about the support of the distribution. 
+
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source_l00074}{74}} of file \mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90_source}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{DistMultiUnifEllipsoid__mod_8f90}{Dist\+Multi\+Unif\+Ellipsoid\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

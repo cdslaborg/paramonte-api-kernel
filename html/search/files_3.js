@@ -11,11 +11,12 @@ var searchData=
   ['distmultinormshellmix_5fmod_2ef90_8',['DistMultiNormShellMix_mod.f90',['../DistMultiNormShellMix__mod_8f90.html',1,'']]],
   ['distmultiskewnorm_5fmod_2ef90_9',['DistMultiSkewNorm_mod.f90',['../DistMultiSkewNorm__mod_8f90.html',1,'']]],
   ['distmultiunifcube_5fmod_2ef90_10',['DistMultiUnifCube_mod.f90',['../DistMultiUnifCube__mod_8f90.html',1,'']]],
-  ['distuni_5fmod_2ef90_11',['DistUni_mod.f90',['../DistUni__mod_8f90.html',1,'']]],
-  ['distuniexp_5fmod_2ef90_12',['DistUniExp_mod.f90',['../DistUniExp__mod_8f90.html',1,'']]],
-  ['distuniloggamma_5fmod_2ef90_13',['DistUniLogGamma_mod.f90',['../DistUniLogGamma__mod_8f90.html',1,'']]],
-  ['distuninorm_5fmod_2ef90_14',['DistUniNorm_mod.f90',['../DistUniNorm__mod_8f90.html',1,'']]],
-  ['domain_5fmod_2ef90_15',['Domain_mod.f90',['../Domain__mod_8f90.html',1,'']]],
-  ['domaincube_5fmod_2ef90_16',['DomainCube_mod.f90',['../DomainCube__mod_8f90.html',1,'']]],
-  ['domainellipsoid_5fmod_2ef90_17',['DomainEllipsoid_mod.f90',['../DomainEllipsoid__mod_8f90.html',1,'']]]
+  ['distmultiunifellipsoid_5fmod_2ef90_11',['DistMultiUnifEllipsoid_mod.f90',['../DistMultiUnifEllipsoid__mod_8f90.html',1,'']]],
+  ['distuni_5fmod_2ef90_12',['DistUni_mod.f90',['../DistUni__mod_8f90.html',1,'']]],
+  ['distuniexp_5fmod_2ef90_13',['DistUniExp_mod.f90',['../DistUniExp__mod_8f90.html',1,'']]],
+  ['distuniloggamma_5fmod_2ef90_14',['DistUniLogGamma_mod.f90',['../DistUniLogGamma__mod_8f90.html',1,'']]],
+  ['distuninorm_5fmod_2ef90_15',['DistUniNorm_mod.f90',['../DistUniNorm__mod_8f90.html',1,'']]],
+  ['domain_5fmod_2ef90_16',['Domain_mod.f90',['../Domain__mod_8f90.html',1,'']]],
+  ['domaincube_5fmod_2ef90_17',['DomainCube_mod.f90',['../DomainCube__mod_8f90.html',1,'']]],
+  ['domainellipsoid_5fmod_2ef90_18',['DomainEllipsoid_mod.f90',['../DomainEllipsoid__mod_8f90.html',1,'']]]
 ];

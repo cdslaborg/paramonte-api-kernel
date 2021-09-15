@@ -10,11 +10,12 @@ var searchData=
   ['distmultinormshellmix_5fmod_7',['DistMultiNormShellMix_mod',['../namespaceDistMultiNormShellMix__mod.html',1,'']]],
   ['distmultiskewnorm_5fmod_8',['DistMultiSkewNorm_mod',['../namespaceDistMultiSkewNorm__mod.html',1,'']]],
   ['distmultiunifcube_5fmod_9',['DistMultiUnifCube_mod',['../namespaceDistMultiUnifCube__mod.html',1,'']]],
-  ['distuni_5fmod_10',['DistUni_mod',['../namespaceDistUni__mod.html',1,'']]],
-  ['distuniexp_5fmod_11',['DistUniExp_mod',['../namespaceDistUniExp__mod.html',1,'']]],
-  ['distuniloggamma_5fmod_12',['DistUniLogGamma_mod',['../namespaceDistUniLogGamma__mod.html',1,'']]],
-  ['distuninorm_5fmod_13',['DistUniNorm_mod',['../namespaceDistUniNorm__mod.html',1,'']]],
-  ['domain_5fmod_14',['Domain_mod',['../namespaceDomain__mod.html',1,'']]],
-  ['domaincube_5fmod_15',['DomainCube_mod',['../namespaceDomainCube__mod.html',1,'']]],
-  ['domainellipsoid_5fmod_16',['DomainEllipsoid_mod',['../namespaceDomainEllipsoid__mod.html',1,'']]]
+  ['distmultiunifellipsoid_5fmod_10',['DistMultiUnifEllipsoid_mod',['../namespaceDistMultiUnifEllipsoid__mod.html',1,'']]],
+  ['distuni_5fmod_11',['DistUni_mod',['../namespaceDistUni__mod.html',1,'']]],
+  ['distuniexp_5fmod_12',['DistUniExp_mod',['../namespaceDistUniExp__mod.html',1,'']]],
+  ['distuniloggamma_5fmod_13',['DistUniLogGamma_mod',['../namespaceDistUniLogGamma__mod.html',1,'']]],
+  ['distuninorm_5fmod_14',['DistUniNorm_mod',['../namespaceDistUniNorm__mod.html',1,'']]],
+  ['domain_5fmod_15',['Domain_mod',['../namespaceDomain__mod.html',1,'']]],
+  ['domaincube_5fmod_16',['DomainCube_mod',['../namespaceDomainCube__mod.html',1,'']]],
+  ['domainellipsoid_5fmod_17',['DomainEllipsoid_mod',['../namespaceDomainEllipsoid__mod.html',1,'']]]
 ];

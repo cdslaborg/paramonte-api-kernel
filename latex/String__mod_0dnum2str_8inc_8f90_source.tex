@@ -51,15 +51,15 @@
 \DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00052}00052 \textcolor{fortran_statement}{            allocate}(\textcolor{fortran_statement}{character}(strlen) :: string)}
 \DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00053}00053         \textcolor{fortran_keywordflow}{else}}
 \DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00054}00054 \textcolor{preprocessor}{\#if VECTORIZED\_NUM2STR\_ENABLED}}
-\DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00055}00055 \textcolor{preprocessor}{}\textcolor{fortran_statement}{            allocate}(\textcolor{fortran_statement}{character}(\textcolor{fortran_function}{size}(\textcolor{fortran_attribute}{value)}\textcolor{fortran_operator_symbols}{*}NUM2STR\_MAXLEN) :: string)}
+\DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00055}00055 \textcolor{preprocessor}{}\textcolor{fortran_statement}{            allocate}(\textcolor{fortran_statement}{character}(\textcolor{fortran_function}{size}(value)\textcolor{fortran_operator_symbols}{*}NUM2STR\_MAXLEN) :: string)}
 \DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00056}00056 \textcolor{preprocessor}{\#else}}
 \DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00057}00057 \textcolor{preprocessor}{}\textcolor{fortran_statement}{            allocate}(\textcolor{fortran_statement}{character}(NUM2STR\_MAXLEN) :: string)}
 \DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00058}00058 \textcolor{preprocessor}{\#endif}}
 \DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00059}00059 \textcolor{preprocessor}{}\textcolor{fortran_keywordflow}{        end if}}
 \DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00060}00060         \textcolor{fortran_keywordflow}{if} (\textcolor{fortran_function}{present}(format)) \textcolor{fortran_keywordflow}{then}}
-\DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00061}00061 \textcolor{fortran_statement}{            write}(string,format) \textcolor{fortran_attribute}{value}}
+\DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00061}00061 \textcolor{fortran_statement}{            write}(string,format) value}
 \DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00062}00062         \textcolor{fortran_keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00063}00063 \textcolor{fortran_statement}{            write}(string,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) \textcolor{fortran_attribute}{value}}
+\DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00063}00063 \textcolor{fortran_statement}{            write}(string,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) value}
 \DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00064}00064 \textcolor{fortran_keywordflow}{        end if}}
 \DoxyCodeLine{\Hypertarget{String__mod_0dnum2str_8inc_8f90_source_l00065}00065         \textcolor{fortran_keywordflow}{if} (\textcolor{fortran_operator_logical}{.not.}\textcolor{fortran_function}{ present}(strlen)) string\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{trim}(string) \textcolor{fortran_comment}{! the string is by default left-\/adjusted when dealing with internal files.}}
 

@@ -1,0 +1,196 @@
+\hypertarget{structParallelism__mod_1_1private}{}\doxysection{Parallelism\+\_\+mod\+::private Type Reference}
+\label{structParallelism__mod_1_1private}\index{Parallelism\_mod::private@{Parallelism\_mod::private}}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+real(RK) \mbox{\hyperlink{structParallelism__mod_1_1private_a407efded34304c2d7b4620e2b422a100}{value}}
+\begin{DoxyCompactList}\small\item\em The maximum speedup attained (or attainable). \end{DoxyCompactList}\item 
+integer(IK) \mbox{\hyperlink{structParallelism__mod_1_1private_ad9e49c344bec49c4818cc99e4b225c3d}{nproc}}
+\begin{DoxyCompactList}\small\item\em The required number of processes for maximum speedup. \end{DoxyCompactList}\item 
+integer(IK) \mbox{\hyperlink{structParallelism__mod_1_1private_acc17d9ed30acabd494a1a6dd90e7cc1e}{count}}
+\begin{DoxyCompactList}\small\item\em The size of the {\ttfamily Scaling} vector. \end{DoxyCompactList}\item 
+real(RK) \mbox{\hyperlink{structParallelism__mod_1_1private_a6bb1f2ea2db567e426e7fa46abf5e5b0}{current}}
+\begin{DoxyCompactList}\small\item\em The speedup given the current available number of processes. \end{DoxyCompactList}\item 
+type(Maximum\+\_\+type) \mbox{\hyperlink{structParallelism__mod_1_1private_ae8930f56550fcf64398b0eb94fd4fe1c}{Maximum}}
+\begin{DoxyCompactList}\small\item\em An object of type Maximum\+\_\+type, containing the predicted maximum speedup and process count. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:), allocatable \mbox{\hyperlink{structParallelism__mod_1_1private_a69d1e6d954db999b37c196ae65e6a16d}{Scaling}}
+\begin{DoxyCompactList}\small\item\em A real vector of length {\ttfamily Speedup\+\_\+typecount} containing the predicted speedup for a range process counts. \end{DoxyCompactList}\item 
+integer(IK), dimension(\+:), allocatable \mbox{\hyperlink{structParallelism__mod_1_1private_adf5bbc3a48cdbee37748f7d5eaf766a6}{Identity}}
+\begin{DoxyCompactList}\small\item\em A vector of size {\ttfamily Unique\+Process\+\_\+typecount} containing the unique IDs of processes, i.\+e., the ranks of processes, starting from 1. \end{DoxyCompactList}\item 
+integer(IK), dimension(\+:), allocatable \mbox{\hyperlink{structParallelism__mod_1_1private_a317f3e5ae3ed710a5c966faac8398f9d}{Frequency}}
+\begin{DoxyCompactList}\small\item\em The frequency with which the process IDs have contributed to the simulation at hand. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:), allocatable \mbox{\hyperlink{structParallelism__mod_1_1private_a45db39e3d3c560caa426197ca1e557c5}{Log\+Frequency}}
+\begin{DoxyCompactList}\small\item\em The natural logarithm of the {\ttfamily Frequency} vector component of the type Unique\+Process\+\_\+type. \end{DoxyCompactList}\item 
+real(RK) \mbox{\hyperlink{structParallelism__mod_1_1private_a53854a98d2da9ef6d9b9b8e00e87a717}{effective}}
+\begin{DoxyCompactList}\small\item\em The computed effective probability of success inferred from fitting the Cyclic Geometric distribution. \end{DoxyCompactList}\item 
+type(\mbox{\hyperlink{structOptimization__mod_1_1PowellMinimum__type}{Powell\+Minimum\+\_\+type}}) \mbox{\hyperlink{structParallelism__mod_1_1private_a53a99284eb0e675bb1fecaad916db602}{Powell\+Minimum}}
+\begin{DoxyCompactList}\small\item\em An object of class \mbox{\hyperlink{structOptimization__mod_1_1PowellMinimum__type}{Powell\+Minimum\+\_\+type}} containing information about the Cyclic Geometric fit to process contribution data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{Parallelism__mod_8f90_source_l00071}{71}} of file \mbox{\hyperlink{Parallelism__mod_8f90_source}{Parallelism\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structParallelism__mod_1_1private_acc17d9ed30acabd494a1a6dd90e7cc1e}\label{structParallelism__mod_1_1private_acc17d9ed30acabd494a1a6dd90e7cc1e}} 
+\index{Parallelism\_mod::private@{Parallelism\_mod::private}!count@{count}}
+\index{count@{count}!Parallelism\_mod::private@{Parallelism\_mod::private}}
+\doxysubsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily integer(IK) Parallelism\+\_\+mod\+::private\+::count}
+
+
+
+The size of the {\ttfamily Scaling} vector. 
+
+The sizes of the two vector components {\ttfamily Identity} and {\ttfamily Frequency} of {\ttfamily Unique\+Process\+\_\+type}. 
+
+Definition at line \mbox{\hyperlink{Parallelism__mod_8f90_source_l00077}{77}} of file \mbox{\hyperlink{Parallelism__mod_8f90_source}{Parallelism\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structParallelism__mod_1_1private_a6bb1f2ea2db567e426e7fa46abf5e5b0}\label{structParallelism__mod_1_1private_a6bb1f2ea2db567e426e7fa46abf5e5b0}} 
+\index{Parallelism\_mod::private@{Parallelism\_mod::private}!current@{current}}
+\index{current@{current}!Parallelism\_mod::private@{Parallelism\_mod::private}}
+\doxysubsubsection{\texorpdfstring{current}{current}}
+{\footnotesize\ttfamily real(RK) Parallelism\+\_\+mod\+::private\+::current}
+
+
+
+The speedup given the current available number of processes. 
+
+The probability of success in the Bernoulli trial. For example, the sampling efficiency of the Para\+DRAM sampler. 
+
+Definition at line \mbox{\hyperlink{Parallelism__mod_8f90_source_l00078}{78}} of file \mbox{\hyperlink{Parallelism__mod_8f90_source}{Parallelism\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structParallelism__mod_1_1private_a53854a98d2da9ef6d9b9b8e00e87a717}\label{structParallelism__mod_1_1private_a53854a98d2da9ef6d9b9b8e00e87a717}} 
+\index{Parallelism\_mod::private@{Parallelism\_mod::private}!effective@{effective}}
+\index{effective@{effective}!Parallelism\_mod::private@{Parallelism\_mod::private}}
+\doxysubsubsection{\texorpdfstring{effective}{effective}}
+{\footnotesize\ttfamily real(RK) Parallelism\+\_\+mod\+::private\+::effective}
+
+
+
+The computed effective probability of success inferred from fitting the Cyclic Geometric distribution. 
+
+
+
+Definition at line \mbox{\hyperlink{Parallelism__mod_8f90_source_l00095}{95}} of file \mbox{\hyperlink{Parallelism__mod_8f90_source}{Parallelism\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structParallelism__mod_1_1private_a317f3e5ae3ed710a5c966faac8398f9d}\label{structParallelism__mod_1_1private_a317f3e5ae3ed710a5c966faac8398f9d}} 
+\index{Parallelism\_mod::private@{Parallelism\_mod::private}!Frequency@{Frequency}}
+\index{Frequency@{Frequency}!Parallelism\_mod::private@{Parallelism\_mod::private}}
+\doxysubsubsection{\texorpdfstring{Frequency}{Frequency}}
+{\footnotesize\ttfamily integer(IK), dimension(\+:), allocatable Parallelism\+\_\+mod\+::private\+::\+Frequency}
+
+
+
+The frequency with which the process IDs have contributed to the simulation at hand. 
+
+
+
+Definition at line \mbox{\hyperlink{Parallelism__mod_8f90_source_l00086}{86}} of file \mbox{\hyperlink{Parallelism__mod_8f90_source}{Parallelism\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structParallelism__mod_1_1private_adf5bbc3a48cdbee37748f7d5eaf766a6}\label{structParallelism__mod_1_1private_adf5bbc3a48cdbee37748f7d5eaf766a6}} 
+\index{Parallelism\_mod::private@{Parallelism\_mod::private}!Identity@{Identity}}
+\index{Identity@{Identity}!Parallelism\_mod::private@{Parallelism\_mod::private}}
+\doxysubsubsection{\texorpdfstring{Identity}{Identity}}
+{\footnotesize\ttfamily integer(IK), dimension(\+:), allocatable Parallelism\+\_\+mod\+::private\+::\+Identity}
+
+
+
+A vector of size {\ttfamily Unique\+Process\+\_\+typecount} containing the unique IDs of processes, i.\+e., the ranks of processes, starting from 1. 
+
+
+
+Definition at line \mbox{\hyperlink{Parallelism__mod_8f90_source_l00085}{85}} of file \mbox{\hyperlink{Parallelism__mod_8f90_source}{Parallelism\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structParallelism__mod_1_1private_a45db39e3d3c560caa426197ca1e557c5}\label{structParallelism__mod_1_1private_a45db39e3d3c560caa426197ca1e557c5}} 
+\index{Parallelism\_mod::private@{Parallelism\_mod::private}!LogFrequency@{LogFrequency}}
+\index{LogFrequency@{LogFrequency}!Parallelism\_mod::private@{Parallelism\_mod::private}}
+\doxysubsubsection{\texorpdfstring{LogFrequency}{LogFrequency}}
+{\footnotesize\ttfamily real(RK), dimension(\+:), allocatable Parallelism\+\_\+mod\+::private\+::\+Log\+Frequency}
+
+
+
+The natural logarithm of the {\ttfamily Frequency} vector component of the type Unique\+Process\+\_\+type. 
+
+
+
+Definition at line \mbox{\hyperlink{Parallelism__mod_8f90_source_l00090}{90}} of file \mbox{\hyperlink{Parallelism__mod_8f90_source}{Parallelism\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structParallelism__mod_1_1private_ae8930f56550fcf64398b0eb94fd4fe1c}\label{structParallelism__mod_1_1private_ae8930f56550fcf64398b0eb94fd4fe1c}} 
+\index{Parallelism\_mod::private@{Parallelism\_mod::private}!Maximum@{Maximum}}
+\index{Maximum@{Maximum}!Parallelism\_mod::private@{Parallelism\_mod::private}}
+\doxysubsubsection{\texorpdfstring{Maximum}{Maximum}}
+{\footnotesize\ttfamily type(Maximum\+\_\+type) Parallelism\+\_\+mod\+::private\+::\+Maximum}
+
+
+
+An object of type Maximum\+\_\+type, containing the predicted maximum speedup and process count. 
+
+
+
+Definition at line \mbox{\hyperlink{Parallelism__mod_8f90_source_l00079}{79}} of file \mbox{\hyperlink{Parallelism__mod_8f90_source}{Parallelism\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structParallelism__mod_1_1private_ad9e49c344bec49c4818cc99e4b225c3d}\label{structParallelism__mod_1_1private_ad9e49c344bec49c4818cc99e4b225c3d}} 
+\index{Parallelism\_mod::private@{Parallelism\_mod::private}!nproc@{nproc}}
+\index{nproc@{nproc}!Parallelism\_mod::private@{Parallelism\_mod::private}}
+\doxysubsubsection{\texorpdfstring{nproc}{nproc}}
+{\footnotesize\ttfamily integer(IK) Parallelism\+\_\+mod\+::private\+::nproc}
+
+
+
+The required number of processes for maximum speedup. 
+
+
+
+Definition at line \mbox{\hyperlink{Parallelism__mod_8f90_source_l00073}{73}} of file \mbox{\hyperlink{Parallelism__mod_8f90_source}{Parallelism\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structParallelism__mod_1_1private_a53a99284eb0e675bb1fecaad916db602}\label{structParallelism__mod_1_1private_a53a99284eb0e675bb1fecaad916db602}} 
+\index{Parallelism\_mod::private@{Parallelism\_mod::private}!PowellMinimum@{PowellMinimum}}
+\index{PowellMinimum@{PowellMinimum}!Parallelism\_mod::private@{Parallelism\_mod::private}}
+\doxysubsubsection{\texorpdfstring{PowellMinimum}{PowellMinimum}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structOptimization__mod_1_1PowellMinimum__type}{Powell\+Minimum\+\_\+type}}) Parallelism\+\_\+mod\+::private\+::\+Powell\+Minimum}
+
+
+
+An object of class \mbox{\hyperlink{structOptimization__mod_1_1PowellMinimum__type}{Powell\+Minimum\+\_\+type}} containing information about the Cyclic Geometric fit to process contribution data. 
+
+
+
+Definition at line \mbox{\hyperlink{Parallelism__mod_8f90_source_l00096}{96}} of file \mbox{\hyperlink{Parallelism__mod_8f90_source}{Parallelism\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structParallelism__mod_1_1private_a69d1e6d954db999b37c196ae65e6a16d}\label{structParallelism__mod_1_1private_a69d1e6d954db999b37c196ae65e6a16d}} 
+\index{Parallelism\_mod::private@{Parallelism\_mod::private}!Scaling@{Scaling}}
+\index{Scaling@{Scaling}!Parallelism\_mod::private@{Parallelism\_mod::private}}
+\doxysubsubsection{\texorpdfstring{Scaling}{Scaling}}
+{\footnotesize\ttfamily real(RK), dimension(\+:), allocatable Parallelism\+\_\+mod\+::private\+::\+Scaling}
+
+
+
+A real vector of length {\ttfamily Speedup\+\_\+typecount} containing the predicted speedup for a range process counts. 
+
+
+
+Definition at line \mbox{\hyperlink{Parallelism__mod_8f90_source_l00080}{80}} of file \mbox{\hyperlink{Parallelism__mod_8f90_source}{Parallelism\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structParallelism__mod_1_1private_a407efded34304c2d7b4620e2b422a100}\label{structParallelism__mod_1_1private_a407efded34304c2d7b4620e2b422a100}} 
+\index{Parallelism\_mod::private@{Parallelism\_mod::private}!value@{value}}
+\index{value@{value}!Parallelism\_mod::private@{Parallelism\_mod::private}}
+\doxysubsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily real(RK) Parallelism\+\_\+mod\+::private\+::value}
+
+
+
+The maximum speedup attained (or attainable). 
+
+
+
+Definition at line \mbox{\hyperlink{Parallelism__mod_8f90_source_l00072}{72}} of file \mbox{\hyperlink{Parallelism__mod_8f90_source}{Parallelism\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this type was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{Parallelism__mod_8f90}{Parallelism\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

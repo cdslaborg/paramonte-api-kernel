@@ -44,10 +44,11 @@ var searchData=
   ['quarter_5fpi_41',['QUARTER_PI',['../namespaceConstants__mod.html#aa6283216fc9fd2ca497af0ea00412cc5',1,'Constants_mod']]],
   ['query_42',['query',['../structSystem__mod_1_1OS__type.html#a910b4807a69b9a1b4a4d08440a22924d',1,'System_mod::OS_type::query()'],['../namespacePath__mod.html#ac6987a888d5ab385c2d902134bbcca3b',1,'Path_mod::query()'],['../structDateTime__mod_1_1DateTime__type.html#a84b356e3b5d2d8d5f9aeaab0e4b14329',1,'DateTime_mod::DateTime_type::query()'],['../structParallelism__mod_1_1Image__type.html#ae1b815247f11b77213fe8235e3baea87',1,'Parallelism_mod::Image_type::query()'],['../structPath__mod_1_1Path__type.html#a6485425146d7ef27831520077685abab',1,'Path_mod::Path_type::query()'],['../structSystem__mod_1_1Shell__type.html#a44bdb5924c35f6f6a9de99ce0682b770',1,'System_mod::Shell_type::query()'],['../structSystem__mod_1_1CmdArg__type.html#a6e623562c53dbf3b955882546acbeec2',1,'System_mod::CmdArg_type::query()']]],
   ['querycmdarg_43',['queryCmdArg',['../namespaceSystem__mod.html#a3c1981d0023737dd6900f2af31dded68',1,'System_mod']]],
-  ['queryimage_44',['queryImage',['../namespaceParallelism__mod.html#a5b581453eb6775859404d1ae3a244862',1,'Parallelism_mod']]],
-  ['queryos_45',['queryOS',['../namespaceSystem__mod.html#a557d6e1a9315cfb68392ada8697b3785',1,'System_mod']]],
-  ['queryruntimeshell_46',['queryRuntimeShell',['../namespaceSystem__mod.html#a1f99b90af00fdabc370cda76ffe2ca8e',1,'System_mod']]],
-  ['qwgtc_47',['qwgtc',['../namespaceQuadPackRK32__mod.html#ae2803e5780422cb01267d1ef394215a3',1,'QuadPackRK32_mod']]],
-  ['qwgto_48',['qwgto',['../namespaceQuadPackRK32__mod.html#ae6adaa483992ea7ebf4da5564ae73fbc',1,'QuadPackRK32_mod']]],
-  ['qwgts_49',['qwgts',['../namespaceQuadPackRK32__mod.html#aba0887f3e6919ad57a3582d303a36fc4',1,'QuadPackRK32_mod']]]
+  ['querydatetime_44',['queryDateTime',['../namespaceDateTime__mod.html#ac82b225ef3d13c9ad6c3aad5f23ad0d6',1,'DateTime_mod']]],
+  ['queryimage_45',['queryImage',['../namespaceParallelism__mod.html#a5b581453eb6775859404d1ae3a244862',1,'Parallelism_mod']]],
+  ['queryos_46',['queryOS',['../namespaceSystem__mod.html#a557d6e1a9315cfb68392ada8697b3785',1,'System_mod']]],
+  ['queryruntimeshell_47',['queryRuntimeShell',['../namespaceSystem__mod.html#a1f99b90af00fdabc370cda76ffe2ca8e',1,'System_mod']]],
+  ['qwgtc_48',['qwgtc',['../namespaceQuadPackRK32__mod.html#ae2803e5780422cb01267d1ef394215a3',1,'QuadPackRK32_mod']]],
+  ['qwgto_49',['qwgto',['../namespaceQuadPackRK32__mod.html#ae6adaa483992ea7ebf4da5564ae73fbc',1,'QuadPackRK32_mod']]],
+  ['qwgts_50',['qwgts',['../namespaceQuadPackRK32__mod.html#aba0887f3e6919ad57a3582d303a36fc4',1,'QuadPackRK32_mod']]]
 ];
