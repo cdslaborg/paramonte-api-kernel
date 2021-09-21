@@ -1,7 +1,7 @@
 var searchData=
 [
   ['sample_5fmod_2ef90_0',['Sample_mod.f90',['../Sample__mod_8f90.html',1,'']]],
-  ['sample_5fmod_40getcovupp_2einc_2ef90_1',['Sample_mod@getCovUpp.inc.f90',['../Sample__mod_0dgetCovUpp_8inc_8f90.html',1,'']]],
+  ['sample_5fmod_40gencovupp_2einc_2ef90_1',['Sample_mod@genCovUpp.inc.f90',['../Sample__mod_0dgenCovUpp_8inc_8f90.html',1,'']]],
   ['sample_5fmod_40getweightedmean_5f2d_2einc_2ef90_2',['Sample_mod@getWeightedMean_2D.inc.f90',['../Sample__mod_0dgetWeightedMean__2D_8inc_8f90.html',1,'']]],
   ['settheory_5fmod_2ef90_3',['SetTheory_mod.f90',['../SetTheory__mod_8f90.html',1,'']]],
   ['settheory_5fmod_40complement_2einc_2ef90_4',['SetTheory_mod@complement.inc.f90',['../SetTheory__mod_0dcomplement_8inc_8f90.html',1,'']]],
@@ -66,6 +66,6 @@ var searchData=
   ['starformation_5fmod_2ef90_63',['StarFormation_mod.f90',['../StarFormation__mod_8f90.html',1,'']]],
   ['statistics_5fmod_2ef90_64',['Statistics_mod.f90',['../Statistics__mod_8f90.html',1,'']]],
   ['string_5fmod_2ef90_65',['String_mod.f90',['../String__mod_8f90.html',1,'']]],
-  ['string_5fmod_40num2str_2einc_2ef90_66',['String_mod@num2str.inc.f90',['../String__mod_0dnum2str_8inc_8f90.html',1,'']]],
+  ['string_5fmod_40num2char_2einc_2ef90_66',['String_mod@num2char.inc.f90',['../String__mod_0dnum2char_8inc_8f90.html',1,'']]],
   ['system_5fmod_2ef90_67',['System_mod.f90',['../System__mod_8f90.html',1,'']]]
 ];

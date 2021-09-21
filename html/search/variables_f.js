@@ -12,7 +12,7 @@ var searchData=
   ['paranest_9',['ParaNest',['../structConstants__mod_1_1private.html#aa6700ac4487e15cd2f051d4c25974a65',1,'Constants_mod::private']]],
   ['paratemp_10',['ParaTemp',['../structConstants__mod_1_1private.html#a05f2b2a236ab1ed0fbfdabce0c7a5f25',1,'Constants_mod::private']]],
   ['parsectime_11',['parSecTime',['../namespaceTest__Parallelism__mod.html#ab6c7a4322609a8a392f19154379401ff',1,'Test_Parallelism_mod']]],
-  ['parts_12',['Parts',['../structString__mod_1_1String__type.html#a1d4363c02248509cac99d09b56da6307',1,'String_mod::String_type']]],
+  ['parts_12',['Parts',['../structString__mod_1_1StrSplit__type.html#ae3c7c88593235598910768f0fe31c7f1',1,'String_mod::StrSplit_type']]],
   ['path_13',['Path',['../structFile__mod_1_1File__type.html#a64c4bb57c4cc539708e8d63dcd1d9de9',1,'File_mod::File_type']]],
   ['path_14',['path',['../structSystem__mod_1_1RandomFileName__type.html#a13dab201854aa789605e06b82b4ac11d',1,'System_mod::RandomFileName_type']]],
   ['pathprefix_15',['pathPrefix',['../structSpecBase__OutputFileName__mod_1_1OutputFileName__type.html#a4e4421887d6f8ed842acfccf0980706f',1,'SpecBase_OutputFileName_mod::OutputFileName_type']]],

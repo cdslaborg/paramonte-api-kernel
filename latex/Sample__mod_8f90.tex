@@ -5,13 +5,13 @@
 \item 
 interface \mbox{\hyperlink{interfaceSample__mod_1_1getMean}{Sample\+\_\+mod\+::get\+Mean}}
 \item 
-interface \mbox{\hyperlink{interfaceSample__mod_1_1getNormedSample}{Sample\+\_\+mod\+::get\+Normed\+Sample}}
+interface \mbox{\hyperlink{interfaceSample__mod_1_1genNormedSample}{Sample\+\_\+mod\+::gen\+Normed\+Sample}}
 \item 
 interface \mbox{\hyperlink{interfaceSample__mod_1_1normalize}{Sample\+\_\+mod\+::normalize}}
 \item 
 interface \mbox{\hyperlink{interfaceSample__mod_1_1getVariance}{Sample\+\_\+mod\+::get\+Variance}}
 \item 
-interface \mbox{\hyperlink{interfaceSample__mod_1_1getCovUpp}{Sample\+\_\+mod\+::get\+Cov\+Upp}}
+interface \mbox{\hyperlink{interfaceSample__mod_1_1genCovUpp}{Sample\+\_\+mod\+::gen\+Cov\+Upp}}
 \item 
 interface \mbox{\hyperlink{interfaceSample__mod_1_1transform}{Sample\+\_\+mod\+::transform}}
 \end{DoxyCompactItemize}
@@ -35,7 +35,7 @@ PURE real(RK) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceSa
 \begin{DoxyCompactList}\small\item\em Return the weighted mean of the input Sample according to the input integer {\ttfamily Weight}. \end{DoxyCompactList}\item 
 PURE real(RK) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_a568598e3e2deda9e55a6684cdb55a8dd}{Sample\+\_\+mod\+::get\+Weighted\+Mean\+\_\+2\+D\+\_\+\+WRK}} (Sample, Weight, dim)
 \begin{DoxyCompactList}\small\item\em Return the weighted mean of the input Sample according to the input integer {\ttfamily Weight}. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_a1b559716e870c15d4ccf9edfdda3ffe7}{Sample\+\_\+mod\+::get\+Normed\+Sample\+\_\+2D}} (Sample, Mean, dim, tenabled)
+PURE real(RK) function, dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_a95d4025ed6659bc98f2be604d2cb6fd0}{Sample\+\_\+mod\+::gen\+Normed\+Sample\+\_\+2D}} (Sample, Mean, dim, tenabled)
 \begin{DoxyCompactList}\small\item\em Return the normalized sample of shape {\ttfamily (nd,np)} (default) or {\ttfamily (np,nd)} with respect to the input mean vector of length {\ttfamily nd}, where {\ttfamily nd} represents the number of dimensions (data attributes) of the input {\ttfamily Sample} and {\ttfamily np} represents the number of data points in the {\ttfamily Sample}. \end{DoxyCompactList}\item 
 PURE subroutine \mbox{\hyperlink{namespaceSample__mod_a7adca2810f8d4d58d809eb330ef44859}{Sample\+\_\+mod\+::normalize\+\_\+2D}} (Sample, Mean, dim)
 \begin{DoxyCompactList}\small\item\em Return the normalized sample of shape {\ttfamily (nd,np)} (default) or {\ttfamily (np,nd)} with respect to the input mean vector of length {\ttfamily nd}, where {\ttfamily nd} represents the number of dimensions (data attributes) of the input {\ttfamily Sample} and {\ttfamily np} represents the number of data points in the {\ttfamily Sample}. \end{DoxyCompactList}\item 
@@ -43,13 +43,13 @@ PURE real(RK) function \mbox{\hyperlink{namespaceSample__mod_a4499dfbfa2c71254b7
 \begin{DoxyCompactList}\small\item\em Return the variance of the input vector of values of length {\ttfamily np}. \end{DoxyCompactList}\item 
 PURE real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceSample__mod_a8380886750582ee7e92e7c2ec64d39b5}{Sample\+\_\+mod\+::get\+Variance\+\_\+2D}} (nd, np, Mean, Sample, Weight)
 \begin{DoxyCompactList}\small\item\em Return the vector of variance of a set of {\ttfamily np} points of {\ttfamily nd} dimensions. \end{DoxyCompactList}\item 
-real(RK) function, dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_adebd0613b09fc6a11fb9c47959dfc49b}{Sample\+\_\+mod\+::get\+Inv\+Cov\+Mat}} (Normed\+Sample, Weight, failed)
+real(RK) function, dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_a34a4bded64857e2e49d99e83e7d3be6a}{Sample\+\_\+mod\+::gen\+Inv\+Cov\+Mat}} (Normed\+Sample, Weight, failed)
 \begin{DoxyCompactList}\small\item\em Return the full inverse covariance matrix of the input normalized sample {\ttfamily Normed\+Sample} whose shape is assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_a4993b92d87503071c641068723417185}{Sample\+\_\+mod\+::get\+Cov\+Upp}} (Normed\+Sample)
+PURE real(RK) function, dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_a1dd4ab48344381e676f24408a644137c}{Sample\+\_\+mod\+::gen\+Cov\+Upp}} (Normed\+Sample)
 \begin{DoxyCompactList}\small\item\em Return the {\bfseries{upper triangle}} covariance matrix of the input normalized sample {\ttfamily Normed\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_aa2a138b42fbd62d64be3290c809e1a60}{Sample\+\_\+mod\+::get\+Cov\+Upp\+Weighted\+\_\+\+WRK}} (Normed\+Sample, Weight)
+PURE real(RK) function, dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_ae6627d905fa42425d66b0995c5a24421}{Sample\+\_\+mod\+::gen\+Cov\+Upp\+Weighted\+\_\+\+WRK}} (Normed\+Sample, Weight)
 \begin{DoxyCompactList}\small\item\em Return the {\bfseries{upper triangle}} covariance matrix of the input normalized weighted sample {\ttfamily Normed\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_a6f769a19a5709d16b0204b36cef58725}{Sample\+\_\+mod\+::get\+Cov\+Upp\+Weighted\+\_\+\+WIK}} (Normed\+Sample, Weight)
+PURE real(RK) function, dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_a23cc8d0d762e83620e0279d65fa79cbd}{Sample\+\_\+mod\+::gen\+Cov\+Upp\+Weighted\+\_\+\+WIK}} (Normed\+Sample, Weight)
 \begin{DoxyCompactList}\small\item\em Return the {\bfseries{upper triangle}} covariance matrix of the input normalized weighted sample {\ttfamily Normed\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceSample__mod_a1942971b64332fc7c4860112a244764c}{Sample\+\_\+mod\+::get\+Cho\+Low\+Cov\+Upp}} (nd, np, Mean, Sample, Cho\+Low\+Cov\+Upp, Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Return the lower triangle Cholesky Factor of the covariance matrix of a set of points in the lower part of {\ttfamily Cho\+Low\+Cov\+Upp}. The upper part of {\ttfamily Cho\+Low\+Cov\+Upp}, including the diagonal elements of it, will contain the covariance matrix of the sample. The output argument {\ttfamily Cho\+Dia}, contains the diagonal terms of Cholesky Factor. \end{DoxyCompactList}\item 
@@ -71,9 +71,9 @@ subroutine \mbox{\hyperlink{namespaceSample__mod_a81524ddc27a48db65744d80cfad9b3
 \begin{DoxyCompactList}\small\item\em Given two input sample means and covariance matrices, return the combination of them as a single mean and covariance matrix. \end{DoxyCompactList}\item 
 PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_a44441497c46d27639eb9b422d1d4251d}{Sample\+\_\+mod\+::get\+Cor\+Upp\+From\+Cov\+Upp}} (nd, Cov\+Upp)
 \begin{DoxyCompactList}\small\item\em Convert the upper-\/triangle covariance matrix to the upper-\/triangle correlation matrix. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_a5b778f2293799f85c38eaba8fad2850f}{Sample\+\_\+mod\+::get\+Cov\+Upp\+From\+Cor\+Upp}} (nd, Std\+Vec, Cor\+Upp)
+PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_a006be94969ee33fe9d9ad6c2a438a9c6}{Sample\+\_\+mod\+::gen\+Cov\+Upp\+From\+Cor\+Upp}} (nd, Std\+Vec, Cor\+Upp)
 \begin{DoxyCompactList}\small\item\em Convert the upper-\/triangle correlation matrix to the upper-\/triangle covariance matrix. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_ad6ef79228d14373419a86e7385a70d8f}{Sample\+\_\+mod\+::get\+Cov\+Upp\+From\+Cor\+Low}} (nd, Std\+Vec, Cor\+Low)
+PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_aaa488173222177596255901083dbc639}{Sample\+\_\+mod\+::gen\+Cov\+Upp\+From\+Cor\+Low}} (nd, Std\+Vec, Cor\+Low)
 \begin{DoxyCompactList}\small\item\em Convert the lower-\/triangle correlation matrix to the upper-\/triangle covariance matrix. \end{DoxyCompactList}\item 
 PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_afb2e3c5d56a87f0cadd6304ffee5d823}{Sample\+\_\+mod\+::get\+Cov\+Low\+From\+Cor\+Upp}} (nd, Std\+Vec, Cor\+Upp)
 \begin{DoxyCompactList}\small\item\em Convert the upper-\/triangle correlation matrix to the lower-\/triangle covariance matrix. \end{DoxyCompactList}\item 

@@ -11,7 +11,11 @@ var searchData=
   ['constructdecoration_8',['constructDecoration',['../interfaceDecoration__mod_1_1constructDecoration.html',1,'Decoration_mod']]],
   ['contains_5fproc_9',['contains_proc',['../interfaceDomain__mod_1_1contains__proc.html',1,'Domain_mod']]],
   ['copyarray_10',['copyArray',['../interfaceMisc__mod_1_1copyArray.html',1,'Misc_mod']]],
-  ['corcoefspearman_5ftype_11',['CorCoefSpearman_type',['../structCorCoef__mod_1_1CorCoefSpearman__type.html',1,'CorCoef_mod']]],
-  ['count_5ftype_12',['Count_type',['../structTimer__mod_1_1Count__type.html',1,'Timer_mod']]],
-  ['cubelimit_5ftype_13',['CubeLimit_type',['../structDomainCube__mod_1_1CubeLimit__type.html',1,'DomainCube_mod']]]
+  ['copylow2low_11',['copyLow2Low',['../interfaceMatrix__mod_1_1copyLow2Low.html',1,'Matrix_mod']]],
+  ['copylowdia2lowdia_12',['copyLowDia2LowDia',['../interfaceMatrix__mod_1_1copyLowDia2LowDia.html',1,'Matrix_mod']]],
+  ['copyupp2upp_13',['copyUpp2Upp',['../interfaceMatrix__mod_1_1copyUpp2Upp.html',1,'Matrix_mod']]],
+  ['copyuppdia2uppdia_14',['copyUppDia2UppDia',['../interfaceMatrix__mod_1_1copyUppDia2UppDia.html',1,'Matrix_mod']]],
+  ['corcoefspearman_5ftype_15',['CorCoefSpearman_type',['../structCorCoef__mod_1_1CorCoefSpearman__type.html',1,'CorCoef_mod']]],
+  ['count_5ftype_16',['Count_type',['../structTimer__mod_1_1Count__type.html',1,'Timer_mod']]],
+  ['cubelimit_5ftype_17',['CubeLimit_type',['../structDomainCube__mod_1_1CubeLimit__type.html',1,'DomainCube_mod']]]
 ];

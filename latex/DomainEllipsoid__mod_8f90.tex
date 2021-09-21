@@ -5,7 +5,11 @@
 \item 
 interface \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+mod\+::\+Domain\+Ellipsoid\+\_\+type}}
 \begin{DoxyCompactList}\small\item\em The class for Hyper-\/ellipsoidal domain. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1getRand}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand}}
+interface \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1isEqual}{Domain\+Ellipsoid\+\_\+mod\+::is\+Equal}}
+\item 
+interface \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1operator_07_0a_0a_08}{Domain\+Ellipsoid\+\_\+mod\+::operator(==)}}
+\item 
+interface \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1genRand}{Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Modules}
 \begin{DoxyCompactItemize}
@@ -15,25 +19,31 @@ module \mbox{\hyperlink{namespaceDomainEllipsoid__mod}{Domain\+Ellipsoid\+\_\+mo
 \doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
-type(Domain\+Ellipsoid\+\_\+type) function \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a04f383a111e2e4f71ff799575662f2f2}{Domain\+Ellipsoid\+\_\+mod\+::construct}} (ndim, Center, Cov\+Upp, Err)
+type(Domain\+Ellipsoid\+\_\+type) function \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a529251f7da3fcfab65ac6325ee44b8f6}{Domain\+Ellipsoid\+\_\+mod\+::construct}} (ndim, Center, Rep\+Upp, Err)
 \begin{DoxyCompactList}\small\item\em Construct an object of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}. \end{DoxyCompactList}\item 
+pure logical function \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a7d9164e925b4b980e129ceb6bf7a4873}{Domain\+Ellipsoid\+\_\+mod\+::is\+Identical\+Domain}} (Domain1, Domain2)
+\begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} is the two input objects of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}} are equal, otherwise, return {\ttfamily .false.}. \end{DoxyCompactList}\item 
+logical function \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a6ef03395142d8e4612f567e55c269737}{Domain\+Ellipsoid\+\_\+mod\+::is\+Identical\+Domain\+Almost}} (Domain1, Domain2, tol)
+\begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} is the two input objects of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}} are equal within the specified tolerance {\ttfamily tol}, otherwise, return {\ttfamily .false.}. \end{DoxyCompactList}\item 
 pure logical function \mbox{\hyperlink{namespaceDomainEllipsoid__mod_ac22bd831678c7563d2f170a46687af62}{Domain\+Ellipsoid\+\_\+mod\+::contains}} (self, Point)
 \item 
-subroutine \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a92e18edcdf999a006e8ce2044627fa98}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unif}} (self, Point)
+subroutine \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a831f10500334fc230c9b99b413428668}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unif\+\_\+1D}} (self, Point)
 \item 
-real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a8b144d1013f139e56669c1797a7421db}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unit\+Volume\+MVU}} (nd, log\+Vol\+Unit\+Ball)
+subroutine \mbox{\hyperlink{namespaceDomainEllipsoid__mod_aa9c838220055c6e034a3382e2a3de9d6}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unif\+\_\+2D}} (self, Point)
+\item 
+real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_aceb6c4d7ced8311aa91278c4aca92313}{Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Unit\+Volume\+MVU}} (nd, log\+Vol\+Unit\+Ball)
 \begin{DoxyCompactList}\small\item\em Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. \end{DoxyCompactList}\item 
-real(RK) function, dimension(nd, np) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_ab4003bc2bb41a0ea8230db9bf56d556e}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unit\+Volume\+MVU\+\_\+vector}} (nd, np, log\+Vol\+Unit\+Ball)
+real(RK) function, dimension(nd, np) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a366208ccb5c574611e0223018376ed9d}{Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Unit\+Volume\+MVU\+\_\+vector}} (nd, np, log\+Vol\+Unit\+Ball)
 \begin{DoxyCompactList}\small\item\em Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. \end{DoxyCompactList}\item 
-real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a72fca483051eb7635ac24fd51f5baf25}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unit\+Radius\+MVU}} (nd)
+real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a4bad73128f9ebca44bb726abe9d52d77}{Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Unit\+Radius\+MVU}} (nd)
 \begin{DoxyCompactList}\small\item\em Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. \end{DoxyCompactList}\item 
-real(RK) function, dimension(nd, np) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a5e9f5f80c2c9ca3d0747b633266ef582}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unit\+Radius\+MVU\+\_\+vector}} (nd, np)
+real(RK) function, dimension(nd, np) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_ab34cac75fb3bfc7f5fabc18dde2d8729}{Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Unit\+Radius\+MVU\+\_\+vector}} (nd, np)
 \begin{DoxyCompactList}\small\item\em Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. \end{DoxyCompactList}\item 
-real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a88949b3a103802440e6880528c52cb50}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+MVU}} (nd, Mean, Cho\+Low, Cho\+Dia)
-\begin{DoxyCompactList}\small\item\em Given the Cholesky Lower triangle and diagonals of a given covariance matrix, this function return one point uniformly randomly drawn from inside of an {\ttfamily nd}-\/ellipsoid, whose {\ttfamily nd} elements {\ttfamily Rand\+MVU(i), i=1\+:nd} are guaranteed to be in the range\+: \end{DoxyCompactList}\item 
-real(RK) function, dimension(nd, np) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a7db4f2f0bef8e11796ef505a51ef0d5c}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+MVU\+\_\+vector}} (nd, Mean, Cho\+Low, Cho\+Dia, np)
-\begin{DoxyCompactList}\small\item\em Given the Cholesky Lower triangle and diagonals of a given covariance matrix, this function return one point uniformly randomly drawn from inside of an {\ttfamily nd}-\/ellipsoid, whose {\ttfamily nd} elements {\ttfamily Rand\+MVU(i), i=1\+:nd} are guaranteed to be in the range\+: \end{DoxyCompactList}\item 
-subroutine \mbox{\hyperlink{namespaceDomainEllipsoid__mod_ab571d2419abf322c3c594a9c1bf1eacf}{Domain\+Ellipsoid\+\_\+mod\+::get\+MVUDev}} (nd, Mean, Cov\+Mat, X)
+real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a55b8ecfa34c11557255e62740cea7dd3}{Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+MVU}} (nd, Mean, Cho\+Low, Cho\+Dia)
+\begin{DoxyCompactList}\small\item\em Given the Cholesky Lower triangle and diagonals of a given representative matrix, this function return one point uniformly randomly drawn from inside of an {\ttfamily nd}-\/ellipsoid, whose {\ttfamily nd} elements {\ttfamily Rand\+MVU(i), i=1\+:nd} are guaranteed to be in the range\+: \end{DoxyCompactList}\item 
+real(RK) function, dimension(nd, np) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a325696f445b536f172aaf06aba16ea92}{Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+MVU\+\_\+vector}} (nd, Mean, Cho\+Low, Cho\+Dia, np)
+\begin{DoxyCompactList}\small\item\em Given the Cholesky Lower triangle and diagonals of a given representative matrix, this function return one point uniformly randomly drawn from inside of an {\ttfamily nd}-\/ellipsoid, whose {\ttfamily nd} elements {\ttfamily Rand\+MVU(i), i=1\+:nd} are guaranteed to be in the range\+: \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a2f4e252361ff4420136821baffb46ae1}{Domain\+Ellipsoid\+\_\+mod\+::get\+MVUDev}} (nd, Mean, Rep\+Mat, X)
 \begin{DoxyCompactList}\small\item\em Amir Shahmoradi, April 25, 2016, 2\+:21 PM, IFS, University of Texas at Austin. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}

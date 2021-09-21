@@ -122,9 +122,9 @@ Functions/Subroutines</h2></td></tr>
 <tr class="separator:a557d6e1a9315cfb68392ada8697b3785"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f99b90af00fdabc370cda76ffe2ca8e"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSystem__mod.html#a1f99b90af00fdabc370cda76ffe2ca8e">queryRuntimeShell</a> (Shell)</td></tr>
 <tr class="separator:a1f99b90af00fdabc370cda76ffe2ca8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3329218665a9f0f1071bc5d083c66a45"><td class="memItemLeft" align="right" valign="top">type(<a class="el" href="structSystem__mod_1_1RandomFileName__type.html">RandomFileName_type</a>) function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSystem__mod.html#a3329218665a9f0f1071bc5d083c66a45">getRandomFileName</a> (dir, key, ext)</td></tr>
-<tr class="memdesc:a3329218665a9f0f1071bc5d083c66a45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a unique file path in the requested directory for temporary usage.  <a href="namespaceSystem__mod.html#a3329218665a9f0f1071bc5d083c66a45">More...</a><br /></td></tr>
-<tr class="separator:a3329218665a9f0f1071bc5d083c66a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd69d588e1a36f70cbdf6c25885ea6ca"><td class="memItemLeft" align="right" valign="top">type(<a class="el" href="structSystem__mod_1_1RandomFileName__type.html">RandomFileName_type</a>) function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSystem__mod.html#afd69d588e1a36f70cbdf6c25885ea6ca">genRandomFileName</a> (dir, key, ext)</td></tr>
+<tr class="memdesc:afd69d588e1a36f70cbdf6c25885ea6ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a unique file path in the requested directory for temporary usage.  <a href="namespaceSystem__mod.html#afd69d588e1a36f70cbdf6c25885ea6ca">More...</a><br /></td></tr>
+<tr class="separator:afd69d588e1a36f70cbdf6c25885ea6ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14025e9f9a4536224738e4ad02da2495"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSystem__mod.html#a14025e9f9a4536224738e4ad02da2495">getEnvVar</a> (name, value, length, Err)</td></tr>
 <tr class="memdesc:a14025e9f9a4536224738e4ad02da2495"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the value of the requested input environmental variable.  <a href="namespaceSystem__mod.html#a14025e9f9a4536224738e4ad02da2495">More...</a><br /></td></tr>
 <tr class="separator:a14025e9f9a4536224738e4ad02da2495"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -375,6 +375,53 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="afd69d588e1a36f70cbdf6c25885ea6ca" name="afd69d588e1a36f70cbdf6c25885ea6ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd69d588e1a36f70cbdf6c25885ea6ca">&#9670;&nbsp;</a></span>genRandomFileName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">type(<a class="el" href="structSystem__mod_1_1RandomFileName__type.html">RandomFileName_type</a>) function System_mod::genRandomFileName </td>
+          <td>(</td>
+          <td class="paramtype">character(*), intent(in), optional&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">character(*), intent(in), optional&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">character(*), intent(in), optional&#160;</td>
+          <td class="paramname"><em>ext</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generate a unique file path in the requested directory for temporary usage. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dir</td><td>: The requested directory within which the unique new file is supposed to be generated (<b>optional</b>, default = <code>""</code>). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>: The requested input file name prefix (<b>optional</b>, default = <code>"RandomFileName"</code>). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ext</td><td>: The requested input file extension (<b>optional</b>, default = <code>".rfn"</code>, standing for random file name).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>RFN</code> : An object of class <a class="el" href="structSystem__mod_1_1RandomFileName__type.html">RandomFileName_type</a> containing the attributes of the random file name. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="System__mod_8f90_source.html#l00658">658</a> of file <a class="el" href="System__mod_8f90_source.html">System_mod.f90</a>.</p>
+
+</div>
+</div>
 <a id="a14025e9f9a4536224738e4ad02da2495" name="a14025e9f9a4536224738e4ad02da2495"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a14025e9f9a4536224738e4ad02da2495">&#9670;&nbsp;</a></span>getEnvVar()</h2>
 
@@ -428,53 +475,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a3329218665a9f0f1071bc5d083c66a45" name="a3329218665a9f0f1071bc5d083c66a45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3329218665a9f0f1071bc5d083c66a45">&#9670;&nbsp;</a></span>getRandomFileName()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">type(<a class="el" href="structSystem__mod_1_1RandomFileName__type.html">RandomFileName_type</a>) function System_mod::getRandomFileName </td>
-          <td>(</td>
-          <td class="paramtype">character(*), intent(in), optional&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">character(*), intent(in), optional&#160;</td>
-          <td class="paramname"><em>key</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">character(*), intent(in), optional&#160;</td>
-          <td class="paramname"><em>ext</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generate a unique file path in the requested directory for temporary usage. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">dir</td><td>: The requested directory within which the unique new file is supposed to be generated (<b>optional</b>, default = <code>""</code>). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">key</td><td>: The requested input file name prefix (<b>optional</b>, default = <code>"RandomFileName"</code>). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ext</td><td>: The requested input file extension (<b>optional</b>, default = <code>".rfn"</code>, standing for random file name).</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>RFN</code> : An object of class <a class="el" href="structSystem__mod_1_1RandomFileName__type.html">RandomFileName_type</a> containing the attributes of the random file name. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="System__mod_8f90_source.html#l00658">658</a> of file <a class="el" href="System__mod_8f90_source.html">System_mod.f90</a>.</p>
-
-</div>
-</div>
 <a id="acdbe0231b40135bc08ab285fc69f2b80" name="acdbe0231b40135bc08ab285fc69f2b80"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acdbe0231b40135bc08ab285fc69f2b80">&#9670;&nbsp;</a></span>getSystemInfo()</h2>
 
@@ -484,7 +484,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">subroutine System_mod::getSystemInfo </td>
           <td>(</td>
-          <td class="paramtype">type(<a class="el" href="structArrayJagged__mod_1_1CharVec__type.html">CharVec_type</a>)&#160;</td>
+          <td class="paramtype">type(<a class="el" href="structString__mod_1_1Str__type.html">Str_type</a>)&#160;</td>
           <td class="paramname"><em>List</em>, </td>
         </tr>
         <tr>
@@ -883,7 +883,7 @@ Provide the output optional argument <code>Err</code>, to properly handle errors
     </div>
     <address class="footer">
         <small>
-            Generated on Tue Sep 14 2021 23:55:59 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
+            Generated on Tue Sep 21 2021 01:26:37 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
             <!--
             1.9.3
             -->

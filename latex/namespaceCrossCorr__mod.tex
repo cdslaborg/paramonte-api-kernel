@@ -15,7 +15,7 @@ interface \mbox{\hyperlink{interfaceCrossCorr__mod_1_1getPaddedLen}{get\+Padded\
 \item 
 real(RK) function \mbox{\hyperlink{namespaceCrossCorr__mod_a40c1388dbd9f2f93a4928684bf9bc58f}{get\+Batch\+Means\+IAC}} (np, Point, Weight, batch\+Size)
 \begin{DoxyCompactList}\small\item\em Return the integrated autocorrelation (IAC) via the Batch\+Means method. \end{DoxyCompactList}\item 
-real(RK) function \mbox{\hyperlink{namespaceCrossCorr__mod_a5f17ae3c391eead2dace1c329d8730c2}{get\+Cum\+Sum\+IAC}} (np, Point, Weight, significance)
+real(RK) function \mbox{\hyperlink{namespaceCrossCorr__mod_a7c803e7f236c1b0958e368ba22b8abab}{gen\+Cum\+Sum\+IAC}} (np, Point, Weight, significance)
 \begin{DoxyCompactList}\small\item\em Return the integrated autocorrelation (IAC) based on the cumulative autocorrelation. \end{DoxyCompactList}\item 
 real(RK) function \mbox{\hyperlink{namespaceCrossCorr__mod_a3776a901fbaee44fecf500b3a25d1a5c}{get\+Max\+Cum\+Sum\+IAC}} (np, Point, Weight)
 \begin{DoxyCompactList}\small\item\em Return the integrated autocorrelation (IAC) based on the maximum cumulative autocorrelation. \end{DoxyCompactList}\item 
@@ -80,6 +80,34 @@ Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00736}{736}} of 
 
 
 Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00769}{769}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCrossCorr__mod_a7c803e7f236c1b0958e368ba22b8abab}\label{namespaceCrossCorr__mod_a7c803e7f236c1b0958e368ba22b8abab}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!genCumSumIAC@{genCumSumIAC}}
+\index{genCumSumIAC@{genCumSumIAC}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{genCumSumIAC()}{genCumSumIAC()}}
+{\footnotesize\ttfamily real(RK) function Cross\+Corr\+\_\+mod\+::gen\+Cum\+Sum\+IAC (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point,  }\item[{integer(IK)}]{Weight,  }\item[{real(RK), intent(in), optional}]{significance }\end{DoxyParamCaption})}
+
+
+
+Return the integrated autocorrelation (IAC) based on the cumulative autocorrelation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of data points in the input time series data. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The input data series data vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of weights of the input data points ({\bfseries{optional}}, default = array of ones). \\
+\hline
+\mbox{\texttt{ in}}  & {\em significance} & \+: The significance in units of standard deviation below which the autocorrelation is considered noise ({\bfseries{optional}}, default = 2).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily iac} \+: The integrated autocorrelation (IAC). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00215}{215}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceCrossCorr__mod_a3e4b9d8572d666c2180448995427ee28}\label{namespaceCrossCorr__mod_a3e4b9d8572d666c2180448995427ee28}} 
 \index{CrossCorr\_mod@{CrossCorr\_mod}!getAutoCorrDirect@{getAutoCorrDirect}}
@@ -218,34 +246,6 @@ Unlike \mbox{\hyperlink{namespaceCrossCorr__mod_a8ba6f840aa3cf369a3dbd2f72ede334
 
 
 Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00552}{552}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceCrossCorr__mod_a5f17ae3c391eead2dace1c329d8730c2}\label{namespaceCrossCorr__mod_a5f17ae3c391eead2dace1c329d8730c2}} 
-\index{CrossCorr\_mod@{CrossCorr\_mod}!getCumSumIAC@{getCumSumIAC}}
-\index{getCumSumIAC@{getCumSumIAC}!CrossCorr\_mod@{CrossCorr\_mod}}
-\doxysubsubsection{\texorpdfstring{getCumSumIAC()}{getCumSumIAC()}}
-{\footnotesize\ttfamily real(RK) function Cross\+Corr\+\_\+mod\+::get\+Cum\+Sum\+IAC (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point,  }\item[{integer(IK)}]{Weight,  }\item[{real(RK), intent(in), optional}]{significance }\end{DoxyParamCaption})}
-
-
-
-Return the integrated autocorrelation (IAC) based on the cumulative autocorrelation. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em np} & \+: The number of data points in the input time series data. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Point} & \+: The input data series data vector. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of weights of the input data points ({\bfseries{optional}}, default = array of ones). \\
-\hline
-\mbox{\texttt{ in}}  & {\em significance} & \+: The significance in units of standard deviation below which the autocorrelation is considered noise ({\bfseries{optional}}, default = 2).\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily iac} \+: The integrated autocorrelation (IAC). 
-\end{DoxyReturn}
-
-
-Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00215}{215}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceCrossCorr__mod_a0a14e2c13f60a3404837842fd1d6eed8}\label{namespaceCrossCorr__mod_a0a14e2c13f60a3404837842fd1d6eed8}} 
 \index{CrossCorr\_mod@{CrossCorr\_mod}!getInverseSumNormedDataSq@{getInverseSumNormedDataSq}}

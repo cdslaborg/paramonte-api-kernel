@@ -1,0 +1,226 @@
+\hypertarget{interfaceDomainEllipsoid__mod_1_1genRand}{}\doxysection{Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand Interface Reference}
+\label{interfaceDomainEllipsoid__mod_1_1genRand}\index{DomainEllipsoid\_mod::genRand@{DomainEllipsoid\_mod::genRand}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+real(RK) function, dimension(nd) \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1genRand_af411edc6b25880a0a9a0d8d85d3140d9}{gen\+Rand\+MVU}} (nd, Mean, Cho\+Low, Cho\+Dia)
+\begin{DoxyCompactList}\small\item\em Given the Cholesky Lower triangle and diagonals of a given representative matrix, this function return one point uniformly randomly drawn from inside of an {\ttfamily nd}-\/ellipsoid, whose {\ttfamily nd} elements {\ttfamily Rand\+MVU(i), i=1\+:nd} are guaranteed to be in the range\+: \end{DoxyCompactList}\item 
+real(RK) function, dimension(nd, np) \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1genRand_a36452768df4dbc5179b7c956ffd115f8}{gen\+Rand\+MVU\+\_\+vector}} (nd, Mean, Cho\+Low, Cho\+Dia, np)
+\begin{DoxyCompactList}\small\item\em Given the Cholesky Lower triangle and diagonals of a given representative matrix, this function return one point uniformly randomly drawn from inside of an {\ttfamily nd}-\/ellipsoid, whose {\ttfamily nd} elements {\ttfamily Rand\+MVU(i), i=1\+:nd} are guaranteed to be in the range\+: \end{DoxyCompactList}\item 
+real(RK) function, dimension(nd) \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1genRand_ad248ddfd3a129b2b0581a294331e0a2e}{gen\+Rand\+Unit\+Radius\+MVU}} (nd)
+\begin{DoxyCompactList}\small\item\em Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. \end{DoxyCompactList}\item 
+real(RK) function, dimension(nd, np) \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1genRand_a53dc8134028a381936c49b175b0f4c8e}{gen\+Rand\+Unit\+Radius\+MVU\+\_\+vector}} (nd, np)
+\begin{DoxyCompactList}\small\item\em Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. \end{DoxyCompactList}\item 
+real(RK) function, dimension(nd) \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1genRand_ad2e92b01ed2b77d941391e285d7ead3d}{gen\+Rand\+Unit\+Volume\+MVU}} (nd, log\+Vol\+Unit\+Ball)
+\begin{DoxyCompactList}\small\item\em Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. \end{DoxyCompactList}\item 
+real(RK) function, dimension(nd, np) \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1genRand_aa79e7e818bc6e7b9f119c2137663a402}{gen\+Rand\+Unit\+Volume\+MVU\+\_\+vector}} (nd, np, log\+Vol\+Unit\+Ball)
+\begin{DoxyCompactList}\small\item\em Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00090}{90}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{interfaceDomainEllipsoid__mod_1_1genRand_af411edc6b25880a0a9a0d8d85d3140d9}\label{interfaceDomainEllipsoid__mod_1_1genRand_af411edc6b25880a0a9a0d8d85d3140d9}} 
+\index{DomainEllipsoid\_mod::genRand@{DomainEllipsoid\_mod::genRand}!genRandMVU@{genRandMVU}}
+\index{genRandMVU@{genRandMVU}!DomainEllipsoid\_mod::genRand@{DomainEllipsoid\_mod::genRand}}
+\doxysubsubsection{\texorpdfstring{genRandMVU()}{genRandMVU()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd) Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+::gen\+Rand\+MVU (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mean,  }\item[{real(RK)}]{Cho\+Low,  }\item[{real(RK)}]{Cho\+Dia }\end{DoxyParamCaption})}
+
+
+
+Given the Cholesky Lower triangle and diagonals of a given representative matrix, this function return one point uniformly randomly drawn from inside of an {\ttfamily nd}-\/ellipsoid, whose {\ttfamily nd} elements {\ttfamily Rand\+MVU(i), i=1\+:nd} are guaranteed to be in the range\+: 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Mean(i)\textcolor{fortran_operator_symbols}{ -\/ }\textcolor{fortran_function}{sqrt}(RepMat(i,i))\textcolor{fortran_operator_symbols}{ < }RandMVU(i)\textcolor{fortran_operator_symbols}{ < }Mean(i)\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_function}{sqrt}(RepMat(i,i))}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the MVU domain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Mean} & \+: The mean vector of the MVU domain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cho\+Low} & \+: The Cholesky lower triangle of the representative matrix of the MVU domain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cho\+Dia} & \+: The diagonal elements of the Cholesky lower triangle of the representative matrix of the MVU domain.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+MVU} \+: The randomly generated MVU vector.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00475}{475}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{interfaceDomainEllipsoid__mod_1_1genRand_a36452768df4dbc5179b7c956ffd115f8}\label{interfaceDomainEllipsoid__mod_1_1genRand_a36452768df4dbc5179b7c956ffd115f8}} 
+\index{DomainEllipsoid\_mod::genRand@{DomainEllipsoid\_mod::genRand}!genRandMVU\_vector@{genRandMVU\_vector}}
+\index{genRandMVU\_vector@{genRandMVU\_vector}!DomainEllipsoid\_mod::genRand@{DomainEllipsoid\_mod::genRand}}
+\doxysubsubsection{\texorpdfstring{genRandMVU\_vector()}{genRandMVU\_vector()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd,np) Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+::gen\+Rand\+MVU\+\_\+vector (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mean,  }\item[{real(RK)}]{Cho\+Low,  }\item[{real(RK)}]{Cho\+Dia,  }\item[{integer(IK), intent(in)}]{np }\end{DoxyParamCaption})}
+
+
+
+Given the Cholesky Lower triangle and diagonals of a given representative matrix, this function return one point uniformly randomly drawn from inside of an {\ttfamily nd}-\/ellipsoid, whose {\ttfamily nd} elements {\ttfamily Rand\+MVU(i), i=1\+:nd} are guaranteed to be in the range\+: 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Mean(i)\textcolor{fortran_operator_symbols}{ -\/ }\textcolor{fortran_function}{sqrt}(RepMat(i,i))\textcolor{fortran_operator_symbols}{ < }RandMVU(i)\textcolor{fortran_operator_symbols}{ < }Mean(i)\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_function}{sqrt}(RepMat(i,i))}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the MVU domain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Mean} & \+: The mean vector of the MVU domain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cho\+Low} & \+: The Cholesky lower triangle of the representative matrix of the MVU domain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cho\+Dia} & \+: The diagonal elements of the Cholesky lower triangle of the representative matrix of the MVU domain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of random vectors to generate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+MVU} \+: The matrix of rank {\ttfamily (nd,np)} each column of which will be one randomly generated MVU vector.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00525}{525}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{interfaceDomainEllipsoid__mod_1_1genRand_ad248ddfd3a129b2b0581a294331e0a2e}\label{interfaceDomainEllipsoid__mod_1_1genRand_ad248ddfd3a129b2b0581a294331e0a2e}} 
+\index{DomainEllipsoid\_mod::genRand@{DomainEllipsoid\_mod::genRand}!genRandUnitRadiusMVU@{genRandUnitRadiusMVU}}
+\index{genRandUnitRadiusMVU@{genRandUnitRadiusMVU}!DomainEllipsoid\_mod::genRand@{DomainEllipsoid\_mod::genRand}}
+\doxysubsubsection{\texorpdfstring{genRandUnitRadiusMVU()}{genRandUnitRadiusMVU()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd) Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+::gen\+Rand\+Unit\+Radius\+MVU (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd }\end{DoxyParamCaption})}
+
+
+
+Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the standard MVU domain.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+Stan\+Radius\+MVU} \+: The randomly generated standard MVU vector.
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000003}{Todo}}]This algorithm is not robust for very large values of {\ttfamily nd \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} 100}.\end{DoxyRefDesc}
+
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00409}{409}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{interfaceDomainEllipsoid__mod_1_1genRand_a53dc8134028a381936c49b175b0f4c8e}\label{interfaceDomainEllipsoid__mod_1_1genRand_a53dc8134028a381936c49b175b0f4c8e}} 
+\index{DomainEllipsoid\_mod::genRand@{DomainEllipsoid\_mod::genRand}!genRandUnitRadiusMVU\_vector@{genRandUnitRadiusMVU\_vector}}
+\index{genRandUnitRadiusMVU\_vector@{genRandUnitRadiusMVU\_vector}!DomainEllipsoid\_mod::genRand@{DomainEllipsoid\_mod::genRand}}
+\doxysubsubsection{\texorpdfstring{genRandUnitRadiusMVU\_vector()}{genRandUnitRadiusMVU\_vector()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd,np) Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+::gen\+Rand\+Unit\+Radius\+MVU\+\_\+vector (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{np }\end{DoxyParamCaption})}
+
+
+
+Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the standard MVU domain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of uniformly distributed random vectors to return.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+Stan\+Radius\+MVU} \+: A matrix of shape {\ttfamily (nd,np)} containing the randomly generated standard MVU vectors.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00441}{441}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{interfaceDomainEllipsoid__mod_1_1genRand_ad2e92b01ed2b77d941391e285d7ead3d}\label{interfaceDomainEllipsoid__mod_1_1genRand_ad2e92b01ed2b77d941391e285d7ead3d}} 
+\index{DomainEllipsoid\_mod::genRand@{DomainEllipsoid\_mod::genRand}!genRandUnitVolumeMVU@{genRandUnitVolumeMVU}}
+\index{genRandUnitVolumeMVU@{genRandUnitVolumeMVU}!DomainEllipsoid\_mod::genRand@{DomainEllipsoid\_mod::genRand}}
+\doxysubsubsection{\texorpdfstring{genRandUnitVolumeMVU()}{genRandUnitVolumeMVU()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd) Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+::gen\+Rand\+Unit\+Volume\+MVU (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{log\+Vol\+Unit\+Ball }\end{DoxyParamCaption})}
+
+
+
+Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the standard MVU domain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Vol\+Unit\+Ball} & \+: The natural logarithm of the volume of an {\ttfamily nd}-\/dimensional ball of unit radius.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+Stan\+Volume\+MVU} \+: The randomly generated standard MVU vector.
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000002}{Todo}}]This algorithm is not robust for very large values of {\ttfamily nd \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} 100}.\end{DoxyRefDesc}
+
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00341}{341}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{interfaceDomainEllipsoid__mod_1_1genRand_aa79e7e818bc6e7b9f119c2137663a402}\label{interfaceDomainEllipsoid__mod_1_1genRand_aa79e7e818bc6e7b9f119c2137663a402}} 
+\index{DomainEllipsoid\_mod::genRand@{DomainEllipsoid\_mod::genRand}!genRandUnitVolumeMVU\_vector@{genRandUnitVolumeMVU\_vector}}
+\index{genRandUnitVolumeMVU\_vector@{genRandUnitVolumeMVU\_vector}!DomainEllipsoid\_mod::genRand@{DomainEllipsoid\_mod::genRand}}
+\doxysubsubsection{\texorpdfstring{genRandUnitVolumeMVU\_vector()}{genRandUnitVolumeMVU\_vector()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd,np) Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+::gen\+Rand\+Unit\+Volume\+MVU\+\_\+vector (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{log\+Vol\+Unit\+Ball }\end{DoxyParamCaption})}
+
+
+
+Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the standard MVU domain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of uniformly distributed random vectors to return. \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Vol\+Unit\+Ball} & \+: The natural logarithm of the volume of an {\ttfamily nd}-\/dimensional ball of unit radius.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+Stan\+Volume\+MVU} \+: A matrix of shape {\ttfamily (nd,np)} containing the randomly generated standard MVU vectors.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00379}{379}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{DomainEllipsoid__mod_8f90}{Domain\+Ellipsoid\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

@@ -15,10 +15,10 @@ interface \mbox{\hyperlink{interfaceDistMultiSkewNorm__mod_1_1getLogProbMSN}{get
 \item 
 pure real(RK) function \mbox{\hyperlink{namespaceDistMultiSkewNorm__mod_ae5b20bf64ab63c3cfc971b219b3e71bb}{get\+Log\+Prob\+MSN\+\_\+\+RK}} (nd, Mean, Inv\+Cov\+Mat, log\+Sqrt\+Det\+Inv\+Cov\+Mat, Alpha, Point)
 \begin{DoxyCompactList}\small\item\em Return the log-\/probability-\/density-\/function value of obtaining {\ttfamily Point} from a Multivariate-\/\+Skew-\/\+Normal distribution characterize by the input {\ttfamily Inv\+Cov\+Mat} and shape vector {\ttfamily Alpha}. \end{DoxyCompactList}\item 
-real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDistMultiSkewNorm__mod_a70f013357298515998ac71bdb79cbc22}{get\+Rand\+MSN}} (nd, Mean, Aug\+Cho\+Low, Aug\+Cho\+Dia)
+real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDistMultiSkewNorm__mod_a26a3af3d4ea893ef1409bfab835ffbed}{gen\+Rand\+MSN}} (nd, Mean, Aug\+Cho\+Low, Aug\+Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Return a Multi\+Variate Skew Normal (MSN) random vector with the given mean and covariance matrix represented by the the input Cholesky factorization. \end{DoxyCompactList}\item 
 subroutine \mbox{\hyperlink{namespaceDistMultiSkewNorm__mod_a529ed321612a1dc13664c9319155f370}{get\+Aug\+Cho\+Fac}} (nd, Alpha, Cov\+Mat, Aug\+Cho\+Low, Aug\+Cho\+Dia)
-\begin{DoxyCompactList}\small\item\em Return the augmented Cholesky Factorization of the input Covariance Matrix with the shape vector {\ttfamily Alpha}. The output of this procedure is to be passed to \mbox{\hyperlink{namespaceDistMultiSkewNorm__mod_a70f013357298515998ac71bdb79cbc22}{get\+Rand\+MSN()}} for Multi\+Variate Skew Normal random number generation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Return the augmented Cholesky Factorization of the input Covariance Matrix with the shape vector {\ttfamily Alpha}. The output of this procedure is to be passed to \mbox{\hyperlink{namespaceDistMultiSkewNorm__mod_a26a3af3d4ea893ef1409bfab835ffbed}{gen\+Rand\+MSN()}} for Multi\+Variate Skew Normal random number generation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,6 +35,37 @@ Amir Shahmoradi
 
 
 \doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceDistMultiSkewNorm__mod_a26a3af3d4ea893ef1409bfab835ffbed}\label{namespaceDistMultiSkewNorm__mod_a26a3af3d4ea893ef1409bfab835ffbed}} 
+\index{DistMultiSkewNorm\_mod@{DistMultiSkewNorm\_mod}!genRandMSN@{genRandMSN}}
+\index{genRandMSN@{genRandMSN}!DistMultiSkewNorm\_mod@{DistMultiSkewNorm\_mod}}
+\doxysubsubsection{\texorpdfstring{genRandMSN()}{genRandMSN()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd) Dist\+Multi\+Skew\+Norm\+\_\+mod\+::gen\+Rand\+MSN (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mean,  }\item[{real(RK)}]{Aug\+Cho\+Low,  }\item[{real(RK)}]{Aug\+Cho\+Dia }\end{DoxyParamCaption})}
+
+
+
+Return a Multi\+Variate Skew Normal (MSN) random vector with the given mean and covariance matrix represented by the the input Cholesky factorization. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the MSN distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Mean} & \+: The mean vector of the MSN distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Aug\+Cho\+Low} & \+: The Cholesky lower triangle of the augmented covariance matrix of the MSN distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Aug\+Cho\+Dia} & \+: The diagonal elements of the Cholesky lower triangle of the augmented covariance matrix of the MSN distribution.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+MSN} \+: The randomly generated MSN vector.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, January 30, 2021, 5\+:36 AM, Dallas, TX 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiSkewNorm__mod_8f90_source_l00121}{121}} of file \mbox{\hyperlink{DistMultiSkewNorm__mod_8f90_source}{Dist\+Multi\+Skew\+Norm\+\_\+mod.\+f90}}.
+
 \mbox{\Hypertarget{namespaceDistMultiSkewNorm__mod_a529ed321612a1dc13664c9319155f370}\label{namespaceDistMultiSkewNorm__mod_a529ed321612a1dc13664c9319155f370}} 
 \index{DistMultiSkewNorm\_mod@{DistMultiSkewNorm\_mod}!getAugChoFac@{getAugChoFac}}
 \index{getAugChoFac@{getAugChoFac}!DistMultiSkewNorm\_mod@{DistMultiSkewNorm\_mod}}
@@ -43,7 +74,7 @@ Amir Shahmoradi
 
 
 
-Return the augmented Cholesky Factorization of the input Covariance Matrix with the shape vector {\ttfamily Alpha}. The output of this procedure is to be passed to \mbox{\hyperlink{namespaceDistMultiSkewNorm__mod_a70f013357298515998ac71bdb79cbc22}{get\+Rand\+MSN()}} for Multi\+Variate Skew Normal random number generation. 
+Return the augmented Cholesky Factorization of the input Covariance Matrix with the shape vector {\ttfamily Alpha}. The output of this procedure is to be passed to \mbox{\hyperlink{namespaceDistMultiSkewNorm__mod_a26a3af3d4ea893ef1409bfab835ffbed}{gen\+Rand\+MSN()}} for Multi\+Variate Skew Normal random number generation. 
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -59,7 +90,7 @@ Return the augmented Cholesky Factorization of the input Covariance Matrix with 
 \hline
 \end{DoxyParams}
 \begin{DoxyRemark}{Remarks}
-If the input {\ttfamily Cov\+Mat} is only upper, symmetrize {\ttfamily Cov\+Mat} via \mbox{\hyperlink{interfaceMatrix__mod_1_1symmetrizeUpperMatrix}{symmetrize\+Upper\+Matrix()}}.
+If the input {\ttfamily Cov\+Mat} is only upper, symmetrize {\ttfamily Cov\+Mat} via \mbox{\hyperlink{interfaceMatrix__mod_1_1symmetrizeMatUpp}{symmetrize\+Mat\+Upp()}}.
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Jan 30, 2021, 2\+:19 AM, Dallas, TX 
@@ -102,37 +133,6 @@ A positive value for any element of {\ttfamily Alpha} causes a negative skeness 
 
 
 Definition at line \mbox{\hyperlink{DistMultiSkewNorm__mod_8f90_source_l00083}{83}} of file \mbox{\hyperlink{DistMultiSkewNorm__mod_8f90_source}{Dist\+Multi\+Skew\+Norm\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceDistMultiSkewNorm__mod_a70f013357298515998ac71bdb79cbc22}\label{namespaceDistMultiSkewNorm__mod_a70f013357298515998ac71bdb79cbc22}} 
-\index{DistMultiSkewNorm\_mod@{DistMultiSkewNorm\_mod}!getRandMSN@{getRandMSN}}
-\index{getRandMSN@{getRandMSN}!DistMultiSkewNorm\_mod@{DistMultiSkewNorm\_mod}}
-\doxysubsubsection{\texorpdfstring{getRandMSN()}{getRandMSN()}}
-{\footnotesize\ttfamily real(RK) function, dimension(nd) Dist\+Multi\+Skew\+Norm\+\_\+mod\+::get\+Rand\+MSN (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mean,  }\item[{real(RK)}]{Aug\+Cho\+Low,  }\item[{real(RK)}]{Aug\+Cho\+Dia }\end{DoxyParamCaption})}
-
-
-
-Return a Multi\+Variate Skew Normal (MSN) random vector with the given mean and covariance matrix represented by the the input Cholesky factorization. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the MSN distribution. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Mean} & \+: The mean vector of the MSN distribution. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Aug\+Cho\+Low} & \+: The Cholesky lower triangle of the augmented covariance matrix of the MSN distribution. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Aug\+Cho\+Dia} & \+: The diagonal elements of the Cholesky lower triangle of the augmented covariance matrix of the MSN distribution.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Rand\+MSN} \+: The randomly generated MSN vector.
-\end{DoxyReturn}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, January 30, 2021, 5\+:36 AM, Dallas, TX 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{DistMultiSkewNorm__mod_8f90_source_l00121}{121}} of file \mbox{\hyperlink{DistMultiSkewNorm__mod_8f90_source}{Dist\+Multi\+Skew\+Norm\+\_\+mod.\+f90}}.
 
 
 

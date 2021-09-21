@@ -10,11 +10,11 @@ This module contains procedures and interfaces for manipulating arrays.
 \item 
 interface \mbox{\hyperlink{interfaceArray__mod_1_1flatten}{flatten}}
 \item 
-interface \mbox{\hyperlink{interfaceArray__mod_1_1getCumSum}{get\+Cum\+Sum}}
+interface \mbox{\hyperlink{interfaceArray__mod_1_1genCumSum}{gen\+Cum\+Sum}}
 \item 
-interface \mbox{\hyperlink{interfaceArray__mod_1_1getCumSumNormedExp}{get\+Cum\+Sum\+Normed\+Exp}}
+interface \mbox{\hyperlink{interfaceArray__mod_1_1genCumSumNormedExp}{gen\+Cum\+Sum\+Normed\+Exp}}
 \item 
-interface \mbox{\hyperlink{interfaceArray__mod_1_1getCumSumReverse}{get\+Cum\+Sum\+Reverse}}
+interface \mbox{\hyperlink{interfaceArray__mod_1_1genCumSumReverse}{gen\+Cum\+Sum\+Reverse}}
 \item 
 interface \mbox{\hyperlink{interfaceArray__mod_1_1getExpCDF}{get\+Exp\+CDF}}
 \end{DoxyCompactItemize}
@@ -29,15 +29,15 @@ pure real(RK) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceAr
 \begin{DoxyCompactList}\small\item\em Flatten the input {\ttfamily Point} array such that each element of the output {\ttfamily Flattened\+Point} array has the same unity weight as elements in the array. \end{DoxyCompactList}\item 
 pure real(RK) function, dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceArray__mod_a44dafc8c66a8398084d7207dfd292553}{flatten\+\_\+2D}} (Point, Weight, sum\+Weight)
 \begin{DoxyCompactList}\small\item\em Flatten the input {\ttfamily Point} array such that each element of the output {\ttfamily Flattened\+Point} array has the same unity weight as elements in the array. \end{DoxyCompactList}\item 
-pure integer(IK) function, dimension(len\+Array) \mbox{\hyperlink{namespaceArray__mod_a1ac34e380808c84862805d98afacd470}{get\+Cum\+Sum\+\_\+\+IK}} (len\+Array, Array)
+pure integer(IK) function, dimension(len\+Array) \mbox{\hyperlink{namespaceArray__mod_a0e7785a12872964a0a98e372188690ea}{gen\+Cum\+Sum\+\_\+\+IK}} (len\+Array, Array)
 \begin{DoxyCompactList}\small\item\em Return the cumulative sum of the input array. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(len\+Array) \mbox{\hyperlink{namespaceArray__mod_a9994fc0a05d533245c1579ca671e152f}{get\+Cum\+Sum\+\_\+\+RK}} (len\+Array, Array)
+pure real(RK) function, dimension(len\+Array) \mbox{\hyperlink{namespaceArray__mod_a33f118bf7e109e66d2c144b9f5526cc7}{gen\+Cum\+Sum\+\_\+\+RK}} (len\+Array, Array)
 \begin{DoxyCompactList}\small\item\em Return the cumulative sum of the input array. \end{DoxyCompactList}\item 
-pure integer(IK) function, dimension(len\+Array) \mbox{\hyperlink{namespaceArray__mod_a00d0f3bd4b9e2690345b3fbf8cc3a1af}{get\+Cum\+Sum\+Reverse\+\_\+\+IK}} (len\+Array, Array)
+pure integer(IK) function, dimension(len\+Array) \mbox{\hyperlink{namespaceArray__mod_a93c2671b7e657aeee9623126c31dd70d}{gen\+Cum\+Sum\+Reverse\+\_\+\+IK}} (len\+Array, Array)
 \begin{DoxyCompactList}\small\item\em Return the cumulative sum of the input integer array, in the backward direction. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(len\+Array) \mbox{\hyperlink{namespaceArray__mod_ac7c03537151bbb0d98df24c8f9d7031b}{get\+Cum\+Sum\+Reverse\+\_\+\+RK}} (len\+Array, Array)
+pure real(RK) function, dimension(len\+Array) \mbox{\hyperlink{namespaceArray__mod_abc543f54389d838919d8c0908e8c9cfd}{gen\+Cum\+Sum\+Reverse\+\_\+\+RK}} (len\+Array, Array)
 \begin{DoxyCompactList}\small\item\em Return the cumulative sum of the input real array, in the backward direction. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(len\+Log\+Value) \mbox{\hyperlink{namespaceArray__mod_ae34c8c37e09e1f1ee9afcb384b1f7418}{get\+Cum\+Sum\+Normed\+Exp\+\_\+\+RK}} (len\+Log\+Value, Log\+Value, max\+Log\+Value)
+pure real(RK) function, dimension(len\+Log\+Value) \mbox{\hyperlink{namespaceArray__mod_a457dc471be1cbd367f431261552e4f6e}{gen\+Cum\+Sum\+Normed\+Exp\+\_\+\+RK}} (len\+Log\+Value, Log\+Value, max\+Log\+Value)
 \begin{DoxyCompactList}\small\item\em Return the normalized cumulative sum (i.\+e., Cumulative Density Function (CDF)) of the exponentials of the input real vector robustly (without overflow or underflow). The last element of the returned vector is one. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -113,6 +113,144 @@ Note the shape of the input argument {\ttfamily Point(nd,np)}. The input array {
 
 Definition at line \mbox{\hyperlink{Array__mod_8f90_source_l00286}{286}} of file \mbox{\hyperlink{Array__mod_8f90_source}{Array\+\_\+mod.\+f90}}.
 
+\mbox{\Hypertarget{namespaceArray__mod_a0e7785a12872964a0a98e372188690ea}\label{namespaceArray__mod_a0e7785a12872964a0a98e372188690ea}} 
+\index{Array\_mod@{Array\_mod}!genCumSum\_IK@{genCumSum\_IK}}
+\index{genCumSum\_IK@{genCumSum\_IK}!Array\_mod@{Array\_mod}}
+\doxysubsubsection{\texorpdfstring{genCumSum\_IK()}{genCumSum\_IK()}}
+{\footnotesize\ttfamily pure integer(IK) function, dimension(len\+Array) Array\+\_\+mod\+::gen\+Cum\+Sum\+\_\+\+IK (\begin{DoxyParamCaption}\item[{integer(IK)}]{len\+Array,  }\item[{integer(IK)}]{Array }\end{DoxyParamCaption})}
+
+
+
+Return the cumulative sum of the input array. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em len\+Array} & \+: The length of the input contiguous array. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Array} & \+: The input contiguous array.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Cum\+Sum} \+: An array of the same length as the input {\ttfamily Array} representing the cumulative sum.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The first element of {\ttfamily Cum\+Sum} is the same as the first element of {\ttfamily Array}.
+
+The last element of {\ttfamily Cum\+Sum} is the sum of all elements of {\ttfamily Array}. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{Array__mod_8f90_source_l00333}{333}} of file \mbox{\hyperlink{Array__mod_8f90_source}{Array\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceArray__mod_a33f118bf7e109e66d2c144b9f5526cc7}\label{namespaceArray__mod_a33f118bf7e109e66d2c144b9f5526cc7}} 
+\index{Array\_mod@{Array\_mod}!genCumSum\_RK@{genCumSum\_RK}}
+\index{genCumSum\_RK@{genCumSum\_RK}!Array\_mod@{Array\_mod}}
+\doxysubsubsection{\texorpdfstring{genCumSum\_RK()}{genCumSum\_RK()}}
+{\footnotesize\ttfamily pure real(RK) function, dimension(len\+Array) Array\+\_\+mod\+::gen\+Cum\+Sum\+\_\+\+RK (\begin{DoxyParamCaption}\item[{integer(IK)}]{len\+Array,  }\item[{real(RK)}]{Array }\end{DoxyParamCaption})}
+
+
+
+Return the cumulative sum of the input array. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em len\+Array} & \+: The length of the input contiguous array. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Array} & \+: The input contiguous array.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Cum\+Sum} \+: An array of the same length as the input {\ttfamily Array} representing the cumulative sum.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The first element of {\ttfamily Cum\+Sum} is the same as the first element of {\ttfamily Array}.
+
+The last element of {\ttfamily Cum\+Sum} is the sum of all elements of {\ttfamily Array}. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{Array__mod_8f90_source_l00363}{363}} of file \mbox{\hyperlink{Array__mod_8f90_source}{Array\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceArray__mod_a457dc471be1cbd367f431261552e4f6e}\label{namespaceArray__mod_a457dc471be1cbd367f431261552e4f6e}} 
+\index{Array\_mod@{Array\_mod}!genCumSumNormedExp\_RK@{genCumSumNormedExp\_RK}}
+\index{genCumSumNormedExp\_RK@{genCumSumNormedExp\_RK}!Array\_mod@{Array\_mod}}
+\doxysubsubsection{\texorpdfstring{genCumSumNormedExp\_RK()}{genCumSumNormedExp\_RK()}}
+{\footnotesize\ttfamily pure real(RK) function, dimension(len\+Log\+Value) Array\+\_\+mod\+::gen\+Cum\+Sum\+Normed\+Exp\+\_\+\+RK (\begin{DoxyParamCaption}\item[{integer(IK)}]{len\+Log\+Value,  }\item[{real(RK)}]{Log\+Value,  }\item[{real(RK)}]{max\+Log\+Value }\end{DoxyParamCaption})}
+
+
+
+Return the normalized cumulative sum (i.\+e., Cumulative Density Function (CDF)) of the exponentials of the input real vector robustly (without overflow or underflow). The last element of the returned vector is one. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em len\+Log\+Value} & \+: The length of the input Array. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Log\+Value} & \+: The input contiguous vector of log-\/values whose log-\/sum-\/exp must be computed. \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+Log\+Value} & \+: The maximum of the input {\ttfamily Log\+Value} argument ({\ttfamily max\+Log\+Value = maxval(\+Log\+Value)}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Cum\+Sum\+Exp} \+: A real vector of the same length as the input array {\ttfamily Log\+Value}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Array__mod_8f90_source_l00446}{446}} of file \mbox{\hyperlink{Array__mod_8f90_source}{Array\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceArray__mod_a93c2671b7e657aeee9623126c31dd70d}\label{namespaceArray__mod_a93c2671b7e657aeee9623126c31dd70d}} 
+\index{Array\_mod@{Array\_mod}!genCumSumReverse\_IK@{genCumSumReverse\_IK}}
+\index{genCumSumReverse\_IK@{genCumSumReverse\_IK}!Array\_mod@{Array\_mod}}
+\doxysubsubsection{\texorpdfstring{genCumSumReverse\_IK()}{genCumSumReverse\_IK()}}
+{\footnotesize\ttfamily pure integer(IK) function, dimension(len\+Array) Array\+\_\+mod\+::gen\+Cum\+Sum\+Reverse\+\_\+\+IK (\begin{DoxyParamCaption}\item[{integer(IK)}]{len\+Array,  }\item[{integer(IK)}]{Array }\end{DoxyParamCaption})}
+
+
+
+Return the cumulative sum of the input integer array, in the backward direction. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em len\+Array} & \+: The length of the input Array. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Array} & \+: The input contiguous Array.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Cum\+Sum\+Reverse} \+: An array of the same length as {\ttfamily Array} containing the cumulative sum.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The first element of {\ttfamily Cum\+Sum\+Reverse} is the sum of all elements of {\ttfamily Array}. The last element of {\ttfamily Cum\+Sum\+Reverse} is the same as the last element of {\ttfamily Array}. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{Array__mod_8f90_source_l00392}{392}} of file \mbox{\hyperlink{Array__mod_8f90_source}{Array\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceArray__mod_abc543f54389d838919d8c0908e8c9cfd}\label{namespaceArray__mod_abc543f54389d838919d8c0908e8c9cfd}} 
+\index{Array\_mod@{Array\_mod}!genCumSumReverse\_RK@{genCumSumReverse\_RK}}
+\index{genCumSumReverse\_RK@{genCumSumReverse\_RK}!Array\_mod@{Array\_mod}}
+\doxysubsubsection{\texorpdfstring{genCumSumReverse\_RK()}{genCumSumReverse\_RK()}}
+{\footnotesize\ttfamily pure real(RK) function, dimension(len\+Array) Array\+\_\+mod\+::gen\+Cum\+Sum\+Reverse\+\_\+\+RK (\begin{DoxyParamCaption}\item[{integer(IK)}]{len\+Array,  }\item[{real(RK)}]{Array }\end{DoxyParamCaption})}
+
+
+
+Return the cumulative sum of the input real array, in the backward direction. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em len\+Array} & \+: The length of the input Array. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Array} & \+: The input contiguous array.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Cum\+Sum\+Reverse} \+: An array of the same length as the input array containing the cumulative sum.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The first element of {\ttfamily Cum\+Sum\+Reverse} is the sum of all elements of {\ttfamily Array}. The last element of {\ttfamily Cum\+Sum\+Reverse} is the same as the last element of {\ttfamily Array}. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{Array__mod_8f90_source_l00420}{420}} of file \mbox{\hyperlink{Array__mod_8f90_source}{Array\+\_\+mod.\+f90}}.
+
 \mbox{\Hypertarget{namespaceArray__mod_af01bf30f6e2edc6b786b0c5558e97778}\label{namespaceArray__mod_af01bf30f6e2edc6b786b0c5558e97778}} 
 \index{Array\_mod@{Array\_mod}!genLinSpace@{genLinSpace}}
 \index{genLinSpace@{genLinSpace}!Array\_mod@{Array\_mod}}
@@ -140,7 +278,7 @@ Returns {\ttfamily count} evenly spaced points over the interval {\ttfamily \mbo
 {\ttfamily Lin\+Space} \+: An evenly-\/spaced array of length {\ttfamily count} within the interval specified by {\ttfamily x1} and {\ttfamily x2}.
 \end{DoxyReturn}
 ~\newline
-{\bfseries{Example Usage}}\+:~\newline
+{\bfseries{Example usage}}~\newline
  
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArray__mod}{Array\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceArray__mod_af01bf30f6e2edc6b786b0c5558e97778}{genLinSpace}}}
@@ -193,7 +331,7 @@ Returns {\ttfamily count} evenly-\/logarithmically-\/spaced points over the inte
 {\ttfamily Log\+Space} \+: An evenly-\/spaced array of length {\ttfamily count} within the interval specified by {\ttfamily logx1} and {\ttfamily logx2}.
 \end{DoxyReturn}
 ~\newline
-{\bfseries{Example Usage}}\+:~\newline
+{\bfseries{Example usage}}~\newline
  
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArray__mod}{Array\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceArray__mod_a647a11342ff157f61bd08b0836158dd1}{genLogSpace}}}
@@ -216,144 +354,6 @@ Amir Shahmoradi, Tuesday 11\+:34 PM, August 10, 2021, Dallas, TX
 
 
 Definition at line \mbox{\hyperlink{Array__mod_8f90_source_l00203}{203}} of file \mbox{\hyperlink{Array__mod_8f90_source}{Array\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceArray__mod_a1ac34e380808c84862805d98afacd470}\label{namespaceArray__mod_a1ac34e380808c84862805d98afacd470}} 
-\index{Array\_mod@{Array\_mod}!getCumSum\_IK@{getCumSum\_IK}}
-\index{getCumSum\_IK@{getCumSum\_IK}!Array\_mod@{Array\_mod}}
-\doxysubsubsection{\texorpdfstring{getCumSum\_IK()}{getCumSum\_IK()}}
-{\footnotesize\ttfamily pure integer(IK) function, dimension(len\+Array) Array\+\_\+mod\+::get\+Cum\+Sum\+\_\+\+IK (\begin{DoxyParamCaption}\item[{integer(IK)}]{len\+Array,  }\item[{integer(IK)}]{Array }\end{DoxyParamCaption})}
-
-
-
-Return the cumulative sum of the input array. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em len\+Array} & \+: The length of the input contiguous array. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Array} & \+: The input contiguous array.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Cum\+Sum} \+: An array of the same length as the input {\ttfamily Array} representing the cumulative sum.
-\end{DoxyReturn}
-\begin{DoxyRemark}{Remarks}
-The first element of {\ttfamily Cum\+Sum} is the same as the first element of {\ttfamily Array}.
-
-The last element of {\ttfamily Cum\+Sum} is the sum of all elements of {\ttfamily Array}. 
-\end{DoxyRemark}
-
-
-Definition at line \mbox{\hyperlink{Array__mod_8f90_source_l00333}{333}} of file \mbox{\hyperlink{Array__mod_8f90_source}{Array\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceArray__mod_a9994fc0a05d533245c1579ca671e152f}\label{namespaceArray__mod_a9994fc0a05d533245c1579ca671e152f}} 
-\index{Array\_mod@{Array\_mod}!getCumSum\_RK@{getCumSum\_RK}}
-\index{getCumSum\_RK@{getCumSum\_RK}!Array\_mod@{Array\_mod}}
-\doxysubsubsection{\texorpdfstring{getCumSum\_RK()}{getCumSum\_RK()}}
-{\footnotesize\ttfamily pure real(RK) function, dimension(len\+Array) Array\+\_\+mod\+::get\+Cum\+Sum\+\_\+\+RK (\begin{DoxyParamCaption}\item[{integer(IK)}]{len\+Array,  }\item[{real(RK)}]{Array }\end{DoxyParamCaption})}
-
-
-
-Return the cumulative sum of the input array. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em len\+Array} & \+: The length of the input contiguous array. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Array} & \+: The input contiguous array.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Cum\+Sum} \+: An array of the same length as the input {\ttfamily Array} representing the cumulative sum.
-\end{DoxyReturn}
-\begin{DoxyRemark}{Remarks}
-The first element of {\ttfamily Cum\+Sum} is the same as the first element of {\ttfamily Array}.
-
-The last element of {\ttfamily Cum\+Sum} is the sum of all elements of {\ttfamily Array}. 
-\end{DoxyRemark}
-
-
-Definition at line \mbox{\hyperlink{Array__mod_8f90_source_l00363}{363}} of file \mbox{\hyperlink{Array__mod_8f90_source}{Array\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceArray__mod_ae34c8c37e09e1f1ee9afcb384b1f7418}\label{namespaceArray__mod_ae34c8c37e09e1f1ee9afcb384b1f7418}} 
-\index{Array\_mod@{Array\_mod}!getCumSumNormedExp\_RK@{getCumSumNormedExp\_RK}}
-\index{getCumSumNormedExp\_RK@{getCumSumNormedExp\_RK}!Array\_mod@{Array\_mod}}
-\doxysubsubsection{\texorpdfstring{getCumSumNormedExp\_RK()}{getCumSumNormedExp\_RK()}}
-{\footnotesize\ttfamily pure real(RK) function, dimension(len\+Log\+Value) Array\+\_\+mod\+::get\+Cum\+Sum\+Normed\+Exp\+\_\+\+RK (\begin{DoxyParamCaption}\item[{integer(IK)}]{len\+Log\+Value,  }\item[{real(RK)}]{Log\+Value,  }\item[{real(RK)}]{max\+Log\+Value }\end{DoxyParamCaption})}
-
-
-
-Return the normalized cumulative sum (i.\+e., Cumulative Density Function (CDF)) of the exponentials of the input real vector robustly (without overflow or underflow). The last element of the returned vector is one. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em len\+Log\+Value} & \+: The length of the input Array. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Log\+Value} & \+: The input contiguous vector of log-\/values whose log-\/sum-\/exp must be computed. \\
-\hline
-\mbox{\texttt{ in}}  & {\em max\+Log\+Value} & \+: The maximum of the input {\ttfamily Log\+Value} argument ({\ttfamily max\+Log\+Value = maxval(\+Log\+Value)}).\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Cum\+Sum\+Exp} \+: A real vector of the same length as the input array {\ttfamily Log\+Value}. 
-\end{DoxyReturn}
-
-
-Definition at line \mbox{\hyperlink{Array__mod_8f90_source_l00446}{446}} of file \mbox{\hyperlink{Array__mod_8f90_source}{Array\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceArray__mod_a00d0f3bd4b9e2690345b3fbf8cc3a1af}\label{namespaceArray__mod_a00d0f3bd4b9e2690345b3fbf8cc3a1af}} 
-\index{Array\_mod@{Array\_mod}!getCumSumReverse\_IK@{getCumSumReverse\_IK}}
-\index{getCumSumReverse\_IK@{getCumSumReverse\_IK}!Array\_mod@{Array\_mod}}
-\doxysubsubsection{\texorpdfstring{getCumSumReverse\_IK()}{getCumSumReverse\_IK()}}
-{\footnotesize\ttfamily pure integer(IK) function, dimension(len\+Array) Array\+\_\+mod\+::get\+Cum\+Sum\+Reverse\+\_\+\+IK (\begin{DoxyParamCaption}\item[{integer(IK)}]{len\+Array,  }\item[{integer(IK)}]{Array }\end{DoxyParamCaption})}
-
-
-
-Return the cumulative sum of the input integer array, in the backward direction. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em len\+Array} & \+: The length of the input Array. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Array} & \+: The input contiguous Array.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Cum\+Sum\+Reverse} \+: An array of the same length as {\ttfamily Array} containing the cumulative sum.
-\end{DoxyReturn}
-\begin{DoxyRemark}{Remarks}
-The first element of {\ttfamily Cum\+Sum\+Reverse} is the sum of all elements of {\ttfamily Array}. The last element of {\ttfamily Cum\+Sum\+Reverse} is the same as the last element of {\ttfamily Array}. 
-\end{DoxyRemark}
-
-
-Definition at line \mbox{\hyperlink{Array__mod_8f90_source_l00392}{392}} of file \mbox{\hyperlink{Array__mod_8f90_source}{Array\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceArray__mod_ac7c03537151bbb0d98df24c8f9d7031b}\label{namespaceArray__mod_ac7c03537151bbb0d98df24c8f9d7031b}} 
-\index{Array\_mod@{Array\_mod}!getCumSumReverse\_RK@{getCumSumReverse\_RK}}
-\index{getCumSumReverse\_RK@{getCumSumReverse\_RK}!Array\_mod@{Array\_mod}}
-\doxysubsubsection{\texorpdfstring{getCumSumReverse\_RK()}{getCumSumReverse\_RK()}}
-{\footnotesize\ttfamily pure real(RK) function, dimension(len\+Array) Array\+\_\+mod\+::get\+Cum\+Sum\+Reverse\+\_\+\+RK (\begin{DoxyParamCaption}\item[{integer(IK)}]{len\+Array,  }\item[{real(RK)}]{Array }\end{DoxyParamCaption})}
-
-
-
-Return the cumulative sum of the input real array, in the backward direction. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em len\+Array} & \+: The length of the input Array. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Array} & \+: The input contiguous array.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Cum\+Sum\+Reverse} \+: An array of the same length as the input array containing the cumulative sum.
-\end{DoxyReturn}
-\begin{DoxyRemark}{Remarks}
-The first element of {\ttfamily Cum\+Sum\+Reverse} is the sum of all elements of {\ttfamily Array}. The last element of {\ttfamily Cum\+Sum\+Reverse} is the same as the last element of {\ttfamily Array}. 
-\end{DoxyRemark}
-
-
-Definition at line \mbox{\hyperlink{Array__mod_8f90_source_l00420}{420}} of file \mbox{\hyperlink{Array__mod_8f90_source}{Array\+\_\+mod.\+f90}}.
 
 
 

@@ -104,7 +104,7 @@
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00108}00108        \textcolor{fortran_comment}{!class(ProposalAbstract\_type), pointer       :: Proposal => null()}}
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00109}00109 \textcolor{fortran_statement}{    contains}}
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00110}00110         \textcolor{fortran_statement}{procedure},\textcolor{fortran_attribute}{ pass},\textcolor{fortran_attribute}{ private}                    :: getSpecFromInputFile}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00111}00111         \textcolor{fortran_statement}{procedure},\textcolor{fortran_attribute}{ pass},\textcolor{fortran_attribute}{ public}                     :: runSampler}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00111}00111         \textcolor{fortran_statement}{procedure},\textcolor{fortran_attribute}{ pass},\textcolor{fortran_attribute}{ public}                     :: runSampler => runSampler\_smod}
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00112}00112         \textcolor{fortran_statement}{procedure},\textcolor{fortran_attribute}{ pass},\textcolor{fortran_attribute}{ private}                    :: runKernel}
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00113}00113         \textcolor{fortran_statement}{procedure},\textcolor{fortran_attribute}{ pass},\textcolor{fortran_attribute}{ private}                    :: postprocess}
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00114}00114     \textcolor{fortran_statement}{end type }ParaXXXX\_type \textcolor{fortran_comment}{! ParaDRAM\_type or ParaDISE\_type}}
@@ -139,59 +139,58 @@
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00143}00143 }
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00144}00144 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00145}00145 }
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00146}00146     \textcolor{fortran_statement}{interface}}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00147}00147 }
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00170}00170     \textcolor{fortran_prefix}{module subroutine }runSampler( self                                      \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00171}00171                                 , ndim                                      \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00172}00172                                 , getLogFunc                                \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00173}00173                                 , inputFile                                 \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00174}00174                                 ! ParaMonte variables                       \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00175}00175                                 , description                               \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00176}00176                                 , domain                                    \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00177}00177                                 , domainAxesNameList                        \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00178}00178                                 , domainCubeLimitLower                      \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00179}00179                                 , domainCubeLimitUpper                      \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00180}00180                                 , domainMaxNumCheckToWarn                   \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00181}00181                                 , domainMaxNumCheckToStop                   \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00182}00182                                 , domainEllipsoidCenter                     \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00183}00183                                 , domainEllipsoidCovMat                     \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00184}00184                                 , domainEllipsoidCorMat                     \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00185}00185                                 , domainEllipsoidStdVec                     \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00186}00186                                 , outputChainFileFormat                     \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00187}00187                                 , outputColumnWidth                         \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00188}00188                                 , outputDelimiter                           \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00189}00189                                 , outputFileName                            \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00190}00190                                 , outputOverwriteEnabled                    \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00191}00191                                 , outputProgressReportPeriod                \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00192}00192                                 , outputRealPrecision                       \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00193}00193                                 , outputRestartFileFormat                   \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00194}00194                                 , outputSampleSize                          \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00195}00195                                 , outputSilentModeEnabled                   \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00196}00196                                 , parallelism                               \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00197}00197                                 , parallelismMpiFinalizeEnabled             \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00198}00198                                 , randomSeed                                \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00199}00199                                 , targetAcceptanceRate                      \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00200}00200                                 ! ParaMCMC variables                        \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00201}00201                                 , outputChainSize                           \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00202}00202                                 , outputSampleRefinementCount               \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00203}00203                                 , outputSampleRefinementMethod              \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00204}00204                                 , proposalStartPoint                        \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00205}00205                                 , proposalStartPointDomainCubeLimitLower    \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00206}00206                                 , proposalStartPointDomainCubeLimitUpper    \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00207}00207                                 , proposalStartPointRandomized              \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00208}00208                                 ! ParaDRAM variables                        \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00209}00209                                 , burninAdaptationMeasure                   \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00210}00210                                 , proposalAdaptationCount                   \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00211}00211                                 , proposalAdaptationCountGreedy             \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00212}00212                                 , proposalAdaptationPeriod                  \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00213}00213                                 , proposalDelayedRejectionCount             \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00214}00214                                 , proposalDelayedRejectionScaleFactor       \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00215}00215                                 , proposal                                  \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00216}00216                                 , proposalScaleFactor                       \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00217}00217                                 , proposalStartCorMat                       \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00218}00218                                 , proposalStartCovMat                       \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00219}00219                                 , proposalStartStdVec                       \&}
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00220}00220                                 )}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00169}00169     \textcolor{fortran_statement}{interface} runSampler}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00170}00170     \textcolor{fortran_prefix}{module subroutine }runSampler\_smod   ( self                                      \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00171}00171                                         , ndim                                      \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00172}00172                                         , getLogFunc                                \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00173}00173                                         , inputFile                                 \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00174}00174                                         ! ParaMonte variables                       \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00175}00175                                         , description                               \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00176}00176                                         , domain                                    \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00177}00177                                         , domainAxesNameList                        \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00178}00178                                         , domainCubeLimitLower                      \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00179}00179                                         , domainCubeLimitUpper                      \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00180}00180                                         , domainMaxNumCheckToWarn                   \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00181}00181                                         , domainMaxNumCheckToStop                   \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00182}00182                                         , domainEllipsoidCenter                     \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00183}00183                                         , domainEllipsoidCovMat                     \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00184}00184                                         , domainEllipsoidCorMat                     \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00185}00185                                         , domainEllipsoidStdVec                     \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00186}00186                                         , outputChainFileFormat                     \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00187}00187                                         , outputColumnWidth                         \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00188}00188                                         , outputDelimiter                           \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00189}00189                                         , outputFileName                            \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00190}00190                                         , outputOverwriteEnabled                    \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00191}00191                                         , outputProgressReportPeriod                \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00192}00192                                         , outputRealPrecision                       \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00193}00193                                         , outputRestartFileFormat                   \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00194}00194                                         , outputSampleSize                          \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00195}00195                                         , outputSilentModeEnabled                   \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00196}00196                                         , parallelism                               \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00197}00197                                         , parallelismMpiFinalizeEnabled             \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00198}00198                                         , randomSeed                                \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00199}00199                                         , targetAcceptanceRate                      \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00200}00200                                         ! ParaMCMC variables                        \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00201}00201                                         , outputChainSize                           \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00202}00202                                         , outputSampleRefinementCount               \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00203}00203                                         , outputSampleRefinementMethod              \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00204}00204                                         , proposalStartPoint                        \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00205}00205                                         , proposalStartPointDomainCubeLimitLower    \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00206}00206                                         , proposalStartPointDomainCubeLimitUpper    \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00207}00207                                         , proposalStartPointRandomized              \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00208}00208                                         ! ParaDRAM variables                        \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00209}00209                                         , burninAdaptationMeasure                   \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00210}00210                                         , proposalAdaptationCount                   \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00211}00211                                         , proposalAdaptationCountGreedy             \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00212}00212                                         , proposalAdaptationPeriod                  \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00213}00213                                         , proposalDelayedRejectionCount             \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00214}00214                                         , proposalDelayedRejectionScaleFactor       \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00215}00215                                         , proposal                                  \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00216}00216                                         , proposalScaleFactor                       \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00217}00217                                         , proposalStartCorMat                       \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00218}00218                                         , proposalStartCovMat                       \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00219}00219                                         , proposalStartStdVec                       \&}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00220}00220                                         )}
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00221}00221 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00222}00222 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: runSampler}
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00223}00223 \textcolor{preprocessor}{\#endif}}
@@ -256,7 +255,7 @@
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00282}00282 \textcolor{fortran_statement}{        real}(RK)    ,\textcolor{fortran_attribute}{ intent(in)},\textcolor{fortran_attribute}{ optional}  :: proposalStartCovMat(ndim,ndim)}
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00283}00283 \textcolor{fortran_statement}{        real}(RK)    ,\textcolor{fortran_attribute}{ intent(in)},\textcolor{fortran_attribute}{ optional}  :: proposalStartStdVec(ndim)}
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00284}00284 }
-\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00285}00285     \textcolor{fortran_statement}{end subroutine }runSampler}
+\DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00285}00285     \textcolor{fortran_statement}{end subroutine}}
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00286}00286     \textcolor{fortran_statement}{end interface}}
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00287}00287 }
 \DoxyCodeLine{\Hypertarget{ParaXXXX__mod_8inc_8f90_source_l00288}00288 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}

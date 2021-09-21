@@ -9,5 +9,6 @@ var searchData=
   ['resize_6',['resize',['../interfaceMisc__mod_1_1resize.html',1,'Misc_mod']]],
   ['resizevector_7',['resizeVector',['../interfaceMisc__mod_1_1resizeVector.html',1,'Misc_mod']]],
   ['restartfile_5ftype_8',['RestartFile_type',['../structParaMonte__mod_1_1RestartFile__type.html',1,'ParaMonte_mod']]],
-  ['round_5ftype_9',['Round_type',['../structFile__mod_1_1Round__type.html',1,'File_mod']]]
+  ['round_5ftype_9',['Round_type',['../structFile__mod_1_1Round__type.html',1,'File_mod']]],
+  ['runsampler_10',['runSampler',['../interfaceParaDRAM__mod_1_1runSampler.html',1,'ParaDRAM_mod']]]
 ];

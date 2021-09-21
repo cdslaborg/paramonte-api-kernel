@@ -33,7 +33,7 @@ subroutine \mbox{\hyperlink{namespaceSystem__mod_a557d6e1a9315cfb68392ada8697b37
 \begin{DoxyCompactList}\small\item\em Query all attributes of the \mbox{\hyperlink{structSystem__mod_1_1OS__type}{OS\+\_\+type}} class\+: {\ttfamily name}, {\ttfamily slash}, {\ttfamily is\+Windows}, {\ttfamily Err}. \end{DoxyCompactList}\item 
 subroutine \mbox{\hyperlink{namespaceSystem__mod_a1f99b90af00fdabc370cda76ffe2ca8e}{query\+Runtime\+Shell}} (Shell)
 \item 
-type(\mbox{\hyperlink{structSystem__mod_1_1RandomFileName__type}{Random\+File\+Name\+\_\+type}}) function \mbox{\hyperlink{namespaceSystem__mod_a3329218665a9f0f1071bc5d083c66a45}{get\+Random\+File\+Name}} (dir, key, ext)
+type(\mbox{\hyperlink{structSystem__mod_1_1RandomFileName__type}{Random\+File\+Name\+\_\+type}}) function \mbox{\hyperlink{namespaceSystem__mod_afd69d588e1a36f70cbdf6c25885ea6ca}{gen\+Random\+File\+Name}} (dir, key, ext)
 \begin{DoxyCompactList}\small\item\em Generate a unique file path in the requested directory for temporary usage. \end{DoxyCompactList}\item 
 subroutine \mbox{\hyperlink{namespaceSystem__mod_a14025e9f9a4536224738e4ad02da2495}{get\+Env\+Var}} (name, value, length, Err)
 \begin{DoxyCompactList}\small\item\em Return the value of the requested input environmental variable. \end{DoxyCompactList}\item 
@@ -191,6 +191,32 @@ This is the procedural implementation of the object-\/oriented \mbox{\hyperlink{
 
 Definition at line \mbox{\hyperlink{System__mod_8f90_source_l00875}{875}} of file \mbox{\hyperlink{System__mod_8f90_source}{System\+\_\+mod.\+f90}}.
 
+\mbox{\Hypertarget{namespaceSystem__mod_afd69d588e1a36f70cbdf6c25885ea6ca}\label{namespaceSystem__mod_afd69d588e1a36f70cbdf6c25885ea6ca}} 
+\index{System\_mod@{System\_mod}!genRandomFileName@{genRandomFileName}}
+\index{genRandomFileName@{genRandomFileName}!System\_mod@{System\_mod}}
+\doxysubsubsection{\texorpdfstring{genRandomFileName()}{genRandomFileName()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structSystem__mod_1_1RandomFileName__type}{Random\+File\+Name\+\_\+type}}) function System\+\_\+mod\+::gen\+Random\+File\+Name (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in), optional}]{dir,  }\item[{character($\ast$), intent(in), optional}]{key,  }\item[{character($\ast$), intent(in), optional}]{ext }\end{DoxyParamCaption})}
+
+
+
+Generate a unique file path in the requested directory for temporary usage. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em dir} & \+: The requested directory within which the unique new file is supposed to be generated ({\bfseries{optional}}, default = {\ttfamily \char`\"{}\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em key} & \+: The requested input file name prefix ({\bfseries{optional}}, default = {\ttfamily \char`\"{}\+Random\+File\+Name\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em ext} & \+: The requested input file extension ({\bfseries{optional}}, default = {\ttfamily \char`\"{}.\+rfn\char`\"{}}, standing for random file name).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily RFN} \+: An object of class \mbox{\hyperlink{structSystem__mod_1_1RandomFileName__type}{Random\+File\+Name\+\_\+type}} containing the attributes of the random file name. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{System__mod_8f90_source_l00658}{658}} of file \mbox{\hyperlink{System__mod_8f90_source}{System\+\_\+mod.\+f90}}.
+
 \mbox{\Hypertarget{namespaceSystem__mod_a14025e9f9a4536224738e4ad02da2495}\label{namespaceSystem__mod_a14025e9f9a4536224738e4ad02da2495}} 
 \index{System\_mod@{System\_mod}!getEnvVar@{getEnvVar}}
 \index{getEnvVar@{getEnvVar}!System\_mod@{System\_mod}}
@@ -216,37 +242,11 @@ Return the value of the requested input environmental variable.
 
 Definition at line \mbox{\hyperlink{System__mod_8f90_source_l00740}{740}} of file \mbox{\hyperlink{System__mod_8f90_source}{System\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceSystem__mod_a3329218665a9f0f1071bc5d083c66a45}\label{namespaceSystem__mod_a3329218665a9f0f1071bc5d083c66a45}} 
-\index{System\_mod@{System\_mod}!getRandomFileName@{getRandomFileName}}
-\index{getRandomFileName@{getRandomFileName}!System\_mod@{System\_mod}}
-\doxysubsubsection{\texorpdfstring{getRandomFileName()}{getRandomFileName()}}
-{\footnotesize\ttfamily type(\mbox{\hyperlink{structSystem__mod_1_1RandomFileName__type}{Random\+File\+Name\+\_\+type}}) function System\+\_\+mod\+::get\+Random\+File\+Name (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in), optional}]{dir,  }\item[{character($\ast$), intent(in), optional}]{key,  }\item[{character($\ast$), intent(in), optional}]{ext }\end{DoxyParamCaption})}
-
-
-
-Generate a unique file path in the requested directory for temporary usage. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em dir} & \+: The requested directory within which the unique new file is supposed to be generated ({\bfseries{optional}}, default = {\ttfamily \char`\"{}\char`\"{}}). \\
-\hline
-\mbox{\texttt{ in}}  & {\em key} & \+: The requested input file name prefix ({\bfseries{optional}}, default = {\ttfamily \char`\"{}\+Random\+File\+Name\char`\"{}}). \\
-\hline
-\mbox{\texttt{ in}}  & {\em ext} & \+: The requested input file extension ({\bfseries{optional}}, default = {\ttfamily \char`\"{}.\+rfn\char`\"{}}, standing for random file name).\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily RFN} \+: An object of class \mbox{\hyperlink{structSystem__mod_1_1RandomFileName__type}{Random\+File\+Name\+\_\+type}} containing the attributes of the random file name. 
-\end{DoxyReturn}
-
-
-Definition at line \mbox{\hyperlink{System__mod_8f90_source_l00658}{658}} of file \mbox{\hyperlink{System__mod_8f90_source}{System\+\_\+mod.\+f90}}.
-
 \mbox{\Hypertarget{namespaceSystem__mod_acdbe0231b40135bc08ab285fc69f2b80}\label{namespaceSystem__mod_acdbe0231b40135bc08ab285fc69f2b80}} 
 \index{System\_mod@{System\_mod}!getSystemInfo@{getSystemInfo}}
 \index{getSystemInfo@{getSystemInfo}!System\_mod@{System\_mod}}
 \doxysubsubsection{\texorpdfstring{getSystemInfo()}{getSystemInfo()}}
-{\footnotesize\ttfamily subroutine System\+\_\+mod\+::get\+System\+Info (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structArrayJagged__mod_1_1CharVec__type}{Char\+Vec\+\_\+type}})}]{List,  }\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err,  }\item[{type(\mbox{\hyperlink{structSystem__mod_1_1OS__type}{OS\+\_\+type}})}]{OS,  }\item[{integer(IK), intent(out), optional}]{count,  }\item[{character($\ast$)}]{cache\+File }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily subroutine System\+\_\+mod\+::get\+System\+Info (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}})}]{List,  }\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err,  }\item[{type(\mbox{\hyperlink{structSystem__mod_1_1OS__type}{OS\+\_\+type}})}]{OS,  }\item[{integer(IK), intent(out), optional}]{count,  }\item[{character($\ast$)}]{cache\+File }\end{DoxyParamCaption})}
 
 
 

@@ -10,11 +10,11 @@ This module contains the classes and procedures for setting up and computing the
 \item 
 interface \mbox{\hyperlink{structDistMultiNorm__mod_1_1DistMultiNorm__type}{Dist\+Multi\+Norm\+\_\+type}}
 \item 
+interface \mbox{\hyperlink{interfaceDistMultiNorm__mod_1_1genRand}{gen\+Rand}}
+\item 
 interface \mbox{\hyperlink{interfaceDistMultiNorm__mod_1_1getLogPDF}{get\+Log\+PDF}}
 \item 
 interface \mbox{\hyperlink{interfaceDistMultiNorm__mod_1_1getLogProbDenMVN}{get\+Log\+Prob\+Den\+MVN}}
-\item 
-interface \mbox{\hyperlink{interfaceDistMultiNorm__mod_1_1getRand}{get\+Rand}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
@@ -35,13 +35,13 @@ complex(CK) function \mbox{\hyperlink{namespaceDistMultiNorm__mod_aa4b1b43abdfe9
 \item 
 complex(CK) function, dimension(np) \mbox{\hyperlink{namespaceDistMultiNorm__mod_a7615ffb29881d20226892858263e5997}{get\+Log\+Prob\+Den\+MVNMP\+\_\+\+CK}} (nd, np, Mean, Inv\+Cov\+Mat, log\+Sqrt\+Det\+Inv\+Cov\+Mat, Point)
 \item 
-real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDistMultiNorm__mod_a976b6dfc8f31b46ae60f2e4942dc2ce8}{get\+Rand\+Stan\+MVN}} (nd)
+real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDistMultiNorm__mod_a52a71098cd9fa6f7d01f8fe0ae32a1a0}{gen\+Rand\+Stan\+MVN}} (nd)
 \begin{DoxyCompactList}\small\item\em Return a Standard Multi\+Variate Normal (MVN) random vector with the zero mean and identity covariance matrix. \end{DoxyCompactList}\item 
-real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDistMultiNorm__mod_a7e35fd8f0a5dd01809ccadb3f5ee858f}{get\+Rand\+Shifted\+MVN}} (nd, Mean)
+real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDistMultiNorm__mod_a16c4d8031e24e15b3fd799ff3274aa17}{gen\+Rand\+Shifted\+MVN}} (nd, Mean)
 \begin{DoxyCompactList}\small\item\em Return a Standard Multi\+Variate Normal (MVN) random vector with the given mean and identity covariance matrix. \end{DoxyCompactList}\item 
-real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDistMultiNorm__mod_ad203d60e9ba79099fb25063b668841e1}{get\+Rand\+Scaled\+MVN}} (nd, Cho\+Low, Cho\+Dia)
+real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDistMultiNorm__mod_a07b398d084558a53488cad33c36ecfa6}{gen\+Rand\+Scaled\+MVN}} (nd, Cho\+Low, Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Return a scaled Multi\+Variate Normal (MVN) random vector with the zero mean and covariance matrix represented by the the input Cholesky factorization. \end{DoxyCompactList}\item 
-real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDistMultiNorm__mod_a46b5122063af26da6c1d09a378a5f96e}{get\+Rand\+MVN}} (nd, Mean, Cho\+Low, Cho\+Dia)
+real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDistMultiNorm__mod_afce840ed7d5ad6b5a9bc2ce69717673e}{gen\+Rand\+MVN}} (nd, Mean, Cho\+Low, Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Return a Multi\+Variate Normal (MVN) random vector with the given mean and covariance matrix represented by the the input Cholesky factorization. \end{DoxyCompactList}\item 
 subroutine \mbox{\hyperlink{namespaceDistMultiNorm__mod_a7ef22189560de1556d5440a1de51dada}{get\+MVNDev}} (nd, Mean, Cov\+Mat, X)
 \begin{DoxyCompactList}\small\item\em Amir Shahmoradi, March 22, 2012, 2\+:21 PM, Institute for Fusion Studies, University of Texas at Austin. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -93,6 +93,118 @@ Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas 
 
 
 Definition at line \mbox{\hyperlink{DistMultiNorm__mod_8f90_source_l00130}{130}} of file \mbox{\hyperlink{DistMultiNorm__mod_8f90_source}{Dist\+Multi\+Norm\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistMultiNorm__mod_afce840ed7d5ad6b5a9bc2ce69717673e}\label{namespaceDistMultiNorm__mod_afce840ed7d5ad6b5a9bc2ce69717673e}} 
+\index{DistMultiNorm\_mod@{DistMultiNorm\_mod}!genRandMVN@{genRandMVN}}
+\index{genRandMVN@{genRandMVN}!DistMultiNorm\_mod@{DistMultiNorm\_mod}}
+\doxysubsubsection{\texorpdfstring{genRandMVN()}{genRandMVN()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd) Dist\+Multi\+Norm\+\_\+mod\+::gen\+Rand\+MVN (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mean,  }\item[{real(RK)}]{Cho\+Low,  }\item[{real(RK)}]{Cho\+Dia }\end{DoxyParamCaption})}
+
+
+
+Return a Multi\+Variate Normal (MVN) random vector with the given mean and covariance matrix represented by the the input Cholesky factorization. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the MVN distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Mean} & \+: The mean vector of the MVN distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cho\+Low} & \+: The Cholesky lower triangle of the covariance matrix of the MVN distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cho\+Dia} & \+: The Cho\+Dia elements of the Cholesky lower triangle of the covariance matrix of the MVN distribution.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+MVN} \+: The randomly generated MVN vector.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiNorm__mod_8f90_source_l00477}{477}} of file \mbox{\hyperlink{DistMultiNorm__mod_8f90_source}{Dist\+Multi\+Norm\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistMultiNorm__mod_a07b398d084558a53488cad33c36ecfa6}\label{namespaceDistMultiNorm__mod_a07b398d084558a53488cad33c36ecfa6}} 
+\index{DistMultiNorm\_mod@{DistMultiNorm\_mod}!genRandScaledMVN@{genRandScaledMVN}}
+\index{genRandScaledMVN@{genRandScaledMVN}!DistMultiNorm\_mod@{DistMultiNorm\_mod}}
+\doxysubsubsection{\texorpdfstring{genRandScaledMVN()}{genRandScaledMVN()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd) Dist\+Multi\+Norm\+\_\+mod\+::gen\+Rand\+Scaled\+MVN (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Cho\+Low,  }\item[{real(RK)}]{Cho\+Dia }\end{DoxyParamCaption})}
+
+
+
+Return a scaled Multi\+Variate Normal (MVN) random vector with the zero mean and covariance matrix represented by the the input Cholesky factorization. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the MVN distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cho\+Low} & \+: The Cholesky lower triangle of the covariance matrix of the MVN distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cho\+Dia} & \+: The Cho\+Dia elements of the Cholesky lower triangle of the covariance matrix of the MVN distribution.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+MVN} \+: The randomly generated MVN vector.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiNorm__mod_8f90_source_l00441}{441}} of file \mbox{\hyperlink{DistMultiNorm__mod_8f90_source}{Dist\+Multi\+Norm\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistMultiNorm__mod_a16c4d8031e24e15b3fd799ff3274aa17}\label{namespaceDistMultiNorm__mod_a16c4d8031e24e15b3fd799ff3274aa17}} 
+\index{DistMultiNorm\_mod@{DistMultiNorm\_mod}!genRandShiftedMVN@{genRandShiftedMVN}}
+\index{genRandShiftedMVN@{genRandShiftedMVN}!DistMultiNorm\_mod@{DistMultiNorm\_mod}}
+\doxysubsubsection{\texorpdfstring{genRandShiftedMVN()}{genRandShiftedMVN()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd) Dist\+Multi\+Norm\+\_\+mod\+::gen\+Rand\+Shifted\+MVN (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mean }\end{DoxyParamCaption})}
+
+
+
+Return a Standard Multi\+Variate Normal (MVN) random vector with the given mean and identity covariance matrix. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the MVN distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Mean} & \+: The mean vector of the MVN distribution.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+MVN} \+: The randomly generated MVN vector.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiNorm__mod_8f90_source_l00412}{412}} of file \mbox{\hyperlink{DistMultiNorm__mod_8f90_source}{Dist\+Multi\+Norm\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistMultiNorm__mod_a52a71098cd9fa6f7d01f8fe0ae32a1a0}\label{namespaceDistMultiNorm__mod_a52a71098cd9fa6f7d01f8fe0ae32a1a0}} 
+\index{DistMultiNorm\_mod@{DistMultiNorm\_mod}!genRandStanMVN@{genRandStanMVN}}
+\index{genRandStanMVN@{genRandStanMVN}!DistMultiNorm\_mod@{DistMultiNorm\_mod}}
+\doxysubsubsection{\texorpdfstring{genRandStanMVN()}{genRandStanMVN()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd) Dist\+Multi\+Norm\+\_\+mod\+::gen\+Rand\+Stan\+MVN (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd }\end{DoxyParamCaption})}
+
+
+
+Return a Standard Multi\+Variate Normal (MVN) random vector with the zero mean and identity covariance matrix. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the MVN distribution.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+MVN} \+: The randomly generated MVN vector.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiNorm__mod_8f90_source_l00385}{385}} of file \mbox{\hyperlink{DistMultiNorm__mod_8f90_source}{Dist\+Multi\+Norm\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDistMultiNorm__mod_a00ea83257b95afc9e7c23500cfa561ac}\label{namespaceDistMultiNorm__mod_a00ea83257b95afc9e7c23500cfa561ac}} 
 \index{DistMultiNorm\_mod@{DistMultiNorm\_mod}!getEntropy@{getEntropy}}
@@ -201,118 +313,6 @@ Amir Shahmoradi, March 22, 2012, 2\+:21 PM, Institute for Fusion Studies, Univer
 
 
 Definition at line \mbox{\hyperlink{DistMultiNorm__mod_8f90_source_l00510}{510}} of file \mbox{\hyperlink{DistMultiNorm__mod_8f90_source}{Dist\+Multi\+Norm\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceDistMultiNorm__mod_a46b5122063af26da6c1d09a378a5f96e}\label{namespaceDistMultiNorm__mod_a46b5122063af26da6c1d09a378a5f96e}} 
-\index{DistMultiNorm\_mod@{DistMultiNorm\_mod}!getRandMVN@{getRandMVN}}
-\index{getRandMVN@{getRandMVN}!DistMultiNorm\_mod@{DistMultiNorm\_mod}}
-\doxysubsubsection{\texorpdfstring{getRandMVN()}{getRandMVN()}}
-{\footnotesize\ttfamily real(RK) function, dimension(nd) Dist\+Multi\+Norm\+\_\+mod\+::get\+Rand\+MVN (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mean,  }\item[{real(RK)}]{Cho\+Low,  }\item[{real(RK)}]{Cho\+Dia }\end{DoxyParamCaption})}
-
-
-
-Return a Multi\+Variate Normal (MVN) random vector with the given mean and covariance matrix represented by the the input Cholesky factorization. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the MVN distribution. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Mean} & \+: The mean vector of the MVN distribution. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Cho\+Low} & \+: The Cholesky lower triangle of the covariance matrix of the MVN distribution. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Cho\+Dia} & \+: The Cho\+Dia elements of the Cholesky lower triangle of the covariance matrix of the MVN distribution.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Rand\+MVN} \+: The randomly generated MVN vector.
-\end{DoxyReturn}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{DistMultiNorm__mod_8f90_source_l00477}{477}} of file \mbox{\hyperlink{DistMultiNorm__mod_8f90_source}{Dist\+Multi\+Norm\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceDistMultiNorm__mod_ad203d60e9ba79099fb25063b668841e1}\label{namespaceDistMultiNorm__mod_ad203d60e9ba79099fb25063b668841e1}} 
-\index{DistMultiNorm\_mod@{DistMultiNorm\_mod}!getRandScaledMVN@{getRandScaledMVN}}
-\index{getRandScaledMVN@{getRandScaledMVN}!DistMultiNorm\_mod@{DistMultiNorm\_mod}}
-\doxysubsubsection{\texorpdfstring{getRandScaledMVN()}{getRandScaledMVN()}}
-{\footnotesize\ttfamily real(RK) function, dimension(nd) Dist\+Multi\+Norm\+\_\+mod\+::get\+Rand\+Scaled\+MVN (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Cho\+Low,  }\item[{real(RK)}]{Cho\+Dia }\end{DoxyParamCaption})}
-
-
-
-Return a scaled Multi\+Variate Normal (MVN) random vector with the zero mean and covariance matrix represented by the the input Cholesky factorization. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the MVN distribution. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Cho\+Low} & \+: The Cholesky lower triangle of the covariance matrix of the MVN distribution. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Cho\+Dia} & \+: The Cho\+Dia elements of the Cholesky lower triangle of the covariance matrix of the MVN distribution.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Rand\+MVN} \+: The randomly generated MVN vector.
-\end{DoxyReturn}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{DistMultiNorm__mod_8f90_source_l00441}{441}} of file \mbox{\hyperlink{DistMultiNorm__mod_8f90_source}{Dist\+Multi\+Norm\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceDistMultiNorm__mod_a7e35fd8f0a5dd01809ccadb3f5ee858f}\label{namespaceDistMultiNorm__mod_a7e35fd8f0a5dd01809ccadb3f5ee858f}} 
-\index{DistMultiNorm\_mod@{DistMultiNorm\_mod}!getRandShiftedMVN@{getRandShiftedMVN}}
-\index{getRandShiftedMVN@{getRandShiftedMVN}!DistMultiNorm\_mod@{DistMultiNorm\_mod}}
-\doxysubsubsection{\texorpdfstring{getRandShiftedMVN()}{getRandShiftedMVN()}}
-{\footnotesize\ttfamily real(RK) function, dimension(nd) Dist\+Multi\+Norm\+\_\+mod\+::get\+Rand\+Shifted\+MVN (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mean }\end{DoxyParamCaption})}
-
-
-
-Return a Standard Multi\+Variate Normal (MVN) random vector with the given mean and identity covariance matrix. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the MVN distribution. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Mean} & \+: The mean vector of the MVN distribution.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Rand\+MVN} \+: The randomly generated MVN vector.
-\end{DoxyReturn}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{DistMultiNorm__mod_8f90_source_l00412}{412}} of file \mbox{\hyperlink{DistMultiNorm__mod_8f90_source}{Dist\+Multi\+Norm\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceDistMultiNorm__mod_a976b6dfc8f31b46ae60f2e4942dc2ce8}\label{namespaceDistMultiNorm__mod_a976b6dfc8f31b46ae60f2e4942dc2ce8}} 
-\index{DistMultiNorm\_mod@{DistMultiNorm\_mod}!getRandStanMVN@{getRandStanMVN}}
-\index{getRandStanMVN@{getRandStanMVN}!DistMultiNorm\_mod@{DistMultiNorm\_mod}}
-\doxysubsubsection{\texorpdfstring{getRandStanMVN()}{getRandStanMVN()}}
-{\footnotesize\ttfamily real(RK) function, dimension(nd) Dist\+Multi\+Norm\+\_\+mod\+::get\+Rand\+Stan\+MVN (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd }\end{DoxyParamCaption})}
-
-
-
-Return a Standard Multi\+Variate Normal (MVN) random vector with the zero mean and identity covariance matrix. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the MVN distribution.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Rand\+MVN} \+: The randomly generated MVN vector.
-\end{DoxyReturn}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{DistMultiNorm__mod_8f90_source_l00385}{385}} of file \mbox{\hyperlink{DistMultiNorm__mod_8f90_source}{Dist\+Multi\+Norm\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDistMultiNorm__mod_abc50852f3f4a65e6dee14e501df15a60}\label{namespaceDistMultiNorm__mod_abc50852f3f4a65e6dee14e501df15a60}} 
 \index{DistMultiNorm\_mod@{DistMultiNorm\_mod}!logpdf@{logpdf}}

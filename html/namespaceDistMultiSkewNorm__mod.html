@@ -95,11 +95,11 @@ Functions/Subroutines</h2></td></tr>
 <tr class="memitem:ae5b20bf64ab63c3cfc971b219b3e71bb"><td class="memItemLeft" align="right" valign="top">pure real(RK) function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDistMultiSkewNorm__mod.html#ae5b20bf64ab63c3cfc971b219b3e71bb">getLogProbMSN_RK</a> (nd, Mean, InvCovMat, logSqrtDetInvCovMat, Alpha, Point)</td></tr>
 <tr class="memdesc:ae5b20bf64ab63c3cfc971b219b3e71bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the log-probability-density-function value of obtaining <code>Point</code> from a Multivariate-Skew-Normal distribution characterize by the input <code>InvCovMat</code> and shape vector <code>Alpha</code>.  <a href="namespaceDistMultiSkewNorm__mod.html#ae5b20bf64ab63c3cfc971b219b3e71bb">More...</a><br /></td></tr>
 <tr class="separator:ae5b20bf64ab63c3cfc971b219b3e71bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70f013357298515998ac71bdb79cbc22"><td class="memItemLeft" align="right" valign="top">real(RK) function, dimension(nd)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDistMultiSkewNorm__mod.html#a70f013357298515998ac71bdb79cbc22">getRandMSN</a> (nd, Mean, AugChoLow, AugChoDia)</td></tr>
-<tr class="memdesc:a70f013357298515998ac71bdb79cbc22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a MultiVariate Skew Normal (MSN) random vector with the given mean and covariance matrix represented by the the input Cholesky factorization.  <a href="namespaceDistMultiSkewNorm__mod.html#a70f013357298515998ac71bdb79cbc22">More...</a><br /></td></tr>
-<tr class="separator:a70f013357298515998ac71bdb79cbc22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26a3af3d4ea893ef1409bfab835ffbed"><td class="memItemLeft" align="right" valign="top">real(RK) function, dimension(nd)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDistMultiSkewNorm__mod.html#a26a3af3d4ea893ef1409bfab835ffbed">genRandMSN</a> (nd, Mean, AugChoLow, AugChoDia)</td></tr>
+<tr class="memdesc:a26a3af3d4ea893ef1409bfab835ffbed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a MultiVariate Skew Normal (MSN) random vector with the given mean and covariance matrix represented by the the input Cholesky factorization.  <a href="namespaceDistMultiSkewNorm__mod.html#a26a3af3d4ea893ef1409bfab835ffbed">More...</a><br /></td></tr>
+<tr class="separator:a26a3af3d4ea893ef1409bfab835ffbed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a529ed321612a1dc13664c9319155f370"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDistMultiSkewNorm__mod.html#a529ed321612a1dc13664c9319155f370">getAugChoFac</a> (nd, Alpha, CovMat, AugChoLow, AugChoDia)</td></tr>
-<tr class="memdesc:a529ed321612a1dc13664c9319155f370"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the augmented Cholesky Factorization of the input Covariance Matrix with the shape vector <code>Alpha</code>. The output of this procedure is to be passed to <a class="el" href="namespaceDistMultiSkewNorm__mod.html#a70f013357298515998ac71bdb79cbc22">getRandMSN()</a> for MultiVariate Skew Normal random number generation.  <a href="namespaceDistMultiSkewNorm__mod.html#a529ed321612a1dc13664c9319155f370">More...</a><br /></td></tr>
+<tr class="memdesc:a529ed321612a1dc13664c9319155f370"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the augmented Cholesky Factorization of the input Covariance Matrix with the shape vector <code>Alpha</code>. The output of this procedure is to be passed to <a class="el" href="namespaceDistMultiSkewNorm__mod.html#a26a3af3d4ea893ef1409bfab835ffbed">genRandMSN()</a> for MultiVariate Skew Normal random number generation.  <a href="namespaceDistMultiSkewNorm__mod.html#a529ed321612a1dc13664c9319155f370">More...</a><br /></td></tr>
 <tr class="separator:a529ed321612a1dc13664c9319155f370"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -111,6 +111,61 @@ Variables</h2></td></tr>
 <div class="textblock"><p >This module contains the classes and procedures for the Multivariate Skew Normal distribution of Azzalini, 2009, Statistical applications of the multivariate skew-normal distribution. </p>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi </dd></dl>
 </div><h2 class="groupheader">Function/Subroutine Documentation</h2>
+<a id="a26a3af3d4ea893ef1409bfab835ffbed" name="a26a3af3d4ea893ef1409bfab835ffbed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26a3af3d4ea893ef1409bfab835ffbed">&#9670;&nbsp;</a></span>genRandMSN()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">real(RK) function, dimension(nd) DistMultiSkewNorm_mod::genRandMSN </td>
+          <td>(</td>
+          <td class="paramtype">integer(IK), intent(in)&#160;</td>
+          <td class="paramname"><em>nd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(RK)&#160;</td>
+          <td class="paramname"><em>Mean</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(RK)&#160;</td>
+          <td class="paramname"><em>AugChoLow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">real(RK)&#160;</td>
+          <td class="paramname"><em>AugChoDia</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return a MultiVariate Skew Normal (MSN) random vector with the given mean and covariance matrix represented by the the input Cholesky factorization. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">nd</td><td>: The number of dimensions of the MSN distribution. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Mean</td><td>: The mean vector of the MSN distribution. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">AugChoLow</td><td>: The Cholesky lower triangle of the augmented covariance matrix of the MSN distribution. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">AugChoDia</td><td>: The diagonal elements of the Cholesky lower triangle of the augmented covariance matrix of the MSN distribution.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>RandMSN</code> : The randomly generated MSN vector.</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, January 30, 2021, 5:36 AM, Dallas, TX </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="DistMultiSkewNorm__mod_8f90_source.html#l00121">121</a> of file <a class="el" href="DistMultiSkewNorm__mod_8f90_source.html">DistMultiSkewNorm_mod.f90</a>.</p>
+
+</div>
+</div>
 <a id="a529ed321612a1dc13664c9319155f370" name="a529ed321612a1dc13664c9319155f370"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a529ed321612a1dc13664c9319155f370">&#9670;&nbsp;</a></span>getAugChoFac()</h2>
 
@@ -155,7 +210,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return the augmented Cholesky Factorization of the input Covariance Matrix with the shape vector <code>Alpha</code>. The output of this procedure is to be passed to <a class="el" href="namespaceDistMultiSkewNorm__mod.html#a70f013357298515998ac71bdb79cbc22">getRandMSN()</a> for MultiVariate Skew Normal random number generation. </p>
+<p>Return the augmented Cholesky Factorization of the input Covariance Matrix with the shape vector <code>Alpha</code>. The output of this procedure is to be passed to <a class="el" href="namespaceDistMultiSkewNorm__mod.html#a26a3af3d4ea893ef1409bfab835ffbed">genRandMSN()</a> for MultiVariate Skew Normal random number generation. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">nd</td><td>: The number of dimensions of the MSN distribution. </td></tr>
@@ -166,7 +221,7 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section remark"><dt>Remarks</dt><dd>If the input <code>CovMat</code> is only upper, symmetrize <code>CovMat</code> via <a class="el" href="interfaceMatrix__mod_1_1symmetrizeUpperMatrix.html">symmetrizeUpperMatrix()</a>.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>If the input <code>CovMat</code> is only upper, symmetrize <code>CovMat</code> via <a class="el" href="interfaceMatrix__mod_1_1symmetrizeMatUpp.html">symmetrizeMatUpp()</a>.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Jan 30, 2021, 2:19 AM, Dallas, TX </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="DistMultiSkewNorm__mod_8f90_source.html#l00170">170</a> of file <a class="el" href="DistMultiSkewNorm__mod_8f90_source.html">DistMultiSkewNorm_mod.f90</a>.</p>
@@ -242,61 +297,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a70f013357298515998ac71bdb79cbc22" name="a70f013357298515998ac71bdb79cbc22"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a70f013357298515998ac71bdb79cbc22">&#9670;&nbsp;</a></span>getRandMSN()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">real(RK) function, dimension(nd) DistMultiSkewNorm_mod::getRandMSN </td>
-          <td>(</td>
-          <td class="paramtype">integer(IK), intent(in)&#160;</td>
-          <td class="paramname"><em>nd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">real(RK)&#160;</td>
-          <td class="paramname"><em>Mean</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">real(RK)&#160;</td>
-          <td class="paramname"><em>AugChoLow</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">real(RK)&#160;</td>
-          <td class="paramname"><em>AugChoDia</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return a MultiVariate Skew Normal (MSN) random vector with the given mean and covariance matrix represented by the the input Cholesky factorization. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">nd</td><td>: The number of dimensions of the MSN distribution. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">Mean</td><td>: The mean vector of the MSN distribution. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">AugChoLow</td><td>: The Cholesky lower triangle of the augmented covariance matrix of the MSN distribution. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">AugChoDia</td><td>: The diagonal elements of the Cholesky lower triangle of the augmented covariance matrix of the MSN distribution.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><code>RandMSN</code> : The randomly generated MSN vector.</dd></dl>
-<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, January 30, 2021, 5:36 AM, Dallas, TX </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="DistMultiSkewNorm__mod_8f90_source.html#l00121">121</a> of file <a class="el" href="DistMultiSkewNorm__mod_8f90_source.html">DistMultiSkewNorm_mod.f90</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="a1dfc43fdd9396f88e5f6de62ba0e9d1d" name="a1dfc43fdd9396f88e5f6de62ba0e9d1d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1dfc43fdd9396f88e5f6de62ba0e9d1d">&#9670;&nbsp;</a></span>MODULE_NAME</h2>
@@ -326,7 +326,7 @@ Variables</h2></td></tr>
     </div>
     <address class="footer">
         <small>
-            Generated on Tue Sep 14 2021 23:55:49 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
+            Generated on Tue Sep 21 2021 01:26:32 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
             <!--
             1.9.3
             -->
