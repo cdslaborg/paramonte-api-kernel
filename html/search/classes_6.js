@@ -14,7 +14,7 @@ var searchData=
   ['genmatsymfrommatlow_11',['genMatSymFromMatLow',['../interfaceMatrix__mod_1_1genMatSymFromMatLow.html',1,'Matrix_mod']]],
   ['genmatsymfrommatupp_12',['genMatSymFromMatUpp',['../interfaceMatrix__mod_1_1genMatSymFromMatUpp.html',1,'Matrix_mod']]],
   ['gennormedsample_13',['genNormedSample',['../interfaceSample__mod_1_1genNormedSample.html',1,'Sample_mod']]],
-  ['genrand_14',['genRand',['../interfaceDistMultiNorm__mod_1_1genRand.html',1,'DistMultiNorm_mod::genRand'],['../interfaceDistMultiUnifCube__mod_1_1genRand.html',1,'DistMultiUnifCube_mod::genRand'],['../interfaceDistMultiUnifEllipsoid__mod_1_1genRand.html',1,'DistMultiUnifEllipsoid_mod::genRand'],['../interfaceDistUniExp__mod_1_1genRand.html',1,'DistUniExp_mod::genRand'],['../interfaceDistUniNorm__mod_1_1genRand.html',1,'DistUniNorm_mod::genRand'],['../interfaceDomainEllipsoid__mod_1_1genRand.html',1,'DomainEllipsoid_mod::genRand']]],
+  ['genrand_14',['genRand',['../interfaceDistMultiNorm__mod_1_1genRand.html',1,'DistMultiNorm_mod::genRand'],['../interfaceDistMultiUnifCube__mod_1_1genRand.html',1,'DistMultiUnifCube_mod::genRand'],['../interfaceDistMultiUnifEllipsoid__mod_1_1genRand.html',1,'DistMultiUnifEllipsoid_mod::genRand'],['../interfaceDistUniExp__mod_1_1genRand.html',1,'DistUniExp_mod::genRand'],['../interfaceDistUniNorm__mod_1_1genRand.html',1,'DistUniNorm_mod::genRand']]],
   ['genrandunif_5fproc_5f1d_15',['genRandUnif_proc_1D',['../interfaceDomain__mod_1_1genRandUnif__proc__1D.html',1,'Domain_mod']]],
   ['genrandunif_5fproc_5f2d_16',['genRandUnif_proc_2D',['../interfaceDomain__mod_1_1genRandUnif__proc__2D.html',1,'Domain_mod']]],
   ['genscaledmat_17',['genScaledMat',['../interfaceMatrix__mod_1_1genScaledMat.html',1,'Matrix_mod']]],
@@ -56,8 +56,9 @@ var searchData=
   ['getpaddedlen_53',['getPaddedLen',['../interfaceCrossCorr__mod_1_1getPaddedLen.html',1,'CrossCorr_mod']]],
   ['getpdf_54',['getPDF',['../interfaceDistUniNorm__mod_1_1getPDF.html',1,'DistUniNorm_mod']]],
   ['getposinf_55',['getPosInf',['../interfaceConstants__mod_1_1getPosInf.html',1,'Constants_mod']]],
-  ['getratedensity_5fproc_56',['getRateDensity_proc',['../interfaceStarFormation__mod_1_1getRateDensity__proc.html',1,'StarFormation_mod']]],
-  ['getsumexp_57',['getSumExp',['../interfaceMath__mod_1_1getSumExp.html',1,'Math_mod']]],
-  ['getvariance_58',['getVariance',['../interfaceSample__mod_1_1getVariance.html',1,'Sample_mod']]],
-  ['grb_5ftype_59',['GRB_type',['../structBatse__mod_1_1GRB__type.html',1,'Batse_mod']]]
+  ['getrand_56',['getRand',['../interfaceDomainEllipsoid__mod_1_1getRand.html',1,'DomainEllipsoid_mod']]],
+  ['getratedensity_5fproc_57',['getRateDensity_proc',['../interfaceStarFormation__mod_1_1getRateDensity__proc.html',1,'StarFormation_mod']]],
+  ['getsumexp_58',['getSumExp',['../interfaceMath__mod_1_1getSumExp.html',1,'Math_mod']]],
+  ['getvariance_59',['getVariance',['../interfaceSample__mod_1_1getVariance.html',1,'Sample_mod']]],
+  ['grb_5ftype_60',['GRB_type',['../structBatse__mod_1_1GRB__type.html',1,'Batse_mod']]]
 ];
