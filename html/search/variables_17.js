@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['xmin_0',['xmin',['../structOptimization__mod_1_1BrentMinimum__type.html#a187f912f76b42b860de8a1f3c78c68ed',1,'Optimization_mod::BrentMinimum_type::xmin()'],['../structOptimization__mod_1_1PowellMinimum__type.html#a2985a282d3b970dc83d17b399b7cb232',1,'Optimization_mod::PowellMinimum_type::xmin()']]],
-  ['xmin_5fref_1',['XMIN_REF',['../structTest__EconomicsToolbox__mod_1_1TestFuncRosenBrock1D__type.html#a0fbf42e999af73aae21c2371505ce6ce',1,'Test_EconomicsToolbox_mod::TestFuncRosenBrock1D_type::XMIN_REF()'],['../structTest__EconomicsToolbox__mod_1_1TestFuncRosenBrock2D__type.html#a998ea4e5505d86c6a92f676f691e8410',1,'Test_EconomicsToolbox_mod::TestFuncRosenBrock2D_type::XMIN_REF()'],['../structTest__Optimization__mod_1_1TestFuncRosenBrock1D__type.html#a91ca07fc8c5864b186f56a784c2b01a1',1,'Test_Optimization_mod::TestFuncRosenBrock1D_type::XMIN_REF()'],['../structTest__Optimization__mod_1_1TestFuncRosenBrock2D__type.html#a7d29ee272cfc2c9a5639297ec865b5a8',1,'Test_Optimization_mod::TestFuncRosenBrock2D_type::XMIN_REF()']]],
-  ['xtol_2',['xtol',['../structOptimization__mod_1_1BrentMinimum__type.html#a556fa06c8d64d6d2cbf7c4741c9906f2',1,'Optimization_mod::BrentMinimum_type']]]
-];
