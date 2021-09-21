@@ -1,0 +1,149 @@
+\hypertarget{namespaceDistMultiSkewNorm__mod}{}\doxysection{Dist\+Multi\+Skew\+Norm\+\_\+mod Module Reference}
+\label{namespaceDistMultiSkewNorm__mod}\index{DistMultiSkewNorm\_mod@{DistMultiSkewNorm\_mod}}
+
+
+This module contains the classes and procedures for the Multivariate Skew Normal distribution of Azzalini, 2009, Statistical applications of the multivariate skew-\/normal distribution.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfaceDistMultiSkewNorm__mod_1_1getLogProbMSN}{get\+Log\+Prob\+MSN}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+pure real(RK) function \mbox{\hyperlink{namespaceDistMultiSkewNorm__mod_ae5b20bf64ab63c3cfc971b219b3e71bb}{get\+Log\+Prob\+MSN\+\_\+\+RK}} (nd, Mean, Inv\+Cov\+Mat, log\+Sqrt\+Det\+Inv\+Cov\+Mat, Alpha, Point)
+\begin{DoxyCompactList}\small\item\em Return the log-\/probability-\/density-\/function value of obtaining {\ttfamily Point} from a Multivariate-\/\+Skew-\/\+Normal distribution characterize by the input {\ttfamily Inv\+Cov\+Mat} and shape vector {\ttfamily Alpha}. \end{DoxyCompactList}\item 
+real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDistMultiSkewNorm__mod_a26a3af3d4ea893ef1409bfab835ffbed}{gen\+Rand\+MSN}} (nd, Mean, Aug\+Cho\+Low, Aug\+Cho\+Dia)
+\begin{DoxyCompactList}\small\item\em Return a Multi\+Variate Skew Normal (MSN) random vector with the given mean and covariance matrix represented by the the input Cholesky factorization. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceDistMultiSkewNorm__mod_a529ed321612a1dc13664c9319155f370}{get\+Aug\+Cho\+Fac}} (nd, Alpha, Cov\+Mat, Aug\+Cho\+Low, Aug\+Cho\+Dia)
+\begin{DoxyCompactList}\small\item\em Return the augmented Cholesky Factorization of the input Covariance Matrix with the shape vector {\ttfamily Alpha}. The output of this procedure is to be passed to \mbox{\hyperlink{namespaceDistMultiSkewNorm__mod_a26a3af3d4ea893ef1409bfab835ffbed}{gen\+Rand\+MSN()}} for Multi\+Variate Skew Normal random number generation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character(len= $\ast$), parameter \mbox{\hyperlink{namespaceDistMultiSkewNorm__mod_a1dfc43fdd9396f88e5f6de62ba0e9d1d}{MODULE\+\_\+\+NAME}} = \char`\"{}@Dist\+Multi\+Skew\+Norm\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains the classes and procedures for the Multivariate Skew Normal distribution of Azzalini, 2009, Statistical applications of the multivariate skew-\/normal distribution. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceDistMultiSkewNorm__mod_a26a3af3d4ea893ef1409bfab835ffbed}\label{namespaceDistMultiSkewNorm__mod_a26a3af3d4ea893ef1409bfab835ffbed}} 
+\index{DistMultiSkewNorm\_mod@{DistMultiSkewNorm\_mod}!genRandMSN@{genRandMSN}}
+\index{genRandMSN@{genRandMSN}!DistMultiSkewNorm\_mod@{DistMultiSkewNorm\_mod}}
+\doxysubsubsection{\texorpdfstring{genRandMSN()}{genRandMSN()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd) Dist\+Multi\+Skew\+Norm\+\_\+mod\+::gen\+Rand\+MSN (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mean,  }\item[{real(RK)}]{Aug\+Cho\+Low,  }\item[{real(RK)}]{Aug\+Cho\+Dia }\end{DoxyParamCaption})}
+
+
+
+Return a Multi\+Variate Skew Normal (MSN) random vector with the given mean and covariance matrix represented by the the input Cholesky factorization. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the MSN distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Mean} & \+: The mean vector of the MSN distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Aug\+Cho\+Low} & \+: The Cholesky lower triangle of the augmented covariance matrix of the MSN distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Aug\+Cho\+Dia} & \+: The diagonal elements of the Cholesky lower triangle of the augmented covariance matrix of the MSN distribution.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+MSN} \+: The randomly generated MSN vector.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, January 30, 2021, 5\+:36 AM, Dallas, TX 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiSkewNorm__mod_8f90_source_l00121}{121}} of file \mbox{\hyperlink{DistMultiSkewNorm__mod_8f90_source}{Dist\+Multi\+Skew\+Norm\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistMultiSkewNorm__mod_a529ed321612a1dc13664c9319155f370}\label{namespaceDistMultiSkewNorm__mod_a529ed321612a1dc13664c9319155f370}} 
+\index{DistMultiSkewNorm\_mod@{DistMultiSkewNorm\_mod}!getAugChoFac@{getAugChoFac}}
+\index{getAugChoFac@{getAugChoFac}!DistMultiSkewNorm\_mod@{DistMultiSkewNorm\_mod}}
+\doxysubsubsection{\texorpdfstring{getAugChoFac()}{getAugChoFac()}}
+{\footnotesize\ttfamily subroutine Dist\+Multi\+Skew\+Norm\+\_\+mod\+::get\+Aug\+Cho\+Fac (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Alpha,  }\item[{real(RK)}]{Cov\+Mat,  }\item[{real(RK)}]{Aug\+Cho\+Low,  }\item[{real(RK)}]{Aug\+Cho\+Dia }\end{DoxyParamCaption})}
+
+
+
+Return the augmented Cholesky Factorization of the input Covariance Matrix with the shape vector {\ttfamily Alpha}. The output of this procedure is to be passed to \mbox{\hyperlink{namespaceDistMultiSkewNorm__mod_a26a3af3d4ea893ef1409bfab835ffbed}{gen\+Rand\+MSN()}} for Multi\+Variate Skew Normal random number generation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the MSN distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Alpha} & \+: The input shape vector of the target MSN distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cov\+Mat} & \+: The FULL input covariance matrix. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Aug\+Cho\+Low} & \+: The lower triangle of the Cholesky factorization of the augmented covariance matrix of the MSN distribution. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Aug\+Cho\+Dia} & \+: The diagonal elements of the Cholesky lower triangle of the augmented covariance matrix of the MSN distribution.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+If the input {\ttfamily Cov\+Mat} is only upper, symmetrize {\ttfamily Cov\+Mat} via \mbox{\hyperlink{interfaceMatrix__mod_1_1symmetrizeMatUpp}{symmetrize\+Mat\+Upp()}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Jan 30, 2021, 2\+:19 AM, Dallas, TX 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiSkewNorm__mod_8f90_source_l00170}{170}} of file \mbox{\hyperlink{DistMultiSkewNorm__mod_8f90_source}{Dist\+Multi\+Skew\+Norm\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistMultiSkewNorm__mod_ae5b20bf64ab63c3cfc971b219b3e71bb}\label{namespaceDistMultiSkewNorm__mod_ae5b20bf64ab63c3cfc971b219b3e71bb}} 
+\index{DistMultiSkewNorm\_mod@{DistMultiSkewNorm\_mod}!getLogProbMSN\_RK@{getLogProbMSN\_RK}}
+\index{getLogProbMSN\_RK@{getLogProbMSN\_RK}!DistMultiSkewNorm\_mod@{DistMultiSkewNorm\_mod}}
+\doxysubsubsection{\texorpdfstring{getLogProbMSN\_RK()}{getLogProbMSN\_RK()}}
+{\footnotesize\ttfamily pure real(RK) function Dist\+Multi\+Skew\+Norm\+\_\+mod\+::get\+Log\+Prob\+MSN\+\_\+\+RK (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mean,  }\item[{real(RK)}]{Inv\+Cov\+Mat,  }\item[{real(RK)}]{log\+Sqrt\+Det\+Inv\+Cov\+Mat,  }\item[{real(RK)}]{Alpha,  }\item[{real(RK)}]{Point }\end{DoxyParamCaption})}
+
+
+
+Return the log-\/probability-\/density-\/function value of obtaining {\ttfamily Point} from a Multivariate-\/\+Skew-\/\+Normal distribution characterize by the input {\ttfamily Inv\+Cov\+Mat} and shape vector {\ttfamily Alpha}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the Multivariate-\/\+Skew-\/\+Normal distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Mean} & \+: The Mean of the Multivariate-\/\+Skew-\/\+Normal distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Inv\+Cov\+Mat} & \+: The inverse covariance matrix of the Multivariate-\/\+Skew-\/\+Normal distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Sqrt\+Det\+Inv\+Cov\+Mat} & \+: The natural logarithm of the square-\/root of the determinant of the {\ttfamily Inv\+Cov\+Mat}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Alpha} & \+: The shape parameter of the Multivariate-\/\+Skew-\/\+Normal distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The point at which the log-\/probability density must be computed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily log\+Prob\+Skew\+Norm} \+: the log-\/probability-\/density-\/function value of obtaining {\ttfamily Point}.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+A positive value for any element of {\ttfamily Alpha} causes a negative skeness along the corresponding dimension. This looks as if the distribution is truncated or cut toward negative values. Amir Shahmoradi, January 30, 2021, 7\+:49 AM, Dallas, TX 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{DistMultiSkewNorm__mod_8f90_source_l00083}{83}} of file \mbox{\hyperlink{DistMultiSkewNorm__mod_8f90_source}{Dist\+Multi\+Skew\+Norm\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceDistMultiSkewNorm__mod_a1dfc43fdd9396f88e5f6de62ba0e9d1d}\label{namespaceDistMultiSkewNorm__mod_a1dfc43fdd9396f88e5f6de62ba0e9d1d}} 
+\index{DistMultiSkewNorm\_mod@{DistMultiSkewNorm\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!DistMultiSkewNorm\_mod@{DistMultiSkewNorm\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character(len=$\ast$), parameter Dist\+Multi\+Skew\+Norm\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Dist\+Multi\+Skew\+Norm\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{DistMultiSkewNorm__mod_8f90_source_l00054}{54}} of file \mbox{\hyperlink{DistMultiSkewNorm__mod_8f90_source}{Dist\+Multi\+Skew\+Norm\+\_\+mod.\+f90}}.
+

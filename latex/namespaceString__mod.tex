@@ -1,0 +1,1448 @@
+\hypertarget{namespaceString__mod}{}\doxysection{String\+\_\+mod Module Reference}
+\label{namespaceString__mod}\index{String\_mod@{String\_mod}}
+
+
+This module contains the classes and procedures for various string manipulations.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfaceString__mod_1_1int2str}{int2str}}
+\item 
+type \mbox{\hyperlink{structString__mod_1_1IntStr__type}{Int\+Str\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structString__mod_1_1IntStr__type}{Int\+Str\+\_\+type}}} class for converting integers to strings. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceString__mod_1_1lower}{lower}}
+\item 
+interface \mbox{\hyperlink{interfaceString__mod_1_1num2char}{num2char}}
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceString__mod_1_1operator_07_8has_8_08}{operator(.\+has.)}}
+\item 
+interface \mbox{\hyperlink{interfaceString__mod_1_1real2str}{real2str}}
+\item 
+type \mbox{\hyperlink{structString__mod_1_1RealStr__type}{Real\+Str\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structString__mod_1_1RealStr__type}{Real\+Str\+\_\+type}}} class for converting real numbers to strings. \end{DoxyCompactList}\item 
+type \mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The primitive type to contain an allocatable character type as a single string. \end{DoxyCompactList}\item 
+type \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}} class for manipulating strings. \end{DoxyCompactList}\item 
+type \mbox{\hyperlink{structString__mod_1_1StrSplit__type}{Str\+Split\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structString__mod_1_1StrSplit__type}{Str\+Split\+\_\+type}}} class with a container component for string parts. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceString__mod_1_1upper}{upper}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+pure logical function \mbox{\hyperlink{namespaceString__mod_a498e86c011fc2958583a3fdae4c87df6}{contains}} (string, search)
+\begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} if the input assumed-\/size character vector contains the input {\ttfamily search} substring, otherwise return {\ttfamily .false.}. \end{DoxyCompactList}\item 
+pure recursive character(len=\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_adf2d0a723b9b74a97f7f50bc9fb1149a}{replace}} (value, search, substitute)
+\begin{DoxyCompactList}\small\item\em Replace all instances of the input {\ttfamily search} assumed-\/size character vector in the input {\ttfamily value} assumed-\/size character vector with the input {\ttfamily substitute} assumed-\/size character vector and return the result. \end{DoxyCompactList}\item 
+type(\mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}}) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceString__mod_a13a8791d75dde13643300315d31659cf}{split}} (value, delim, npart)
+\begin{DoxyCompactList}\small\item\em Split the input {\ttfamily value} of type character of arbitrary length by finding the input {\ttfamily substitute} in the input {\ttfamily value} and return the result. \end{DoxyCompactList}\item 
+type(\mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}}) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceString__mod_a6cd16558dfee7fbfcbdcf0c1403d1302}{split\+Str}} (value, delim, n\+Part)
+\begin{DoxyCompactList}\small\item\em Split the input {\ttfamily value} character of arbitrary length with the input {\ttfamily substitute} in the input {\ttfamily value} and return the result. \end{DoxyCompactList}\item 
+pure logical function \mbox{\hyperlink{namespaceString__mod_a4dfbcfa1364b4263973fe7a1248c4893}{is\+Digit}} (single\+Char)
+\begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} if the input single character is a digit\+: {\ttfamily \mbox{[}\char`\"{}0\char`\"{},\char`\"{}1\char`\"{},\char`\"{}2\char`\"{},\char`\"{}3\char`\"{},\char`\"{}4\char`\"{},\char`\"{}5\char`\"{},\char`\"{}6\char`\"{},\char`\"{}7\char`\"{},\char`\"{}8\char`\"{},\char`\"{}9\char`\"{}\mbox{]}}. \end{DoxyCompactList}\item 
+pure logical function \mbox{\hyperlink{namespaceString__mod_a4d710f50d57e4061becd3b4a1aeb32cf}{is\+Integer}} (value)
+\begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} if the input {\ttfamily value} is an integer containing only\+: {\ttfamily \mbox{[}\char`\"{}0\char`\"{},\char`\"{}1\char`\"{},\char`\"{}2\char`\"{},\char`\"{}3\char`\"{},\char`\"{}4\char`\"{},\char`\"{}5\char`\"{},\char`\"{}6\char`\"{},\char`\"{}7\char`\"{},\char`\"{}8\char`\"{},\char`\"{}9\char`\"{}\mbox{]}}. \end{DoxyCompactList}\item 
+pure character(len(value)) function \mbox{\hyperlink{namespaceString__mod_ade10dffb10b5ed445fec280457aa9eb4}{get\+Lower\+Case}} (value)
+\begin{DoxyCompactList}\small\item\em Return the lowercase of the input assumed-\/size character vector. \end{DoxyCompactList}\item 
+pure character(len(value)) function \mbox{\hyperlink{namespaceString__mod_a7812197cf955b4b2c1b1965e3b038073}{get\+Upper\+Case}} (value)
+\begin{DoxyCompactList}\small\item\em Return the uppercase of the input assumed-\/size character vector. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_ae6466d5ac218cfc89e869bebdec2ddd3}{log2str}} (value)
+\begin{DoxyCompactList}\small\item\em Convert the input logical value to value and return the result. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_ada0d38198610fe9a35a26e114b986e1e}{num2char\+\_\+\+IK8\+\_\+0D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_ab6238ae30e42cc5fa03e7a4684b4beb4}{num2char\+\_\+\+IK16\+\_\+0D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a98a75c6fae9f48248b2711d56e87ea84}{num2char\+\_\+\+IK32\+\_\+0D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a68efbe6570371186d5d66a5fe3b566c0}{num2char\+\_\+\+IK64\+\_\+0D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_ad8c2c9a65e0f17130a901c56a3eaf928}{num2char\+\_\+\+RK32\+\_\+0D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_af35949499276159edbe9e96a218016d8}{num2char\+\_\+\+RK64\+\_\+0D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a7c45dacc3927b786d6d0ef437439fa2a}{num2char\+\_\+\+RK128\+\_\+0D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a1b6be7600d6bf022251e1f7613afc267}{num2char\+\_\+\+IK8\+\_\+1D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a4ac1e5b340865adff4a7f1ba4cba3639}{num2char\+\_\+\+IK16\+\_\+1D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_aabb1c7fc112e744e107165d4379f100e}{num2char\+\_\+\+IK32\+\_\+1D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a9e2d97f495ec5729cc112444874e8fb1}{num2char\+\_\+\+IK64\+\_\+1D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a0314c979bf8dccb0278e8bc214255d78}{num2char\+\_\+\+RK32\+\_\+1D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a2ff6d664dc9be4bb204757dfe9a27d9b}{num2char\+\_\+\+RK64\+\_\+1D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a552b3c0835dc1823440123631d5b0e10}{num2char\+\_\+\+RK128\+\_\+1D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a7093de387f837b4abaae7d9702b4d114}{num2char\+\_\+\+IK8\+\_\+2D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a4ad0866af7de2dce2dd386d826042a01}{num2char\+\_\+\+IK16\+\_\+2D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_aefdd0b99d561ef9f965931347a5a51ee}{num2char\+\_\+\+IK32\+\_\+2D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a4e3f9c0622b7d182ec702af8a681d3fa}{num2char\+\_\+\+IK64\+\_\+2D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a0ddf4f95758ab835140e8ef3c7409131}{num2char\+\_\+\+RK32\+\_\+2D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_ade4b436cf5db069a42f9c6713b03c46e}{num2char\+\_\+\+RK64\+\_\+2D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a289124694eb21d7d2cc28a0c6816d521}{num2char\+\_\+\+RK128\+\_\+2D}} (value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert the input value to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a52a8f6d12647e99327b9ee9ed53b8314}{num2char\+\_\+\+RK64\+\_\+1D}} (Value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert an input vector of 64-\/bit real values to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a94669f75e2d5e6d7f3e611052da67769}{num2char\+\_\+\+RK64\+\_\+2D}} (Value, format, len)
+\begin{DoxyCompactList}\small\item\em Convert an input 2D matrix of 64-\/bit real values to string, with the requested format, if provided. \end{DoxyCompactList}\item 
+integer(IK) function \mbox{\hyperlink{namespaceString__mod_a39f8ac9d5727e6e4bf1187ed9f873b4f}{char2int}} (value, iostat)
+\begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to integer. \end{DoxyCompactList}\item 
+integer(IK32) function \mbox{\hyperlink{namespaceString__mod_a6211342a946d80cbdee652a8a3e48630}{char2int32}} (value, iostat)
+\begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to 32-\/bit integer. \end{DoxyCompactList}\item 
+integer(IK64) function \mbox{\hyperlink{namespaceString__mod_ab898b2fdbcd961bd91ee7550965fdbcc}{char2int64}} (value, iostat)
+\begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to 64-\/bit integer. \end{DoxyCompactList}\item 
+real(RK) function \mbox{\hyperlink{namespaceString__mod_aa6450b384b4143de3b45095896e458e6}{char2real}} (value, iostat)
+\begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to real value. \end{DoxyCompactList}\item 
+real(RK32) function \mbox{\hyperlink{namespaceString__mod_ae6d1236fd58ad13349a9c4cf9beddec2}{char2real32}} (value, iostat)
+\begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to 32-\/bit real value. \end{DoxyCompactList}\item 
+real(RK64) function \mbox{\hyperlink{namespaceString__mod_aa158363f5bfdb4e949e2f456dd411886}{char2real64}} (value, iostat)
+\begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to 64-\/bit real value. \end{DoxyCompactList}\item 
+pure character(padded\+Len) function \mbox{\hyperlink{namespaceString__mod_a6af661c9ba1dbd7b57356c0902230373}{pad\+Char}} (value, symbol, padded\+Len)
+\begin{DoxyCompactList}\small\item\em Pad the input assumed-\/size character vector {\ttfamily value} with the input assumed-\/size character vector {\ttfamily symbol} for a length of {\ttfamily padded\+Len} and return the resulting new string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceString__mod_aea8d1ba3c565ed766a8924deb4d69b3f}{MODULE\+\_\+\+NAME}} = \char`\"{}@String\+\_\+mod\char`\"{}
+\item 
+integer(IK) \mbox{\hyperlink{namespaceString__mod_a59013ff38e0741f210dd7eeef5c7b4b7}{NUM2\+CHAR\+\_\+\+MAXLEN}} = 127\+\_\+\+IK
+\begin{DoxyCompactList}\small\item\em The maximum possible length of the string output from the functions under the generic interface {\ttfamily \mbox{\hyperlink{interfaceString__mod_1_1num2char}{num2char}}}. Note that {\ttfamily NUM2\+CHAR\+\_\+\+MAXLEN = 127} is very generous given that,. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains the classes and procedures for various string manipulations. 
+
+\begin{DoxyWarning}{Warning}
+ATTN developers\+: Do NOT change the double back-\/ticks in 
+\begin{DoxyPre}``"{}(g0,:,',')"{}``\end{DoxyPre}
+ to single back-\/ticks in any documentations in this module. Doxygen version 1.\+9 has difficultly parsing the code sections with single back-\/tick when the code contains advanced features of modern Fortran {\ttfamily g0} edit descriptor.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Monday 2\+:21 AM, August 30, 2021, Dallas, TX 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceString__mod_a39f8ac9d5727e6e4bf1187ed9f873b4f}\label{namespaceString__mod_a39f8ac9d5727e6e4bf1187ed9f873b4f}} 
+\index{String\_mod@{String\_mod}!char2int@{char2int}}
+\index{char2int@{char2int}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{char2int()}{char2int()}}
+{\footnotesize\ttfamily integer(IK) function String\+\_\+mod\+::char2int (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
+
+
+
+Convert an input assumed-\/size character vector to integer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em iostat} & \+: The Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily char2int} \+: The inferred integer from the input assumed-\/size character vector.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01481}{1481}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a6211342a946d80cbdee652a8a3e48630}\label{namespaceString__mod_a6211342a946d80cbdee652a8a3e48630}} 
+\index{String\_mod@{String\_mod}!char2int32@{char2int32}}
+\index{char2int32@{char2int32}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{char2int32()}{char2int32()}}
+{\footnotesize\ttfamily integer(IK32) function String\+\_\+mod\+::char2int32 (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
+
+
+
+Convert an input assumed-\/size character vector to 32-\/bit integer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em iostat} & \+: The Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily char2int} \+: The inferred 32-\/bit integer from the input assumed-\/size character vector.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01515}{1515}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_ab898b2fdbcd961bd91ee7550965fdbcc}\label{namespaceString__mod_ab898b2fdbcd961bd91ee7550965fdbcc}} 
+\index{String\_mod@{String\_mod}!char2int64@{char2int64}}
+\index{char2int64@{char2int64}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{char2int64()}{char2int64()}}
+{\footnotesize\ttfamily integer(IK64) function String\+\_\+mod\+::char2int64 (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
+
+
+
+Convert an input assumed-\/size character vector to 64-\/bit integer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em iostat} & \+: The Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily char2int} \+: The inferred 64-\/bit integer from the input assumed-\/size character vector.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01549}{1549}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_aa6450b384b4143de3b45095896e458e6}\label{namespaceString__mod_aa6450b384b4143de3b45095896e458e6}} 
+\index{String\_mod@{String\_mod}!char2real@{char2real}}
+\index{char2real@{char2real}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{char2real()}{char2real()}}
+{\footnotesize\ttfamily real(RK) function String\+\_\+mod\+::char2real (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
+
+
+
+Convert an input assumed-\/size character vector to real value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em iostat} & \+: The Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily char2int} \+: The inferred real value from the input assumed-\/size character vector.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01583}{1583}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_ae6d1236fd58ad13349a9c4cf9beddec2}\label{namespaceString__mod_ae6d1236fd58ad13349a9c4cf9beddec2}} 
+\index{String\_mod@{String\_mod}!char2real32@{char2real32}}
+\index{char2real32@{char2real32}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{char2real32()}{char2real32()}}
+{\footnotesize\ttfamily real(RK32) function String\+\_\+mod\+::char2real32 (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
+
+
+
+Convert an input assumed-\/size character vector to 32-\/bit real value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em iostat} & \+: The Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily char2int} \+: The inferred 32-\/bit real value from the input assumed-\/size character vector.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01617}{1617}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_aa158363f5bfdb4e949e2f456dd411886}\label{namespaceString__mod_aa158363f5bfdb4e949e2f456dd411886}} 
+\index{String\_mod@{String\_mod}!char2real64@{char2real64}}
+\index{char2real64@{char2real64}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{char2real64()}{char2real64()}}
+{\footnotesize\ttfamily real(RK64) function String\+\_\+mod\+::char2real64 (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
+
+
+
+Convert an input assumed-\/size character vector to 64-\/bit real value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em iostat} & \+: The optional output Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat} ({\bfseries{optional}}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily char2int} \+: The inferred 64-\/bit real value from the input assumed-\/size character vector.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01651}{1651}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a498e86c011fc2958583a3fdae4c87df6}\label{namespaceString__mod_a498e86c011fc2958583a3fdae4c87df6}} 
+\index{String\_mod@{String\_mod}!contains@{contains}}
+\index{contains@{contains}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily pure logical function String\+\_\+mod\+::contains (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{string,  }\item[{character($\ast$), intent(in)}]{search }\end{DoxyParamCaption})}
+
+
+
+Return {\ttfamily .true.} if the input assumed-\/size character vector contains the input {\ttfamily search} substring, otherwise return {\ttfamily .false.}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em string} & \+: The input assumed-\/size character vector whose subparts will have to replaced. \\
+\hline
+\mbox{\texttt{ in}}  & {\em search} & \+: The input substring pattern that will have to replaced.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily sreach\+Substring\+Exists} \+: A logical value indicating whether the input {\ttfamily search} substring exists in the input {\ttfamily string}.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00207}{207}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_ade10dffb10b5ed445fec280457aa9eb4}\label{namespaceString__mod_ade10dffb10b5ed445fec280457aa9eb4}} 
+\index{String\_mod@{String\_mod}!getLowerCase@{getLowerCase}}
+\index{getLowerCase@{getLowerCase}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{getLowerCase()}{getLowerCase()}}
+{\footnotesize\ttfamily pure character(len(value)) function String\+\_\+mod\+::get\+Lower\+Case (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value }\end{DoxyParamCaption})}
+
+
+
+Return the lowercase of the input assumed-\/size character vector. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily output} \+: The lowercase {\ttfamily value}.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00538}{538}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a7812197cf955b4b2c1b1965e3b038073}\label{namespaceString__mod_a7812197cf955b4b2c1b1965e3b038073}} 
+\index{String\_mod@{String\_mod}!getUpperCase@{getUpperCase}}
+\index{getUpperCase@{getUpperCase}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{getUpperCase()}{getUpperCase()}}
+{\footnotesize\ttfamily pure character(len(value)) function String\+\_\+mod\+::get\+Upper\+Case (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value }\end{DoxyParamCaption})}
+
+
+
+Return the uppercase of the input assumed-\/size character vector. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily output} \+: The uppercase {\ttfamily value}.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00569}{569}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a4dfbcfa1364b4263973fe7a1248c4893}\label{namespaceString__mod_a4dfbcfa1364b4263973fe7a1248c4893}} 
+\index{String\_mod@{String\_mod}!isDigit@{isDigit}}
+\index{isDigit@{isDigit}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{isDigit()}{isDigit()}}
+{\footnotesize\ttfamily pure logical function String\+\_\+mod\+::is\+Digit (\begin{DoxyParamCaption}\item[{character(1)}]{single\+Char }\end{DoxyParamCaption})}
+
+
+
+Return {\ttfamily .true.} if the input single character is a digit\+: {\ttfamily \mbox{[}\char`\"{}0\char`\"{},\char`\"{}1\char`\"{},\char`\"{}2\char`\"{},\char`\"{}3\char`\"{},\char`\"{}4\char`\"{},\char`\"{}5\char`\"{},\char`\"{}6\char`\"{},\char`\"{}7\char`\"{},\char`\"{}8\char`\"{},\char`\"{}9\char`\"{}\mbox{]}}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em single\+Char} & \+: The input single character.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily single\+Char\+Is\+Digit} \+: A logical value indicating whether the input character is a digit or not.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00471}{471}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a4d710f50d57e4061becd3b4a1aeb32cf}\label{namespaceString__mod_a4d710f50d57e4061becd3b4a1aeb32cf}} 
+\index{String\_mod@{String\_mod}!isInteger@{isInteger}}
+\index{isInteger@{isInteger}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{isInteger()}{isInteger()}}
+{\footnotesize\ttfamily pure logical function String\+\_\+mod\+::is\+Integer (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value }\end{DoxyParamCaption})}
+
+
+
+Return {\ttfamily .true.} if the input {\ttfamily value} is an integer containing only\+: {\ttfamily \mbox{[}\char`\"{}0\char`\"{},\char`\"{}1\char`\"{},\char`\"{}2\char`\"{},\char`\"{}3\char`\"{},\char`\"{}4\char`\"{},\char`\"{}5\char`\"{},\char`\"{}6\char`\"{},\char`\"{}7\char`\"{},\char`\"{}8\char`\"{},\char`\"{}9\char`\"{}\mbox{]}}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily value\+Is\+Integer} \+: A logical value indicating whether the input {\ttfamily value} is an integer.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00503}{503}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_ae6466d5ac218cfc89e869bebdec2ddd3}\label{namespaceString__mod_ae6466d5ac218cfc89e869bebdec2ddd3}} 
+\index{String\_mod@{String\_mod}!log2str@{log2str}}
+\index{log2str@{log2str}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{log2str()}{log2str()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::log2str (\begin{DoxyParamCaption}\item[{logical, intent(in)}]{value }\end{DoxyParamCaption})}
+
+
+
+Convert the input logical value to value and return the result. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input logical value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The logical value in string format. Depending on the logical value, it can be either {\ttfamily \char`\"{}\+TRUE\char`\"{}} or {\ttfamily \char`\"{}\+FALSE\char`\"{}}.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00640}{640}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_ab6238ae30e42cc5fa03e7a4684b4beb4}\label{namespaceString__mod_ab6238ae30e42cc5fa03e7a4684b4beb4}} 
+\index{String\_mod@{String\_mod}!num2char\_IK16\_0D@{num2char\_IK16\_0D}}
+\index{num2char\_IK16\_0D@{num2char\_IK16\_0D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_IK16\_0D()}{num2char\_IK16\_0D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+IK16\+\_\+0D (\begin{DoxyParamCaption}\item[{integer(IK16), intent(in)}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00708}{708}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a4ac1e5b340865adff4a7f1ba4cba3639}\label{namespaceString__mod_a4ac1e5b340865adff4a7f1ba4cba3639}} 
+\index{String\_mod@{String\_mod}!num2char\_IK16\_1D@{num2char\_IK16\_1D}}
+\index{num2char\_IK16\_1D@{num2char\_IK16\_1D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_IK16\_1D()}{num2char\_IK16\_1D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+IK16\+\_\+1D (\begin{DoxyParamCaption}\item[{integer(IK16), dimension(\+:), intent(in), contiguous}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00943}{943}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a4ad0866af7de2dce2dd386d826042a01}\label{namespaceString__mod_a4ad0866af7de2dce2dd386d826042a01}} 
+\index{String\_mod@{String\_mod}!num2char\_IK16\_2D@{num2char\_IK16\_2D}}
+\index{num2char\_IK16\_2D@{num2char\_IK16\_2D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_IK16\_2D()}{num2char\_IK16\_2D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+IK16\+\_\+2D (\begin{DoxyParamCaption}\item[{integer(IK16), dimension(\+:,\+:), intent(in), contiguous}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01176}{1176}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a98a75c6fae9f48248b2711d56e87ea84}\label{namespaceString__mod_a98a75c6fae9f48248b2711d56e87ea84}} 
+\index{String\_mod@{String\_mod}!num2char\_IK32\_0D@{num2char\_IK32\_0D}}
+\index{num2char\_IK32\_0D@{num2char\_IK32\_0D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_IK32\_0D()}{num2char\_IK32\_0D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+IK32\+\_\+0D (\begin{DoxyParamCaption}\item[{integer(IK32), intent(in)}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00741}{741}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_aabb1c7fc112e744e107165d4379f100e}\label{namespaceString__mod_aabb1c7fc112e744e107165d4379f100e}} 
+\index{String\_mod@{String\_mod}!num2char\_IK32\_1D@{num2char\_IK32\_1D}}
+\index{num2char\_IK32\_1D@{num2char\_IK32\_1D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_IK32\_1D()}{num2char\_IK32\_1D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+IK32\+\_\+1D (\begin{DoxyParamCaption}\item[{integer(IK32), dimension(\+:), intent(in), contiguous}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00976}{976}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_aefdd0b99d561ef9f965931347a5a51ee}\label{namespaceString__mod_aefdd0b99d561ef9f965931347a5a51ee}} 
+\index{String\_mod@{String\_mod}!num2char\_IK32\_2D@{num2char\_IK32\_2D}}
+\index{num2char\_IK32\_2D@{num2char\_IK32\_2D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_IK32\_2D()}{num2char\_IK32\_2D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+IK32\+\_\+2D (\begin{DoxyParamCaption}\item[{integer(IK32), dimension(\+:,\+:), intent(in), contiguous}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01209}{1209}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a68efbe6570371186d5d66a5fe3b566c0}\label{namespaceString__mod_a68efbe6570371186d5d66a5fe3b566c0}} 
+\index{String\_mod@{String\_mod}!num2char\_IK64\_0D@{num2char\_IK64\_0D}}
+\index{num2char\_IK64\_0D@{num2char\_IK64\_0D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_IK64\_0D()}{num2char\_IK64\_0D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+IK64\+\_\+0D (\begin{DoxyParamCaption}\item[{integer(IK64), intent(in)}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00774}{774}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a9e2d97f495ec5729cc112444874e8fb1}\label{namespaceString__mod_a9e2d97f495ec5729cc112444874e8fb1}} 
+\index{String\_mod@{String\_mod}!num2char\_IK64\_1D@{num2char\_IK64\_1D}}
+\index{num2char\_IK64\_1D@{num2char\_IK64\_1D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_IK64\_1D()}{num2char\_IK64\_1D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+IK64\+\_\+1D (\begin{DoxyParamCaption}\item[{integer(IK64), dimension(\+:), intent(in), contiguous}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01009}{1009}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a4e3f9c0622b7d182ec702af8a681d3fa}\label{namespaceString__mod_a4e3f9c0622b7d182ec702af8a681d3fa}} 
+\index{String\_mod@{String\_mod}!num2char\_IK64\_2D@{num2char\_IK64\_2D}}
+\index{num2char\_IK64\_2D@{num2char\_IK64\_2D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_IK64\_2D()}{num2char\_IK64\_2D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+IK64\+\_\+2D (\begin{DoxyParamCaption}\item[{integer(IK64), dimension(\+:,\+:), intent(in), contiguous}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01242}{1242}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_ada0d38198610fe9a35a26e114b986e1e}\label{namespaceString__mod_ada0d38198610fe9a35a26e114b986e1e}} 
+\index{String\_mod@{String\_mod}!num2char\_IK8\_0D@{num2char\_IK8\_0D}}
+\index{num2char\_IK8\_0D@{num2char\_IK8\_0D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_IK8\_0D()}{num2char\_IK8\_0D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+IK8\+\_\+0D (\begin{DoxyParamCaption}\item[{integer(IK8), intent(in)}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00675}{675}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a1b6be7600d6bf022251e1f7613afc267}\label{namespaceString__mod_a1b6be7600d6bf022251e1f7613afc267}} 
+\index{String\_mod@{String\_mod}!num2char\_IK8\_1D@{num2char\_IK8\_1D}}
+\index{num2char\_IK8\_1D@{num2char\_IK8\_1D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_IK8\_1D()}{num2char\_IK8\_1D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+IK8\+\_\+1D (\begin{DoxyParamCaption}\item[{integer(IK8), dimension(\+:), intent(in), contiguous}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00910}{910}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a7093de387f837b4abaae7d9702b4d114}\label{namespaceString__mod_a7093de387f837b4abaae7d9702b4d114}} 
+\index{String\_mod@{String\_mod}!num2char\_IK8\_2D@{num2char\_IK8\_2D}}
+\index{num2char\_IK8\_2D@{num2char\_IK8\_2D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_IK8\_2D()}{num2char\_IK8\_2D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+IK8\+\_\+2D (\begin{DoxyParamCaption}\item[{integer(IK8), dimension(\+:,\+:), intent(in), contiguous}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01143}{1143}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a7c45dacc3927b786d6d0ef437439fa2a}\label{namespaceString__mod_a7c45dacc3927b786d6d0ef437439fa2a}} 
+\index{String\_mod@{String\_mod}!num2char\_RK128\_0D@{num2char\_RK128\_0D}}
+\index{num2char\_RK128\_0D@{num2char\_RK128\_0D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_RK128\_0D()}{num2char\_RK128\_0D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+RK128\+\_\+0D (\begin{DoxyParamCaption}\item[{real(RK128), intent(in)}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00873}{873}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a552b3c0835dc1823440123631d5b0e10}\label{namespaceString__mod_a552b3c0835dc1823440123631d5b0e10}} 
+\index{String\_mod@{String\_mod}!num2char\_RK128\_1D@{num2char\_RK128\_1D}}
+\index{num2char\_RK128\_1D@{num2char\_RK128\_1D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_RK128\_1D()}{num2char\_RK128\_1D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+RK128\+\_\+1D (\begin{DoxyParamCaption}\item[{real(RK128), dimension(\+:), intent(in), contiguous}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01108}{1108}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a289124694eb21d7d2cc28a0c6816d521}\label{namespaceString__mod_a289124694eb21d7d2cc28a0c6816d521}} 
+\index{String\_mod@{String\_mod}!num2char\_RK128\_2D@{num2char\_RK128\_2D}}
+\index{num2char\_RK128\_2D@{num2char\_RK128\_2D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_RK128\_2D()}{num2char\_RK128\_2D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+RK128\+\_\+2D (\begin{DoxyParamCaption}\item[{real(RK128), dimension(\+:,\+:), intent(in), contiguous}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01341}{1341}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_ad8c2c9a65e0f17130a901c56a3eaf928}\label{namespaceString__mod_ad8c2c9a65e0f17130a901c56a3eaf928}} 
+\index{String\_mod@{String\_mod}!num2char\_RK32\_0D@{num2char\_RK32\_0D}}
+\index{num2char\_RK32\_0D@{num2char\_RK32\_0D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_RK32\_0D()}{num2char\_RK32\_0D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+RK32\+\_\+0D (\begin{DoxyParamCaption}\item[{real(RK32), intent(in)}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00807}{807}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a0314c979bf8dccb0278e8bc214255d78}\label{namespaceString__mod_a0314c979bf8dccb0278e8bc214255d78}} 
+\index{String\_mod@{String\_mod}!num2char\_RK32\_1D@{num2char\_RK32\_1D}}
+\index{num2char\_RK32\_1D@{num2char\_RK32\_1D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_RK32\_1D()}{num2char\_RK32\_1D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+RK32\+\_\+1D (\begin{DoxyParamCaption}\item[{real(RK32), dimension(\+:), intent(in), contiguous}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01042}{1042}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a0ddf4f95758ab835140e8ef3c7409131}\label{namespaceString__mod_a0ddf4f95758ab835140e8ef3c7409131}} 
+\index{String\_mod@{String\_mod}!num2char\_RK32\_2D@{num2char\_RK32\_2D}}
+\index{num2char\_RK32\_2D@{num2char\_RK32\_2D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_RK32\_2D()}{num2char\_RK32\_2D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+RK32\+\_\+2D (\begin{DoxyParamCaption}\item[{real(RK32), dimension(\+:,\+:), intent(in), contiguous}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01275}{1275}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_af35949499276159edbe9e96a218016d8}\label{namespaceString__mod_af35949499276159edbe9e96a218016d8}} 
+\index{String\_mod@{String\_mod}!num2char\_RK64\_0D@{num2char\_RK64\_0D}}
+\index{num2char\_RK64\_0D@{num2char\_RK64\_0D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_RK64\_0D()}{num2char\_RK64\_0D()}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+RK64\+\_\+0D (\begin{DoxyParamCaption}\item[{real(RK64), intent(in)}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00840}{840}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a2ff6d664dc9be4bb204757dfe9a27d9b}\label{namespaceString__mod_a2ff6d664dc9be4bb204757dfe9a27d9b}} 
+\index{String\_mod@{String\_mod}!num2char\_RK64\_1D@{num2char\_RK64\_1D}}
+\index{num2char\_RK64\_1D@{num2char\_RK64\_1D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_RK64\_1D()}{num2char\_RK64\_1D()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+RK64\+\_\+1D (\begin{DoxyParamCaption}\item[{real(RK64), dimension(\+:), intent(in), contiguous}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01075}{1075}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a52a8f6d12647e99327b9ee9ed53b8314}\label{namespaceString__mod_a52a8f6d12647e99327b9ee9ed53b8314}} 
+\index{String\_mod@{String\_mod}!num2char\_RK64\_1D@{num2char\_RK64\_1D}}
+\index{num2char\_RK64\_1D@{num2char\_RK64\_1D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_RK64\_1D()}{num2char\_RK64\_1D()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+RK64\+\_\+1D (\begin{DoxyParamCaption}\item[{real(RK64)}]{Value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert an input vector of 64-\/bit real values to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Value} & \+: The input vector of real values. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the real value to the string ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The minimum length of the output string, adjusted to the left.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily num2char\+\_\+\+RK64\+\_\+1D} \+: The output vector of strings each representing one real value in the input vector.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01380}{1380}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_ade4b436cf5db069a42f9c6713b03c46e}\label{namespaceString__mod_ade4b436cf5db069a42f9c6713b03c46e}} 
+\index{String\_mod@{String\_mod}!num2char\_RK64\_2D@{num2char\_RK64\_2D}}
+\index{num2char\_RK64\_2D@{num2char\_RK64\_2D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_RK64\_2D()}{num2char\_RK64\_2D()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+RK64\+\_\+2D (\begin{DoxyParamCaption}\item[{real(RK64), dimension(\+:,\+:), intent(in), contiguous}]{value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert the input value to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input integer value. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the integer value to the string ({\bfseries{optional}}, default = {\ttfamily \char`\"{}(g0,\+:,\textquotesingle{},\textquotesingle{})\char`\"{}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The length of the output string. If {\ttfamily len} is missing as input, the blanks on both ends of the output string will be trimmed. ({\bfseries{optional}}, default = automatically determined such that all leading and trailing blank characters are removed)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily string} \+: The output string.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+Note that {\ttfamily len}, if provided, must be large enough to contain the full input value.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01308}{1308}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a94669f75e2d5e6d7f3e611052da67769}\label{namespaceString__mod_a94669f75e2d5e6d7f3e611052da67769}} 
+\index{String\_mod@{String\_mod}!num2char\_RK64\_2D@{num2char\_RK64\_2D}}
+\index{num2char\_RK64\_2D@{num2char\_RK64\_2D}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{num2char\_RK64\_2D()}{num2char\_RK64\_2D()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::num2char\+\_\+\+RK64\+\_\+2D (\begin{DoxyParamCaption}\item[{real(RK64)}]{Value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+
+
+
+Convert an input 2D matrix of 64-\/bit real values to string, with the requested format, if provided. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Value} & \+: The input 2D matrix of real values. \\
+\hline
+\mbox{\texttt{ in}}  & {\em format} & \+: The Fortran IO format to be used when writing the real value to the string ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len} & \+: The minimum length of the output string, adjusted to the left.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily num2char\+\_\+\+RK64\+\_\+2D} \+: The output 2D array of strings each representing one real value in the input 2D matrix.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01430}{1430}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a6af661c9ba1dbd7b57356c0902230373}\label{namespaceString__mod_a6af661c9ba1dbd7b57356c0902230373}} 
+\index{String\_mod@{String\_mod}!padChar@{padChar}}
+\index{padChar@{padChar}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{padChar()}{padChar()}}
+{\footnotesize\ttfamily pure character(padded\+Len) function String\+\_\+mod\+::pad\+Char (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value,  }\item[{character($\ast$), intent(in)}]{symbol,  }\item[{integer(IK)}]{padded\+Len }\end{DoxyParamCaption})}
+
+
+
+Pad the input assumed-\/size character vector {\ttfamily value} with the input assumed-\/size character vector {\ttfamily symbol} for a length of {\ttfamily padded\+Len} and return the resulting new string. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector to be padded. \\
+\hline
+\mbox{\texttt{ in}}  & {\em symbol} & \+: The input assumed-\/size character vector to be used as the symbol for padding. \\
+\hline
+\mbox{\texttt{ in}}  & {\em padded\+Len} & \+: The length of the resulting final allocatable character vector.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily padded\+Char} \+: The output string padded with {\ttfamily symbol}.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+Note that {\ttfamily symbol} is an assumed-\/size character vector of any length. However, if the full length of symbol does not fit at the end of the padded output {\ttfamily padded\+Char}, the symbol will be cut at the end of the output {\ttfamily padded\+Char}. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01685}{1685}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_adf2d0a723b9b74a97f7f50bc9fb1149a}\label{namespaceString__mod_adf2d0a723b9b74a97f7f50bc9fb1149a}} 
+\index{String\_mod@{String\_mod}!replace@{replace}}
+\index{replace@{replace}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{replace()}{replace()}}
+{\footnotesize\ttfamily pure recursive character(len=\+:) function, allocatable String\+\_\+mod\+::replace (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{value,  }\item[{character(len=$\ast$), intent(in)}]{search,  }\item[{character(len=$\ast$), intent(in)}]{substitute }\end{DoxyParamCaption})}
+
+
+
+Replace all instances of the input {\ttfamily search} assumed-\/size character vector in the input {\ttfamily value} assumed-\/size character vector with the input {\ttfamily substitute} assumed-\/size character vector and return the result. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector whose subparts will have to replaced. \\
+\hline
+\mbox{\texttt{ in}}  & {\em search} & \+: The input substring pattern that will have to replaced. \\
+\hline
+\mbox{\texttt{ in}}  & {\em substitute} & \+: The input substitute substring that will replace the {\ttfamily search} pattern in the input {\ttfamily value}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily modified\+Value} \+: The modified input {\ttfamily value} such that with all instances of {\ttfamily search} are replaced with the input {\ttfamily substitute}.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00236}{236}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a13a8791d75dde13643300315d31659cf}\label{namespaceString__mod_a13a8791d75dde13643300315d31659cf}} 
+\index{String\_mod@{String\_mod}!split@{split}}
+\index{split@{split}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{split()}{split()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}}) function, dimension(\+:), allocatable String\+\_\+mod\+::split (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{value,  }\item[{character(len=$\ast$), intent(in)}]{delim,  }\item[{integer(IK), intent(out), optional}]{npart }\end{DoxyParamCaption})}
+
+
+
+Split the input {\ttfamily value} of type character of arbitrary length by finding the input {\ttfamily substitute} in the input {\ttfamily value} and return the result. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input character vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em delim} & \+: The delimiter to be used to split the input value. \\
+\hline
+\mbox{\texttt{ out}}  & {\em npart} & \+: The number of substrings resulting from splitting the value ({\bfseries{optional}}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Parts} \+: An allocatable array of type \mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}} containing the split parts of the input value.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+When {\ttfamily delim = \char`\"{}\char`\"{}}, this routine returns a jagged array of character vectors, each element of which is one character of the input value.
+
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+
+This procedure should be preferred over the the legacy implementation \mbox{\hyperlink{namespaceString__mod_a6cd16558dfee7fbfcbdcf0c1403d1302}{split\+Str()}} that is kept only for legacy support. This routine is significantly faster than the legacy implementation and its semantic behavior is identical to the Python3\textquotesingle{}s {\ttfamily \mbox{\hyperlink{namespaceString__mod_a13a8791d75dde13643300315d31659cf}{split()}}} string method, except when {\ttfamily delim} is empty.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Friday Dec 4, 2020, 11\+:40 PM, Dallas, TX 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00294}{294}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a6cd16558dfee7fbfcbdcf0c1403d1302}\label{namespaceString__mod_a6cd16558dfee7fbfcbdcf0c1403d1302}} 
+\index{String\_mod@{String\_mod}!splitStr@{splitStr}}
+\index{splitStr@{splitStr}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{splitStr()}{splitStr()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}}) function, dimension(\+:), allocatable String\+\_\+mod\+::split\+Str (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{value,  }\item[{character(len=$\ast$), intent(in)}]{delim,  }\item[{integer(IK)}]{n\+Part }\end{DoxyParamCaption})}
+
+
+
+Split the input {\ttfamily value} character of arbitrary length with the input {\ttfamily substitute} in the input {\ttfamily value} and return the result. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em delim} & \+: The delimiter to be used to split the input value. \\
+\hline
+\mbox{\texttt{ out}}  & {\em n\+Part} & \+: The number of substrings resulting from splitting the value ({\bfseries{optional}}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Parts} \+: An allocatable array of type \mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}} containing the split parts of the input value.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+This algorithm is only kept for archival purposes and should not be used in new development, unless the implications and the behavior of this algorithm are fully understood. Use instead \mbox{\hyperlink{namespaceString__mod_a13a8791d75dde13643300315d31659cf}{split()}}.
+
+The semantic behavior of this algorithm is different from \mbox{\hyperlink{namespaceString__mod_a13a8791d75dde13643300315d31659cf}{split()}}. Furthermore, this algorithm is slower than the alternative implementation in \mbox{\hyperlink{namespaceString__mod_a13a8791d75dde13643300315d31659cf}{split()}}.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00383}{383}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceString__mod_aea8d1ba3c565ed766a8924deb4d69b3f}\label{namespaceString__mod_aea8d1ba3c565ed766a8924deb4d69b3f}} 
+\index{String\_mod@{String\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character($\ast$), parameter String\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@String\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00062}{62}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a59013ff38e0741f210dd7eeef5c7b4b7}\label{namespaceString__mod_a59013ff38e0741f210dd7eeef5c7b4b7}} 
+\index{String\_mod@{String\_mod}!NUM2CHAR\_MAXLEN@{NUM2CHAR\_MAXLEN}}
+\index{NUM2CHAR\_MAXLEN@{NUM2CHAR\_MAXLEN}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{NUM2CHAR\_MAXLEN}{NUM2CHAR\_MAXLEN}}
+{\footnotesize\ttfamily integer(IK) String\+\_\+mod\+::\+NUM2\+CHAR\+\_\+\+MAXLEN = 127\+\_\+\+IK}
+
+
+
+The maximum possible length of the string output from the functions under the generic interface {\ttfamily \mbox{\hyperlink{interfaceString__mod_1_1num2char}{num2char}}}. Note that {\ttfamily NUM2\+CHAR\+\_\+\+MAXLEN = 127} is very generous given that,. 
+
+
+\begin{DoxyItemize}
+\item The maximum length of a complex of kind {\ttfamily real128} including signs, exponentiation, comma, and parentheses is {\ttfamily 93} characters. {\ttfamily (-\/1.\+189731495357231765085759326628007016E+4932,-\/1.\+189731495357231765085759326628007016E+4932)}
+\item The maximum length of a real of kind {\ttfamily real128} including signs and exponentiation is {\ttfamily 44} characters. {\ttfamily -\/1.\+18973149535723176508575932662800702E+4932}
+\item The maximum length of an integer of kind {\ttfamily int64} including signs {\ttfamily 20} characters. {\ttfamily -\/9223372036854775807} 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00072}{72}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+

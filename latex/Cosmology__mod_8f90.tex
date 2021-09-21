@@ -1,0 +1,49 @@
+\hypertarget{Cosmology__mod_8f90}{}\doxysection{/home/amir/git/paramonte/src/kernel/\+Cosmology\+\_\+mod.f90 File Reference}
+\label{Cosmology__mod_8f90}\index{/home/amir/git/paramonte/src/kernel/Cosmology\_mod.f90@{/home/amir/git/paramonte/src/kernel/Cosmology\_mod.f90}}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespaceCosmology__mod}{Cosmology\+\_\+mod}}
+\begin{DoxyCompactList}\small\item\em This module contains procedures and constants for cosmological calculations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+pure real(RK) function \mbox{\hyperlink{namespaceCosmology__mod_a9510b3e5c6963dda74a1987aec957315}{Cosmology\+\_\+mod\+::getlogdvdz}} (zplus1, logzplus1, twice\+Log\+Lum\+Dis\+Mpc)
+\begin{DoxyCompactList}\small\item\em Return the natural logarithm of the differential comoving volume of cosmos. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceCosmology__mod_a5c951d7a02ae5a66a5ead8cecbef2300}{Cosmology\+\_\+mod\+::get\+Log\+Lum\+Dis\+Wic\+Mpc}} (zplus1)
+\begin{DoxyCompactList}\small\item\em Return the approximate logarithm of the cosmological luminosity distance in units of MPc. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceCosmology__mod_acfc42ca9dec91f28cd3fbf271fbf8f5f}{Cosmology\+\_\+mod\+::ldiswickram}} (zplus1)
+\begin{DoxyCompactList}\small\item\em Return the approximation to the cosmological luminosity distance. \end{DoxyCompactList}\item 
+real(RK) function \mbox{\hyperlink{namespaceCosmology__mod_a95b89d72b71ac21b69dca5d4be7bf5f3}{Cosmology\+\_\+mod\+::get\+Look\+Back\+Time}} (zplus1, max\+Relative\+Error, n\+Refinement)
+\begin{DoxyCompactList}\small\item\em Return the cosmological lookback time in GYrs at the given redshift for the assumed cosmological parameters. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceCosmology__mod_a05d40c6dc6011976113b609b5a5def3f}{Cosmology\+\_\+mod\+::get\+Look\+Back\+Time\+Density}} (zplus1)
+\begin{DoxyCompactList}\small\item\em Return the {\bfseries{differential}} (w.\+r.\+t. {\ttfamily z}) cosmological lookback time in GYrs at the given redshift for the assumed cosmological parameters. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceCosmology__mod_aa74d62c7da4fdd3f24982ba08132aec3}{Cosmology\+\_\+mod\+::get\+Universe\+Age\+Derivative}} (zplus1)
+\begin{DoxyCompactList}\small\item\em Return the derivative of the age of the Universe, w.\+r.\+t. redshift for a given input redshift + 1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceCosmology__mod_ad9dfda7aaa14cc447dae93d2a28de364}{Cosmology\+\_\+mod\+::\+MODULE\+\_\+\+NAME}} = \char`\"{}@Cosmology\+\_\+mod\char`\"{}
+\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a432241a9826656bc0c127f84813a0d78}{Cosmology\+\_\+mod\+::\+LIGHT\+\_\+\+SPEED}} = 3.e5\+\_\+\+RK
+\begin{DoxyCompactList}\small\item\em LIGHT\+\_\+\+SPEED is the speed of light (Km/s). \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a98c50f34f1ed59379555d7e79bdd833d}{Cosmology\+\_\+mod\+::\+HUBBLE\+\_\+\+CONST}} = 7.\+1e1\+\_\+\+RK
+\begin{DoxyCompactList}\small\item\em HUBBLE\+\_\+\+CONST is the Hubble constant in units of km/s/\+MPc. \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a8afef45edb135ba0ad223989b8f19a44}{Cosmology\+\_\+mod\+::\+HUBBLE\+\_\+\+TIME\+\_\+\+GYRS}} = 13.\+8\+\_\+\+RK
+\begin{DoxyCompactList}\small\item\em hubble time (liddle 2003, page 57) in units of gyrs \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a7c1e723f9c26f62866139dc4f9cc9913}{Cosmology\+\_\+mod\+::\+INVERSE\+\_\+\+HUBBLE\+\_\+\+CONST}} = 1.\+\_\+\+RK / HUBBLE\+\_\+\+CONST
+\begin{DoxyCompactList}\small\item\em inverse of HUBBLE\+\_\+\+CONST\+: 0.\+014084507042254 \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a006b3969504835887a1b6fa1f7e7d03d}{Cosmology\+\_\+mod\+::\+LS2\+HC}} = LIGHT\+\_\+\+SPEED / HUBBLE\+\_\+\+CONST
+\begin{DoxyCompactList}\small\item\em the speed of light in units of km/s divided by the Hubble constant. \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a0a035864b5c70fb1634e36510d38b8bf}{Cosmology\+\_\+mod\+::\+LOGLS2\+HC}} = log(LIGHT\+\_\+\+SPEED) -\/ log(HUBBLE\+\_\+\+CONST)
+\begin{DoxyCompactList}\small\item\em log speed of light in units of km/s divided by the Hubble constant. \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_ad6795a27c87d65c2d4fe40cc63755b3e}{Cosmology\+\_\+mod\+::\+MPC2\+CM}} = 3.\+09e24\+\_\+\+RK
+\begin{DoxyCompactList}\small\item\em 1 Mega Parsec = MPC2\+CM centimeters. \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a8c386dad47bf7975248bf902bd6a435e}{Cosmology\+\_\+mod\+::\+LOGMPC2\+CMSQ4\+PI}} = log(4.\+\_\+\+RK$\ast$PI) + 2.\+\_\+\+RK$\ast$log(MPC2\+CM)
+\begin{DoxyCompactList}\small\item\em log(\+Mega\+Parsec2centimeters). \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a4807afbc83558792b63b5cc1c267e340}{Cosmology\+\_\+mod\+::\+LOG10\+MPC2\+CMSQ4\+PI}} = log10(4.\+\_\+\+RK$\ast$PI) + 2.\+\_\+\+RK$\ast$log10(MPC2\+CM)
+\begin{DoxyCompactList}\small\item\em log10(\+Mega\+Parsec2centimeters). \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_aac3091a5680fb8c29a8702e87b565963}{Cosmology\+\_\+mod\+::\+OMEGA\+\_\+\+DE}} = 0.\+7\+\_\+\+RK
+\begin{DoxyCompactList}\small\item\em Dark Energy density. \end{DoxyCompactList}\item 
+real(RK), parameter \mbox{\hyperlink{namespaceCosmology__mod_a8f3e1b9d3e515bd28fe15c5f516d6317}{Cosmology\+\_\+mod\+::\+OMEGA\+\_\+\+DM}} = 0.\+3\+\_\+\+RK
+\begin{DoxyCompactList}\small\item\em Dark Matter density. \end{DoxyCompactList}\end{DoxyCompactItemize}

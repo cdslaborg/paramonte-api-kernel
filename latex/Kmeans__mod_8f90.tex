@@ -1,0 +1,36 @@
+\hypertarget{Kmeans__mod_8f90}{}\doxysection{/home/amir/git/paramonte/src/kernel/\+Kmeans\+\_\+mod.f90 File Reference}
+\label{Kmeans__mod_8f90}\index{/home/amir/git/paramonte/src/kernel/Kmeans\_mod.f90@{/home/amir/git/paramonte/src/kernel/Kmeans\_mod.f90}}
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \mbox{\hyperlink{structKmeans__mod_1_1Prop__type}{Kmeans\+\_\+mod\+::\+Prop\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structKmeans__mod_1_1Prop__type}{Prop\+\_\+type}}} class, containing the properties of Kmeans clusters. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{structKmeans__mod_1_1Kmeans__type}{Kmeans\+\_\+mod\+::\+Kmeans\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structKmeans__mod_1_1Kmeans__type}{Kmeans\+\_\+type}}} class. The inclusion of the component {\ttfamily Normed\+Point} adds $\sim$50\% to the computational cost of performing Kmeans. In this latest implementation, avoiding {\ttfamily Normed\+Point} as a component leads to 15-\/50\% performance improvement. The moral is, simple repeating of addition operation is much significantly cheaper than storing the operation results for later usage. In the following declaration descriptions,. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespaceKmeans__mod}{Kmeans\+\_\+mod}}
+\begin{DoxyCompactList}\small\item\em This module contains procedures and routines for the Kmeans the statistical classification and clustering methods. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+pure type(Kmeans\+\_\+type) function \mbox{\hyperlink{namespaceKmeans__mod_a5fb9bb4b4505ce4fce10ba73e509af2f}{Kmeans\+\_\+mod\+::allocate\+Kmeans}} (nd, np, nc)
+\item 
+pure subroutine \mbox{\hyperlink{namespaceKmeans__mod_ad8b3b0fdff3dd016e9b42d5ae6d6ed59}{Kmeans\+\_\+mod\+::allocate\+Kmeans\+Prop}} (Prop, nd, np, nc)
+\item 
+type(Kmeans\+\_\+type) function \mbox{\hyperlink{namespaceKmeans__mod_a326680f1f273d7651781eed4879d4d4f}{Kmeans\+\_\+mod\+::get\+Kmeans}} (nd, np, nc, nt, Point, Init\+Center, rel\+Tol, niter\+Max, nfail\+Max, min\+Size)
+\begin{DoxyCompactList}\small\item\em Perform the Kmeans clustering for {\ttfamily nt} tries on the input data set represented by the array {\ttfamily Point(nd, np)} and return the clustering that yields the least potential. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceKmeans__mod_abd3a6d85bd62c09c556b239a510c88f8}{Kmeans\+\_\+mod\+::run\+Kmeans}} (nd, np, nc, nfail\+Max, niter\+Max, min\+Size, rel\+Tol, Point, Size, niter, nfail, Center, potential, Membership, Min\+Distance\+Sq, Err, Init\+Center)
+\begin{DoxyCompactList}\small\item\em Perform the Kmeans clustering on the input data set represented by the array {\ttfamily Point(nd, np)}. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceKmeans__mod_a825a144e084e48f30e8fdd462d8ffc3a}{Kmeans\+\_\+mod\+::get\+Prop}} (Kmeans, nd, np, Point, Index, inclusion\+Fraction, point\+Log\+Vol\+Normed)
+\begin{DoxyCompactList}\small\item\em This is a method of class \mbox{\hyperlink{structKmeans__mod_1_1Kmeans__type}{Kmeans\+\_\+type}}. Compute the following properties (components) of the input object of class \mbox{\hyperlink{structKmeans__mod_1_1Kmeans__type}{Kmeans\+\_\+type}}\+: \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceKmeans__mod_ac4b9beeaf1a19b79cfd5aacb8915fb02}{Kmeans\+\_\+mod\+::run\+KPP}} (nc, nd, np, Point, Sum\+Point, Membership, Size, potential)
+\begin{DoxyCompactList}\small\item\em Find nc initial cluster centers for the Kmeans algorithm, using Kmeans++ recipe. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceKmeans__mod_a7e385bbc9ba8d03f353899bacaa05911}{Kmeans\+\_\+mod\+::write\+Kmeans}} (Kmeans, Point, nd, np, file\+Unit)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceKmeans__mod_a8e45620d83ae161f59cf82556da7dc9e}{Kmeans\+\_\+mod\+::\+MODULE\+\_\+\+NAME}} = \char`\"{}@Kmeans\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}

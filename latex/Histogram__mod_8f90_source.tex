@@ -1,0 +1,212 @@
+\hypertarget{Histogram__mod_8f90_source}{}\doxysection{Histogram\+\_\+mod.\+f90}
+\label{Histogram__mod_8f90_source}\index{/home/amir/git/paramonte/src/kernel/Histogram\_mod.f90@{/home/amir/git/paramonte/src/kernel/Histogram\_mod.f90}}
+\mbox{\hyperlink{Histogram__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00001}\mbox{\hyperlink{namespaceHistogram__mod}{00001}} \textcolor{fortran_statement}{module} \mbox{\hyperlink{namespaceHistogram__mod}{Histogram\_mod}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00003}00003     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00004}00004     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00006}\mbox{\hyperlink{namespaceHistogram__mod_af99802ab2154efb22f77fd43d7cd7029}{00006}}     \textcolor{fortran_statement}{character}(len\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_operator_symbols}{*}),\textcolor{fortran_attribute}{ parameter} :: \mbox{\hyperlink{namespaceConstants__mod_ade87ed33b235f099b65904dc21cbe01e}{MODULE\_NAME}}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}@Histogram\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00008}\mbox{\hyperlink{interfaceHistogram__mod_1_1bin}{00008}}     \textcolor{fortran_statement}{interface} \mbox{\hyperlink{interfaceHistogram__mod_1_1bin}{bin}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00009}00009 \textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceHistogram__mod_ab8bbaf2cb2e876b7773238f5dc69a148}{bin\_RK}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00010}00010     \textcolor{fortran_statement}{end interface }\mbox{\hyperlink{interfaceHistogram__mod_1_1bin}{bin}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00012}\mbox{\hyperlink{interfaceHistogram__mod_1_1bracket}{00012}}     \textcolor{fortran_statement}{interface} \mbox{\hyperlink{interfaceHistogram__mod_1_1bracket}{bracket}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00013}00013 \textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceHistogram__mod_a4de01a615599f9f617bc040416a2cdac}{bracket\_RK}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00014}00014     \textcolor{fortran_statement}{end interface }\mbox{\hyperlink{interfaceHistogram__mod_1_1bracket}{bracket}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00016}00016 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00018}00018 \textcolor{fortran_statement}{contains}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00020}00020 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00041}\mbox{\hyperlink{interfaceHistogram__mod_1_1bin_a446799730fd0b00ce17042b8b73367aa}{00041}} \textcolor{fortran_attribute}{    pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceHistogram__mod_ab8bbaf2cb2e876b7773238f5dc69a148}{bin\_RK}}(AscendingVector,value)\textcolor{fortran_statement}{ result}(binIndex)}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00042}00042 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00043}00043 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceHistogram__mod_ab8bbaf2cb2e876b7773238f5dc69a148}{bin\_RK}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00044}00044 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00045}00045 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00046}00046         \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00047}00047 \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})    ,\textcolor{fortran_attribute}{ intent(in)},\textcolor{fortran_attribute}{ contiguous}    :: AscendingVector(:)}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00048}00048 \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})    ,\textcolor{fortran_attribute}{ intent(in)}                :: value}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00049}00049         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}})                             :: binIndex}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00050}00050         \textcolor{fortran_keywordflow}{do} binIndex\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1},\textcolor{fortran_function}{ size}(AscendingVector)}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00051}00051             \textcolor{fortran_keywordflow}{if} (value\textcolor{fortran_operator_symbols}{ < }AscendingVector(binIndex))\textcolor{fortran_statement}{ exit}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00052}00052 \textcolor{fortran_keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00053}00053         binIndex\textcolor{fortran_operator_symbols}{ = }binIndex\textcolor{fortran_operator_symbols}{ -\/ }\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00054}00054     \textcolor{fortran_statement}{end function }\mbox{\hyperlink{namespaceHistogram__mod_ab8bbaf2cb2e876b7773238f5dc69a148}{bin\_RK}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00056}00056 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00078}\mbox{\hyperlink{interfaceHistogram__mod_1_1bracket_a83ff14bd640f81f8d13da8795db2f07c}{00078}} \textcolor{fortran_attribute}{    pure}\textcolor{fortran_statement}{ subroutine} \mbox{\hyperlink{namespaceHistogram__mod_a4de01a615599f9f617bc040416a2cdac}{bracket\_RK}}(AscendingVector,value,lowerIndex,upperIndex)}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00079}00079 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00080}00080 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceHistogram__mod_a4de01a615599f9f617bc040416a2cdac}{bracket\_RK}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00081}00081 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00082}00082 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00083}00083         \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00084}00084 \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})    ,\textcolor{fortran_attribute}{ intent(in)},\textcolor{fortran_attribute}{ contiguous}    :: AscendingVector(:)}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00085}00085 \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})    ,\textcolor{fortran_attribute}{ intent(in)}                :: value}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00086}00086         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}) ,\textcolor{fortran_attribute}{ intent(out)}               :: lowerIndex}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00087}00087         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}) ,\textcolor{fortran_attribute}{ intent(out)}               :: upperIndex}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00088}00088         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}})                             :: lenVec, i}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00089}00089         lenVec\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{size}(AscendingVector)}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00090}00090         \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, lenVec}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00091}00091             \textcolor{fortran_keywordflow}{if} (value\textcolor{fortran_operator_symbols}{ < }AscendingVector(i))\textcolor{fortran_statement}{ exit}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00092}00092 \textcolor{fortran_keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00093}00093         upperIndex\textcolor{fortran_operator_symbols}{ = }i}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00094}00094         lowerIndex\textcolor{fortran_operator_symbols}{ = }upperIndex\textcolor{fortran_operator_symbols}{ -\/ }\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00095}00095     \textcolor{fortran_statement}{end subroutine }\mbox{\hyperlink{namespaceHistogram__mod_a4de01a615599f9f617bc040416a2cdac}{bracket\_RK}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00097}00097 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00119}\mbox{\hyperlink{namespaceHistogram__mod_a28d67df41d18d5718623a9142dab455f}{00119}} \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{namespaceHistogram__mod_a28d67df41d18d5718623a9142dab455f}{getHist1D}}(method, xmin, xmax, nxbin, np, X, Xbin, Density, errorOccurred)}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00120}00120 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00121}00121 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceHistogram__mod_a28d67df41d18d5718623a9142dab455f}{getHist1D}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00122}00122 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00123}00123 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00124}00124         \textcolor{fortran_statement}{character}(\textcolor{fortran_operator_symbols}{*}),\textcolor{fortran_attribute}{ intent(in)}  :: method}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00125}00125         \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ intent(in)}  :: np,nxbin}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00126}00126 \textcolor{fortran_statement}{        real}(RK)    ,\textcolor{fortran_attribute}{ intent(in)}  :: xmin,xmax}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00127}00127 \textcolor{fortran_statement}{        real}(RK)    ,\textcolor{fortran_attribute}{ intent(in)}  :: X(np)}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00128}00128 \textcolor{fortran_statement}{        real}(RK)    ,\textcolor{fortran_attribute}{ intent(out)} :: Xbin(nxbin), Density(nxbin)}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00129}00129 \textcolor{fortran_statement}{        logical}     ,\textcolor{fortran_attribute}{ intent(out)} :: errorOccurred}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00130}00130 \textcolor{fortran_statement}{        real}(RK)                  :: xbinsize}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00131}00131         \textcolor{fortran_statement}{integer}(IK)               :: i, ip, thisXbin, npEffective}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00133}00133         xbinsize\textcolor{fortran_operator_symbols}{ = }(xmax\textcolor{fortran_operator_symbols}{-\/}xmin)\textcolor{fortran_operator_symbols}{ / }\textcolor{fortran_function}{real}(nxbin,\textcolor{fortran_spcifier}{kind}\textcolor{fortran_operator_symbols}{=}\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00134}00134         Xbin\textcolor{fortran_operator_symbols}{ = }[ (xmin\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_function}{real}(i\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{1},\textcolor{fortran_spcifier}{kind}\textcolor{fortran_operator_symbols}{=}\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})\textcolor{fortran_operator_symbols}{*}xbinsize,i\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_numeric_literal}{1},nxbin) ]}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00136}00136         Density\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.\_RK}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00137}00137         npEffective\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0\_IK}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00138}00138         \textcolor{fortran_keywordflow}{do} ip\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, np}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00139}00139             \textcolor{fortran_keywordflow}{if} (X(ip)\textcolor{fortran_operator_symbols}{>}\textcolor{fortran_operator_symbols}{=}xmin \textcolor{fortran_operator_logical}{.and.} X(ip)\textcolor{fortran_operator_symbols}{<}xmax) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00140}00140                 npEffective\textcolor{fortran_operator_symbols}{ = }npEffective\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00141}00141                 thisXbin\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceHistogram__mod_ad80a9c34cbdd54d1c6b5d652c4def668}{getBin}}(X(ip),xmin,nxbin,xbinsize)}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00142}00142                 Density(thisXbin)\textcolor{fortran_operator_symbols}{ = }Density(thisXbin)\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{1.\_RK}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00143}00143 \textcolor{fortran_keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00144}00144 \textcolor{fortran_keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00145}00145 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00146}00146         Xbin\textcolor{fortran_operator_symbols}{ = }Xbin\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{5\_RK}\textcolor{fortran_operator_symbols}{ * }xbinsize}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00147}00147 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00148}00148         \textcolor{fortran_keywordflow}{if}(method\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_string}{"{}count"{}}) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00149}00149             errorOccurred\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.false.}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00150}00150 \textcolor{fortran_statement}{            return}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00151}00151         \textcolor{fortran_keywordflow}{elseif}(method\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_string}{"{}pdf"{}}) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00152}00152             Density\textcolor{fortran_operator_symbols}{ = }Density\textcolor{fortran_operator_symbols}{ / }\textcolor{fortran_function}{real}(npEffective,\textcolor{fortran_spcifier}{kind}\textcolor{fortran_operator_symbols}{=}\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00153}00153             errorOccurred\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.false.}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00154}00154         \textcolor{fortran_keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00155}00155             errorOccurred\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00156}00156 \textcolor{fortran_keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00157}00157 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00158}00158     \textcolor{fortran_statement}{end subroutine }\mbox{\hyperlink{namespaceHistogram__mod_a28d67df41d18d5718623a9142dab455f}{getHist1D}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00159}00159 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00160}00160 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00161}00161 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00189}\mbox{\hyperlink{namespaceHistogram__mod_ab0d6c2169496556c8e55312ec116fbb6}{00189}} \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{namespaceHistogram__mod_ab0d6c2169496556c8e55312ec116fbb6}{getHist2D}}(histType,xmin,xmax,ymin,ymax,nxbin,nybin,np,X,Y,Xbin,Ybin,Density,errorOccurred)}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00190}00190 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00191}00191 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceHistogram__mod_ab0d6c2169496556c8e55312ec116fbb6}{getHist2D}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00192}00192 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00193}00193 \textcolor{preprocessor}{}        \textcolor{fortran_comment}{!use, intrinsic :: iso\_fortran\_env, only: output\_unit}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00194}00194         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceString__mod}{String\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceString__mod_ade10dffb10b5ed445fec280457aa9eb4}{getLowerCase}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00195}00195         \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00196}00196         \textcolor{fortran_statement}{character}(\textcolor{fortran_operator_symbols}{*}),\textcolor{fortran_attribute}{ intent(in)}  :: histType}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00197}00197         \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ intent(in)}  :: np,nxbin,nybin}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00198}00198 \textcolor{fortran_statement}{        real}(RK)    ,\textcolor{fortran_attribute}{ intent(in)}  :: xmin,xmax,ymin,ymax}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00199}00199 \textcolor{fortran_statement}{        real}(RK)    ,\textcolor{fortran_attribute}{ intent(in)}  :: X(np),Y(np)}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00200}00200 \textcolor{fortran_statement}{        real}(RK)    ,\textcolor{fortran_attribute}{ intent(out)} :: Xbin(nxbin),Ybin(nybin),Density(nybin,nxbin)}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00201}00201 \textcolor{fortran_statement}{        logical}     ,\textcolor{fortran_attribute}{ intent(out)} :: errorOccurred}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00202}00202         \textcolor{fortran_statement}{character}(:),\textcolor{fortran_attribute}{ allocatable} :: method}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00203}00203 \textcolor{fortran_statement}{        real}(RK)                  :: xbinsize,ybinsize}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00204}00204         \textcolor{fortran_statement}{integer}(IK)               :: i, ip, thisXbin, thisYbin, npEffective}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00205}00205 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00206}00206         errorOccurred\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.false.}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00207}00207 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00208}00208         xbinsize\textcolor{fortran_operator_symbols}{ = }(xmax\textcolor{fortran_operator_symbols}{-\/}xmin)\textcolor{fortran_operator_symbols}{ / }\textcolor{fortran_function}{real}(nxbin,\textcolor{fortran_spcifier}{kind}\textcolor{fortran_operator_symbols}{=}\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00209}00209         ybinsize\textcolor{fortran_operator_symbols}{ = }(ymax\textcolor{fortran_operator_symbols}{-\/}ymin)\textcolor{fortran_operator_symbols}{ / }\textcolor{fortran_function}{real}(nybin,\textcolor{fortran_spcifier}{kind}\textcolor{fortran_operator_symbols}{=}\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00210}00210         Xbin\textcolor{fortran_operator_symbols}{ = }[ (xmin\textcolor{fortran_operator_symbols}{+}\textcolor{fortran_function}{real}(i\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{1},\textcolor{fortran_spcifier}{kind}\textcolor{fortran_operator_symbols}{=}\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})\textcolor{fortran_operator_symbols}{*}xbinsize,i\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_numeric_literal}{1},nxbin) ]}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00211}00211         Ybin\textcolor{fortran_operator_symbols}{ = }[ (ymin\textcolor{fortran_operator_symbols}{+}\textcolor{fortran_function}{real}(i\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{1},\textcolor{fortran_spcifier}{kind}\textcolor{fortran_operator_symbols}{=}\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})\textcolor{fortran_operator_symbols}{*}ybinsize,i\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_numeric_literal}{1},nybin) ]}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00212}00212 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00213}00213         Density\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.\_RK}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00214}00214         npEffective\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0\_IK}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00215}00215         \textcolor{fortran_keywordflow}{do} ip\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1},np}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00216}00216             \textcolor{fortran_keywordflow}{if} (X(ip)\textcolor{fortran_operator_symbols}{>}\textcolor{fortran_operator_symbols}{=}xmin \textcolor{fortran_operator_logical}{.and.} X(ip)\textcolor{fortran_operator_symbols}{<}xmax \textcolor{fortran_operator_logical}{.and.} Y(ip)\textcolor{fortran_operator_symbols}{>}\textcolor{fortran_operator_symbols}{=}ymin \textcolor{fortran_operator_logical}{.and.} Y(ip)\textcolor{fortran_operator_symbols}{<}ymax) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00217}00217                 npEffective\textcolor{fortran_operator_symbols}{ = }npEffective\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00218}00218                 thisXbin\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceHistogram__mod_ad80a9c34cbdd54d1c6b5d652c4def668}{getBin}}(X(ip),xmin,nxbin,xbinsize)}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00219}00219                 thisYbin\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceHistogram__mod_ad80a9c34cbdd54d1c6b5d652c4def668}{getBin}}(Y(ip),ymin,nybin,ybinsize)}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00220}00220                 Density(thisYbin,thisXbin)\textcolor{fortran_operator_symbols}{ = }Density(thisYbin,thisXbin)\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{1.\_RK}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00221}00221 \textcolor{fortran_keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00222}00222 \textcolor{fortran_keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00223}00223 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00224}00224         Xbin\textcolor{fortran_operator_symbols}{ = }Xbin\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{5\_RK}\textcolor{fortran_operator_symbols}{ * }xbinsize}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00225}00225         Ybin\textcolor{fortran_operator_symbols}{ = }Ybin\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{5\_RK}\textcolor{fortran_operator_symbols}{ * }ybinsize}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00226}00226         method\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceString__mod_ade10dffb10b5ed445fec280457aa9eb4}{getLowerCase}}(\textcolor{fortran_function}{trim}(\textcolor{fortran_function}{adjustl}(histType)))}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00227}00227         \textcolor{fortran_keywordflow}{if}(method\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_string}{"{}pdf"{}}) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00228}00228             Density\textcolor{fortran_operator_symbols}{ = }Density\textcolor{fortran_operator_symbols}{ / }\textcolor{fortran_function}{real}(npEffective,\textcolor{fortran_spcifier}{kind}\textcolor{fortran_operator_symbols}{=}\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00229}00229         \textcolor{fortran_keywordflow}{elseif}(method\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_string}{"{}pdf(y|x)"{}}) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00230}00230             \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1},nxbin}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00231}00231                 Density(\textcolor{fortran_numeric_literal}{1}:nybin,i)\textcolor{fortran_operator_symbols}{ = }Density(\textcolor{fortran_numeric_literal}{1}:nybin,i)\textcolor{fortran_operator_symbols}{ / }\textcolor{fortran_function}{sum}(Density(\textcolor{fortran_numeric_literal}{1}:nybin,i))}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00232}00232 \textcolor{fortran_keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00233}00233         \textcolor{fortran_keywordflow}{elseif}(method\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_string}{"{}pdf(x|y)"{}}) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00234}00234             \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1},nybin}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00235}00235                 Density(i,\textcolor{fortran_numeric_literal}{1}:nxbin)\textcolor{fortran_operator_symbols}{ = }Density(i,\textcolor{fortran_numeric_literal}{1}:nxbin)\textcolor{fortran_operator_symbols}{ / }\textcolor{fortran_function}{sum}(Density(i,\textcolor{fortran_numeric_literal}{1}:nxbin))}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00236}00236 \textcolor{fortran_keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00237}00237         \textcolor{fortran_keywordflow}{elseif}(method\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_string}{"{}count"{}}) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00238}00238 \textcolor{fortran_statement}{            return}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00239}00239         \textcolor{fortran_keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00240}00240             errorOccurred\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00241}00241 \textcolor{fortran_keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00242}00242 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00243}00243     \textcolor{fortran_statement}{end subroutine }\mbox{\hyperlink{namespaceHistogram__mod_ab0d6c2169496556c8e55312ec116fbb6}{getHist2D}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00244}00244 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00245}00245 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00246}00246 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00273}\mbox{\hyperlink{namespaceHistogram__mod_ad80a9c34cbdd54d1c6b5d652c4def668}{00273}} \textcolor{fortran_attribute}{    pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceHistogram__mod_ad80a9c34cbdd54d1c6b5d652c4def668}{getBin}}(x,lowerBound,nbin,binsize)\textcolor{fortran_statement}{ result}(ibin)}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00274}00274 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00275}00275 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceHistogram__mod_ad80a9c34cbdd54d1c6b5d652c4def668}{getBin}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00276}00276 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00277}00277 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00278}00278         \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00279}00279         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}),\textcolor{fortran_attribute}{ intent(in)} :: nbin}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00280}00280 \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})   ,\textcolor{fortran_attribute}{ intent(in)} :: x,lowerBound,binsize}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00281}00281 \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})                :: xmin,xmid}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00282}00282         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}})             :: ibin,minbin,midbin,maxbin}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00283}00283 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00284}00284         \textcolor{fortran_keywordflow}{if} (x\textcolor{fortran_operator_symbols}{<}lowerBound \textcolor{fortran_operator_logical}{.or.} x\textcolor{fortran_operator_symbols}{>}\textcolor{fortran_operator_symbols}{=}lowerBound\textcolor{fortran_operator_symbols}{+}nbin\textcolor{fortran_operator_symbols}{*}binsize) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00285}00285             \textcolor{fortran_comment}{! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00286}00286             ibin\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00287}00287 \textcolor{fortran_statement}{            return}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00288}00288             \textcolor{fortran_comment}{! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00289}00289 \textcolor{fortran_keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00290}00290 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00291}00291         minbin\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00292}00292         maxbin\textcolor{fortran_operator_symbols}{ = }nbin}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00293}00293         xmin\textcolor{fortran_operator_symbols}{ = }lowerBound}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00294}00294         loopFindBin: \textcolor{fortran_keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00295}00295             midbin\textcolor{fortran_operator_symbols}{ = }(minbin\textcolor{fortran_operator_symbols}{+}maxbin)\textcolor{fortran_operator_symbols}{ / }\textcolor{fortran_numeric_literal}{2}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00296}00296             xmid\textcolor{fortran_operator_symbols}{ = }xmin\textcolor{fortran_operator_symbols}{ + }midbin\textcolor{fortran_operator_symbols}{*}binsize}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00297}00297             \textcolor{fortran_keywordflow}{if} (x\textcolor{fortran_operator_symbols}{<}xmid) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00298}00298                 \textcolor{fortran_keywordflow}{if} (minbin\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_operator_symbols}{=}midbin) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00299}00299                     ibin\textcolor{fortran_operator_symbols}{ = }minbin}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00300}00300 \textcolor{fortran_statement}{                    exit} loopFindBin}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00301}00301 \textcolor{fortran_keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00302}00302                 maxbin\textcolor{fortran_operator_symbols}{ = }midbin}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00303}00303 \textcolor{fortran_statement}{                cycle} loopFindBin}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00304}00304             \textcolor{fortran_keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00305}00305                 \textcolor{fortran_keywordflow}{if} (minbin\textcolor{fortran_operator_symbols}{=}\textcolor{fortran_operator_symbols}{=}midbin) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00306}00306                     ibin\textcolor{fortran_operator_symbols}{ = }maxbin}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00307}00307 \textcolor{fortran_statement}{                    exit} loopFindBin}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00308}00308 \textcolor{fortran_keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00309}00309                 minbin\textcolor{fortran_operator_symbols}{ = }midbin}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00310}00310 \textcolor{fortran_statement}{                cycle} loopFindBin}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00311}00311 \textcolor{fortran_keywordflow}{            end if}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00312}00312 \textcolor{fortran_keywordflow}{        end do} loopFindBin}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00313}00313 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00314}00314     \textcolor{fortran_statement}{end function }\mbox{\hyperlink{namespaceHistogram__mod_ad80a9c34cbdd54d1c6b5d652c4def668}{getBin}}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00315}00315 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00316}00316 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00317}00317 }
+\DoxyCodeLine{\Hypertarget{Histogram__mod_8f90_source_l00318}00318 \textcolor{fortran_statement}{end module }Histogram\_mod}
+
+\end{DoxyCode}

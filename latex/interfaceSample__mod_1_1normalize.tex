@@ -1,0 +1,54 @@
+\hypertarget{interfaceSample__mod_1_1normalize}{}\doxysection{Sample\+\_\+mod\+::normalize Interface Reference}
+\label{interfaceSample__mod_1_1normalize}\index{Sample\_mod::normalize@{Sample\_mod::normalize}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+PURE subroutine \mbox{\hyperlink{interfaceSample__mod_1_1normalize_a666885a9d4498873f0f7b73426a9d943}{normalize\+\_\+2D}} (Sample, Mean, dim)
+\begin{DoxyCompactList}\small\item\em Return the normalized sample of shape {\ttfamily (nd,np)} (default) or {\ttfamily (np,nd)} with respect to the input mean vector of length {\ttfamily nd}, where {\ttfamily nd} represents the number of dimensions (data attributes) of the input {\ttfamily Sample} and {\ttfamily np} represents the number of data points in the {\ttfamily Sample}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00073}{73}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{interfaceSample__mod_1_1normalize_a666885a9d4498873f0f7b73426a9d943}\label{interfaceSample__mod_1_1normalize_a666885a9d4498873f0f7b73426a9d943}} 
+\index{Sample\_mod::normalize@{Sample\_mod::normalize}!normalize\_2D@{normalize\_2D}}
+\index{normalize\_2D@{normalize\_2D}!Sample\_mod::normalize@{Sample\_mod::normalize}}
+\doxysubsubsection{\texorpdfstring{normalize\_2D()}{normalize\_2D()}}
+{\footnotesize\ttfamily PURE subroutine Sample\+\_\+mod\+::normalize\+::normalize\+\_\+2D (\begin{DoxyParamCaption}\item[{real(RK)}]{Sample,  }\item[{real(RK)}]{Mean,  }\item[{integer(IK), intent(in), optional}]{dim }\end{DoxyParamCaption})}
+
+
+
+Return the normalized sample of shape {\ttfamily (nd,np)} (default) or {\ttfamily (np,nd)} with respect to the input mean vector of length {\ttfamily nd}, where {\ttfamily nd} represents the number of dimensions (data attributes) of the input {\ttfamily Sample} and {\ttfamily np} represents the number of data points in the {\ttfamily Sample}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em Sample} & \+: The array of shape {\ttfamily (nd,np)} or {\ttfamily (np,nd)} containing the sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Mean} & \+: The contiguous vector of mean the input sample. If needed, the input {\ttfamily Mean} can be computed by calling the procedures collectively represented by the generic interface \mbox{\hyperlink{interfaceSample__mod_1_1getMean}{Sample\+\_\+mod\+::get\+Mean()}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em dim} & \+: An integer indicating which dimension of the input {\ttfamily Sample} iterates over the individual data. If {\ttfamily dim = 1} or {\ttfamily dim /= 2}, the input {\ttfamily Sample} is assumed to have the shape {\ttfamily (np,nd)}. If {\ttfamily dim = 2}, the input {\ttfamily Sample} is assumed to have the shape {\ttfamily (nd,np)}. ({\bfseries{optional}}, default = {\ttfamily 2}.)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+This procedure has the same functionality as \mbox{\hyperlink{namespaceSample__mod_a95d4025ed6659bc98f2be604d2cb6fd0}{Sample\+\_\+mod\+::gen\+Normed\+Sample\+\_\+2D()}}. However, unlike {\ttfamily \mbox{\hyperlink{namespaceSample__mod_a95d4025ed6659bc98f2be604d2cb6fd0}{gen\+Normed\+Sample\+\_\+2\+D()}}} which is a function and returns the normalized data in a new allocatable object, this {\itshape subroutine} normalizes the input data in place. This is, in general, more efficient and less memory-\/consuming as the cost of destroying the original data.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Wednesday 00\+:01 AM, August 25, 2021, Dallas, TX
+\end{DoxyAuthor}
+\begin{DoxyWarning}{Warning}
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in release build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00412}{412}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{Sample__mod_8f90}{Sample\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

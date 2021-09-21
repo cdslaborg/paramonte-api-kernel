@@ -1,0 +1,42 @@
+\hypertarget{DistMultiUnifCube__mod_8f90}{}\doxysection{/home/amir/git/paramonte/src/kernel/\+Dist\+Multi\+Unif\+Cube\+\_\+mod.f90 File Reference}
+\label{DistMultiUnifCube__mod_8f90}\index{/home/amir/git/paramonte/src/kernel/DistMultiUnifCube\_mod.f90@{/home/amir/git/paramonte/src/kernel/DistMultiUnifCube\_mod.f90}}
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structDistMultiUnifCube__mod_1_1DistMultiUnifCube__type}{Dist\+Multi\+Unif\+Cube\+\_\+mod\+::\+Dist\+Multi\+Unif\+Cube\+\_\+type}}
+\item 
+interface \mbox{\hyperlink{interfaceDistMultiUnifCube__mod_1_1getLogPDF}{Dist\+Multi\+Unif\+Cube\+\_\+mod\+::get\+Log\+PDF}}
+\item 
+interface \mbox{\hyperlink{interfaceDistMultiUnifCube__mod_1_1genRand}{Dist\+Multi\+Unif\+Cube\+\_\+mod\+::gen\+Rand}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespaceDistMultiUnifCube__mod}{Dist\+Multi\+Unif\+Cube\+\_\+mod}}
+\begin{DoxyCompactList}\small\item\em This module contains the classes and procedures for setting up and computing the properties of the Multi\+Variate Uniform (MVU) Distribution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+type(Dist\+Multi\+Unif\+Cube\+\_\+type) function \mbox{\hyperlink{namespaceDistMultiUnifCube__mod_a4f7167780abecb6bd4316f8beed8d332}{Dist\+Multi\+Unif\+Cube\+\_\+mod\+::construct}} (ndim, Support\+Lower, Support\+Upper, Err)
+\begin{DoxyCompactList}\small\item\em Construct an object of type \mbox{\hyperlink{structDistMultiUnifCube__mod_1_1DistMultiUnifCube__type}{Dist\+Multi\+Unif\+Cube\+\_\+type}} containing the properties of the specified Multi\+Variate Uniform (MVU) distribution in {\ttfamily ndim} dimensions. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceDistMultiUnifCube__mod_ac4d80b740166800b742b51d992ba9b65}{Dist\+Multi\+Unif\+Cube\+\_\+mod\+::logpdf}} (self, Point)
+\begin{DoxyCompactList}\small\item\em Return the log-\/value of the probability density function (PDF). Note that a PDF is, by definition, normalized and integrates to one over the support of the distribution. \end{DoxyCompactList}\item 
+real(RK) function, dimension(self\%ndim) \mbox{\hyperlink{namespaceDistMultiUnifCube__mod_a0a7caee9d1898e7fa37691c20dc3415e}{Dist\+Multi\+Unif\+Cube\+\_\+mod\+::rand}} (self)
+\begin{DoxyCompactList}\small\item\em Return a random number deviate given the current parameters of the distribution. \end{DoxyCompactList}\item 
+real(RK) function \mbox{\hyperlink{namespaceDistMultiUnifCube__mod_a4f8f2a27c25070323f1f2b20c079a46b}{Dist\+Multi\+Unif\+Cube\+\_\+mod\+::get\+Log\+Prob\+Den\+With\+Support\+Size\+\_\+\+RK}} (Log\+Support\+Size)
+\begin{DoxyCompactList}\small\item\em Return the probability density function of the Multivariate Uniform distribution whose support size along each dimension is given by the input vector {\ttfamily Log\+Support\+Size}. \end{DoxyCompactList}\item 
+real(RK) function \mbox{\hyperlink{namespaceDistMultiUnifCube__mod_a46cc71eb4da7900cf6291aa4128bf4e4}{Dist\+Multi\+Unif\+Cube\+\_\+mod\+::get\+Log\+Prob\+Den\+With\+Support\+Lim\+\_\+\+RK}} (Support\+Lower, Support\+Upper)
+\begin{DoxyCompactList}\small\item\em Return the probability density function of the Multivariate Uniform distribution whose support limits along each dimension are given by the input contiguous vectors {\ttfamily Support\+Lower} and {\ttfamily Support\+Upper}. \end{DoxyCompactList}\item 
+real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDistMultiUnifCube__mod_ad7ea22d7e996c0e535cfd12e671eafb9}{Dist\+Multi\+Unif\+Cube\+\_\+mod\+::gen\+Rand\+Stan\+MVU}} (nd)
+\begin{DoxyCompactList}\small\item\em Return a Standard Multi\+Variate Uniform (MVU) random vector from within a cube of unit volume. \end{DoxyCompactList}\item 
+real(RK) function, dimension(size(Mean)) \mbox{\hyperlink{namespaceDistMultiUnifCube__mod_aa0c1d1a960304befdce075a41d54b7b3}{Dist\+Multi\+Unif\+Cube\+\_\+mod\+::gen\+Rand\+Shifted\+MVU}} (Mean)
+\begin{DoxyCompactList}\small\item\em Return a Standard Multi\+Variate Uniform (MVU) random vector from within a cube of unit volume that is centered at {\ttfamily Mean}. \end{DoxyCompactList}\item 
+real(RK) function, dimension(size(Support\+Size)) \mbox{\hyperlink{namespaceDistMultiUnifCube__mod_ad639229b8218d399e64c58345ae874ed}{Dist\+Multi\+Unif\+Cube\+\_\+mod\+::gen\+Rand\+Scaled\+MVU}} (Support\+Size)
+\begin{DoxyCompactList}\small\item\em Return a scaled Multi\+Variate Uniform (MVU) random vector with the zero mean and the input cubical {\ttfamily Support\+Size}. \end{DoxyCompactList}\item 
+real(RK) function, dimension(size(Support\+Lower)) \mbox{\hyperlink{namespaceDistMultiUnifCube__mod_adf6162bfc1a472008df28d23e0af6c18}{Dist\+Multi\+Unif\+Cube\+\_\+mod\+::gen\+Rand\+MVU}} (Support\+Lower, Support\+Upper)
+\begin{DoxyCompactList}\small\item\em Return a Multi\+Variate Uniform (MVU) random vector within the specified input support. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceDistMultiUnifCube__mod_a3fb3b5b4af24f22416724a88c19b9970}{Dist\+Multi\+Unif\+Cube\+\_\+mod\+::\+MODULE\+\_\+\+NAME}} = \char`\"{}@Dist\+Multi\+Unif\+Cube\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}

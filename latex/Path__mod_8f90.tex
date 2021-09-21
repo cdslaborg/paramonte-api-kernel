@@ -1,0 +1,56 @@
+\hypertarget{Path__mod_8f90}{}\doxysection{/home/amir/git/paramonte/src/kernel/\+Path\+\_\+mod.f90 File Reference}
+\label{Path__mod_8f90}\index{/home/amir/git/paramonte/src/kernel/Path\_mod.f90@{/home/amir/git/paramonte/src/kernel/Path\_mod.f90}}
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structPath__mod_1_1Path__type}{Path\+\_\+mod\+::\+Path\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespacePath__mod}{Path\+\_\+mod}}
+\begin{DoxyCompactList}\small\item\em This module contains classes and procedures for manipulating system file/folder paths. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+type(Path\+\_\+type) function \mbox{\hyperlink{namespacePath__mod_a75aab4ba2394c503126067f5c1c3b3a2}{Path\+\_\+mod\+::construct\+Path}} (input\+Path, OS)
+\begin{DoxyCompactList}\small\item\em This is the constructor of the class \mbox{\hyperlink{structPath__mod_1_1Path__type}{Path\+\_\+mod\+::Path\+\_\+type}}.~\newline
+ Return an object of class \mbox{\hyperlink{structPath__mod_1_1Path__type}{Path\+\_\+mod\+::Path\+\_\+type}} given the input specifications. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespacePath__mod_ac6987a888d5ab385c2d902134bbcca3b}{Path\+\_\+mod\+::query}} (Path, input\+Path, OS)
+\begin{DoxyCompactList}\small\item\em This procedure is a method of the class \mbox{\hyperlink{structPath__mod_1_1Path__type}{Path\+\_\+mod\+::Path\+\_\+type}}.~\newline
+ Construct an object of class \mbox{\hyperlink{structPath__mod_1_1Path__type}{Path\+\_\+mod\+::Path\+\_\+type}} as output. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespacePath__mod_abbae1fc2c72d405efa82c17d90aa82da}{Path\+\_\+mod\+::winify}} (input\+Path)
+\begin{DoxyCompactList}\small\item\em This procedure is a static method of the class \mbox{\hyperlink{structPath__mod_1_1Path__type}{Path\+\_\+mod\+::Path\+\_\+type}}.~\newline
+ Convert the the input path to the modified path according to the rules of the Windows operating system. \end{DoxyCompactList}\item 
+pure character(\+:) function, allocatable \mbox{\hyperlink{namespacePath__mod_a5a468f85122dc94934e82a3126c8df19}{Path\+\_\+mod\+::linify}} (input\+Path)
+\begin{DoxyCompactList}\small\item\em This {\ttfamily pure} procedure is a static method of the class \mbox{\hyperlink{structPath__mod_1_1Path__type}{Path\+\_\+mod\+::Path\+\_\+type}}.~\newline
+ Convert the the input path to the modified path according to the rules of the Unix operating systems. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespacePath__mod_a12b3c2e955ac475226f06389917768b8}{Path\+\_\+mod\+::modify}} (input\+Path, output\+Path, Err)
+\begin{DoxyCompactList}\small\item\em This procedure is a static method of the class \mbox{\hyperlink{structPath__mod_1_1Path__type}{Path\+\_\+mod\+::Path\+\_\+type}}.~\newline
+ Modify the input path to conform to the rules of the current inferred operating system. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespacePath__mod_a1af6ace687ae9c6e101149f22504c908}{Path\+\_\+mod\+::get\+Dir\+Name\+Ext}} (path, slash, dir, name, ext)
+\begin{DoxyCompactList}\small\item\em This procedure is a static method of the class \mbox{\hyperlink{structPath__mod_1_1Path__type}{Path\+\_\+mod\+::Path\+\_\+type}}.~\newline
+ Split the input path to directory, base file name, and the file extension, based on the input OS slash. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespacePath__mod_aeba9973856c68989becdd0bd4b60cd14}{Path\+\_\+mod\+::get\+Dir\+Full\+Name}} (path, slash, dir, full\+Name)
+\begin{DoxyCompactList}\small\item\em This procedure is a static method of the class \mbox{\hyperlink{structPath__mod_1_1Path__type}{Path\+\_\+mod\+::Path\+\_\+type}}.~\newline
+ Return the directory and full filename (including the file extension) of the input path. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespacePath__mod_ac60442400f9a8dac086f64fc452bfedb}{Path\+\_\+mod\+::get\+Name\+Ext}} (full\+Name, name, ext)
+\begin{DoxyCompactList}\small\item\em This procedure is a static method of the class \mbox{\hyperlink{structPath__mod_1_1Path__type}{Path\+\_\+mod\+::Path\+\_\+type}}.~\newline
+ Return the name and file extension of the input full file name. \end{DoxyCompactList}\item 
+type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}}) function \mbox{\hyperlink{namespacePath__mod_a21549274757a5d6ae58896a50be6dde4}{Path\+\_\+mod\+::mkdir}} (dir\+Path, is\+Unix\+Shell, wait)
+\begin{DoxyCompactList}\small\item\em This procedure is a static method of the class \mbox{\hyperlink{structPath__mod_1_1Path__type}{Path\+\_\+mod\+::Path\+\_\+type}}.~\newline
+ Make the requested (nested) directory (recursively, if needed). \end{DoxyCompactList}\item 
+logical function \mbox{\hyperlink{namespacePath__mod_a62a86fb4a940f2915eda57a9f3a754d3}{Path\+\_\+mod\+::isdir}} (path)
+\begin{DoxyCompactList}\small\item\em This procedure is a static method of the class \mbox{\hyperlink{structPath__mod_1_1Path__type}{Path\+\_\+mod\+::Path\+\_\+type}}.~\newline
+ Return {\ttfamily .true.} if the input path is a directory, otherwise, return {\ttfamily .false.}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespacePath__mod_a13eefdf3fecc1f3933d2db4d0718c936}{Path\+\_\+mod\+::\+MODULE\+\_\+\+NAME}} = \char`\"{}@Path\+\_\+mod\char`\"{}
+\item 
+integer(IK), parameter \mbox{\hyperlink{namespacePath__mod_abee7abfb1a097e011860fb28738b69ee}{Path\+\_\+mod\+::\+MAX\+\_\+\+FILE\+\_\+\+PATH\+\_\+\+LEN}} = 2047
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespacePath__mod_af66a0148a692ea544a66b6e502110a89}{Path\+\_\+mod\+::\+WINDOWS\+\_\+\+RESERVED\+\_\+\+CHAR}} = \char`\"{}$<$$>$\+:\char`\"{} // \textquotesingle{}\char`\"{}\textquotesingle{} // \char`\"{}$\vert$?$\ast$\char`\"{}
+\begin{DoxyCompactList}\small\item\em Windows reserved characters (not allowed in filenames)\+: \end{DoxyCompactList}\item 
+character($\ast$), parameter \mbox{\hyperlink{namespacePath__mod_a5db45364ee39476a66ff0102a6bd7def}{Path\+\_\+mod\+::\+SHELL\+\_\+\+ESCAPE\+\_\+\+CHAR}} = \char`\"{} \char`\"{} // \char`\"{}!\char`\"{} // \textquotesingle{}\char`\"{}\textquotesingle{} // \char`\"{}\#\char`\"{} // \char`\"{}\$\char`\"{} // \char`\"{}\&\char`\"{} // \char`\"{}\textquotesingle{}\char`\"{} // \char`\"{}(\char`\"{} // \char`\"{})\char`\"{} // \char`\"{}$\ast$\char`\"{} // \char`\"{},\char`\"{} // \char`\"{};\char`\"{} // \char`\"{}$<$\char`\"{} // \char`\"{}=\char`\"{} // \char`\"{}$>$\char`\"{} // \char`\"{}?\char`\"{} // \char`\"{}\mbox{[}\char`\"{} // \char`\"{}\textbackslash{}\char`\"{} // \char`\"{}\mbox{]}\char`\"{} // \char`\"{}$^\wedge$\char`\"{} // \char`\"{}\`{}\char`\"{} // \char`\"{}\{\char`\"{} // \char`\"{}$\vert$\char`\"{} // \char`\"{}\}\char`\"{} // \char`\"{}$\sim$\char`\"{}
+\end{DoxyCompactItemize}

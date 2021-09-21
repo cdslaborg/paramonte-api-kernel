@@ -1,0 +1,228 @@
+\hypertarget{namespaceSort__mod}{}\doxysection{Sort\+\_\+mod Module Reference}
+\label{namespaceSort__mod}\index{Sort\_mod@{Sort\_mod}}
+
+
+This module contains procedures for sorting arrays and finding quantiles of arrays. Recommended routines for sorting arrays\+: \mbox{\hyperlink{namespaceSort__mod_ad804bcd497915f6858bf0a5f587c12d2}{sort\+Ascending\+\_\+\+RK}} and \mbox{\hyperlink{interfaceSort__mod_1_1sortQNR}{sort\+QNR}} are among the fastest sorting algorithms. However, \mbox{\hyperlink{interfaceSort__mod_1_1sortQNR}{sort\+QNR}} has the benefit of only taking one argument and not returning any error flags to inspect. For a performance comparison of the algorithms see\+: \mbox{\hyperlink{namespaceTest__Sort__mod_a475428826b9af448bfeeecdbef49e92b}{Test\+\_\+\+Sort\+\_\+mod\+::test\+\_\+performance\+\_\+1}}.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfaceSort__mod_1_1indexArray}{index\+Array}}
+\item 
+interface \mbox{\hyperlink{interfaceSort__mod_1_1sort__proc}{sort\+\_\+proc}}
+\item 
+interface \mbox{\hyperlink{interfaceSort__mod_1_1sortArray}{sort\+Array}}
+\item 
+interface \mbox{\hyperlink{interfaceSort__mod_1_1sortAscending}{sort\+Ascending}}
+\item 
+interface \mbox{\hyperlink{interfaceSort__mod_1_1sortQNR}{sort\+QNR}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+pure recursive subroutine \mbox{\hyperlink{namespaceSort__mod_abaf9b0384828d858ea1e2662b228743b}{sort\+Array\+\_\+\+RK}} (array)
+\begin{DoxyCompactList}\small\item\em Sort (recursively) the input real array of arbitrary size from the smallest value to the largest and return the result inside the input array. \end{DoxyCompactList}\item 
+pure subroutine \mbox{\hyperlink{namespaceSort__mod_a30c679c0320e461e71bfc37dd17b0586}{partition}} (array, marker)
+\item 
+pure subroutine \mbox{\hyperlink{namespaceSort__mod_ad804bcd497915f6858bf0a5f587c12d2}{sort\+Ascending\+\_\+\+RK}} (Array, failed)
+\begin{DoxyCompactList}\small\item\em Sort (recursively) the input real array of arbitrary size from the smallest value to the largest and return the result inside the input array. \end{DoxyCompactList}\item 
+pure subroutine \mbox{\hyperlink{namespaceSort__mod_ade506ba9dbc862a879b35cf5e072c2aa}{index\+Array\+\_\+\+RK}} (Array, Index, failed)
+\begin{DoxyCompactList}\small\item\em Given the real {\ttfamily Array(1\+:n)} return the array {\ttfamily Index(1\+:n)} such that {\ttfamily Array(\+Index(j)), j=1\+:n} is in ascending order. \end{DoxyCompactList}\item 
+pure subroutine \mbox{\hyperlink{namespaceSort__mod_a70d0f1a8f15aaa2a5cf51800cca15060}{index\+Array\+\_\+\+IK}} (Array, Index, failed)
+\begin{DoxyCompactList}\small\item\em Given the contiguous integer {\ttfamily Array(1\+:n)} return the array {\ttfamily Index(1\+:n)} such that {\ttfamily Array(\+Index(j)), j=1\+:n} is in ascending order. \end{DoxyCompactList}\item 
+pure subroutine \mbox{\hyperlink{namespaceSort__mod_ae44c42fe17e5b88e2970d3e09a88d417}{sort\+Ascending\+With\+Rooter\+\_\+\+IK}} (Leader, Rooter, failed)
+\begin{DoxyCompactList}\small\item\em Sort the real {\ttfamily Leader(1\+:len\+Leader)} in ascending order using Quicksort while making the corresponding rearrangement of real {\ttfamily Rooter(1\+:len\+Leader)}. \end{DoxyCompactList}\item 
+pure subroutine \mbox{\hyperlink{namespaceSort__mod_a1967e619a5a097aa6779259e60f6e659}{sort\+Ascending\+With\+Rooter\+\_\+\+RK}} (Leader, Rooter, failed)
+\begin{DoxyCompactList}\small\item\em Sort the real {\ttfamily Leader(1\+:len\+Leader)} in ascending order using Quicksort while making the corresponding rearrangement of real {\ttfamily Rooter(1\+:len\+Leader)}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceSort__mod_aee658b69c133ba8d2da19f1df2a837ea}{MODULE\+\_\+\+NAME}} = \char`\"{}@Sort\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains procedures for sorting arrays and finding quantiles of arrays. Recommended routines for sorting arrays\+: \mbox{\hyperlink{namespaceSort__mod_ad804bcd497915f6858bf0a5f587c12d2}{sort\+Ascending\+\_\+\+RK}} and \mbox{\hyperlink{interfaceSort__mod_1_1sortQNR}{sort\+QNR}} are among the fastest sorting algorithms. However, \mbox{\hyperlink{interfaceSort__mod_1_1sortQNR}{sort\+QNR}} has the benefit of only taking one argument and not returning any error flags to inspect. For a performance comparison of the algorithms see\+: \mbox{\hyperlink{namespaceTest__Sort__mod_a475428826b9af448bfeeecdbef49e92b}{Test\+\_\+\+Sort\+\_\+mod\+::test\+\_\+performance\+\_\+1}}. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceSort__mod_a70d0f1a8f15aaa2a5cf51800cca15060}\label{namespaceSort__mod_a70d0f1a8f15aaa2a5cf51800cca15060}} 
+\index{Sort\_mod@{Sort\_mod}!indexArray\_IK@{indexArray\_IK}}
+\index{indexArray\_IK@{indexArray\_IK}!Sort\_mod@{Sort\_mod}}
+\doxysubsubsection{\texorpdfstring{indexArray\_IK()}{indexArray\_IK()}}
+{\footnotesize\ttfamily pure subroutine Sort\+\_\+mod\+::index\+Array\+\_\+\+IK (\begin{DoxyParamCaption}\item[{integer(IK)}]{Array,  }\item[{integer(IK)}]{Index,  }\item[{logical, intent(out)}]{failed }\end{DoxyParamCaption})}
+
+
+
+Given the contiguous integer {\ttfamily Array(1\+:n)} return the array {\ttfamily Index(1\+:n)} such that {\ttfamily Array(\+Index(j)), j=1\+:n} is in ascending order. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Array} & \+: The input vector of length {\ttfamily n} to be sorted. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Index} & \+: The output integer vector of indices of the sorted vector. \\
+\hline
+\mbox{\texttt{ out}}  & {\em failed} & \+: A logical output that is set to {\ttfamily .true.} if the procedure fails.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+On return, the value of {\ttfamily failed} must be checked for any potential occurrences of errors during sorting. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{Sort__mod_8f90_source_l00508}{508}} of file \mbox{\hyperlink{Sort__mod_8f90_source}{Sort\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceSort__mod_ade506ba9dbc862a879b35cf5e072c2aa}\label{namespaceSort__mod_ade506ba9dbc862a879b35cf5e072c2aa}} 
+\index{Sort\_mod@{Sort\_mod}!indexArray\_RK@{indexArray\_RK}}
+\index{indexArray\_RK@{indexArray\_RK}!Sort\_mod@{Sort\_mod}}
+\doxysubsubsection{\texorpdfstring{indexArray\_RK()}{indexArray\_RK()}}
+{\footnotesize\ttfamily pure subroutine Sort\+\_\+mod\+::index\+Array\+\_\+\+RK (\begin{DoxyParamCaption}\item[{real(RK)}]{Array,  }\item[{integer(IK)}]{Index,  }\item[{logical, intent(out)}]{failed }\end{DoxyParamCaption})}
+
+
+
+Given the real {\ttfamily Array(1\+:n)} return the array {\ttfamily Index(1\+:n)} such that {\ttfamily Array(\+Index(j)), j=1\+:n} is in ascending order. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Array} & \+: The input vector of length {\ttfamily n} to be sorted. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Index} & \+: The output integer vector of indices of the sorted vector. \\
+\hline
+\mbox{\texttt{ out}}  & {\em failed} & \+: A logical output that is set to {\ttfamily .true.} if the procedure fails.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+On return, the value of {\ttfamily failed} must be checked for any potential occurrences of errors during sorting. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{Sort__mod_8f90_source_l00397}{397}} of file \mbox{\hyperlink{Sort__mod_8f90_source}{Sort\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceSort__mod_a30c679c0320e461e71bfc37dd17b0586}\label{namespaceSort__mod_a30c679c0320e461e71bfc37dd17b0586}} 
+\index{Sort\_mod@{Sort\_mod}!partition@{partition}}
+\index{partition@{partition}!Sort\_mod@{Sort\_mod}}
+\doxysubsubsection{\texorpdfstring{partition()}{partition()}}
+{\footnotesize\ttfamily pure subroutine Sort\+\_\+mod\+::partition (\begin{DoxyParamCaption}\item[{real(RK), dimension(\+:), intent(inout)}]{array,  }\item[{integer(IK), intent(out)}]{marker }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Sort__mod_8f90_source_l00250}{250}} of file \mbox{\hyperlink{Sort__mod_8f90_source}{Sort\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceSort__mod_abaf9b0384828d858ea1e2662b228743b}\label{namespaceSort__mod_abaf9b0384828d858ea1e2662b228743b}} 
+\index{Sort\_mod@{Sort\_mod}!sortArray\_RK@{sortArray\_RK}}
+\index{sortArray\_RK@{sortArray\_RK}!Sort\_mod@{Sort\_mod}}
+\doxysubsubsection{\texorpdfstring{sortArray\_RK()}{sortArray\_RK()}}
+{\footnotesize\ttfamily pure recursive subroutine Sort\+\_\+mod\+::sort\+Array\+\_\+\+RK (\begin{DoxyParamCaption}\item[{real(RK), dimension(\+:), intent(inout)}]{array }\end{DoxyParamCaption})}
+
+
+
+Sort (recursively) the input real array of arbitrary size from the smallest value to the largest and return the result inside the input array. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em array} & \+: The input vector to be sorted.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+On return, the contents of the input array is completely overwritten. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{Sort__mod_8f90_source_l00232}{232}} of file \mbox{\hyperlink{Sort__mod_8f90_source}{Sort\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceSort__mod_ad804bcd497915f6858bf0a5f587c12d2}\label{namespaceSort__mod_ad804bcd497915f6858bf0a5f587c12d2}} 
+\index{Sort\_mod@{Sort\_mod}!sortAscending\_RK@{sortAscending\_RK}}
+\index{sortAscending\_RK@{sortAscending\_RK}!Sort\_mod@{Sort\_mod}}
+\doxysubsubsection{\texorpdfstring{sortAscending\_RK()}{sortAscending\_RK()}}
+{\footnotesize\ttfamily pure subroutine Sort\+\_\+mod\+::sort\+Ascending\+\_\+\+RK (\begin{DoxyParamCaption}\item[{real(RK)}]{Array,  }\item[{logical, intent(out)}]{failed }\end{DoxyParamCaption})}
+
+
+
+Sort (recursively) the input real array of arbitrary size from the smallest value to the largest and return the result inside the input array. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em Array} & \+: The input vector to be sorted. \\
+\hline
+\mbox{\texttt{ out}}  & {\em failed} & \+: A logical output that is {\ttfamily .true.} if the procedure fails.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+On return, the contents of the input array is completely overwritten by the output sorted array.
+
+On return, the value of {\ttfamily failed} must be checked for any potential occurrences of errors during sorting. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{Sort__mod_8f90_source_l00303}{303}} of file \mbox{\hyperlink{Sort__mod_8f90_source}{Sort\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceSort__mod_ae44c42fe17e5b88e2970d3e09a88d417}\label{namespaceSort__mod_ae44c42fe17e5b88e2970d3e09a88d417}} 
+\index{Sort\_mod@{Sort\_mod}!sortAscendingWithRooter\_IK@{sortAscendingWithRooter\_IK}}
+\index{sortAscendingWithRooter\_IK@{sortAscendingWithRooter\_IK}!Sort\_mod@{Sort\_mod}}
+\doxysubsubsection{\texorpdfstring{sortAscendingWithRooter\_IK()}{sortAscendingWithRooter\_IK()}}
+{\footnotesize\ttfamily pure subroutine Sort\+\_\+mod\+::sort\+Ascending\+With\+Rooter\+\_\+\+IK (\begin{DoxyParamCaption}\item[{integer(IK)}]{Leader,  }\item[{integer(IK)}]{Rooter,  }\item[{logical, intent(out)}]{failed }\end{DoxyParamCaption})}
+
+
+
+Sort the real {\ttfamily Leader(1\+:len\+Leader)} in ascending order using Quicksort while making the corresponding rearrangement of real {\ttfamily Rooter(1\+:len\+Leader)}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em Leader} & \+: The contiguous array of length {\ttfamily len\+Leader} to be sorted. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em Rooter} & \+: The contiguous array of length {\ttfamily len\+Leader} to be sorted according to the rearrangement of the elements of {\ttfamily Leader}. \\
+\hline
+\mbox{\texttt{ out}}  & {\em failed} & \+: A logical output that is set to {\ttfamily .true.} if the procedure fails.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+On return, the value of {\ttfamily Erroccurred} must be checked for any potential occurrences of errors during sorting. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{Sort__mod_8f90_source_l00620}{620}} of file \mbox{\hyperlink{Sort__mod_8f90_source}{Sort\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceSort__mod_a1967e619a5a097aa6779259e60f6e659}\label{namespaceSort__mod_a1967e619a5a097aa6779259e60f6e659}} 
+\index{Sort\_mod@{Sort\_mod}!sortAscendingWithRooter\_RK@{sortAscendingWithRooter\_RK}}
+\index{sortAscendingWithRooter\_RK@{sortAscendingWithRooter\_RK}!Sort\_mod@{Sort\_mod}}
+\doxysubsubsection{\texorpdfstring{sortAscendingWithRooter\_RK()}{sortAscendingWithRooter\_RK()}}
+{\footnotesize\ttfamily pure subroutine Sort\+\_\+mod\+::sort\+Ascending\+With\+Rooter\+\_\+\+RK (\begin{DoxyParamCaption}\item[{real(RK)}]{Leader,  }\item[{real(RK)}]{Rooter,  }\item[{logical, intent(out)}]{failed }\end{DoxyParamCaption})}
+
+
+
+Sort the real {\ttfamily Leader(1\+:len\+Leader)} in ascending order using Quicksort while making the corresponding rearrangement of real {\ttfamily Rooter(1\+:len\+Leader)}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em Leader} & \+: The contiguous array of length {\ttfamily len\+Leader} to be sorted. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em Rooter} & \+: The contiguous array of length {\ttfamily len\+Leader} to be sorted according to the rearrangement of the elements of {\ttfamily Leader}. \\
+\hline
+\mbox{\texttt{ out}}  & {\em failed} & \+: A logical output that is set to {\ttfamily .true.} if the procedure fails.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+On return, the value of {\ttfamily failed} must be checked for any potential occurrences of errors during sorting. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{Sort__mod_8f90_source_l00647}{647}} of file \mbox{\hyperlink{Sort__mod_8f90_source}{Sort\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceSort__mod_aee658b69c133ba8d2da19f1df2a837ea}\label{namespaceSort__mod_aee658b69c133ba8d2da19f1df2a837ea}} 
+\index{Sort\_mod@{Sort\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!Sort\_mod@{Sort\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character($\ast$), parameter Sort\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Sort\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{Sort__mod_8f90_source_l00056}{56}} of file \mbox{\hyperlink{Sort__mod_8f90_source}{Sort\+\_\+mod.\+f90}}.
+

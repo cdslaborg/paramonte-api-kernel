@@ -1,0 +1,467 @@
+\hypertarget{namespaceCrossCorr__mod}{}\doxysection{Cross\+Corr\+\_\+mod Module Reference}
+\label{namespaceCrossCorr__mod}\index{CrossCorr\_mod@{CrossCorr\_mod}}
+
+
+This module contains procedures for computing the cross-\/correlation of time series data.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfaceCrossCorr__mod_1_1getPaddedLen}{get\+Padded\+Len}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+real(RK) function \mbox{\hyperlink{namespaceCrossCorr__mod_a40c1388dbd9f2f93a4928684bf9bc58f}{get\+Batch\+Means\+IAC}} (np, Point, Weight, batch\+Size)
+\begin{DoxyCompactList}\small\item\em Return the integrated autocorrelation (IAC) via the Batch\+Means method. \end{DoxyCompactList}\item 
+real(RK) function \mbox{\hyperlink{namespaceCrossCorr__mod_a7c803e7f236c1b0958e368ba22b8abab}{gen\+Cum\+Sum\+IAC}} (np, Point, Weight, significance)
+\begin{DoxyCompactList}\small\item\em Return the integrated autocorrelation (IAC) based on the cumulative autocorrelation. \end{DoxyCompactList}\item 
+real(RK) function \mbox{\hyperlink{namespaceCrossCorr__mod_a3776a901fbaee44fecf500b3a25d1a5c}{get\+Max\+Cum\+Sum\+IAC}} (np, Point, Weight)
+\begin{DoxyCompactList}\small\item\em Return the integrated autocorrelation (IAC) based on the maximum cumulative autocorrelation. \end{DoxyCompactList}\item 
+pure integer(IK) function \mbox{\hyperlink{namespaceCrossCorr__mod_a7f5ac9ec7a73a17e584b3e797e1a49e2}{get\+Padded\+Len\+\_\+\+IK}} (actual\+Len, base)
+\begin{DoxyCompactList}\small\item\em Return the smallest length of a vector that is a power of {\ttfamily base} and at least {\ttfamily base$\ast$$\ast$2} times larger than the input length {\ttfamily actual\+Len}. \end{DoxyCompactList}\item 
+pure integer(IK) function \mbox{\hyperlink{namespaceCrossCorr__mod_a8ee695b5e9d7eb27385937a2d4f2523d}{get\+Padded\+Len\+\_\+\+RK}} (actual\+Len, base)
+\begin{DoxyCompactList}\small\item\em Return the smallest length of a vector that is a power of {\ttfamily base} and at least {\ttfamily base$\ast$$\ast$2} times larger than the input length {\ttfamily actual\+Len}. \end{DoxyCompactList}\item 
+pure integer(IK) function \mbox{\hyperlink{namespaceCrossCorr__mod_af9890aabaab4e5d33e1165e555d71ee2}{get\+Previous\+Exponent}} (absolute\+Value, base)
+\begin{DoxyCompactList}\small\item\em Return the exponent that yields the largest real number smaller than {\bfseries{or equal to}} the input number {\ttfamily absolute\+Value}. \end{DoxyCompactList}\item 
+pure integer(IK) function \mbox{\hyperlink{namespaceCrossCorr__mod_a5efc596527b4e5d4df3e06d9bbc32178}{get\+Next\+Exponent}} (absolute\+Value, base)
+\begin{DoxyCompactList}\small\item\em Return the exponent that yields the smallest real number larger than {\bfseries{or equal to}} the input number {\ttfamily absolute\+Value}. \end{DoxyCompactList}\item 
+pure real(RK) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceCrossCorr__mod_a442d69765caf8b521e5028e56ffd8b19}{pad\+Zero}} (current\+Len, Array, padded\+Len)
+\begin{DoxyCompactList}\small\item\em Return an array that is extended and padded with zeros for the requested length {\ttfamily padded\+Len}. \end{DoxyCompactList}\item 
+real(RK) function, dimension(padded\+Len) \mbox{\hyperlink{namespaceCrossCorr__mod_a8ba6f840aa3cf369a3dbd2f72ede334f}{get\+Cross\+Corr\+FFT}} (padded\+Len, Padded\+Data1, Padded\+Data2)
+\begin{DoxyCompactList}\small\item\em Return the cross-\/correlation of the two input data vectors, (including any user-\/supplied zero padding), computed via Fast-\/\+Fourier Transform. \end{DoxyCompactList}\item 
+real(RK) function, dimension(padded\+Len) \mbox{\hyperlink{namespaceCrossCorr__mod_ad7530d1251f15e5c2d1d3de9a014e15a}{get\+Cross\+Corr\+Weighted\+FFT}} (len\+Compact\+Data1, len\+Compact\+Data2, padded\+Len, Compact\+Data1, Compact\+Data2, Weight1, Weight2)
+\begin{DoxyCompactList}\small\item\em Return the cross-\/correlation of the two input {\itshape weighted} compact data vectors, (including any user-\/supplied zero padding), computed via Fast-\/\+Fourier Transform. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceCrossCorr__mod_aa17b9dfa7fb9c09a2942ee4d2e50e30c}{realft}} (padded\+Len, padded\+Len\+Half, padded\+Len\+Quarter, Padded\+Data, isign, Zdata)
+\item 
+subroutine \mbox{\hyperlink{namespaceCrossCorr__mod_afab477909a5b9d455cfb3f02084e40b2}{realft\+Weighted}} (len\+Compact\+Data, padded\+Len, padded\+Len\+Half, padded\+Len\+Quarter, Compact\+Data, Zdata, Weight)
+\item 
+subroutine \mbox{\hyperlink{namespaceCrossCorr__mod_a23ced55aaf636ca29f41c5de2c0c6b2e}{four1}} (ndata, Data, isign)
+\item 
+subroutine \mbox{\hyperlink{namespaceCrossCorr__mod_a7c559228d666b2c30a59769694cdda09}{fourrow}} (Data, isign)
+\item 
+pure real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceCrossCorr__mod_a0a14e2c13f60a3404837842fd1d6eed8}{get\+Inverse\+Sum\+Normed\+Data\+Sq}} (nd, np, Normed\+Data)
+\item 
+pure subroutine \mbox{\hyperlink{namespaceCrossCorr__mod_a3e4b9d8572d666c2180448995427ee28}{get\+Auto\+Corr\+Direct}} (nd, np, Normed\+Data, nlag, Lag, Auto\+Corr, Inverse\+Sum\+Normed\+Data\+Sq)
+\begin{DoxyCompactList}\small\item\em Compute the autocorrelation of the input data matrix (that is already normalized with respect to its mean). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character(len= $\ast$), parameter \mbox{\hyperlink{namespaceCrossCorr__mod_a8725263ad3537d8f30d3b1737f45923d}{MODULE\+\_\+\+NAME}} = \char`\"{}@Cross\+Corr\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains procedures for computing the cross-\/correlation of time series data. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceCrossCorr__mod_a23ced55aaf636ca29f41c5de2c0c6b2e}\label{namespaceCrossCorr__mod_a23ced55aaf636ca29f41c5de2c0c6b2e}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!four1@{four1}}
+\index{four1@{four1}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{four1()}{four1()}}
+{\footnotesize\ttfamily subroutine Cross\+Corr\+\_\+mod\+::four1 (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{ndata,  }\item[{complex(CK)}]{Data,  }\item[{integer(IK), intent(in)}]{isign }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00736}{736}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCrossCorr__mod_a7c559228d666b2c30a59769694cdda09}\label{namespaceCrossCorr__mod_a7c559228d666b2c30a59769694cdda09}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!fourrow@{fourrow}}
+\index{fourrow@{fourrow}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{fourrow()}{fourrow()}}
+{\footnotesize\ttfamily subroutine Cross\+Corr\+\_\+mod\+::fourrow (\begin{DoxyParamCaption}\item[{complex(CK)}]{Data,  }\item[{integer(IK), intent(in)}]{isign }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00769}{769}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCrossCorr__mod_a7c803e7f236c1b0958e368ba22b8abab}\label{namespaceCrossCorr__mod_a7c803e7f236c1b0958e368ba22b8abab}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!genCumSumIAC@{genCumSumIAC}}
+\index{genCumSumIAC@{genCumSumIAC}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{genCumSumIAC()}{genCumSumIAC()}}
+{\footnotesize\ttfamily real(RK) function Cross\+Corr\+\_\+mod\+::gen\+Cum\+Sum\+IAC (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point,  }\item[{integer(IK)}]{Weight,  }\item[{real(RK), intent(in), optional}]{significance }\end{DoxyParamCaption})}
+
+
+
+Return the integrated autocorrelation (IAC) based on the cumulative autocorrelation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of data points in the input time series data. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The input data series data vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of weights of the input data points ({\bfseries{optional}}, default = array of ones). \\
+\hline
+\mbox{\texttt{ in}}  & {\em significance} & \+: The significance in units of standard deviation below which the autocorrelation is considered noise ({\bfseries{optional}}, default = 2).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily iac} \+: The integrated autocorrelation (IAC). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00215}{215}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCrossCorr__mod_a3e4b9d8572d666c2180448995427ee28}\label{namespaceCrossCorr__mod_a3e4b9d8572d666c2180448995427ee28}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!getAutoCorrDirect@{getAutoCorrDirect}}
+\index{getAutoCorrDirect@{getAutoCorrDirect}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{getAutoCorrDirect()}{getAutoCorrDirect()}}
+{\footnotesize\ttfamily pure subroutine Cross\+Corr\+\_\+mod\+::get\+Auto\+Corr\+Direct (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Normed\+Data,  }\item[{integer(IK), intent(in)}]{nlag,  }\item[{integer(IK)}]{Lag,  }\item[{real(RK)}]{Auto\+Corr,  }\item[{real(RK)}]{Inverse\+Sum\+Normed\+Data\+Sq }\end{DoxyParamCaption})}
+
+
+
+Compute the autocorrelation of the input data matrix (that is already normalized with respect to its mean). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the input data (the number of data features). \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The length of the input data (the number of observations or points). \\
+\hline
+\mbox{\texttt{ in}}  & {\em Normed\+Data} & \+: The input data of size {\ttfamily (nd,np)}. On input, it must be normalized with respect to it mean vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em nlag} & \+: The length of the input vector of lags. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Lag} & \+: The input vector of lags at which the autocorrelation must be computed. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Auto\+Corr} & \+: The output Auto\+Correlation matrix of shape {\ttfamily (nd,nlag)}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Inverse\+Sum\+Normed\+Data\+Sq} & \+: The inverse sum of the square of the input normalized data ({\bfseries{optional}}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+If {\ttfamily Inverse\+Sum\+Normed\+Data\+Sq} is provided, the computations will be slightly faster.
+
+This function uses the direct method of covariance computation for computing the autocorrelation. It is therefore highly inefficient and not recommended for use in HPC solutions. Use instead, \mbox{\hyperlink{namespaceCrossCorr__mod_a8ba6f840aa3cf369a3dbd2f72ede334f}{get\+Cross\+Corr\+FFT}} or \mbox{\hyperlink{namespaceCrossCorr__mod_ad7530d1251f15e5c2d1d3de9a014e15a}{get\+Cross\+Corr\+Weighted\+FFT}}. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00859}{859}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCrossCorr__mod_a40c1388dbd9f2f93a4928684bf9bc58f}\label{namespaceCrossCorr__mod_a40c1388dbd9f2f93a4928684bf9bc58f}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!getBatchMeansIAC@{getBatchMeansIAC}}
+\index{getBatchMeansIAC@{getBatchMeansIAC}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{getBatchMeansIAC()}{getBatchMeansIAC()}}
+{\footnotesize\ttfamily real(RK) function Cross\+Corr\+\_\+mod\+::get\+Batch\+Means\+IAC (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point,  }\item[{integer(IK)}]{Weight,  }\item[{integer(IK)}]{batch\+Size }\end{DoxyParamCaption})}
+
+
+
+Return the integrated autocorrelation (IAC) via the Batch\+Means method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of data points in the input time series data. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The input data series data vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of weights of the input data points ({\bfseries{optional}}, default = array of ones). \\
+\hline
+\mbox{\texttt{ in}}  & {\em batch\+Size} & \+: The batch size ({\bfseries{optional}}, default = computed from the input parameters).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily iac} \+: The integrated autocorrelation (IAC) via the Batch\+Means method.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+Note that np must be large enough to get a meaningful answer. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00075}{75}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCrossCorr__mod_a8ba6f840aa3cf369a3dbd2f72ede334f}\label{namespaceCrossCorr__mod_a8ba6f840aa3cf369a3dbd2f72ede334f}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!getCrossCorrFFT@{getCrossCorrFFT}}
+\index{getCrossCorrFFT@{getCrossCorrFFT}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{getCrossCorrFFT()}{getCrossCorrFFT()}}
+{\footnotesize\ttfamily real(RK) function, dimension(padded\+Len) Cross\+Corr\+\_\+mod\+::get\+Cross\+Corr\+FFT (\begin{DoxyParamCaption}\item[{integer(IK)}]{padded\+Len,  }\item[{real(RK)}]{Padded\+Data1,  }\item[{real(RK)}]{Padded\+Data2 }\end{DoxyParamCaption})}
+
+
+
+Return the cross-\/correlation of the two input data vectors, (including any user-\/supplied zero padding), computed via Fast-\/\+Fourier Transform. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em padded\+Len} & \+: The lengths of the input arrays, which {\bfseries{MUST}} be an integer {\itshape power of two}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Padded\+Data1} & \+: The first array, possibly padded with zero to become an array of length {\ttfamily padded\+Len}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Padded\+Data2} & \+: The second array, possibly padded with zero to become an array of length {\ttfamily padded\+Len}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Cross\+Corr\+FFT} \+: A vector of same length as the input arrays containing the cross-\/correlation. The answer is returned as the first {\ttfamily padded\+Len} points in ans stored in wrap-\/around order, i.\+e., cross-\/correlation at increasingly negative lags are in {\ttfamily Cross\+Corr\+FFT(padded\+Len)} on down to {\ttfamily Cross\+Corr\+FFT(padded\+Len/2+1)}, while cross-\/correlation increasingly positive lags are in {\ttfamily Cross\+Corr\+FFT(1)} (zero lag) on up to {\ttfamily Cross\+Corr\+FFT(padded\+Len/2)}.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+Sign convention of this routine\+: If {\ttfamily Padded\+Data1} lags {\ttfamily Padded\+Data2}, i.\+e., is shifted to the right of it, then ans will show a peak at positive lags.
+
+For autocorrelation, under the assumption of a completely random series, the ACF standard error reduces to\+: $\sqrt{ 1 / \texttt{paddedLen} }$ 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00496}{496}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCrossCorr__mod_ad7530d1251f15e5c2d1d3de9a014e15a}\label{namespaceCrossCorr__mod_ad7530d1251f15e5c2d1d3de9a014e15a}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!getCrossCorrWeightedFFT@{getCrossCorrWeightedFFT}}
+\index{getCrossCorrWeightedFFT@{getCrossCorrWeightedFFT}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{getCrossCorrWeightedFFT()}{getCrossCorrWeightedFFT()}}
+{\footnotesize\ttfamily real(RK) function, dimension(padded\+Len) Cross\+Corr\+\_\+mod\+::get\+Cross\+Corr\+Weighted\+FFT (\begin{DoxyParamCaption}\item[{integer(IK)}]{len\+Compact\+Data1,  }\item[{integer(IK)}]{len\+Compact\+Data2,  }\item[{integer(IK)}]{padded\+Len,  }\item[{real(RK)}]{Compact\+Data1,  }\item[{real(RK)}]{Compact\+Data2,  }\item[{integer(IK)}]{Weight1,  }\item[{integer(IK)}]{Weight2 }\end{DoxyParamCaption})}
+
+
+
+Return the cross-\/correlation of the two input {\itshape weighted} compact data vectors, (including any user-\/supplied zero padding), computed via Fast-\/\+Fourier Transform. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em len\+Compact\+Data1} & \+: The length of the first input array {\ttfamily Compact\+Data1}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em len\+Compact\+Data2} & \+: The length of the second input array {\ttfamily Compact\+Data2}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em padded\+Len} & \+: The length by which the input data vectors must be extended and padded. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Compact\+Data1} & \+: The first array, in compact weighted format. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Compact\+Data2} & \+: The second array, in compact weighted format. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight1} & \+: The weights of the elements in the first array. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight2} & \+: The weights of the elements in the second array.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Cross\+Corr\+FFT} \+: A vector of length {\ttfamily padded\+Len} containing the cross-\/correlation.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The input variable {\ttfamily padded\+Len} must be a power of two, such that $2^\texttt{paddedLen}$ represents the smallest integer larger than both {\ttfamily len\+Compact\+Data1} and {\ttfamily len\+Compact\+Data2}.
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+Unlike \mbox{\hyperlink{namespaceCrossCorr__mod_a8ba6f840aa3cf369a3dbd2f72ede334f}{get\+Cross\+Corr\+FFT}}, the input arguments {\ttfamily Compact\+Data1} and {\ttfamily Compact\+Data2} to this function can be the same arrays, as the {\ttfamily intent} of both is {\ttfamily in}. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00552}{552}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCrossCorr__mod_a0a14e2c13f60a3404837842fd1d6eed8}\label{namespaceCrossCorr__mod_a0a14e2c13f60a3404837842fd1d6eed8}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!getInverseSumNormedDataSq@{getInverseSumNormedDataSq}}
+\index{getInverseSumNormedDataSq@{getInverseSumNormedDataSq}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{getInverseSumNormedDataSq()}{getInverseSumNormedDataSq()}}
+{\footnotesize\ttfamily pure real(RK) function, dimension(nd) Cross\+Corr\+\_\+mod\+::get\+Inverse\+Sum\+Normed\+Data\+Sq (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Normed\+Data }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00821}{821}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCrossCorr__mod_a3776a901fbaee44fecf500b3a25d1a5c}\label{namespaceCrossCorr__mod_a3776a901fbaee44fecf500b3a25d1a5c}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!getMaxCumSumIAC@{getMaxCumSumIAC}}
+\index{getMaxCumSumIAC@{getMaxCumSumIAC}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{getMaxCumSumIAC()}{getMaxCumSumIAC()}}
+{\footnotesize\ttfamily real(RK) function Cross\+Corr\+\_\+mod\+::get\+Max\+Cum\+Sum\+IAC (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point,  }\item[{integer(IK)}]{Weight }\end{DoxyParamCaption})}
+
+
+
+Return the integrated autocorrelation (IAC) based on the maximum cumulative autocorrelation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of data points in the input time series data. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The input data series data vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of weights of the input data points ({\bfseries{optional}}, default = array of ones).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily max\+IAC} \+: The integrated autocorrelation (IAC). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00273}{273}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCrossCorr__mod_a5efc596527b4e5d4df3e06d9bbc32178}\label{namespaceCrossCorr__mod_a5efc596527b4e5d4df3e06d9bbc32178}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!getNextExponent@{getNextExponent}}
+\index{getNextExponent@{getNextExponent}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{getNextExponent()}{getNextExponent()}}
+{\footnotesize\ttfamily pure integer(IK) function Cross\+Corr\+\_\+mod\+::get\+Next\+Exponent (\begin{DoxyParamCaption}\item[{real(RK)}]{absolute\+Value,  }\item[{real(RK), intent(in), optional}]{base }\end{DoxyParamCaption})}
+
+
+
+Return the exponent that yields the smallest real number larger than {\bfseries{or equal to}} the input number {\ttfamily absolute\+Value}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em absolute\+Value} & \+: The input real number. \\
+\hline
+\mbox{\texttt{ in}}  & {\em base} & \+: The base of the exponentiation ({\bfseries{optional}}, default = {\ttfamily 2}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+The input values for {\ttfamily absolute\+Value} and {\ttfamily base} must be both larger than 1.
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+{\ttfamily next\+Exponent} \+: The output minimum integer exponent. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00419}{419}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCrossCorr__mod_a7f5ac9ec7a73a17e584b3e797e1a49e2}\label{namespaceCrossCorr__mod_a7f5ac9ec7a73a17e584b3e797e1a49e2}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!getPaddedLen\_IK@{getPaddedLen\_IK}}
+\index{getPaddedLen\_IK@{getPaddedLen\_IK}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{getPaddedLen\_IK()}{getPaddedLen\_IK()}}
+{\footnotesize\ttfamily pure integer(IK) function Cross\+Corr\+\_\+mod\+::get\+Padded\+Len\+\_\+\+IK (\begin{DoxyParamCaption}\item[{integer(IK)}]{actual\+Len,  }\item[{integer(IK), intent(in), optional}]{base }\end{DoxyParamCaption})}
+
+
+
+Return the smallest length of a vector that is a power of {\ttfamily base} and at least {\ttfamily base$\ast$$\ast$2} times larger than the input length {\ttfamily actual\+Len}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em actual\+Len} & \+: The input vector length. \\
+\hline
+\mbox{\texttt{ in}}  & {\em base} & \+: The integer-\/valued base of the exponentiation ({\bfseries{optional}}, default = {\ttfamily 2}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily padded\+Len} \+: The minimum power-\/of-\/{\ttfamily base} length given {\ttfamily actual\+Len}.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This method is used to compute the cross-\/correlation. Usage\+: {\ttfamily actual\+Len = max( actual\+Len1, actual\+Len2 )}
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+The input values for {\ttfamily absolute\+Value} and {\ttfamily base} must be both larger than 1.
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+For weighted-\/data cross-\/correlation computation, try, {\ttfamily actual\+Len = max( sum(\+Weight1(1\+:actual\+Len1)), sum(\+Weight2(1\+:actual\+Len2)) )}. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00329}{329}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCrossCorr__mod_a8ee695b5e9d7eb27385937a2d4f2523d}\label{namespaceCrossCorr__mod_a8ee695b5e9d7eb27385937a2d4f2523d}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!getPaddedLen\_RK@{getPaddedLen\_RK}}
+\index{getPaddedLen\_RK@{getPaddedLen\_RK}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{getPaddedLen\_RK()}{getPaddedLen\_RK()}}
+{\footnotesize\ttfamily pure integer(IK) function Cross\+Corr\+\_\+mod\+::get\+Padded\+Len\+\_\+\+RK (\begin{DoxyParamCaption}\item[{real(RK)}]{actual\+Len,  }\item[{real(RK), intent(in), optional}]{base }\end{DoxyParamCaption})}
+
+
+
+Return the smallest length of a vector that is a power of {\ttfamily base} and at least {\ttfamily base$\ast$$\ast$2} times larger than the input length {\ttfamily actual\+Len}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em actual\+Len} & \+: The real-\/valued input vector length. \\
+\hline
+\mbox{\texttt{ in}}  & {\em base} & \+: The real-\/valued base of the exponentiation ({\bfseries{optional}}, default = {\ttfamily 2.}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily padded\+Len} \+: The minimum power-\/of-\/{\ttfamily base} length given {\ttfamily actual\+Len}.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This method is used to compute the cross-\/correlation. Usage\+: {\ttfamily actual\+Len = max( actual\+Len1, actual\+Len2 )}
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+The input values for {\ttfamily absolute\+Value} and {\ttfamily base} must be both larger than 1.
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+For weighted-\/data cross-\/correlation computation, try, {\ttfamily actual\+Len = max( sum(\+Weight1(1\+:actual\+Len1)), sum(\+Weight2(1\+:actual\+Len2)) )}. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00364}{364}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCrossCorr__mod_af9890aabaab4e5d33e1165e555d71ee2}\label{namespaceCrossCorr__mod_af9890aabaab4e5d33e1165e555d71ee2}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!getPreviousExponent@{getPreviousExponent}}
+\index{getPreviousExponent@{getPreviousExponent}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{getPreviousExponent()}{getPreviousExponent()}}
+{\footnotesize\ttfamily pure integer(IK) function Cross\+Corr\+\_\+mod\+::get\+Previous\+Exponent (\begin{DoxyParamCaption}\item[{real(RK)}]{absolute\+Value,  }\item[{real(RK), intent(in), optional}]{base }\end{DoxyParamCaption})}
+
+
+
+Return the exponent that yields the largest real number smaller than {\bfseries{or equal to}} the input number {\ttfamily absolute\+Value}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em absolute\+Value} & \+: The input real number. \\
+\hline
+\mbox{\texttt{ in}}  & {\em base} & \+: The base of the exponentiation ({\bfseries{optional}}, default = {\ttfamily 2}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily previous\+Exponent} \+: The output minimum integer exponent.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The input values for {\ttfamily absolute\+Value} and {\ttfamily base} must be both larger than 1. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00391}{391}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCrossCorr__mod_a442d69765caf8b521e5028e56ffd8b19}\label{namespaceCrossCorr__mod_a442d69765caf8b521e5028e56ffd8b19}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!padZero@{padZero}}
+\index{padZero@{padZero}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{padZero()}{padZero()}}
+{\footnotesize\ttfamily pure real(RK) function, dimension(\+:), allocatable Cross\+Corr\+\_\+mod\+::pad\+Zero (\begin{DoxyParamCaption}\item[{integer(IK)}]{current\+Len,  }\item[{real(RK)}]{Array,  }\item[{integer(IK)}]{padded\+Len }\end{DoxyParamCaption})}
+
+
+
+Return an array that is extended and padded with zeros for the requested length {\ttfamily padded\+Len}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em current\+Len} & \+: The length of the input array. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Array} & \+: The array to be extended. \\
+\hline
+\mbox{\texttt{ in}}  & {\em padded\+Len} & \+: The requested new length of the array.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Array\+Padded} \+: The output extended array, padded with zeros.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The input variable {\ttfamily padded\+Len} must be a power of two, such that $2^\texttt{paddedLen}$ represents the smallest integer larger than both {\ttfamily ndata1} and {\ttfamily ndata2}. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00449}{449}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCrossCorr__mod_aa17b9dfa7fb9c09a2942ee4d2e50e30c}\label{namespaceCrossCorr__mod_aa17b9dfa7fb9c09a2942ee4d2e50e30c}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!realft@{realft}}
+\index{realft@{realft}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{realft()}{realft()}}
+{\footnotesize\ttfamily subroutine Cross\+Corr\+\_\+mod\+::realft (\begin{DoxyParamCaption}\item[{integer(IK)}]{padded\+Len,  }\item[{integer(IK)}]{padded\+Len\+Half,  }\item[{integer(IK)}]{padded\+Len\+Quarter,  }\item[{real(RK)}]{Padded\+Data,  }\item[{integer(IK), intent(in)}]{isign,  }\item[{complex(CK)}]{Zdata }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00587}{587}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceCrossCorr__mod_afab477909a5b9d455cfb3f02084e40b2}\label{namespaceCrossCorr__mod_afab477909a5b9d455cfb3f02084e40b2}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!realftWeighted@{realftWeighted}}
+\index{realftWeighted@{realftWeighted}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{realftWeighted()}{realftWeighted()}}
+{\footnotesize\ttfamily subroutine Cross\+Corr\+\_\+mod\+::realft\+Weighted (\begin{DoxyParamCaption}\item[{integer(IK)}]{len\+Compact\+Data,  }\item[{integer(IK)}]{padded\+Len,  }\item[{integer(IK)}]{padded\+Len\+Half,  }\item[{integer(IK)}]{padded\+Len\+Quarter,  }\item[{real(RK)}]{Compact\+Data,  }\item[{complex(CK)}]{Zdata,  }\item[{integer(IK)}]{Weight }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00654}{654}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceCrossCorr__mod_a8725263ad3537d8f30d3b1737f45923d}\label{namespaceCrossCorr__mod_a8725263ad3537d8f30d3b1737f45923d}} 
+\index{CrossCorr\_mod@{CrossCorr\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!CrossCorr\_mod@{CrossCorr\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character(len=$\ast$), parameter Cross\+Corr\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Cross\+Corr\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{CrossCorr__mod_8f90_source_l00050}{50}} of file \mbox{\hyperlink{CrossCorr__mod_8f90_source}{Cross\+Corr\+\_\+mod.\+f90}}.
+

@@ -1,0 +1,154 @@
+\hypertarget{Quantile__mod_8f90_source}{}\doxysection{Quantile\+\_\+mod.\+f90}
+\label{Quantile__mod_8f90_source}\index{/home/amir/git/paramonte/src/kernel/Quantile\_mod.f90@{/home/amir/git/paramonte/src/kernel/Quantile\_mod.f90}}
+\mbox{\hyperlink{Quantile__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00001}00001 \textcolor{fortran_comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00002}00002 \textcolor{fortran_comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00003}00003 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00004}00004 \textcolor{fortran_comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00005}00005 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00006}00006 \textcolor{fortran_comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00007}00007 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00008}00008 \textcolor{fortran_comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00009}00009 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00010}00010 \textcolor{fortran_comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00011}00011 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00012}00012 \textcolor{fortran_comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00013}00013 \textcolor{fortran_comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}),}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00014}00014 \textcolor{fortran_comment}{!!!!   to deal in the Software without restriction, including without limitation}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00015}00015 \textcolor{fortran_comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00016}00016 \textcolor{fortran_comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00017}00017 \textcolor{fortran_comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00018}00018 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00019}00019 \textcolor{fortran_comment}{!!!!   The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00020}00020 \textcolor{fortran_comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00021}00021 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00022}00022 \textcolor{fortran_comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00023}00023 \textcolor{fortran_comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00024}00024 \textcolor{fortran_comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00025}00025 \textcolor{fortran_comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00026}00026 \textcolor{fortran_comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00027}00027 \textcolor{fortran_comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00028}00028 \textcolor{fortran_comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00029}00029 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00030}00030 \textcolor{fortran_comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00031}00031 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00032}00032 \textcolor{fortran_comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00033}00033 \textcolor{fortran_comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00034}00034 \textcolor{fortran_comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00035}00035 \textcolor{fortran_comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00036}00036 \textcolor{fortran_comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00037}00037 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00038}00038 \textcolor{fortran_comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00039}00039 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00040}00040 \textcolor{fortran_comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00041}00041 \textcolor{fortran_comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00048}\mbox{\hyperlink{namespaceQuantile__mod}{00048}} \textcolor{fortran_statement}{module} \mbox{\hyperlink{namespaceQuantile__mod}{Quantile\_mod}}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00050}00050     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00051}00051     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00053}\mbox{\hyperlink{namespaceQuantile__mod_a4c29807becce64e981b3042cd676c657}{00053}}     \textcolor{fortran_statement}{character}(\textcolor{fortran_operator_symbols}{*}),\textcolor{fortran_attribute}{ parameter} :: \mbox{\hyperlink{namespaceConstants__mod_ade87ed33b235f099b65904dc21cbe01e}{MODULE\_NAME}}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}@Quantile\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00065}\mbox{\hyperlink{interfaceQuantile__mod_1_1getMedian}{00065}}     \textcolor{fortran_statement}{interface} \mbox{\hyperlink{interfaceQuantile__mod_1_1getMedian}{getMedian}}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00066}00066 \textcolor{fortran_statement}{        module procedure} :: \mbox{\hyperlink{namespaceQuantile__mod_a641a00debc18efebc42711dabcc585b5}{getMedian\_RK}}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00067}00067     \textcolor{fortran_statement}{end interface }\mbox{\hyperlink{interfaceQuantile__mod_1_1getMedian}{getMedian}}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00069}00069 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00071}00071 \textcolor{fortran_statement}{contains}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00073}00073 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00089}\mbox{\hyperlink{namespaceQuantile__mod_ac01f235b429e7d57c0de2ba0b33dbcf9}{00089}} \textcolor{fortran_attribute}{    pure}\textcolor{fortran_statement}{ subroutine} \mbox{\hyperlink{namespaceQuantile__mod_ac01f235b429e7d57c0de2ba0b33dbcf9}{getQuantile}}(Point,SortedQuantileProbability,Quantile,failed,Weight,sumWeight)}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00090}00090 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00091}00091 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceQuantile__mod_ac01f235b429e7d57c0de2ba0b33dbcf9}{getQuantile}}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00092}00092 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00093}00093 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}, \mbox{\hyperlink{namespaceConstants__mod_a762d39c9d110561d39b6ddeef221cd17}{NEGINF\_RK}}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00094}00094         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceSort__mod}{Sort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceSort__mod_1_1indexArray}{indexArray}}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00095}00095         \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00096}00096 \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})    ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Point(:)}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00097}00097 \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})    ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: SortedQuantileProbability(:)}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00098}00098 \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})    ,\textcolor{fortran_attribute}{ intent(out)}                   :: Quantile(\textcolor{fortran_function}{size}(SortedQuantileProbability))}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00099}00099 \textcolor{fortran_statement}{        logical}     ,\textcolor{fortran_attribute}{ intent(out)}                   :: failed}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00100}00100         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}) ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: sumWeight}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00101}00101         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}) ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: Weight(\textcolor{fortran_function}{size}(Point))}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00102}00102         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}})                                 :: Indx(\textcolor{fortran_function}{size}(Point))}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00103}00103         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}})                                 :: SortedQuantileDensity(\textcolor{fortran_function}{size}(SortedQuantileProbability))}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00104}00104         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}})                                 :: ip, iq, iw, weightCounter}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00105}00105         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}})                                 :: np, nq}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00106}00106         np\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{size}(Point,\textcolor{fortran_spcifier}{kind}\textcolor{fortran_operator_symbols}{=}\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}})}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00107}00107         nq\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{size}(SortedQuantileProbability,\textcolor{fortran_spcifier}{kind}\textcolor{fortran_operator_symbols}{=}\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}})}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00108}00108 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{interfaceSort__mod_1_1indexArray}{indexArray}}(Point,Indx,failed)}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00109}00109         \textcolor{fortran_keywordflow}{if} (failed)\textcolor{fortran_statement}{ return} \textcolor{fortran_comment}{! LCOV\_EXCL\_LINE}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00110}00110         iq\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00111}00111         \textcolor{fortran_keywordflow}{if} (\textcolor{fortran_function}{present}(sumWeight)) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00112}00112             weightCounter\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0\_IK}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00113}00113             SortedQuantileDensity\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{nint}( SortedQuantileProbability\textcolor{fortran_operator_symbols}{ * }sumWeight )}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00114}00114             loopWeighted: \textcolor{fortran_keywordflow}{do} ip\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, np}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00115}00115                 \textcolor{fortran_keywordflow}{do} iw\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, Weight(Indx(ip))}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00116}00116                     weightCounter\textcolor{fortran_operator_symbols}{ = }weightCounter\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00117}00117                     \textcolor{fortran_keywordflow}{if} (weightCounter\textcolor{fortran_operator_symbols}{ >}\textcolor{fortran_operator_symbols}{= }SortedQuantileDensity(iq)) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00118}00118                         Quantile(iq)\textcolor{fortran_operator_symbols}{ = }Point(Indx(ip))}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00119}00119                         iq\textcolor{fortran_operator_symbols}{ = }iq\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00120}00120                         \textcolor{fortran_keywordflow}{if} (iq\textcolor{fortran_operator_symbols}{>}nq)\textcolor{fortran_statement}{ exit} loopWeighted}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00121}00121 \textcolor{fortran_keywordflow}{                    end if}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00122}00122 \textcolor{fortran_keywordflow}{                end do}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00123}00123 \textcolor{fortran_keywordflow}{            end do} loopWeighted}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00124}00124         \textcolor{fortran_keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00125}00125             SortedQuantileDensity\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{nint}( SortedQuantileProbability\textcolor{fortran_operator_symbols}{ * }np )}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00126}00126             loopNonWeighted: \textcolor{fortran_keywordflow}{do} ip\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, np}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00127}00127                 \textcolor{fortran_keywordflow}{if} (ip\textcolor{fortran_operator_symbols}{>}\textcolor{fortran_operator_symbols}{=}SortedQuantileDensity(iq)) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00128}00128                     Quantile(iq)\textcolor{fortran_operator_symbols}{ = }Point(Indx(ip))}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00129}00129                     iq\textcolor{fortran_operator_symbols}{ = }iq\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00130}00130                     \textcolor{fortran_keywordflow}{if} (iq\textcolor{fortran_operator_symbols}{>}nq)\textcolor{fortran_statement}{ exit} loopNonWeighted}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00131}00131 \textcolor{fortran_keywordflow}{                end if}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00132}00132 \textcolor{fortran_keywordflow}{            end do} loopNonWeighted}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00133}00133 \textcolor{fortran_keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00134}00134         \textcolor{fortran_keywordflow}{if} (iq\textcolor{fortran_operator_symbols}{ <}\textcolor{fortran_operator_symbols}{= }nq) Quantile(iq:nq)\textcolor{fortran_operator_symbols}{ = }Point(Indx(np))}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00135}00135     \textcolor{fortran_statement}{end subroutine }\mbox{\hyperlink{namespaceQuantile__mod_ac01f235b429e7d57c0de2ba0b33dbcf9}{getQuantile}}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00137}00137 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00149}\mbox{\hyperlink{interfaceQuantile__mod_1_1getMedian_ad68532040c29ca6fa7a84953592cd40e}{00149}} \textcolor{fortran_attribute}{    pure}\textcolor{fortran_statement}{ subroutine} \mbox{\hyperlink{namespaceQuantile__mod_a641a00debc18efebc42711dabcc585b5}{getMedian\_RK}}(lenArray, Array, median, failed)}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00150}00150 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00151}00151 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceQuantile__mod_a641a00debc18efebc42711dabcc585b5}{getMedian\_RK}}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00152}00152 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00153}00153 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00154}00154         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceSort__mod}{Sort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceSort__mod_1_1sortAscending}{sortAscending}}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00155}00155         \textcolor{fortran_comment}{!use Err\_mod, only: Err\_type}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00157}00157         \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00159}00159         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}})     ,\textcolor{fortran_attribute}{ intent(in)}    :: lenArray}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00160}00160 \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})        ,\textcolor{fortran_attribute}{ intent(in)}    :: Array(lenArray)}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00161}00161 \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})        ,\textcolor{fortran_attribute}{ intent(out)}   :: median}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00162}00162 \textcolor{fortran_statement}{        logical}         ,\textcolor{fortran_attribute}{ intent(out)}   :: failed}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00163}00163        \textcolor{fortran_comment}{!type(Err\_type)  , intent(out)   :: Err}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00164}00164        \textcolor{fortran_comment}{!character(*)    , parameter     :: PROCEDURE\_NAME = MODULE\_NAME//"{}@median\_RK()"{}}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00165}00165 \textcolor{fortran_statement}{        real}(\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}})                        :: ArrayDummy(lenArray)}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00166}00166         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}})                     :: lenArrayHalf}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00168}00168         ArrayDummy\textcolor{fortran_operator_symbols}{ = }Array}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00169}00169 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{interfaceSort__mod_1_1sortAscending}{sortAscending}}(ArrayDummy, failed)}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00170}00170         \textcolor{fortran_comment}{!call sortAscending(ArrayDummy,Err)}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00171}00171         \textcolor{fortran_comment}{!! LCOV\_EXCL\_START}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00172}00172         \textcolor{fortran_comment}{!if (Err\%occurred) then}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00173}00173         \textcolor{fortran_comment}{!    Err\%msg = PROCEDURE\_NAME//Err\%msg}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00174}00174         \textcolor{fortran_comment}{!    return}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00175}00175         \textcolor{fortran_comment}{!end if}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00176}00176         \textcolor{fortran_comment}{!! LCOV\_EXCL\_STOP}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00177}00177 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00178}00178         lenArrayHalf\textcolor{fortran_operator_symbols}{ = }lenArray\textcolor{fortran_operator_symbols}{ / }\textcolor{fortran_numeric_literal}{2\_IK}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00179}00179         median\textcolor{fortran_operator_symbols}{ = }ArrayDummy(lenArrayHalf\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00180}00180         \textcolor{fortran_keywordflow}{if} (\textcolor{fortran_numeric_literal}{2\_IK}\textcolor{fortran_operator_symbols}{ * }lenArrayHalf\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{= }lenArray) median\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{5\_RK}\textcolor{fortran_operator_symbols}{ * }( ArrayDummy(lenArrayHalf)\textcolor{fortran_operator_symbols}{ + }median )}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00182}00182     \textcolor{fortran_statement}{end subroutine }\mbox{\hyperlink{namespaceQuantile__mod_a641a00debc18efebc42711dabcc585b5}{getMedian\_RK}}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00183}00183 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00184}00184 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00185}00185 }
+\DoxyCodeLine{\Hypertarget{Quantile__mod_8f90_source_l00186}00186 \textcolor{fortran_statement}{end module }Quantile\_mod}
+
+\end{DoxyCode}

@@ -1,0 +1,188 @@
+\hypertarget{namespaceTimer__mod}{}\doxysection{Timer\+\_\+mod Module Reference}
+\label{namespaceTimer__mod}\index{Timer\_mod@{Timer\_mod}}
+
+
+This module contains classes and procedures relevant to wall-\/time timing.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \mbox{\hyperlink{structTimer__mod_1_1Count__type}{Count\+\_\+type}}
+\item 
+type \mbox{\hyperlink{structTimer__mod_1_1Time__type}{Time\+\_\+type}}
+\item 
+interface \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}} class, containing method for setting up a wall-\/time timer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+type(\mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}) function \mbox{\hyperlink{namespaceTimer__mod_ad866af1729796902d1a7f27659803fa2}{construct\+Timer}} (failed)
+\begin{DoxyCompactList}\small\item\em This is the constructor of the class \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}. Before returning the object, this function also calls the \mbox{\hyperlink{namespaceTimer__mod_afbf455acbbcaf551c5785a3fdd6c34b9}{tic()}} method of the {\ttfamily \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}} object to reset the timer. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceTimer__mod_afbf455acbbcaf551c5785a3fdd6c34b9}{set\+Tic}} (Timer)
+\begin{DoxyCompactList}\small\item\em This procedure is a method of the class \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}. Reset the timer object and return. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceTimer__mod_a65cb2f0bb83775e1fcbd776b854e4ca7}{set\+Toc}} (Timer)
+\begin{DoxyCompactList}\small\item\em This procedure is a method of the class \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}. Mark the timer and compute the time spent since last \mbox{\hyperlink{namespaceTimer__mod_a65cb2f0bb83775e1fcbd776b854e4ca7}{toc()}} method call and return. \end{DoxyCompactList}\item 
+real(RK) function \mbox{\hyperlink{namespaceTimer__mod_a144014d7bc9b317fd1466aa9577de8b9}{get\+Time\+Since\+Last\+Call}} (Timer)
+\begin{DoxyCompactList}\small\item\em This procedure is a method of the class \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}. Report the time spent in seconds since the last timing. \end{DoxyCompactList}\item 
+real(RK) function \mbox{\hyperlink{namespaceTimer__mod_ab5c332bdf35d0a495397b645636c40d3}{get\+Time\+Since\+Start}} (Timer)
+\begin{DoxyCompactList}\small\item\em This procedure is a method of the class \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}. Report the time spent in seconds since the start of the timing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceTimer__mod_a513a1315a1b017156548c7fbb289c1d0}{MODULE\+\_\+\+NAME}} = \char`\"{}@Timer\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains classes and procedures relevant to wall-\/time timing. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceTimer__mod_ad866af1729796902d1a7f27659803fa2}\label{namespaceTimer__mod_ad866af1729796902d1a7f27659803fa2}} 
+\index{Timer\_mod@{Timer\_mod}!constructTimer@{constructTimer}}
+\index{constructTimer@{constructTimer}!Timer\_mod@{Timer\_mod}}
+\doxysubsubsection{\texorpdfstring{constructTimer()}{constructTimer()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}) function Timer\+\_\+mod\+::construct\+Timer (\begin{DoxyParamCaption}\item[{logical, intent(out)}]{failed }\end{DoxyParamCaption})}
+
+
+
+This is the constructor of the class \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}. Before returning the object, this function also calls the \mbox{\hyperlink{namespaceTimer__mod_afbf455acbbcaf551c5785a3fdd6c34b9}{tic()}} method of the {\ttfamily \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}} object to reset the timer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em failed} & \+: An output logical value. If {\ttfamily .true.}, the system does possess a processor clock.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Timer} \+: An object of class \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Sep 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Timer__mod_8f90_source_l00109}{109}} of file \mbox{\hyperlink{Timer__mod_8f90_source}{Timer\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTimer__mod_a144014d7bc9b317fd1466aa9577de8b9}\label{namespaceTimer__mod_a144014d7bc9b317fd1466aa9577de8b9}} 
+\index{Timer\_mod@{Timer\_mod}!getTimeSinceLastCall@{getTimeSinceLastCall}}
+\index{getTimeSinceLastCall@{getTimeSinceLastCall}!Timer\_mod@{Timer\_mod}}
+\doxysubsubsection{\texorpdfstring{getTimeSinceLastCall()}{getTimeSinceLastCall()}}
+{\footnotesize\ttfamily real(RK) function Timer\+\_\+mod\+::get\+Time\+Since\+Last\+Call (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}})}]{Timer }\end{DoxyParamCaption})}
+
+
+
+This procedure is a method of the class \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}. Report the time spent in seconds since the last timing. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em Timer} & \+: An object of class \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}} whose components are manipulated by this method.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily time\+Since\+Last\+Call} \+: The time spent in seconds since the last timing.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Sep 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Timer__mod_8f90_source_l00202}{202}} of file \mbox{\hyperlink{Timer__mod_8f90_source}{Timer\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTimer__mod_ab5c332bdf35d0a495397b645636c40d3}\label{namespaceTimer__mod_ab5c332bdf35d0a495397b645636c40d3}} 
+\index{Timer\_mod@{Timer\_mod}!getTimeSinceStart@{getTimeSinceStart}}
+\index{getTimeSinceStart@{getTimeSinceStart}!Timer\_mod@{Timer\_mod}}
+\doxysubsubsection{\texorpdfstring{getTimeSinceStart()}{getTimeSinceStart()}}
+{\footnotesize\ttfamily real(RK) function Timer\+\_\+mod\+::get\+Time\+Since\+Start (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}})}]{Timer }\end{DoxyParamCaption})}
+
+
+
+This procedure is a method of the class \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}. Report the time spent in seconds since the start of the timing. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em Timer} & \+: An object of class \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}} whose components are manipulated by this method.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily time\+Since\+Start} \+: The time spent in seconds since the start of the timing.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Sep 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Timer__mod_8f90_source_l00226}{226}} of file \mbox{\hyperlink{Timer__mod_8f90_source}{Timer\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTimer__mod_afbf455acbbcaf551c5785a3fdd6c34b9}\label{namespaceTimer__mod_afbf455acbbcaf551c5785a3fdd6c34b9}} 
+\index{Timer\_mod@{Timer\_mod}!setTic@{setTic}}
+\index{setTic@{setTic}!Timer\_mod@{Timer\_mod}}
+\doxysubsubsection{\texorpdfstring{setTic()}{setTic()}}
+{\footnotesize\ttfamily subroutine Timer\+\_\+mod\+::set\+Tic (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}})}]{Timer }\end{DoxyParamCaption})}
+
+
+
+This procedure is a method of the class \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}. Reset the timer object and return. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em Timer} & \+: An object of class \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}} whose components are manipulated by this method.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Sep 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Timer__mod_8f90_source_l00134}{134}} of file \mbox{\hyperlink{Timer__mod_8f90_source}{Timer\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTimer__mod_a65cb2f0bb83775e1fcbd776b854e4ca7}\label{namespaceTimer__mod_a65cb2f0bb83775e1fcbd776b854e4ca7}} 
+\index{Timer\_mod@{Timer\_mod}!setToc@{setToc}}
+\index{setToc@{setToc}!Timer\_mod@{Timer\_mod}}
+\doxysubsubsection{\texorpdfstring{setToc()}{setToc()}}
+{\footnotesize\ttfamily subroutine Timer\+\_\+mod\+::set\+Toc (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}})}]{Timer }\end{DoxyParamCaption})}
+
+
+
+This procedure is a method of the class \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}. Mark the timer and compute the time spent since last \mbox{\hyperlink{namespaceTimer__mod_a65cb2f0bb83775e1fcbd776b854e4ca7}{toc()}} method call and return. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em Timer} & \+: An object of class \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}} whose components are manipulated by this method.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+Specifically, this method will set/update the following components of the object of type {\ttfamily \mbox{\hyperlink{structTimer__mod_1_1Timer__type}{Timer\+\_\+type}}}\+:
+\begin{DoxyItemize}
+\item {\ttfamily TimerCountdelta} \+: The total counts since the last {\ttfamily toc()} call.
+\item {\ttfamily TimerCounttotal} \+: The total counts since the object creation or since the last {\ttfamily tic()} call.
+\item {\ttfamily TimerCountstop} \+: The current count as inferred from the Fortran intrinsic procedure {\ttfamily system\+\_\+clock()}.
+\item {\ttfamily TimerTimerdelta} \+: The total time in seconds since the last {\ttfamily toc()} call.
+\item {\ttfamily TimerTimertotal} \+: The total time in seconds since the object creation or since the last {\ttfamily tic()} call.
+\item {\ttfamily TimerTimerstop} \+: The current time in seconds as inferred from the Fortran intrinsic procedure {\ttfamily system\+\_\+clock()}.
+\end{DoxyItemize}
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Sep 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Timer__mod_8f90_source_l00171}{171}} of file \mbox{\hyperlink{Timer__mod_8f90_source}{Timer\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceTimer__mod_a513a1315a1b017156548c7fbb289c1d0}\label{namespaceTimer__mod_a513a1315a1b017156548c7fbb289c1d0}} 
+\index{Timer\_mod@{Timer\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!Timer\_mod@{Timer\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character($\ast$), parameter Timer\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Timer\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{Timer__mod_8f90_source_l00056}{56}} of file \mbox{\hyperlink{Timer__mod_8f90_source}{Timer\+\_\+mod.\+f90}}.
+

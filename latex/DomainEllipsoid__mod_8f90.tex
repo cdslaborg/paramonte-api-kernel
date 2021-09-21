@@ -1,0 +1,48 @@
+\hypertarget{DomainEllipsoid__mod_8f90}{}\doxysection{/home/amir/git/paramonte/src/kernel/\+Domain\+Ellipsoid\+\_\+mod.f90 File Reference}
+\label{DomainEllipsoid__mod_8f90}\index{/home/amir/git/paramonte/src/kernel/DomainEllipsoid\_mod.f90@{/home/amir/git/paramonte/src/kernel/DomainEllipsoid\_mod.f90}}
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+mod\+::\+Domain\+Ellipsoid\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The class for Hyper-\/ellipsoidal domain. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1isEqual}{Domain\+Ellipsoid\+\_\+mod\+::is\+Equal}}
+\item 
+interface \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1operator_07_0a_0a_08}{Domain\+Ellipsoid\+\_\+mod\+::operator(==)}}
+\item 
+interface \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1getRand}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand}}
+\begin{DoxyCompactList}\small\item\em Generate and return a vector of shape {\ttfamily (nd)} or a matrix of shape {\ttfamily (nd,np)} of randomly uniformly distributed points from within an ellipsoid specified by the Lower triangle and diagonals of the Cholesky factorization of its representative matrix. Here, {\ttfamily nd} represents the number of dimensions of the ellipsoid and {\ttfamily np} represents the number of random vectors to generate. The elements of each uniformly distributed output random vector {\ttfamily Rand(i), i=1\+:nd} are guaranteed to be in the range,. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \mbox{\hyperlink{namespaceDomainEllipsoid__mod}{Domain\+Ellipsoid\+\_\+mod}}
+\begin{DoxyCompactList}\small\item\em This module contains the classes and procedures for setting up the domain attribute of samplers of class \mbox{\hyperlink{structParaMonte__mod_1_1ParaMonte__type}{Para\+Monte\+\_\+type}}. For more information, see the description of this attribute in the body of the module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+type(Domain\+Ellipsoid\+\_\+type) function \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a529251f7da3fcfab65ac6325ee44b8f6}{Domain\+Ellipsoid\+\_\+mod\+::construct}} (ndim, Center, Rep\+Upp, Err)
+\begin{DoxyCompactList}\small\item\em Construct an object of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}. \end{DoxyCompactList}\item 
+pure logical function \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a7d9164e925b4b980e129ceb6bf7a4873}{Domain\+Ellipsoid\+\_\+mod\+::is\+Identical\+Domain}} (Domain1, Domain2)
+\begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} is the two input objects of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}} are equal, otherwise, return {\ttfamily .false.}. \end{DoxyCompactList}\item 
+logical function \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a6ef03395142d8e4612f567e55c269737}{Domain\+Ellipsoid\+\_\+mod\+::is\+Identical\+Domain\+Almost}} (Domain1, Domain2, tol)
+\begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} is the two input objects of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}} are equal within the specified tolerance {\ttfamily tol}, otherwise, return {\ttfamily .false.}. \end{DoxyCompactList}\item 
+pure logical function \mbox{\hyperlink{namespaceDomainEllipsoid__mod_ac22bd831678c7563d2f170a46687af62}{Domain\+Ellipsoid\+\_\+mod\+::contains}} (self, Point)
+\item 
+subroutine \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a831f10500334fc230c9b99b413428668}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unif\+\_\+1D}} (self, Point)
+\item 
+subroutine \mbox{\hyperlink{namespaceDomainEllipsoid__mod_aa9c838220055c6e034a3382e2a3de9d6}{Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unif\+\_\+2D}} (self, Point)
+\item 
+real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_aceb6c4d7ced8311aa91278c4aca92313}{Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Unit\+Volume\+MVU}} (nd, log\+Vol\+Unit\+Ball)
+\begin{DoxyCompactList}\small\item\em Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. \end{DoxyCompactList}\item 
+real(RK) function, dimension(nd, np) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a6f116cb605bc7629402202be1f4b924b}{Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Unit\+Volume\+MVU\+\_\+2D}} (nd, np, log\+Vol\+Unit\+Ball)
+\begin{DoxyCompactList}\small\item\em Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. \end{DoxyCompactList}\item 
+real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a4bad73128f9ebca44bb726abe9d52d77}{Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Unit\+Radius\+MVU}} (nd)
+\begin{DoxyCompactList}\small\item\em Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. \end{DoxyCompactList}\item 
+real(RK) function, dimension(nd, np) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a2886c7f657f58a4199ef1275da0ad510}{Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Unit\+Radius\+MVU\+\_\+2D}} (nd, np)
+\begin{DoxyCompactList}\small\item\em Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a2f4e252361ff4420136821baffb46ae1}{Domain\+Ellipsoid\+\_\+mod\+::get\+MVUDev}} (nd, Mean, Rep\+Mat, X)
+\begin{DoxyCompactList}\small\item\em Amir Shahmoradi, April 25, 2016, 2\+:21 PM, IFS, University of Texas at Austin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a4a6063a90dabc1e4d9f683a82ba66edf}{Domain\+Ellipsoid\+\_\+mod\+::\+MODULE\+\_\+\+NAME}} = \char`\"{}@Domain\+Ellipsoid\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}

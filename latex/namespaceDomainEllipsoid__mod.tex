@@ -1,0 +1,330 @@
+\hypertarget{namespaceDomainEllipsoid__mod}{}\doxysection{Domain\+Ellipsoid\+\_\+mod Module Reference}
+\label{namespaceDomainEllipsoid__mod}\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
+
+
+This module contains the classes and procedures for setting up the domain attribute of samplers of class \mbox{\hyperlink{structParaMonte__mod_1_1ParaMonte__type}{Para\+Monte\+\_\+type}}. For more information, see the description of this attribute in the body of the module.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The class for Hyper-\/ellipsoidal domain. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1getRand}{get\+Rand}}
+\begin{DoxyCompactList}\small\item\em Generate and return a vector of shape {\ttfamily (nd)} or a matrix of shape {\ttfamily (nd,np)} of randomly uniformly distributed points from within an ellipsoid specified by the Lower triangle and diagonals of the Cholesky factorization of its representative matrix. Here, {\ttfamily nd} represents the number of dimensions of the ellipsoid and {\ttfamily np} represents the number of random vectors to generate. The elements of each uniformly distributed output random vector {\ttfamily Rand(i), i=1\+:nd} are guaranteed to be in the range,. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1isEqual}{is\+Equal}}
+\item 
+interface \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1operator_07_0a_0a_08}{operator(==)}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+type(\mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}) function \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a529251f7da3fcfab65ac6325ee44b8f6}{construct}} (ndim, Center, Rep\+Upp, Err)
+\begin{DoxyCompactList}\small\item\em Construct an object of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}. \end{DoxyCompactList}\item 
+pure logical function \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a7d9164e925b4b980e129ceb6bf7a4873}{is\+Identical\+Domain}} (Domain1, Domain2)
+\begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} is the two input objects of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}} are equal, otherwise, return {\ttfamily .false.}. \end{DoxyCompactList}\item 
+logical function \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a6ef03395142d8e4612f567e55c269737}{is\+Identical\+Domain\+Almost}} (Domain1, Domain2, tol)
+\begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} is the two input objects of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}} are equal within the specified tolerance {\ttfamily tol}, otherwise, return {\ttfamily .false.}. \end{DoxyCompactList}\item 
+pure logical function \mbox{\hyperlink{namespaceDomainEllipsoid__mod_ac22bd831678c7563d2f170a46687af62}{contains}} (self, Point)
+\item 
+subroutine \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a831f10500334fc230c9b99b413428668}{get\+Rand\+Unif\+\_\+1D}} (self, Point)
+\item 
+subroutine \mbox{\hyperlink{namespaceDomainEllipsoid__mod_aa9c838220055c6e034a3382e2a3de9d6}{get\+Rand\+Unif\+\_\+2D}} (self, Point)
+\item 
+real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_aceb6c4d7ced8311aa91278c4aca92313}{gen\+Rand\+Unit\+Volume\+MVU}} (nd, log\+Vol\+Unit\+Ball)
+\begin{DoxyCompactList}\small\item\em Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. \end{DoxyCompactList}\item 
+real(RK) function, dimension(nd, np) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a6f116cb605bc7629402202be1f4b924b}{gen\+Rand\+Unit\+Volume\+MVU\+\_\+2D}} (nd, np, log\+Vol\+Unit\+Ball)
+\begin{DoxyCompactList}\small\item\em Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. \end{DoxyCompactList}\item 
+real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a4bad73128f9ebca44bb726abe9d52d77}{gen\+Rand\+Unit\+Radius\+MVU}} (nd)
+\begin{DoxyCompactList}\small\item\em Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. \end{DoxyCompactList}\item 
+real(RK) function, dimension(nd, np) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a2886c7f657f58a4199ef1275da0ad510}{gen\+Rand\+Unit\+Radius\+MVU\+\_\+2D}} (nd, np)
+\begin{DoxyCompactList}\small\item\em Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a2f4e252361ff4420136821baffb46ae1}{get\+MVUDev}} (nd, Mean, Rep\+Mat, X)
+\begin{DoxyCompactList}\small\item\em Amir Shahmoradi, April 25, 2016, 2\+:21 PM, IFS, University of Texas at Austin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a4a6063a90dabc1e4d9f683a82ba66edf}{MODULE\+\_\+\+NAME}} = \char`\"{}@Domain\+Ellipsoid\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains the classes and procedures for setting up the domain attribute of samplers of class \mbox{\hyperlink{structParaMonte__mod_1_1ParaMonte__type}{Para\+Monte\+\_\+type}}. For more information, see the description of this attribute in the body of the module. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceDomainEllipsoid__mod_a529251f7da3fcfab65ac6325ee44b8f6}\label{namespaceDomainEllipsoid__mod_a529251f7da3fcfab65ac6325ee44b8f6}} 
+\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!construct@{construct}}
+\index{construct@{construct}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{construct()}{construct()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}) function Domain\+Ellipsoid\+\_\+mod\+::construct (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{ndim,  }\item[{real(RK)}]{Center,  }\item[{real(RK)}]{Rep\+Upp,  }\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err }\end{DoxyParamCaption})}
+
+
+
+Construct an object of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ndim} & \+: The number of dimensions of the domain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Center} & \+: The center of the ellipsoidal domain ({\bfseries{optional}}, default = A vector of all zeros). \\
+\hline
+\mbox{\texttt{ in}}  & {\em Rep\+Upp} & \+: The upper triangle and diagonal elements of the representative matrix of the ellipsoidal domain. The lower triangle is not used ({\bfseries{optional}}, default = Identity matrix). \\
+\hline
+\mbox{\texttt{ in}}  & {\em Err} & \+: An object of type \mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+mod\+::Err\+\_\+type}} containing error information. ({\bfseries{optional}}, if not provided and an error occurs, it will lead to a complete program halt).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily self} \+: An object of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+If not readily available, the input representative matrix {\ttfamily Rep\+Upp} can be constructed by calling \mbox{\hyperlink{namespaceSample__mod_a006be94969ee33fe9d9ad6c2a438a9c6}{Sample\+\_\+mod\+::gen\+Cov\+Upp\+From\+Cor\+Upp()}}.
+
+This routine computes the inverse of the input representative matrix. As such, if an error occurs, the first element of {\ttfamily selfCho\+Low} ({\ttfamily selfCho\+Low(1,1)}) will be set to a negative number. Additionally, if the input argument {\ttfamily Err} is present, an error message will be returned in {\ttfamily Errmsg} and {\ttfamily Erroccurred = .true.}.
+
+When the domain is non-\/spherical, {\ttfamily radius\+Sq} is set to negative infinity.
+
+When the domain is non-\/spherical, {\ttfamily radius\+Sq} is set to negative infinity.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00756}{756}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDomainEllipsoid__mod_ac22bd831678c7563d2f170a46687af62}\label{namespaceDomainEllipsoid__mod_ac22bd831678c7563d2f170a46687af62}} 
+\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!contains@{contains}}
+\index{contains@{contains}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily pure logical function Domain\+Ellipsoid\+\_\+mod\+::contains (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}), intent(in)}]{self,  }\item[{real(RK)}]{Point }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00889}{889}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDomainEllipsoid__mod_a4bad73128f9ebca44bb726abe9d52d77}\label{namespaceDomainEllipsoid__mod_a4bad73128f9ebca44bb726abe9d52d77}} 
+\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!genRandUnitRadiusMVU@{genRandUnitRadiusMVU}}
+\index{genRandUnitRadiusMVU@{genRandUnitRadiusMVU}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{genRandUnitRadiusMVU()}{genRandUnitRadiusMVU()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd) Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Unit\+Radius\+MVU (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd }\end{DoxyParamCaption})}
+
+
+
+Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the standard MVU domain.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+Stan\+Radius\+MVU} \+: The randomly generated standard MVU vector.
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000003}{Todo}}]This algorithm is not robust for very large values of {\ttfamily nd \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} 100}.\end{DoxyRefDesc}
+
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l01028}{1028}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDomainEllipsoid__mod_a2886c7f657f58a4199ef1275da0ad510}\label{namespaceDomainEllipsoid__mod_a2886c7f657f58a4199ef1275da0ad510}} 
+\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!genRandUnitRadiusMVU\_2D@{genRandUnitRadiusMVU\_2D}}
+\index{genRandUnitRadiusMVU\_2D@{genRandUnitRadiusMVU\_2D}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{genRandUnitRadiusMVU\_2D()}{genRandUnitRadiusMVU\_2D()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd,np) Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Unit\+Radius\+MVU\+\_\+2D (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{np }\end{DoxyParamCaption})}
+
+
+
+Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the standard MVU domain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of uniformly distributed random vectors to return.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+Stan\+Radius\+MVU} \+: A matrix of shape {\ttfamily (nd,np)} containing the randomly generated standard MVU vectors.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l01060}{1060}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDomainEllipsoid__mod_aceb6c4d7ced8311aa91278c4aca92313}\label{namespaceDomainEllipsoid__mod_aceb6c4d7ced8311aa91278c4aca92313}} 
+\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!genRandUnitVolumeMVU@{genRandUnitVolumeMVU}}
+\index{genRandUnitVolumeMVU@{genRandUnitVolumeMVU}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{genRandUnitVolumeMVU()}{genRandUnitVolumeMVU()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd) Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Unit\+Volume\+MVU (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{log\+Vol\+Unit\+Ball }\end{DoxyParamCaption})}
+
+
+
+Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the standard MVU domain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Vol\+Unit\+Ball} & \+: The natural logarithm of the volume of an {\ttfamily nd}-\/dimensional ball of unit radius.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+Stan\+Volume\+MVU} \+: The randomly generated standard MVU vector.
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000002}{Todo}}]This algorithm is not robust for very large values of {\ttfamily nd \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} 100}.\end{DoxyRefDesc}
+
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00960}{960}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDomainEllipsoid__mod_a6f116cb605bc7629402202be1f4b924b}\label{namespaceDomainEllipsoid__mod_a6f116cb605bc7629402202be1f4b924b}} 
+\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!genRandUnitVolumeMVU\_2D@{genRandUnitVolumeMVU\_2D}}
+\index{genRandUnitVolumeMVU\_2D@{genRandUnitVolumeMVU\_2D}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{genRandUnitVolumeMVU\_2D()}{genRandUnitVolumeMVU\_2D()}}
+{\footnotesize\ttfamily real(RK) function, dimension(nd,np) Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Unit\+Volume\+MVU\+\_\+2D (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{log\+Vol\+Unit\+Ball }\end{DoxyParamCaption})}
+
+
+
+Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the standard MVU domain. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of uniformly distributed random vectors to return. \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Vol\+Unit\+Ball} & \+: The natural logarithm of the volume of an {\ttfamily nd}-\/dimensional ball of unit radius.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+Stan\+Volume\+MVU} \+: A matrix of shape {\ttfamily (nd,np)} containing the randomly generated standard MVU vectors.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00998}{998}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDomainEllipsoid__mod_a2f4e252361ff4420136821baffb46ae1}\label{namespaceDomainEllipsoid__mod_a2f4e252361ff4420136821baffb46ae1}} 
+\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!getMVUDev@{getMVUDev}}
+\index{getMVUDev@{getMVUDev}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{getMVUDev()}{getMVUDev()}}
+{\footnotesize\ttfamily subroutine Domain\+Ellipsoid\+\_\+mod\+::get\+MVUDev (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mean,  }\item[{real(RK)}]{Rep\+Mat,  }\item[{real(RK)}]{X }\end{DoxyParamCaption})}
+
+
+
+Amir Shahmoradi, April 25, 2016, 2\+:21 PM, IFS, University of Texas at Austin. 
+
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l01083}{1083}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDomainEllipsoid__mod_a831f10500334fc230c9b99b413428668}\label{namespaceDomainEllipsoid__mod_a831f10500334fc230c9b99b413428668}} 
+\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!getRandUnif\_1D@{getRandUnif\_1D}}
+\index{getRandUnif\_1D@{getRandUnif\_1D}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{getRandUnif\_1D()}{getRandUnif\_1D()}}
+{\footnotesize\ttfamily subroutine Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unif\+\_\+1D (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}), intent(in)}]{self,  }\item[{real(RK)}]{Point }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00915}{915}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDomainEllipsoid__mod_aa9c838220055c6e034a3382e2a3de9d6}\label{namespaceDomainEllipsoid__mod_aa9c838220055c6e034a3382e2a3de9d6}} 
+\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!getRandUnif\_2D@{getRandUnif\_2D}}
+\index{getRandUnif\_2D@{getRandUnif\_2D}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{getRandUnif\_2D()}{getRandUnif\_2D()}}
+{\footnotesize\ttfamily subroutine Domain\+Ellipsoid\+\_\+mod\+::get\+Rand\+Unif\+\_\+2D (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}), intent(in)}]{self,  }\item[{real(RK)}]{Point }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00926}{926}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDomainEllipsoid__mod_a7d9164e925b4b980e129ceb6bf7a4873}\label{namespaceDomainEllipsoid__mod_a7d9164e925b4b980e129ceb6bf7a4873}} 
+\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!isIdenticalDomain@{isIdenticalDomain}}
+\index{isIdenticalDomain@{isIdenticalDomain}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{isIdenticalDomain()}{isIdenticalDomain()}}
+{\footnotesize\ttfamily pure logical function Domain\+Ellipsoid\+\_\+mod\+::is\+Identical\+Domain (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}})}]{Domain1,  }\item[{type(\mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}})}]{Domain2 }\end{DoxyParamCaption})}
+
+
+
+Return {\ttfamily .true.} is the two input objects of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}} are equal, otherwise, return {\ttfamily .false.}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Domain1} & \+: An input object of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Domain2} & \+: An input object of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em tol} & \+: The tolerance below which two real numbers are considered identical ({\bfseries{optional}}, default = {\ttfamily 0.}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily equal} \+: An output logical value that is {\ttfamily .true.} if and only if all components of {\ttfamily Domain1} and {\ttfamily Domain2} are equal and the same.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00824}{824}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDomainEllipsoid__mod_a6ef03395142d8e4612f567e55c269737}\label{namespaceDomainEllipsoid__mod_a6ef03395142d8e4612f567e55c269737}} 
+\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!isIdenticalDomainAlmost@{isIdenticalDomainAlmost}}
+\index{isIdenticalDomainAlmost@{isIdenticalDomainAlmost}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{isIdenticalDomainAlmost()}{isIdenticalDomainAlmost()}}
+{\footnotesize\ttfamily logical function Domain\+Ellipsoid\+\_\+mod\+::is\+Identical\+Domain\+Almost (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}})}]{Domain1,  }\item[{type(\mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}})}]{Domain2,  }\item[{real(RK), intent(in)}]{tol }\end{DoxyParamCaption})}
+
+
+
+Return {\ttfamily .true.} is the two input objects of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}} are equal within the specified tolerance {\ttfamily tol}, otherwise, return {\ttfamily .false.}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Domain1} & \+: An input object of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Domain2} & \+: An input object of type \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em tol} & \+: The tolerance below which two real numbers are considered identical ({\bfseries{optional}}, default = {\ttfamily 0.}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily equal} \+: An output logical value that is {\ttfamily .true.} if and only if all components of {\ttfamily Domain1} and {\ttfamily Domain2} are equal and the same.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00863}{863}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceDomainEllipsoid__mod_a4a6063a90dabc1e4d9f683a82ba66edf}\label{namespaceDomainEllipsoid__mod_a4a6063a90dabc1e4d9f683a82ba66edf}} 
+\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character($\ast$), parameter Domain\+Ellipsoid\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Domain\+Ellipsoid\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00054}{54}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+

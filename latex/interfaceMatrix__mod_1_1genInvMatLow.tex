@@ -1,0 +1,92 @@
+\hypertarget{interfaceMatrix__mod_1_1genInvMatLow}{}\doxysection{Matrix\+\_\+mod\+::gen\+Inv\+Mat\+Low Interface Reference}
+\label{interfaceMatrix__mod_1_1genInvMatLow}\index{Matrix\_mod::genInvMatLow@{Matrix\_mod::genInvMatLow}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{interfaceMatrix__mod_1_1genInvMatLow_a9ee4bcb29980c46100667bb565370dcd}{gen\+Inv\+Mat\+Low}} (nd, Mat\+Low)
+\begin{DoxyCompactList}\small\item\em Return the inverse matrix {\ttfamily Inv\+Mat\+Low} of an input lower-\/triangle matrix of shape {\ttfamily (nd,nd)}. The upper triangle of the input matrix will not be used. \end{DoxyCompactList}\item 
+pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{interfaceMatrix__mod_1_1genInvMatLow_a75b0d42e4d453adb6c9da67ada6a2404}{gen\+Inv\+Cho\+Low}} (nd, Mat\+Low, Diagonal)
+\begin{DoxyCompactList}\small\item\em Return the inverse matrix {\ttfamily Inv\+Mat\+Low} of an input lower-\/triangle matrix of shape {\ttfamily (nd,nd)} whose diagonal elements are given separately as the input {\ttfamily Diagonal} of length {\ttfamily nd}. The upper triangle of the input matrix will not be used. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00061}{61}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{interfaceMatrix__mod_1_1genInvMatLow_a9ee4bcb29980c46100667bb565370dcd}\label{interfaceMatrix__mod_1_1genInvMatLow_a9ee4bcb29980c46100667bb565370dcd}} 
+\index{Matrix\_mod::genInvMatLow@{Matrix\_mod::genInvMatLow}!genInvMatLow@{genInvMatLow}}
+\index{genInvMatLow@{genInvMatLow}!Matrix\_mod::genInvMatLow@{Matrix\_mod::genInvMatLow}}
+\doxysubsubsection{\texorpdfstring{genInvMatLow()}{genInvMatLow()}}
+{\footnotesize\ttfamily pure real(RK) function, dimension(nd,nd) Matrix\+\_\+mod\+::gen\+Inv\+Mat\+Low\+::gen\+Inv\+Mat\+Low (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mat\+Low }\end{DoxyParamCaption})}
+
+
+
+Return the inverse matrix {\ttfamily Inv\+Mat\+Low} of an input lower-\/triangle matrix of shape {\ttfamily (nd,nd)}. The upper triangle of the input matrix will not be used. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The size of the input matrix. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em Mat\+Low} & \+: The lower triangle input matrix.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Inv\+Mat\+Low} \+: The lower-\/triangular inverse matrix of the input lower-\/triangle matrix.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The output is not a full inverse matrix. In particular, the upper-\/triangle elements of the output matrix are not set to zero.
+\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Tuesday 3\+:06 AM, August 24, 2021, Dallas, TX 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01543}{1543}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{interfaceMatrix__mod_1_1genInvMatLow_a75b0d42e4d453adb6c9da67ada6a2404}\label{interfaceMatrix__mod_1_1genInvMatLow_a75b0d42e4d453adb6c9da67ada6a2404}} 
+\index{Matrix\_mod::genInvMatLow@{Matrix\_mod::genInvMatLow}!genInvChoLow@{genInvChoLow}}
+\index{genInvChoLow@{genInvChoLow}!Matrix\_mod::genInvMatLow@{Matrix\_mod::genInvMatLow}}
+\doxysubsubsection{\texorpdfstring{genInvChoLow()}{genInvChoLow()}}
+{\footnotesize\ttfamily pure real(RK) function, dimension(nd,nd) Matrix\+\_\+mod\+::gen\+Inv\+Mat\+Low\+::gen\+Inv\+Cho\+Low (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mat\+Low,  }\item[{real(RK)}]{Diagonal }\end{DoxyParamCaption})}
+
+
+
+Return the inverse matrix {\ttfamily Inv\+Mat\+Low} of an input lower-\/triangle matrix of shape {\ttfamily (nd,nd)} whose diagonal elements are given separately as the input {\ttfamily Diagonal} of length {\ttfamily nd}. The upper triangle of the input matrix will not be used. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The size of the input matrix. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em Mat\+Low} & \+: The lower triangle input matrix (except the diagonal terms which are provided separately). \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em Diagonal} & \+: The diagonal elements of the lower triangle matrix {\ttfamily Mat\+Low}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Inv\+Mat\+Low} \+: The lower-\/triangle inverse matrix of the input lower-\/triangle matrix.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The output is not a full inverse matrix. In particular, the upper-\/triangle elements of the output matrix are not set to zero.
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+This procedure is particularly useful for computing the inverse of the lower-\/triangle of Cholesky factorization returned by the procedure \mbox{\hyperlink{namespaceMatrix__mod_a27fc4376b7f8526656dbe8c33f1685c1}{get\+Cho\+Low()}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Tuesday 3\+:46 AM, August 24, 2021, Dallas, TX 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01589}{1589}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{Matrix__mod_8f90}{Matrix\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

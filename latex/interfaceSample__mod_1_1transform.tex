@@ -1,0 +1,89 @@
+\hypertarget{interfaceSample__mod_1_1transform}{}\doxysection{Sample\+\_\+mod\+::transform Interface Reference}
+\label{interfaceSample__mod_1_1transform}\index{Sample\_mod::transform@{Sample\_mod::transform}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+pure real(RK) function, dimension(\+:), allocatable \mbox{\hyperlink{interfaceSample__mod_1_1transform_afb23790be963ee637cd56f66bb0063e6}{transform\+\_\+1D}} (Point, Cho\+Low, Cho\+Dia)
+\begin{DoxyCompactList}\small\item\em Return the transformed sample according to the input Cholesky factorization. \end{DoxyCompactList}\item 
+PURE real(RK) function, dimension(\+:,\+:), allocatable \mbox{\hyperlink{interfaceSample__mod_1_1transform_a7f1b449d4cb8c7bf8ad6cff5ca8aaf42}{transform\+\_\+2D}} (Sample, Cho\+Low, Cho\+Dia, dim, tenabled)
+\begin{DoxyCompactList}\small\item\em Return the transformed sample according to the input Cholesky factorization. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00087}{87}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{interfaceSample__mod_1_1transform_afb23790be963ee637cd56f66bb0063e6}\label{interfaceSample__mod_1_1transform_afb23790be963ee637cd56f66bb0063e6}} 
+\index{Sample\_mod::transform@{Sample\_mod::transform}!transform\_1D@{transform\_1D}}
+\index{transform\_1D@{transform\_1D}!Sample\_mod::transform@{Sample\_mod::transform}}
+\doxysubsubsection{\texorpdfstring{transform\_1D()}{transform\_1D()}}
+{\footnotesize\ttfamily pure real(RK) function, dimension(\+:), allocatable Sample\+\_\+mod\+::transform\+::transform\+\_\+1D (\begin{DoxyParamCaption}\item[{real(RK)}]{Point,  }\item[{real(RK)}]{Cho\+Low,  }\item[{real(RK)}]{Cho\+Dia }\end{DoxyParamCaption})}
+
+
+
+Return the transformed sample according to the input Cholesky factorization. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Point} & \+: The input contiguous data points of shape {\ttfamily (\+:)} that is to be transformed. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cho\+Low} & \+: The lower Cholesky factorization of shape {\ttfamily (nd,nd)} with which the input point must be transformed. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cho\+Dia} & \+: The input diagonal elements of the Cholesky factorization of the transformation. ({\bfseries{optional}}, if not provided, the procedure assumes that the diagonal elements are given in {\ttfamily Cho\+Low})\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Tran\+Point} \+: The output transformed point based on the input Cholesky factorization.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Monday 4\+:00 AM, August 23, 2021, Dallas, TX 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l01656}{1656}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{interfaceSample__mod_1_1transform_a7f1b449d4cb8c7bf8ad6cff5ca8aaf42}\label{interfaceSample__mod_1_1transform_a7f1b449d4cb8c7bf8ad6cff5ca8aaf42}} 
+\index{Sample\_mod::transform@{Sample\_mod::transform}!transform\_2D@{transform\_2D}}
+\index{transform\_2D@{transform\_2D}!Sample\_mod::transform@{Sample\_mod::transform}}
+\doxysubsubsection{\texorpdfstring{transform\_2D()}{transform\_2D()}}
+{\footnotesize\ttfamily PURE real(RK) function, dimension(\+:,\+:), allocatable Sample\+\_\+mod\+::transform\+::transform\+\_\+2D (\begin{DoxyParamCaption}\item[{real(RK)}]{Sample,  }\item[{real(RK)}]{Cho\+Low,  }\item[{real(RK)}]{Cho\+Dia,  }\item[{integer(IK), intent(in), optional}]{dim,  }\item[{logical, intent(in), optional}]{tenabled }\end{DoxyParamCaption})}
+
+
+
+Return the transformed sample according to the input Cholesky factorization. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Sample} & \+: The contiguous array of data points of shape {\ttfamily (\+:,\+:)} normalized to their mean vector. By default, the shape of {\ttfamily Sample} is assumed to be {\ttfamily (nd,np)} unless {\ttfamily dim = 1}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cho\+Low} & \+: The input lower-\/triangle Cholesky factorization of shape {\ttfamily (nd,nd)} with which the input sample must be transformed. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cho\+Dia} & \+: The input diagonal elements of the Cholesky factorization of the transformation. ({\bfseries{optional}}, if not provided, the procedure assumes that the diagonal elements are given in {\ttfamily Cho\+Low}) \\
+\hline
+\mbox{\texttt{ in}}  & {\em dim} & \+: The dimension of the input {\ttfamily Sample} along which individual data exist ({\bfseries{optional}}, default = {\ttfamily 2\+\_\+\+IK}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em tenabled} & \+: A logical input. If {\ttfamily .true.}, the output transformed sample will have the transposed shape of the input {\ttfamily Sample}. ({\bfseries{optional}}, default = {\ttfamily .false.}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Tran\+Sample} \+: The output transformed sample based on the input Cholesky factorization.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Thursday 2\+:45 AM, August 19, 2021, Dallas, TX
+\end{DoxyAuthor}
+\begin{DoxyWarning}{Warning}
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in release build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l01559}{1559}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{Sample__mod_8f90}{Sample\+\_\+mod.\+f90}}\end{DoxyCompactItemize}
