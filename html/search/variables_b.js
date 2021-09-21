@@ -61,7 +61,7 @@ var searchData=
   ['logvolnormed_58',['LogVolNormed',['../structKmeans__mod_1_1Prop__type.html#a163672d57e0373bf1dc29dd18c02162f',1,'Kmeans_mod::Prop_type::LogVolNormed()'],['../structClusteredPoint__mod_1_1ClusteredPoint__type.html#afe8014ea8bef513424c74e81811dca4d',1,'ClusteredPoint_mod::ClusteredPoint_type::LogVolNormed()']]],
   ['logvolunitball_59',['logVolUnitBall',['../structClusteredPoint__mod_1_1ClusteredPoint__type.html#aad570eea4e9979731bef4a57c840a870',1,'ClusteredPoint_mod::ClusteredPoint_type']]],
   ['lookbacktimeref_5fwsl_60',['lookBackTimeRef_WSL',['../namespaceStarFormation__mod.html#aa08a31d96d5bef9c4c60713464b82a42',1,'StarFormation_mod']]],
-  ['lower_61',['Lower',['../structDomainCube__mod_1_1CubeLimit__type.html#afb1ca18e90a45e998045b2cbc094c224',1,'DomainCube_mod::CubeLimit_type']]],
-  ['lower_62',['lower',['../structDistUni__mod_1_1private.html#a38e79407f1f58db92d903e2c5963f1be',1,'DistUni_mod::private']]],
+  ['lower_61',['lower',['../structDistUni__mod_1_1private.html#a38e79407f1f58db92d903e2c5963f1be',1,'DistUni_mod::private']]],
+  ['lower_62',['Lower',['../structDomainCube__mod_1_1CubeLimit__type.html#afb1ca18e90a45e998045b2cbc094c224',1,'DomainCube_mod::CubeLimit_type']]],
   ['ls2hc_63',['LS2HC',['../namespaceCosmology__mod.html#a006b3969504835887a1b6fa1f7e7d03d',1,'Cosmology_mod']]]
 ];
