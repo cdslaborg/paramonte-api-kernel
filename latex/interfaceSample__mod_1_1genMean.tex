@@ -1,0 +1,218 @@
+\hypertarget{interfaceSample__mod_1_1genMean}{}\doxysection{Sample\+\_\+mod\+::gen\+Mean Interface Reference}
+\label{interfaceSample__mod_1_1genMean}\index{Sample\_mod::genMean@{Sample\_mod::genMean}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+pure real(RK) function \mbox{\hyperlink{interfaceSample__mod_1_1genMean_a812691bcbd4d35ee7eabeab9a7f36d1f}{gen\+Mean\+\_\+1D}} (Sample)
+\begin{DoxyCompactList}\small\item\em Return the mean of the input 1-\/dimensional {\ttfamily Sample}. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{interfaceSample__mod_1_1genMean_a86c7bb1909a4e0831937177a25a6c044}{gen\+Weighted\+Mean\+\_\+1\+D\+\_\+\+WIK}} (Sample, Weight)
+\begin{DoxyCompactList}\small\item\em Return the mean of the input 1-\/dimensional weighted {\ttfamily Sample}. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{interfaceSample__mod_1_1genMean_aadae26d4a38443596080a44376cdd9bb}{gen\+Weighted\+Mean\+\_\+1\+D\+\_\+\+WRK}} (Sample, Weight)
+\begin{DoxyCompactList}\small\item\em Return the mean of the input 1-\/dimensional weighted {\ttfamily Sample}. \end{DoxyCompactList}\item 
+PURE real(RK) function, dimension(\+:), allocatable \mbox{\hyperlink{interfaceSample__mod_1_1genMean_a0ef85c3d8a7d12095f6a20fa89575e77}{gen\+Mean\+\_\+2D}} (Sample, dim)
+\begin{DoxyCompactList}\small\item\em Return the mean of the input Sample. \end{DoxyCompactList}\item 
+PURE real(RK) function, dimension(\+:), allocatable \mbox{\hyperlink{interfaceSample__mod_1_1genMean_a443499c67ae4abfd9c623fc7b2ad7c42}{gen\+Weighted\+Mean\+\_\+2\+D\+\_\+\+WIK}} (Sample, Weight, dim)
+\begin{DoxyCompactList}\small\item\em Return the weighted mean of the input Sample according to the input integer {\ttfamily Weight}. \end{DoxyCompactList}\item 
+PURE real(RK) function, dimension(\+:), allocatable \mbox{\hyperlink{interfaceSample__mod_1_1genMean_ab19415024b569f221677554e18e05bc3}{gen\+Weighted\+Mean\+\_\+2\+D\+\_\+\+WRK}} (Sample, Weight, dim)
+\begin{DoxyCompactList}\small\item\em Return the weighted mean of the input Sample according to the input integer {\ttfamily Weight}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00064}{64}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{interfaceSample__mod_1_1genMean_a812691bcbd4d35ee7eabeab9a7f36d1f}\label{interfaceSample__mod_1_1genMean_a812691bcbd4d35ee7eabeab9a7f36d1f}} 
+\index{Sample\_mod::genMean@{Sample\_mod::genMean}!genMean\_1D@{genMean\_1D}}
+\index{genMean\_1D@{genMean\_1D}!Sample\_mod::genMean@{Sample\_mod::genMean}}
+\doxysubsubsection{\texorpdfstring{genMean\_1D()}{genMean\_1D()}}
+{\footnotesize\ttfamily pure real(RK) function Sample\+\_\+mod\+::gen\+Mean\+::gen\+Mean\+\_\+1D (\begin{DoxyParamCaption}\item[{real(RK)}]{Sample }\end{DoxyParamCaption})}
+
+
+
+Return the mean of the input 1-\/dimensional {\ttfamily Sample}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Sample} & \+: The array of shape {\ttfamily (nd,np)} or {\ttfamily (np,nd)} containing the sample, where {\ttfamily nd} is the number of attributes of data in the sample and {\ttfamily np} is the number of dtaat points in the sample.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily mean} \+: The output mean of the sample.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+Note that this procedure is implemented only for the sake of comprehensiveness and completeness. The mean of any one-\/dimensional sample can be readily computed via the Fortran intrinsic routine {\ttfamily \mbox{\hyperlink{namespaceMisc__mod_a715e59341730f07df7823e76c513d837}{sum()}}}\+: {\ttfamily mean = sum(\+Sample) / size(\+Sample)} assuming the data points have equal weight. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00110}{110}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{interfaceSample__mod_1_1genMean_a0ef85c3d8a7d12095f6a20fa89575e77}\label{interfaceSample__mod_1_1genMean_a0ef85c3d8a7d12095f6a20fa89575e77}} 
+\index{Sample\_mod::genMean@{Sample\_mod::genMean}!genMean\_2D@{genMean\_2D}}
+\index{genMean\_2D@{genMean\_2D}!Sample\_mod::genMean@{Sample\_mod::genMean}}
+\doxysubsubsection{\texorpdfstring{genMean\_2D()}{genMean\_2D()}}
+{\footnotesize\ttfamily PURE real(RK) function, dimension(\+:), allocatable Sample\+\_\+mod\+::gen\+Mean\+::gen\+Mean\+\_\+2D (\begin{DoxyParamCaption}\item[{real(RK)}]{Sample,  }\item[{integer(IK), intent(in), optional}]{dim }\end{DoxyParamCaption})}
+
+
+
+Return the mean of the input Sample. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Sample} & \+: The array of shape {\ttfamily (nd,np)} or {\ttfamily (np,nd)} containing the sample, where {\ttfamily nd} is the number of attributes of data in the sample and {\ttfamily np} is the number of dtaat points in the sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em dim} & \+: An integer representing the dimension (1 or 2) along which data is stored in {\ttfamily Sample}. For example, {\ttfamily dim = 1} means that {\ttfamily Sample} has the shape {\ttfamily (np,nd)}, whereas {\ttfamily dim = 2} implies a shape {\ttfamily (nd,np)} ({\bfseries{optional}}, default = {\ttfamily 2}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Mean} \+: The output mean vector of length {\ttfamily nd}.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+Note the default assumed shape of the input argument {\ttfamily Sample(\+:,\+:)}.
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+Note that this procedure is implemented only for the sake of comprehensiveness and completeness. The mean of any two-\/dimensional sample can be simply computed via the Fortran intrinsic routine {\ttfamily \mbox{\hyperlink{namespaceMisc__mod_a715e59341730f07df7823e76c513d837}{sum()}}}\+: {\ttfamily Mean = sum(Sample, dim = 1) / size(Sample, dim = 1)} assuming the first dimension represents the rows of data. {\ttfamily Mean = sum(Sample, dim = 2) / size(Sample, dim = 2)} assuming the second dimension represents the columns of data.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in release build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00216}{216}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{interfaceSample__mod_1_1genMean_a86c7bb1909a4e0831937177a25a6c044}\label{interfaceSample__mod_1_1genMean_a86c7bb1909a4e0831937177a25a6c044}} 
+\index{Sample\_mod::genMean@{Sample\_mod::genMean}!genWeightedMean\_1D\_WIK@{genWeightedMean\_1D\_WIK}}
+\index{genWeightedMean\_1D\_WIK@{genWeightedMean\_1D\_WIK}!Sample\_mod::genMean@{Sample\_mod::genMean}}
+\doxysubsubsection{\texorpdfstring{genWeightedMean\_1D\_WIK()}{genWeightedMean\_1D\_WIK()}}
+{\footnotesize\ttfamily pure real(RK) function Sample\+\_\+mod\+::gen\+Mean\+::gen\+Weighted\+Mean\+\_\+1\+D\+\_\+\+WIK (\begin{DoxyParamCaption}\item[{real(RK)}]{Sample,  }\item[{integer(IK)}]{Weight }\end{DoxyParamCaption})}
+
+
+
+Return the mean of the input 1-\/dimensional weighted {\ttfamily Sample}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Sample} & \+: The array of shape {\ttfamily (nd,np)} or {\ttfamily (np,nd)} containing the sample, where {\ttfamily nd} is the number of attributes of data in the sample and {\ttfamily np} is the number of dtaat points in the sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of same length as {\ttfamily Sample} containing the weights of points in the sample.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily mean} \+: The output mean of the sample.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+Note that this procedure is implemented only for the sake of comprehensiveness and completeness. The mean of any one-\/dimensional sample can be readily computed via the Fortran intrinsic routine {\ttfamily \mbox{\hyperlink{namespaceMisc__mod_a715e59341730f07df7823e76c513d837}{sum()}}}\+: {\ttfamily mean = sum(\+Weight$\ast$\+Sample) / sum(\+Weight)} assuming the data points are weighted.
+
+The {\ttfamily WIK} in the procedure name stands for {\ttfamily Weight of Integer Kind}. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00138}{138}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{interfaceSample__mod_1_1genMean_aadae26d4a38443596080a44376cdd9bb}\label{interfaceSample__mod_1_1genMean_aadae26d4a38443596080a44376cdd9bb}} 
+\index{Sample\_mod::genMean@{Sample\_mod::genMean}!genWeightedMean\_1D\_WRK@{genWeightedMean\_1D\_WRK}}
+\index{genWeightedMean\_1D\_WRK@{genWeightedMean\_1D\_WRK}!Sample\_mod::genMean@{Sample\_mod::genMean}}
+\doxysubsubsection{\texorpdfstring{genWeightedMean\_1D\_WRK()}{genWeightedMean\_1D\_WRK()}}
+{\footnotesize\ttfamily pure real(RK) function Sample\+\_\+mod\+::gen\+Mean\+::gen\+Weighted\+Mean\+\_\+1\+D\+\_\+\+WRK (\begin{DoxyParamCaption}\item[{real(RK)}]{Sample,  }\item[{real(RK)}]{Weight }\end{DoxyParamCaption})}
+
+
+
+Return the mean of the input 1-\/dimensional weighted {\ttfamily Sample}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Sample} & \+: The array of shape {\ttfamily (nd,np)} or {\ttfamily (np,nd)} containing the sample, where {\ttfamily nd} is the number of attributes of data in the sample and {\ttfamily np} is the number of dtaat points in the sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of same length as {\ttfamily Sample} containing the weights of points in the sample.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily mean} \+: The output mean of the sample.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+Note that this procedure is implemented only for the sake of comprehensiveness and completeness. The mean of any one-\/dimensional sample can be readily computed via the Fortran intrinsic routine {\ttfamily \mbox{\hyperlink{namespaceMisc__mod_a715e59341730f07df7823e76c513d837}{sum()}}}\+: {\ttfamily mean = sum(\+Weight$\ast$\+Sample) / sum(\+Weight)} assuming the data points are weighted.
+
+The {\ttfamily WRK} in the procedure name stands for {\ttfamily Weight of Real Kind}. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00175}{175}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{interfaceSample__mod_1_1genMean_a443499c67ae4abfd9c623fc7b2ad7c42}\label{interfaceSample__mod_1_1genMean_a443499c67ae4abfd9c623fc7b2ad7c42}} 
+\index{Sample\_mod::genMean@{Sample\_mod::genMean}!genWeightedMean\_2D\_WIK@{genWeightedMean\_2D\_WIK}}
+\index{genWeightedMean\_2D\_WIK@{genWeightedMean\_2D\_WIK}!Sample\_mod::genMean@{Sample\_mod::genMean}}
+\doxysubsubsection{\texorpdfstring{genWeightedMean\_2D\_WIK()}{genWeightedMean\_2D\_WIK()}}
+{\footnotesize\ttfamily PURE real(RK) function, dimension(\+:), allocatable Sample\+\_\+mod\+::gen\+Mean\+::gen\+Weighted\+Mean\+\_\+2\+D\+\_\+\+WIK (\begin{DoxyParamCaption}\item[{real(RK)}]{Sample,  }\item[{integer(IK)}]{Weight,  }\item[{integer(IK), intent(in), optional}]{dim }\end{DoxyParamCaption})}
+
+
+
+Return the weighted mean of the input Sample according to the input integer {\ttfamily Weight}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Sample} & \+: The array of shape {\ttfamily (nd,np)} or {\ttfamily (np,nd)} containing the sample, where {\ttfamily nd} is the number of attributes of data in the sample and {\ttfamily np} is the number of dtaat points in the sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of length {\ttfamily np} containing the weights of points in the sample ({\bfseries{optional}}, default = vector of ones). \\
+\hline
+\mbox{\texttt{ in}}  & {\em dim} & \+: An integer representing the dimension (1 or 2) along which data is stored in {\ttfamily Sample}. For example, {\ttfamily dim = 1} means that {\ttfamily Sample} has the shape {\ttfamily (np,nd)}, whereas {\ttfamily dim = 2} implies a shape {\ttfamily (nd,np)} ({\bfseries{optional}}, default = {\ttfamily 2}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Mean} \+: The output mean vector of length {\ttfamily nd}.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+Note the default assumed shape of the input argument {\ttfamily Sample(\+:,\+:)}.
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+The {\ttfamily WIK} in the procedure name stands for {\ttfamily Weight of Integer Kind}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in release build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00260}{260}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{interfaceSample__mod_1_1genMean_ab19415024b569f221677554e18e05bc3}\label{interfaceSample__mod_1_1genMean_ab19415024b569f221677554e18e05bc3}} 
+\index{Sample\_mod::genMean@{Sample\_mod::genMean}!genWeightedMean\_2D\_WRK@{genWeightedMean\_2D\_WRK}}
+\index{genWeightedMean\_2D\_WRK@{genWeightedMean\_2D\_WRK}!Sample\_mod::genMean@{Sample\_mod::genMean}}
+\doxysubsubsection{\texorpdfstring{genWeightedMean\_2D\_WRK()}{genWeightedMean\_2D\_WRK()}}
+{\footnotesize\ttfamily PURE real(RK) function, dimension(\+:), allocatable Sample\+\_\+mod\+::gen\+Mean\+::gen\+Weighted\+Mean\+\_\+2\+D\+\_\+\+WRK (\begin{DoxyParamCaption}\item[{real(RK)}]{Sample,  }\item[{real(RK)}]{Weight,  }\item[{integer(IK), intent(in), optional}]{dim }\end{DoxyParamCaption})}
+
+
+
+Return the weighted mean of the input Sample according to the input integer {\ttfamily Weight}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Sample} & \+: The array of shape {\ttfamily (nd,np)} or {\ttfamily (np,nd)} containing the sample, where {\ttfamily nd} is the number of attributes of data in the sample and {\ttfamily np} is the number of dtaat points in the sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of length {\ttfamily np} containing the weights of points in the sample ({\bfseries{optional}}, default = vector of ones). \\
+\hline
+\mbox{\texttt{ in}}  & {\em dim} & \+: An integer representing the dimension (1 or 2) along which data is stored in {\ttfamily Sample}. For example, {\ttfamily dim = 1} means that {\ttfamily Sample} has the shape {\ttfamily (np,nd)}, whereas {\ttfamily dim = 2} implies a shape {\ttfamily (nd,np)} ({\bfseries{optional}}, default = {\ttfamily 2}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Mean} \+: The output mean vector of length {\ttfamily nd}.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+Note the default assumed shape of the input argument {\ttfamily Sample(\+:,\+:)}.
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+The {\ttfamily WRK} in the procedure name stands for {\ttfamily Weight of Real Kind}.
+\end{DoxyRemark}
+\begin{DoxyWarning}{Warning}
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in release build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00292}{292}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{Sample__mod_8f90}{Sample\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

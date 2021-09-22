@@ -1,0 +1,237 @@
+\hypertarget{namespaceProcessPoisson__mod}{}\doxysection{Process\+Poisson\+\_\+mod Module Reference}
+\label{namespaceProcessPoisson__mod}\index{ProcessPoisson\_mod@{ProcessPoisson\_mod}}
+
+
+This module contains mathematical procedures.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfaceProcessPoisson__mod_1_1getLogDensity}{get\+Log\+Density}}
+\item 
+interface \mbox{\hyperlink{interfaceProcessPoisson__mod_1_1getMeanKnn}{get\+Mean\+Knn}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+pure real(RK) function \mbox{\hyperlink{namespaceProcessPoisson__mod_ae95bf70f6198a91e0fd2c332cf35c685}{get\+Log\+Prob\+Knn\+Poisson}} (nd, k, lambda, distance)
+\begin{DoxyCompactList}\small\item\em Return the natural log-\/probability density function of the {\ttfamily k}th nearest neighbor distance being {\ttfamily dist\+Sq} in a Poisson process of dimension {\ttfamily nd} with the rate density {\ttfamily lambda}. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceProcessPoisson__mod_aa59aee402fb437d55c53bb7df97e4742}{get\+Log\+Expected\+Min\+Pair\+Dist}} (nd, nd\+Inverse, log\+Density, log\+Vol\+Unit\+Ball)
+\begin{DoxyCompactList}\small\item\em Return the average nearest-\/neighbor distance in dimension {\ttfamily nd} with the rate density {\ttfamily log\+Density}. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceProcessPoisson__mod_ad91ef1b568905bc916fc86c5068a9627}{get1nn\+Log\+Density}} (nd, log\+Vol\+Unit\+Ball, log\+Expected\+Min\+Pair\+Dist)
+\begin{DoxyCompactList}\small\item\em Return the natural log rate density {\ttfamily log\+Density} form the input log of average nearest neighbor distance in dimension {\ttfamily nd}. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceProcessPoisson__mod_a4fcde236fcf2d0e4220171ae1942cc18}{get\+Knn\+Log\+Density}} (nd, nd\+Inverse, log\+Vol\+Unit\+Ball, log\+Expected\+Knn\+Pair\+Dist, k)
+\begin{DoxyCompactList}\small\item\em Return the natural log rate density {\ttfamily log\+Density} form the input log of average {\ttfamily k} nearest neighbor distance in dimension {\ttfamily nd}. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceProcessPoisson__mod_abc531080df6bf8d3ba47c8f1b8d00a52}{get\+Dist\+Sorted\+Exp\+Diff\+Weight\+KS2}} (Sorted\+Index, Dist\+Sorted\+Exp\+Diff, log\+Vol\+Unit\+Ball, Prob\+KS, Stat\+KS, Lambda, alpha, beta, Err)
+\begin{DoxyCompactList}\small\item\em Return the weights (the KS-\/test probabilities) of the the input {\ttfamily Dist\+Sorted\+Exp\+Diff} resulting from the same exponential distribution. Optionally, also return the vector of KS-\/statistic corresponding to each element of {\ttfamily Dist\+Sorted\+Exp\+Diff}. The output {\ttfamily Prob\+KS} can be used in the weighted likelihood function of the exponential distribution to robustly infer the parameters of the Gamma posterior of the rate parameter of the exponential distribution from which the input {\ttfamily Dist\+Sorted\+Exp\+Diff} results. , or if {\ttfamily log\+Vol\+Unit\+Ball} is present among the input arguments, return the parameters of the posterior distribution of density of the PPP that yielded the input {\ttfamily Dist\+Sorted\+Exp\+Diff}. \end{DoxyCompactList}\item 
+pure integer(IK) function \mbox{\hyperlink{namespaceProcessPoisson__mod_af932fdaf5d4cdf7746eac3189f9f8c2e}{get\+Min\+Sum\+Pair\+Dist\+Sq\+Point\+Index}} (nd, np, Point)
+\begin{DoxyCompactList}\small\item\em Return the index {\ttfamily ip} of the point (among the input set of {\ttfamily np} {\ttfamily nd}-\/dimensional {\ttfamily Point}s) that has the smallest sum of distances-\/squared from all other points. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceProcessPoisson__mod_ab9417bf107efda322bdced92d8dab77a}{MODULE\+\_\+\+NAME}} = \char`\"{}@Process\+Poisson\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains mathematical procedures. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceProcessPoisson__mod_ad91ef1b568905bc916fc86c5068a9627}\label{namespaceProcessPoisson__mod_ad91ef1b568905bc916fc86c5068a9627}} 
+\index{ProcessPoisson\_mod@{ProcessPoisson\_mod}!get1nnLogDensity@{get1nnLogDensity}}
+\index{get1nnLogDensity@{get1nnLogDensity}!ProcessPoisson\_mod@{ProcessPoisson\_mod}}
+\doxysubsubsection{\texorpdfstring{get1nnLogDensity()}{get1nnLogDensity()}}
+{\footnotesize\ttfamily pure real(RK) function Process\+Poisson\+\_\+mod\+::get1nn\+Log\+Density (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{log\+Vol\+Unit\+Ball,  }\item[{real(RK)}]{log\+Expected\+Min\+Pair\+Dist }\end{DoxyParamCaption})}
+
+
+
+Return the natural log rate density {\ttfamily log\+Density} form the input log of average nearest neighbor distance in dimension {\ttfamily nd}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions. \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Vol\+Unit\+Ball} & \+: The log-\/volume of unit {\ttfamily nd}-\/ball. \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Expected\+Min\+Pair\+Dist} & \+: The natural logarithm of the average nearest neighbor distance.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily log\+Density} \+: The natural logarithm of the computed density.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The input {\ttfamily log\+Vol\+Unit\+Ball} can be computed via \mbox{\hyperlink{namespaceGeometryEllipsoid__mod_a2880104f536e02120ca2094c11dfde95}{Geometry\+Ellipsoid\+\_\+mod\+::gen\+Log\+Vol\+Unit\+Ball()}} and passed to this routine. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{ProcessPoisson__mod_8f90_source_l00135}{135}} of file \mbox{\hyperlink{ProcessPoisson__mod_8f90_source}{Process\+Poisson\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceProcessPoisson__mod_abc531080df6bf8d3ba47c8f1b8d00a52}\label{namespaceProcessPoisson__mod_abc531080df6bf8d3ba47c8f1b8d00a52}} 
+\index{ProcessPoisson\_mod@{ProcessPoisson\_mod}!getDistSortedExpDiffWeightKS2@{getDistSortedExpDiffWeightKS2}}
+\index{getDistSortedExpDiffWeightKS2@{getDistSortedExpDiffWeightKS2}!ProcessPoisson\_mod@{ProcessPoisson\_mod}}
+\doxysubsubsection{\texorpdfstring{getDistSortedExpDiffWeightKS2()}{getDistSortedExpDiffWeightKS2()}}
+{\footnotesize\ttfamily subroutine Process\+Poisson\+\_\+mod\+::get\+Dist\+Sorted\+Exp\+Diff\+Weight\+KS2 (\begin{DoxyParamCaption}\item[{integer(IK)}]{Sorted\+Index,  }\item[{real(RK)}]{Dist\+Sorted\+Exp\+Diff,  }\item[{real(RK)}]{log\+Vol\+Unit\+Ball,  }\item[{real(RK)}]{Prob\+KS,  }\item[{real(RK)}]{Stat\+KS,  }\item[{real(RK)}]{Lambda,  }\item[{real(RK), intent(out), optional}]{alpha,  }\item[{real(RK), intent(out), optional}]{beta,  }\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err }\end{DoxyParamCaption})}
+
+
+
+Return the weights (the KS-\/test probabilities) of the the input {\ttfamily Dist\+Sorted\+Exp\+Diff} resulting from the same exponential distribution. Optionally, also return the vector of KS-\/statistic corresponding to each element of {\ttfamily Dist\+Sorted\+Exp\+Diff}. The output {\ttfamily Prob\+KS} can be used in the weighted likelihood function of the exponential distribution to robustly infer the parameters of the Gamma posterior of the rate parameter of the exponential distribution from which the input {\ttfamily Dist\+Sorted\+Exp\+Diff} results. , or if {\ttfamily log\+Vol\+Unit\+Ball} is present among the input arguments, return the parameters of the posterior distribution of density of the PPP that yielded the input {\ttfamily Dist\+Sorted\+Exp\+Diff}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Sorted\+Index} & \+: The input contiguous array of indices of {\ttfamily Dist\+Sorted\+Exp\+Diff} whose weights will be directly computed. The trivial case is to pass a linear range of indices {\ttfamily \mbox{[}(i, i = 1, np)\mbox{]}}. The longer the length of {\ttfamily Index}, the more costly the computations will be, especially if {\ttfamily Index} contains indices of the later elements of {\ttfamily Dist\+Sorted\+Exp\+Diff}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Dist\+Sorted\+Exp\+Diff} & \+: The input contiguous array of size {\ttfamily (np)} of exponentiated-\/distance differences. This array is returned by \mbox{\hyperlink{namespaceGeometry__mod_a58da3ac11bf9b12578d07b508b94ce44}{get\+Dist\+Sorted\+Exp\+Diff()}}. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Prob\+KS} & \+: The output contiguous array of size {\ttfamily (np)} of KS two-\/sample probabilities corresponding to each element in {\ttfamily Dist\+Sorted\+Exp\+Diff} ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ out}}  & {\em Stat\+KS} & \+: The output contiguous array of size {\ttfamily (np)} of KS two-\/sample distance metric corresponding to each element in {\ttfamily Dist\+Sorted\+Exp\+Diff} ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ out}}  & {\em Lambda} & \+: The output contiguous array of size {\ttfamily (np)} of the sample-\/size-\/adjusted KS two-\/sample test statistic corresponding to each element in {\ttfamily Dist\+Sorted\+Exp\+Diff} ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ out}}  & {\em alpha} & \+: The shape parameter of the Gamma posterior probability density function (PDF) of the density ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ out}}  & {\em beta} & \+: The scale parameter of the Gamma posterior PDF function of the density ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ out}}  & {\em Err} & \+: An object of class \mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+mod\+::Err\+\_\+type}} containing error information. \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Vol\+Unit\+Ball} & \+: The natural logarithm of the volume of a unit ball in the dimension of interest {\ttfamily nd}. This quantity is returned by \mbox{\hyperlink{namespaceGeometryEllipsoid__mod_a2880104f536e02120ca2094c11dfde95}{gen\+Log\+Vol\+Unit\+Ball()}}. ({\bfseries{optional}}, if provided, then {\ttfamily beta} will be multiplied with {\ttfamily exp(log\+Vol\+Unit\+Ball)} before return. This is equivalent to the {\ttfamily beta} parameter of the original PPP leading to the input {\ttfamily Dist\+Sorted\+Exp\+Diff}. If {\ttfamily log\+Vol\+Unit\+Ball} is missing among the input arguments, then the return beta will describe the posterior density of the rate parameter of the exponential model that describes the input {\ttfamily Dist\+Sorted\+Exp\+Diff}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+On input, the vector {\ttfamily Sorted\+Index} must be sorted in {\bfseries{ascending order}} with {\bfseries{unique}} elements.
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+This method relies on minimizing the KS-\/test statistic. Specifically, input differences vector of exponentiated distances is passed to the KS algorithm iteratively with larger and larger sample sizes to compute the disparity weights of the points. Then, these weights are used to construct the weighted Gamma likelihood function of the points.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Tuesday 01\+:22 AM, August 10, 2021, Dallas, TX 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{ProcessPoisson__mod_8f90_source_l00223}{223}} of file \mbox{\hyperlink{ProcessPoisson__mod_8f90_source}{Process\+Poisson\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceProcessPoisson__mod_a4fcde236fcf2d0e4220171ae1942cc18}\label{namespaceProcessPoisson__mod_a4fcde236fcf2d0e4220171ae1942cc18}} 
+\index{ProcessPoisson\_mod@{ProcessPoisson\_mod}!getKnnLogDensity@{getKnnLogDensity}}
+\index{getKnnLogDensity@{getKnnLogDensity}!ProcessPoisson\_mod@{ProcessPoisson\_mod}}
+\doxysubsubsection{\texorpdfstring{getKnnLogDensity()}{getKnnLogDensity()}}
+{\footnotesize\ttfamily pure real(RK) function Process\+Poisson\+\_\+mod\+::get\+Knn\+Log\+Density (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{nd\+Inverse,  }\item[{real(RK)}]{log\+Vol\+Unit\+Ball,  }\item[{real(RK)}]{log\+Expected\+Knn\+Pair\+Dist,  }\item[{integer(IK), intent(in)}]{k }\end{DoxyParamCaption})}
+
+
+
+Return the natural log rate density {\ttfamily log\+Density} form the input log of average {\ttfamily k} nearest neighbor distance in dimension {\ttfamily nd}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions. \\
+\hline
+\mbox{\texttt{ in}}  & {\em nd\+Inverse} & \+: The inverse of the number of dimensions. \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Vol\+Unit\+Ball} & \+: The log-\/volume of unit {\ttfamily nd}-\/ball. \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Expected\+Knn\+Pair\+Dist} & \+: The natural logarithm of the average nearest neighbor distance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em k} & \+: The rank of the nearest neighbor.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily log\+Density} \+: The natural logarithm of the computed density.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The input {\ttfamily log\+Vol\+Unit\+Ball} can be computed via \mbox{\hyperlink{namespaceGeometryEllipsoid__mod_a2880104f536e02120ca2094c11dfde95}{Geometry\+Ellipsoid\+\_\+mod\+::gen\+Log\+Vol\+Unit\+Ball()}} and passed to this routine. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{ProcessPoisson__mod_8f90_source_l00165}{165}} of file \mbox{\hyperlink{ProcessPoisson__mod_8f90_source}{Process\+Poisson\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceProcessPoisson__mod_aa59aee402fb437d55c53bb7df97e4742}\label{namespaceProcessPoisson__mod_aa59aee402fb437d55c53bb7df97e4742}} 
+\index{ProcessPoisson\_mod@{ProcessPoisson\_mod}!getLogExpectedMinPairDist@{getLogExpectedMinPairDist}}
+\index{getLogExpectedMinPairDist@{getLogExpectedMinPairDist}!ProcessPoisson\_mod@{ProcessPoisson\_mod}}
+\doxysubsubsection{\texorpdfstring{getLogExpectedMinPairDist()}{getLogExpectedMinPairDist()}}
+{\footnotesize\ttfamily pure real(RK) function Process\+Poisson\+\_\+mod\+::get\+Log\+Expected\+Min\+Pair\+Dist (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{nd\+Inverse,  }\item[{real(RK)}]{log\+Density,  }\item[{real(RK)}]{log\+Vol\+Unit\+Ball }\end{DoxyParamCaption})}
+
+
+
+Return the average nearest-\/neighbor distance in dimension {\ttfamily nd} with the rate density {\ttfamily log\+Density}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions. \\
+\hline
+\mbox{\texttt{ in}}  & {\em nd\+Inverse} & \+: The inverse of {\ttfamily nd} (i.\+e., {\ttfamily 1.\+\_\+\+RK / nd}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Density} & \+: The natural logarithm of the target density. \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Vol\+Unit\+Ball} & \+: The log-\/volume of unit {\ttfamily nd}-\/ball.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily log\+Expected\+Min\+Pair\+Dist} \+: A symmetric matrix of shape {\ttfamily (np,np)} containing the pairwise distances-\/squared of the points from each other.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The input {\ttfamily log\+Vol\+Unit\+Ball} can be computed via \mbox{\hyperlink{namespaceGeometryEllipsoid__mod_a2880104f536e02120ca2094c11dfde95}{Geometry\+Ellipsoid\+\_\+mod\+::gen\+Log\+Vol\+Unit\+Ball()}} and passed to this routine. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{ProcessPoisson__mod_8f90_source_l00108}{108}} of file \mbox{\hyperlink{ProcessPoisson__mod_8f90_source}{Process\+Poisson\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceProcessPoisson__mod_ae95bf70f6198a91e0fd2c332cf35c685}\label{namespaceProcessPoisson__mod_ae95bf70f6198a91e0fd2c332cf35c685}} 
+\index{ProcessPoisson\_mod@{ProcessPoisson\_mod}!getLogProbKnnPoisson@{getLogProbKnnPoisson}}
+\index{getLogProbKnnPoisson@{getLogProbKnnPoisson}!ProcessPoisson\_mod@{ProcessPoisson\_mod}}
+\doxysubsubsection{\texorpdfstring{getLogProbKnnPoisson()}{getLogProbKnnPoisson()}}
+{\footnotesize\ttfamily pure real(RK) function Process\+Poisson\+\_\+mod\+::get\+Log\+Prob\+Knn\+Poisson (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{k,  }\item[{real(RK), intent(in)}]{lambda,  }\item[{real(RK), intent(in)}]{distance }\end{DoxyParamCaption})}
+
+
+
+Return the natural log-\/probability density function of the {\ttfamily k}th nearest neighbor distance being {\ttfamily dist\+Sq} in a Poisson process of dimension {\ttfamily nd} with the rate density {\ttfamily lambda}. 
+
+
+
+Definition at line \mbox{\hyperlink{ProcessPoisson__mod_8f90_source_l00072}{72}} of file \mbox{\hyperlink{ProcessPoisson__mod_8f90_source}{Process\+Poisson\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceProcessPoisson__mod_af932fdaf5d4cdf7746eac3189f9f8c2e}\label{namespaceProcessPoisson__mod_af932fdaf5d4cdf7746eac3189f9f8c2e}} 
+\index{ProcessPoisson\_mod@{ProcessPoisson\_mod}!getMinSumPairDistSqPointIndex@{getMinSumPairDistSqPointIndex}}
+\index{getMinSumPairDistSqPointIndex@{getMinSumPairDistSqPointIndex}!ProcessPoisson\_mod@{ProcessPoisson\_mod}}
+\doxysubsubsection{\texorpdfstring{getMinSumPairDistSqPointIndex()}{getMinSumPairDistSqPointIndex()}}
+{\footnotesize\ttfamily pure integer(IK) function Process\+Poisson\+\_\+mod\+::get\+Min\+Sum\+Pair\+Dist\+Sq\+Point\+Index (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point }\end{DoxyParamCaption})}
+
+
+
+Return the index {\ttfamily ip} of the point (among the input set of {\ttfamily np} {\ttfamily nd}-\/dimensional {\ttfamily Point}s) that has the smallest sum of distances-\/squared from all other points. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of input points. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The input array of points of shape {\ttfamily (nd,np)}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily innest\+Index} \+: The index of the point with the smallest sum of distances-\/squared from all other points.
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000019}{Todo}}]\+: The code performance and memory usage could be improved by return a vector instead of a symmetric matrix. \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{ProcessPoisson__mod_8f90_source_l00338}{338}} of file \mbox{\hyperlink{ProcessPoisson__mod_8f90_source}{Process\+Poisson\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceProcessPoisson__mod_ab9417bf107efda322bdced92d8dab77a}\label{namespaceProcessPoisson__mod_ab9417bf107efda322bdced92d8dab77a}} 
+\index{ProcessPoisson\_mod@{ProcessPoisson\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!ProcessPoisson\_mod@{ProcessPoisson\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character($\ast$), parameter Process\+Poisson\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Process\+Poisson\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{ProcessPoisson__mod_8f90_source_l00052}{52}} of file \mbox{\hyperlink{ProcessPoisson__mod_8f90_source}{Process\+Poisson\+\_\+mod.\+f90}}.
+

@@ -1,0 +1,363 @@
+\hypertarget{namespaceGeometry__mod}{}\doxysection{Geometry\+\_\+mod Module Reference}
+\label{namespaceGeometry__mod}\index{Geometry\_mod@{Geometry\_mod}}
+
+
+This module contains mathematical/computational geometry procedures.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structGeometry__mod_1_1Hub__type}{Hub\+\_\+type}}
+\item 
+interface \mbox{\hyperlink{structGeometry__mod_1_1MinDistEdge__type}{Min\+Dist\+Edge\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+pure real(RK) function \mbox{\hyperlink{namespaceGeometry__mod_a7a0c73025b75940c6f3421b1af0a5f40}{get\+Euc\+Dist\+Sq}} (nd, Point1, Point2)
+\begin{DoxyCompactList}\small\item\em Return the distance squared between the two input points. \end{DoxyCompactList}\item 
+pure real(RK) function, dimension(np, np) \mbox{\hyperlink{namespaceGeometry__mod_aa32b702aade8d0b32d1cdaea67c5ea83}{get\+Pair\+Dist\+Sq}} (nd, np, Point, diagonal)
+\begin{DoxyCompactList}\small\item\em Return the matrix of the pairwise distances-\/squared of the input set of points from each other. \end{DoxyCompactList}\item 
+pure real(RK) function, dimension(np) \mbox{\hyperlink{namespaceGeometry__mod_a91e58d6254e4bce64f811eab01b11c6f}{get\+Min\+Pair\+Dist\+Sq}} (nd, np, Point)
+\begin{DoxyCompactList}\small\item\em Return a vector of length {\ttfamily np} of the nearest-\/neighbor distance-\/squared of each point in the input {\ttfamily Point}. \end{DoxyCompactList}\item 
+pure real(RK) function, dimension(np) \mbox{\hyperlink{namespaceGeometry__mod_a43e279f54900a1bc2901a21d9ffbfdf8}{get\+Max\+Pair\+Dist\+Sq}} (nd, np, Point)
+\begin{DoxyCompactList}\small\item\em Return a vector of length {\ttfamily np} of the nearest-\/neighbor distance-\/squared of each point in the input {\ttfamily Point}. \end{DoxyCompactList}\item 
+pure real(RK) function \mbox{\hyperlink{namespaceGeometry__mod_a4a03963d8bcd55273e30069a43da82a1}{get\+Mean\+Min\+Pair\+Dist}} (nd, np, Point)
+\begin{DoxyCompactList}\small\item\em Return the average nearest-\/neighbor distance of the input set of {\ttfamily Point}s. \end{DoxyCompactList}\item 
+pure subroutine \mbox{\hyperlink{namespaceGeometry__mod_a58da3ac11bf9b12578d07b508b94ce44}{get\+Dist\+Sorted\+Exp\+Diff}} (nd, np, Point, Ref\+Point, Dist\+Sorted\+Exp\+Diff, Index, failed)
+\begin{DoxyCompactList}\small\item\em Return the estimated mean and standard deviation of the volume occupied by a set of {\ttfamily np} points uniformly distributed in an {\ttfamily nd} dimensional domain of arbitrary shape and size. \end{DoxyCompactList}\item 
+pure real(RK) function, dimension(np) \mbox{\hyperlink{namespaceGeometry__mod_ae4e6eff3b740d47905047cebfe076e91}{get\+Dist\+From\+Ref\+Point}} (nd, np, Point, Ref\+Point)
+\begin{DoxyCompactList}\small\item\em Return the distances of the set of {\ttfamily np} input {\ttfamily Point(nd,np)} of dimension {\ttfamily nd} from the reference input point {\ttfamily Ref\+Point}. \end{DoxyCompactList}\item 
+pure real(RK) function, dimension(np) \mbox{\hyperlink{namespaceGeometry__mod_a3876a2ed53d3d2c36f078ca2097dee39}{get\+Dist\+Sq\+From\+Ref\+Point}} (nd, np, Point, Ref\+Point)
+\begin{DoxyCompactList}\small\item\em Return the distances-\/squared of the set of {\ttfamily np} input {\ttfamily Point(nd,np)} of dimension {\ttfamily nd} from the reference input point {\ttfamily Ref\+Point}. \end{DoxyCompactList}\item 
+pure type(\mbox{\hyperlink{structGeometry__mod_1_1MinDistEdge__type}{Min\+Dist\+Edge\+\_\+type}}) function \mbox{\hyperlink{namespaceGeometry__mod_acd1c6ac32d825ffb7d383f44f858ce9f}{get\+Min\+Dist\+Edge}} (np, Pair\+Dist\+Sq)
+\item 
+pure type(\mbox{\hyperlink{structGeometry__mod_1_1Hub__type}{Hub\+\_\+type}}) function \mbox{\hyperlink{namespaceGeometry__mod_a953594218cea27efd1a0eeac64e8ad72}{hubify}} (np, Pair\+Dist\+Sq)
+\item 
+subroutine \mbox{\hyperlink{namespaceGeometry__mod_af87bff866c5910e3f358d0198c979e23}{get\+Log\+Sum\+Vol\+Eff}} (nd, nc, rel\+Tol, Log\+Vol, Center, Cho\+Dia, log\+Sum\+Vol, Inv\+Cov\+Mat, Cho\+Low\+Cov\+Upp, log\+Sum\+Vol\+Eff, Scale\+Factor\+Sq)
+\begin{DoxyCompactList}\small\item\em Compute the {\itshape effective} total volume of all bounded ellipsoidal regions together while considering the possible overlaps. This computation is done aggressively via Monte Carlo simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceGeometry__mod_a4085ed207cae7b835d00814121c666ce}{MODULE\+\_\+\+NAME}} = \char`\"{}@Geometry\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains mathematical/computational geometry procedures. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceGeometry__mod_ae4e6eff3b740d47905047cebfe076e91}\label{namespaceGeometry__mod_ae4e6eff3b740d47905047cebfe076e91}} 
+\index{Geometry\_mod@{Geometry\_mod}!getDistFromRefPoint@{getDistFromRefPoint}}
+\index{getDistFromRefPoint@{getDistFromRefPoint}!Geometry\_mod@{Geometry\_mod}}
+\doxysubsubsection{\texorpdfstring{getDistFromRefPoint()}{getDistFromRefPoint()}}
+{\footnotesize\ttfamily pure real(RK) function, dimension(np) Geometry\+\_\+mod\+::get\+Dist\+From\+Ref\+Point (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point,  }\item[{real(RK)}]{Ref\+Point }\end{DoxyParamCaption})}
+
+
+
+Return the distances of the set of {\ttfamily np} input {\ttfamily Point(nd,np)} of dimension {\ttfamily nd} from the reference input point {\ttfamily Ref\+Point}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of input points. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The input array of points of shape {\ttfamily (nd,np)}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Ref\+Point} & \+: The input reference point of length {\ttfamily nd} from which the distances will be computed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Dist\+From\+Ref\+Point} \+: The vector of length {\ttfamily np} of distances of {\ttfamily Point}s from the reference point {\ttfamily Ref\+Point}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Geometry__mod_8f90_source_l00300}{300}} of file \mbox{\hyperlink{Geometry__mod_8f90_source}{Geometry\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceGeometry__mod_a58da3ac11bf9b12578d07b508b94ce44}\label{namespaceGeometry__mod_a58da3ac11bf9b12578d07b508b94ce44}} 
+\index{Geometry\_mod@{Geometry\_mod}!getDistSortedExpDiff@{getDistSortedExpDiff}}
+\index{getDistSortedExpDiff@{getDistSortedExpDiff}!Geometry\_mod@{Geometry\_mod}}
+\doxysubsubsection{\texorpdfstring{getDistSortedExpDiff()}{getDistSortedExpDiff()}}
+{\footnotesize\ttfamily pure subroutine Geometry\+\_\+mod\+::get\+Dist\+Sorted\+Exp\+Diff (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point,  }\item[{real(RK)}]{Ref\+Point,  }\item[{real(RK)}]{Dist\+Sorted\+Exp\+Diff,  }\item[{integer(IK)}]{Index,  }\item[{logical, intent(out)}]{failed }\end{DoxyParamCaption})}
+
+
+
+Return the estimated mean and standard deviation of the volume occupied by a set of {\ttfamily np} points uniformly distributed in an {\ttfamily nd} dimensional domain of arbitrary shape and size. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of input points. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The input array of points of shape {\ttfamily (nd,np)}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Ref\+Point} & \+: The input array of length {\ttfamily (nd)} representing the point from which distances differences will be computed. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Dist\+Sorted\+Exp\+Diff} & \+: The array of length {\ttfamily np} of differences of adjacent distances-\/from-\/\+Ref\+Point-\/exponentiated-\/to-\/nd. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Index} & \+: The output array of length {\ttfamily (np)} such that {\ttfamily Point(\+:,\+Index)} is ordered similar to {\ttfamily Dist\+Sorted\+Exp\+Diff}. \\
+\hline
+\mbox{\texttt{ out}}  & {\em failed} & \+: The output logical flag indicating whether sorting of the distances and therefore, the procedure has failed. If {\ttfamily failed = .true.}, the procedure has returned without computing the output {\ttfamily Dist\+Sorted\+Exp\+Diff} vector.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+The term {\ttfamily Exp} in the name of the procedure stands for $\ast$ Distance-\/\+Sorted Exponentiated to {\ttfamily nd}$\ast$ before computing the differences. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{Geometry__mod_8f90_source_l00256}{256}} of file \mbox{\hyperlink{Geometry__mod_8f90_source}{Geometry\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceGeometry__mod_a3876a2ed53d3d2c36f078ca2097dee39}\label{namespaceGeometry__mod_a3876a2ed53d3d2c36f078ca2097dee39}} 
+\index{Geometry\_mod@{Geometry\_mod}!getDistSqFromRefPoint@{getDistSqFromRefPoint}}
+\index{getDistSqFromRefPoint@{getDistSqFromRefPoint}!Geometry\_mod@{Geometry\_mod}}
+\doxysubsubsection{\texorpdfstring{getDistSqFromRefPoint()}{getDistSqFromRefPoint()}}
+{\footnotesize\ttfamily pure real(RK) function, dimension(np) Geometry\+\_\+mod\+::get\+Dist\+Sq\+From\+Ref\+Point (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point,  }\item[{real(RK)}]{Ref\+Point }\end{DoxyParamCaption})}
+
+
+
+Return the distances-\/squared of the set of {\ttfamily np} input {\ttfamily Point(nd,np)} of dimension {\ttfamily nd} from the reference input point {\ttfamily Ref\+Point}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of input points. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The input array of points of shape {\ttfamily (nd,np)}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Ref\+Point} & \+: The input reference point of length {\ttfamily nd} from which the distances will be computed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Dist\+Sq\+From\+Ref\+Point} \+: The vector of length {\ttfamily np} of distances-\/squared of {\ttfamily Point}s from the reference point {\ttfamily Ref\+Point}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Geometry__mod_8f90_source_l00329}{329}} of file \mbox{\hyperlink{Geometry__mod_8f90_source}{Geometry\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceGeometry__mod_a7a0c73025b75940c6f3421b1af0a5f40}\label{namespaceGeometry__mod_a7a0c73025b75940c6f3421b1af0a5f40}} 
+\index{Geometry\_mod@{Geometry\_mod}!getEucDistSq@{getEucDistSq}}
+\index{getEucDistSq@{getEucDistSq}!Geometry\_mod@{Geometry\_mod}}
+\doxysubsubsection{\texorpdfstring{getEucDistSq()}{getEucDistSq()}}
+{\footnotesize\ttfamily pure real(RK) function Geometry\+\_\+mod\+::get\+Euc\+Dist\+Sq (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Point1,  }\item[{real(RK)}]{Point2 }\end{DoxyParamCaption})}
+
+
+
+Return the distance squared between the two input points. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The size of the input vectors. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point1} & \+: The first point. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point2} & \+: The second point.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily distance\+Sq} \+: The distance squared. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Geometry__mod_8f90_source_l00097}{97}} of file \mbox{\hyperlink{Geometry__mod_8f90_source}{Geometry\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceGeometry__mod_af87bff866c5910e3f358d0198c979e23}\label{namespaceGeometry__mod_af87bff866c5910e3f358d0198c979e23}} 
+\index{Geometry\_mod@{Geometry\_mod}!getLogSumVolEff@{getLogSumVolEff}}
+\index{getLogSumVolEff@{getLogSumVolEff}!Geometry\_mod@{Geometry\_mod}}
+\doxysubsubsection{\texorpdfstring{getLogSumVolEff()}{getLogSumVolEff()}}
+{\footnotesize\ttfamily subroutine Geometry\+\_\+mod\+::get\+Log\+Sum\+Vol\+Eff (\begin{DoxyParamCaption}\item[{integer, intent(in)}]{nd,  }\item[{integer, intent(in)}]{nc,  }\item[{real(RK)}]{rel\+Tol,  }\item[{real(RK)}]{Log\+Vol,  }\item[{real(RK)}]{Center,  }\item[{real(RK)}]{Cho\+Dia,  }\item[{real(RK)}]{log\+Sum\+Vol,  }\item[{real(RK)}]{Inv\+Cov\+Mat,  }\item[{real(RK)}]{Cho\+Low\+Cov\+Upp,  }\item[{real(RK)}]{log\+Sum\+Vol\+Eff,  }\item[{real(RK)}]{Scale\+Factor\+Sq }\end{DoxyParamCaption})}
+
+
+
+Compute the {\itshape effective} total volume of all bounded ellipsoidal regions together while considering the possible overlaps. This computation is done aggressively via Monte Carlo simulation. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions. \\
+\hline
+\mbox{\texttt{ in}}  & {\em nc} & \+: The number of input clusters. \\
+\hline
+\mbox{\texttt{ in}}  & {\em rel\+Tol} & \+: The accuracy tolerance of the computed effective sum of volumes (NOT the log-\/transformed of the sum). \\
+\hline
+\mbox{\texttt{ in}}  & {\em Log\+Vol} & \+: An array of size {\ttfamily (nc)} representing the logarithms of the volumes of the ellipsoids normalized to the volume of an nd-\/ball. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Center} & \+: An array of size {\ttfamily (nd,nc)} representing the centers of the ellipsoids. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cho\+Dia} & \+: An array of size {\ttfamily (nd,nc)} representing the diagonal elements of the Cholesky lower triangle of the covariance matrices of the ellipsoids. \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Sum\+Vol} & \+: {\ttfamily = sum(\+Log\+Vol)}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Inv\+Cov\+Mat} & \+: An array of size {\ttfamily (nd,nd,nc)} representing the inverse covariance matrices of the ellipsoids. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cho\+Low\+Cov\+Upp} & \+: An array of size {\ttfamily (nd,nd,nc)} whose lower-\/triangle represents the Cholesky lower triangle of the covariance matrices of the ellipsoids. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em log\+Sum\+Vol\+Eff} & \+: The logarithm of the sum of {\ttfamily Log\+Vol\+Normed}. On output, it will be rewritten with the effective log-\/sum of the (normalized) volumes. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Scale\+Factor\+Sq} & \+: An array of size {\ttfamily (nc)} representing the maximum of Mahalanobis-\/distance-\/squared of the members of each cluster from its center. This is needed if the ellipsoid properties have not been scaled, i.\+e., {\ttfamily Scale\+Factor\+Sq \texorpdfstring{$>$}{>} 1} ({\bfseries{optional}}, the default is {\ttfamily Scale\+Factor\+Sq(1\+:nc) = 1}). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Geometry__mod_8f90_source_l00482}{482}} of file \mbox{\hyperlink{Geometry__mod_8f90_source}{Geometry\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceGeometry__mod_a43e279f54900a1bc2901a21d9ffbfdf8}\label{namespaceGeometry__mod_a43e279f54900a1bc2901a21d9ffbfdf8}} 
+\index{Geometry\_mod@{Geometry\_mod}!getMaxPairDistSq@{getMaxPairDistSq}}
+\index{getMaxPairDistSq@{getMaxPairDistSq}!Geometry\_mod@{Geometry\_mod}}
+\doxysubsubsection{\texorpdfstring{getMaxPairDistSq()}{getMaxPairDistSq()}}
+{\footnotesize\ttfamily pure real(RK) function, dimension(np) Geometry\+\_\+mod\+::get\+Max\+Pair\+Dist\+Sq (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point }\end{DoxyParamCaption})}
+
+
+
+Return a vector of length {\ttfamily np} of the nearest-\/neighbor distance-\/squared of each point in the input {\ttfamily Point}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of input points. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The input array of points of shape {\ttfamily (nd,np)}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Max\+Pair\+Dist\+Sq} \+: A vector of length {\ttfamily np} of the nearest-\/neighbor distance-\/squared of each point in the input {\ttfamily Point}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Geometry__mod_8f90_source_l00195}{195}} of file \mbox{\hyperlink{Geometry__mod_8f90_source}{Geometry\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceGeometry__mod_a4a03963d8bcd55273e30069a43da82a1}\label{namespaceGeometry__mod_a4a03963d8bcd55273e30069a43da82a1}} 
+\index{Geometry\_mod@{Geometry\_mod}!getMeanMinPairDist@{getMeanMinPairDist}}
+\index{getMeanMinPairDist@{getMeanMinPairDist}!Geometry\_mod@{Geometry\_mod}}
+\doxysubsubsection{\texorpdfstring{getMeanMinPairDist()}{getMeanMinPairDist()}}
+{\footnotesize\ttfamily pure real(RK) function Geometry\+\_\+mod\+::get\+Mean\+Min\+Pair\+Dist (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point }\end{DoxyParamCaption})}
+
+
+
+Return the average nearest-\/neighbor distance of the input set of {\ttfamily Point}s. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of input points. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The input array of points of shape {\ttfamily (nd,np)}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily mean\+Min\+Pair\+Dist\+Sq} \+: The average nearest-\/neighbor distance of the input set of {\ttfamily Point}s. 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000004}{Todo}}]\+: Which approach is faster? fully-\/vectorized Fortran array syntax or explicit do-\/loop? \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{Geometry__mod_8f90_source_l00219}{219}} of file \mbox{\hyperlink{Geometry__mod_8f90_source}{Geometry\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceGeometry__mod_acd1c6ac32d825ffb7d383f44f858ce9f}\label{namespaceGeometry__mod_acd1c6ac32d825ffb7d383f44f858ce9f}} 
+\index{Geometry\_mod@{Geometry\_mod}!getMinDistEdge@{getMinDistEdge}}
+\index{getMinDistEdge@{getMinDistEdge}!Geometry\_mod@{Geometry\_mod}}
+\doxysubsubsection{\texorpdfstring{getMinDistEdge()}{getMinDistEdge()}}
+{\footnotesize\ttfamily pure type(\mbox{\hyperlink{structGeometry__mod_1_1MinDistEdge__type}{Min\+Dist\+Edge\+\_\+type}}) function Geometry\+\_\+mod\+::get\+Min\+Dist\+Edge (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Pair\+Dist\+Sq }\end{DoxyParamCaption})}
+
+\begin{DoxyWarning}{Warning}
+The input value {\ttfamily np} must be larger than 1 at all times. A value of {\ttfamily np = 1} is meaningless. In addition, a value of {\ttfamily np = 1} is also meaningless, although this procedure can handle {\ttfamily np = 2} gracefully. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{Geometry__mod_8f90_source_l00380}{380}} of file \mbox{\hyperlink{Geometry__mod_8f90_source}{Geometry\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceGeometry__mod_a91e58d6254e4bce64f811eab01b11c6f}\label{namespaceGeometry__mod_a91e58d6254e4bce64f811eab01b11c6f}} 
+\index{Geometry\_mod@{Geometry\_mod}!getMinPairDistSq@{getMinPairDistSq}}
+\index{getMinPairDistSq@{getMinPairDistSq}!Geometry\_mod@{Geometry\_mod}}
+\doxysubsubsection{\texorpdfstring{getMinPairDistSq()}{getMinPairDistSq()}}
+{\footnotesize\ttfamily pure real(RK) function, dimension(np) Geometry\+\_\+mod\+::get\+Min\+Pair\+Dist\+Sq (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point }\end{DoxyParamCaption})}
+
+
+
+Return a vector of length {\ttfamily np} of the nearest-\/neighbor distance-\/squared of each point in the input {\ttfamily Point}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of input points. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The input array of points of shape {\ttfamily (nd,np)}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Min\+Pair\+Dist\+Sq} \+: A vector of length {\ttfamily np} of the nearest-\/neighbor distance-\/squared of each point in the input {\ttfamily Point}. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Geometry__mod_8f90_source_l00172}{172}} of file \mbox{\hyperlink{Geometry__mod_8f90_source}{Geometry\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceGeometry__mod_aa32b702aade8d0b32d1cdaea67c5ea83}\label{namespaceGeometry__mod_aa32b702aade8d0b32d1cdaea67c5ea83}} 
+\index{Geometry\_mod@{Geometry\_mod}!getPairDistSq@{getPairDistSq}}
+\index{getPairDistSq@{getPairDistSq}!Geometry\_mod@{Geometry\_mod}}
+\doxysubsubsection{\texorpdfstring{getPairDistSq()}{getPairDistSq()}}
+{\footnotesize\ttfamily pure real(RK) function, dimension(np,np) Geometry\+\_\+mod\+::get\+Pair\+Dist\+Sq (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point,  }\item[{real(RK), intent(in), optional}]{diagonal }\end{DoxyParamCaption})}
+
+
+
+Return the matrix of the pairwise distances-\/squared of the input set of points from each other. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions. \\
+\hline
+\mbox{\texttt{ in}}  & {\em np} & \+: The number of input points. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Point} & \+: The input array of points of shape {\ttfamily (nd,np)}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em diagonal} & \+: The value to be used for the diagonal elements of the output matrix ({\bfseries{optional}}, default = 0.\+\_\+\+RK).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Pair\+Dist\+Sq} \+: A symmetric matrix of shape {\ttfamily (np,np)} containing the pairwise distances-\/squared of the points from each other.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+The optional input {\ttfamily diagonal} element can improve the performance of other functions that rely on this function, such as \mbox{\hyperlink{namespaceGeometry__mod_a91e58d6254e4bce64f811eab01b11c6f}{get\+Min\+Pair\+Dist\+Sq()}}.
+\end{DoxyRemark}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000003}{Todo}}]\+: The code performance and memory usage could be improved by return a vector instead of a symmetric matrix. 
+
+\+: Could these loops be replaced with single concurrent loop? 
+
+\+: Compare the stable results from this routine with the faster less-\/stable approach \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{Geometry__mod_8f90_source_l00133}{133}} of file \mbox{\hyperlink{Geometry__mod_8f90_source}{Geometry\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceGeometry__mod_a953594218cea27efd1a0eeac64e8ad72}\label{namespaceGeometry__mod_a953594218cea27efd1a0eeac64e8ad72}} 
+\index{Geometry\_mod@{Geometry\_mod}!hubify@{hubify}}
+\index{hubify@{hubify}!Geometry\_mod@{Geometry\_mod}}
+\doxysubsubsection{\texorpdfstring{hubify()}{hubify()}}
+{\footnotesize\ttfamily pure type(\mbox{\hyperlink{structGeometry__mod_1_1Hub__type}{Hub\+\_\+type}}) function Geometry\+\_\+mod\+::hubify (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Pair\+Dist\+Sq }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Geometry__mod_8f90_source_l00423}{423}} of file \mbox{\hyperlink{Geometry__mod_8f90_source}{Geometry\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceGeometry__mod_a4085ed207cae7b835d00814121c666ce}\label{namespaceGeometry__mod_a4085ed207cae7b835d00814121c666ce}} 
+\index{Geometry\_mod@{Geometry\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!Geometry\_mod@{Geometry\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character($\ast$), parameter Geometry\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Geometry\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{Geometry__mod_8f90_source_l00054}{54}} of file \mbox{\hyperlink{Geometry__mod_8f90_source}{Geometry\+\_\+mod.\+f90}}.
+

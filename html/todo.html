@@ -83,62 +83,79 @@ $(function() {
 <dt>Subprogram <a class="el" href="namespaceFitGeoCyclic__mod.html#a1c31498edcd69664be787f9942aaecea">FitGeoCyclic_mod::fitGeoCyclicLogPDF</a>  (maxNumTrial, numTrial, SuccessStep, LogCount)</dt>
 <dd><a class="anchor" id="_todo000002"></a> Update: Amir Shahmoradi, Sunday Nov 29, 2020, 11:19 pm, Dallas, TX The current implementation of the objective function relies on the definitions of module variables. Although inefficient and ugly, this was necessary to resolve the viscous Segmentation Fault error that happens with internal function calls on Windows Subsystem for Linux Ubuntu with GFortran. Once this error of unknown origin is resolved, the external module function <code><a class="el" href="namespaceFitGeoCyclic__mod.html#a2bc7f171d922a5311da63e9ea3ad1603" title="Return the sum of the distances squared from the current fit.">getSumDistSq()</a></code> must be converted back to an internal function within <a class="el" href="namespaceFitGeoCyclic__mod.html#a1c31498edcd69664be787f9942aaecea">fitGeoCyclicLogPDF</a> and subsequently, all module variables must be removed. update (Dec 16, 2020): <br  />
  The source of the error was identified to be a bug in WSL1. This problem is now resolved in WSL2. However, the code will be kept intact for future compatibility with WSL1 and those who still use it. </dd>
+<dt>Subprogram <a class="el" href="namespaceGeometry__mod.html#a4a03963d8bcd55273e30069a43da82a1">Geometry_mod::getMeanMinPairDist</a>  (nd, np, Point)</dt>
+<dd><a class="anchor" id="_todo000004"></a>: Which approach is faster? fully-vectorized Fortran array syntax or explicit do-loop?  </dd>
+<dt>Subprogram <a class="el" href="namespaceGeometry__mod.html#aa32b702aade8d0b32d1cdaea67c5ea83">Geometry_mod::getPairDistSq</a>  (nd, np, Point, diagonal)</dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000003"></a>: The code performance and memory usage could be improved by return a vector instead of a symmetric matrix. </p>
+<p class="interdd"></p>
+<p class="interdd">: Could these loops be replaced with single concurrent loop? </p>
+<p class="interdd"></p>
+<p class="enddd">: Compare the stable results from this routine with the faster less-stable approach  </p>
+</dd>
+<dt>Subprogram <a class="el" href="namespaceGeometryEllipsoid__mod.html#a04cff76bd13317ed0b452dcf1e494dec">GeometryEllipsoid_mod::constructEllipsoid</a>  (nd, np, Point, isBounding)</dt>
+<dd><a class="anchor" id="_todo000005"></a> The <code>isBounding = .false.</code> scenario still needs work. Perhaps this argument should be changed to <code>boundingStatus</code> with three possible values, corresponding to three different degrees of computations: 1) no bounding, 2) computing scalefactor and logVolNormed, 3) computing (2) as well as scaling the properties.  </dd>
+<dt>Subprogram <a class="el" href="namespaceGeometryEllipsoid__mod.html#ae446555655f7b07c5b1f65f378d8585f">GeometryEllipsoid_mod::genRandPointOnEllipsoid</a>  (nd, Mean, ChoLow, ChoDia)</dt>
+<dd><a class="anchor" id="_todo000006"></a> The performance of this algorithm can be further improved. </dd>
 <dt>Subprogram <a class="el" href="namespaceHistogram__mod.html#ad80a9c34cbdd54d1c6b5d652c4def668">Histogram_mod::getBin</a>  (x, lowerBound, nbin, binsize)</dt>
-<dd><a class="anchor" id="_todo000003"></a> The performance and interface of this routine can be significantly improved. It is more sensible to pass a contiguous array of bin edges as input instead of <code>lowerBound</code> and <code>binsize</code>. If the input point is not within any bins, an index of zero should be returned. </dd>
+<dd><a class="anchor" id="_todo000007"></a> The performance and interface of this routine can be significantly improved. It is more sensible to pass a contiguous array of bin edges as input instead of <code>lowerBound</code> and <code>binsize</code>. If the input point is not within any bins, an index of zero should be returned. </dd>
 <dt>Subprogram <a class="el" href="namespaceKmeans__mod.html#ac4b9beeaf1a19b79cfd5aacb8915fb02">Kmeans_mod::runKPP</a>  (nc, nd, np, Point, SumPoint, Membership, Size, potential)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000004"></a> All <code>minloc</code> queries in this procedure can be replaced with more efficient bin search algorithms.</p>
-<p class="enddd"><a class="anchor" id="_todo000005"></a> The variable <code>CumSumDistSq</code> does not have to be defined as <code>real64</code>. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000009"></a> The variable <code>CumSumDistSq</code> does not have to be defined as <code>real64</code>.</p>
+<p class="enddd"><a class="anchor" id="_todo000008"></a> All <code>minloc</code> queries in this procedure can be replaced with more efficient bin search algorithms. </p>
 </dd>
 <dt>Subprogram <a class="el" href="namespaceKmeansOOP__mod.html#af12decb1817c7b3691239edf3ef79eff">KmeansOOP_mod::runKPP</a>  (nc, nd, np, Point, SumPoint, Membership, Size, potential)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000006"></a> All <code>minloc</code> queries in this procedure can be replaced with more efficient bin search algorithms.</p>
-<p class="enddd"><a class="anchor" id="_todo000007"></a> The variable <code>CumSumDistSq</code> does not have to be defined as <code>real64</code>. </p>
+<dd><p class="startdd"><a class="anchor" id="_todo000011"></a> The variable <code>CumSumDistSq</code> does not have to be defined as <code>real64</code>.</p>
+<p class="enddd"><a class="anchor" id="_todo000010"></a> All <code>minloc</code> queries in this procedure can be replaced with more efficient bin search algorithms. </p>
 </dd>
 <dt>Subprogram <a class="el" href="namespaceMath__mod.html#aca2a61850d983f469ecb90acc253a58c">Math_mod::getLogSumExp_CK</a>  (LogValue, maxLogValue)</dt>
-<dd><a class="anchor" id="_todo000009"></a> This function should be modified to rely on <code><a class="el" href="namespaceMath__mod.html#a3974fffdcda7a33913960e0999a34b96" title="Return the logarithm of the sum of the exponential of the input real vector robustly (without overflo...">getSumExp_RK()</a></code>.  </dd>
+<dd><a class="anchor" id="_todo000013"></a> This function should be modified to rely on <code><a class="el" href="namespaceMath__mod.html#a3974fffdcda7a33913960e0999a34b96" title="Return the logarithm of the sum of the exponential of the input real vector robustly (without overflo...">getSumExp_RK()</a></code>.  </dd>
 <dt>Subprogram <a class="el" href="namespaceMath__mod.html#a19c8ee19b0f93d3586bf2de1c464f249">Math_mod::getLogSumExp_RK</a>  (LogValue, maxLogValue)</dt>
-<dd><a class="anchor" id="_todo000008"></a> This function should be modified to rely on <code><a class="el" href="namespaceMath__mod.html#a3974fffdcda7a33913960e0999a34b96" title="Return the logarithm of the sum of the exponential of the input real vector robustly (without overflo...">getSumExp_RK()</a></code>.  </dd>
+<dd><a class="anchor" id="_todo000012"></a> This function should be modified to rely on <code><a class="el" href="namespaceMath__mod.html#a3974fffdcda7a33913960e0999a34b96" title="Return the logarithm of the sum of the exponential of the input real vector robustly (without overflo...">getSumExp_RK()</a></code>.  </dd>
 <dt>Subprogram <a class="el" href="namespaceMath__mod.html#a3974fffdcda7a33913960e0999a34b96">Math_mod::getSumExp_RK</a>  (LogValue, maxLogValue)</dt>
-<dd><a class="anchor" id="_todo000010"></a> This function should be modified to avoid underflow checking in release mode on <code><a class="el" href="namespaceMath__mod.html#a3974fffdcda7a33913960e0999a34b96" title="Return the logarithm of the sum of the exponential of the input real vector robustly (without overflo...">getSumExp_RK()</a></code>.  </dd>
+<dd><a class="anchor" id="_todo000014"></a> This function should be modified to avoid underflow checking in release mode on <code><a class="el" href="namespaceMath__mod.html#a3974fffdcda7a33913960e0999a34b96" title="Return the logarithm of the sum of the exponential of the input real vector robustly (without overflo...">getSumExp_RK()</a></code>.  </dd>
+<dt>Subprogram <a class="el" href="namespaceParaNest__ChainFileContents__mod.html#a821bfa4960ebe397063e0680ebaa4ded">ParaNest_ChainFileContents_mod::allocateChain</a>  (CFC, ndim, allocSize)</dt>
+<dd><a class="anchor" id="_todo000015"></a>: All of the following arrays could be merged into a single 2D arrays or Array of Structures for better IO and data locality.  </dd>
+<dt>Subprogram <a class="el" href="namespaceProcessPoisson__mod.html#af932fdaf5d4cdf7746eac3189f9f8c2e">ProcessPoisson_mod::getMinSumPairDistSqPointIndex</a>  (nd, np, Point)</dt>
+<dd><a class="anchor" id="_todo000019"></a>: The code performance and memory usage could be improved by return a vector instead of a symmetric matrix.  </dd>
 <dt>Subprogram <a class="el" href="namespaceSample__mod.html#a1942971b64332fc7c4860112a244764c">Sample_mod::getChoLowCovUpp</a>  (nd, np, Mean, Sample, ChoLowCovUpp, ChoDia)</dt>
-<dd><a class="anchor" id="_todo000014"></a> The efficiency of this code can be further improved.  </dd>
+<dd><a class="anchor" id="_todo000021"></a> The efficiency of this code can be further improved.  </dd>
 <dt>Subprogram <a class="el" href="namespaceSample__mod.html#a1e5daab49859d9c21c4ec3c916ec963d">Sample_mod::getChoLowCovUppHighDim</a>  (nd, np, Mean, Sample, ChoLowCovUpp, ChoDia)</dt>
-<dd><a class="anchor" id="_todo000015"></a> The efficiency of this code can be further improved.  </dd>
+<dd><a class="anchor" id="_todo000022"></a> The efficiency of this code can be further improved.  </dd>
 <dt>Subprogram <a class="el" href="namespaceSample__mod.html#ab6c8a951bf35c59402a30d6d17a6d193">Sample_mod::mergeMeanCovUpp</a>  (nd, npA, MeanA, CovUppA, npB, MeanB, CovUppB, MeanAB, CovUppAB)</dt>
-<dd><a class="anchor" id="_todo000016"></a> The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector. </dd>
+<dd><a class="anchor" id="_todo000023"></a> The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector. </dd>
 <dt>Subprogram <a class="el" href="namespaceSample__mod.html#a81524ddc27a48db65744d80cfad9b348">Sample_mod::mergeMeanCovUppDense</a>  (nd, npA, MeanA, CovUppA, npB, MeanB, CovUppB)</dt>
-<dd><a class="anchor" id="_todo000017"></a> The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector. </dd>
+<dd><a class="anchor" id="_todo000024"></a> The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector. </dd>
 <dt>Subprogram <a class="el" href="namespaceSpecBase__mod.html#a44ba6ab2cfcce307ab0b89dd2d4933f3">SpecBase_mod::setFromInputArgs</a>  (SpecBase, Err, outputSampleSize, randomSeed, description, outputFileName, outputDelimiter, outputChainFileFormat, domainAxesNameList, outputRestartFileFormat, outputColumnWidth, outputOverwriteEnabled, outputRealPrecision, outputSilentModeEnabled, domainCubeLimitLower, domainCubeLimitUpper, domainEllipsoidCenter, domainEllipsoidCovMat, domainEllipsoidCorMat, domainEllipsoidStdVec, domain, parallelism, outputProgressReportPeriod, TargetAcceptanceRate, parallelismMpiFinalizeEnabled, domainMaxNumCheckToWarn, domainMaxNumCheckToStop)</dt>
-<dd><a class="anchor" id="_todo000021"></a>perhaps all <code><a class="el" href="namespaceSpecBase__Domain__mod.html#ada33237ac136a11958347c966a60c8f9">set()</a></code> methods should take optional input arguments.  </dd>
+<dd><a class="anchor" id="_todo000028"></a>perhaps all <code><a class="el" href="namespaceSpecBase__Domain__mod.html#ada33237ac136a11958347c966a60c8f9">set()</a></code> methods should take optional input arguments.  </dd>
 <dt>Subprogram <a class="el" href="namespaceStatistics__mod.html#a1fd519cf4d71eb72a8b096f60398b46f">Statistics_mod::getBetaCDF_RK32</a>  (alpha, beta, x)</dt>
-<dd><a class="anchor" id="_todo000022"></a> The efficiency of this code can be improved by making <code>x</code> a vector on input. </dd>
+<dd><a class="anchor" id="_todo000029"></a> The efficiency of this code can be improved by making <code>x</code> a vector on input. </dd>
 <dt>Subprogram <a class="el" href="namespaceStatistics__mod.html#a6f2bac87eb4e963f359c89840f4702a3">Statistics_mod::getBetaCDF_RK64</a>  (alpha, beta, x)</dt>
-<dd><a class="anchor" id="_todo000023"></a> The efficiency of this code can be improved by making <code>x</code> a vector on input. </dd>
+<dd><a class="anchor" id="_todo000030"></a> The efficiency of this code can be improved by making <code>x</code> a vector on input. </dd>
 <dt>Subprogram <a class="el" href="namespaceSystem__mod.html#a8f999de90840ba33f9cf7f30edd41b3d">System_mod::copyFile</a>  (pathOld, pathNew, isUnixShell, Err)</dt>
-<dd><a class="anchor" id="_todo000025"></a> This code can be improved. See the extensive note in the body of the procedure.  </dd>
+<dd><a class="anchor" id="_todo000032"></a> This code can be improved. See the extensive note in the body of the procedure.  </dd>
 <dt>Subprogram <a class="el" href="namespaceSystem__mod.html#acdbe0231b40135bc08ab285fc69f2b80">System_mod::getSystemInfo</a>  (List, Err, OS, count, cacheFile)</dt>
-<dd><a class="anchor" id="_todo000024"></a> This code can be improved. See the extensive note in the body of the procedure.  </dd>
+<dd><a class="anchor" id="_todo000031"></a> This code can be improved. See the extensive note in the body of the procedure.  </dd>
 <dt>Subprogram <a class="el" href="namespaceTest__System__mod.html#a56a58918b2888e7ea0fa691de93cdeb3">Test_System_mod::test_CmdArg_type_1</a>  ()</dt>
-<dd><a class="anchor" id="_todo000032"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
+<dd><a class="anchor" id="_todo000040"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
 <dt>Subprogram <a class="el" href="namespaceTest__System__mod.html#a43fd8159ffe52170057e95d4e0c38d63">Test_System_mod::test_EnvVar_type_1</a>  ()</dt>
-<dd><a class="anchor" id="_todo000029"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
-<dt>Subprogram <a class="el" href="namespaceTest__System__mod.html#ab0121f340538dae91c97cc5cdcba0a7b">Test_System_mod::test_EnvVar_type_2</a>  ()</dt>
-<dd><a class="anchor" id="_todo000030"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
-<dt>Subprogram <a class="el" href="namespaceTest__System__mod.html#a26054fb4e3bf2d05710adc7965bc8431">Test_System_mod::test_EnvVar_type_3</a>  ()</dt>
-<dd><a class="anchor" id="_todo000031"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
-<dt>Subprogram <a class="el" href="namespaceTest__System__mod.html#a8d37f80583c104a3dfb6b99a897feb26">Test_System_mod::test_executeCmd_1</a>  ()</dt>
 <dd><a class="anchor" id="_todo000037"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
-<dt>Subprogram <a class="el" href="namespaceTest__System__mod.html#a733db17082cd5058dbc8d19e6f620909">Test_System_mod::test_executeCmd_2</a>  ()</dt>
+<dt>Subprogram <a class="el" href="namespaceTest__System__mod.html#ab0121f340538dae91c97cc5cdcba0a7b">Test_System_mod::test_EnvVar_type_2</a>  ()</dt>
 <dd><a class="anchor" id="_todo000038"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
-<dt>Subprogram <a class="el" href="namespaceTest__System__mod.html#a9a276bf5a7b9db66c140bd2202ebc7e9">Test_System_mod::test_getSystemInfo_1</a>  ()</dt>
+<dt>Subprogram <a class="el" href="namespaceTest__System__mod.html#a26054fb4e3bf2d05710adc7965bc8431">Test_System_mod::test_EnvVar_type_3</a>  ()</dt>
 <dd><a class="anchor" id="_todo000039"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
+<dt>Subprogram <a class="el" href="namespaceTest__System__mod.html#a8d37f80583c104a3dfb6b99a897feb26">Test_System_mod::test_executeCmd_1</a>  ()</dt>
+<dd><a class="anchor" id="_todo000045"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
+<dt>Subprogram <a class="el" href="namespaceTest__System__mod.html#a733db17082cd5058dbc8d19e6f620909">Test_System_mod::test_executeCmd_2</a>  ()</dt>
+<dd><a class="anchor" id="_todo000046"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
+<dt>Subprogram <a class="el" href="namespaceTest__System__mod.html#a9a276bf5a7b9db66c140bd2202ebc7e9">Test_System_mod::test_getSystemInfo_1</a>  ()</dt>
+<dd><a class="anchor" id="_todo000047"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
 <dt>Subprogram <a class="el" href="namespaceTest__System__mod.html#aabfd080659733c4a852c62ccd400599b">Test_System_mod::test_OS_type_1</a>  ()</dt>
-<dd><a class="anchor" id="_todo000033"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
+<dd><a class="anchor" id="_todo000041"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
 <dt>Subprogram <a class="el" href="namespaceTest__System__mod.html#a86976d55b3a779d9a8c0064155e9cd4a">Test_System_mod::test_OS_type_2</a>  ()</dt>
-<dd><a class="anchor" id="_todo000034"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
+<dd><a class="anchor" id="_todo000042"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
 <dt>Subprogram <a class="el" href="namespaceTest__System__mod.html#ada729e6f3789a1df730ac21f58d5a334">Test_System_mod::test_OS_type_3</a>  ()</dt>
-<dd><a class="anchor" id="_todo000035"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
+<dd><a class="anchor" id="_todo000043"></a> This test needs further improvements in the future. See comments in the body of the test.  </dd>
 <dt>Subprogram <a class="el" href="namespaceTest__System__mod.html#a6ba8a4348e2457b775dd061d40f33cb8">Test_System_mod::test_SysCmd_type_1</a>  ()</dt>
-<dd><a class="anchor" id="_todo000036"></a> This test needs further improvements in the future. See comments in the body of the test. </dd>
+<dd><a class="anchor" id="_todo000044"></a> This test needs further improvements in the future. See comments in the body of the test. </dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -153,7 +170,7 @@ $(function() {
     </div>
     <address class="footer">
         <small>
-            Generated on Tue Sep 21 2021 22:29:11 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
+            Generated on Wed Sep 22 2021 01:08:28 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
             <!--
             1.9.3
             -->

@@ -10,7 +10,7 @@ var searchData=
   ['recl_7',['recl',['../structFile__mod_1_1File__type.html#aceed39108bdc2d775c82dfb7b501a2ab',1,'File_mod::File_type']]],
   ['records_8',['Records',['../structSystem__mod_1_1SystemInfo__type.html#ab2e0be3d4205bc7e9ce0a202494cd604',1,'System_mod::SystemInfo_type']]],
   ['ref_5fautocorr_9',['ref_AutoCorr',['../structTest__CrossCorr__mod_1_1WeightedData__type.html#a9cc6eb35c6b5a796ebef9a977af1ccfc',1,'Test_CrossCorr_mod::WeightedData_type']]],
-  ['refinedchain_10',['RefinedChain',['../structParaDRAM__mod_1_1ParaDRAM__type.html#aebc52d04e6fca18333ff2fb734cb24a9',1,'ParaDRAM_mod::ParaDRAM_type']]],
+  ['refinedchain_10',['RefinedChain',['../structParaDRAM__mod_1_1ParaDRAM__type.html#aebc52d04e6fca18333ff2fb734cb24a9',1,'ParaDRAM_mod::ParaDRAM_type::RefinedChain()'],['../structParaNest__mod_1_1ParaNest__type.html#a1eab178ffc2296282c9069eca4b026f4',1,'ParaNest_mod::ParaNest_type::RefinedChain()']]],
   ['reltol_11',['relTol',['../structKmeansOOP__mod_1_1KmeansOOP__type.html#afdbf53c0713249a898c7d0a4b1749071',1,'KmeansOOP_mod::KmeansOOP_type']]],
   ['restartfile_12',['RestartFile',['../structParaMonte__mod_1_1ParaMonte__type.html#a23c108f0697ff98276c037b06ecffc5d',1,'ParaMonte_mod::ParaMonte_type']]],
   ['rho_13',['rho',['../structCorCoef__mod_1_1CorCoefSpearman__type.html#abd22ca3623f423b3a766b9ac3f7beb88',1,'CorCoef_mod::CorCoefSpearman_type']]],

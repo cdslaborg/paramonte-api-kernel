@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['langis_5ftype_0',['LangIs_type',['../structConstants__mod_1_1LangIs__type.html',1,'Constants_mod']]],
-  ['logfile_5ftype_1',['LogFile_type',['../structParaMonte__mod_1_1LogFile__type.html',1,'ParaMonte_mod']]],
-  ['logpdf_5fproc_2',['logpdf_proc',['../interfaceDistMulti__mod_1_1logpdf__proc.html',1,'DistMulti_mod::logpdf_proc'],['../interfaceDistUni__mod_1_1logpdf__proc.html',1,'DistUni_mod::logpdf_proc']]],
-  ['lower_3',['lower',['../interfaceString__mod_1_1lower.html',1,'String_mod']]]
+  ['kmeans_5ftype_0',['Kmeans_type',['../structKmeans__mod_1_1Kmeans__type.html',1,'Kmeans_mod']]],
+  ['kmeansoop_5ftype_1',['KmeansOOP_type',['../structKmeansOOP__mod_1_1KmeansOOP__type.html',1,'KmeansOOP_mod']]],
+  ['kmeanstry_5ftype_2',['KmeansTry_type',['../structKmeansOOP__mod_1_1KmeansTry__type.html',1,'KmeansOOP_mod::KmeansTry_type'],['../structPartition__mod_1_1KmeansTry__type.html',1,'Partition_mod::KmeansTry_type']]]
 ];

@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['normalize_0',['normalize',['../interfaceSample__mod_1_1normalize.html',1,'Sample_mod']]],
-  ['num2char_1',['num2char',['../interfaceString__mod_1_1num2char.html',1,'String_mod']]],
-  ['numfuncall_5ftype_2',['NumFunCall_type',['../structParaMonte__mod_1_1NumFunCall__type.html',1,'ParaMonte_mod']]]
+  ['mesh_0',['mesh',['../interfaceMisc__mod_1_1mesh.html',1,'Misc_mod']]],
+  ['method_5ftype_1',['Method_type',['../structPartition__mod_1_1Method__type.html',1,'Partition_mod::Method_type'],['../structSpecBase__mod_1_1Method__type.html',1,'SpecBase_mod::Method_type']]],
+  ['mindistedge_5ftype_2',['MinDistEdge_type',['../structGeometry__mod_1_1MinDistEdge__type.html',1,'Geometry_mod']]],
+  ['minimize_3',['minimize',['../interfaceOptimization__mod_1_1minimize.html',1,'Optimization_mod']]],
+  ['moment_5ftype_4',['Moment_type',['../structParaMonte__mod_1_1Moment__type.html',1,'ParaMonte_mod']]]
 ];

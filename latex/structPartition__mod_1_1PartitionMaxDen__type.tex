@@ -1,0 +1,215 @@
+\hypertarget{structPartition__mod_1_1PartitionMaxDen__type}{}\doxysection{Partition\+\_\+mod\+::Partition\+Max\+Den\+\_\+type Interface Reference}
+\label{structPartition__mod_1_1PartitionMaxDen__type}\index{Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}}
+
+
+The {\ttfamily \mbox{\hyperlink{structPartition__mod_1_1PartitionMaxDen__type}{Partition\+Max\+Den\+\_\+type}}} class.  
+
+
+Inheritance diagram for Partition\+\_\+mod\+::Partition\+Max\+Den\+\_\+type\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{structPartition__mod_1_1PartitionMaxDen__type}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+procedure, pass \mbox{\hyperlink{structPartition__mod_1_1PartitionMaxDen__type_a91e8133ddd745f8a599833f01e179d0c}{get}} =$>$ get\+Partition\+Max\+Den
+\item 
+procedure, pass \mbox{\hyperlink{structPartition__mod_1_1PartitionMaxDen__type_a6112bdc35df7e2343adf82968ba0e16b}{write}} =$>$ write\+Partition\+Max\+Den
+\item 
+\mbox{\hyperlink{structPartition__mod_1_1PartitionMaxDen__type_a5372c3ddf0a4657b3c59a3d8c22409c0}{construct\+Partition\+Max\+Den}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+logical \mbox{\hyperlink{structPartition__mod_1_1PartitionMaxDen__type_a32b55c3860d9806c452fbce7828c1f60}{scale\+Optimization\+Enabled}}
+\begin{DoxyCompactList}\small\item\em See the interface of construct\+Partition(). \end{DoxyCompactList}\item 
+logical \mbox{\hyperlink{structPartition__mod_1_1PartitionMaxDen__type_a6f920cfc7c3057cdad614c4f7c0c3fcb}{shape\+Optimization\+Enabled}}
+\begin{DoxyCompactList}\small\item\em See the interface of construct\+Partition(). \end{DoxyCompactList}\item 
+logical \mbox{\hyperlink{structPartition__mod_1_1PartitionMaxDen__type_aaa53423c23d1230265580fd933d06514}{shape\+Adaptation\+Enabled}}
+\begin{DoxyCompactList}\small\item\em See the interface of construct\+Partition(). \end{DoxyCompactList}\item 
+logical \mbox{\hyperlink{structPartition__mod_1_1PartitionMaxDen__type_a049055d092069d0d4e39ba95be62dd7b}{optimization\+Enabled}}
+\begin{DoxyCompactList}\small\item\em A logical variable indicating whether either scale or shape optimization is enabled. \end{DoxyCompactList}\item 
+real(RK), dimension(\+:), allocatable \mbox{\hyperlink{structPartition__mod_1_1PartitionMaxDen__type_a4ce6bd7e55aae78fa133c72677cb96fe}{Log\+Like\+Fitness}}
+\begin{DoxyCompactList}\small\item\em An array of size {\ttfamily (nemax)} indicating the likelihood of subclustering ({\ttfamily 0\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}1} if successful, else {\ttfamily 1\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}2} if failed), enlargement (if \texorpdfstring{$<$}{<} 0), being warranted. If further partitioning is warranted but fails, the likelihood will be negative. \end{DoxyCompactList}\item 
+type(\mbox{\hyperlink{structPartition__mod_1_1ParPropTryDen__type}{Par\+Prop\+Try\+Den\+\_\+type}}), dimension(\+:), allocatable \mbox{\hyperlink{structPartition__mod_1_1PartitionMaxDen__type_abac1dfd7ad9a0f0fa3a9b356255b8e0d}{Try}}
+\begin{DoxyCompactList}\small\item\em An array of size {\ttfamily (0\+:nemax)} containing the partition tries. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The {\ttfamily \mbox{\hyperlink{structPartition__mod_1_1PartitionMaxDen__type}{Partition\+Max\+Den\+\_\+type}}} class. 
+
+This function can serve as the constructor for {\ttfamily \mbox{\hyperlink{structPartition__mod_1_1PartitionMaxDen__type}{Partition\+Max\+Den\+\_\+type}}} while also performing the partitioning for the first time. Construct a hierarchical partitioning of the input {\ttfamily Point} using a combination of Kmeans, Kvolume, and density maximization algorithms.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Point} & \+: An array of size {\ttfamily (nd = \#dimensions, np = \#observations)} containing the input set of points to partition. \\
+\hline
+\mbox{\texttt{ in}}  & {\em parent\+Log\+Vol\+Normed} & \+: The logarithm of the volume of the input set of points normalized to the volume of the unit {\ttfamily nd}-\/ball. \\
+\hline
+\mbox{\texttt{ in}}  & {\em nc} & \+: The number of clusters at each level of partitioning ({\bfseries{optional}}, default = {\ttfamily 2}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em nt} & \+: The number of Kmeans clustering tries before choosing the optimal clustering among all ({\bfseries{optional}}, default = {\ttfamily 1}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em nemax} & \+: The maximum number of partitions to be expected or identified in the input {\ttfamily Point} ({\bfseries{optional}}, default = {\ttfamily max(nc, 1 + np / (nd + 1))}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em min\+Size} & \+: The minimum allowed size of a partition, that is, the minimum allowed number of points in a partition ({\bfseries{optional}}, default = {\ttfamily 0}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em stan\+Enabled} & \+: A logical value, indicating weather {\ttfamily Point} should be standardized prior to each Kmeans clustering ({\bfseries{optional}}, default = {\ttfamily .true.}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em trim\+Enabled} & \+: A logical value, indicating weather all allocatable components have been trimmed to the minimum size ({\bfseries{optional}}, default = {\ttfamily .false.}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em kmeans\+Rel\+Tol} & \+: The relative tolerance below which the Kmeans clustering is assumed to have converged ({\bfseries{optional}}, default = {\ttfamily 1.\+e-\/4}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Expansion} & \+: The factor by which the expected volumes of the bounding ellipsoids are enlarged before any comparisons are made for further sub-\/partitioning ({\bfseries{optional}}, default = {\ttfamily 0.}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em log\+Shrinkage} & \+: The logarithm of the factor by which the sum of the volumes of the children bounds must be smaller than their parents to warrant further sub-\/partitioning ({\bfseries{optional}}, default = {\ttfamily 0.}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em mahal\+Sq\+Weight\+Exponent} & \+: The exponent with which the density of the partitions are exponentiated to be used as the Mahalanobis distance weights ({\bfseries{optional}}, default = {\ttfamily 0.}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em kmeans\+Num\+Fail\+Max} & \+: The maximum number of times Kmeans clustering is allowed to fail ({\bfseries{optional}}, default = {\ttfamily 10}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em kmeans\+Num\+Recursion\+Max} & \+: The maximum number of times Kmeans clustering is allowed to refine the cluster centers via the algorithm of Lloyd ({\bfseries{optional}}, default = {\ttfamily 300}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em kvolume\+Num\+Recursion\+Max} & \+: The maximum number of times Kvolume algorithm is run to minimize the partition volumes at a given partitioning level ({\bfseries{optional}}, default = {\ttfamily 3}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+On output, {\ttfamily Point} will be reordered.
+
+When {\ttfamily trim\+Enabled = .false.}, only the first {\ttfamily 1\+:ne} elements of all allocatable arrays contain meaningful information. As such, the rest of the trailing elements must be properly ignored when using the allocatable Partition components. For example, upon exit, only {\ttfamily PartitionLog\+Vol\+Normed(1\+:Partitionne)} contain meaningful information.
+
+When {\ttfamily trim\+Enabled = .true.}, all allocatable arrays will be trimmed from size {\ttfamily nemax} to the size {\ttfamily ne}. In such a case, calling the method {\ttfamily Partitiontun()} after constructing the {\ttfamily Partition} object for the first time will likely lead to segmentation fault error.
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+If no input value if provided for {\ttfamily parent\+Log\+Vol\+Normed}, both {\ttfamily parent\+Log\+Vol\+Normed} and {\ttfamily point\+Log\+Vol\+Normed} will (must) be set to {\ttfamily NEGINF\+\_\+\+RK}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 03, 2017, 2\+:16 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Partition__mod_8f90_source_l00200}{200}} of file \mbox{\hyperlink{Partition__mod_8f90_source}{Partition\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{structPartition__mod_1_1PartitionMaxDen__type_a5372c3ddf0a4657b3c59a3d8c22409c0}\label{structPartition__mod_1_1PartitionMaxDen__type_a5372c3ddf0a4657b3c59a3d8c22409c0}} 
+\index{Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}!constructPartitionMaxDen@{constructPartitionMaxDen}}
+\index{constructPartitionMaxDen@{constructPartitionMaxDen}!Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}}
+\doxysubsubsection{\texorpdfstring{constructPartitionMaxDen()}{constructPartitionMaxDen()}}
+{\footnotesize\ttfamily Partition\+\_\+mod\+::\+Partition\+Max\+Den\+\_\+type\+::construct\+Partition\+Max\+Den}
+
+\mbox{\Hypertarget{structPartition__mod_1_1PartitionMaxDen__type_a91e8133ddd745f8a599833f01e179d0c}\label{structPartition__mod_1_1PartitionMaxDen__type_a91e8133ddd745f8a599833f01e179d0c}} 
+\index{Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}!get@{get}}
+\index{get@{get}!Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily procedure, pass Partition\+\_\+mod\+::\+Partition\+Max\+Den\+\_\+type\+::get}
+
+
+
+Definition at line \mbox{\hyperlink{Partition__mod_8f90_source_l00208}{208}} of file \mbox{\hyperlink{Partition__mod_8f90_source}{Partition\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structPartition__mod_1_1PartitionMaxDen__type_a6112bdc35df7e2343adf82968ba0e16b}\label{structPartition__mod_1_1PartitionMaxDen__type_a6112bdc35df7e2343adf82968ba0e16b}} 
+\index{Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}!write@{write}}
+\index{write@{write}!Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily procedure, pass Partition\+\_\+mod\+::\+Partition\+Max\+Den\+\_\+type\+::write}
+
+
+
+Definition at line \mbox{\hyperlink{Partition__mod_8f90_source_l00209}{209}} of file \mbox{\hyperlink{Partition__mod_8f90_source}{Partition\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structPartition__mod_1_1PartitionMaxDen__type_a4ce6bd7e55aae78fa133c72677cb96fe}\label{structPartition__mod_1_1PartitionMaxDen__type_a4ce6bd7e55aae78fa133c72677cb96fe}} 
+\index{Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}!LogLikeFitness@{LogLikeFitness}}
+\index{LogLikeFitness@{LogLikeFitness}!Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}}
+\doxysubsubsection{\texorpdfstring{LogLikeFitness}{LogLikeFitness}}
+{\footnotesize\ttfamily real(RK), dimension(\+:), allocatable Partition\+\_\+mod\+::\+Partition\+Max\+Den\+\_\+type\+::\+Log\+Like\+Fitness}
+
+
+
+An array of size {\ttfamily (nemax)} indicating the likelihood of subclustering ({\ttfamily 0\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}1} if successful, else {\ttfamily 1\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}2} if failed), enlargement (if \texorpdfstring{$<$}{<} 0), being warranted. If further partitioning is warranted but fails, the likelihood will be negative. 
+
+
+
+Definition at line \mbox{\hyperlink{Partition__mod_8f90_source_l00205}{205}} of file \mbox{\hyperlink{Partition__mod_8f90_source}{Partition\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structPartition__mod_1_1PartitionMaxDen__type_a049055d092069d0d4e39ba95be62dd7b}\label{structPartition__mod_1_1PartitionMaxDen__type_a049055d092069d0d4e39ba95be62dd7b}} 
+\index{Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}!optimizationEnabled@{optimizationEnabled}}
+\index{optimizationEnabled@{optimizationEnabled}!Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}}
+\doxysubsubsection{\texorpdfstring{optimizationEnabled}{optimizationEnabled}}
+{\footnotesize\ttfamily logical Partition\+\_\+mod\+::\+Partition\+Max\+Den\+\_\+type\+::optimization\+Enabled}
+
+
+
+A logical variable indicating whether either scale or shape optimization is enabled. 
+
+
+
+Definition at line \mbox{\hyperlink{Partition__mod_8f90_source_l00204}{204}} of file \mbox{\hyperlink{Partition__mod_8f90_source}{Partition\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structPartition__mod_1_1PartitionMaxDen__type_a32b55c3860d9806c452fbce7828c1f60}\label{structPartition__mod_1_1PartitionMaxDen__type_a32b55c3860d9806c452fbce7828c1f60}} 
+\index{Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}!scaleOptimizationEnabled@{scaleOptimizationEnabled}}
+\index{scaleOptimizationEnabled@{scaleOptimizationEnabled}!Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}}
+\doxysubsubsection{\texorpdfstring{scaleOptimizationEnabled}{scaleOptimizationEnabled}}
+{\footnotesize\ttfamily logical Partition\+\_\+mod\+::\+Partition\+Max\+Den\+\_\+type\+::scale\+Optimization\+Enabled}
+
+
+
+See the interface of construct\+Partition(). 
+
+
+
+Definition at line \mbox{\hyperlink{Partition__mod_8f90_source_l00201}{201}} of file \mbox{\hyperlink{Partition__mod_8f90_source}{Partition\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structPartition__mod_1_1PartitionMaxDen__type_aaa53423c23d1230265580fd933d06514}\label{structPartition__mod_1_1PartitionMaxDen__type_aaa53423c23d1230265580fd933d06514}} 
+\index{Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}!shapeAdaptationEnabled@{shapeAdaptationEnabled}}
+\index{shapeAdaptationEnabled@{shapeAdaptationEnabled}!Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}}
+\doxysubsubsection{\texorpdfstring{shapeAdaptationEnabled}{shapeAdaptationEnabled}}
+{\footnotesize\ttfamily logical Partition\+\_\+mod\+::\+Partition\+Max\+Den\+\_\+type\+::shape\+Adaptation\+Enabled}
+
+
+
+See the interface of construct\+Partition(). 
+
+
+
+Definition at line \mbox{\hyperlink{Partition__mod_8f90_source_l00203}{203}} of file \mbox{\hyperlink{Partition__mod_8f90_source}{Partition\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structPartition__mod_1_1PartitionMaxDen__type_a6f920cfc7c3057cdad614c4f7c0c3fcb}\label{structPartition__mod_1_1PartitionMaxDen__type_a6f920cfc7c3057cdad614c4f7c0c3fcb}} 
+\index{Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}!shapeOptimizationEnabled@{shapeOptimizationEnabled}}
+\index{shapeOptimizationEnabled@{shapeOptimizationEnabled}!Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}}
+\doxysubsubsection{\texorpdfstring{shapeOptimizationEnabled}{shapeOptimizationEnabled}}
+{\footnotesize\ttfamily logical Partition\+\_\+mod\+::\+Partition\+Max\+Den\+\_\+type\+::shape\+Optimization\+Enabled}
+
+
+
+See the interface of construct\+Partition(). 
+
+
+
+Definition at line \mbox{\hyperlink{Partition__mod_8f90_source_l00202}{202}} of file \mbox{\hyperlink{Partition__mod_8f90_source}{Partition\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{structPartition__mod_1_1PartitionMaxDen__type_abac1dfd7ad9a0f0fa3a9b356255b8e0d}\label{structPartition__mod_1_1PartitionMaxDen__type_abac1dfd7ad9a0f0fa3a9b356255b8e0d}} 
+\index{Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}!Try@{Try}}
+\index{Try@{Try}!Partition\_mod::PartitionMaxDen\_type@{Partition\_mod::PartitionMaxDen\_type}}
+\doxysubsubsection{\texorpdfstring{Try}{Try}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structPartition__mod_1_1ParPropTryDen__type}{Par\+Prop\+Try\+Den\+\_\+type}}), dimension(\+:), allocatable Partition\+\_\+mod\+::\+Partition\+Max\+Den\+\_\+type\+::\+Try}
+
+
+
+An array of size {\ttfamily (0\+:nemax)} containing the partition tries. 
+
+
+
+Definition at line \mbox{\hyperlink{Partition__mod_8f90_source_l00206}{206}} of file \mbox{\hyperlink{Partition__mod_8f90_source}{Partition\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{Partition__mod_8f90}{Partition\+\_\+mod.\+f90}}\end{DoxyCompactItemize}
