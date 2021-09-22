@@ -10,7 +10,7 @@ This module contains the classes and procedures for setting up the domain attrib
 \item 
 interface \mbox{\hyperlink{structDomainEllipsoid__mod_1_1DomainEllipsoid__type}{Domain\+Ellipsoid\+\_\+type}}
 \begin{DoxyCompactList}\small\item\em The class for Hyper-\/ellipsoidal domain. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1getRand}{get\+Rand}}
+interface \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1getRandUnif}{get\+Rand\+Unif}}
 \begin{DoxyCompactList}\small\item\em Generate and return a vector of shape {\ttfamily (nd)} or a matrix of shape {\ttfamily (nd,np)} of randomly {\bfseries{uniformly}} distributed points from within an ellipsoid specified by the Lower triangle and diagonals of the Cholesky factorization of its representative matrix. Here, {\ttfamily nd} represents the number of dimensions of the ellipsoid and {\ttfamily np} represents the number of random vectors to generate. The elements of each uniformly distributed output random vector {\ttfamily Rand(i), i=1\+:nd} are guaranteed to be in the range,. \end{DoxyCompactList}\item 
 interface \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1isEqual}{is\+Equal}}
 \item 
@@ -31,14 +31,6 @@ subroutine \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a831f10500334fc230c9b9
 \item 
 subroutine \mbox{\hyperlink{namespaceDomainEllipsoid__mod_aa9c838220055c6e034a3382e2a3de9d6}{get\+Rand\+Unif\+\_\+2D}} (self, Point)
 \item 
-real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_aceb6c4d7ced8311aa91278c4aca92313}{gen\+Rand\+Unit\+Volume\+MVU}} (nd, log\+Vol\+Unit\+Ball)
-\begin{DoxyCompactList}\small\item\em Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. \end{DoxyCompactList}\item 
-real(RK) function, dimension(nd, np) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a6f116cb605bc7629402202be1f4b924b}{gen\+Rand\+Unit\+Volume\+MVU\+\_\+2D}} (nd, np, log\+Vol\+Unit\+Ball)
-\begin{DoxyCompactList}\small\item\em Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. \end{DoxyCompactList}\item 
-real(RK) function, dimension(nd) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a4bad73128f9ebca44bb726abe9d52d77}{gen\+Rand\+Unit\+Radius\+MVU}} (nd)
-\begin{DoxyCompactList}\small\item\em Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. \end{DoxyCompactList}\item 
-real(RK) function, dimension(nd, np) \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a2886c7f657f58a4199ef1275da0ad510}{gen\+Rand\+Unit\+Radius\+MVU\+\_\+2D}} (nd, np)
-\begin{DoxyCompactList}\small\item\em Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. \end{DoxyCompactList}\item 
 subroutine \mbox{\hyperlink{namespaceDomainEllipsoid__mod_a2f4e252361ff4420136821baffb46ae1}{get\+MVUDev}} (nd, Mean, Rep\+Mat, X)
 \begin{DoxyCompactList}\small\item\em Amir Shahmoradi, April 25, 2016, 2\+:21 PM, IFS, University of Texas at Austin. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
@@ -107,122 +99,6 @@ Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00828}{828
 
 Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00961}{961}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceDomainEllipsoid__mod_a4bad73128f9ebca44bb726abe9d52d77}\label{namespaceDomainEllipsoid__mod_a4bad73128f9ebca44bb726abe9d52d77}} 
-\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!genRandUnitRadiusMVU@{genRandUnitRadiusMVU}}
-\index{genRandUnitRadiusMVU@{genRandUnitRadiusMVU}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
-\doxysubsubsection{\texorpdfstring{genRandUnitRadiusMVU()}{genRandUnitRadiusMVU()}}
-{\footnotesize\ttfamily real(RK) function, dimension(nd) Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Unit\+Radius\+MVU (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd }\end{DoxyParamCaption})}
-
-
-
-Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the standard MVU domain.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Rand\+Stan\+Radius\+MVU} \+: The randomly generated standard MVU vector.
-\end{DoxyReturn}
-\begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000003}{Todo}}]This algorithm is not robust for very large values of {\ttfamily nd \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} 100}.\end{DoxyRefDesc}
-
-
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l01100}{1100}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceDomainEllipsoid__mod_a2886c7f657f58a4199ef1275da0ad510}\label{namespaceDomainEllipsoid__mod_a2886c7f657f58a4199ef1275da0ad510}} 
-\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!genRandUnitRadiusMVU\_2D@{genRandUnitRadiusMVU\_2D}}
-\index{genRandUnitRadiusMVU\_2D@{genRandUnitRadiusMVU\_2D}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
-\doxysubsubsection{\texorpdfstring{genRandUnitRadiusMVU\_2D()}{genRandUnitRadiusMVU\_2D()}}
-{\footnotesize\ttfamily real(RK) function, dimension(nd,np) Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Unit\+Radius\+MVU\+\_\+2D (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{np }\end{DoxyParamCaption})}
-
-
-
-Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit radius. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the standard MVU domain. \\
-\hline
-\mbox{\texttt{ in}}  & {\em np} & \+: The number of uniformly distributed random vectors to return.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Rand\+Stan\+Radius\+MVU} \+: A matrix of shape {\ttfamily (nd,np)} containing the randomly generated standard MVU vectors.
-\end{DoxyReturn}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l01132}{1132}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceDomainEllipsoid__mod_aceb6c4d7ced8311aa91278c4aca92313}\label{namespaceDomainEllipsoid__mod_aceb6c4d7ced8311aa91278c4aca92313}} 
-\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!genRandUnitVolumeMVU@{genRandUnitVolumeMVU}}
-\index{genRandUnitVolumeMVU@{genRandUnitVolumeMVU}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
-\doxysubsubsection{\texorpdfstring{genRandUnitVolumeMVU()}{genRandUnitVolumeMVU()}}
-{\footnotesize\ttfamily real(RK) function, dimension(nd) Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Unit\+Volume\+MVU (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{log\+Vol\+Unit\+Ball }\end{DoxyParamCaption})}
-
-
-
-Return a random vector, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the standard MVU domain. \\
-\hline
-\mbox{\texttt{ in}}  & {\em log\+Vol\+Unit\+Ball} & \+: The natural logarithm of the volume of an {\ttfamily nd}-\/dimensional ball of unit radius.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Rand\+Stan\+Volume\+MVU} \+: The randomly generated standard MVU vector.
-\end{DoxyReturn}
-\begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000002}{Todo}}]This algorithm is not robust for very large values of {\ttfamily nd \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} 100}.\end{DoxyRefDesc}
-
-
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l01032}{1032}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceDomainEllipsoid__mod_a6f116cb605bc7629402202be1f4b924b}\label{namespaceDomainEllipsoid__mod_a6f116cb605bc7629402202be1f4b924b}} 
-\index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!genRandUnitVolumeMVU\_2D@{genRandUnitVolumeMVU\_2D}}
-\index{genRandUnitVolumeMVU\_2D@{genRandUnitVolumeMVU\_2D}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
-\doxysubsubsection{\texorpdfstring{genRandUnitVolumeMVU\_2D()}{genRandUnitVolumeMVU\_2D()}}
-{\footnotesize\ttfamily real(RK) function, dimension(nd,np) Domain\+Ellipsoid\+\_\+mod\+::gen\+Rand\+Unit\+Volume\+MVU\+\_\+2D (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{log\+Vol\+Unit\+Ball }\end{DoxyParamCaption})}
-
-
-
-Return a sequence of {\ttfamily np} random vectors, uniformly distributed inside an {\ttfamily nd}-\/dimensional sphere of unit volume. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em nd} & \+: The number of dimensions of the standard MVU domain. \\
-\hline
-\mbox{\texttt{ in}}  & {\em np} & \+: The number of uniformly distributed random vectors to return. \\
-\hline
-\mbox{\texttt{ in}}  & {\em log\+Vol\+Unit\+Ball} & \+: The natural logarithm of the volume of an {\ttfamily nd}-\/dimensional ball of unit radius.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Rand\+Stan\+Volume\+MVU} \+: A matrix of shape {\ttfamily (nd,np)} containing the randomly generated standard MVU vectors.
-\end{DoxyReturn}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l01070}{1070}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
-
 \mbox{\Hypertarget{namespaceDomainEllipsoid__mod_a2f4e252361ff4420136821baffb46ae1}\label{namespaceDomainEllipsoid__mod_a2f4e252361ff4420136821baffb46ae1}} 
 \index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!getMVUDev@{getMVUDev}}
 \index{getMVUDev@{getMVUDev}!DomainEllipsoid\_mod@{DomainEllipsoid\_mod}}
@@ -235,7 +111,7 @@ Amir Shahmoradi, April 25, 2016, 2\+:21 PM, IFS, University of Texas at Austin.
 
 
 
-Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l01155}{1155}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l01025}{1025}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDomainEllipsoid__mod_a831f10500334fc230c9b99b413428668}\label{namespaceDomainEllipsoid__mod_a831f10500334fc230c9b99b413428668}} 
 \index{DomainEllipsoid\_mod@{DomainEllipsoid\_mod}!getRandUnif\_1D@{getRandUnif\_1D}}

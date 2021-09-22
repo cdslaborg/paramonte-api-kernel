@@ -39,6 +39,14 @@ Parallel Nested Sampler and Stochastic Integrator.
 \item {\bfseries{Variable naming conventions}}.
 \begin{DoxyItemize}
 \item Although the Fortran language is case-\/insensitive, by convention, all scalar variable names begin with a lower case, whereas all vectors, arrays, types, and module names commonly begin with an upper-\/case letter. This rule is not strictly imposed on the public interfaces of the library.
+\item All constants and parameters should be generally typed upper-\/case entirely. For example, 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{fortran_statement}{use }\textcolor{fortran_inrinsic_module}{iso\_fortran\_env}, \textcolor{fortran_statement}{only}:\textcolor{fortran_named_const}{ real64}}
+\DoxyCodeLine{\textcolor{fortran_statement}{integer} ,\textcolor{fortran_attribute}{ parameter} :: RK\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{real64}}
+\DoxyCodeLine{\textcolor{fortran_statement}{real}(RK),\textcolor{fortran_attribute}{ parameter} :: PI\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{acos}(\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{1.\_RK})}
+
+\end{DoxyCode}
+
 \item The names of variables that represent vectors of values can be suffixed with {\ttfamily Vec} or {\ttfamily Vector} (for example, {\ttfamily Proposal\+Start\+Std\+Vec}, ...) although, this is not recommended since it can conflict with generic programming. Use this naming convention only if the variable is to always represent a vector.
 \item The names of variables that represent matrices of values can be suffixed with {\ttfamily Mat} or {\ttfamily Matrix} (for example\+: {\ttfamily Proposal\+Start\+Cor\+Mat}, ...) although, this is not recommended since it can conflict with generic programming. Use this naming convention only if the variable is to always represent a matrix.
 \item The names of variables that represent lists of varying-\/size values can be suffixed with {\ttfamily List} (for example, {\ttfamily domain\+Axes\+Name\+List}, ...) although, this is not recommended since such naming can interfere with generic programming.
@@ -121,7 +129,7 @@ The prefix {\ttfamily gen} is commonly used to indicate a {\ttfamily function} p
 \item The abbreviation {\ttfamily multi} stands for {\bfseries{multivariate}} mostly used in the context of statistical distributions. Example\+: {\ttfamily Dist\+Multi\+\_\+type}.
 \item The abbreviation {\ttfamily msn} stands for {\bfseries{Multivariate Skew-\/\+Normal}} mostly used in the context of the statistical Multi\+Variate Skew-\/\+Normal distribution. Example\+: {\ttfamily \mbox{\hyperlink{namespaceDistMultiSkewNorm__mod_a26a3af3d4ea893ef1409bfab835ffbed}{gen\+Rand\+MSN()}}}.
 \item The abbreviation {\ttfamily mvn} stands for {\bfseries{Multi\+Variate Normal}} mostly used in the context of the statistical Multi\+Variate Normal distribution. Example\+: {\ttfamily \mbox{\hyperlink{namespaceDistMultiNorm__mod_afce840ed7d5ad6b5a9bc2ce69717673e}{gen\+Rand\+MVN()}}}.
-\item The abbreviation {\ttfamily mvu} stands for {\bfseries{Multi\+Variate Uniform}} mostly used in the context of the statistical Multi\+Variate (ellipsoidal) Uniform distribution. Example\+: {\ttfamily \mbox{\hyperlink{namespaceDistMultiUnifCube__mod_adf6162bfc1a472008df28d23e0af6c18}{gen\+Rand\+MVU()}}}.
+\item The abbreviation {\ttfamily mvu} stands for {\bfseries{Multi\+Variate Uniform}} mostly used in the context of the statistical Multi\+Variate (ellipsoidal) Uniform distribution. Example\+: {\ttfamily get\+Rand\+MVU()}.
 \item The abbreviation {\ttfamily norm} stands for {\bfseries{normal}} in the context of statistical distributions or {\bfseries{normalization}} factor. Example\+: {\ttfamily Dist\+Multi\+Norm\+\_\+type}.
 \item The abbreviation {\ttfamily normed} stands for {\bfseries{normalized}} mostly in the context of statistical samples. Example\+: {\ttfamily Normed\+Sample}.
 \item The abbreviation {\ttfamily pdf} stands for {\bfseries{Probability Density Function}} in the context of statistics. Example\+: {\ttfamily \mbox{\hyperlink{namespaceDistUniNorm__mod_a710265b3b8e3d3fac4aab8283ee8a10a}{gen\+Norm\+PDF()}}}.
@@ -145,7 +153,7 @@ The prefix {\ttfamily gen} is commonly used to indicate a {\ttfamily function} p
 \item The abbreviation {\ttfamily uni} stands for {\bfseries{univariate}}, mostly used in the context of statistical distributions. Example\+: {\ttfamily Dist\+Uni\+\_\+type}.
 \item The abbreviation {\ttfamily upp} stands for {\bfseries{upper triangle of a matrix}} or {\bfseries{upper limits}}. Example\+: {\ttfamily \mbox{\hyperlink{namespaceMatrix__mod_ab4964548047f585df1d88308c61e625f}{get\+Cho\+Upp()}}}.
 \item The abbreviation {\ttfamily vec} stands for {\bfseries{vector}}. Example\+: {\ttfamily Std\+Vec}.
-\item The abbreviation {\ttfamily unif} stands for {\bfseries{uniform}}, mostly in the context of the uniform statistical distribution. Example\+: {\ttfamily get\+Rand\+Unif()}.
+\item The abbreviation {\ttfamily unif} stands for {\bfseries{uniform}}, mostly in the context of the uniform statistical distribution. Example\+: {\ttfamily \mbox{\hyperlink{namespaceDistMultiUnifCube__mod_a22b94e93b16e2524ede718484872e81a}{get\+Rand\+Unif()}}}.
 \end{DoxyItemize}
 
 \label{index_ParaMonteDeveloperWarnings}%

@@ -33,7 +33,7 @@ real(RK) function, dimension(size(Mean)) \mbox{\hyperlink{namespaceDistMultiUnif
 \begin{DoxyCompactList}\small\item\em Return a Standard Multi\+Variate Uniform (MVU) random vector from within a cube of unit volume that is centered at {\ttfamily Mean}. \end{DoxyCompactList}\item 
 real(RK) function, dimension(size(Support\+Size)) \mbox{\hyperlink{namespaceDistMultiUnifCube__mod_ad639229b8218d399e64c58345ae874ed}{gen\+Rand\+Scaled\+MVU}} (Support\+Size)
 \begin{DoxyCompactList}\small\item\em Return a scaled Multi\+Variate Uniform (MVU) random vector with the zero mean and the input cubical {\ttfamily Support\+Size}. \end{DoxyCompactList}\item 
-real(RK) function, dimension(size(Support\+Lower)) \mbox{\hyperlink{namespaceDistMultiUnifCube__mod_adf6162bfc1a472008df28d23e0af6c18}{gen\+Rand\+MVU}} (Support\+Lower, Support\+Upper)
+real(RK) function, dimension(size(Support\+Lower)) \mbox{\hyperlink{namespaceDistMultiUnifCube__mod_a22b94e93b16e2524ede718484872e81a}{get\+Rand\+Unif}} (Support\+Lower, Support\+Upper)
 \begin{DoxyCompactList}\small\item\em Return a Multi\+Variate Uniform (MVU) random vector within the specified input support. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -81,33 +81,6 @@ Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas 
 
 
 Definition at line \mbox{\hyperlink{DistMultiUnifCube__mod_8f90_source_l00116}{116}} of file \mbox{\hyperlink{DistMultiUnifCube__mod_8f90_source}{Dist\+Multi\+Unif\+Cube\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceDistMultiUnifCube__mod_adf6162bfc1a472008df28d23e0af6c18}\label{namespaceDistMultiUnifCube__mod_adf6162bfc1a472008df28d23e0af6c18}} 
-\index{DistMultiUnifCube\_mod@{DistMultiUnifCube\_mod}!genRandMVU@{genRandMVU}}
-\index{genRandMVU@{genRandMVU}!DistMultiUnifCube\_mod@{DistMultiUnifCube\_mod}}
-\doxysubsubsection{\texorpdfstring{genRandMVU()}{genRandMVU()}}
-{\footnotesize\ttfamily real(RK) function, dimension(size(Support\+Lower)) Dist\+Multi\+Unif\+Cube\+\_\+mod\+::gen\+Rand\+MVU (\begin{DoxyParamCaption}\item[{real(RK)}]{Support\+Lower,  }\item[{real(RK)}]{Support\+Upper }\end{DoxyParamCaption})}
-
-
-
-Return a Multi\+Variate Uniform (MVU) random vector within the specified input support. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em Support\+Lower} & \+: The contiguous vector of the lower limits of the support of the distribution. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Support\+Upper} & \+: The vector of length {\ttfamily size(\+Support\+Lower)} of the upper limits of the support of the distribution.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Rand\+MVU} \+: The randomly generated MVU vector.
-\end{DoxyReturn}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{DistMultiUnifCube__mod_8f90_source_l00347}{347}} of file \mbox{\hyperlink{DistMultiUnifCube__mod_8f90_source}{Dist\+Multi\+Unif\+Cube\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDistMultiUnifCube__mod_ad639229b8218d399e64c58345ae874ed}\label{namespaceDistMultiUnifCube__mod_ad639229b8218d399e64c58345ae874ed}} 
 \index{DistMultiUnifCube\_mod@{DistMultiUnifCube\_mod}!genRandScaledMVU@{genRandScaledMVU}}
@@ -235,6 +208,33 @@ Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin
 
 
 Definition at line \mbox{\hyperlink{DistMultiUnifCube__mod_8f90_source_l00234}{234}} of file \mbox{\hyperlink{DistMultiUnifCube__mod_8f90_source}{Dist\+Multi\+Unif\+Cube\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistMultiUnifCube__mod_a22b94e93b16e2524ede718484872e81a}\label{namespaceDistMultiUnifCube__mod_a22b94e93b16e2524ede718484872e81a}} 
+\index{DistMultiUnifCube\_mod@{DistMultiUnifCube\_mod}!getRandUnif@{getRandUnif}}
+\index{getRandUnif@{getRandUnif}!DistMultiUnifCube\_mod@{DistMultiUnifCube\_mod}}
+\doxysubsubsection{\texorpdfstring{getRandUnif()}{getRandUnif()}}
+{\footnotesize\ttfamily real(RK) function, dimension(size(Support\+Lower)) Dist\+Multi\+Unif\+Cube\+\_\+mod\+::get\+Rand\+Unif (\begin{DoxyParamCaption}\item[{real(RK)}]{Support\+Lower,  }\item[{real(RK)}]{Support\+Upper }\end{DoxyParamCaption})}
+
+
+
+Return a Multi\+Variate Uniform (MVU) random vector within the specified input support. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Support\+Lower} & \+: The contiguous vector of the lower limits of the support of the distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Support\+Upper} & \+: The vector of length {\ttfamily size(\+Support\+Lower)} of the upper limits of the support of the distribution.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Rand\+MVU} \+: The randomly generated MVU vector.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 23, 2017, 12\+:36 AM, ICES, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{DistMultiUnifCube__mod_8f90_source_l00347}{347}} of file \mbox{\hyperlink{DistMultiUnifCube__mod_8f90_source}{Dist\+Multi\+Unif\+Cube\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDistMultiUnifCube__mod_ac4d80b740166800b742b51d992ba9b65}\label{namespaceDistMultiUnifCube__mod_ac4d80b740166800b742b51d992ba9b65}} 
 \index{DistMultiUnifCube\_mod@{DistMultiUnifCube\_mod}!logpdf@{logpdf}}

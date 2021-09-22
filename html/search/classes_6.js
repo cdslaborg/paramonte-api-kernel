@@ -56,7 +56,7 @@ var searchData=
   ['getpaddedlen_53',['getPaddedLen',['../interfaceCrossCorr__mod_1_1getPaddedLen.html',1,'CrossCorr_mod']]],
   ['getpdf_54',['getPDF',['../interfaceDistUniNorm__mod_1_1getPDF.html',1,'DistUniNorm_mod']]],
   ['getposinf_55',['getPosInf',['../interfaceConstants__mod_1_1getPosInf.html',1,'Constants_mod']]],
-  ['getrand_56',['getRand',['../interfaceDomainEllipsoid__mod_1_1getRand.html',1,'DomainEllipsoid_mod']]],
+  ['getrandunif_56',['getRandUnif',['../interfaceDomainEllipsoid__mod_1_1getRandUnif.html',1,'DomainEllipsoid_mod']]],
   ['getratedensity_5fproc_57',['getRateDensity_proc',['../interfaceStarFormation__mod_1_1getRateDensity__proc.html',1,'StarFormation_mod']]],
   ['getsumexp_58',['getSumExp',['../interfaceMath__mod_1_1getSumExp.html',1,'Math_mod']]],
   ['getvariance_59',['getVariance',['../interfaceSample__mod_1_1getVariance.html',1,'Sample_mod']]],
