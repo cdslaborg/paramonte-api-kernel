@@ -28,6 +28,8 @@ interface \mbox{\hyperlink{interfaceMatrix__mod_1_1genMatSymFromMatUpp}{gen\+Mat
 \begin{DoxyCompactList}\small\item\em Generate and return a symmetric matrix from the input upper-\/triangular square matrix. \end{DoxyCompactList}\item 
 interface \mbox{\hyperlink{interfaceMatrix__mod_1_1genScaledMat}{gen\+Scaled\+Mat}}
 \begin{DoxyCompactList}\small\item\em Return a matrix resulting from the multiplication of the input {\ttfamily facupp} with the upper triangle of the input square matrix and {\ttfamily faclow} with the lower triangle of the input matrix and {\ttfamily facdia} with the diagonal elements of the input matrix. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceMatrix__mod_1_1getChoLow}{get\+Cho\+Low}}
+\begin{DoxyCompactList}\small\item\em Return the lower-\/triangle of the Cholesky factorization $L$ of of the input symmetric positive-\/definite matrix represented by the upper-\/triangle of the input argument $\texttt{ChoLowMatUpp} = L.L^T$. On input, the upper triangle of {\ttfamily Cho\+Low\+Mat\+Upp} should be given, which remains intact on output. \end{DoxyCompactList}\item 
 interface \mbox{\hyperlink{interfaceMatrix__mod_1_1operator_07_8ldtimes_8_08}{operator(.\+ldtimes.)}}
 \begin{DoxyCompactList}\small\item\em Return a matrix resulting from the multiplication of the input factor with the lower triangle of the input square matrix. \end{DoxyCompactList}\item 
 interface \mbox{\hyperlink{interfaceMatrix__mod_1_1operator_07_8udtimes_8_08}{operator(.\+udtimes.)}}
@@ -49,21 +51,19 @@ pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a0ad8376152ddc2ca46cba4648
 \begin{DoxyCompactList}\small\item\em Set the diagonal elements of the input matrix of shape {\ttfamily (n,m)} to the input values. \end{DoxyCompactList}\item 
 pure real(RK) function, dimension(n, m) \mbox{\hyperlink{namespaceMatrix__mod_a38b6183d46d9c14c48b1f2ecf779a3ec}{gen\+Diag\+Mat}} (n, m, Diag, offdiag)
 \begin{DoxyCompactList}\small\item\em Generate a diagonal matrix of shape {\ttfamily (n,m)} with the input diagonal and off-\/diagonal values. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a27fc4376b7f8526656dbe8c33f1685c1}{get\+Cho\+Low}} (nd, Cho\+Low\+Cov\+Upp, Cho\+Dia)
-\begin{DoxyCompactList}\small\item\em Return the Cholesky factorization of the input positive-\/definite matrix. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_ab4964548047f585df1d88308c61e625f}{get\+Cho\+Upp}} (nd, Cho\+Upp\+Cov\+Low, Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Return the Cholesky factorization of the input positive-\/definite matrix. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_aab3d6c2d51ad94f13c5c0854c39837da}{get\+Inv\+Mat\+Cho\+Upp}} (nd, Cho\+Low, Cho\+Dia, Inv\+Mat\+Cho\+Upp, Inv\+Mat\+Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Return the upper-\/triangle of the inverse of a Cholesky factorization specified by its lower-\/triangle and diagonal on input. \end{DoxyCompactList}\item 
 subroutine \mbox{\hyperlink{namespaceMatrix__mod_a38fe64ed0bf75bbf51aa55d6985c3eb2}{solve\+Linear\+Pos\+Def\+System}} (nd, Pos\+Def\+Mat, Cho\+Dia, Intercept, Input\+Solution)
 \begin{DoxyCompactList}\small\item\em Solve the linear equation system of the form\+: $ \texttt{PosDefMat} \times \texttt{InputSolution} = \texttt{Intercept} $. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a7ceb43e999f59625832640d989fddd30}{get\+Inv\+Pos\+Def\+Mat\+Sqrt\+Det}} (nd, Mat\+Inv\+Mat, sqrt\+Det\+Inv\+Pos\+Def\+Mat)
+PURE subroutine \mbox{\hyperlink{namespaceMatrix__mod_aa08a21e9b35cd8a96d4442b300d3d993}{get\+Inv\+Pos\+Def\+Mat\+Sqrt\+Det}} (nd, Mat\+Inv\+Mat, sqrt\+Det\+Inv\+Pos\+Def\+Mat)
 \begin{DoxyCompactList}\small\item\em Return the inverse matrix of a symmetric-\/positive-\/definite input matrix, which is given in the upper triangle of {\ttfamily Mat\+Inv\+Mat}. On output {\ttfamily Mat\+Inv\+Mat} is completely overwritten by in the inverse of the matrix. Also, return the square root of determinant of the inverse matrix. \end{DoxyCompactList}\item 
 pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a9d5274f6fbae77140a1857d6ef6ee5a3}{gen\+Inv\+Mat\+From\+Cho\+Low}} (nd, Cho\+Low, Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Generate the inverse matrix of a symmetric-\/positive-\/definite matrix, whose Cholesky Lower triangle is given in the lower part of {\ttfamily Cho\+Low} and and its diagonal elements in {\ttfamily Cho\+Dia}. \end{DoxyCompactList}\item 
 pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a76ec4b86aea74261b244135e13fac1a9}{gen\+Inv\+Low\+From\+Cho\+Low}} (nd, Cho\+Low, Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Generate the lower-\/triangle and diagonals of the inverse matrix of a symmetric-\/positive-\/definite matrix whose Cholesky Lower triangle is given in the lower part of {\ttfamily Cho\+Low} and and its diagonal elements in {\ttfamily Cho\+Dia}. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a83089ee54507ce254b1eddf2d3e7c18d}{gen\+Inv\+Pos\+Def\+Mat}} (nd, Pos\+Def\+Mat)
+PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_aa0e14f76a6bcf3fe00093b00e53941da}{gen\+Inv\+Pos\+Def\+Mat}} (nd, Pos\+Def\+Mat)
 \begin{DoxyCompactList}\small\item\em Generate the inverse matrix of an input symmetric-\/positive-\/definite matrix {\ttfamily Pos\+Def\+Mat}. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a25964c69dbad682f38a592e967603ad0}{get\+Inv\+Mat\+Det}} (nd, Matrix\+LU, Inverse\+Matrix, det\+Inv\+Mat, failed)
 \begin{DoxyCompactList}\small\item\em Return the inverse matrix {\ttfamily Inverse\+Matrix} of a {\ttfamily (nd,nd)} input matrix {\ttfamily Matrix\+LU}, and its determinant, using {\ttfamily LU} decomposition. \end{DoxyCompactList}\item 
@@ -107,7 +107,7 @@ pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a07b2c0f4397964b55d24ab9fe
 \begin{DoxyCompactList}\small\item\em Symmetrize an input upper-\/triangular square matrix by copying the upper triangle to the lower triangle. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a3be752eb237f9b534e53a5202eb7fd02}{symmetrize\+Mat\+Low}} (nd, Lower\+Square\+Matrix)
 \begin{DoxyCompactList}\small\item\em Symmetrize an input lower-\/triangular square matrix by copying the lower triangle to the upper triangle. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_acb69e3dadbf6a6b754a2bff24bcbdafa}{get\+Regres\+Coef}} (rank\+PDM, rank\+S11, rank\+S22, Pos\+Def\+Mat, Regres\+Coef\+Mat, Schur\+Complement)
+PURE subroutine \mbox{\hyperlink{namespaceMatrix__mod_ab617158b63b3fd705761001646416311}{get\+Regres\+Coef}} (rank\+PDM, rank\+S11, rank\+S22, Pos\+Def\+Mat, Regres\+Coef\+Mat, failed, Schur\+Complement)
 \begin{DoxyCompactList}\small\item\em Return the the Regression Coefficient Matrix, whose dimension is {\ttfamily rank\+S11} by {\ttfamily rank\+S22}, as well as optionally the Schur complement of the {\ttfamily S22} block of rank {\ttfamily rank\+S22} of the input matrix {\ttfamily Pos\+Def\+Mat} of rank {\ttfamily rank\+PDM}. For example, if,. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -151,12 +151,20 @@ Return the determinant of a given the square matrix of shape {\ttfamily (ndim,nd
 \begin{DoxyWarning}{Warning}
 The input {\ttfamily Matrix} must be square. This condition is only checked when the preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED} evaluates to true.
 \end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Oct 18, 2009, 4\+:10 PM, Houghton, Michigan 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01813}{1813}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01896}{1896}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a109dcb9855f82559060157ef5ec7cd64}\label{namespaceMatrix__mod_a109dcb9855f82559060157ef5ec7cd64}} 
 \index{Matrix\_mod@{Matrix\_mod}!genDiag@{genDiag}}
@@ -176,12 +184,20 @@ Generate the diagonal elements of the input matrix of shape {\ttfamily (n,m)}.
 \begin{DoxyReturn}{Returns}
 {\ttfamily Diag} \+: A vector of length {\ttfamily minval(shape(\+Matrix))} whose elements are the diagonal elements of the input {\ttfamily Matrix(n,m)}.
 \end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Friday 1\+:49 AM, August 27, 2021, Dallas, TX 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00896}{896}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00969}{969}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a38b6183d46d9c14c48b1f2ecf779a3ec}\label{namespaceMatrix__mod_a38b6183d46d9c14c48b1f2ecf779a3ec}} 
 \index{Matrix\_mod@{Matrix\_mod}!genDiagMat@{genDiagMat}}
@@ -207,12 +223,20 @@ Generate a diagonal matrix of shape {\ttfamily (n,m)} with the input diagonal an
 \begin{DoxyReturn}{Returns}
 {\ttfamily Diag\+Mat} \+: A matrix of {\ttfamily n} rows and {\ttfamily m} columns whose diagonal elements are set to the input {\ttfamily Diag} vector and whose off-\/diagonal elements are set to the optional input {\ttfamily offdiag} value, if provided as input.
 \end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Friday 1\+:53 AM, August 27, 2021, Dallas, TX 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00980}{980}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01059}{1059}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_ad2bf798f82cfa14da6cdd4c36bc56212}\label{namespaceMatrix__mod_ad2bf798f82cfa14da6cdd4c36bc56212}} 
 \index{Matrix\_mod@{Matrix\_mod}!genEyeMat@{genEyeMat}}
@@ -238,12 +262,20 @@ Generate an eye matrix of shape {\ttfamily (n,m)}. Note that all elements of the
 \begin{DoxyReturn}{Returns}
 {\ttfamily eye} \+: A matrix of {\ttfamily n} rows and {\ttfamily m} columns whose diagonal elements are set to the input {\ttfamily diag} value or, if not provided, to {\ttfamily 1.}.
 \end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 21, 2017, 1\+:54 AM, ICES, The University of Texas at Austin 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00852}{852}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00923}{923}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a3c4bc8f850a7b80ac4599f7bb1324f5b}\label{namespaceMatrix__mod_a3c4bc8f850a7b80ac4599f7bb1324f5b}} 
 \index{Matrix\_mod@{Matrix\_mod}!genInvChoLow@{genInvChoLow}}
@@ -271,14 +303,21 @@ Return the inverse matrix {\ttfamily Inv\+Mat\+Low} of an input lower-\/triangle
 The output is not a full inverse matrix. In particular, the upper-\/triangle elements of the output matrix are not set to zero.
 \end{DoxyWarning}
 \begin{DoxyRemark}{Remarks}
-This procedure is particularly useful for computing the inverse of the lower-\/triangle of Cholesky factorization returned by the procedure \mbox{\hyperlink{namespaceMatrix__mod_a27fc4376b7f8526656dbe8c33f1685c1}{get\+Cho\+Low()}}.
+This procedure is particularly useful for computing the inverse of the lower-\/triangle of Cholesky factorization returned by the procedure \mbox{\hyperlink{interfaceMatrix__mod_1_1getChoLow}{get\+Cho\+Low()}}.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Tuesday 3\+:46 AM, August 24, 2021, Dallas, TX 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01589}{1589}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01664}{1664}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a76ec4b86aea74261b244135e13fac1a9}\label{namespaceMatrix__mod_a76ec4b86aea74261b244135e13fac1a9}} 
 \index{Matrix\_mod@{Matrix\_mod}!genInvLowFromChoLow@{genInvLowFromChoLow}}
@@ -304,13 +343,20 @@ Generate the lower-\/triangle and diagonals of the inverse matrix of a symmetric
 \end{DoxyReturn}
 \begin{DoxyRemark}{Remarks}
 While there is not harm in using this routine for the case when {\ttfamily nd = 1}, it is redundant. Note that {\ttfamily Inv\+Low\+From\+Cho\+Low = 1.\+\_\+\+RK / Cho\+Dia(1)$^\wedge$2} when {\ttfamily nd = 1}.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 21, 2017, 1\+:54 AM, ICES, The University of Texas at Austin 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01306}{1306}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01368}{1368}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_ac24f1194af9d684d461cd232e3f34922}\label{namespaceMatrix__mod_ac24f1194af9d684d461cd232e3f34922}} 
 \index{Matrix\_mod@{Matrix\_mod}!genInvMat@{genInvMat}}
@@ -336,13 +382,20 @@ Return the inverse matrix {\ttfamily Inverse\+Matrix} of a {\ttfamily (nd,nd)} i
 \end{DoxyReturn}
 \begin{DoxyRemark}{Remarks}
 This routine has the same functionality as the subroutine \mbox{\hyperlink{namespaceMatrix__mod_a25964c69dbad682f38a592e967603ad0}{get\+Inv\+Mat\+Det()}}, but returns the result as a function output. According to the timing tests, {\ttfamily compare\+\_\+\+Inv\+Mat\+Routines\+\_\+1()}, this function version appears to be 15-\/30\% faster than the subroutine equivalent \mbox{\hyperlink{namespaceMatrix__mod_a25964c69dbad682f38a592e967603ad0}{get\+Inv\+Mat\+Det()}}.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 8, 2017, 1\+:54 PM, Houghton, Michigan 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01494}{1494}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01565}{1565}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a9d5274f6fbae77140a1857d6ef6ee5a3}\label{namespaceMatrix__mod_a9d5274f6fbae77140a1857d6ef6ee5a3}} 
 \index{Matrix\_mod@{Matrix\_mod}!genInvMatFromChoLow@{genInvMatFromChoLow}}
@@ -368,13 +421,20 @@ Generate the inverse matrix of a symmetric-\/positive-\/definite matrix, whose C
 \end{DoxyReturn}
 \begin{DoxyRemark}{Remarks}
 While there is not harm in using this routine for the case when {\ttfamily nd = 1}, it is redundant. Note that {\ttfamily Inv\+Mat\+From\+Cho\+Low = 1.\+\_\+\+RK / Cho\+Dia(1)$^\wedge$2} when {\ttfamily nd = 1}.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 21, 2017, 1\+:54 AM, ICES, The University of Texas at Austin 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01245}{1245}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01305}{1305}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_aac8f2d0b109398411325d5d8396c830c}\label{namespaceMatrix__mod_aac8f2d0b109398411325d5d8396c830c}} 
 \index{Matrix\_mod@{Matrix\_mod}!genInvMatLow@{genInvMatLow}}
@@ -399,18 +459,26 @@ Return the inverse matrix {\ttfamily Inv\+Mat\+Low} of an input lower-\/triangle
 \begin{DoxyWarning}{Warning}
 The output is not a full inverse matrix. In particular, the upper-\/triangle elements of the output matrix are not set to zero.
 \end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Tuesday 3\+:06 AM, August 24, 2021, Dallas, TX 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01543}{1543}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01616}{1616}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceMatrix__mod_a83089ee54507ce254b1eddf2d3e7c18d}\label{namespaceMatrix__mod_a83089ee54507ce254b1eddf2d3e7c18d}} 
+\mbox{\Hypertarget{namespaceMatrix__mod_aa0e14f76a6bcf3fe00093b00e53941da}\label{namespaceMatrix__mod_aa0e14f76a6bcf3fe00093b00e53941da}} 
 \index{Matrix\_mod@{Matrix\_mod}!genInvPosDefMat@{genInvPosDefMat}}
 \index{genInvPosDefMat@{genInvPosDefMat}!Matrix\_mod@{Matrix\_mod}}
 \doxysubsubsection{\texorpdfstring{genInvPosDefMat()}{genInvPosDefMat()}}
-{\footnotesize\ttfamily pure real(RK) function, dimension(nd,nd) Matrix\+\_\+mod\+::gen\+Inv\+Pos\+Def\+Mat (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Pos\+Def\+Mat }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily PURE real(RK) function, dimension(nd,nd) Matrix\+\_\+mod\+::gen\+Inv\+Pos\+Def\+Mat (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Pos\+Def\+Mat }\end{DoxyParamCaption})}
 
 
 
@@ -427,21 +495,30 @@ Generate the inverse matrix of an input symmetric-\/positive-\/definite matrix {
 {\ttfamily Inv\+Pos\+Def\+Mat} \+: The full inverse matrix.
 \end{DoxyReturn}
 \begin{DoxyWarning}{Warning}
-If the input matrix is not positive definite, the function will return with {\ttfamily Inv\+Pos\+Def\+Mat(1,1) = -\/1.\+\_\+\+RK} to indicate the occurrence of an error. This is done to preserve the purity of the function.
+If the input matrix is not positive-\/definite and the library is built with the preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED} set to true, then the program will halt by executing the {\ttfamily error stop} statement. If the preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED} is undefined or false, the function will return with {\ttfamily Inv\+Pos\+Def\+Mat(1,1) = -\/1.\+\_\+\+RK} to indicate the occurrence of an error.
+
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
 
 Do not call this routine when {\ttfamily nd = 1}. For {\ttfamily nd = 1}\+: {\ttfamily Inv\+Pos\+Def\+Mat = 1.\+\_\+\+RK / Inv\+Pos\+Def\+Mat}.
 \end{DoxyWarning}
 \begin{DoxyRemark}{Remarks}
 On input, only the upper half of {\ttfamily Pos\+Def\+Mat} needs to be given.
 
-This routine has the same functionality as the subroutine \mbox{\hyperlink{namespaceMatrix__mod_a7ceb43e999f59625832640d989fddd30}{get\+Inv\+Pos\+Def\+Mat\+Sqrt\+Det()}}, but returns the result as a function output. According to the timing tests, {\ttfamily compare\+\_\+\+Inv\+Mat\+Routines\+\_\+1()}, the function version appears to be 15-\/30\% faster than the subroutine version \mbox{\hyperlink{namespaceMatrix__mod_a7ceb43e999f59625832640d989fddd30}{get\+Inv\+Pos\+Def\+Mat\+Sqrt\+Det()}}.
+This routine has the same functionality as the subroutine \mbox{\hyperlink{namespaceMatrix__mod_aa08a21e9b35cd8a96d4442b300d3d993}{get\+Inv\+Pos\+Def\+Mat\+Sqrt\+Det()}}, but returns the result as a function output. According to the timing tests, {\ttfamily compare\+\_\+\+Inv\+Mat\+Routines\+\_\+1()}, the function version appears to be 15-\/30\% faster than the subroutine version \mbox{\hyperlink{namespaceMatrix__mod_aa08a21e9b35cd8a96d4442b300d3d993}{get\+Inv\+Pos\+Def\+Mat\+Sqrt\+Det()}}.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 21, 2017, 1\+:54 AM, ICES, The University of Texas at Austin 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01374}{1374}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01441}{1441}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a550e69a89e31c4276425dc93bb997803}\label{namespaceMatrix__mod_a550e69a89e31c4276425dc93bb997803}} 
 \index{Matrix\_mod@{Matrix\_mod}!genLowerFromLower@{genLowerFromLower}}
@@ -470,13 +547,20 @@ Note that only the values in the lower-\/triangle of the input {\ttfamily Lower}
 \end{DoxyWarning}
 \begin{DoxyRemark}{Remarks}
 This procedure is developed for the purpose of avoiding the unnecessary copy of redundant data in the upper-\/triangles of matrices. An example use case is when a copy of the lower-\/triangle of a Cholesky factorization has to be made.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Monday 3\+:16 AM, August 23, 2021, Dallas, TX 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02223}{2223}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02324}{2324}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a380d82b78fdad3bc5d7896bd5de258cc}\label{namespaceMatrix__mod_a380d82b78fdad3bc5d7896bd5de258cc}} 
 \index{Matrix\_mod@{Matrix\_mod}!genLowerFromUpper@{genLowerFromUpper}}
@@ -505,13 +589,20 @@ Note that only the values in the upper-\/triangle of the input {\ttfamily Upper}
 \end{DoxyWarning}
 \begin{DoxyRemark}{Remarks}
 This procedure is particularly useful for converting an upper-\/triangle Cholesky factorization to a lower-\/triangle matrix. The upper-\/triangle Cholesky factorization typically results from either \mbox{\hyperlink{namespaceMatrix__mod_ab4964548047f585df1d88308c61e625f}{get\+Cho\+Upp()}} or \mbox{\hyperlink{namespaceMatrix__mod_aab3d6c2d51ad94f13c5c0854c39837da}{get\+Inv\+Mat\+Cho\+Upp()}}.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Monday 2\+:58 AM, August 23, 2021, Dallas, TX 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02118}{2118}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02215}{2215}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_aff3658ff36af2b2d9af41c2e22d9125a}\label{namespaceMatrix__mod_aff3658ff36af2b2d9af41c2e22d9125a}} 
 \index{Matrix\_mod@{Matrix\_mod}!genOuterProd@{genOuterProd}}
@@ -533,12 +624,20 @@ Return the outer product of the two input matrices.
 \begin{DoxyReturn}{Returns}
 {\ttfamily Outer\+Prod} \+: A matrix of size {\ttfamily ( size(\+Vector1), size(\+Vector2) )}.
 \end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 21, 2017, 4\+:10 PM, ICES, UT 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01980}{1980}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02071}{2071}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a0e1071f0d571d57fe97f315272d9d027}\label{namespaceMatrix__mod_a0e1071f0d571d57fe97f315272d9d027}} 
 \index{Matrix\_mod@{Matrix\_mod}!genSortedPosDefMat@{genSortedPosDefMat}}
@@ -586,12 +685,20 @@ Generate an ordered matrix of the input matrix by rearranging the columns corres
 \begin{DoxyReturn}{Returns}
 {\ttfamily Sorted\+Pos\+Def\+Mat\+Upper} \+: An ordered matrix of size {\ttfamily ( rank, rank )}.
 \end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 21, 2017, 4\+:10 PM, ICES, UT 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02026}{2026}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02119}{2119}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a352c825e089edab3afba704b938aec7b}\label{namespaceMatrix__mod_a352c825e089edab3afba704b938aec7b}} 
 \index{Matrix\_mod@{Matrix\_mod}!genSqrtDetPosDefMat@{genSqrtDetPosDefMat}}
@@ -616,12 +723,20 @@ Return the square root of the determinant of a given positive-\/definite square 
 \begin{DoxyWarning}{Warning}
 If the input matrix is not positive definite, then {\ttfamily sqrt\+Det\+Pos\+Def\+Mat = -\/1.\+\_\+\+RK} upon return.
 \end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 21, 2017, 4\+:10 PM, ICES, UT 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01855}{1855}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01940}{1940}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_acf98a7927893f820a414d78288172119}\label{namespaceMatrix__mod_acf98a7927893f820a414d78288172119}} 
 \index{Matrix\_mod@{Matrix\_mod}!genUpperFromLower@{genUpperFromLower}}
@@ -649,14 +764,21 @@ Convert a lower square triangular matrix to an upper square triangular matrix.
 Note that only the values in the lower-\/triangle of the input {\ttfamily Lower} matrix are copied to the upper triangle. Furthermore, the lower-\/triangle of the output {\ttfamily Upper} matrix is NOT initialized to any specific value, such as {\ttfamily 0}.
 \end{DoxyWarning}
 \begin{DoxyRemark}{Remarks}
-This procedure is particularly useful for converting a lower-\/triangle Cholesky factorization to an upper-\/triangle matrix. The lower-\/triangle Cholesky factorization typically results from \mbox{\hyperlink{namespaceMatrix__mod_a27fc4376b7f8526656dbe8c33f1685c1}{get\+Cho\+Low()}}.
+This procedure is particularly useful for converting a lower-\/triangle Cholesky factorization to an upper-\/triangle matrix. The lower-\/triangle Cholesky factorization typically results from \mbox{\hyperlink{interfaceMatrix__mod_1_1getChoLow}{get\+Cho\+Low()}}.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Monday 2\+:58 AM, August 23, 2021, Dallas, TX 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02170}{2170}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02269}{2269}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_ad5b2567dd04f56c46ff13fc49d8ccc0e}\label{namespaceMatrix__mod_ad5b2567dd04f56c46ff13fc49d8ccc0e}} 
 \index{Matrix\_mod@{Matrix\_mod}!genUpperFromUpper@{genUpperFromUpper}}
@@ -685,42 +807,20 @@ Note that only the values in the upper-\/triangle of the input {\ttfamily Upper}
 \end{DoxyWarning}
 \begin{DoxyRemark}{Remarks}
 This procedure is developed for the purpose of avoiding the unnecessary copy of redundant data in the lower-\/triangles of matrices.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Monday 3\+:16 AM, August 23, 2021, Dallas, TX 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02274}{2274}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceMatrix__mod_a27fc4376b7f8526656dbe8c33f1685c1}\label{namespaceMatrix__mod_a27fc4376b7f8526656dbe8c33f1685c1}} 
-\index{Matrix\_mod@{Matrix\_mod}!getChoLow@{getChoLow}}
-\index{getChoLow@{getChoLow}!Matrix\_mod@{Matrix\_mod}}
-\doxysubsubsection{\texorpdfstring{getChoLow()}{getChoLow()}}
-{\footnotesize\ttfamily pure subroutine Matrix\+\_\+mod\+::get\+Cho\+Low (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Cho\+Low\+Cov\+Upp,  }\item[{real(RK)}]{Cho\+Dia }\end{DoxyParamCaption})}
-
-
-
-Return the Cholesky factorization of the input positive-\/definite matrix. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em nd} & \+: The size of the input square matrix -\/ {\ttfamily nd} by {\ttfamily nd}. \\
-\hline
-\mbox{\texttt{ in,out}}  & {\em Cho\+Low\+Cov\+Upp} & \+: The input square positive-\/definite (covariance) matrix. Only the upper half and diagonal is needed. The lower half will be rewritten with the lower triangle of the Cholesky Factorization. \\
-\hline
-\mbox{\texttt{ out}}  & {\em Cho\+Dia} & \+: The diagonal elements of the Cholesky factorization.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyRemark}{Remarks}
-If {\ttfamily nd = 1}, {\ttfamily Cho\+Low\+Cov\+Upp} will not be touched, only {\ttfamily sqrt(\+Cho\+Low\+Cov\+Upp)} will be written to the output {\ttfamily Cho\+Dia}.
-\end{DoxyRemark}
-\begin{DoxyWarning}{Warning}
-If Cholesky factorization fails, {\ttfamily Cho\+Dia(1)} will be set to {\ttfamily -\/1} to indicate error on return.
-\end{DoxyWarning}
-Returns in the lower triangle of {\ttfamily Cho\+Low\+Cov\+Upp}, the Cholesky factorization L of $\texttt{ChoLowCovUpp} = L.L^T$. On input, the upper triangle of {\ttfamily Cho\+Low\+Cov\+Upp} should be given, which remains intact on output. 
-
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01025}{1025}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02377}{2377}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_ab4964548047f585df1d88308c61e625f}\label{namespaceMatrix__mod_ab4964548047f585df1d88308c61e625f}} 
 \index{Matrix\_mod@{Matrix\_mod}!getChoUpp@{getChoUpp}}
@@ -750,9 +850,22 @@ If Cholesky factorization fails, {\ttfamily Cho\+Dia(1)} will be set to {\ttfami
 \begin{DoxyRemark}{Remarks}
 This routine is particularly useful for computing the Cholesky upper triangle of lower-\/triangle inverse matrices returned by \mbox{\hyperlink{namespaceMatrix__mod_a76ec4b86aea74261b244135e13fac1a9}{gen\+Inv\+Low\+From\+Cho\+Low()}}.
 \end{DoxyRemark}
-Returns in the upper triangle of {\ttfamily Cho\+Upp\+Cov\+Low}, the Cholesky factorization L$^\wedge$T of $\texttt{ChoUppCovLow} = L.L^T$. On input, the lower triangle of {\ttfamily Cho\+Upp\+Cov\+Low} should be given, which remains intact on output. 
+Returns in the upper triangle of {\ttfamily Cho\+Upp\+Cov\+Low}, the Cholesky factorization L$^\wedge$T of $\texttt{ChoUppCovLow} = L.L^T$. On input, the lower triangle of {\ttfamily Cho\+Upp\+Cov\+Low} should be given, which remains intact on output.
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01070}{1070}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Friday 1\+:53 AM, August 27, 2021, Dallas, TX 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01113}{1113}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_aab3d6c2d51ad94f13c5c0854c39837da}\label{namespaceMatrix__mod_aab3d6c2d51ad94f13c5c0854c39837da}} 
 \index{Matrix\_mod@{Matrix\_mod}!getInvMatChoUpp@{getInvMatChoUpp}}
@@ -778,11 +891,22 @@ Return the upper-\/triangle of the inverse of a Cholesky factorization specified
 \hline
 \end{DoxyParams}
 \begin{DoxyWarning}{Warning}
-If Cholesky factorization fails, {\ttfamily Inv\+Mat\+Cho\+Dia(1)} will be set to {\ttfamily -\/1} to indicate error on return. 
+If Cholesky factorization fails, {\ttfamily Inv\+Mat\+Cho\+Dia(1)} will be set to {\ttfamily -\/1} to indicate error on return.
 \end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Friday 1\+:53 AM, August 27, 2021, Dallas, TX 
+\end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01110}{1110}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01158}{1158}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a25964c69dbad682f38a592e967603ad0}\label{namespaceMatrix__mod_a25964c69dbad682f38a592e967603ad0}} 
 \index{Matrix\_mod@{Matrix\_mod}!getInvMatDet@{getInvMatDet}}
@@ -812,19 +936,26 @@ There is no need to call this routine when {\ttfamily nd = 1}. For {\ttfamily nd
 \end{DoxyWarning}
 \begin{DoxyRemark}{Remarks}
 This routine has the same functionality as the function \mbox{\hyperlink{namespaceMatrix__mod_ac24f1194af9d684d461cd232e3f34922}{gen\+Inv\+Mat()}}, but returns the result as subroutine arguments. According to the timing tests, {\ttfamily compare\+\_\+\+Inv\+Mat\+Routines\+\_\+1()}, the function version of this code \mbox{\hyperlink{namespaceMatrix__mod_ac24f1194af9d684d461cd232e3f34922}{gen\+Inv\+Mat()}} appears to be 15-\/30\% faster than this subroutine version.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Oct 18, 2009, 1\+:54 AM, Houghton, Michigan 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01441}{1441}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01510}{1510}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceMatrix__mod_a7ceb43e999f59625832640d989fddd30}\label{namespaceMatrix__mod_a7ceb43e999f59625832640d989fddd30}} 
+\mbox{\Hypertarget{namespaceMatrix__mod_aa08a21e9b35cd8a96d4442b300d3d993}\label{namespaceMatrix__mod_aa08a21e9b35cd8a96d4442b300d3d993}} 
 \index{Matrix\_mod@{Matrix\_mod}!getInvPosDefMatSqrtDet@{getInvPosDefMatSqrtDet}}
 \index{getInvPosDefMatSqrtDet@{getInvPosDefMatSqrtDet}!Matrix\_mod@{Matrix\_mod}}
 \doxysubsubsection{\texorpdfstring{getInvPosDefMatSqrtDet()}{getInvPosDefMatSqrtDet()}}
-{\footnotesize\ttfamily pure subroutine Matrix\+\_\+mod\+::get\+Inv\+Pos\+Def\+Mat\+Sqrt\+Det (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mat\+Inv\+Mat,  }\item[{real(RK)}]{sqrt\+Det\+Inv\+Pos\+Def\+Mat }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily PURE subroutine Matrix\+\_\+mod\+::get\+Inv\+Pos\+Def\+Mat\+Sqrt\+Det (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Mat\+Inv\+Mat,  }\item[{real(RK)}]{sqrt\+Det\+Inv\+Pos\+Def\+Mat }\end{DoxyParamCaption})}
 
 
 
@@ -842,14 +973,24 @@ Return the inverse matrix of a symmetric-\/positive-\/definite input matrix, whi
 \begin{DoxyWarning}{Warning}
 Do not call this routine when {\ttfamily nd = 1}. There is no need to call this routine when {\ttfamily nd = 1}.
 
-If the input matrix is not positive-\/definite, the output {\ttfamily sqrt\+Det\+Inv\+Pos\+Def\+Mat} will be set to {\ttfamily -\/1} on return to indicate the occurrence of an error.
+If the input matrix is not positive-\/definite and the library is built with the preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED} set to true, then the program will halt by executing the {\ttfamily error stop} statement. If the preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED} is undefined or false, then the output {\ttfamily sqrt\+Det\+Inv\+Pos\+Def\+Mat} will be set to {\ttfamily -\/1} on return to indicate the occurrence of an error.
+
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
 \end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 21, 2017, 1\+:54 AM, ICES, The University of Texas at Austin 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01178}{1178}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01236}{1236}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_aae657307af71e1630308b5409711e123}\label{namespaceMatrix__mod_aae657307af71e1630308b5409711e123}} 
 \index{Matrix\_mod@{Matrix\_mod}!getLogSqrtDetPosDefMat@{getLogSqrtDetPosDefMat}}
@@ -872,12 +1013,20 @@ Return the natural logarithm of the square root of the determinant of a given po
 \mbox{\texttt{ out}}  & {\em failed} & \+: A logical value. If {\ttfamily .true.}, the determinant computation has failed.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 21, 2017, 4\+:10 PM, ICES, UT 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01893}{1893}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01980}{1980}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a9a49998b46ee8253af18b1872bdcd503}\label{namespaceMatrix__mod_a9a49998b46ee8253af18b1872bdcd503}} 
 \index{Matrix\_mod@{Matrix\_mod}!getLU@{getLU}}
@@ -906,19 +1055,26 @@ Return the LU decomposition of the input matrix {\ttfamily Matrix\+LU(nd,nd)}.
 If a singular matrix is detected during the decomposition, then the output argument {\ttfamily failed = .false.}.
 
 This routine is used in combination with \mbox{\hyperlink{namespaceMatrix__mod_ad3895979ae15658f13ac2484b3fb979d}{solve\+Linear\+System}} to solve linear equations or invert a matrix.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 21, 2017, 1\+:43 PM, ICES, The University of Texas at Austin 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01679}{1679}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01758}{1758}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceMatrix__mod_acb69e3dadbf6a6b754a2bff24bcbdafa}\label{namespaceMatrix__mod_acb69e3dadbf6a6b754a2bff24bcbdafa}} 
+\mbox{\Hypertarget{namespaceMatrix__mod_ab617158b63b3fd705761001646416311}\label{namespaceMatrix__mod_ab617158b63b3fd705761001646416311}} 
 \index{Matrix\_mod@{Matrix\_mod}!getRegresCoef@{getRegresCoef}}
 \index{getRegresCoef@{getRegresCoef}!Matrix\_mod@{Matrix\_mod}}
 \doxysubsubsection{\texorpdfstring{getRegresCoef()}{getRegresCoef()}}
-{\footnotesize\ttfamily pure subroutine Matrix\+\_\+mod\+::get\+Regres\+Coef (\begin{DoxyParamCaption}\item[{integer(IK)}]{rank\+PDM,  }\item[{integer(IK)}]{rank\+S11,  }\item[{integer(IK)}]{rank\+S22,  }\item[{real(RK)}]{Pos\+Def\+Mat,  }\item[{real(RK)}]{Regres\+Coef\+Mat,  }\item[{real(RK)}]{Schur\+Complement }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily PURE subroutine Matrix\+\_\+mod\+::get\+Regres\+Coef (\begin{DoxyParamCaption}\item[{integer(IK)}]{rank\+PDM,  }\item[{integer(IK)}]{rank\+S11,  }\item[{integer(IK)}]{rank\+S22,  }\item[{real(RK)}]{Pos\+Def\+Mat,  }\item[{real(RK)}]{Regres\+Coef\+Mat,  }\item[{logical, intent(out)}]{failed,  }\item[{real(RK)}]{Schur\+Complement }\end{DoxyParamCaption})}
 
 
 
@@ -931,13 +1087,20 @@ On input, the full matrix Pos\+Def\+Mat must be given.
 \end{DoxyWarning}
 \begin{DoxyRemark}{Remarks}
 For clarity, note that {\ttfamily rank\+S11 + rank\+S22 = rank\+PDM}.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 21, 2017, 4\+:10 PM, ICES, UT 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02410}{2410}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02521}{2521}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_abe639c9192bfff252cad932b2d2fe4aa}\label{namespaceMatrix__mod_abe639c9192bfff252cad932b2d2fe4aa}} 
 \index{Matrix\_mod@{Matrix\_mod}!isPosDef@{isPosDef}}
@@ -962,12 +1125,20 @@ Return {\ttfamily .false.} value for {\ttfamily is\+Pos\+Def}, if the Cholesky d
 \begin{DoxyWarning}{Warning}
 Do not call this routine when {\ttfamily nd = 1}. In such a case, if {\ttfamily Matrix(1,1) \texorpdfstring{$<$}{<}= 0}, then the matrix is not positive-\/definite.
 \end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 21, 2017, 4\+:10 PM, ICES, UT 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01936}{1936}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02025}{2025}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_ab5fdddf828a95d49d960001885b3eceb}\label{namespaceMatrix__mod_ab5fdddf828a95d49d960001885b3eceb}} 
 \index{Matrix\_mod@{Matrix\_mod}!multiplyMatrix@{multiplyMatrix}}
@@ -981,13 +1152,20 @@ Return the product of two matrices. The product of two matrices is defined by {\
 
 \begin{DoxyRemark}{Remarks}
 There is not reason to use this routine as the Fortran intrinsic already provides an optimized implementation of matrix multiplication via {\ttfamily matmul()}. It is present here only for archival and legacy reasons.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Oct 20, 2009, 10\+:56 PM, Houghton, Michigan 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01756}{1756}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01837}{1837}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a5bda432e1784184b0bb5ac704aa8f322}\label{namespaceMatrix__mod_a5bda432e1784184b0bb5ac704aa8f322}} 
 \index{Matrix\_mod@{Matrix\_mod}!setDiag@{setDiag}}
@@ -1006,12 +1184,20 @@ Set the diagonal elements of the input matrix of shape {\ttfamily (n,m)} to the 
 \mbox{\texttt{ in}}  & {\em Diag} & \+: The input contiguous vector of length {\ttfamily minval(shape(\+Matrix))} whose elements will replace the diagonal elements of the input {\ttfamily Matrix}.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Friday 1\+:59 AM, August 27, 2021, Dallas, TX 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00923}{923}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00998}{998}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a0ad8376152ddc2ca46cba4648159f7dc}\label{namespaceMatrix__mod_a0ad8376152ddc2ca46cba4648159f7dc}} 
 \index{Matrix\_mod@{Matrix\_mod}!setDiagOffDiag@{setDiagOffDiag}}
@@ -1032,12 +1218,20 @@ Set the diagonal elements of the input matrix of shape {\ttfamily (n,m)} to the 
 \mbox{\texttt{ in}}  & {\em offdiag} & \+: The value to appear on the off-\/diagonal elements of the output eye matrix.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Friday 1\+:59 AM, August 27, 2021, Dallas, TX 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00949}{949}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01026}{1026}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a38fe64ed0bf75bbf51aa55d6985c3eb2}\label{namespaceMatrix__mod_a38fe64ed0bf75bbf51aa55d6985c3eb2}} 
 \index{Matrix\_mod@{Matrix\_mod}!solveLinearPosDefSystem@{solveLinearPosDefSystem}}
@@ -1063,11 +1257,21 @@ Solve the linear equation system of the form\+: $ \texttt{PosDefMat} \times \tex
 \hline
 \end{DoxyParams}
 \begin{DoxyRemark}{Remarks}
-{\ttfamily Pos\+Def\+Mat} and {\ttfamily Cho\+Dia} are the output of subroutine \mbox{\hyperlink{namespaceMatrix__mod_a27fc4376b7f8526656dbe8c33f1685c1}{get\+Cho\+Low()}} (i.\+g., only the lower triangle of {\ttfamily Pos\+Def\+Mat} is used). 
+{\ttfamily Pos\+Def\+Mat} and {\ttfamily Cho\+Dia} are the output of subroutine \mbox{\hyperlink{interfaceMatrix__mod_1_1getChoLow}{get\+Cho\+Low()}} (i.\+g., only the lower triangle of {\ttfamily Pos\+Def\+Mat} is used).
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Friday 1\+:53 AM, August 27, 2021, Dallas, TX 
+\end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01139}{1139}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01192}{1192}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_ad3895979ae15658f13ac2484b3fb979d}\label{namespaceMatrix__mod_ad3895979ae15658f13ac2484b3fb979d}} 
 \index{Matrix\_mod@{Matrix\_mod}!solveLinearSystem@{solveLinearSystem}}
@@ -1094,13 +1298,20 @@ Solve the set of {\ttfamily nd} linear equations {\ttfamily Matrix $\ast$ X = In
 The input {\ttfamily nd}, {\ttfamily LU}, and {\ttfamily Permutation} parameters are not modified by this routine and, can be left in place for successive calls with different right-\/hand sides {\ttfamily Input\+Solution}.
 
 This routine takes into account the possibility that {\ttfamily Input\+Solution} will begin with many zero elements, and is therefore efficient for matrix inversion.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 8, 2017, 1\+:54 PM, Houghton, Michigan 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01633}{1633}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l01710}{1710}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a3be752eb237f9b534e53a5202eb7fd02}\label{namespaceMatrix__mod_a3be752eb237f9b534e53a5202eb7fd02}} 
 \index{Matrix\_mod@{Matrix\_mod}!symmetrizeMatLow@{symmetrizeMatLow}}
@@ -1119,12 +1330,20 @@ Symmetrize an input lower-\/triangular square matrix by copying the lower triang
 \mbox{\texttt{ in,out}}  & {\em Lower\+Square\+Matrix} & \+: The input lower, and output symmetric full matrix.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 21, 2017, 4\+:10 PM, ICES, UT 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02369}{2369}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02478}{2478}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_ad8dfe3beb50a7acc2182c459c1604c0d}\label{namespaceMatrix__mod_ad8dfe3beb50a7acc2182c459c1604c0d}} 
 \index{Matrix\_mod@{Matrix\_mod}!symmetrizeMatLowDia@{symmetrizeMatLowDia}}
@@ -1146,14 +1365,21 @@ Symmetrize an input lower-\/triangular square matrix by copying the lower triang
 \hline
 \end{DoxyParams}
 \begin{DoxyRemark}{Remarks}
-This procedure is particularly useful for symmetrizing the Cholesky lower triangle and diagonal that \mbox{\hyperlink{namespaceMatrix__mod_a27fc4376b7f8526656dbe8c33f1685c1}{get\+Cho\+Low()}} generates.
+This procedure is particularly useful for symmetrizing the Cholesky lower triangle and diagonal that \mbox{\hyperlink{interfaceMatrix__mod_1_1getChoLow}{get\+Cho\+Low()}} generates.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 21, 2017, 4\+:10 PM, ICES, UT 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02318}{2318}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02423}{2423}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a07b2c0f4397964b55d24ab9fee96814b}\label{namespaceMatrix__mod_a07b2c0f4397964b55d24ab9fee96814b}} 
 \index{Matrix\_mod@{Matrix\_mod}!symmetrizeMatUpp@{symmetrizeMatUpp}}
@@ -1172,12 +1398,20 @@ Symmetrize an input upper-\/triangular square matrix by copying the upper triang
 \mbox{\texttt{ in,out}}  & {\em Upper\+Square\+Matrix} & \+: The input upper, and output symmetric full matrix.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 21, 2017, 4\+:10 PM, ICES, UT 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02345}{2345}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02452}{2452}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrix__mod_a9ca1389e61962728cdc6fab5cfab5f61}\label{namespaceMatrix__mod_a9ca1389e61962728cdc6fab5cfab5f61}} 
 \index{Matrix\_mod@{Matrix\_mod}!symmetrizeMatUppDia@{symmetrizeMatUppDia}}
@@ -1200,13 +1434,20 @@ Symmetrize an input upper-\/triangular square matrix by copying the upper triang
 \end{DoxyParams}
 \begin{DoxyRemark}{Remarks}
 This procedure is particularly useful for symmetrizing the Cholesky lower triangle and diagonal that \mbox{\hyperlink{namespaceMatrix__mod_ab4964548047f585df1d88308c61e625f}{get\+Cho\+Upp()}} generates.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Apr 21, 2017, 4\+:10 PM, ICES, UT 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02076}{2076}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l02171}{2171}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 
 

@@ -114,6 +114,9 @@ Data Types</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceMatrix__mod_1_1genScaledMat.html">genScaledMat</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a matrix resulting from the multiplication of the input <code>facupp</code> with the upper triangle of the input square matrix and <code>faclow</code> with the lower triangle of the input matrix and <code>facdia</code> with the diagonal elements of the input matrix.  <a href="interfaceMatrix__mod_1_1genScaledMat.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceMatrix__mod_1_1getChoLow.html">getChoLow</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the lower-triangle of the Cholesky factorization \(L\) of of the input symmetric positive-definite matrix represented by the upper-triangle of the input argument \(\texttt{ChoLowMatUpp} = L.L^T\). On input, the upper triangle of <code>ChoLowMatUpp</code> should be given, which remains intact on output.  <a href="interfaceMatrix__mod_1_1getChoLow.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceMatrix__mod_1_1operator_07_8ldtimes_8_08.html">operator(.ldtimes.)</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a matrix resulting from the multiplication of the input factor with the lower triangle of the input square matrix.  <a href="interfaceMatrix__mod_1_1operator_07_8ldtimes_8_08.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,9 +145,6 @@ Functions/Subroutines</h2></td></tr>
 <tr class="memitem:a38b6183d46d9c14c48b1f2ecf779a3ec"><td class="memItemLeft" align="right" valign="top">pure real(RK) function, dimension(n, m)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMatrix__mod.html#a38b6183d46d9c14c48b1f2ecf779a3ec">genDiagMat</a> (n, m, Diag, offdiag)</td></tr>
 <tr class="memdesc:a38b6183d46d9c14c48b1f2ecf779a3ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a diagonal matrix of shape <code>(n,m)</code> with the input diagonal and off-diagonal values.  <a href="namespaceMatrix__mod.html#a38b6183d46d9c14c48b1f2ecf779a3ec">More...</a><br /></td></tr>
 <tr class="separator:a38b6183d46d9c14c48b1f2ecf779a3ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27fc4376b7f8526656dbe8c33f1685c1"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMatrix__mod.html#a27fc4376b7f8526656dbe8c33f1685c1">getChoLow</a> (nd, ChoLowCovUpp, ChoDia)</td></tr>
-<tr class="memdesc:a27fc4376b7f8526656dbe8c33f1685c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the Cholesky factorization of the input positive-definite matrix.  <a href="namespaceMatrix__mod.html#a27fc4376b7f8526656dbe8c33f1685c1">More...</a><br /></td></tr>
-<tr class="separator:a27fc4376b7f8526656dbe8c33f1685c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4964548047f585df1d88308c61e625f"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMatrix__mod.html#ab4964548047f585df1d88308c61e625f">getChoUpp</a> (nd, ChoUppCovLow, ChoDia)</td></tr>
 <tr class="memdesc:ab4964548047f585df1d88308c61e625f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the Cholesky factorization of the input positive-definite matrix.  <a href="namespaceMatrix__mod.html#ab4964548047f585df1d88308c61e625f">More...</a><br /></td></tr>
 <tr class="separator:ab4964548047f585df1d88308c61e625f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,18 +154,18 @@ Functions/Subroutines</h2></td></tr>
 <tr class="memitem:a38fe64ed0bf75bbf51aa55d6985c3eb2"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMatrix__mod.html#a38fe64ed0bf75bbf51aa55d6985c3eb2">solveLinearPosDefSystem</a> (nd, PosDefMat, ChoDia, Intercept, InputSolution)</td></tr>
 <tr class="memdesc:a38fe64ed0bf75bbf51aa55d6985c3eb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve the linear equation system of the form: \( \texttt{PosDefMat} \times \texttt{InputSolution} = \texttt{Intercept} \).  <a href="namespaceMatrix__mod.html#a38fe64ed0bf75bbf51aa55d6985c3eb2">More...</a><br /></td></tr>
 <tr class="separator:a38fe64ed0bf75bbf51aa55d6985c3eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ceb43e999f59625832640d989fddd30"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMatrix__mod.html#a7ceb43e999f59625832640d989fddd30">getInvPosDefMatSqrtDet</a> (nd, MatInvMat, sqrtDetInvPosDefMat)</td></tr>
-<tr class="memdesc:a7ceb43e999f59625832640d989fddd30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the inverse matrix of a symmetric-positive-definite input matrix, which is given in the upper triangle of <code>MatInvMat</code>. On output <code>MatInvMat</code> is completely overwritten by in the inverse of the matrix. Also, return the square root of determinant of the inverse matrix.  <a href="namespaceMatrix__mod.html#a7ceb43e999f59625832640d989fddd30">More...</a><br /></td></tr>
-<tr class="separator:a7ceb43e999f59625832640d989fddd30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa08a21e9b35cd8a96d4442b300d3d993"><td class="memItemLeft" align="right" valign="top">PURE subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMatrix__mod.html#aa08a21e9b35cd8a96d4442b300d3d993">getInvPosDefMatSqrtDet</a> (nd, MatInvMat, sqrtDetInvPosDefMat)</td></tr>
+<tr class="memdesc:aa08a21e9b35cd8a96d4442b300d3d993"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the inverse matrix of a symmetric-positive-definite input matrix, which is given in the upper triangle of <code>MatInvMat</code>. On output <code>MatInvMat</code> is completely overwritten by in the inverse of the matrix. Also, return the square root of determinant of the inverse matrix.  <a href="namespaceMatrix__mod.html#aa08a21e9b35cd8a96d4442b300d3d993">More...</a><br /></td></tr>
+<tr class="separator:aa08a21e9b35cd8a96d4442b300d3d993"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d5274f6fbae77140a1857d6ef6ee5a3"><td class="memItemLeft" align="right" valign="top">pure real(RK) function, dimension(nd, nd)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMatrix__mod.html#a9d5274f6fbae77140a1857d6ef6ee5a3">genInvMatFromChoLow</a> (nd, ChoLow, ChoDia)</td></tr>
 <tr class="memdesc:a9d5274f6fbae77140a1857d6ef6ee5a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the inverse matrix of a symmetric-positive-definite matrix, whose Cholesky Lower triangle is given in the lower part of <code>ChoLow</code> and and its diagonal elements in <code>ChoDia</code>.  <a href="namespaceMatrix__mod.html#a9d5274f6fbae77140a1857d6ef6ee5a3">More...</a><br /></td></tr>
 <tr class="separator:a9d5274f6fbae77140a1857d6ef6ee5a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76ec4b86aea74261b244135e13fac1a9"><td class="memItemLeft" align="right" valign="top">pure real(RK) function, dimension(nd, nd)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMatrix__mod.html#a76ec4b86aea74261b244135e13fac1a9">genInvLowFromChoLow</a> (nd, ChoLow, ChoDia)</td></tr>
 <tr class="memdesc:a76ec4b86aea74261b244135e13fac1a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the lower-triangle and diagonals of the inverse matrix of a symmetric-positive-definite matrix whose Cholesky Lower triangle is given in the lower part of <code>ChoLow</code> and and its diagonal elements in <code>ChoDia</code>.  <a href="namespaceMatrix__mod.html#a76ec4b86aea74261b244135e13fac1a9">More...</a><br /></td></tr>
 <tr class="separator:a76ec4b86aea74261b244135e13fac1a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83089ee54507ce254b1eddf2d3e7c18d"><td class="memItemLeft" align="right" valign="top">pure real(RK) function, dimension(nd, nd)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMatrix__mod.html#a83089ee54507ce254b1eddf2d3e7c18d">genInvPosDefMat</a> (nd, PosDefMat)</td></tr>
-<tr class="memdesc:a83089ee54507ce254b1eddf2d3e7c18d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the inverse matrix of an input symmetric-positive-definite matrix <code>PosDefMat</code>.  <a href="namespaceMatrix__mod.html#a83089ee54507ce254b1eddf2d3e7c18d">More...</a><br /></td></tr>
-<tr class="separator:a83089ee54507ce254b1eddf2d3e7c18d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0e14f76a6bcf3fe00093b00e53941da"><td class="memItemLeft" align="right" valign="top">PURE real(RK) function, dimension(nd, nd)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMatrix__mod.html#aa0e14f76a6bcf3fe00093b00e53941da">genInvPosDefMat</a> (nd, PosDefMat)</td></tr>
+<tr class="memdesc:aa0e14f76a6bcf3fe00093b00e53941da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the inverse matrix of an input symmetric-positive-definite matrix <code>PosDefMat</code>.  <a href="namespaceMatrix__mod.html#aa0e14f76a6bcf3fe00093b00e53941da">More...</a><br /></td></tr>
+<tr class="separator:aa0e14f76a6bcf3fe00093b00e53941da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25964c69dbad682f38a592e967603ad0"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMatrix__mod.html#a25964c69dbad682f38a592e967603ad0">getInvMatDet</a> (nd, MatrixLU, InverseMatrix, detInvMat, failed)</td></tr>
 <tr class="memdesc:a25964c69dbad682f38a592e967603ad0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the inverse matrix <code>InverseMatrix</code> of a <code>(nd,nd)</code> input matrix <code>MatrixLU</code>, and its determinant, using <code>LU</code> decomposition.  <a href="namespaceMatrix__mod.html#a25964c69dbad682f38a592e967603ad0">More...</a><br /></td></tr>
 <tr class="separator:a25964c69dbad682f38a592e967603ad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -229,9 +229,9 @@ Functions/Subroutines</h2></td></tr>
 <tr class="memitem:a3be752eb237f9b534e53a5202eb7fd02"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMatrix__mod.html#a3be752eb237f9b534e53a5202eb7fd02">symmetrizeMatLow</a> (nd, LowerSquareMatrix)</td></tr>
 <tr class="memdesc:a3be752eb237f9b534e53a5202eb7fd02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Symmetrize an input lower-triangular square matrix by copying the lower triangle to the upper triangle.  <a href="namespaceMatrix__mod.html#a3be752eb237f9b534e53a5202eb7fd02">More...</a><br /></td></tr>
 <tr class="separator:a3be752eb237f9b534e53a5202eb7fd02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb69e3dadbf6a6b754a2bff24bcbdafa"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMatrix__mod.html#acb69e3dadbf6a6b754a2bff24bcbdafa">getRegresCoef</a> (rankPDM, rankS11, rankS22, PosDefMat, RegresCoefMat, SchurComplement)</td></tr>
-<tr class="memdesc:acb69e3dadbf6a6b754a2bff24bcbdafa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the the Regression Coefficient Matrix, whose dimension is <code>rankS11</code> by <code>rankS22</code>, as well as optionally the Schur complement of the <code>S22</code> block of rank <code>rankS22</code> of the input matrix <code>PosDefMat</code> of rank <code>rankPDM</code>. For example, if,.  <a href="namespaceMatrix__mod.html#acb69e3dadbf6a6b754a2bff24bcbdafa">More...</a><br /></td></tr>
-<tr class="separator:acb69e3dadbf6a6b754a2bff24bcbdafa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab617158b63b3fd705761001646416311"><td class="memItemLeft" align="right" valign="top">PURE subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMatrix__mod.html#ab617158b63b3fd705761001646416311">getRegresCoef</a> (rankPDM, rankS11, rankS22, PosDefMat, RegresCoefMat, failed, SchurComplement)</td></tr>
+<tr class="memdesc:ab617158b63b3fd705761001646416311"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the the Regression Coefficient Matrix, whose dimension is <code>rankS11</code> by <code>rankS22</code>, as well as optionally the Schur complement of the <code>S22</code> block of rank <code>rankS22</code> of the input matrix <code>PosDefMat</code> of rank <code>rankPDM</code>. For example, if,.  <a href="namespaceMatrix__mod.html#ab617158b63b3fd705761001646416311">More...</a><br /></td></tr>
+<tr class="separator:ab617158b63b3fd705761001646416311"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -279,9 +279,15 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>determinant</code> : The determinant of the matrix.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>The input <code>Matrix</code> must be square. This condition is only checked when the preprocessor macro <code>CHECK_ENABLED</code> evaluates to true.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Oct 18, 2009, 4:10 PM, Houghton, Michigan </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01813">1813</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01896">1896</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -309,9 +315,15 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>Diag</code> : A vector of length <code>minval(shape(Matrix))</code> whose elements are the diagonal elements of the input <code>Matrix(n,m)</code>.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Friday 1:49 AM, August 27, 2021, Dallas, TX </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l00896">896</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l00969">969</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -364,9 +376,15 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>DiagMat</code> : A matrix of <code>n</code> rows and <code>m</code> columns whose diagonal elements are set to the input <code>Diag</code> vector and whose off-diagonal elements are set to the optional input <code>offdiag</code> value, if provided as input.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Friday 1:53 AM, August 27, 2021, Dallas, TX </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l00980">980</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01059">1059</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -419,9 +437,15 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>eye</code> : A matrix of <code>n</code> rows and <code>m</code> columns whose diagonal elements are set to the input <code>diag</code> value or, if not provided, to <code>1.</code>.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, The University of Texas at Austin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l00852">852</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l00923">923</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -468,10 +492,17 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>InvMatLow</code> : The lower-triangle inverse matrix of the input lower-triangle matrix.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>The output is not a full inverse matrix. In particular, the upper-triangle elements of the output matrix are not set to zero.</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>This procedure is particularly useful for computing the inverse of the lower-triangle of Cholesky factorization returned by the procedure <a class="el" href="namespaceMatrix__mod.html#a27fc4376b7f8526656dbe8c33f1685c1">getChoLow()</a>.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>This procedure is particularly useful for computing the inverse of the lower-triangle of Cholesky factorization returned by the procedure <a class="el" href="interfaceMatrix__mod_1_1getChoLow.html">getChoLow()</a>.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Tuesday 3:46 AM, August 24, 2021, Dallas, TX </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01589">1589</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01664">1664</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -517,10 +548,17 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>InvLowFromChoLow</code> : The <b>full</b> symmetric inverse matrix.</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>While there is not harm in using this routine for the case when <code>nd = 1</code>, it is redundant. Note that <code>InvLowFromChoLow = 1._RK / ChoDia(1)^2</code> when <code>nd = 1</code>.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>While there is not harm in using this routine for the case when <code>nd = 1</code>, it is redundant. Note that <code>InvLowFromChoLow = 1._RK / ChoDia(1)^2</code> when <code>nd = 1</code>.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, The University of Texas at Austin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01306">1306</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01368">1368</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -566,10 +604,17 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>InverseMatrix</code> : The full inverse matrix.</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>This routine has the same functionality as the subroutine <a class="el" href="namespaceMatrix__mod.html#a25964c69dbad682f38a592e967603ad0">getInvMatDet()</a>, but returns the result as a function output. According to the timing tests, <code>compare_InvMatRoutines_1()</code>, this function version appears to be 15-30% faster than the subroutine equivalent <a class="el" href="namespaceMatrix__mod.html#a25964c69dbad682f38a592e967603ad0">getInvMatDet()</a>.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>This routine has the same functionality as the subroutine <a class="el" href="namespaceMatrix__mod.html#a25964c69dbad682f38a592e967603ad0">getInvMatDet()</a>, but returns the result as a function output. According to the timing tests, <code>compare_InvMatRoutines_1()</code>, this function version appears to be 15-30% faster than the subroutine equivalent <a class="el" href="namespaceMatrix__mod.html#a25964c69dbad682f38a592e967603ad0">getInvMatDet()</a>.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 8, 2017, 1:54 PM, Houghton, Michigan </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01494">1494</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01565">1565</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -615,10 +660,17 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>InvMatFromChoLow</code> : The <b>full</b> symmetric inverse matrix.</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>While there is not harm in using this routine for the case when <code>nd = 1</code>, it is redundant. Note that <code>InvMatFromChoLow = 1._RK / ChoDia(1)^2</code> when <code>nd = 1</code>.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>While there is not harm in using this routine for the case when <code>nd = 1</code>, it is redundant. Note that <code>InvMatFromChoLow = 1._RK / ChoDia(1)^2</code> when <code>nd = 1</code>.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, The University of Texas at Austin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01245">1245</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01305">1305</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -658,20 +710,26 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>InvMatLow</code> : The lower-triangular inverse matrix of the input lower-triangle matrix.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>The output is not a full inverse matrix. In particular, the upper-triangle elements of the output matrix are not set to zero.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Tuesday 3:06 AM, August 24, 2021, Dallas, TX </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01543">1543</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01616">1616</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
-<a id="a83089ee54507ce254b1eddf2d3e7c18d" name="a83089ee54507ce254b1eddf2d3e7c18d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83089ee54507ce254b1eddf2d3e7c18d">&#9670;&nbsp;</a></span>genInvPosDefMat()</h2>
+<a id="aa0e14f76a6bcf3fe00093b00e53941da" name="aa0e14f76a6bcf3fe00093b00e53941da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0e14f76a6bcf3fe00093b00e53941da">&#9670;&nbsp;</a></span>genInvPosDefMat()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">pure real(RK) function, dimension(nd,nd) Matrix_mod::genInvPosDefMat </td>
+          <td class="memname">PURE real(RK) function, dimension(nd,nd) Matrix_mod::genInvPosDefMat </td>
           <td>(</td>
           <td class="paramtype">integer(IK), intent(in)&#160;</td>
           <td class="paramname"><em>nd</em>, </td>
@@ -699,15 +757,24 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>InvPosDefMat</code> : The full inverse matrix.</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>If the input matrix is not positive definite, the function will return with <code>InvPosDefMat(1,1) = -1._RK</code> to indicate the occurrence of an error. This is done to preserve the purity of the function.</dd>
+<dl class="section warning"><dt>Warning</dt><dd>If the input matrix is not positive-definite and the library is built with the preprocessor macro <code>CHECK_ENABLED</code> set to true, then the program will halt by executing the <code>error stop</code> statement. If the preprocessor macro <code>CHECK_ENABLED</code> is undefined or false, the function will return with <code>InvPosDefMat(1,1) = -1._RK</code> to indicate the occurrence of an error.</dd>
+<dd>
+This procedure is <code>impure</code> when the library is compiled with macro <code>CHECK_ENABLED=1</code>. By default, it is <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds.</dd>
 <dd>
 Do not call this routine when <code>nd = 1</code>. For <code>nd = 1</code>: <code>InvPosDefMat = 1._RK / InvPosDefMat</code>.</dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>On input, only the upper half of <code>PosDefMat</code> needs to be given.</dd>
 <dd>
-This routine has the same functionality as the subroutine <a class="el" href="namespaceMatrix__mod.html#a7ceb43e999f59625832640d989fddd30">getInvPosDefMatSqrtDet()</a>, but returns the result as a function output. According to the timing tests, <code>compare_InvMatRoutines_1()</code>, the function version appears to be 15-30% faster than the subroutine version <a class="el" href="namespaceMatrix__mod.html#a7ceb43e999f59625832640d989fddd30">getInvPosDefMatSqrtDet()</a>.</dd></dl>
+This routine has the same functionality as the subroutine <a class="el" href="namespaceMatrix__mod.html#aa08a21e9b35cd8a96d4442b300d3d993">getInvPosDefMatSqrtDet()</a>, but returns the result as a function output. According to the timing tests, <code>compare_InvMatRoutines_1()</code>, the function version appears to be 15-30% faster than the subroutine version <a class="el" href="namespaceMatrix__mod.html#aa08a21e9b35cd8a96d4442b300d3d993">getInvPosDefMatSqrtDet()</a>.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, The University of Texas at Austin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01374">1374</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01441">1441</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -754,10 +821,17 @@ This routine has the same functionality as the subroutine <a class="el" href="na
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>LowerCopy</code> : The lower copy of the input lower-triangular matrix.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Note that only the values in the lower-triangle of the input <code>Lower</code> matrix are copied to the output lower-triangle matrix. Furthermore, the upper-triangle of the output <code>LowerCopy</code> matrix is NOT initialized to any specific value, such as <code>0</code>.</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>This procedure is developed for the purpose of avoiding the unnecessary copy of redundant data in the upper-triangles of matrices. An example use case is when a copy of the lower-triangle of a Cholesky factorization has to be made.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>This procedure is developed for the purpose of avoiding the unnecessary copy of redundant data in the upper-triangles of matrices. An example use case is when a copy of the lower-triangle of a Cholesky factorization has to be made.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday 3:16 AM, August 23, 2021, Dallas, TX </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02223">2223</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02324">2324</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -804,10 +878,17 @@ This routine has the same functionality as the subroutine <a class="el" href="na
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>Lower</code> : The lower copy of the input upper-triangular matrix.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Note that only the values in the upper-triangle of the input <code>Upper</code> matrix are copied to the lower. Furthermore, the upper-triangle of the output <code>Lower</code> matrix is NOT initialized to any specific value, such as <code>0</code>.</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>This procedure is particularly useful for converting an upper-triangle Cholesky factorization to a lower-triangle matrix. The upper-triangle Cholesky factorization typically results from either <a class="el" href="namespaceMatrix__mod.html#ab4964548047f585df1d88308c61e625f">getChoUpp()</a> or <a class="el" href="namespaceMatrix__mod.html#aab3d6c2d51ad94f13c5c0854c39837da">getInvMatChoUpp()</a>.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>This procedure is particularly useful for converting an upper-triangle Cholesky factorization to a lower-triangle matrix. The upper-triangle Cholesky factorization typically results from either <a class="el" href="namespaceMatrix__mod.html#ab4964548047f585df1d88308c61e625f">getChoUpp()</a> or <a class="el" href="namespaceMatrix__mod.html#aab3d6c2d51ad94f13c5c0854c39837da">getInvMatChoUpp()</a>.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday 2:58 AM, August 23, 2021, Dallas, TX </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02118">2118</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02215">2215</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -846,9 +927,15 @@ This routine has the same functionality as the subroutine <a class="el" href="na
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>OuterProd</code> : A matrix of size <code>( size(Vector1), size(Vector2) )</code>.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01980">1980</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02071">2071</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -918,9 +1005,15 @@ This routine has the same functionality as the subroutine <a class="el" href="na
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>SortedPosDefMatUpper</code> : An ordered matrix of size <code>( rank, rank )</code>.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02026">2026</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02119">2119</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -960,9 +1053,15 @@ This routine has the same functionality as the subroutine <a class="el" href="na
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>sqrtDetPosDefMat</code> : The square root of the determinant of the matrix.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>If the input matrix is not positive definite, then <code>sqrtDetPosDefMat = -1._RK</code> upon return.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01855">1855</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01940">1940</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1009,10 +1108,17 @@ This routine has the same functionality as the subroutine <a class="el" href="na
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>Lower</code> : An upper copy of the input lower-triangular matrix.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Note that only the values in the lower-triangle of the input <code>Lower</code> matrix are copied to the upper triangle. Furthermore, the lower-triangle of the output <code>Upper</code> matrix is NOT initialized to any specific value, such as <code>0</code>.</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>This procedure is particularly useful for converting a lower-triangle Cholesky factorization to an upper-triangle matrix. The lower-triangle Cholesky factorization typically results from <a class="el" href="namespaceMatrix__mod.html#a27fc4376b7f8526656dbe8c33f1685c1">getChoLow()</a>.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>This procedure is particularly useful for converting a lower-triangle Cholesky factorization to an upper-triangle matrix. The lower-triangle Cholesky factorization typically results from <a class="el" href="interfaceMatrix__mod_1_1getChoLow.html">getChoLow()</a>.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday 2:58 AM, August 23, 2021, Dallas, TX </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02170">2170</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02269">2269</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1059,59 +1165,17 @@ This routine has the same functionality as the subroutine <a class="el" href="na
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>UpperCopy</code> : The upper copy of the input upper-triangular matrix.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Note that only the values in the upper-triangle of the input <code>Upper</code> matrix are copied to the output upper-triangle matrix. Furthermore, the lower-triangle of the output <code>UpperCopy</code> matrix is NOT initialized to any specific value, such as <code>0</code>.</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>This procedure is developed for the purpose of avoiding the unnecessary copy of redundant data in the lower-triangles of matrices.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>This procedure is developed for the purpose of avoiding the unnecessary copy of redundant data in the lower-triangles of matrices.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday 3:16 AM, August 23, 2021, Dallas, TX </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02274">2274</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
-
-</div>
-</div>
-<a id="a27fc4376b7f8526656dbe8c33f1685c1" name="a27fc4376b7f8526656dbe8c33f1685c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27fc4376b7f8526656dbe8c33f1685c1">&#9670;&nbsp;</a></span>getChoLow()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">pure subroutine Matrix_mod::getChoLow </td>
-          <td>(</td>
-          <td class="paramtype">integer(IK), intent(in)&#160;</td>
-          <td class="paramname"><em>nd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">real(RK)&#160;</td>
-          <td class="paramname"><em>ChoLowCovUpp</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">real(RK)&#160;</td>
-          <td class="paramname"><em>ChoDia</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return the Cholesky factorization of the input positive-definite matrix. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">nd</td><td>: The size of the input square matrix - <code>nd</code> by <code>nd</code>. </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">ChoLowCovUpp</td><td>: The input square positive-definite (covariance) matrix. Only the upper half and diagonal is needed. The lower half will be rewritten with the lower triangle of the Cholesky Factorization. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">ChoDia</td><td>: The diagonal elements of the Cholesky factorization.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section remark"><dt>Remarks</dt><dd>If <code>nd = 1</code>, <code>ChoLowCovUpp</code> will not be touched, only <code>sqrt(ChoLowCovUpp)</code> will be written to the output <code>ChoDia</code>.</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>If Cholesky factorization fails, <code>ChoDia(1)</code> will be set to <code>-1</code> to indicate error on return.</dd></dl>
-<p>Returns in the lower triangle of <code>ChoLowCovUpp</code>, the Cholesky factorization L of \(\texttt{ChoLowCovUpp} = L.L^T\). On input, the upper triangle of <code>ChoLowCovUpp</code> should be given, which remains intact on output. </p>
-
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01025">1025</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02377">2377</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1159,9 +1223,16 @@ This routine has the same functionality as the subroutine <a class="el" href="na
 <dl class="section remark"><dt>Remarks</dt><dd>If <code>nd = 1</code>, <code>ChoUppCovLow</code> will not be touched, only <code>sqrt(ChoUppCovLow)</code> will be written to the output <code>ChoDia</code>.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>If Cholesky factorization fails, <code>ChoDia(1)</code> will be set to <code>-1</code> to indicate error on return.</dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This routine is particularly useful for computing the Cholesky upper triangle of lower-triangle inverse matrices returned by <a class="el" href="namespaceMatrix__mod.html#a76ec4b86aea74261b244135e13fac1a9">genInvLowFromChoLow()</a>.</dd></dl>
-<p>Returns in the upper triangle of <code>ChoUppCovLow</code>, the Cholesky factorization L^T of \(\texttt{ChoUppCovLow} = L.L^T\). On input, the lower triangle of <code>ChoUppCovLow</code> should be given, which remains intact on output. </p>
+<p>Returns in the upper triangle of <code>ChoUppCovLow</code>, the Cholesky factorization L^T of \(\texttt{ChoUppCovLow} = L.L^T\). On input, the lower triangle of <code>ChoUppCovLow</code> should be given, which remains intact on output.</p>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Friday 1:53 AM, August 27, 2021, Dallas, TX </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01070">1070</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01113">1113</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1220,9 +1291,16 @@ This routine has the same functionality as the subroutine <a class="el" href="na
   </table>
   </dd>
 </dl>
-<dl class="section warning"><dt>Warning</dt><dd>If Cholesky factorization fails, <code>InvMatChoDia(1)</code> will be set to <code>-1</code> to indicate error on return. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>If Cholesky factorization fails, <code>InvMatChoDia(1)</code> will be set to <code>-1</code> to indicate error on return.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Friday 1:53 AM, August 27, 2021, Dallas, TX </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01110">1110</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01158">1158</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1282,21 +1360,28 @@ This routine has the same functionality as the subroutine <a class="el" href="na
   </dd>
 </dl>
 <dl class="section warning"><dt>Warning</dt><dd>There is no need to call this routine when <code>nd = 1</code>. For <code>nd = 1</code>: <code>InverseMatrix = detInvMat = 1._RK / InverseMatrix</code>.</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>This routine has the same functionality as the function <a class="el" href="namespaceMatrix__mod.html#ac24f1194af9d684d461cd232e3f34922">genInvMat()</a>, but returns the result as subroutine arguments. According to the timing tests, <code>compare_InvMatRoutines_1()</code>, the function version of this code <a class="el" href="namespaceMatrix__mod.html#ac24f1194af9d684d461cd232e3f34922">genInvMat()</a> appears to be 15-30% faster than this subroutine version.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>This routine has the same functionality as the function <a class="el" href="namespaceMatrix__mod.html#ac24f1194af9d684d461cd232e3f34922">genInvMat()</a>, but returns the result as subroutine arguments. According to the timing tests, <code>compare_InvMatRoutines_1()</code>, the function version of this code <a class="el" href="namespaceMatrix__mod.html#ac24f1194af9d684d461cd232e3f34922">genInvMat()</a> appears to be 15-30% faster than this subroutine version.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Oct 18, 2009, 1:54 AM, Houghton, Michigan </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01441">1441</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01510">1510</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
-<a id="a7ceb43e999f59625832640d989fddd30" name="a7ceb43e999f59625832640d989fddd30"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ceb43e999f59625832640d989fddd30">&#9670;&nbsp;</a></span>getInvPosDefMatSqrtDet()</h2>
+<a id="aa08a21e9b35cd8a96d4442b300d3d993" name="aa08a21e9b35cd8a96d4442b300d3d993"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa08a21e9b35cd8a96d4442b300d3d993">&#9670;&nbsp;</a></span>getInvPosDefMatSqrtDet()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">pure subroutine Matrix_mod::getInvPosDefMatSqrtDet </td>
+          <td class="memname">PURE subroutine Matrix_mod::getInvPosDefMatSqrtDet </td>
           <td>(</td>
           <td class="paramtype">integer(IK), intent(in)&#160;</td>
           <td class="paramname"><em>nd</em>, </td>
@@ -1332,10 +1417,18 @@ This routine has the same functionality as the subroutine <a class="el" href="na
 </dl>
 <dl class="section warning"><dt>Warning</dt><dd>Do not call this routine when <code>nd = 1</code>. There is no need to call this routine when <code>nd = 1</code>.</dd>
 <dd>
-If the input matrix is not positive-definite, the output <code>sqrtDetInvPosDefMat</code> will be set to <code>-1</code> on return to indicate the occurrence of an error.</dd></dl>
+If the input matrix is not positive-definite and the library is built with the preprocessor macro <code>CHECK_ENABLED</code> set to true, then the program will halt by executing the <code>error stop</code> statement. If the preprocessor macro <code>CHECK_ENABLED</code> is undefined or false, then the output <code>sqrtDetInvPosDefMat</code> will be set to <code>-1</code> on return to indicate the occurrence of an error.</dd>
+<dd>
+This procedure is <code>impure</code> when the library is compiled with macro <code>CHECK_ENABLED=1</code>. By default, it is <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 1:54 AM, ICES, The University of Texas at Austin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01178">1178</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01236">1236</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1387,9 +1480,15 @@ If the input matrix is not positive-definite, the output <code>sqrtDetInvPosDefM
   </table>
   </dd>
 </dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01893">1893</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01980">1980</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1450,21 +1549,28 @@ If the input matrix is not positive-definite, the output <code>sqrtDetInvPosDefM
 </dl>
 <dl class="section remark"><dt>Remarks</dt><dd>If a singular matrix is detected during the decomposition, then the output argument <code>failed = .false.</code>.</dd>
 <dd>
-This routine is used in combination with <a class="el" href="namespaceMatrix__mod.html#ad3895979ae15658f13ac2484b3fb979d">solveLinearSystem</a> to solve linear equations or invert a matrix.</dd></dl>
+This routine is used in combination with <a class="el" href="namespaceMatrix__mod.html#ad3895979ae15658f13ac2484b3fb979d">solveLinearSystem</a> to solve linear equations or invert a matrix.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 1:43 PM, ICES, The University of Texas at Austin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01679">1679</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01758">1758</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
-<a id="acb69e3dadbf6a6b754a2bff24bcbdafa" name="acb69e3dadbf6a6b754a2bff24bcbdafa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb69e3dadbf6a6b754a2bff24bcbdafa">&#9670;&nbsp;</a></span>getRegresCoef()</h2>
+<a id="ab617158b63b3fd705761001646416311" name="ab617158b63b3fd705761001646416311"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab617158b63b3fd705761001646416311">&#9670;&nbsp;</a></span>getRegresCoef()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">pure subroutine Matrix_mod::getRegresCoef </td>
+          <td class="memname">PURE subroutine Matrix_mod::getRegresCoef </td>
           <td>(</td>
           <td class="paramtype">integer(IK)&#160;</td>
           <td class="paramname"><em>rankPDM</em>, </td>
@@ -1496,6 +1602,12 @@ This routine is used in combination with <a class="el" href="namespaceMatrix__mo
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">logical, intent(out)&#160;</td>
+          <td class="paramname"><em>failed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">real(RK)&#160;</td>
           <td class="paramname"><em>SchurComplement</em>&#160;</td>
         </tr>
@@ -1516,10 +1628,17 @@ This routine is used in combination with <a class="el" href="namespaceMatrix__mo
 </p>
 <p> whose rank is <code>rankS11</code> by <code>rankS11</code>.</p>
 <dl class="section warning"><dt>Warning</dt><dd>On input, the full matrix PosDefMat must be given.</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>For clarity, note that <code>rankS11 + rankS22 = rankPDM</code>.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For clarity, note that <code>rankS11 + rankS22 = rankPDM</code>.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02410">2410</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02521">2521</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1559,9 +1678,15 @@ This routine is used in combination with <a class="el" href="namespaceMatrix__mo
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>isPosDef</code> : A logical value indicating whether the input matrix is positive-definite.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Do not call this routine when <code>nd = 1</code>. In such a case, if <code>Matrix(1,1) &lt;= 0</code>, then the matrix is not positive-definite.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01936">1936</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02025">2025</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1622,10 +1747,17 @@ This routine is used in combination with <a class="el" href="namespaceMatrix__mo
 </div><div class="memdoc">
 
 <p>Return the product of two matrices. The product of two matrices is defined by <code>c(i,j) = a(i,1)*b(1,j) + a(i,2)*b(2,j) + ... + a(i,n)*b(n,j)</code>. </p>
-<dl class="section remark"><dt>Remarks</dt><dd>There is not reason to use this routine as the Fortran intrinsic already provides an optimized implementation of matrix multiplication via <code>matmul()</code>. It is present here only for archival and legacy reasons.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>There is not reason to use this routine as the Fortran intrinsic already provides an optimized implementation of matrix multiplication via <code>matmul()</code>. It is present here only for archival and legacy reasons.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Oct 20, 2009, 10:56 PM, Houghton, Michigan </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01756">1756</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01837">1837</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1663,9 +1795,15 @@ This routine is used in combination with <a class="el" href="namespaceMatrix__mo
   </table>
   </dd>
 </dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Friday 1:59 AM, August 27, 2021, Dallas, TX </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l00923">923</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l00998">998</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1710,9 +1848,15 @@ This routine is used in combination with <a class="el" href="namespaceMatrix__mo
   </table>
   </dd>
 </dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Friday 1:59 AM, August 27, 2021, Dallas, TX </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l00949">949</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01026">1026</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1771,9 +1915,17 @@ This routine is used in combination with <a class="el" href="namespaceMatrix__mo
   </table>
   </dd>
 </dl>
-<dl class="section remark"><dt>Remarks</dt><dd><code>PosDefMat</code> and <code>ChoDia</code> are the output of subroutine <a class="el" href="namespaceMatrix__mod.html#a27fc4376b7f8526656dbe8c33f1685c1">getChoLow()</a> (i.g., only the lower triangle of <code>PosDefMat</code> is used). </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd><code>PosDefMat</code> and <code>ChoDia</code> are the output of subroutine <a class="el" href="interfaceMatrix__mod_1_1getChoLow.html">getChoLow()</a> (i.g., only the lower triangle of <code>PosDefMat</code> is used).</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Friday 1:53 AM, August 27, 2021, Dallas, TX </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01139">1139</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01192">1192</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1827,10 +1979,17 @@ This routine is used in combination with <a class="el" href="namespaceMatrix__mo
 </dl>
 <dl class="section remark"><dt>Remarks</dt><dd>The input <code>nd</code>, <code>LU</code>, and <code>Permutation</code> parameters are not modified by this routine and, can be left in place for successive calls with different right-hand sides <code>InputSolution</code>.</dd>
 <dd>
-This routine takes into account the possibility that <code>InputSolution</code> will begin with many zero elements, and is therefore efficient for matrix inversion.</dd></dl>
+This routine takes into account the possibility that <code>InputSolution</code> will begin with many zero elements, and is therefore efficient for matrix inversion.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 8, 2017, 1:54 PM, Houghton, Michigan </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01633">1633</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l01710">1710</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1868,9 +2027,15 @@ This routine takes into account the possibility that <code>InputSolution</code> 
   </table>
   </dd>
 </dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02369">2369</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02478">2478</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1915,10 +2080,17 @@ This routine takes into account the possibility that <code>InputSolution</code> 
   </table>
   </dd>
 </dl>
-<dl class="section remark"><dt>Remarks</dt><dd>This procedure is particularly useful for symmetrizing the Cholesky lower triangle and diagonal that <a class="el" href="namespaceMatrix__mod.html#a27fc4376b7f8526656dbe8c33f1685c1">getChoLow()</a> generates.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>This procedure is particularly useful for symmetrizing the Cholesky lower triangle and diagonal that <a class="el" href="interfaceMatrix__mod_1_1getChoLow.html">getChoLow()</a> generates.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02318">2318</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02423">2423</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1956,9 +2128,15 @@ This routine takes into account the possibility that <code>InputSolution</code> 
   </table>
   </dd>
 </dl>
+<dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02345">2345</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02452">2452</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -2003,10 +2181,17 @@ This routine takes into account the possibility that <code>InputSolution</code> 
   </table>
   </dd>
 </dl>
-<dl class="section remark"><dt>Remarks</dt><dd>This procedure is particularly useful for symmetrizing the Cholesky lower triangle and diagonal that <a class="el" href="namespaceMatrix__mod.html#ab4964548047f585df1d88308c61e625f">getChoUpp()</a> generates.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>This procedure is particularly useful for symmetrizing the Cholesky lower triangle and diagonal that <a class="el" href="namespaceMatrix__mod.html#ab4964548047f585df1d88308c61e625f">getChoUpp()</a> generates.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02076">2076</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02171">2171</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -2039,7 +2224,7 @@ This routine takes into account the possibility that <code>InputSolution</code> 
     </div>
     <address class="footer">
         <small>
-            Generated on Wed Sep 22 2021 01:08:31 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
+            Generated on Tue Sep 28 2021 22:22:16 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
             <!--
             1.9.3
             -->

@@ -1,0 +1,170 @@
+\hypertarget{interfaceSample__mod_1_1genVariance}{}\doxysection{Sample\+\_\+mod\+::gen\+Variance Interface Reference}
+\label{interfaceSample__mod_1_1genVariance}\index{Sample\_mod::genVariance@{Sample\_mod::genVariance}}
+
+
+Generate and return the variance of the input array of shape {\ttfamily (np)} or {\ttfamily (nd,np)} or {\ttfamily (np,nd)} where {\ttfamily nd} is the number of data dimensions (the number of data attributes) and {\ttfamily np} is the number of data points.  
+
+
+
+
+\doxysubsection{Detailed Description}
+Generate and return the variance of the input array of shape {\ttfamily (np)} or {\ttfamily (nd,np)} or {\ttfamily (np,nd)} where {\ttfamily nd} is the number of data dimensions (the number of data attributes) and {\ttfamily np} is the number of data points. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Sample} & \+: The input contiguous array of type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} of shape {\ttfamily (np)}, {\ttfamily (nd,np)}, or {\ttfamily (np,nd)} containing the sample. If {\ttfamily Sample} is a 2D array, then its shape is dictated by the optional input argument {\ttfamily dim}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The contiguous vector of shape {\ttfamily (np)} either type {\ttfamily real} of the same kind as the input {\ttfamily Sample} or type {\ttfamily integer} of kind \mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}}, \mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}}, \mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}}, or \mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}}, containing the corresponding weight of each data points in {\ttfamily Sample} ({\bfseries{optional}}, default = a vector of ones). \\
+\hline
+\mbox{\texttt{ in}}  & {\em Mean} & \+: The input scalar or contiguous vector of shape {\ttfamily (nd)} of the same type and kind as the input {\ttfamily Sample} containing the {\ttfamily Sample} mean along the (optionally) specified dimension {\ttfamily dim}. If the input {\ttfamily Sample} is a 1D array, then {\ttfamily Mean} must be a scalar. Otherwise, if {\ttfamily Mean} is a 2D array, then {\ttfamily Mean} must be a vector whose size is the same as the size of at least one of the dimensions of {\ttfamily Sample}. ({\bfseries{optional}}. If missing, then the input argument {\ttfamily shifted} must be present indicating whether the input {\ttfamily Sample} is already centered at the origin or it has to be shifted to the origin by the procedure). \\
+\hline
+\mbox{\texttt{ in}}  & {\em shifted} & \+: The input logical of default kind indicating whether the input {\ttfamily Sample} is already centered at the origin or the it has to be shifted to the origin by the procedure ({\bfseries{optional}}. If missing, then the input argument {\ttfamily Mean} must be present). \\
+\hline
+\mbox{\texttt{ in}}  & {\em biased} & \+: The input logical of default kind indicating whether the output variance should be corrected for small sample-\/size bias. Set this argument to {\ttfamily .false.} to avoid biased variance computation, in particular, when the sample size {\ttfamily np} is small. \\
+\hline
+\mbox{\texttt{ in}}  & {\em dim} & \+: An integer of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} indicating which dimension of the input {\ttfamily Sample} iterates over the individual data points. If {\ttfamily dim = 1} or {\ttfamily dim /= 2}, the input {\ttfamily Sample} is assumed to have the shape {\ttfamily (np,nd)}. If {\ttfamily dim = 2}, the input {\ttfamily Sample} is assumed to have the shape {\ttfamily (nd,np)} ({\bfseries{optional}}, default = {\ttfamily 2}. {\bfseries{This input argument is available only if the input {\ttfamily Sample} is a 2D array}}.).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily variance} \+: The output variance of the input sample of the same type and kind as the input {\ttfamily Sample}. It is a scalar only if the input {\ttfamily Sample} is a 1D array. Otherwise, it is an allocatable array of shape {\ttfamily (nd)}.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+\end{DoxyWarning}
+\begin{DoxyNote}{Note}
+One also use the concise Fortran syntax to achieve the same goal as this function\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mean\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{sum}(Weight\textcolor{fortran_operator_symbols}{*}Sample)\textcolor{fortran_operator_symbols}{ / }\textcolor{fortran_function}{sum}(Weight)}
+\DoxyCodeLine{variance\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{sum}( (Weight\textcolor{fortran_operator_symbols}{*}(Sample\textcolor{fortran_operator_symbols}{-\/}mean))\textcolor{fortran_operator_symbols}{*}\textcolor{fortran_operator_symbols}{*}\textcolor{fortran_numeric_literal}{2} )\textcolor{fortran_operator_symbols}{ / }(\textcolor{fortran_function}{sum}(Weight)\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{1})}
+
+\end{DoxyCode}
+ But the above concise version will be slightly slower as it involves three loops instead of two.
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{gen\+Mean()}}
+\end{DoxySeeAlso}
+\begin{DoxyParagraph}{Example usage}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00001}00001 \textcolor{fortran_statement}{program} example}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00003}00003     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00004}00004     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceSample__mod}{Sample\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00006}00006     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}     :: NDIM\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00007}00007     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}     :: NSIM\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0\_IK}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00009}00009 \textcolor{fortran_statement}{    real}(RK32)                  :: Sample\_RK32(NDIM,NSIM)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00010}00010 \textcolor{fortran_statement}{    real}(RK64)                  :: Sample\_RK64(NDIM,NSIM)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00011}00011 \textcolor{fortran_statement}{    real}(RK128)                 :: Sample\_RK128(NDIM,NSIM)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00013}00013     \textcolor{fortran_statement}{integer}(IK)                 :: fileUnit, i}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00015}00015 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnit, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.out"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00017}00017     \textcolor{fortran_comment}{! Generate a ranSample is centered at `Mean = [( 0.5\_RK, i = 1, NDIM )]`.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00019}00019 \textcolor{fortran_statement}{    call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_RK32)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00020}00020 \textcolor{fortran_statement}{    call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_RK64)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00021}00021 \textcolor{fortran_statement}{    call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_RK128)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00023}00023 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00024}00024 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Sample mean along the second dimension:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00025}00025 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00026}00026 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean  RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00027}00027 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean  RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00028}00028 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128 ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00029}00029 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00031}00031 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00032}00032 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Sample mean along the first dimension:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00033}00033 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00034}00034 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean  RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32(:,\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{4}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00035}00035 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean  RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64(:,\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{4}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00036}00036 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128(:,\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{4}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00037}00037 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00039}00039     Sample\_RK32(\textcolor{fortran_numeric_literal}{1},:)\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{0.\_RK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_operator_symbols}{  * }Sample\_RK32(\textcolor{fortran_numeric_literal}{1},:)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00040}00040     Sample\_RK64(\textcolor{fortran_numeric_literal}{1},:)\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{0.\_RK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4}\textcolor{fortran_operator_symbols}{  * }Sample\_RK64(\textcolor{fortran_numeric_literal}{1},:)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00041}00041     Sample\_RK128(\textcolor{fortran_numeric_literal}{1},:)\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{0.\_RK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8}\textcolor{fortran_operator_symbols}{ * }Sample\_RK128(\textcolor{fortran_numeric_literal}{1},:)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00043}00043 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00044}00044 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Sample mean of a 1D array:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00045}00045 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00046}00046 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean  RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32(\textcolor{fortran_numeric_literal}{1},:))}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00047}00047 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean  RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64(\textcolor{fortran_numeric_literal}{1},:))}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00048}00048 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128(\textcolor{fortran_numeric_literal}{1},:))}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00049}00049 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00051}00051 \textcolor{fortran_statement}{end program }example}
+
+\end{DoxyCodeInclude}
+ {\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}}
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}}
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ {\bfseries{Example output}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00002}00002 Sample mean along the second dimension:}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00004}00004 sample mean  RK32: 0.496105582 0.503043473}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00005}00005 sample mean  RK64: 0.49210901542143431 0.49230960506631688}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00006}00006 sample mean RK128: 0.495788162617774430297034661078507284 0.500736330359005675235806706439075258}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00009}00009 Sample mean along the first dimension:}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00011}00011 sample mean  RK32: 0.620018959 0.385505557 0.109242886 0.897434175}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00012}00012 sample mean  RK64: 0.66554047469768607 0.68827104591068644 0.63457147555503923 0.42054229771661050}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00013}00013 sample mean RK128: 0.274519683579031522472227450062889954 0.688285959919947626413751438800005498 0.717572328269458381779569372014561845 0.569803153753606566150587799611891583}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00016}00016 Sample mean of a 1D array:}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00018}00018 sample mean  RK32: 4.96105289}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00019}00019 sample mean  RK64: 4.9210901542143519}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00020}00020 sample mean RK128: 4.95788162617774430297034661078507438}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genVariance_l00021}00021 }
+
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000004}{Test}}]test\+\_\+gen\+Variance\end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000017}{Todo}}]The functionality of this interface can be expanded in the future to include the computation of the variance of higher dimensional input {\ttfamily Sample} and whole {\ttfamily Sample} input arrays of arbitrary shape.\end{DoxyRefDesc}
+
+
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Monday 02\+:15 AM, September 27, 2021, Dallas, TX 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00948}{948}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{Sample__mod_8f90}{Sample\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

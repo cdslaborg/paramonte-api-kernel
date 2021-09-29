@@ -1,0 +1,48 @@
+\hypertarget{interfaceMatrix__mod_1_1getChoLow}{}\doxysection{Matrix\+\_\+mod\+::get\+Cho\+Low Interface Reference}
+\label{interfaceMatrix__mod_1_1getChoLow}\index{Matrix\_mod::getChoLow@{Matrix\_mod::getChoLow}}
+
+
+Return the lower-\/triangle of the Cholesky factorization $L$ of of the input symmetric positive-\/definite matrix represented by the upper-\/triangle of the input argument $\texttt{ChoLowMatUpp} = L.L^T$. On input, the upper triangle of {\ttfamily Cho\+Low\+Mat\+Upp} should be given, which remains intact on output.  
+
+
+
+
+\doxysubsection{Detailed Description}
+Return the lower-\/triangle of the Cholesky factorization $L$ of of the input symmetric positive-\/definite matrix represented by the upper-\/triangle of the input argument $\texttt{ChoLowMatUpp} = L.L^T$. On input, the upper triangle of {\ttfamily Cho\+Low\+Mat\+Upp} should be given, which remains intact on output. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: An input integer of kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} representing the size of the input square matrix -\/ {\ttfamily nd} by {\ttfamily nd}. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em Cho\+Low\+Mat\+Upp} & \+: The input square symmetric positive-\/definite (covariance) matrix. Only the upper half of the matrix and its diagonal elements are needed as input. On output, the lower half of the matrix will be rewritten with the lower triangle of the Cholesky Factorization. The input array must be {\ttfamily real} type of kind \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}, \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Cho\+Dia} & \+: The diagonal elements of the lower triangle of the Cholesky factorization. It must be of the same type ({\ttfamily real}) and kind as {\ttfamily Cho\+Low\+Mat\+Upp}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+If Cholesky factorization fails, {\ttfamily Cho\+Dia(1)} will be set to {\ttfamily -\/1} to indicate an error on return. This is necessary to maintain the purity of the procedure. However, if the library is built with the preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED} set to true, then the occurrence of an error will halt the program by executing the {\ttfamily error stop} statement.
+
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+If {\ttfamily nd = 1}, {\ttfamily Cho\+Low\+Mat\+Upp} will not be touched, only {\ttfamily sqrt(\+Cho\+Low\+Mat\+Upp)} will be written to the output {\ttfamily Cho\+Dia}.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Apr 21, 2017, 1\+:54 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00861}{861}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{Matrix__mod_8f90}{Matrix\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

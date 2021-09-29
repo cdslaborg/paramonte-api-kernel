@@ -30,7 +30,9 @@ interface \mbox{\hyperlink{interfaceMatrix__mod_1_1copyUppDia2UppDia}{Matrix\+\_
 interface \mbox{\hyperlink{interfaceMatrix__mod_1_1copyLow2Low}{Matrix\+\_\+mod\+::copy\+Low2\+Low}}
 \begin{DoxyCompactList}\small\item\em Copy the lower-\/triangle (excluding diagonals) of the input {\ttfamily from} square matrix to the lower-\/triangle of the input matrix {\ttfamily to}. \end{DoxyCompactList}\item 
 interface \mbox{\hyperlink{interfaceMatrix__mod_1_1copyLowDia2LowDia}{Matrix\+\_\+mod\+::copy\+Low\+Dia2\+Low\+Dia}}
-\begin{DoxyCompactList}\small\item\em Copy the lower-\/triangle and diagonals of the input {\ttfamily from} square matrix to the lower-\/triangle and diagonals of the input matrix {\ttfamily to}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Copy the lower-\/triangle and diagonals of the input {\ttfamily from} square matrix to the lower-\/triangle and diagonals of the input matrix {\ttfamily to}. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceMatrix__mod_1_1getChoLow}{Matrix\+\_\+mod\+::get\+Cho\+Low}}
+\begin{DoxyCompactList}\small\item\em Return the lower-\/triangle of the Cholesky factorization $L$ of of the input symmetric positive-\/definite matrix represented by the upper-\/triangle of the input argument $\texttt{ChoLowMatUpp} = L.L^T$. On input, the upper triangle of {\ttfamily Cho\+Low\+Mat\+Upp} should be given, which remains intact on output. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Modules}
 \begin{DoxyCompactItemize}
 \item 
@@ -49,21 +51,19 @@ pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a0ad8376152ddc2ca46cba4648
 \begin{DoxyCompactList}\small\item\em Set the diagonal elements of the input matrix of shape {\ttfamily (n,m)} to the input values. \end{DoxyCompactList}\item 
 pure real(RK) function, dimension(n, m) \mbox{\hyperlink{namespaceMatrix__mod_a38b6183d46d9c14c48b1f2ecf779a3ec}{Matrix\+\_\+mod\+::gen\+Diag\+Mat}} (n, m, Diag, offdiag)
 \begin{DoxyCompactList}\small\item\em Generate a diagonal matrix of shape {\ttfamily (n,m)} with the input diagonal and off-\/diagonal values. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a27fc4376b7f8526656dbe8c33f1685c1}{Matrix\+\_\+mod\+::get\+Cho\+Low}} (nd, Cho\+Low\+Cov\+Upp, Cho\+Dia)
-\begin{DoxyCompactList}\small\item\em Return the Cholesky factorization of the input positive-\/definite matrix. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_ab4964548047f585df1d88308c61e625f}{Matrix\+\_\+mod\+::get\+Cho\+Upp}} (nd, Cho\+Upp\+Cov\+Low, Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Return the Cholesky factorization of the input positive-\/definite matrix. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_aab3d6c2d51ad94f13c5c0854c39837da}{Matrix\+\_\+mod\+::get\+Inv\+Mat\+Cho\+Upp}} (nd, Cho\+Low, Cho\+Dia, Inv\+Mat\+Cho\+Upp, Inv\+Mat\+Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Return the upper-\/triangle of the inverse of a Cholesky factorization specified by its lower-\/triangle and diagonal on input. \end{DoxyCompactList}\item 
 subroutine \mbox{\hyperlink{namespaceMatrix__mod_a38fe64ed0bf75bbf51aa55d6985c3eb2}{Matrix\+\_\+mod\+::solve\+Linear\+Pos\+Def\+System}} (nd, Pos\+Def\+Mat, Cho\+Dia, Intercept, Input\+Solution)
 \begin{DoxyCompactList}\small\item\em Solve the linear equation system of the form\+: $ \texttt{PosDefMat} \times \texttt{InputSolution} = \texttt{Intercept} $. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a7ceb43e999f59625832640d989fddd30}{Matrix\+\_\+mod\+::get\+Inv\+Pos\+Def\+Mat\+Sqrt\+Det}} (nd, Mat\+Inv\+Mat, sqrt\+Det\+Inv\+Pos\+Def\+Mat)
+PURE subroutine \mbox{\hyperlink{namespaceMatrix__mod_aa08a21e9b35cd8a96d4442b300d3d993}{Matrix\+\_\+mod\+::get\+Inv\+Pos\+Def\+Mat\+Sqrt\+Det}} (nd, Mat\+Inv\+Mat, sqrt\+Det\+Inv\+Pos\+Def\+Mat)
 \begin{DoxyCompactList}\small\item\em Return the inverse matrix of a symmetric-\/positive-\/definite input matrix, which is given in the upper triangle of {\ttfamily Mat\+Inv\+Mat}. On output {\ttfamily Mat\+Inv\+Mat} is completely overwritten by in the inverse of the matrix. Also, return the square root of determinant of the inverse matrix. \end{DoxyCompactList}\item 
 pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a9d5274f6fbae77140a1857d6ef6ee5a3}{Matrix\+\_\+mod\+::gen\+Inv\+Mat\+From\+Cho\+Low}} (nd, Cho\+Low, Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Generate the inverse matrix of a symmetric-\/positive-\/definite matrix, whose Cholesky Lower triangle is given in the lower part of {\ttfamily Cho\+Low} and and its diagonal elements in {\ttfamily Cho\+Dia}. \end{DoxyCompactList}\item 
 pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a76ec4b86aea74261b244135e13fac1a9}{Matrix\+\_\+mod\+::gen\+Inv\+Low\+From\+Cho\+Low}} (nd, Cho\+Low, Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Generate the lower-\/triangle and diagonals of the inverse matrix of a symmetric-\/positive-\/definite matrix whose Cholesky Lower triangle is given in the lower part of {\ttfamily Cho\+Low} and and its diagonal elements in {\ttfamily Cho\+Dia}. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a83089ee54507ce254b1eddf2d3e7c18d}{Matrix\+\_\+mod\+::gen\+Inv\+Pos\+Def\+Mat}} (nd, Pos\+Def\+Mat)
+PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_aa0e14f76a6bcf3fe00093b00e53941da}{Matrix\+\_\+mod\+::gen\+Inv\+Pos\+Def\+Mat}} (nd, Pos\+Def\+Mat)
 \begin{DoxyCompactList}\small\item\em Generate the inverse matrix of an input symmetric-\/positive-\/definite matrix {\ttfamily Pos\+Def\+Mat}. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a25964c69dbad682f38a592e967603ad0}{Matrix\+\_\+mod\+::get\+Inv\+Mat\+Det}} (nd, Matrix\+LU, Inverse\+Matrix, det\+Inv\+Mat, failed)
 \begin{DoxyCompactList}\small\item\em Return the inverse matrix {\ttfamily Inverse\+Matrix} of a {\ttfamily (nd,nd)} input matrix {\ttfamily Matrix\+LU}, and its determinant, using {\ttfamily LU} decomposition. \end{DoxyCompactList}\item 
@@ -107,7 +107,7 @@ pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a07b2c0f4397964b55d24ab9fe
 \begin{DoxyCompactList}\small\item\em Symmetrize an input upper-\/triangular square matrix by copying the upper triangle to the lower triangle. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a3be752eb237f9b534e53a5202eb7fd02}{Matrix\+\_\+mod\+::symmetrize\+Mat\+Low}} (nd, Lower\+Square\+Matrix)
 \begin{DoxyCompactList}\small\item\em Symmetrize an input lower-\/triangular square matrix by copying the lower triangle to the upper triangle. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_acb69e3dadbf6a6b754a2bff24bcbdafa}{Matrix\+\_\+mod\+::get\+Regres\+Coef}} (rank\+PDM, rank\+S11, rank\+S22, Pos\+Def\+Mat, Regres\+Coef\+Mat, Schur\+Complement)
+PURE subroutine \mbox{\hyperlink{namespaceMatrix__mod_ab617158b63b3fd705761001646416311}{Matrix\+\_\+mod\+::get\+Regres\+Coef}} (rank\+PDM, rank\+S11, rank\+S22, Pos\+Def\+Mat, Regres\+Coef\+Mat, failed, Schur\+Complement)
 \begin{DoxyCompactList}\small\item\em Return the the Regression Coefficient Matrix, whose dimension is {\ttfamily rank\+S11} by {\ttfamily rank\+S22}, as well as optionally the Schur complement of the {\ttfamily S22} block of rank {\ttfamily rank\+S22} of the input matrix {\ttfamily Pos\+Def\+Mat} of rank {\ttfamily rank\+PDM}. For example, if,. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}

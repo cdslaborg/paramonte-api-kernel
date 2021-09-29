@@ -112,6 +112,9 @@ Functions/Subroutines</h2></td></tr>
 <tr class="memitem:ab5c332bdf35d0a495397b645636c40d3"><td class="memItemLeft" align="right" valign="top">real(RK) function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceTimer__mod.html#ab5c332bdf35d0a495397b645636c40d3">getTimeSinceStart</a> (Timer)</td></tr>
 <tr class="memdesc:ab5c332bdf35d0a495397b645636c40d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This procedure is a method of the class <a class="el" href="structTimer__mod_1_1Timer__type.html">Timer_type</a>. Report the time spent in seconds since the start of the timing.  <a href="namespaceTimer__mod.html#ab5c332bdf35d0a495397b645636c40d3">More...</a><br /></td></tr>
 <tr class="separator:ab5c332bdf35d0a495397b645636c40d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac60e2d62765d17a4409964497e781b69"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceTimer__mod.html#ac60e2d62765d17a4409964497e781b69">getTime</a> (timeInSec, failed)</td></tr>
+<tr class="memdesc:ac60e2d62765d17a4409964497e781b69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the time since the arbitrary origin set by the processor.  <a href="namespaceTimer__mod.html#ac60e2d62765d17a4409964497e781b69">More...</a><br /></td></tr>
+<tr class="separator:ac60e2d62765d17a4409964497e781b69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -141,14 +144,54 @@ Variables</h2></td></tr>
 <p>This is the constructor of the class <a class="el" href="structTimer__mod_1_1Timer__type.html">Timer_type</a>. Before returning the object, this function also calls the <a class="el" href="namespaceTimer__mod.html#afbf455acbbcaf551c5785a3fdd6c34b9">tic()</a> method of the <code><a class="el" href="structTimer__mod_1_1Timer__type.html" title="The Timer_type class, containing method for setting up a wall-time timer.">Timer_type</a></code> object to reset the timer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">failed</td><td>: An output logical value. If <code>.true.</code>, the system does possess a processor clock.</td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">failed</td><td>: An output <code>logical</code> of default kind. An output value of <code>.true.</code> implies that the system does not possess a processor clock.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>Timer</code> : An object of class <a class="el" href="structTimer__mod_1_1Timer__type.html">Timer_type</a>.</dd></dl>
-<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, The University of Texas at Austin </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, September1, 2017, 12:00 AM, ICES, The University of Texas at Austin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Timer__mod_8f90_source.html#l00109">109</a> of file <a class="el" href="Timer__mod_8f90_source.html">Timer_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Timer__mod_8f90_source.html#l00110">110</a> of file <a class="el" href="Timer__mod_8f90_source.html">Timer_mod.f90</a>.</p>
+
+</div>
+</div>
+<a id="ac60e2d62765d17a4409964497e781b69" name="ac60e2d62765d17a4409964497e781b69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac60e2d62765d17a4409964497e781b69">&#9670;&nbsp;</a></span>getTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">subroutine Timer_mod::getTime </td>
+          <td>(</td>
+          <td class="paramtype">real(RK)&#160;</td>
+          <td class="paramname"><em>timeInSec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">logical, intent(out), optional&#160;</td>
+          <td class="paramname"><em>failed</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the time since the arbitrary origin set by the processor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">timeInSec</td><td>: The output time in seconds. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">failed</td><td>: An output <code>logical</code> of default kind. An output value of <code>.true.</code> implies that the system does not possess a processor clock (<b>optional</b>. If not present, the program will halt by calling <code>error stop</code> if an error occurs).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, September1, 2017, 12:00 AM, ICES, The University of Texas at Austin </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="Timer__mod_8f90_source.html#l00250">250</a> of file <a class="el" href="Timer__mod_8f90_source.html">Timer_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -176,9 +219,9 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>timeSinceLastCall</code> : The time spent in seconds since the last timing.</dd></dl>
-<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, The University of Texas at Austin </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, September1, 2017, 12:00 AM, ICES, The University of Texas at Austin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Timer__mod_8f90_source.html#l00202">202</a> of file <a class="el" href="Timer__mod_8f90_source.html">Timer_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Timer__mod_8f90_source.html#l00203">203</a> of file <a class="el" href="Timer__mod_8f90_source.html">Timer_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -206,9 +249,9 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>timeSinceStart</code> : The time spent in seconds since the start of the timing.</dd></dl>
-<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, The University of Texas at Austin </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, September1, 2017, 12:00 AM, ICES, The University of Texas at Austin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Timer__mod_8f90_source.html#l00226">226</a> of file <a class="el" href="Timer__mod_8f90_source.html">Timer_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Timer__mod_8f90_source.html#l00227">227</a> of file <a class="el" href="Timer__mod_8f90_source.html">Timer_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -235,9 +278,9 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, The University of Texas at Austin </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, September1, 2017, 12:00 AM, ICES, The University of Texas at Austin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Timer__mod_8f90_source.html#l00134">134</a> of file <a class="el" href="Timer__mod_8f90_source.html">Timer_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Timer__mod_8f90_source.html#l00135">135</a> of file <a class="el" href="Timer__mod_8f90_source.html">Timer_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -273,9 +316,9 @@ Variables</h2></td></tr>
 <li><code>TimerTimerstop</code> : The current time in seconds as inferred from the Fortran intrinsic procedure <code>system_clock()</code>.</li>
 </ul>
 </dd></dl>
-<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Sep 1, 2017, 12:00 AM, ICES, The University of Texas at Austin </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, September1, 2017, 12:00 AM, ICES, The University of Texas at Austin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Timer__mod_8f90_source.html#l00171">171</a> of file <a class="el" href="Timer__mod_8f90_source.html">Timer_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Timer__mod_8f90_source.html#l00172">172</a> of file <a class="el" href="Timer__mod_8f90_source.html">Timer_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -308,7 +351,7 @@ Variables</h2></td></tr>
     </div>
     <address class="footer">
         <small>
-            Generated on Wed Sep 22 2021 01:08:36 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
+            Generated on Tue Sep 28 2021 22:22:20 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
             <!--
             1.9.3
             -->

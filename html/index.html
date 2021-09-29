@@ -151,39 +151,38 @@ ParaNest</h3>
 <ul>
 <li>The abbreviation <code>avg</code> stands for <b>average</b> (rarely used).</li>
 <li>The abbreviation <code>cdf</code> stands for <b>Cumulative Distribution Function</b> in the context of statistics. Example: <code><a class="el" href="namespaceDistUniNorm__mod.html#ac498fd66094a196d5a9f7f9867a74092" title="Return the value of the non-standard normal distribution Cumulative Probability Density function (CDF...">getNormCDF()</a></code>.</li>
-<li>The abbreviation <code>cho</code> stands for <b>Cholesky factorization</b>. Example: <code><a class="el" href="namespaceMatrix__mod.html#a27fc4376b7f8526656dbe8c33f1685c1" title="Return the Cholesky factorization of the input positive-definite matrix.">getChoLow()</a></code>.</li>
+<li>The abbreviation <code>cho</code> stands for <b>Cholesky factorization</b>. Example: <code>getChoLow()</code>.</li>
 <li>The abbreviation <code>cor</code> stands for <b>correlation</b>. Example: <code><a class="el" href="namespaceSample__mod.html#a44441497c46d27639eb9b422d1d4251d" title="Convert the upper-triangle covariance matrix to the upper-triangle correlation matrix.">getCorUppFromCovUpp()</a></code>.</li>
-<li>The abbreviation <code>cov</code> stands for <b>covariance</b>. Example: <code><a class="el" href="namespaceSample__mod.html#a145e85b58bf40ebee26613ec48689c2a" title="Return the upper triangle covariance matrix of the input SampleShifted sample (whose mean is shifted ...">genCovUpp()</a></code>.</li>
+<li>The abbreviation <code>cov</code> stands for <b>covariance</b>. Example: <code>genCovUpp()</code>.</li>
 <li>The abbreviation <code>cum</code> stands for <b>cumulative</b>. Example: <code>genCumSum()</code>.</li>
 <li>The abbreviation <code>coef</code> stands for <b>coefficient</b>. Example: <code>CorCoef()</code>.</li>
-<li>The abbreviation <code>def</code> stands for <b>definite</b> (mostly in procedure names dealing with positive-definite matrices) or <b>default</b> (mostly in internal procedure naming for default values of optional input arguments). <br  />
-<b>Example usage</b><br  />
- <div class="fragment"><div class="line"><span class="fortran_statement">function</span> genInvPosDefMat(PosDefMat)<span class="fortran_statement"> result</span>(InvPosDefMat)</div>
-<div class="line"><span class="fortran_statement">    real</span>,<span class="fortran_attribute"> allocatable</span> :: InvPosDefMat(:,:)</div>
+<li>The abbreviation <code>def</code> stands for <b>definite</b> (mostly in procedure names dealing with positive-definite matrices) or <b>default</b> (mostly in internal procedure naming for default values of optional input arguments). If <code>def</code> stands for <code>default</code> to represent the alternative for optional dummy arguments of procedures, then it should be preferably suffixed to the name of the alternate object for the optional argument as <code>_def</code>, all lower-case. <dl class="section user"><dt>Example usage</dt><dd><div class="fragment"><div class="line"><span class="fortran_statement">function</span> genInvPosDefMat(PosDefMat)<span class="fortran_statement"> result</span>(InvPosDefMat)</div>
+<div class="line"><span class="fortran_statement">    real</span>,<span class="fortran_attribute"> allocatable</span> :: InvPosDefMat(:,:) <span class="fortran_comment">! Def stands for definite.</span></div>
 <div class="line"><span class="fortran_statement">end function </span>genInvPosDefMat</div>
 <div class="line"> </div>
 <div class="line"><span class="fortran_statement">subroutine</span> assert(assertion,renabled)</div>
 <div class="line"><span class="fortran_statement">    logical</span>,<span class="fortran_attribute"> intent(in)</span> :: assertion</div>
 <div class="line"><span class="fortran_statement">    logical</span>,<span class="fortran_attribute"> intent(in)</span>,<span class="fortran_attribute"> optional</span> :: renabled</div>
-<div class="line"><span class="fortran_statement">    logical</span> :: renabledDef</div>
-<div class="line">    renabledDef<span class="fortran_operator_symbols"> = </span><span class="fortran_named_const">.false.</span></div>
-<div class="line">    <span class="fortran_keywordflow">if</span> (<span class="fortran_function">present</span>(renabled)) renabledDef<span class="fortran_operator_symbols"> = </span>renabled</div>
+<div class="line"><span class="fortran_statement">    logical</span> :: renabled_def <span class="fortran_comment">! def stands for default.</span></div>
+<div class="line">    renabled_def<span class="fortran_operator_symbols"> = </span><span class="fortran_named_const">.false.</span></div>
+<div class="line">    <span class="fortran_keywordflow">if</span> (<span class="fortran_function">present</span>(renabled)) renabled_def<span class="fortran_operator_symbols"> = </span>renabled</div>
 <div class="line"><span class="fortran_statement">end subroutine </span>assert</div>
-</div><!-- fragment --></li>
+</div><!-- fragment --></dd></dl>
+</li>
 <li>The abbreviation <code>den</code> stands for <b>density</b>, mostly in the context of statistical procedures and objects. Example: <code>genLogProbDen()</code>.</li>
-<li>The abbreviation <code>det</code> stands for <b>determinant</b>, mostly in the context of Matrix and linear algebra. Example: <code><a class="el" href="namespaceMatrix__mod.html#a7ceb43e999f59625832640d989fddd30" title="Return the inverse matrix of a symmetric-positive-definite input matrix, which is given in the upper ...">getInvPosDefMatSqrtDet()</a></code>.</li>
+<li>The abbreviation <code>det</code> stands for <b>determinant</b>, mostly in the context of Matrix and linear algebra. Example: <code><a class="el" href="namespaceMatrix__mod.html#aa08a21e9b35cd8a96d4442b300d3d993" title="Return the inverse matrix of a symmetric-positive-definite input matrix, which is given in the upper ...">getInvPosDefMatSqrtDet()</a></code>.</li>
 <li>The abbreviation <code>dia</code> stands for <b>diagonal</b>, mostly in the context of Cholesky factorization. Example: <code>ChoDia()</code>.</li>
 <li>The abbreviation <code>diag</code> stands for <b>diagonal</b>. Example: <code><a class="el" href="namespaceMatrix__mod.html#a38b6183d46d9c14c48b1f2ecf779a3ec" title="Generate a diagonal matrix of shape (n,m) with the input diagonal and off-diagonal values.">genDiagMat()</a></code>.</li>
-<li>The abbreviation <code>diff</code> stands for <b>difference</b>. Example: <code><a class="el" href="namespaceGeometry__mod.html#a58da3ac11bf9b12578d07b508b94ce44" title="Return the estimated mean and standard deviation of the volume occupied by a set of np points uniform...">getDistSortedExpDiff()</a></code>.</li>
+<li>The abbreviation <code>diff</code> stands for <b>difference</b>. Example: <code>getDistSortedExpDiff()</code>.</li>
 <li>The abbreviation <code>dist</code> stands for <b>distance</b> or <b>distribution</b> depending on the context. Example: <code>DistMulti_type</code>.</li>
 <li>The abbreviation <code>eff</code> stands for <b>effective</b>. Example: <code>effSamSize</code>.</li>
-<li>The abbreviation <code>exp</code> stands for <b>exponential</b> or <b>exponentiated</b>. Example: <code><a class="el" href="namespaceGeometry__mod.html#a58da3ac11bf9b12578d07b508b94ce44" title="Return the estimated mean and standard deviation of the volume occupied by a set of np points uniform...">getDistSortedExpDiff()</a></code>.</li>
-<li>The abbreviation <code>gen</code> stands for <b>generate</b>. Example: <code><a class="el" href="namespaceMatrix__mod.html#a38b6183d46d9c14c48b1f2ecf779a3ec" title="Generate a diagonal matrix of shape (n,m) with the input diagonal and off-diagonal values.">genDiagMat()</a></code>. <dl class="section remark"><dt>Remarks</dt><dd>The prefix <code>gen</code> is commonly used to indicate a <code>function</code> procedure because it <b>gen</b>erates and returns an object. This is contrary to the prefix <code>get</code> at the beginning of <code>subroutine</code> procedures that return the result inside an already given object.</dd></dl>
+<li>The abbreviation <code>exp</code> stands for <b>exponential</b> or <b>exponentiated</b>. Example: <code>getDistSortedExpDiff()</code>.</li>
+<li>The abbreviation <code>gen</code> stands for <b>generate</b>. Example: <code><a class="el" href="namespaceMatrix__mod.html#a38b6183d46d9c14c48b1f2ecf779a3ec" title="Generate a diagonal matrix of shape (n,m) with the input diagonal and off-diagonal values.">genDiagMat()</a></code>. <dl class="section remark"><dt>Remarks</dt><dd>The prefix <code>gen</code> is commonly used as prefix for the name of <code>function</code> procedures because a <code>function</code> <b>gen</b>erates and returns an object. This is contrary to the prefix <code>get</code> at the beginning of <code>subroutine</code> procedures that return the result inside an already given object.</dd></dl>
 </li>
 <li>The abbreviation <code>inv</code> stands for <b>inverse</b>. Example: <code><a class="el" href="namespaceMatrix__mod.html#ac24f1194af9d684d461cd232e3f34922" title="Return the inverse matrix InverseMatrix of a (nd,nd) input matrix Matrix, and its determinant,...">genInvMat()</a></code>.</li>
 <li>The abbreviation <code>ks</code> stands for <b>Kolmogorov-Smirnov</b> test. Example: <code>genMahalSq()</code>.</li>
 <li>The abbreviation <code>lin</code> stands for <b>linear</b>. Example: <code><a class="el" href="namespaceArray__mod.html#af01bf30f6e2edc6b786b0c5558e97778" title="Returns count evenly spaced points over the interval [x1, x2] if x1 &lt; x2, or [x2, x1] if x2 &lt; x1.">genLinSpace()</a></code>.</li>
-<li>The abbreviation <code>low</code> stands for <b>lower triangle of a matrix</b> or <b>lower limits</b>. Example: <code><a class="el" href="namespaceMatrix__mod.html#a27fc4376b7f8526656dbe8c33f1685c1" title="Return the Cholesky factorization of the input positive-definite matrix.">getChoLow()</a></code>.</li>
+<li>The abbreviation <code>low</code> stands for <b>lower triangle of a matrix</b> or <b>lower limits</b>. Example: <code>getChoLow()</code>.</li>
 <li>The abbreviation <code>mahal</code> stands for <b>Mahalanobis</b> distance. Example: <code>genMahalSq()</code>.</li>
 <li>The abbreviation <code>mat</code> stands for <b>matrix</b>. Example: <code><a class="el" href="namespaceMatrix__mod.html#ac24f1194af9d684d461cd232e3f34922" title="Return the inverse matrix InverseMatrix of a (nd,nd) input matrix Matrix, and its determinant,...">genInvMat()</a></code>.</li>
 <li>The abbreviation <code>multi</code> stands for <b>multivariate</b> mostly used in the context of statistical distributions. Example: <code>DistMulti_type</code>.</li>
@@ -193,15 +192,14 @@ ParaNest</h3>
 <li>The abbreviation <code>norm</code> stands for <b>normal</b> in the context of statistical distributions or <b>normalization</b> factor. Example: <code>DistMultiNorm_type</code>.</li>
 <li>The abbreviation <code>normed</code> stands for <b>normalized</b> mostly in the context of statistical samples. Example: <code>NormedSample</code>.</li>
 <li>The abbreviation <code>pdf</code> stands for <b>Probability Density Function</b> in the context of statistics. Example: <code><a class="el" href="namespaceDistUniNorm__mod.html#a710265b3b8e3d3fac4aab8283ee8a10a" title="Return the non-standard normal distribution PDF value.">genNormPDF()</a></code>.</li>
-<li>The abbreviation <code>pos</code> stands for <b>positive</b>. Example: <code><a class="el" href="namespaceMatrix__mod.html#a83089ee54507ce254b1eddf2d3e7c18d" title="Generate the inverse matrix of an input symmetric-positive-definite matrix PosDefMat.">genInvPosDefMat()</a></code>.</li>
+<li>The abbreviation <code>pos</code> stands for <b>positive</b>. Example: <code><a class="el" href="namespaceMatrix__mod.html#aa0e14f76a6bcf3fe00093b00e53941da" title="Generate the inverse matrix of an input symmetric-positive-definite matrix PosDefMat.">genInvPosDefMat()</a></code>.</li>
 <li>The abbreviation <code>prob</code> stands for <code>probability</code>, mostly in the context of statistical applications. Example: <code>genLogProbDen()</code>.</li>
-<li>The abbreviation <code>proc</code> stands for <code>procedure</code>, particularly, when it appears as the suffix <code>_proc</code> in <code>abstract interface</code> definitions. <br  />
-<b>Example usage</b><br  />
- <div class="fragment"><div class="line"><span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceParaMonteLogFunc__mod.html">ParaMonteLogFunc_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceParaMonteLogFunc__mod_1_1getLogFunc__proc.html">getLogFunc_proc</a></div>
+<li>The abbreviation <code>proc</code> stands for <code>procedure</code>, particularly, when it appears as the suffix <code>_proc</code> in <code>abstract interface</code> definitions. <dl class="section user"><dt>Example usage</dt><dd><div class="fragment"><div class="line"><span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceParaMonteLogFunc__mod.html">ParaMonteLogFunc_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceParaMonteLogFunc__mod_1_1getLogFunc__proc.html">getLogFunc_proc</a></div>
 <div class="line"><span class="fortran_statement">procedure</span>(getLogFunc_proc) :: getLogFunc</div>
 <div class="ttc" id="ainterfaceParaMonteLogFunc__mod_1_1getLogFunc__proc_html"><div class="ttname"><a href="interfaceParaMonteLogFunc__mod_1_1getLogFunc__proc.html">ParaMonteLogFunc_mod::getLogFunc_proc</a></div><div class="ttdoc">Return the value of the objective function at the given input Point. This is the abstract C interface...</div><div class="ttdef"><b>Definition:</b> <a href="ParaMonteLogFunc__mod_8f90_source.html#l00068">ParaMonteLogFunc_mod.f90:68</a></div></div>
 <div class="ttc" id="anamespaceParaMonteLogFunc__mod_html"><div class="ttname"><a href="namespaceParaMonteLogFunc__mod.html">ParaMonteLogFunc_mod</a></div><div class="ttdoc">This module defines the abstract interface of the objective function to be called by ParaMonte routin...</div><div class="ttdef"><b>Definition:</b> <a href="ParaMonteLogFunc__mod_8f90_source.html#l00052">ParaMonteLogFunc_mod.f90:52</a></div></div>
-</div><!-- fragment --></li>
+</div><!-- fragment --></dd></dl>
+</li>
 <li>The abbreviation <code>rand</code> stands for <b>random</b>, mostly in the context of statistics. Example: <code>genRandState()</code>.</li>
 <li>The abbreviation <code>sam</code> stands for <b>sample</b>, mostly in the context of statistics. Example: <code>effSamSize</code>.</li>
 <li>The abbreviation <code>sq</code> stands for <b>squared</b>. Example: <code>genMahalSq()</code>.</li>
@@ -215,11 +213,16 @@ ParaNest</h3>
 </ul>
 <p ><a class="anchor" id="ParaMonteDeveloperWarnings"></a> </p><h1><a href="#ParaMonteDeveloperWarnings"><b> Developer Guidelines and Warnings  </b> </a> </h1>
 <ul>
-<li><b>clarity vs. conciseness</b>. <br  />
- Always prefer clarity to conciseness, specially when choosing variable, argument, or procedure names. <br  />
+<li><b>Case-sensitivity</b>.<ul>
+<li>Although the Fortran programming language is case-INsensitive, please preserve and ensure the case-sensitivity compliance of all object names including module, type, procedure, and variable names in all codes and files. This is crucial for the proper hyper-linking of different HTML pages of the <code>ParaMonte :: Kernel</code> developer library that you are reading right now, generated by Doxygen. For example, if the module name is <code><a class="el" href="namespaceArray__mod.html" title="This module contains procedures and interfaces for manipulating arrays.">Array_mod</a></code>, do not write it in any other way like <code><a class="el" href="namespaceArray__mod.html" title="This module contains procedures and interfaces for manipulating arrays.">Array_mod</a></code> or <code>ARRAY_MOD</code>.</li>
+<li>If a variable or procedure argument in a generic interface can be both scalar and array, it should be preferably capitalized since a scalar can be envisioned as particular case of an array with one element.</li>
+</ul>
 </li>
-<li><b>Preprocessor MACRO conventions</b>. <br  />
-<ul>
+<li><b>Clarity vs. conciseness</b>.<ul>
+<li>Always prefer clarity to conciseness, specially when choosing variable, argument, or procedure names.</li>
+</ul>
+</li>
+<li><b>Preprocessor MACRO conventions</b>.<ul>
 <li>MACRO names, if they are to used as conditions in preprocessing directives, should always read like a proposition that evaluates to either true or false. For example, <code>CHECK_ENABLED</code>, <code>IS_WINDOWS</code>.</li>
 <li>MACRO names, if they are to used as conditions, must be always given a value of <code>1</code> if true. This is specially important if the macro is defined from within the source code. <b>Why?</b> Such value assignment eliminates reliance of the conditional construct on the <em>definition</em> status of the macro as the condition. For example, the following conditional construct, <div class="fragment"><div class="line"><span class="preprocessor">#define CHECK_ENABLED 1</span></div>
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#if CHECK_ENABLED</span></div>
@@ -228,12 +231,124 @@ ParaNest</h3>
 </div><!-- fragment --> executes because <code>CHECK_ENABLED</code> is assigned a value of <code>1</code>.</li>
 </ul>
 </li>
-<li><b>Preserving the case-sensitivity of module/type/procedure/variable names</b>. <br  />
- Although the Fortran programming language is case-INsensitive, please preserve and ensure the case-sensitivity compliance of all object names in all codes and files. This is crucial for the proper hyper-linking of different HTML pages of the <code>ParaMonte :: Kernel</code> developer library that you are reading right now. For example, if the module name is <code><a class="el" href="namespaceArray__mod.html" title="This module contains procedures and interfaces for manipulating arrays.">Array_mod</a></code>, do not write it in any other way like <code><a class="el" href="namespaceArray__mod.html" title="This module contains procedures and interfaces for manipulating arrays.">Array_mod</a></code> or <code>ARRAY_MOD</code>. <br  />
+<li><b>Controlling the runtime checks</b>.<ul>
+<li>The ParaMonte library has two different build modes (for any build type: <code>debug</code>, <code>testing</code>, <code>release</code>). The build mode is determined (by the choice of user) via the preprocessor flag <code>CHECK_ENABLED</code>. If this macro is defined, then certain checks on procedure arguments and validity tests in various modules and procedures of the library are automatically performed at runtime to ensure the validity and accuracy of the calculations. This will however, lower the runtime performance of the library. As such, the ParaMonte build scripts define the preprocessor macro <code>CHECK_ENABLED</code> by default for the <code>debug</code> and <code>testing</code> build types, and undefine the macro for the <code>release</code> build. For any build type, this behavior can be overriden by the user/developer when building the library. Refer to the help file of the build scripts for more details and instructions. <dl class="section warning"><dt>Warning</dt><dd>Do <b>NOT</b> lower the case of any uppercase <code>PURE</code> procedure attribute. The uppercase <code>PURE</code> is a macro that expands to <code>pure</code> when runtime checks are disabled, that is, when <code>CHECK_ENABLED</code> is undefined or set to <code>0</code>, otherwise, it is empty. The worst consequence of failing to pay attention to this matter is that the library will not compile and the developer will have to fix any mistakes they have made with <code>PURE</code> preprocessor macros.</dd></dl>
 </li>
-<li><b>Controlling the runtime checks</b>. <br  />
- The ParaMonte library has two different build modes (for any build type: debug, testing, release). The build mode is determined (by the choice of user) via the preprocessor flag <code>CHECK_ENABLED</code>. If this macro is defined, then certain checks on procedure arguments and validity tests in various modules and procedures of the library are automatically performed at runtime to ensure the validity and accuracy of the calculations. This will however, lower the runtime performance of the library. As such, the ParaMonte build scripts define the preprocessor macro <code>CHECK_ENABLED</code> by default for the <code>debug</code> and <code>testing</code> build types, and undefine the macro for the <code>release</code> build. For any build type, this behavior can be overriden by the user/developer when building the library. Refer to the help file of the build scripts for more details and instructions. <dl class="section warning"><dt>Warning</dt><dd>Do <b>NOT</b> lower the case of any uppercase <code>PURE</code> procedure attribute. The uppercase <code>PURE</code> is a macro that expands to <code>pure</code> when runtime checks are disabled, that is, when <code>CHECK_ENABLED</code> is undefined or set to <code>0</code>, otherwise, it is empty. The worst consequence of failing to pay attention to this matter is that the library will not compile and the developer will have to fix any mistakes they have made with <code>PURE</code> preprocessor macros. <br  />
- </dd></dl>
+<li>When the library is built with tests enabled, a number of fatal <code>error stop</code> statements are disabled in some procedures (like the ParaMonte samplers), in particular, when the library is built in parallel mode. Such temporary disabling of global program halts is needed to ensure the error signals are propagated correctly with the library and across multiple processors. However, such extra testing communications (in particular, in parallel mode) can be very costly and therefore, <b>the library should never be built for production release with any tests of the library enabled</b>.</li>
+</ul>
+</li>
+</ul>
+<p ><a class="anchor" id="ParaMonteKernelDocumentationGuidelines"></a> </p><h1><a href="#ParaMonteKernelDocumentationGuidelines"><b> Kernel Documentation Guidelines  </b> </a> </h1>
+<ul>
+<li><b>Doxygen custom command orderings</b>.<ul>
+<li>The Doxygen tag <code>\brief</code> must always be the first line of the documentation of modules, types, and procedures. Example: <a class="el" href="namespaceArray__mod.html">Array_mod</a>.</li>
+<li>The Doxygen tag <code>\details</code>, if it exists, must always immediately follow the Doxygen tag <code>\brief</code>. Example: <a class="el" href="namespaceArray__mod.html">Array_mod</a>.</li>
+<li>The Doxygen tag <code>\param</code>, if any number of it exists, must always immediately follow the Doxygen tag <code>\brief</code> (or <code>\details</code> if it exists). Example: <a class="el" href="interfaceSample__mod_1_1genMean.html">genMean()</a>.</li>
+<li>The Doxygen tag <code>\return</code>, must be exclusively used to indicate the return value of functions. If it exists, it must appear immediately after the set of <code>\param</code> tags. Example: <a class="el" href="interfaceSample__mod_1_1genMean.html">genMean()</a>.</li>
+<li>The Doxygen tag <code>\warning</code>, if any number of it exists, must immediately follow the Doxygen tag <code>\return</code> if it exists, otherwise <code>\param</code> if it exists, otherwise <code>\details</code> if it exists, otherwise <code>\brief</code>. The <code>\warning</code> tag must be used to highlight situations that require special attention of the user, otherwise, there is a danger for the code section being documented to not behave normally as one may expect.</li>
+<li>The Doxygen tag <code>\attention</code> has the same functionality and usage as <code>\warning</code>. Therefore, <code>\warning</code> should be preferred wherever <code>\attention</code> is needed. Exceptions are allowed and if they occur, the same documentation conventions as those of <code>\warning</code> also apply to the tag <code>\attention</code>.</li>
+<li>The Doxygen tag <code>\remark</code>, if any number of it exists, must immediately follow the Doxygen tag <code>\warning</code> if it exists, otherwise the Doxygen tag <code>\return</code> if it exists, otherwise <code>\param</code> if it exists, otherwise <code>\details</code> if it exists, otherwise <code>\brief</code>. The tag <code>\remark</code> should be reserved for explaining behavior that is <b>directly</b> related to the code segment being documented, but its knowledge is not so critical as warrant the use of a <code>\warning</code> tag.</li>
+<li>The Doxygen tag <code>\remark</code>, if it exists, must appear after all <code>\warning</code> and <code>\remark</code> and <code>\note</code> tags and immediately before the ParaMonte custom command tag <code>\usage</code> for examples (if it exists). If more than one <code>\see</code> exists, each must reside a separate line. This can be done by inserting the HTML tag for the new line character <code>&lt;br&gt;</code> between the items. Example: See below.</li>
+<li>If any example exists, it must appear immediately after the <code>\see</code> tag, otherwise after <code>\note</code>, <code>\remark</code>, <code>\warning</code>, <code>\param</code>, <code>\details</code>, or <code>\brief</code> if any exists. ParaMonte examples are initiated by the custom command <code>\usage</code> devised in the <code>config.txt</code> file of ParaMonte Doxygen documentation. If the example exists in an external file, then it must be included via the Doxygen <code>\include</code> command, followed immediately by the ParaMonte custom Doxygen command <code>\compile</code> which inserts the generic example compile commands for the example, followed optionally but immediately by the output file of the example inserted in the documentation via the <code>\include</code> command, followed immediately by the inclusion of any other visualization or postprocessing scripts and output. **In all steps, it is imperative to not leave any empty lines between the successive commands of the example section, designated by the <code>\usage</code>, otherwise, each empty line will start a new paragraph in the documentation. Example: See below.</li>
+<li>The Doxygen <code>\test</code> tag, if any exists, must appear immediately after the example section designated by the <code>\usage</code> tag. The Doxygen <code>\todo</code> tag, if any exists, must appear immediately after the <code>\test</code> tag or any other tag immediately preceding it. The Doxygen <code>\bug</code> tag, if any exists, must appear immediately after the <code>\todo</code> tag or any other tag immediately preceding it.</li>
+<li>The closing command of each documentation section must be the ParaMonte custom command <code>\final</code> separated from the tags before and after by an empty line.</li>
+<li>The Doxygen <code>\author</code> tag is the last command to appear in any documentation section, and it must preferably have the format exemplified in the example below. <br  />
+ <br  />
+</li>
+</ul>
+</li>
+<li><p class="startli"><b>ParaMonte Doxygen custom commands</b>.<br  />
+ To simplify documentation and avoid retyping certain frequently used keywords and sentences, a number of Doxygen aliases are predfined in the ParaMonte Doxygen <code>config.txt</code> file. These include (but are not limited to):</p><ul>
+<li><code>\usage</code> Starts a new <em>Example usage</em> paragraph.</li>
+<li><code>\compile</code> Inserts the set of example compile commands.</li>
+<li><code>\output</code> Inserts a title line for the output section of an example paragraph.</li>
+<li><code>\postproc</code> Inserts a title line for the postprocessing section of an example paragraph.</li>
+<li><code>\abbr</code> Inserts a <code>\remark</code> tag about the naming abbreviations used in the library.</li>
+<li><code>\naming</code> Inserts a <code>\remark</code> tag about the naming conventions used in the library.</li>
+<li><code>\license</code> Inserts a <code>\remark</code> tag about the generic licensing of the library.</li>
+<li><code>\warnpure</code> Inserts a <code>\warning</code> about procedures that are <code>impure</code> when the library is build the preprocessor macro <code>CHECK_ENABLED=1</code>.</li>
+<li><code>\final</code> Inserts the set of final generic remarks that should appear at the end of each documentation section.</li>
+<li><code>\RK</code> Inserts a hyper-link reference to the default <code>real</code> kind used in the library.</li>
+<li><code>\RK32</code> Inserts a hyper-link reference to the <code>real32</code> real kind used in the library.</li>
+<li><code>\RK64</code> Inserts a hyper-link reference to the <code>real64</code> real kind used in the library.</li>
+<li><code>\RK128</code> Inserts a hyper-link reference to the <code>real128</code> real kind used in the library.</li>
+<li><code>\CK</code> Inserts a hyper-link reference to the default <code>complex</code> kind used in the library.</li>
+<li><code>\CK32</code> Inserts a hyper-link reference to the <code>real32</code> complex kind used in the library.</li>
+<li><code>\CK64</code> Inserts a hyper-link reference to the <code>real64</code> complex kind used in the library.</li>
+<li><code>\CK128</code> Inserts a hyper-link reference to the <code>real128</code> complex kind used in the library.</li>
+<li><code>\IK8</code> Inserts a hyper-link reference to the <code>int8</code> integer kind used in the library.</li>
+<li><code>\IK16</code> Inserts a hyper-link reference to the <code>int16</code> integer kind used in the library.</li>
+<li><code>\IK32</code> Inserts a hyper-link reference to the <code>int32</code> integer kind used in the library.</li>
+<li><code>\IK64</code> Inserts a hyper-link reference to the <code>int64</code> integer kind used in the library.</li>
+</ul>
+<p class="startli">For an up-to-date list of all available aliases, check the value of the Doxygen <code>ALIASES</code> option in <code>config.txt</code>.</p>
+</li>
+<li>Avoid the insertion of an empty documentation line between any two lines of a single Doxygen paragraph. This is crucial when the whole paragraph is indented by a vertical line as is done by Doxygen for <code>\warning</code>, <code>\remark</code>, <code>\note</code> and other similar tags. Example: See the aforementioned tags in the example below.</li>
+<li><dl class="section user"><dt>Example usage</dt><dd>The following is an example documentation for a procedure: <pre class="fragment">!&gt;  \brief
+!&gt;  Generate and return the variance of the input array of shape `(np)` or `(nd,np)` or `(np,nd)` where `nd` is the number of
+!&gt;  data dimensions (the number of data attributes) and `np` is the number of data points.
+!&gt;
+!&gt;  \param[in]  Sample  :   The input contiguous array of type `real` of kind \ RK32, \ RK64, or \ RK128 of shape `(np)`, `(nd,np)`, or `(np,nd)`
+!&gt;                          containing the sample. If `Sample` is a 2D array, then its shape is dictated by the optional input argument `dim`.
+!&gt;  \param[in]  Weight  :   The contiguous vector of shape `(np)` either type `real` of the same kind as the input `Sample` or type `integer`
+!&gt;                          of kind \ IK8, \ IK16, \ IK32, or \ IK64, containing the corresponding weight of each data points in `Sample`
+!&gt;                          (**optional**, default = a vector of ones).
+!&gt;  \param[in]  Mean    :   The input scalar or contiguous vector of shape `(nd)` of the same type and kind as the input `Sample` containing
+!&gt;                          the `Sample` mean along the (optionally) specified dimension `dim`. If the input `Sample` is a 1D array, then `Mean`
+!&gt;                          must be a scalar. Otherwise, if `Mean` is a 2D array, then `Mean` must be a vector whose size is the same as
+!&gt;                          the size of at least one of the dimensions of `Sample`.
+!&gt;                          (**optional**. If missing, then the input argument `shifted` must be present indicating whether the input `Sample`
+!&gt;                          is already centered at the origin or it has to be shifted to the origin by the procedure).
+!&gt;  \param[in]  shifted :   The input logical of default kind indicating whether the input `Sample` is already centered at the origin or
+!&gt;                          the it has to be shifted to the origin by the procedure (**optional**. If missing, then the input
+!&gt;                          argument `Mean` must be present).
+!&gt;  \param[in]  biased  :   The input logical of default kind indicating whether the output variance should be corrected for small sample-size
+!&gt;                          bias. Set this argument to `.false.` to avoid biased variance computation, in particular, when the sample size `np`
+!&gt;                          is small.
+!&gt;  \param[in]  dim     :   An integer of default kind \ IK indicating which dimension of the input `Sample` iterates over the individual data points.
+!&gt;                          If `dim = 1` or `dim /= 2`, the input `Sample` is assumed to have the shape `(np,nd)`.
+!&gt;                          If `dim = 2`, the input `Sample` is assumed to have the shape `(nd,np)`
+!&gt;                          (**optional**, default = `2`. **This input argument is available only if the input `Sample` is a 2D array**.).
+!&gt;
+!&gt;  \return
+!&gt;  `variance`          :   The output variance of the input sample of the same type and kind as the input `Sample`.
+!&gt;                          It is a scalar only if the input `Sample` is a 1D array. Otherwise, it is an allocatable array of shape `(nd)`.
+!&gt;
+!&gt;  \warning This procedure is `impure` when the library is compiled with macro `CHECK_ENABLED=1`. By default, it is `pure` in `release` build and `impure` in `debug` and `testing` builds.
+!&gt;
+!&gt;  \note
+!&gt;  One also use the concise Fortran syntax to achieve the same goal as this function:
+!&gt;  \code{fortran}
+!&gt;
+!&gt;       mean = sum(Weight*Sample) / sum(Weight)
+!&gt;       variance = sum( (Weight*(Sample-mean))**2 ) / (sum(Weight)-1)
+!&gt;
+!&gt;  \endcode
+!&gt;  But the above concise version will be slightly slower as it involves three loops instead of two.
+!&gt;
+!&gt;  \see
+!&gt;  [genMean()](@ref genMean)
+!&gt;
+!&gt;  \par&lt;b&gt;Example usage&lt;/b&gt;
+!&gt;  \include{lineno} Sample_mod/genVariance/main.f90
+!&gt;  \ compile
+!&gt;  \ output
+!&gt;  \include{lineno} Sample_mod/genVariance/main.out
+!&gt;
+!&gt;  \test
+!&gt;  [test_genVariance](@ref Test_Sample_mod::test_genVariance)
+!&gt;
+!&gt;  \todo
+!&gt;  The performance of this code can improved.
+!&gt;
+!&gt;  \bug
+!&gt;  This code used to have a well-known bug in version 1.1, but is now resolved.
+!&gt;
+!&gt;  \remark For details of naming abbreviations, see [this page](@ref ParaMonteAbbreviationGuidlines). \remark For details of the naming conventions, see [this page](@ref ParaMonteNamingConventions). \remark This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the &lt;a href='https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work' target='_blank'&gt;&lt;b&gt;publications of the ParaMonte library&lt;/b&gt;&lt;/a&gt;.&lt;br&gt;
+!&gt;
+!&gt;  \author
+!&gt;  Amir Shahmoradi, Monday 02:15 AM, September 27, 2021, Dallas, TX
+</pre> The above example documentation snippet will generate <a class="el" href="interfaceSample__mod_1_1genMean.html">an HTML similar to this documentation</a>. Note the lack of an empty line among the commands that immediately follow <code>\usage</code>. This is essential to keep the entire example section in the same paragraph. </dd></dl>
 </li>
 </ul>
 </div></div><!-- PageDoc -->
@@ -249,7 +364,7 @@ ParaNest</h3>
     </div>
     <address class="footer">
         <small>
-            Generated on Wed Sep 22 2021 01:08:36 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
+            Generated on Tue Sep 28 2021 22:22:20 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
             <!--
             1.9.3
             -->

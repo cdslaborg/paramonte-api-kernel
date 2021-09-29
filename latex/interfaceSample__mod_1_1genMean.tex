@@ -1,215 +1,172 @@
 \hypertarget{interfaceSample__mod_1_1genMean}{}\doxysection{Sample\+\_\+mod\+::gen\+Mean Interface Reference}
 \label{interfaceSample__mod_1_1genMean}\index{Sample\_mod::genMean@{Sample\_mod::genMean}}
-\doxysubsection*{Public Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-pure real(RK) function \mbox{\hyperlink{interfaceSample__mod_1_1genMean_a812691bcbd4d35ee7eabeab9a7f36d1f}{gen\+Mean\+\_\+1D}} (Sample)
-\begin{DoxyCompactList}\small\item\em Return the mean of the input 1-\/dimensional {\ttfamily Sample}. \end{DoxyCompactList}\item 
-pure real(RK) function \mbox{\hyperlink{interfaceSample__mod_1_1genMean_a86c7bb1909a4e0831937177a25a6c044}{gen\+Weighted\+Mean\+\_\+1\+D\+\_\+\+WIK}} (Sample, Weight)
-\begin{DoxyCompactList}\small\item\em Return the mean of the input 1-\/dimensional weighted {\ttfamily Sample}. \end{DoxyCompactList}\item 
-pure real(RK) function \mbox{\hyperlink{interfaceSample__mod_1_1genMean_aadae26d4a38443596080a44376cdd9bb}{gen\+Weighted\+Mean\+\_\+1\+D\+\_\+\+WRK}} (Sample, Weight)
-\begin{DoxyCompactList}\small\item\em Return the mean of the input 1-\/dimensional weighted {\ttfamily Sample}. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(\+:), allocatable \mbox{\hyperlink{interfaceSample__mod_1_1genMean_a0ef85c3d8a7d12095f6a20fa89575e77}{gen\+Mean\+\_\+2D}} (Sample, dim)
-\begin{DoxyCompactList}\small\item\em Return the mean of the input Sample. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(\+:), allocatable \mbox{\hyperlink{interfaceSample__mod_1_1genMean_a443499c67ae4abfd9c623fc7b2ad7c42}{gen\+Weighted\+Mean\+\_\+2\+D\+\_\+\+WIK}} (Sample, Weight, dim)
-\begin{DoxyCompactList}\small\item\em Return the weighted mean of the input Sample according to the input integer {\ttfamily Weight}. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(\+:), allocatable \mbox{\hyperlink{interfaceSample__mod_1_1genMean_ab19415024b569f221677554e18e05bc3}{gen\+Weighted\+Mean\+\_\+2\+D\+\_\+\+WRK}} (Sample, Weight, dim)
-\begin{DoxyCompactList}\small\item\em Return the weighted mean of the input Sample according to the input integer {\ttfamily Weight}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+Generate and return the (weighted) mean of the input {\ttfamily Sample}, optionally weighted by the input {\ttfamily Weight}.  
+
+
 
 
 \doxysubsection{Detailed Description}
-
-
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00064}{64}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
-
-
-
-\doxysubsection{Member Function/\+Subroutine Documentation}
-\mbox{\Hypertarget{interfaceSample__mod_1_1genMean_a812691bcbd4d35ee7eabeab9a7f36d1f}\label{interfaceSample__mod_1_1genMean_a812691bcbd4d35ee7eabeab9a7f36d1f}} 
-\index{Sample\_mod::genMean@{Sample\_mod::genMean}!genMean\_1D@{genMean\_1D}}
-\index{genMean\_1D@{genMean\_1D}!Sample\_mod::genMean@{Sample\_mod::genMean}}
-\doxysubsubsection{\texorpdfstring{genMean\_1D()}{genMean\_1D()}}
-{\footnotesize\ttfamily pure real(RK) function Sample\+\_\+mod\+::gen\+Mean\+::gen\+Mean\+\_\+1D (\begin{DoxyParamCaption}\item[{real(RK)}]{Sample }\end{DoxyParamCaption})}
-
-
-
-Return the mean of the input 1-\/dimensional {\ttfamily Sample}. 
+Generate and return the (weighted) mean of the input {\ttfamily Sample}, optionally weighted by the input {\ttfamily Weight}. 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em Sample} & \+: The array of shape {\ttfamily (nd,np)} or {\ttfamily (np,nd)} containing the sample, where {\ttfamily nd} is the number of attributes of data in the sample and {\ttfamily np} is the number of dtaat points in the sample.\\
+\mbox{\texttt{ in}}  & {\em Sample} & \+: The contiguous array of {\ttfamily real} type of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} of shape {\ttfamily (np)}, {\ttfamily (nd,np)} or {\ttfamily (np,nd)} containing the sample, where {\ttfamily nd} is the number of attributes of data in the sample and {\ttfamily np} is the number of data points in the sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The contiguous vector of length {\ttfamily np}, of either type {\ttfamily real} of the same kind as the input {\ttfamily Sample} or type {\ttfamily integer} of kind \mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}}, \mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}}, \mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}}, or \mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}}, containing the corresponding weights of the data points in the input {\ttfamily Sample} ({\bfseries{optional}}, default = a vector of ones). \\
+\hline
+\mbox{\texttt{ in}}  & {\em dim} & \+: An {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} representing the dimension (1 or 2) along which data is stored in {\ttfamily Sample}. For example, {\ttfamily dim = 1} means that {\ttfamily Sample} has the shape {\ttfamily (np,nd)}, whereas {\ttfamily dim = 2} implies a {\ttfamily (nd,np)} shape. This input argument is available only when the input {\ttfamily Sample} has more than one dimension.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-{\ttfamily mean} \+: The output mean of the sample.
-\end{DoxyReturn}
-\begin{DoxyRemark}{Remarks}
-Note that this procedure is implemented only for the sake of comprehensiveness and completeness. The mean of any one-\/dimensional sample can be readily computed via the Fortran intrinsic routine {\ttfamily \mbox{\hyperlink{namespaceMisc__mod_a715e59341730f07df7823e76c513d837}{sum()}}}\+: {\ttfamily mean = sum(\+Sample) / size(\+Sample)} assuming the data points have equal weight. 
-\end{DoxyRemark}
-
-
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00110}{110}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{interfaceSample__mod_1_1genMean_a0ef85c3d8a7d12095f6a20fa89575e77}\label{interfaceSample__mod_1_1genMean_a0ef85c3d8a7d12095f6a20fa89575e77}} 
-\index{Sample\_mod::genMean@{Sample\_mod::genMean}!genMean\_2D@{genMean\_2D}}
-\index{genMean\_2D@{genMean\_2D}!Sample\_mod::genMean@{Sample\_mod::genMean}}
-\doxysubsubsection{\texorpdfstring{genMean\_2D()}{genMean\_2D()}}
-{\footnotesize\ttfamily PURE real(RK) function, dimension(\+:), allocatable Sample\+\_\+mod\+::gen\+Mean\+::gen\+Mean\+\_\+2D (\begin{DoxyParamCaption}\item[{real(RK)}]{Sample,  }\item[{integer(IK), intent(in), optional}]{dim }\end{DoxyParamCaption})}
-
-
-
-Return the mean of the input Sample. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em Sample} & \+: The array of shape {\ttfamily (nd,np)} or {\ttfamily (np,nd)} containing the sample, where {\ttfamily nd} is the number of attributes of data in the sample and {\ttfamily np} is the number of dtaat points in the sample. \\
-\hline
-\mbox{\texttt{ in}}  & {\em dim} & \+: An integer representing the dimension (1 or 2) along which data is stored in {\ttfamily Sample}. For example, {\ttfamily dim = 1} means that {\ttfamily Sample} has the shape {\ttfamily (np,nd)}, whereas {\ttfamily dim = 2} implies a shape {\ttfamily (nd,np)} ({\bfseries{optional}}, default = {\ttfamily 2}).\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Mean} \+: The output mean vector of length {\ttfamily nd}.
+{\ttfamily Mean} \+: The output mean of the same type and kind as the input {\ttfamily Sample}.~\newline
+ When the input {\ttfamily Sample} has the shape {\ttfamily (np)}, the output mean is a scalar.~\newline
+ When the input {\ttfamily Sample} has the shape {\ttfamily (np)}, the output mean is a vector of length {\ttfamily nd}.
 \end{DoxyReturn}
 \begin{DoxyWarning}{Warning}
-Note the default assumed shape of the input argument {\ttfamily Sample(\+:,\+:)}.
+Note the default assumed shape and size of the input argument {\ttfamily Sample} when it is a matrix of shape {\ttfamily (\+:,\+:)}.
+
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
 \end{DoxyWarning}
+\begin{DoxyNote}{Note}
+If the input sample is to be an array of type {\ttfamily integer}, simply convert the sample to an array of type {\ttfamily real} of the desired kind for the output {\ttfamily real} mean of the sample. There is no point in accepting an input sample of type {\ttfamily integer} since it will be inevitably converted to an array of type {\ttfamily real} within the procedure to avoid potential integer overflow. Furthermore, an {\ttfamily Sample} of type {\ttfamily integer} creates ambiguity about the {\ttfamily kind} of the {\ttfamily real}-\/valued returned mean by the procedure.
+
+Note that the mean of any one or two-\/dimensional sample can be simply computed via the Fortran intrinsic routine {\ttfamily \mbox{\hyperlink{namespaceMisc__mod_a715e59341730f07df7823e76c513d837}{sum()}}}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{fortran_statement}{integer}(IK)                 :: i}
+\DoxyCodeLine{\textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}     :: ND\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{3\_IK}}
+\DoxyCodeLine{\textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}     :: NP\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0\_IK}}
+\DoxyCodeLine{\textcolor{fortran_statement}{real}(RK)    ,\textcolor{fortran_attribute}{ parameter}     :: Sample(ND,NP)\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{reshape}([(\textcolor{fortran_function}{ real}(i,RK), i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NP )], shape\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{shape}(Sample))}
+\DoxyCodeLine{\textcolor{fortran_statement}{real}(RK)    ,\textcolor{fortran_attribute}{ allocatable}   :: Mean(:)}
+\DoxyCodeLine{Mean\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{sum}(Sample,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1})\textcolor{fortran_operator_symbols}{ / }\textcolor{fortran_function}{size}(\textcolor{fortran_function}{transpose}(Sample),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1})  \textcolor{fortran_comment}{! assuming the first dimension represents the rows of data.}}
+\DoxyCodeLine{Mean\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{sum}(Sample,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2})\textcolor{fortran_operator_symbols}{ / }\textcolor{fortran_function}{size}(Sample,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2})             ! assuming the second dimension represents the columns of data.}
+
+\end{DoxyCode}
+
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{interfaceSample__mod_1_1genVariance}{gen\+Variance}}
+\end{DoxySeeAlso}
+\begin{DoxyParagraph}{Example usage}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00001}00001 \textcolor{fortran_statement}{program} example}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00003}00003     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00004}00004     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceSample__mod}{Sample\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00006}00006     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}     :: NDIM\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00007}00007     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}     :: NSIM\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0\_IK}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00009}00009 \textcolor{fortran_statement}{    real}(RK32)                  :: Sample\_RK32(NDIM,NSIM)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00010}00010 \textcolor{fortran_statement}{    real}(RK64)                  :: Sample\_RK64(NDIM,NSIM)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00011}00011 \textcolor{fortran_statement}{    real}(RK128)                 :: Sample\_RK128(NDIM,NSIM)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00013}00013     \textcolor{fortran_statement}{integer}(IK)                 :: fileUnit, i}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00015}00015 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnit, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.out"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00017}00017     \textcolor{fortran_comment}{! Generate a ranSample is centered at `Mean = [( 0.5\_RK, i = 1, NDIM )]`.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00019}00019 \textcolor{fortran_statement}{    call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_RK32)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00020}00020 \textcolor{fortran_statement}{    call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_RK64)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00021}00021 \textcolor{fortran_statement}{    call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_RK128)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00023}00023 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00024}00024 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Sample mean along the second dimension:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00025}00025 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00026}00026 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean  RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00027}00027 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean  RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00028}00028 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128 ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00029}00029 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00031}00031 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00032}00032 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Sample mean along the first dimension:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00033}00033 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00034}00034 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean  RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32(:,\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{4}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00035}00035 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean  RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64(:,\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{4}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00036}00036 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128(:,\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{4}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00037}00037 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00039}00039     Sample\_RK32(\textcolor{fortran_numeric_literal}{1},:)\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{0.\_RK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_operator_symbols}{  * }Sample\_RK32(\textcolor{fortran_numeric_literal}{1},:)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00040}00040     Sample\_RK64(\textcolor{fortran_numeric_literal}{1},:)\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{0.\_RK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4}\textcolor{fortran_operator_symbols}{  * }Sample\_RK64(\textcolor{fortran_numeric_literal}{1},:)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00041}00041     Sample\_RK128(\textcolor{fortran_numeric_literal}{1},:)\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{0.\_RK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8}\textcolor{fortran_operator_symbols}{ * }Sample\_RK128(\textcolor{fortran_numeric_literal}{1},:)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00043}00043 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00044}00044 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Sample mean of a 1D array:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00045}00045 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00046}00046 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean  RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32(\textcolor{fortran_numeric_literal}{1},:))}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00047}00047 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean  RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64(\textcolor{fortran_numeric_literal}{1},:))}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00048}00048 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128(\textcolor{fortran_numeric_literal}{1},:))}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00049}00049 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00051}00051 \textcolor{fortran_statement}{end program }example}
+
+\end{DoxyCodeInclude}
+ {\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}}
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}}
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ {\bfseries{Example output}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00002}00002 Sample mean along the second dimension:}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00004}00004 sample mean  RK32: 0.504190207 0.500962853}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00005}00005 sample mean  RK64: 0.50126402266196490 0.51139321563138540}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00006}00006 sample mean RK128: 0.501855867220899340865995277085424933 0.493888835527372482200448751604039198}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00009}00009 Sample mean along the first dimension:}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00011}00011 sample mean  RK32: 0.715293765 0.503102779 0.443126976 0.336984962}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00012}00012 sample mean  RK64: 0.49790552287204876 0.52611372557814984 0.87599079469167873 0.68105850460836392}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00013}00013 sample mean RK128: 0.450645348658944217998958696475727350 0.687925295670951726703098001696874714 0.727683173836849494131543243718801671 0.570137041407369158089283553049525053}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00016}00016 Sample mean of a 1D array:}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00018}00018 sample mean  RK32: 5.04190493}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00019}00019 sample mean  RK64: 5.0126402266196459}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00020}00020 sample mean RK128: 5.01855867220899340865995277085424933}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genMean_l00021}00021 }
+
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000001}{Test}}]test\+\_\+gen\+Mean\end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000014}{Todo}}]The functionality of this interface can be expanded in the future to include the computation of mean of higher dimensional input {\ttfamily Sample} and whole {\ttfamily Sample} input arrays of arbitrary shape.\end{DoxyRefDesc}
+
+
 \begin{DoxyRemark}{Remarks}
-Note that this procedure is implemented only for the sake of comprehensiveness and completeness. The mean of any two-\/dimensional sample can be simply computed via the Fortran intrinsic routine {\ttfamily \mbox{\hyperlink{namespaceMisc__mod_a715e59341730f07df7823e76c513d837}{sum()}}}\+: {\ttfamily Mean = sum(Sample, dim = 1) / size(Sample, dim = 1)} assuming the first dimension represents the rows of data. {\ttfamily Mean = sum(Sample, dim = 2) / size(Sample, dim = 2)} assuming the second dimension represents the columns of data.
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
 \end{DoxyRemark}
-\begin{DoxyWarning}{Warning}
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in release build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
-\end{DoxyWarning}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Apr 21, 2017, 1\+:54 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00216}{216}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{interfaceSample__mod_1_1genMean_a86c7bb1909a4e0831937177a25a6c044}\label{interfaceSample__mod_1_1genMean_a86c7bb1909a4e0831937177a25a6c044}} 
-\index{Sample\_mod::genMean@{Sample\_mod::genMean}!genWeightedMean\_1D\_WIK@{genWeightedMean\_1D\_WIK}}
-\index{genWeightedMean\_1D\_WIK@{genWeightedMean\_1D\_WIK}!Sample\_mod::genMean@{Sample\_mod::genMean}}
-\doxysubsubsection{\texorpdfstring{genWeightedMean\_1D\_WIK()}{genWeightedMean\_1D\_WIK()}}
-{\footnotesize\ttfamily pure real(RK) function Sample\+\_\+mod\+::gen\+Mean\+::gen\+Weighted\+Mean\+\_\+1\+D\+\_\+\+WIK (\begin{DoxyParamCaption}\item[{real(RK)}]{Sample,  }\item[{integer(IK)}]{Weight }\end{DoxyParamCaption})}
-
-
-
-Return the mean of the input 1-\/dimensional weighted {\ttfamily Sample}. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em Sample} & \+: The array of shape {\ttfamily (nd,np)} or {\ttfamily (np,nd)} containing the sample, where {\ttfamily nd} is the number of attributes of data in the sample and {\ttfamily np} is the number of dtaat points in the sample. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of same length as {\ttfamily Sample} containing the weights of points in the sample.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily mean} \+: The output mean of the sample.
-\end{DoxyReturn}
-\begin{DoxyRemark}{Remarks}
-Note that this procedure is implemented only for the sake of comprehensiveness and completeness. The mean of any one-\/dimensional sample can be readily computed via the Fortran intrinsic routine {\ttfamily \mbox{\hyperlink{namespaceMisc__mod_a715e59341730f07df7823e76c513d837}{sum()}}}\+: {\ttfamily mean = sum(\+Weight$\ast$\+Sample) / sum(\+Weight)} assuming the data points are weighted.
-
-The {\ttfamily WIK} in the procedure name stands for {\ttfamily Weight of Integer Kind}. 
-\end{DoxyRemark}
-
-
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00138}{138}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{interfaceSample__mod_1_1genMean_aadae26d4a38443596080a44376cdd9bb}\label{interfaceSample__mod_1_1genMean_aadae26d4a38443596080a44376cdd9bb}} 
-\index{Sample\_mod::genMean@{Sample\_mod::genMean}!genWeightedMean\_1D\_WRK@{genWeightedMean\_1D\_WRK}}
-\index{genWeightedMean\_1D\_WRK@{genWeightedMean\_1D\_WRK}!Sample\_mod::genMean@{Sample\_mod::genMean}}
-\doxysubsubsection{\texorpdfstring{genWeightedMean\_1D\_WRK()}{genWeightedMean\_1D\_WRK()}}
-{\footnotesize\ttfamily pure real(RK) function Sample\+\_\+mod\+::gen\+Mean\+::gen\+Weighted\+Mean\+\_\+1\+D\+\_\+\+WRK (\begin{DoxyParamCaption}\item[{real(RK)}]{Sample,  }\item[{real(RK)}]{Weight }\end{DoxyParamCaption})}
-
-
-
-Return the mean of the input 1-\/dimensional weighted {\ttfamily Sample}. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em Sample} & \+: The array of shape {\ttfamily (nd,np)} or {\ttfamily (np,nd)} containing the sample, where {\ttfamily nd} is the number of attributes of data in the sample and {\ttfamily np} is the number of dtaat points in the sample. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of same length as {\ttfamily Sample} containing the weights of points in the sample.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily mean} \+: The output mean of the sample.
-\end{DoxyReturn}
-\begin{DoxyRemark}{Remarks}
-Note that this procedure is implemented only for the sake of comprehensiveness and completeness. The mean of any one-\/dimensional sample can be readily computed via the Fortran intrinsic routine {\ttfamily \mbox{\hyperlink{namespaceMisc__mod_a715e59341730f07df7823e76c513d837}{sum()}}}\+: {\ttfamily mean = sum(\+Weight$\ast$\+Sample) / sum(\+Weight)} assuming the data points are weighted.
-
-The {\ttfamily WRK} in the procedure name stands for {\ttfamily Weight of Real Kind}. 
-\end{DoxyRemark}
-
-
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00175}{175}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{interfaceSample__mod_1_1genMean_a443499c67ae4abfd9c623fc7b2ad7c42}\label{interfaceSample__mod_1_1genMean_a443499c67ae4abfd9c623fc7b2ad7c42}} 
-\index{Sample\_mod::genMean@{Sample\_mod::genMean}!genWeightedMean\_2D\_WIK@{genWeightedMean\_2D\_WIK}}
-\index{genWeightedMean\_2D\_WIK@{genWeightedMean\_2D\_WIK}!Sample\_mod::genMean@{Sample\_mod::genMean}}
-\doxysubsubsection{\texorpdfstring{genWeightedMean\_2D\_WIK()}{genWeightedMean\_2D\_WIK()}}
-{\footnotesize\ttfamily PURE real(RK) function, dimension(\+:), allocatable Sample\+\_\+mod\+::gen\+Mean\+::gen\+Weighted\+Mean\+\_\+2\+D\+\_\+\+WIK (\begin{DoxyParamCaption}\item[{real(RK)}]{Sample,  }\item[{integer(IK)}]{Weight,  }\item[{integer(IK), intent(in), optional}]{dim }\end{DoxyParamCaption})}
-
-
-
-Return the weighted mean of the input Sample according to the input integer {\ttfamily Weight}. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em Sample} & \+: The array of shape {\ttfamily (nd,np)} or {\ttfamily (np,nd)} containing the sample, where {\ttfamily nd} is the number of attributes of data in the sample and {\ttfamily np} is the number of dtaat points in the sample. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of length {\ttfamily np} containing the weights of points in the sample ({\bfseries{optional}}, default = vector of ones). \\
-\hline
-\mbox{\texttt{ in}}  & {\em dim} & \+: An integer representing the dimension (1 or 2) along which data is stored in {\ttfamily Sample}. For example, {\ttfamily dim = 1} means that {\ttfamily Sample} has the shape {\ttfamily (np,nd)}, whereas {\ttfamily dim = 2} implies a shape {\ttfamily (nd,np)} ({\bfseries{optional}}, default = {\ttfamily 2}).\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Mean} \+: The output mean vector of length {\ttfamily nd}.
-\end{DoxyReturn}
-\begin{DoxyWarning}{Warning}
-Note the default assumed shape of the input argument {\ttfamily Sample(\+:,\+:)}.
-\end{DoxyWarning}
-\begin{DoxyRemark}{Remarks}
-The {\ttfamily WIK} in the procedure name stands for {\ttfamily Weight of Integer Kind}.
-\end{DoxyRemark}
-\begin{DoxyWarning}{Warning}
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in release build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
-\end{DoxyWarning}
-
-
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00260}{260}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{interfaceSample__mod_1_1genMean_ab19415024b569f221677554e18e05bc3}\label{interfaceSample__mod_1_1genMean_ab19415024b569f221677554e18e05bc3}} 
-\index{Sample\_mod::genMean@{Sample\_mod::genMean}!genWeightedMean\_2D\_WRK@{genWeightedMean\_2D\_WRK}}
-\index{genWeightedMean\_2D\_WRK@{genWeightedMean\_2D\_WRK}!Sample\_mod::genMean@{Sample\_mod::genMean}}
-\doxysubsubsection{\texorpdfstring{genWeightedMean\_2D\_WRK()}{genWeightedMean\_2D\_WRK()}}
-{\footnotesize\ttfamily PURE real(RK) function, dimension(\+:), allocatable Sample\+\_\+mod\+::gen\+Mean\+::gen\+Weighted\+Mean\+\_\+2\+D\+\_\+\+WRK (\begin{DoxyParamCaption}\item[{real(RK)}]{Sample,  }\item[{real(RK)}]{Weight,  }\item[{integer(IK), intent(in), optional}]{dim }\end{DoxyParamCaption})}
-
-
-
-Return the weighted mean of the input Sample according to the input integer {\ttfamily Weight}. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em Sample} & \+: The array of shape {\ttfamily (nd,np)} or {\ttfamily (np,nd)} containing the sample, where {\ttfamily nd} is the number of attributes of data in the sample and {\ttfamily np} is the number of dtaat points in the sample. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of length {\ttfamily np} containing the weights of points in the sample ({\bfseries{optional}}, default = vector of ones). \\
-\hline
-\mbox{\texttt{ in}}  & {\em dim} & \+: An integer representing the dimension (1 or 2) along which data is stored in {\ttfamily Sample}. For example, {\ttfamily dim = 1} means that {\ttfamily Sample} has the shape {\ttfamily (np,nd)}, whereas {\ttfamily dim = 2} implies a shape {\ttfamily (nd,np)} ({\bfseries{optional}}, default = {\ttfamily 2}).\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Mean} \+: The output mean vector of length {\ttfamily nd}.
-\end{DoxyReturn}
-\begin{DoxyWarning}{Warning}
-Note the default assumed shape of the input argument {\ttfamily Sample(\+:,\+:)}.
-\end{DoxyWarning}
-\begin{DoxyRemark}{Remarks}
-The {\ttfamily WRK} in the procedure name stands for {\ttfamily Weight of Real Kind}.
-\end{DoxyRemark}
-\begin{DoxyWarning}{Warning}
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in release build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
-\end{DoxyWarning}
-
-
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00292}{292}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00129}{129}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 
 
 

@@ -270,10 +270,30 @@ TAB_SIZE               = 4
 # a double escape (\\{ and \\})
 
 ALIASES =
-ALIASES += usage="<br><b>Example usage</b><br>"
+ALIASES += usage="\par<b>Example usage</b>"
 ALIASES += abbr="\remark For details of naming abbreviations, see [this page](@ref ParaMonteAbbreviationGuidlines)."
 ALIASES += naming="\remark For details of the naming conventions, see [this page](@ref ParaMonteNamingConventions)."
-ALIASES += warnpure="\warning This procedure is `impure` when the library is compiled with macro `CHECK_ENABLED=1`. By default, it is `pure` in release build and `impure` in `debug` and `testing` builds."
+ALIASES += license="\remark This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href='https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work' target='_blank'><b>publications of the ParaMonte library</b></a>."
+ALIASES += warnpure="\warning This procedure is `impure` when the library is compiled with macro `CHECK_ENABLED=1`. By default, it is `pure` in `release` build and `impure` in `debug` and `testing` builds."
+ALIASES += compile="<b>Example Unix compile command via GNU `gfortran` compiler</b>\include{lineno .sh} build.gnu.sh<b>Example Unix compile command via Intel `ifort` compiler</b>\include{lineno .sh} build.intel.sh"
+ALIASES += output="<b>Example output</b>"
+ALIASES += final="\abbr \naming \license<br>"
+
+ALIASES += RK="[RK](@ref        Constants_mod::RK)"
+ALIASES += RK32="[RK32](@ref    Constants_mod::RK32)"
+ALIASES += RK64="[RK64](@ref    Constants_mod::RK64)"
+ALIASES += RK128="[RK128](@ref  Constants_mod::RK128)"
+
+ALIASES += CK="[CK](@ref        Constants_mod::CK)"
+ALIASES += CK32="[CK32](@ref    Constants_mod::CK32)"
+ALIASES += CK64="[CK64](@ref    Constants_mod::CK64)"
+ALIASES += CK128="[CK128](@ref  Constants_mod::CK128)"
+
+ALIASES += IK="[IK](@ref        Constants_mod::IK)"
+ALIASES += IK8="[IK8](@ref      Constants_mod::IK8)"
+ALIASES += IK16="[IK16](@ref    Constants_mod::IK16)"
+ALIASES += IK32="[IK32](@ref    Constants_mod::IK32)"
+ALIASES += IK64="[IK64](@ref    Constants_mod::IK64)"
 
 # Set the OPTIMIZE_OUTPUT_FOR_C tag to YES if your project consists of C sources
 # only. Doxygen will then generate output that is more tailored for C. For
@@ -960,11 +980,12 @@ EXCLUDE_PATTERNS   += */*.txt
 EXCLUDE_PATTERNS   += */*.py
 EXCLUDE_PATTERNS   += */*.m
 EXCLUDE_PATTERNS   += */*.c
-#EXCLUDE_PATTERNS   += */*Partition*.f90
-#EXCLUDE_PATTERNS   += */*Process*.f90
-#EXCLUDE_PATTERNS   += */*Geometry*.f90
-#EXCLUDE_PATTERNS   += */*ParaNest*.f90
-#EXCLUDE_PATTERNS   += */*SpecNest*.f90
+
+EXCLUDE_PATTERNS   += */*Partition*.f90
+EXCLUDE_PATTERNS   += */*Process*.f90
+EXCLUDE_PATTERNS   += */*Geometry*.f90
+EXCLUDE_PATTERNS   += */*ParaNest*.f90
+EXCLUDE_PATTERNS   += */*SpecNest*.f90
 
 # The EXCLUDE_SYMBOLS tag can be used to specify one or more symbol names
 # (namespaces, classes, functions, etc.) that should be excluded from the
@@ -981,7 +1002,8 @@ EXCLUDE_SYMBOLS        =
 # that contain example code fragments that are included (see the \include
 # command).
 
-EXAMPLE_PATH           =
+EXAMPLE_PATH    ="./bin/example/kernel/"
+EXAMPLE_PATH   +="../../example/kernel/"
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp and
@@ -995,7 +1017,7 @@ EXAMPLE_PATTERNS       = *
 # irrespective of the value of the RECURSIVE tag.
 # The default value is: NO.
 
-EXAMPLE_RECURSIVE      = NO
+EXAMPLE_RECURSIVE      = YES
 
 # The IMAGE_PATH tag can be used to specify one or more files or directories
 # that contain images that are to be included in the documentation (see the

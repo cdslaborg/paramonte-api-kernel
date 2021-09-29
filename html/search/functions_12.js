@@ -1,22 +1,4 @@
 var searchData=
 [
-  ['warn_0',['warn',['../namespaceErr__mod.html#a17084f2f49e559916bd2717137d51f7b',1,'Err_mod::warn()'],['../structParaMonte__mod_1_1ParaMonte__type.html#ad4d4c2d28a9e71a5518f0168a9431d1c',1,'ParaMonte_mod::ParaMonte_type::warn()']]],
-  ['warnuseraboutcorruptchainfile_1',['warnUserAboutCorruptChainFile',['../ParaNest__ChainFileContents__mod_8f90.html#a3fa5576e710a498e5310058dbcfbb686',1,'ParaNest_ChainFileContents_mod.f90']]],
-  ['warnuseraboutinputfilepresence_2',['warnUserAboutInputFilePresence',['../structParaMonte__mod_1_1ParaMonte__type.html#a6f8601c492fb0596bddd6518a86c9f0f',1,'ParaMonte_mod::ParaMonte_type::warnUserAboutInputFilePresence()'],['../namespaceParaMonte__mod.html#a12eafdba7271cc0e072fb37bcf0d5a2b',1,'ParaMonte_mod::warnUserAboutInputFilePresence(self)']]],
-  ['warnuseraboutmissingnamelist_3',['warnUserAboutMissingNamelist',['../namespaceParaMonte__mod.html#a3866a477b28e52207c43a5c82052fbac',1,'ParaMonte_mod::warnUserAboutMissingNamelist()'],['../structParaMonte__mod_1_1ParaMonte__type.html#a7f1b413aa2272b87c2c8a916dba6b5c0',1,'ParaMonte_mod::ParaMonte_type::warnUserAboutMissingNamelist()']]],
-  ['winify_4',['winify',['../namespacePath__mod.html#abbae1fc2c72d405efa82c17d90aa82da',1,'Path_mod::winify()'],['../structPath__mod_1_1Path__type.html#a779fda3e6fc46090fa827fd5c73daf2a',1,'Path_mod::Path_type::winify()']]],
-  ['wrap_5',['wrap',['../structDecoration__mod_1_1wrapper__type.html#a6a3888619fbc39dd45d475e6685dfcad',1,'Decoration_mod::wrapper_type']]],
-  ['wraptext_6',['wrapText',['../structDecoration__mod_1_1decoration__type.html#aca295bb012db75122d0848f60f92eb3b',1,'Decoration_mod::decoration_type']]],
-  ['write_7',['write',['../structClusteredPoint__mod_1_1ClusteredPoint__type.html#a2a0467c2011a27c9a3ca9f14146d05ad',1,'ClusteredPoint_mod::ClusteredPoint_type::write()'],['../structDecoration__mod_1_1decoration__type.html#ab0bb194c96639941e21dae9f5a552bb9',1,'Decoration_mod::decoration_type::write()'],['../structParaNest__RefinedChain__mod_1_1RefinedChain__type.html#aa86053ac204ef1b7565338a3e8a70e9c',1,'ParaNest_RefinedChain_mod::RefinedChain_type::write()'],['../structPartition__mod_1_1Partition__type.html#a4d15ee862814e8b6ee6cdc488eb8c18d',1,'Partition_mod::Partition_type::write()'],['../structPartition__mod_1_1PartitionMaxDen__type.html#a6112bdc35df7e2343adf82968ba0e16b',1,'Partition_mod::PartitionMaxDen_type::write()'],['../structPartition__mod_1_1PartitionMinVol__type.html#aebcdb105b51357cf68c4ec5a4ee4b241',1,'Partition_mod::PartitionMinVol_type::write()']]],
-  ['write_5fproc_8',['write_proc',['../interfacePartition__mod_1_1write__proc.html#a80563705074161dfe0a79196e49848c5',1,'Partition_mod::write_proc']]],
-  ['writeascii_9',['writeAscii',['../structParaNest__ChainFileContents__mod_1_1ChainFileContents__type.html#a91f3e877e6d8f92e8c58748dcc8c830d',1,'ParaNest_ChainFileContents_mod::ChainFileContents_type']]],
-  ['writeasciichain_10',['writeAsciiChain',['../namespaceParaNest__ChainFileContents__mod.html#a2d470c4e4c3ef0d00de5875276101170',1,'ParaNest_ChainFileContents_mod']]],
-  ['writebinary_11',['writeBinary',['../structParaNest__ChainFileContents__mod_1_1ChainFileContents__type.html#ac5a3084b73bee24fa11daa6884858d85',1,'ParaNest_ChainFileContents_mod::ChainFileContents_type']]],
-  ['writebinarychain_12',['writeBinaryChain',['../namespaceParaNest__ChainFileContents__mod.html#a1707c0c601618985b65514894563ee8a',1,'ParaNest_ChainFileContents_mod']]],
-  ['writeclusteredpoint_13',['writeClusteredPoint',['../namespaceClusteredPoint__mod.html#a7369d4f3201646f13a009700d8d70753',1,'ClusteredPoint_mod']]],
-  ['writedecoratedlist_14',['writeDecoratedList',['../structDecoration__mod_1_1decoration__type.html#abe0c8ab50f691e7457d32d0545a995d5',1,'Decoration_mod::decoration_type']]],
-  ['writedecoratedtext_15',['writeDecoratedText',['../structDecoration__mod_1_1decoration__type.html#a213a8f652399389aaaf08602f1d580ac',1,'Decoration_mod::decoration_type']]],
-  ['writeheader_16',['writeHeader',['../structParaNest__ChainFileContents__mod_1_1ChainFileContents__type.html#a4a138fcb14a1e5b751e162a8408984a1',1,'ParaNest_ChainFileContents_mod::ChainFileContents_type::writeHeader()'],['../namespaceParaNest__ChainFileContents__mod.html#a18171509eb566613110c879f7d241f55',1,'ParaNest_ChainFileContents_mod::writeHeader()']]],
-  ['writekmeans_17',['writeKmeans',['../namespaceKmeans__mod.html#a7e385bbc9ba8d03f353899bacaa05911',1,'Kmeans_mod']]],
-  ['writerefinedchain_18',['writeRefinedChain',['../namespaceParaNest__RefinedChain__mod.html#ab09994f5793334dcb81f15fb9e4e858e',1,'ParaNest_RefinedChain_mod']]]
+  ['zroots_5funity_0',['zroots_unity',['../namespaceMisc__mod.html#a5f16643663d2e5846009cf7a4178d031',1,'Misc_mod']]]
 ];
