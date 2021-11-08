@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Test__DistUniExp__mod_8f90_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4d389600729eb25db92af3e09978356f.html">tests</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">Test_DistUniExp_mod.f90</div></div>
 </div><!--header-->
@@ -128,13 +144,13 @@ $(function() {
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceStatistics__mod.html">Statistics_mod</a></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceErr__mod.html">Err_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_struct" href="structErr__mod_1_1Err__type.html">Err_type</a></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="fortran_statement">use </span>Test_mod, <span class="fortran_statement">only</span>: Test_type</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceTest__mod.html">Test_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="fortran_attribute">    private</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="fortran_attribute">    public</span> :: <a class="code hl_function" href="namespaceTest__Statistics__mod.html#a30a242017bc5a6f15ecc0a6880af1f7d">test_Statistics</a></div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="namespaceTest__Statistics__mod.html#a7d203580e358170745b6d89491f7cbae">   56</a></span>    <span class="fortran_statement">type</span>(Test_type) :: <a class="code hl_variable" href="namespaceTest__Statistics__mod.html#a7d203580e358170745b6d89491f7cbae">Test</a></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="namespaceTest__Statistics__mod.html#a7d203580e358170745b6d89491f7cbae">   56</a></span>    <span class="fortran_statement">type</span>(<a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a>) :: <a class="code hl_variable" href="namespaceTest__Statistics__mod.html#a7d203580e358170745b6d89491f7cbae">Test</a></div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="namespaceTest__Statistics__mod.html#aa849fe431b2e40916c6967b46fc51455">   58</a></span>    <span class="fortran_statement">integer</span>(IK) ,<span class="fortran_attribute"> parameter</span> :: <a class="code hl_variable" href="namespaceTest__Statistics__mod.html#aa849fe431b2e40916c6967b46fc51455">lenRnd</a><span class="fortran_operator_symbols"> = </span><span class="fortran_numeric_literal">5</span><span class="fortran_numeric_literal">0_IK</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
@@ -299,10 +315,10 @@ $(function() {
 <div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span> </div>
 <div class="line"><a id="l00219" name="l00219"></a><span class="lineno"><a class="line" href="namespaceTest__Statistics__mod.html#a30a242017bc5a6f15ecc0a6880af1f7d">  219</a></span><span class="fortran_statement">    subroutine</span> <a class="code hl_function" href="namespaceTest__Statistics__mod.html#a30a242017bc5a6f15ecc0a6880af1f7d">test_Statistics</a>()</div>
 <div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        <span class="fortran_statement">implicit none</span></div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        <a class="code hl_variable" href="namespaceTest__Statistics__mod.html#a7d203580e358170745b6d89491f7cbae">Test</a><span class="fortran_operator_symbols"> = </span>Test_type(moduleName<span class="fortran_operator_symbols">=</span><a class="code hl_variable" href="namespaceErr__mod.html#a658759f4402b77a47bad9adf07ea44fa">MODULE_NAME</a>)</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        <a class="code hl_variable" href="namespaceTest__Statistics__mod.html#a7d203580e358170745b6d89491f7cbae">Test</a><span class="fortran_operator_symbols"> = </span><a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a>(moduleName<span class="fortran_operator_symbols">=</span><a class="code hl_variable" href="namespaceErr__mod.html#a658759f4402b77a47bad9adf07ea44fa">MODULE_NAME</a>)</div>
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Statistics__mod.html#a7d203580e358170745b6d89491f7cbae">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__Statistics__mod.html#ae871e8bddb8e21a26f3695cd1db4d9fd">test_genRand_1</a>, <span class="fortran_string">&quot;test_genRand_1&quot;</span>)</div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Statistics__mod.html#a7d203580e358170745b6d89491f7cbae">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__Statistics__mod.html#a45f75a9c045a7fdd34e675bf35c3f118">test_genRandWithMean_1</a>, <span class="fortran_string">&quot;test_genRandWithMean_1&quot;</span>)</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Statistics__mod.html#a7d203580e358170745b6d89491f7cbae">Test</a><span class="fortran_operator_symbols">%</span>finalize()</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Statistics__mod.html#a7d203580e358170745b6d89491f7cbae">Test</a><span class="fortran_operator_symbols">%</span><a class="code hl_function" href="namespaceTest__mod.html#a9612928d23d1dedb33964f0207b12074">finalize</a>()</div>
 <div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <span class="fortran_statement">end subroutine </span><a class="code hl_function" href="namespaceTest__Statistics__mod.html#a30a242017bc5a6f15ecc0a6880af1f7d">test_Statistics</a></div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
@@ -358,7 +374,7 @@ $(function() {
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span><span class="fortran_statement">end module </span>Test_Statistics_mod</div>
 <div class="ttc" id="anamespaceConstants__mod_html"><div class="ttname"><a href="namespaceConstants__mod.html">Constants_mod</a></div><div class="ttdoc">This module contains the mathematical and programming constants.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00046">Constants_mod.f90:46</a></div></div>
-<div class="ttc" id="anamespaceConstants__mod_html_a2a237aad212d8b56b0000553021996f6"><div class="ttname"><a href="namespaceConstants__mod.html#a2a237aad212d8b56b0000553021996f6">Constants_mod::HUGE_RK</a></div><div class="ttdeci">real(RK), parameter HUGE_RK</div><div class="ttdoc">largest number of kind RK</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00110">Constants_mod.f90:110</a></div></div>
+<div class="ttc" id="anamespaceConstants__mod_html_a2a237aad212d8b56b0000553021996f6"><div class="ttname"><a href="namespaceConstants__mod.html#a2a237aad212d8b56b0000553021996f6">Constants_mod::HUGE_RK</a></div><div class="ttdeci">real(RK), parameter HUGE_RK</div><div class="ttdoc">largest number of kind RK</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00113">Constants_mod.f90:113</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html_a2bf4d6767c9954d3a495d10ab6b538d6"><div class="ttname"><a href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">Constants_mod::IK</a></div><div class="ttdeci">integer, parameter IK</div><div class="ttdoc">default integer kind in Fortran mode.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00060">Constants_mod.f90:60</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html_a2d9d57f0148a7016d900f471e5f28069"><div class="ttname"><a href="namespaceConstants__mod.html#a2d9d57f0148a7016d900f471e5f28069">Constants_mod::RK</a></div><div class="ttdeci">integer, parameter RK</div><div class="ttdoc">default real kind in Fortran mode.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00061">Constants_mod.f90:61</a></div></div>
 <div class="ttc" id="anamespaceErr__mod_html"><div class="ttname"><a href="namespaceErr__mod.html">Err_mod</a></div><div class="ttdoc">This module contains classes and procedures for reporting and handling errors.</div><div class="ttdef"><b>Definition:</b> <a href="Err__mod_8f90_source.html#l00046">Err_mod.f90:46</a></div></div>
@@ -373,25 +389,19 @@ $(function() {
 <div class="ttc" id="anamespaceTest__Statistics__mod_html_aa849fe431b2e40916c6967b46fc51455"><div class="ttname"><a href="namespaceTest__Statistics__mod.html#aa849fe431b2e40916c6967b46fc51455">Test_Statistics_mod::lenRnd</a></div><div class="ttdeci">integer(IK), parameter lenRnd</div><div class="ttdef"><b>Definition:</b> <a href="Test__DistUniExp__mod_8f90_source.html#l00058">Test_DistUniExp_mod.f90:58</a></div></div>
 <div class="ttc" id="anamespaceTest__Statistics__mod_html_aacebf7ed5cb2a5a73e9bd056f05dda05"><div class="ttname"><a href="namespaceTest__Statistics__mod.html#aacebf7ed5cb2a5a73e9bd056f05dda05">Test_Statistics_mod::UnifRnd</a></div><div class="ttdeci">real(RK), dimension(lenRnd) UnifRnd</div><div class="ttdef"><b>Definition:</b> <a href="Test__DistUniExp__mod_8f90_source.html#l00060">Test_DistUniExp_mod.f90:60</a></div></div>
 <div class="ttc" id="anamespaceTest__Statistics__mod_html_ae871e8bddb8e21a26f3695cd1db4d9fd"><div class="ttname"><a href="namespaceTest__Statistics__mod.html#ae871e8bddb8e21a26f3695cd1db4d9fd">Test_Statistics_mod::test_genRand_1</a></div><div class="ttdeci">logical function test_genRand_1()</div><div class="ttdef"><b>Definition:</b> <a href="Test__DistUniExp__mod_8f90_source.html#l00229">Test_DistUniExp_mod.f90:230</a></div></div>
+<div class="ttc" id="anamespaceTest__mod_html"><div class="ttname"><a href="namespaceTest__mod.html">Test_mod</a></div><div class="ttdoc">This is the driver module of the unit testing framework of the ParaMonte kernel routines.</div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00054">Test_mod.f90:54</a></div></div>
+<div class="ttc" id="anamespaceTest__mod_html_a9612928d23d1dedb33964f0207b12074"><div class="ttname"><a href="namespaceTest__mod.html#a9612928d23d1dedb33964f0207b12074">Test_mod::finalize</a></div><div class="ttdeci">subroutine finalize()</div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00180">Test_mod.f90:181</a></div></div>
 <div class="ttc" id="astructErr__mod_1_1Err__type_html"><div class="ttname"><a href="structErr__mod_1_1Err__type.html">Err_mod::Err_type</a></div><div class="ttdoc">The error type.</div><div class="ttdef"><b>Definition:</b> <a href="Err__mod_8f90_source.html#l00063">Err_mod.f90:63</a></div></div>
+<div class="ttc" id="astructTest__mod_1_1Test__type_html"><div class="ttname"><a href="structTest__mod_1_1Test__type.html">Test_mod::Test_type</a></div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00101">Test_mod.f90:101</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4d389600729eb25db92af3e09978356f.html">tests</a></li><li class="navelem"><a class="el" href="Test__DistUniExp__mod_8f90.html">Test_DistUniExp_mod.f90</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:31 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:10 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Sort__mod_8f90.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,16 +93,10 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Types</a> &#124;
 <a href="#namespaces">Modules</a> &#124;
-<a href="#func-members">Functions/Subroutines</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Sort_mod.f90 File Reference</div></div>
 </div><!--header-->
@@ -91,102 +106,83 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Types</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sortArray.html">Sort_mod::sortArray</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sort__proc__RK64.html">Sort_mod::sort_proc_RK64</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sortAscending.html">Sort_mod::sortAscending</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1operator_07_8merge_8_08.html">Sort_mod::operator(.merge.)</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="anchor" id="Sort_mod_genMerged"></a> Generate an ascending-sorted merger of the two ascending-sorted input arrays.  <a href="interfaceSort__mod_1_1operator_07_8merge_8_08.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1indexArray.html">Sort_mod::indexArray</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1merge.html">Sort_mod::merge</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Merge two ascending-sorted arrays such that the resulting merged array contains all elements of the two arrays in ascending order.  <a href="interfaceSort__mod_1_1merge.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sortQNR.html">Sort_mod::sortQNR</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sort.html">Sort_mod::sort</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the input contiguous <code>Array</code> of rank <code>1</code> in ascending order, using a mixture of Quicksort algorithm (for large arrays) and selection-sort algorithm (for small arrays).  <a href="interfaceSort__mod_1_1sort.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sort__proc.html">Sort_mod::sort_proc</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sortBubble.html">Sort_mod::sortBubble</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the input contiguous <code>Array</code> of rank <code>1</code> in ascending order, using the Bubble sorting algorithm.  <a href="interfaceSort__mod_1_1sortBubble.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sortDualPivotRecursive.html">Sort_mod::sortDualPivotRecursive</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the input contiguous <code>Array</code> of rank <code>1</code> in ascending order, using a mixture of merge-sort and Dual-Pivot Quicksort algorithms.  <a href="interfaceSort__mod_1_1sortDualPivotRecursive.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sortHeap.html">Sort_mod::sortHeap</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the input contiguous <code>Array</code> of rank <code>1</code> in ascending order, using the Heapsort algorithm.  <a href="interfaceSort__mod_1_1sortHeap.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sortHeapRecursive.html">Sort_mod::sortHeapRecursive</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the input contiguous <code>Array</code> of rank <code>1</code> in ascending order, using the recursive Heapsort algorithm.  <a href="interfaceSort__mod_1_1sortHeapRecursive.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sortInsertion.html">Sort_mod::sortInsertion</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the input contiguous <code>Array</code> of rank <code>1</code> in ascending order, using the Insertion algorithm.  <a href="interfaceSort__mod_1_1sortInsertion.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sortInsertionBinary.html">Sort_mod::sortInsertionBinary</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the input contiguous <code>Array</code> of rank <code>1</code> in ascending order, using the Insertion algorithm with Binary search. The Binary search method yields better performance for larger input arrays.  <a href="interfaceSort__mod_1_1sortInsertionBinary.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sortInsertionDouble.html">Sort_mod::sortInsertionDouble</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the input contiguous <code>Array</code> of rank <code>1</code> in ascending order, using the Double Insertion algorithm. The Binary search method yields better performance for larger input arrays.  <a href="interfaceSort__mod_1_1sortInsertionDouble.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sortMergeRecursive.html">Sort_mod::sortMergeRecursive</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the input contiguous <code>Array</code> of rank <code>1</code> in ascending order, using a mixture of insertion-sort and merge-sort algorithms.  <a href="interfaceSort__mod_1_1sortMergeRecursive.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sortRecursive.html">Sort_mod::sortRecursive</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the input contiguous <code>Array</code> of rank <code>1</code> in ascending order, using a mixture of merge-sort and Quicksort algorithms.  <a href="interfaceSort__mod_1_1sortRecursive.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sortSelection.html">Sort_mod::sortSelection</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the input contiguous <code>Array</code> of rank <code>1</code> in ascending order, using the Selection sorting algorithm.  <a href="interfaceSort__mod_1_1sortSelection.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sortShell.html">Sort_mod::sortShell</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the input contiguous <code>Array</code> of rank <code>1</code> in ascending order, using the Shell sorting algorithm.  <a href="interfaceSort__mod_1_1sortShell.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1sortIndex.html">Sort_mod::sortIndex</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the sorted indices of the input contiguous <code>Array</code> of rank <code>1</code> in ascending order using the Quicksort algorithm, such that <code>Array(Index)</code> will be in ascending order.  <a href="interfaceSort__mod_1_1sortIndex.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1isAscending.html">Sort_mod::isAscending</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate and return <code>.true.</code> if the input array is sorted in ascending order (with the possibility elements being equal), otherwise, generate and return <code>.false.</code>.  <a href="interfaceSort__mod_1_1isAscending.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1isDescending.html">Sort_mod::isDescending</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate and return <code>.true.</code> if the input array is sorted in descending order (with the possibility elements being equal), otherwise, generate and return <code>.false.</code>.  <a href="interfaceSort__mod_1_1isDescending.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSort__mod_1_1isSorted.html">Sort_mod::isSorted</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return <code>.true.</code> if the input array is sorted, either ascending or descending, or all equal.  <a href="interfaceSort__mod_1_1isSorted.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Modules</h2></td></tr>
 <tr class="memitem:namespaceSort__mod"><td class="memItemLeft" align="right" valign="top">module &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSort__mod.html">Sort_mod</a></td></tr>
-<tr class="memdesc:namespaceSort__mod"><td class="mdescLeft">&#160;</td><td class="mdescRight">This module contains procedures for sorting arrays and finding quantiles of arrays. Recommended routines for sorting arrays: <a class="el" href="namespaceSort__mod.html#ad804bcd497915f6858bf0a5f587c12d2">sortAscending_RK</a> and <a class="el" href="interfaceSort__mod_1_1sortQNR.html">sortQNR</a> are among the fastest sorting algorithms. However, <a class="el" href="interfaceSort__mod_1_1sortQNR.html">sortQNR</a> has the benefit of only taking one argument and not returning any error flags to inspect. For a performance comparison of the algorithms see: <a class="el" href="namespaceTest__Sort__mod.html#a475428826b9af448bfeeecdbef49e92b">Test_Sort_mod::test_performance_1</a>. <br /></td></tr>
+<tr class="memdesc:namespaceSort__mod"><td class="mdescLeft">&#160;</td><td class="mdescRight">This module contains procedures for sorting arrays and merging sorted arrays. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
-Functions/Subroutines</h2></td></tr>
-<tr class="memitem:abaf9b0384828d858ea1e2662b228743b"><td class="memItemLeft" align="right" valign="top">pure recursive subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSort__mod.html#abaf9b0384828d858ea1e2662b228743b">Sort_mod::sortArray_RK</a> (array)</td></tr>
-<tr class="memdesc:abaf9b0384828d858ea1e2662b228743b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort (recursively) the input real array of arbitrary size from the smallest value to the largest and return the result inside the input array.  <a href="namespaceSort__mod.html#abaf9b0384828d858ea1e2662b228743b">More...</a><br /></td></tr>
-<tr class="separator:abaf9b0384828d858ea1e2662b228743b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30c679c0320e461e71bfc37dd17b0586"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSort__mod.html#a30c679c0320e461e71bfc37dd17b0586">Sort_mod::partition</a> (array, marker)</td></tr>
-<tr class="separator:a30c679c0320e461e71bfc37dd17b0586"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad804bcd497915f6858bf0a5f587c12d2"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSort__mod.html#ad804bcd497915f6858bf0a5f587c12d2">Sort_mod::sortAscending_RK</a> (Array, failed)</td></tr>
-<tr class="memdesc:ad804bcd497915f6858bf0a5f587c12d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort (recursively) the input real array of arbitrary size from the smallest value to the largest and return the result inside the input array.  <a href="namespaceSort__mod.html#ad804bcd497915f6858bf0a5f587c12d2">More...</a><br /></td></tr>
-<tr class="separator:ad804bcd497915f6858bf0a5f587c12d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade506ba9dbc862a879b35cf5e072c2aa"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSort__mod.html#ade506ba9dbc862a879b35cf5e072c2aa">Sort_mod::indexArray_RK</a> (Array, Index, failed)</td></tr>
-<tr class="memdesc:ade506ba9dbc862a879b35cf5e072c2aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given the real <code>Array(1:n)</code> return the array <code>Index(1:n)</code> such that <code>Array(Index(j)), j=1:n</code> is in ascending order.  <a href="namespaceSort__mod.html#ade506ba9dbc862a879b35cf5e072c2aa">More...</a><br /></td></tr>
-<tr class="separator:ade506ba9dbc862a879b35cf5e072c2aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad195fe3feb52ddd45466f70b6fd90198"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Sort__mod_8f90.html#ad195fe3feb52ddd45466f70b6fd90198">exchangeIndex</a> (i, j)</td></tr>
-<tr class="separator:ad195fe3feb52ddd45466f70b6fd90198"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70d0f1a8f15aaa2a5cf51800cca15060"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSort__mod.html#a70d0f1a8f15aaa2a5cf51800cca15060">Sort_mod::indexArray_IK</a> (Array, Index, failed)</td></tr>
-<tr class="memdesc:a70d0f1a8f15aaa2a5cf51800cca15060"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given the contiguous integer <code>Array(1:n)</code> return the array <code>Index(1:n)</code> such that <code>Array(Index(j)), j=1:n</code> is in ascending order.  <a href="namespaceSort__mod.html#a70d0f1a8f15aaa2a5cf51800cca15060">More...</a><br /></td></tr>
-<tr class="separator:a70d0f1a8f15aaa2a5cf51800cca15060"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae44c42fe17e5b88e2970d3e09a88d417"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSort__mod.html#ae44c42fe17e5b88e2970d3e09a88d417">Sort_mod::sortAscendingWithRooter_IK</a> (Leader, Rooter, failed)</td></tr>
-<tr class="memdesc:ae44c42fe17e5b88e2970d3e09a88d417"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the real <code>Leader(1:lenLeader)</code> in ascending order using Quicksort while making the corresponding rearrangement of real <code>Rooter(1:lenLeader)</code>.  <a href="namespaceSort__mod.html#ae44c42fe17e5b88e2970d3e09a88d417">More...</a><br /></td></tr>
-<tr class="separator:ae44c42fe17e5b88e2970d3e09a88d417"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1967e619a5a097aa6779259e60f6e659"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSort__mod.html#a1967e619a5a097aa6779259e60f6e659">Sort_mod::sortAscendingWithRooter_RK</a> (Leader, Rooter, failed)</td></tr>
-<tr class="memdesc:a1967e619a5a097aa6779259e60f6e659"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort the real <code>Leader(1:lenLeader)</code> in ascending order using Quicksort while making the corresponding rearrangement of real <code>Rooter(1:lenLeader)</code>.  <a href="namespaceSort__mod.html#a1967e619a5a097aa6779259e60f6e659">More...</a><br /></td></tr>
-<tr class="separator:a1967e619a5a097aa6779259e60f6e659"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:aee658b69c133ba8d2da19f1df2a837ea"><td class="memItemLeft" align="right" valign="top">character(*), parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSort__mod.html#aee658b69c133ba8d2da19f1df2a837ea">Sort_mod::MODULE_NAME</a> = &quot;@Sort_mod&quot;</td></tr>
 <tr class="separator:aee658b69c133ba8d2da19f1df2a837ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function/Subroutine Documentation</h2>
-<a id="ad195fe3feb52ddd45466f70b6fd90198" name="ad195fe3feb52ddd45466f70b6fd90198"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad195fe3feb52ddd45466f70b6fd90198">&#9670;&nbsp;</a></span>exchangeIndex()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">pure subroutine exchangeIndex </td>
-          <td>(</td>
-          <td class="paramtype">integer(IK), intent(inout)&#160;</td>
-          <td class="paramname"><em>i</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">integer(IK), intent(inout)&#160;</td>
-          <td class="paramname"><em>j</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Sort__mod_8f90_source.html#l00486">486</a> of file <a class="el" href="Sort__mod_8f90_source.html">Sort_mod.f90</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="Sort__mod_8f90.html">Sort_mod.f90</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:35 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:12 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

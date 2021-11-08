@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('interfaceMatrix__mod_1_1symmetrizeMatUpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,155 +93,63 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespaceMatrix__mod.html">Matrix_mod</a></li><li class="navelem"><a class="el" href="interfaceMatrix__mod_1_1symmetrizeMatUpp.html">symmetrizeMatUpp</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="interfaceMatrix__mod_1_1symmetrizeMatUpp-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Matrix_mod::symmetrizeMatUpp Interface Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a6482198a8b527480d690b168e1c10532"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceMatrix__mod_1_1symmetrizeMatUpp.html#a6482198a8b527480d690b168e1c10532">symmetrizeMatUpp</a> (nd, UpperSquareMatrix)</td></tr>
-<tr class="memdesc:a6482198a8b527480d690b168e1c10532"><td class="mdescLeft">&#160;</td><td class="mdescRight">Symmetrize an input upper-triangular square matrix by copying the upper triangle to the lower triangle.  <a href="interfaceMatrix__mod_1_1symmetrizeMatUpp.html#a6482198a8b527480d690b168e1c10532">More...</a><br /></td></tr>
-<tr class="separator:a6482198a8b527480d690b168e1c10532"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca8389b936e2cd1103193b8d2005d6c5"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceMatrix__mod_1_1symmetrizeMatUpp.html#aca8389b936e2cd1103193b8d2005d6c5">symmetrizeMatUppDia</a> (nd, UpperSquareMatrix, Diagonal)</td></tr>
-<tr class="memdesc:aca8389b936e2cd1103193b8d2005d6c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Symmetrize an input upper-triangular square matrix by copying the upper triangle to the lower triangle and copying its diagonals from the input diagonal.  <a href="interfaceMatrix__mod_1_1symmetrizeMatUpp.html#aca8389b936e2cd1103193b8d2005d6c5">More...</a><br /></td></tr>
-<tr class="separator:aca8389b936e2cd1103193b8d2005d6c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
+
+<p>Return the input square upper-triangular matrix by symmetrizing it. Optionally, also overwrite the diagonal elements of the matrix with the input diagonal vector <code>Dia</code>.  
+ <a href="interfaceMatrix__mod_1_1symmetrizeMatUpp.html#details">More...</a></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l00079">79</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a6482198a8b527480d690b168e1c10532" name="a6482198a8b527480d690b168e1c10532"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6482198a8b527480d690b168e1c10532">&#9670;&nbsp;</a></span>symmetrizeMatUpp()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">pure subroutine Matrix_mod::symmetrizeMatUpp::symmetrizeMatUpp </td>
-          <td>(</td>
-          <td class="paramtype">integer(IK), intent(in)&#160;</td>
-          <td class="paramname"><em>nd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">real(RK)&#160;</td>
-          <td class="paramname"><em>UpperSquareMatrix</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Symmetrize an input upper-triangular square matrix by copying the upper triangle to the lower triangle. </p>
+<div class="textblock"><p >Return the input square upper-triangular matrix by symmetrizing it. Optionally, also overwrite the diagonal elements of the matrix with the input diagonal vector <code>Dia</code>. </p>
+<p >This subroutine is a handy shortcut for symmetrizing upper-triangular square matrices <b>in-place</b>, that is, by modifying the input matrix. Optionally, it also sets the diagonal elements of the output generated matrix to the input <code>Dia</code> vector, if provided as input.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">nd</td><td>: The size of the input matrix. </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">UpperSquareMatrix</td><td>: The input upper, and output symmetric full matrix.</td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">MatUpp</td><td>: The square matrix whose elements shall be all reals of either <a class="el" href="namespaceConstants__mod.html#aaf5c6c840ed0befe5a37da626c35716f">RK32</a>, <a class="el" href="namespaceConstants__mod.html#a855643f887b4c787e6542e9e7849680f">RK64</a>, <a class="el" href="namespaceConstants__mod.html#aeef7c44b90b75aeeebdef1da504886cb">RK128</a> kinds. On output, the lower triangle of <code>MatUpp</code> is overwritten with the transpose of its upper tirangle. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Dia</td><td>: The diagonal elements of the output matrix. It must be of the same type and kind as the input <code>MatUpp</code>. If present, it will overwrite the existing diagonal elements of the input matrix. This optional input argument is particularly useful when symmetrizing the upper triangle of a Cholesky factorization. (<b>optional</b>, If missing, the diagonal elements of the input <code>MatUpp</code> will remain intact).</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section warning"><dt>Warning</dt><dd>The input matrix must be square. This condition is checked only when the preprocessor macro <code>CHECK_ENABLED</code> evaluates to true.</dd>
+<dd>
+This procedure is <code>impure</code> when the library is compiled with macro <code>CHECK_ENABLED=1</code>. By default, it is <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="interfaceMatrix__mod_1_1genMatSymFromMatLow.html">genMatSymFromMatLow</a> <br  />
+ <a class="el" href="interfaceMatrix__mod_1_1genMatSymFromMatUpp.html">genMatSymFromMatUpp</a> <br  />
+ <a class="el" href="interfaceMatrix__mod_1_1symmetrizeMatLow.html">symmetrizeMatLow</a> <br  />
+</dd></dl>
+<p><a class="anchor" id="usage"></a><b>Example usage</b> <a href="#usage">⛓</a> </p><dl class="section user"><dt></dt><dd><div class="fragment"></div><!-- fragment --> <br  />
+ <a class="anchor" id="compile-unix-gnu"></a><b>Example Unix compile command via GNU <code>gfortran</code> compiler</b> <a href="#compile-unix-gnu">⛓</a> <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>#!/bin/bash</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span>gfortran -O3 -ffree-line-length-none -Wl,-rpath,../../../../lib -I../../../../include main.f90 ../../../../lib/libparamonte_fortran_*_gnu_*.so -o main.exe</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span>./main.exe</div>
+</div><!-- fragment --> <br  />
+ <a class="anchor" id="compile-unix-intel"></a><b>Example Unix compile command via Intel <code>ifort</code> compiler</b> <a href="#compile-unix-intel">⛓</a> <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span>#!/bin/bash</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span>ifort -standard-semantics -O3 -Wl,-rpath,../../../../lib -I../../../../include main.f90 ../../../../lib/libparamonte_fortran_*_intel_*.so -o main.exe</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span>./main.exe</div>
+</div><!-- fragment --> <br  />
+ <a class="anchor" id="output"></a><b>Example output</b> <a href="#output">⛓</a> <div class="fragment"></div><!-- fragment --></dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000015">Test:</a></b></dt><dd><a class="el" href="namespaceTest__Matrix__mod.html">Test_Matrix_mod</a></dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000025">Todo:</a></b></dt><dd>The functionality of this interface can be expanded to cover complex numbers.</dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
 <dd>
 For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
 <dd>
 This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
 </dd></dl>
-<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Sunday 3:33 PM, September 19, 2021, Dallas, TX </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02452">2452</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function/Subroutine Documentation</h2>
-<a id="aca8389b936e2cd1103193b8d2005d6c5" name="aca8389b936e2cd1103193b8d2005d6c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca8389b936e2cd1103193b8d2005d6c5">&#9670;&nbsp;</a></span>symmetrizeMatUppDia()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">pure subroutine Matrix_mod::symmetrizeMatUpp::symmetrizeMatUppDia </td>
-          <td>(</td>
-          <td class="paramtype">integer(IK), intent(in)&#160;</td>
-          <td class="paramname"><em>nd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">real(RK)&#160;</td>
-          <td class="paramname"><em>UpperSquareMatrix</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">real(RK)&#160;</td>
-          <td class="paramname"><em>Diagonal</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Symmetrize an input upper-triangular square matrix by copying the upper triangle to the lower triangle and copying its diagonals from the input diagonal. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">nd</td><td>: The size of the input matrix. </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">UpperSquareMatrix</td><td>: The input upper, and output symmetric full matrix. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">Diagonal</td><td>: The diagonal elements of the output symmetric full matrix.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section remark"><dt>Remarks</dt><dd>This procedure is particularly useful for symmetrizing the Cholesky lower triangle and diagonal that <a class="el" href="namespaceMatrix__mod.html#ab4964548047f585df1d88308c61e625f">getChoUpp()</a> generates.</dd>
-<dd>
-For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
-<dd>
-For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
-<dd>
-This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
-</dd></dl>
-<dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Apr 21, 2017, 4:10 PM, ICES, UT </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l02171">2171</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this interface was generated from the following file:<ul>
+<p class="definition">Definition at line <a class="el" href="Matrix__mod_8f90_source.html#l00114">114</a> of file <a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a>.</p>
+</div><hr/>The documentation for this interface was generated from the following file:<ul>
 <li>/home/amir/git/paramonte/src/kernel/<a class="el" href="Matrix__mod_8f90_source.html">Matrix_mod.f90</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="namespaceMatrix__mod.html">Matrix_mod</a></li><li class="navelem"><a class="el" href="interfaceMatrix__mod_1_1symmetrizeMatUpp.html">symmetrizeMatUpp</a></li>
+        <li class="footer">Generated on Wed Oct 20 2021 11:42:51 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:16 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

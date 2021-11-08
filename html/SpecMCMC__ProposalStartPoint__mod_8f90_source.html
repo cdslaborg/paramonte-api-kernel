@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('SpecMCMC__ProposalStartPoint__mod_8f90_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">SpecMCMC_ProposalStartPoint_mod.f90</div></div>
 </div><!--header-->
@@ -158,7 +174,7 @@ $(function() {
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor"></span><span class="fortran_directive_intel">        !DEC$ ATTRIBUTES DLLEXPORT </span>:: <a class="code hl_function" href="namespaceSpecMCMC__ProposalStartPoint__mod.html#a1c62bc89a4aa52c8de5653d176e7d199">construct</a></div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor"></span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceConstants__mod.html">Constants_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_variable" href="namespaceConstants__mod.html#ad26b2ae680cb26b40ed38b4e1f7d770c">NULL_RK</a></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1num2char.html">num2char</a></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a></div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="fortran_statement">type</span>(<a class="code hl_interface" href="structSpecMCMC__ProposalStartPoint__mod_1_1ProposalStartPoint__type.html">ProposalStartPoint_type</a>) :: self</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        self<span class="fortran_operator_symbols">%</span>null<span class="fortran_operator_symbols">   = </span><a class="code hl_variable" href="namespaceConstants__mod.html#ad26b2ae680cb26b40ed38b4e1f7d770c">NULL_RK</a></div>
@@ -206,7 +222,7 @@ $(function() {
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="preprocessor"></span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceSpecBase__mod.html">SpecBase_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="structSpecBase__mod_1_1SpecBase__type.html">SpecBase_type</a></div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceConstants__mod.html">Constants_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_variable" href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">IK</a>, <a class="code hl_variable" href="namespaceConstants__mod.html#a2d9d57f0148a7016d900f471e5f28069">RK</a>, <a class="code hl_variable" href="namespaceConstants__mod.html#aee6a99f8b5cb89091c947486e90bf317">NLC</a></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1num2char.html">num2char</a></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a></div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceErr__mod.html">Err_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_struct" href="structErr__mod_1_1Err__type.html">Err_type</a></div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <span class="fortran_statement">class</span>(<a class="code hl_interface" href="structSpecMCMC__ProposalStartPoint__mod_1_1ProposalStartPoint__type.html">ProposalStartPoint_type</a>),<span class="fortran_attribute"> intent(inout)</span>    :: self</div>
@@ -231,11 +247,11 @@ $(function() {
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>                Err<span class="fortran_operator_symbols">%</span>occurred<span class="fortran_operator_symbols"> = </span><span class="fortran_named_const">.true.</span></div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>                Err<span class="fortran_operator_symbols">%</span>msg<span class="fortran_operator_symbols"> =   </span>Err<span class="fortran_operator_symbols">%</span>msg<span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_operator_symbols">&amp;</span></div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                            <a class="code hl_variable" href="namespaceConstants__mod.html#ade87ed33b235f099b65904dc21cbe01e">MODULE_NAME</a><span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span>PROCEDURE_NAME<span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_string">&quot;: Error occurred. &amp;</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="fortran_string"></span><span class="fortran_string">                            &amp;The input requested value for the component &quot;</span><span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><a class="code hl_interface" href="interfaceString__mod_1_1num2char.html">num2char</a>(i)<span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_string">&quot; of the vector proposalStartPoint (&quot;</span><span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_operator_symbols">&amp;</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                            <a class="code hl_interface" href="interfaceString__mod_1_1num2char.html">num2char</a>(self<span class="fortran_operator_symbols">%</span>Val(i))<span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_string">&quot;) must be within the range of the sampling Domain defined &amp;</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="fortran_string"></span><span class="fortran_string">                            &amp;The input requested value for the component &quot;</span><span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a>(i)<span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_string">&quot; of the vector proposalStartPoint (&quot;</span><span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_operator_symbols">&amp;</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>                            <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a>(self<span class="fortran_operator_symbols">%</span>Val(i))<span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_string">&quot;) must be within the range of the sampling Domain defined &amp;</span></div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="fortran_string"></span><span class="fortran_string">                            &amp;in the program: (&quot;</span><span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_operator_symbols">&amp;</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>                            <a class="code hl_interface" href="interfaceString__mod_1_1num2char.html">num2char</a>(SpecBase<span class="fortran_operator_symbols">%</span>DomainCubeLimitLower<span class="fortran_operator_symbols">%</span>Val(i))<span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_string">&quot;,&quot;</span><span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_operator_symbols">&amp; </span><span class="fortran_comment">! LCOV_EXCL_LINE</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>                            <a class="code hl_interface" href="interfaceString__mod_1_1num2char.html">num2char</a>(SpecBase<span class="fortran_operator_symbols">%</span>DomainCubeLimitUpper<span class="fortran_operator_symbols">%</span>Val(i))<span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_operator_symbols">&amp; </span><span class="fortran_comment">! LCOV_EXCL_LINE</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>                            <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a>(SpecBase<span class="fortran_operator_symbols">%</span>DomainCubeLimitLower<span class="fortran_operator_symbols">%</span>Val(i))<span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_string">&quot;,&quot;</span><span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_operator_symbols">&amp; </span><span class="fortran_comment">! LCOV_EXCL_LINE</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>                            <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a>(SpecBase<span class="fortran_operator_symbols">%</span>DomainCubeLimitUpper<span class="fortran_operator_symbols">%</span>Val(i))<span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_operator_symbols">&amp; </span><span class="fortran_comment">! LCOV_EXCL_LINE</span></div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                            <span class="fortran_string">&quot;). If you don&#39;t know an appropriate value for proposalStartPoint, drop it from the input list. &quot;</span><span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_operator_symbols">&amp;</span></div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                            methodName<span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_string">&quot; will automatically assign an appropriate value to it.&quot;</span><span class="fortran_operator_symbols">/</span><span class="fortran_operator_symbols">/</span><a class="code hl_variable" href="namespaceConstants__mod.html#aee6a99f8b5cb89091c947486e90bf317">NLC</a><span class="fortran_operator_symbols">/</span><span class="fortran_operator_symbols">/</span><a class="code hl_variable" href="namespaceConstants__mod.html#aee6a99f8b5cb89091c947486e90bf317">NLC</a></div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="fortran_keywordflow">            end if</span></div>
@@ -246,13 +262,13 @@ $(function() {
 <div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="fortran_statement">end module </span><a class="code hl_namespace" href="namespaceSpecMCMC__ProposalStartPoint__mod.html">SpecMCMC_ProposalStartPoint_mod</a> ! LCOV_EXCL_LINE</div>
-<div class="ttc" id="ainterfaceString__mod_1_1num2char_html"><div class="ttname"><a href="interfaceString__mod_1_1num2char.html">String_mod::num2char</a></div><div class="ttdoc">Convert the input value to string, with the requested format, if provided.</div><div class="ttdef"><b>Definition:</b> <a href="String__mod_8f90_source.html#l00180">String_mod.f90:180</a></div></div>
+<div class="ttc" id="ainterfaceString__mod_1_1val2char_html"><div class="ttname"><a href="interfaceString__mod_1_1val2char.html">String_mod::val2char</a></div><div class="ttdoc">Convert the input value to an output allocatable character, with the requested format and sign symbol...</div><div class="ttdef"><b>Definition:</b> <a href="String__mod_8f90_source.html#l00305">String_mod.f90:305</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html"><div class="ttname"><a href="namespaceConstants__mod.html">Constants_mod</a></div><div class="ttdoc">This module contains the mathematical and programming constants.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00046">Constants_mod.f90:46</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html_a2bf4d6767c9954d3a495d10ab6b538d6"><div class="ttname"><a href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">Constants_mod::IK</a></div><div class="ttdeci">integer, parameter IK</div><div class="ttdoc">default integer kind in Fortran mode.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00060">Constants_mod.f90:60</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html_a2d9d57f0148a7016d900f471e5f28069"><div class="ttname"><a href="namespaceConstants__mod.html#a2d9d57f0148a7016d900f471e5f28069">Constants_mod::RK</a></div><div class="ttdeci">integer, parameter RK</div><div class="ttdoc">default real kind in Fortran mode.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00061">Constants_mod.f90:61</a></div></div>
-<div class="ttc" id="anamespaceConstants__mod_html_ad26b2ae680cb26b40ed38b4e1f7d770c"><div class="ttname"><a href="namespaceConstants__mod.html#ad26b2ae680cb26b40ed38b4e1f7d770c">Constants_mod::NULL_RK</a></div><div class="ttdeci">real(RK), parameter NULL_RK</div><div class="ttdoc">the value used to represent unassigned variables.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00123">Constants_mod.f90:123</a></div></div>
+<div class="ttc" id="anamespaceConstants__mod_html_ad26b2ae680cb26b40ed38b4e1f7d770c"><div class="ttname"><a href="namespaceConstants__mod.html#ad26b2ae680cb26b40ed38b4e1f7d770c">Constants_mod::NULL_RK</a></div><div class="ttdeci">real(RK), parameter NULL_RK</div><div class="ttdoc">the value used to represent unassigned variables.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00126">Constants_mod.f90:126</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html_ade87ed33b235f099b65904dc21cbe01e"><div class="ttname"><a href="namespaceConstants__mod.html#ade87ed33b235f099b65904dc21cbe01e">Constants_mod::MODULE_NAME</a></div><div class="ttdeci">character(*), parameter MODULE_NAME</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00054">Constants_mod.f90:54</a></div></div>
-<div class="ttc" id="anamespaceConstants__mod_html_aee6a99f8b5cb89091c947486e90bf317"><div class="ttname"><a href="namespaceConstants__mod.html#aee6a99f8b5cb89091c947486e90bf317">Constants_mod::NLC</a></div><div class="ttdeci">character(1), parameter NLC</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00127">Constants_mod.f90:127</a></div></div>
+<div class="ttc" id="anamespaceConstants__mod_html_aee6a99f8b5cb89091c947486e90bf317"><div class="ttname"><a href="namespaceConstants__mod.html#aee6a99f8b5cb89091c947486e90bf317">Constants_mod::NLC</a></div><div class="ttdeci">character(1), parameter NLC</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00131">Constants_mod.f90:131</a></div></div>
 <div class="ttc" id="anamespaceErr__mod_html"><div class="ttname"><a href="namespaceErr__mod.html">Err_mod</a></div><div class="ttdoc">This module contains classes and procedures for reporting and handling errors.</div><div class="ttdef"><b>Definition:</b> <a href="Err__mod_8f90_source.html#l00046">Err_mod.f90:46</a></div></div>
 <div class="ttc" id="anamespaceSpecBase__mod_html"><div class="ttname"><a href="namespaceSpecBase__mod.html">SpecBase_mod</a></div><div class="ttdoc">This module contains the classes and procedures for setting up the basic attributes of ParaMonte samp...</div><div class="ttdef"><b>Definition:</b> <a href="SpecBase__mod_8f90_source.html#l00048">SpecBase_mod.f90:48</a></div></div>
 <div class="ttc" id="anamespaceSpecBase__mod_html_afdffc7491e90efddfad832bae496071f"><div class="ttname"><a href="namespaceSpecBase__mod.html#afdffc7491e90efddfad832bae496071f">SpecBase_mod::checkForSanity</a></div><div class="ttdeci">subroutine checkForSanity(SpecBase, Err, methodName)</div><div class="ttdef"><b>Definition:</b> <a href="SpecBase__mod_8f90_source.html#l00646">SpecBase_mod.f90:647</a></div></div>
@@ -267,23 +283,14 @@ $(function() {
 <div class="ttc" id="astructSpecBase__mod_1_1SpecBase__type_html"><div class="ttname"><a href="structSpecBase__mod_1_1SpecBase__type.html">SpecBase_mod::SpecBase_type</a></div><div class="ttdef"><b>Definition:</b> <a href="SpecBase__mod_8f90_source.html#l00090">SpecBase_mod.f90:90</a></div></div>
 <div class="ttc" id="astructSpecMCMC__ProposalStartPoint__mod_1_1ProposalStartPoint__type_html"><div class="ttname"><a href="structSpecMCMC__ProposalStartPoint__mod_1_1ProposalStartPoint__type.html">SpecMCMC_ProposalStartPoint_mod::ProposalStartPoint_type</a></div><div class="ttdef"><b>Definition:</b> <a href="SpecMCMC__ProposalStartPoint__mod_8f90_source.html#l00057">SpecMCMC_ProposalStartPoint_mod.f90:57</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="SpecMCMC__ProposalStartPoint__mod_8f90.html">SpecMCMC_ProposalStartPoint_mod.f90</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:31 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:09 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Test__System__mod_8f90_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4d389600729eb25db92af3e09978356f.html">tests</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">Test_System_mod.f90</div></div>
 </div><!--header-->
@@ -127,13 +143,13 @@ $(function() {
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespaceTest__System__mod.html">   46</a></span><span class="fortran_statement">module</span> <a class="code hl_namespace" href="namespaceTest__System__mod.html">Test_System_mod</a></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceSystem__mod.html">System_mod</a></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="fortran_statement">use </span>Test_mod, <span class="fortran_statement">only</span>: Test_type</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceTest__mod.html">Test_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="fortran_attribute">    private</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="fortran_attribute">    public</span> :: <a class="code hl_function" href="namespaceTest__System__mod.html#af727c5798a57f0b738918ec59f478126">test_System</a></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceTest__System__mod.html#ae8776e03ad8fcdf80bb54bd89ca3b29e">   55</a></span>    <span class="fortran_statement">type</span>(Test_type) :: <a class="code hl_variable" href="namespaceTest__System__mod.html#ae8776e03ad8fcdf80bb54bd89ca3b29e">Test</a></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceTest__System__mod.html#ae8776e03ad8fcdf80bb54bd89ca3b29e">   55</a></span>    <span class="fortran_statement">type</span>(<a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a>) :: <a class="code hl_variable" href="namespaceTest__System__mod.html#ae8776e03ad8fcdf80bb54bd89ca3b29e">Test</a></div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
@@ -154,7 +170,7 @@ $(function() {
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="fortran_comment">!</span></div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="fortran_comment">! See: https://community.intel.com/t5/Intel-Fortran-Compiler/Fortran-execute-command-line-runtime-error-depends-on-memory/m-p/1168196#M145090</span></div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <a class="code hl_variable" href="namespaceTest__System__mod.html#ae8776e03ad8fcdf80bb54bd89ca3b29e">Test</a><span class="fortran_operator_symbols"> = </span>Test_type(moduleName<span class="fortran_operator_symbols">=</span><a class="code hl_variable" href="namespaceSystem__mod.html#ad6e42e461a67af7db0b521a96c3f52a2">MODULE_NAME</a>)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <a class="code hl_variable" href="namespaceTest__System__mod.html#ae8776e03ad8fcdf80bb54bd89ca3b29e">Test</a><span class="fortran_operator_symbols"> = </span><a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a>(moduleName<span class="fortran_operator_symbols">=</span><a class="code hl_variable" href="namespaceSystem__mod.html#ad6e42e461a67af7db0b521a96c3f52a2">MODULE_NAME</a>)</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__System__mod.html#ae8776e03ad8fcdf80bb54bd89ca3b29e">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__System__mod.html#a353061e7c3438eda1c84de9b4ca8f8bf">test_sleep_1</a>, <span class="fortran_string">&quot;test_sleep_1&quot;</span>)</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__System__mod.html#ae8776e03ad8fcdf80bb54bd89ca3b29e">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__System__mod.html#aabfd080659733c4a852c62ccd400599b">test_OS_type_1</a>, <span class="fortran_string">&quot;test_OS_type_1&quot;</span>)</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__System__mod.html#ae8776e03ad8fcdf80bb54bd89ca3b29e">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__System__mod.html#a86976d55b3a779d9a8c0064155e9cd4a">test_OS_type_2</a>, <span class="fortran_string">&quot;test_OS_type_2&quot;</span>)</div>
@@ -172,7 +188,7 @@ $(function() {
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__System__mod.html#ae8776e03ad8fcdf80bb54bd89ca3b29e">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__System__mod.html#a9a276bf5a7b9db66c140bd2202ebc7e9">test_getSystemInfo_1</a>, <span class="fortran_string">&quot;test_getSystemInfo_1&quot;</span>)</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__System__mod.html#ae8776e03ad8fcdf80bb54bd89ca3b29e">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__System__mod.html#ad6c0bceacd0aaa222ce386c050d40c81">test_SystemInfo_type_1</a>, <span class="fortran_string">&quot;test_SystemInfo_type_1&quot;</span>)</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__System__mod.html#ae8776e03ad8fcdf80bb54bd89ca3b29e">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__System__mod.html#a01a2cd59ef11eed36ed68dc782e934af">test_RandomFileName_type_1</a>, <span class="fortran_string">&quot;test_RandomFileName_type_1&quot;</span>)</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__System__mod.html#ae8776e03ad8fcdf80bb54bd89ca3b29e">Test</a><span class="fortran_operator_symbols">%</span>finalize()</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__System__mod.html#ae8776e03ad8fcdf80bb54bd89ca3b29e">Test</a><span class="fortran_operator_symbols">%</span><a class="code hl_function" href="namespaceTest__mod.html#a9612928d23d1dedb33964f0207b12074">finalize</a>()</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="fortran_statement">end subroutine </span><a class="code hl_function" href="namespaceTest__System__mod.html#af727c5798a57f0b738918ec59f478126">test_System</a></div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
@@ -203,7 +219,7 @@ $(function() {
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="namespaceTest__System__mod.html#a43fd8159ffe52170057e95d4e0c38d63">  128</a></span><span class="fortran_statement">    function</span> <a class="code hl_function" href="namespaceTest__System__mod.html#a43fd8159ffe52170057e95d4e0c38d63">test_EnvVar_type_1</a>()<span class="fortran_statement"> result</span>(assertion)</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1num2char.html">num2char</a></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a></div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="fortran_statement">        logical</span>                 :: assertion</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <span class="fortran_statement">type</span>(EnvVar_type)       :: EnvVar</div>
@@ -222,7 +238,7 @@ $(function() {
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="namespaceTest__System__mod.html#ab0121f340538dae91c97cc5cdcba0a7b">  152</a></span><span class="fortran_statement">    function</span> <a class="code hl_function" href="namespaceTest__System__mod.html#ab0121f340538dae91c97cc5cdcba0a7b">test_EnvVar_type_2</a>()<span class="fortran_statement"> result</span>(assertion)</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1num2char.html">num2char</a></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a></div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="fortran_statement">        logical</span>                 :: assertion</div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="fortran_statement">type</span>(EnvVar_type)       :: EnvVar</div>
@@ -240,7 +256,7 @@ $(function() {
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)</span></div>
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;EnvVar%name     : &quot;, EnvVar%name</span></div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;EnvVar%value    : &quot;, EnvVar%value</span></div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;EnvVar%length   : &quot;, num2char(EnvVar%length)</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;EnvVar%length   : &quot;, val2char(EnvVar%length)</span></div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)</span></div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        <span class="fortran_comment">!end if</span></div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        <span class="fortran_comment">!! LCOV_EXCL_STOP</span></div>
@@ -251,7 +267,7 @@ $(function() {
 <div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
 <div class="line"><a id="l00186" name="l00186"></a><span class="lineno"><a class="line" href="namespaceTest__System__mod.html#a26054fb4e3bf2d05710adc7965bc8431">  186</a></span><span class="fortran_statement">    function</span> <a class="code hl_function" href="namespaceTest__System__mod.html#a26054fb4e3bf2d05710adc7965bc8431">test_EnvVar_type_3</a>()<span class="fortran_statement"> result</span>(assertion)</div>
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1num2char.html">num2char</a></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a></div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="fortran_statement">        logical</span>                 :: assertion</div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        <span class="fortran_statement">type</span>(EnvVar_type)       :: EnvVar</div>
@@ -270,7 +286,7 @@ $(function() {
 <div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno"><a class="line" href="namespaceTest__System__mod.html#a56a58918b2888e7ea0fa691de93cdeb3">  210</a></span><span class="fortran_statement">    function</span> <a class="code hl_function" href="namespaceTest__System__mod.html#a56a58918b2888e7ea0fa691de93cdeb3">test_CmdArg_type_1</a>()<span class="fortran_statement"> result</span>(assertion)</div>
 <div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1num2char.html">num2char</a></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a></div>
 <div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>       <span class="fortran_comment">!integer(IK)             :: i</span></div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="fortran_statement">        logical</span>                 :: assertion</div>
@@ -288,7 +304,7 @@ $(function() {
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        <span class="fortran_comment">!! LCOV_EXCL_START</span></div>
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)</span></div>
 <div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;CmdArg%cmd      : &quot;, CmdArg%cmd</span></div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;CmdArg%count    : &quot;, num2char(CmdArg%count)</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;CmdArg%count    : &quot;, val2char(CmdArg%count)</span></div>
 <div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        <span class="fortran_comment">!    write(Test%outputUnit,      &quot;(*(&#39;CmdArg%slash    : &#39;, 2A))&quot;) (CmdArg%Arg(i)%record, new_line(&#39;a&#39;), i=1,CmdArg%count)</span></div>
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)</span></div>
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        <span class="fortran_comment">!end if</span></div>
@@ -300,7 +316,7 @@ $(function() {
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno"><a class="line" href="namespaceTest__System__mod.html#aabfd080659733c4a852c62ccd400599b">  245</a></span><span class="fortran_statement">    function</span> <a class="code hl_function" href="namespaceTest__System__mod.html#aabfd080659733c4a852c62ccd400599b">test_OS_type_1</a>()<span class="fortran_statement"> result</span>(assertion)</div>
 <div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_function" href="namespaceString__mod.html#ae6466d5ac218cfc89e869bebdec2ddd3">log2str</a></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a></div>
 <div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="fortran_statement">        logical</span>                 :: assertion</div>
 <div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="fortran_statement">type</span>(OS_type)           :: OS</div>
@@ -324,7 +340,7 @@ $(function() {
 <div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)</span></div>
 <div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%name     : &quot;, OS%name</span></div>
 <div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%slash    : &quot;, OS%slash</span></div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%isWindows: &quot;, log2str(OS%isWindows)</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%isWindows: &quot;, val2char(OS%isWindows)</span></div>
 <div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)</span></div>
 <div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        <span class="fortran_comment">!end if</span></div>
 <div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <span class="fortran_comment">!! LCOV_EXCL_STOP</span></div>
@@ -335,7 +351,7 @@ $(function() {
 <div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
 <div class="line"><a id="l00285" name="l00285"></a><span class="lineno"><a class="line" href="namespaceTest__System__mod.html#a86976d55b3a779d9a8c0064155e9cd4a">  285</a></span><span class="fortran_statement">    function</span> <a class="code hl_function" href="namespaceTest__System__mod.html#a86976d55b3a779d9a8c0064155e9cd4a">test_OS_type_2</a>()<span class="fortran_statement"> result</span>(assertion)</div>
 <div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span> </div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_function" href="namespaceString__mod.html#ae6466d5ac218cfc89e869bebdec2ddd3">log2str</a>, <a class="code hl_function" href="namespaceString__mod.html#ade10dffb10b5ed445fec280457aa9eb4">getLowerCase</a></div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a>, <a class="code hl_function" href="namespaceString__mod.html#ade10dffb10b5ed445fec280457aa9eb4">getLowerCase</a></div>
 <div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span><span class="fortran_statement">        logical</span>                 :: assertion</div>
 <div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        <span class="fortran_statement">type</span>(OS_type)           :: OS</div>
@@ -359,10 +375,10 @@ $(function() {
 <div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)</span></div>
 <div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%name           : &quot;, OS%name</span></div>
 <div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%slash          : &quot;, OS%slash</span></div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%isWindows      : &quot;, log2str(OS%isWindows)</span></div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%isWindows      : &quot;, val2char(OS%isWindows)</span></div>
 <div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%Shell%name     : &quot;, OS%Shell%name</span></div>
 <div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%Shell%slash    : &quot;, OS%Shell%slash</span></div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%Shell%isUnix   : &quot;, log2str(OS%Shell%isUnix)</span></div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%Shell%isUnix   : &quot;, val2char(OS%Shell%isUnix)</span></div>
 <div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)</span></div>
 <div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>        <span class="fortran_comment">!end if</span></div>
 <div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>        <span class="fortran_comment">!! LCOV_EXCL_STOP</span></div>
@@ -378,10 +394,10 @@ $(function() {
 <div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)</span></div>
 <div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%name           : &quot;, OS%name</span></div>
 <div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%slash          : &quot;, OS%slash</span></div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%isWindows      : &quot;, log2str(OS%isWindows)</span></div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%isWindows      : &quot;, val2char(OS%isWindows)</span></div>
 <div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%Shell%name     : &quot;, OS%Shell%name</span></div>
 <div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%Shell%slash    : &quot;, OS%Shell%slash</span></div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%Shell%isUnix   : &quot;, log2str(OS%Shell%isUnix)</span></div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%Shell%isUnix   : &quot;, val2char(OS%Shell%isUnix)</span></div>
 <div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)</span></div>
 <div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        <span class="fortran_comment">!end if</span></div>
 <div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>        <span class="fortran_comment">! LCOV_EXCL_STOP</span></div>
@@ -392,7 +408,7 @@ $(function() {
 <div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span> </div>
 <div class="line"><a id="l00348" name="l00348"></a><span class="lineno"><a class="line" href="namespaceTest__System__mod.html#ada729e6f3789a1df730ac21f58d5a334">  348</a></span><span class="fortran_statement">    function</span> <a class="code hl_function" href="namespaceTest__System__mod.html#ada729e6f3789a1df730ac21f58d5a334">test_OS_type_3</a>()<span class="fortran_statement"> result</span>(assertion)</div>
 <div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_function" href="namespaceString__mod.html#ae6466d5ac218cfc89e869bebdec2ddd3">log2str</a>, <a class="code hl_function" href="namespaceString__mod.html#ade10dffb10b5ed445fec280457aa9eb4">getLowerCase</a></div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a>, <a class="code hl_function" href="namespaceString__mod.html#ade10dffb10b5ed445fec280457aa9eb4">getLowerCase</a></div>
 <div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span><span class="fortran_statement">        logical</span>                 :: assertion</div>
 <div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>        <span class="fortran_statement">type</span>(OS_type)           :: OS</div>
@@ -415,10 +431,10 @@ $(function() {
 <div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)</span></div>
 <div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%name           : &quot;, OS%name</span></div>
 <div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%slash          : &quot;, OS%slash</span></div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%isWindows      : &quot;, log2str(OS%isWindows)</span></div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%isWindows      : &quot;, val2char(OS%isWindows)</span></div>
 <div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%Shell%name     : &quot;, OS%Shell%name</span></div>
 <div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%Shell%slash    : &quot;, OS%Shell%slash</span></div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%Shell%isUnix   : &quot;, log2str(OS%Shell%isUnix)</span></div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%Shell%isUnix   : &quot;, val2char(OS%Shell%isUnix)</span></div>
 <div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)</span></div>
 <div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>        <span class="fortran_comment">!end if</span></div>
 <div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>        <span class="fortran_comment">!! LCOV_EXCL_STOP</span></div>
@@ -434,10 +450,10 @@ $(function() {
 <div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)</span></div>
 <div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%name           : &quot;, OS%name</span></div>
 <div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%slash          : &quot;, OS%slash</span></div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%isWindows      : &quot;, log2str(OS%isWindows)</span></div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%isWindows      : &quot;, val2char(OS%isWindows)</span></div>
 <div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%Shell%name     : &quot;, OS%Shell%name</span></div>
 <div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%Shell%slash    : &quot;, OS%Shell%slash</span></div>
-<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%Shell%isUnix   : &quot;, log2str(OS%Shell%isUnix)</span></div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)   &quot;OS%Shell%isUnix   : &quot;, val2char(OS%Shell%isUnix)</span></div>
 <div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>        <span class="fortran_comment">!    write(Test%outputUnit,&quot;(2A)&quot;)</span></div>
 <div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>        <span class="fortran_comment">!end if</span></div>
 <div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>        <span class="fortran_comment">! LCOV_EXCL_STOP</span></div>
@@ -448,7 +464,7 @@ $(function() {
 <div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span> </div>
 <div class="line"><a id="l00409" name="l00409"></a><span class="lineno"><a class="line" href="namespaceTest__System__mod.html#a6ba8a4348e2457b775dd061d40f33cb8">  409</a></span><span class="fortran_statement">    function</span> <a class="code hl_function" href="namespaceTest__System__mod.html#a6ba8a4348e2457b775dd061d40f33cb8">test_SysCmd_type_1</a>()<span class="fortran_statement"> result</span>(assertion)</div>
 <div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span> </div>
-<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_function" href="namespaceString__mod.html#ae6466d5ac218cfc89e869bebdec2ddd3">log2str</a></div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a></div>
 <div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span><span class="fortran_statement">        logical</span>                 :: assertion</div>
 <div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>        <span class="fortran_statement">type</span>(SysCmd_type)       :: SysCmd</div>
@@ -487,7 +503,7 @@ $(function() {
 <div class="line"><a id="l00447" name="l00447"></a><span class="lineno">  447</span> </div>
 <div class="line"><a id="l00453" name="l00453"></a><span class="lineno"><a class="line" href="namespaceTest__System__mod.html#a8d37f80583c104a3dfb6b99a897feb26">  453</a></span><span class="fortran_statement">    function</span> <a class="code hl_function" href="namespaceTest__System__mod.html#a8d37f80583c104a3dfb6b99a897feb26">test_executeCmd_1</a>()<span class="fortran_statement"> result</span>(assertion)</div>
 <div class="line"><a id="l00454" name="l00454"></a><span class="lineno">  454</span> </div>
-<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_function" href="namespaceString__mod.html#ae6466d5ac218cfc89e869bebdec2ddd3">log2str</a></div>
+<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a></div>
 <div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span><span class="fortran_statement">        logical</span>                     :: assertion</div>
 <div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>        <span class="fortran_statement">type</span>(OS_type)               :: OS</div>
@@ -522,7 +538,7 @@ $(function() {
 <div class="line"><a id="l00487" name="l00487"></a><span class="lineno">  487</span> </div>
 <div class="line"><a id="l00493" name="l00493"></a><span class="lineno"><a class="line" href="namespaceTest__System__mod.html#a733db17082cd5058dbc8d19e6f620909">  493</a></span><span class="fortran_statement">    function</span> <a class="code hl_function" href="namespaceTest__System__mod.html#a733db17082cd5058dbc8d19e6f620909">test_executeCmd_2</a>()<span class="fortran_statement"> result</span>(assertion)</div>
 <div class="line"><a id="l00494" name="l00494"></a><span class="lineno">  494</span> </div>
-<div class="line"><a id="l00495" name="l00495"></a><span class="lineno">  495</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_function" href="namespaceString__mod.html#ae6466d5ac218cfc89e869bebdec2ddd3">log2str</a></div>
+<div class="line"><a id="l00495" name="l00495"></a><span class="lineno">  495</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a></div>
 <div class="line"><a id="l00496" name="l00496"></a><span class="lineno">  496</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00497" name="l00497"></a><span class="lineno">  497</span><span class="fortran_statement">        logical</span>                     :: assertion</div>
 <div class="line"><a id="l00498" name="l00498"></a><span class="lineno">  498</span>        <span class="fortran_statement">type</span>(OS_type)               :: OS</div>
@@ -553,7 +569,7 @@ $(function() {
 <div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span> </div>
 <div class="line"><a id="l00524" name="l00524"></a><span class="lineno"><a class="line" href="namespaceTest__System__mod.html#a01a2cd59ef11eed36ed68dc782e934af">  524</a></span><span class="fortran_statement">    function</span> <a class="code hl_function" href="namespaceTest__System__mod.html#a01a2cd59ef11eed36ed68dc782e934af">test_RandomFileName_type_1</a>()<span class="fortran_statement"> result</span>(assertion)</div>
 <div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span> </div>
-<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_function" href="namespaceString__mod.html#ae6466d5ac218cfc89e869bebdec2ddd3">log2str</a></div>
+<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a></div>
 <div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span><span class="fortran_statement">        logical</span>                     :: assertion</div>
 <div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>        <span class="fortran_statement">type</span>(RandomFileName_type)   :: RFN</div>
@@ -566,7 +582,7 @@ $(function() {
 <div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span><span class="fortran_statement">        inquire</span>(<span class="fortran_spcifier">file</span><span class="fortran_operator_symbols">=</span>RFN<span class="fortran_operator_symbols">%</span>path,<span class="fortran_spcifier">exist</span><span class="fortran_operator_symbols">=</span>fileExists)</div>
 <div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>        assertion<span class="fortran_operator_symbols"> = </span>assertion <span class="fortran_operator_logical">.and.</span> <span class="fortran_operator_logical">.not.</span> fileExists</div>
 <div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span>        assertion<span class="fortran_operator_symbols"> = </span>assertion <span class="fortran_operator_logical">.and.</span> RFN<span class="fortran_operator_symbols">%</span>dir<span class="fortran_operator_symbols"> =</span><span class="fortran_operator_symbols">= </span><span class="fortran_string">&quot;&quot;</span></div>
-<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>        assertion<span class="fortran_operator_symbols"> = </span>assertion <span class="fortran_operator_logical">.and.</span> RFN<span class="fortran_operator_symbols">%</span>key<span class="fortran_operator_symbols"> =</span><span class="fortran_operator_symbols">= </span><span class="fortran_string">&quot;test_RandomFileName_type&quot;</span>  <span class="fortran_comment">!  // &quot;_image_&quot; // num2char(this_image())</span></div>
+<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>        assertion<span class="fortran_operator_symbols"> = </span>assertion <span class="fortran_operator_logical">.and.</span> RFN<span class="fortran_operator_symbols">%</span>key<span class="fortran_operator_symbols"> =</span><span class="fortran_operator_symbols">= </span><span class="fortran_string">&quot;test_RandomFileName_type&quot;</span>  <span class="fortran_comment">!  // &quot;_image_&quot; // val2char(this_image())</span></div>
 <div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>        assertion<span class="fortran_operator_symbols"> = </span>assertion <span class="fortran_operator_logical">.and.</span> RFN<span class="fortran_operator_symbols">%</span>ext<span class="fortran_operator_symbols"> =</span><span class="fortran_operator_symbols">= </span><span class="fortran_string">&quot;.rfn&quot;</span></div>
 <div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span> </div>
 <div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span>        <span class="fortran_keywordflow">if</span> (<a class="code hl_variable" href="namespaceTest__System__mod.html#ae8776e03ad8fcdf80bb54bd89ca3b29e">Test</a><span class="fortran_operator_symbols">%</span>isVerboseMode <span class="fortran_operator_logical">.and.</span> <span class="fortran_operator_logical">.not.</span> assertion) <span class="fortran_keywordflow">then</span></div>
@@ -586,7 +602,7 @@ $(function() {
 <div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span> </div>
 <div class="line"><a id="l00557" name="l00557"></a><span class="lineno"><a class="line" href="namespaceTest__System__mod.html#ac6a0b8f1418d4f7d6802825735cb483b">  557</a></span><span class="fortran_statement">    function</span> <a class="code hl_function" href="namespaceTest__System__mod.html#ac6a0b8f1418d4f7d6802825735cb483b">test_removeFile_1</a>()<span class="fortran_statement"> result</span>(assertion)</div>
 <div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span> </div>
-<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_function" href="namespaceString__mod.html#ae6466d5ac218cfc89e869bebdec2ddd3">log2str</a></div>
+<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a></div>
 <div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span><span class="fortran_statement">        logical</span>                     :: assertion</div>
 <div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span>        <span class="fortran_statement">type</span>(RandomFileName_type)   :: RFN</div>
@@ -614,7 +630,7 @@ $(function() {
 <div class="line"><a id="l00584" name="l00584"></a><span class="lineno"><a class="line" href="namespaceTest__System__mod.html#ad644822077090bcceb7ff8ad0949da25">  584</a></span><span class="fortran_statement">    function</span> <a class="code hl_function" href="namespaceTest__System__mod.html#ad644822077090bcceb7ff8ad0949da25">test_removeFile_2</a>()<span class="fortran_statement"> result</span>(assertion)</div>
 <div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span> </div>
 <div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceConstants__mod.html">Constants_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_variable" href="namespaceConstants__mod.html#a2d9d57f0148a7016d900f471e5f28069">RK</a></div>
-<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_function" href="namespaceString__mod.html#ae6466d5ac218cfc89e869bebdec2ddd3">log2str</a></div>
+<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a></div>
 <div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span><span class="fortran_statement">        logical</span>                     :: assertion</div>
 <div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span>        <span class="fortran_statement">type</span>(RandomFileName_type)   :: RFN</div>
@@ -699,15 +715,14 @@ $(function() {
 <div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
 <div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span> </div>
 <div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span><span class="fortran_statement">end module </span><a class="code hl_namespace" href="namespaceTest__System__mod.html">Test_System_mod</a> ! LCOV_EXCL_LINE</div>
-<div class="ttc" id="ainterfaceString__mod_1_1num2char_html"><div class="ttname"><a href="interfaceString__mod_1_1num2char.html">String_mod::num2char</a></div><div class="ttdoc">Convert the input value to string, with the requested format, if provided.</div><div class="ttdef"><b>Definition:</b> <a href="String__mod_8f90_source.html#l00180">String_mod.f90:180</a></div></div>
+<div class="ttc" id="ainterfaceString__mod_1_1val2char_html"><div class="ttname"><a href="interfaceString__mod_1_1val2char.html">String_mod::val2char</a></div><div class="ttdoc">Convert the input value to an output allocatable character, with the requested format and sign symbol...</div><div class="ttdef"><b>Definition:</b> <a href="String__mod_8f90_source.html#l00305">String_mod.f90:305</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html"><div class="ttname"><a href="namespaceConstants__mod.html">Constants_mod</a></div><div class="ttdoc">This module contains the mathematical and programming constants.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00046">Constants_mod.f90:46</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html_a2bf4d6767c9954d3a495d10ab6b538d6"><div class="ttname"><a href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">Constants_mod::IK</a></div><div class="ttdeci">integer, parameter IK</div><div class="ttdoc">default integer kind in Fortran mode.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00060">Constants_mod.f90:60</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html_a2d9d57f0148a7016d900f471e5f28069"><div class="ttname"><a href="namespaceConstants__mod.html#a2d9d57f0148a7016d900f471e5f28069">Constants_mod::RK</a></div><div class="ttdeci">integer, parameter RK</div><div class="ttdoc">default real kind in Fortran mode.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00061">Constants_mod.f90:61</a></div></div>
 <div class="ttc" id="anamespaceErr__mod_html"><div class="ttname"><a href="namespaceErr__mod.html">Err_mod</a></div><div class="ttdoc">This module contains classes and procedures for reporting and handling errors.</div><div class="ttdef"><b>Definition:</b> <a href="Err__mod_8f90_source.html#l00046">Err_mod.f90:46</a></div></div>
 <div class="ttc" id="anamespaceErr__mod_html_a36a83db6a4f7bbdd52e4e1a4da550e31"><div class="ttname"><a href="namespaceErr__mod.html#a36a83db6a4f7bbdd52e4e1a4da550e31">Err_mod::assert</a></div><div class="ttdeci">subroutine assert(assertion, msg, renabled)</div><div class="ttdoc">Verify the assertion holds. If not, print the (optional) input message on stdout and return or error-...</div><div class="ttdef"><b>Definition:</b> <a href="Err__mod_8f90_source.html#l00084">Err_mod.f90:85</a></div></div>
 <div class="ttc" id="anamespaceString__mod_html"><div class="ttname"><a href="namespaceString__mod.html">String_mod</a></div><div class="ttdoc">This module contains the classes and procedures for various string manipulations.</div><div class="ttdef"><b>Definition:</b> <a href="String__mod_8f90_source.html#l00054">String_mod.f90:54</a></div></div>
-<div class="ttc" id="anamespaceString__mod_html_ade10dffb10b5ed445fec280457aa9eb4"><div class="ttname"><a href="namespaceString__mod.html#ade10dffb10b5ed445fec280457aa9eb4">String_mod::getLowerCase</a></div><div class="ttdeci">pure character(len(value)) function getLowerCase(value)</div><div class="ttdoc">Return the lowercase of the input assumed-size character vector.</div><div class="ttdef"><b>Definition:</b> <a href="String__mod_8f90_source.html#l00538">String_mod.f90:539</a></div></div>
-<div class="ttc" id="anamespaceString__mod_html_ae6466d5ac218cfc89e869bebdec2ddd3"><div class="ttname"><a href="namespaceString__mod.html#ae6466d5ac218cfc89e869bebdec2ddd3">String_mod::log2str</a></div><div class="ttdeci">pure character(:) function, allocatable log2str(value)</div><div class="ttdoc">Convert the input logical value to value and return the result.</div><div class="ttdef"><b>Definition:</b> <a href="String__mod_8f90_source.html#l00640">String_mod.f90:641</a></div></div>
+<div class="ttc" id="anamespaceString__mod_html_ade10dffb10b5ed445fec280457aa9eb4"><div class="ttname"><a href="namespaceString__mod.html#ade10dffb10b5ed445fec280457aa9eb4">String_mod::getLowerCase</a></div><div class="ttdeci">pure character(len(value)) function getLowerCase(value)</div><div class="ttdoc">Return the lowercase of the input assumed-size character vector.</div><div class="ttdef"><b>Definition:</b> <a href="String__mod_8f90_source.html#l01394">String_mod.f90:1395</a></div></div>
 <div class="ttc" id="anamespaceSystem__mod_html"><div class="ttname"><a href="namespaceSystem__mod.html">System_mod</a></div><div class="ttdoc">This module contains classes and procedures relevant to the system operations.</div><div class="ttdef"><b>Definition:</b> <a href="System__mod_8f90_source.html#l00046">System_mod.f90:46</a></div></div>
 <div class="ttc" id="anamespaceSystem__mod_html_ad6e42e461a67af7db0b521a96c3f52a2"><div class="ttname"><a href="namespaceSystem__mod.html#ad6e42e461a67af7db0b521a96c3f52a2">System_mod::MODULE_NAME</a></div><div class="ttdeci">character(*), parameter MODULE_NAME</div><div class="ttdef"><b>Definition:</b> <a href="System__mod_8f90_source.html#l00053">System_mod.f90:53</a></div></div>
 <div class="ttc" id="anamespaceTest__System__mod_html"><div class="ttname"><a href="namespaceTest__System__mod.html">Test_System_mod</a></div><div class="ttdoc">This module contains tests of the module System_mod.</div><div class="ttdef"><b>Definition:</b> <a href="Test__System__mod_8f90_source.html#l00046">Test_System_mod.f90:46</a></div></div>
@@ -730,26 +745,20 @@ $(function() {
 <div class="ttc" id="anamespaceTest__System__mod_html_ada729e6f3789a1df730ac21f58d5a334"><div class="ttname"><a href="namespaceTest__System__mod.html#ada729e6f3789a1df730ac21f58d5a334">Test_System_mod::test_OS_type_3</a></div><div class="ttdeci">logical function test_OS_type_3()</div><div class="ttdoc">Query OS first without shell query and then query OS with shell. This will test the remaining uncover...</div><div class="ttdef"><b>Definition:</b> <a href="Test__System__mod_8f90_source.html#l00348">Test_System_mod.f90:349</a></div></div>
 <div class="ttc" id="anamespaceTest__System__mod_html_ae8776e03ad8fcdf80bb54bd89ca3b29e"><div class="ttname"><a href="namespaceTest__System__mod.html#ae8776e03ad8fcdf80bb54bd89ca3b29e">Test_System_mod::Test</a></div><div class="ttdeci">type(Test_type) Test</div><div class="ttdef"><b>Definition:</b> <a href="Test__System__mod_8f90_source.html#l00055">Test_System_mod.f90:55</a></div></div>
 <div class="ttc" id="anamespaceTest__System__mod_html_af727c5798a57f0b738918ec59f478126"><div class="ttname"><a href="namespaceTest__System__mod.html#af727c5798a57f0b738918ec59f478126">Test_System_mod::test_System</a></div><div class="ttdeci">subroutine test_System()</div><div class="ttdef"><b>Definition:</b> <a href="Test__System__mod_8f90_source.html#l00063">Test_System_mod.f90:64</a></div></div>
+<div class="ttc" id="anamespaceTest__mod_html"><div class="ttname"><a href="namespaceTest__mod.html">Test_mod</a></div><div class="ttdoc">This is the driver module of the unit testing framework of the ParaMonte kernel routines.</div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00054">Test_mod.f90:54</a></div></div>
+<div class="ttc" id="anamespaceTest__mod_html_a9612928d23d1dedb33964f0207b12074"><div class="ttname"><a href="namespaceTest__mod.html#a9612928d23d1dedb33964f0207b12074">Test_mod::finalize</a></div><div class="ttdeci">subroutine finalize()</div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00180">Test_mod.f90:181</a></div></div>
 <div class="ttc" id="astructErr__mod_1_1Err__type_html"><div class="ttname"><a href="structErr__mod_1_1Err__type.html">Err_mod::Err_type</a></div><div class="ttdoc">The error type.</div><div class="ttdef"><b>Definition:</b> <a href="Err__mod_8f90_source.html#l00063">Err_mod.f90:63</a></div></div>
-<div class="ttc" id="astructString__mod_1_1Str__type_html"><div class="ttname"><a href="structString__mod_1_1Str__type.html">String_mod::Str_type</a></div><div class="ttdoc">The primitive type to contain an allocatable character type as a single string.</div><div class="ttdef"><b>Definition:</b> <a href="String__mod_8f90_source.html#l00107">String_mod.f90:107</a></div></div>
+<div class="ttc" id="astructString__mod_1_1Str__type_html"><div class="ttname"><a href="structString__mod_1_1Str__type.html">String_mod::Str_type</a></div><div class="ttdoc">The primitive type to contain an allocatable character type as a single string.</div><div class="ttdef"><b>Definition:</b> <a href="String__mod_8f90_source.html#l00123">String_mod.f90:123</a></div></div>
+<div class="ttc" id="astructTest__mod_1_1Test__type_html"><div class="ttname"><a href="structTest__mod_1_1Test__type.html">Test_mod::Test_type</a></div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00101">Test_mod.f90:101</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4d389600729eb25db92af3e09978356f.html">tests</a></li><li class="navelem"><a class="el" href="Test__System__mod_8f90.html">Test_System_mod.f90</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:34 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:11 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

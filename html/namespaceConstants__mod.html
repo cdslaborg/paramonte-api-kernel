@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('namespaceConstants__mod.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,7 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Types</a> &#124;
@@ -113,26 +133,32 @@ Variables</h2></td></tr>
 <tr class="memitem:a2d9d57f0148a7016d900f471e5f28069"><td class="memItemLeft" align="right" valign="top">integer, parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#a2d9d57f0148a7016d900f471e5f28069">RK</a> = real64</td></tr>
 <tr class="memdesc:a2d9d57f0148a7016d900f471e5f28069"><td class="mdescLeft">&#160;</td><td class="mdescRight">default real kind in Fortran mode.  <a href="namespaceConstants__mod.html#a2d9d57f0148a7016d900f471e5f28069">More...</a><br /></td></tr>
 <tr class="separator:a2d9d57f0148a7016d900f471e5f28069"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a72349c3871cbc0d3a0d07e9267e20a"><td class="memItemLeft" align="right" valign="top">integer, parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#a5a72349c3871cbc0d3a0d07e9267e20a">IKD</a> = selected_int_kind(2_IK * range(0_IK))</td></tr>
+<tr class="memdesc:a5a72349c3871cbc0d3a0d07e9267e20a"><td class="mdescLeft">&#160;</td><td class="mdescRight">integer kind twice as large as the default <a class="el" href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">IK</a> integer kind.  <a href="namespaceConstants__mod.html#a5a72349c3871cbc0d3a0d07e9267e20a">More...</a><br /></td></tr>
+<tr class="separator:a5a72349c3871cbc0d3a0d07e9267e20a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58283f24a8cd213875995283702d772f"><td class="memItemLeft" align="right" valign="top">integer, parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#a58283f24a8cd213875995283702d772f">RKD</a> = selected_int_kind(2_IK * range(0_RK))</td></tr>
+<tr class="memdesc:a58283f24a8cd213875995283702d772f"><td class="mdescLeft">&#160;</td><td class="mdescRight">integer kind twice as large as the default <a class="el" href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">IK</a> integer kind.  <a href="namespaceConstants__mod.html#a58283f24a8cd213875995283702d772f">More...</a><br /></td></tr>
+<tr class="separator:a58283f24a8cd213875995283702d772f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3573d46486b5f1a0a8d5033a9d12879"><td class="memItemLeft" align="right" valign="top">integer, parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#ae3573d46486b5f1a0a8d5033a9d12879">IK8</a> = int8</td></tr>
-<tr class="memdesc:ae3573d46486b5f1a0a8d5033a9d12879"><td class="mdescLeft">&#160;</td><td class="mdescRight">default 8-bit integer kind in Fortran mode.  <a href="namespaceConstants__mod.html#ae3573d46486b5f1a0a8d5033a9d12879">More...</a><br /></td></tr>
+<tr class="memdesc:ae3573d46486b5f1a0a8d5033a9d12879"><td class="mdescLeft">&#160;</td><td class="mdescRight">8-bit integer kind in Fortran mode.  <a href="namespaceConstants__mod.html#ae3573d46486b5f1a0a8d5033a9d12879">More...</a><br /></td></tr>
 <tr class="separator:ae3573d46486b5f1a0a8d5033a9d12879"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd3c33e94d12f6e7d7c0ee79b2d6280b"><td class="memItemLeft" align="right" valign="top">integer, parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#acd3c33e94d12f6e7d7c0ee79b2d6280b">IK16</a> = int16</td></tr>
-<tr class="memdesc:acd3c33e94d12f6e7d7c0ee79b2d6280b"><td class="mdescLeft">&#160;</td><td class="mdescRight">default 16-bit integer kind in Fortran mode.  <a href="namespaceConstants__mod.html#acd3c33e94d12f6e7d7c0ee79b2d6280b">More...</a><br /></td></tr>
+<tr class="memdesc:acd3c33e94d12f6e7d7c0ee79b2d6280b"><td class="mdescLeft">&#160;</td><td class="mdescRight">16-bit integer kind in Fortran mode.  <a href="namespaceConstants__mod.html#acd3c33e94d12f6e7d7c0ee79b2d6280b">More...</a><br /></td></tr>
 <tr class="separator:acd3c33e94d12f6e7d7c0ee79b2d6280b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab12a86d74008f0d7f287c3564c3defd9"><td class="memItemLeft" align="right" valign="top">integer, parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#ab12a86d74008f0d7f287c3564c3defd9">IK32</a> = int32</td></tr>
-<tr class="memdesc:ab12a86d74008f0d7f287c3564c3defd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">default 32-bit integer kind in Fortran mode.  <a href="namespaceConstants__mod.html#ab12a86d74008f0d7f287c3564c3defd9">More...</a><br /></td></tr>
+<tr class="memdesc:ab12a86d74008f0d7f287c3564c3defd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">32-bit integer kind in Fortran mode.  <a href="namespaceConstants__mod.html#ab12a86d74008f0d7f287c3564c3defd9">More...</a><br /></td></tr>
 <tr class="separator:ab12a86d74008f0d7f287c3564c3defd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6aaf2f477491dc84e7ebbab3b64694e"><td class="memItemLeft" align="right" valign="top">integer, parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#ad6aaf2f477491dc84e7ebbab3b64694e">IK64</a> = int64</td></tr>
-<tr class="memdesc:ad6aaf2f477491dc84e7ebbab3b64694e"><td class="mdescLeft">&#160;</td><td class="mdescRight">default 64-bit integer kind in Fortran mode.  <a href="namespaceConstants__mod.html#ad6aaf2f477491dc84e7ebbab3b64694e">More...</a><br /></td></tr>
+<tr class="memdesc:ad6aaf2f477491dc84e7ebbab3b64694e"><td class="mdescLeft">&#160;</td><td class="mdescRight">64-bit integer kind in Fortran mode.  <a href="namespaceConstants__mod.html#ad6aaf2f477491dc84e7ebbab3b64694e">More...</a><br /></td></tr>
 <tr class="separator:ad6aaf2f477491dc84e7ebbab3b64694e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf5c6c840ed0befe5a37da626c35716f"><td class="memItemLeft" align="right" valign="top">integer, parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#aaf5c6c840ed0befe5a37da626c35716f">RK32</a> = real32</td></tr>
-<tr class="memdesc:aaf5c6c840ed0befe5a37da626c35716f"><td class="mdescLeft">&#160;</td><td class="mdescRight">default 32-bit real kind in Fortran mode.  <a href="namespaceConstants__mod.html#aaf5c6c840ed0befe5a37da626c35716f">More...</a><br /></td></tr>
+<tr class="memdesc:aaf5c6c840ed0befe5a37da626c35716f"><td class="mdescLeft">&#160;</td><td class="mdescRight">32-bit real kind in Fortran mode.  <a href="namespaceConstants__mod.html#aaf5c6c840ed0befe5a37da626c35716f">More...</a><br /></td></tr>
 <tr class="separator:aaf5c6c840ed0befe5a37da626c35716f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a855643f887b4c787e6542e9e7849680f"><td class="memItemLeft" align="right" valign="top">integer, parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#a855643f887b4c787e6542e9e7849680f">RK64</a> = real64</td></tr>
-<tr class="memdesc:a855643f887b4c787e6542e9e7849680f"><td class="mdescLeft">&#160;</td><td class="mdescRight">default 64-bit real kind in Fortran mode.  <a href="namespaceConstants__mod.html#a855643f887b4c787e6542e9e7849680f">More...</a><br /></td></tr>
+<tr class="memdesc:a855643f887b4c787e6542e9e7849680f"><td class="mdescLeft">&#160;</td><td class="mdescRight">64-bit real kind in Fortran mode.  <a href="namespaceConstants__mod.html#a855643f887b4c787e6542e9e7849680f">More...</a><br /></td></tr>
 <tr class="separator:a855643f887b4c787e6542e9e7849680f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeef7c44b90b75aeeebdef1da504886cb"><td class="memItemLeft" align="right" valign="top">integer, parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#aeef7c44b90b75aeeebdef1da504886cb">RK128</a> = real128</td></tr>
-<tr class="memdesc:aeef7c44b90b75aeeebdef1da504886cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">default 128-bit real kind in Fortran mode.  <a href="namespaceConstants__mod.html#aeef7c44b90b75aeeebdef1da504886cb">More...</a><br /></td></tr>
+<tr class="memdesc:aeef7c44b90b75aeeebdef1da504886cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">128-bit real kind in Fortran mode.  <a href="namespaceConstants__mod.html#aeef7c44b90b75aeeebdef1da504886cb">More...</a><br /></td></tr>
 <tr class="separator:aeef7c44b90b75aeeebdef1da504886cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af98c475d7d15ede8622b2a6d0d3e4a72"><td class="memItemLeft" align="right" valign="top">integer, parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#af98c475d7d15ede8622b2a6d0d3e4a72">CK</a> = kind((1._RK, 1._RK))</td></tr>
 <tr class="memdesc:af98c475d7d15ede8622b2a6d0d3e4a72"><td class="mdescLeft">&#160;</td><td class="mdescRight">complex kind.  <a href="namespaceConstants__mod.html#af98c475d7d15ede8622b2a6d0d3e4a72">More...</a><br /></td></tr>
@@ -146,6 +172,9 @@ Variables</h2></td></tr>
 <tr class="memitem:ad3873e1ecc5eb3cf3651f72630cae087"><td class="memItemLeft" align="right" valign="top">integer, parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#ad3873e1ecc5eb3cf3651f72630cae087">CK128</a> = kind((1._RK128, 1._RK128))</td></tr>
 <tr class="memdesc:ad3873e1ecc5eb3cf3651f72630cae087"><td class="mdescLeft">&#160;</td><td class="mdescRight">quad-precision complex kind.  <a href="namespaceConstants__mod.html#ad3873e1ecc5eb3cf3651f72630cae087">More...</a><br /></td></tr>
 <tr class="separator:ad3873e1ecc5eb3cf3651f72630cae087"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9b333c426d45f8da3587b607375777a"><td class="memItemLeft" align="right" valign="top">integer, parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#af9b333c426d45f8da3587b607375777a">HK</a> = kind(&quot;ascii&quot;)</td></tr>
+<tr class="memdesc:af9b333c426d45f8da3587b607375777a"><td class="mdescLeft">&#160;</td><td class="mdescRight">default character kind (ASCII).  <a href="namespaceConstants__mod.html#af9b333c426d45f8da3587b607375777a">More...</a><br /></td></tr>
+<tr class="separator:af9b333c426d45f8da3587b607375777a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20cf8a209a61d05f169e090cd7f1d82f"><td class="memItemLeft" align="right" valign="top">integer, parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#a20cf8a209a61d05f169e090cd7f1d82f">RKP</a> = precision(1._RK)</td></tr>
 <tr class="memdesc:a20cf8a209a61d05f169e090cd7f1d82f"><td class="mdescLeft">&#160;</td><td class="mdescRight">real kind precision.  <a href="namespaceConstants__mod.html#a20cf8a209a61d05f169e090cd7f1d82f">More...</a><br /></td></tr>
 <tr class="separator:a20cf8a209a61d05f169e090cd7f1d82f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -254,7 +283,7 @@ Variables</h2></td></tr>
 <tr class="memitem:a5c6cba7f011d7b0541c04de226995100"><td class="memItemLeft" align="right" valign="top">integer(<a class="el" href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">IK</a>), parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#a5c6cba7f011d7b0541c04de226995100">HUGE_IK</a> = huge(1_IK)</td></tr>
 <tr class="memdesc:a5c6cba7f011d7b0541c04de226995100"><td class="mdescLeft">&#160;</td><td class="mdescRight">largest number of kind RK  <a href="namespaceConstants__mod.html#a5c6cba7f011d7b0541c04de226995100">More...</a><br /></td></tr>
 <tr class="separator:a5c6cba7f011d7b0541c04de226995100"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ec79ceaa8309f1c85371f1e4b09e88c"><td class="memItemLeft" align="right" valign="top">integer(<a class="el" href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">IK</a>), parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#a3ec79ceaa8309f1c85371f1e4b09e88c">POSINF_IK</a> = <a class="el" href="namespaceConstants__mod.html#a5c6cba7f011d7b0541c04de226995100">HUGE_IK</a> / 2_IK</td></tr>
+<tr class="memitem:a3ec79ceaa8309f1c85371f1e4b09e88c"><td class="memItemLeft" align="right" valign="top">integer(<a class="el" href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">IK</a>), parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#a3ec79ceaa8309f1c85371f1e4b09e88c">POSINF_IK</a> = (<a class="el" href="namespaceConstants__mod.html#a5c6cba7f011d7b0541c04de226995100">HUGE_IK</a> - 1_IK) / 2_IK</td></tr>
 <tr class="memdesc:a3ec79ceaa8309f1c85371f1e4b09e88c"><td class="mdescLeft">&#160;</td><td class="mdescRight">positive virtually-infinite integer. the division is done to avoid overflow in output  <a href="namespaceConstants__mod.html#a3ec79ceaa8309f1c85371f1e4b09e88c">More...</a><br /></td></tr>
 <tr class="separator:a3ec79ceaa8309f1c85371f1e4b09e88c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd5666a25422e238f5f0d2f3ece5c3ec"><td class="memItemLeft" align="right" valign="top">integer(<a class="el" href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">IK</a>), parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#acd5666a25422e238f5f0d2f3ece5c3ec">NEGINF_IK</a> = -<a class="el" href="namespaceConstants__mod.html#a3ec79ceaa8309f1c85371f1e4b09e88c">POSINF_IK</a></td></tr>
@@ -270,6 +299,8 @@ Variables</h2></td></tr>
 <tr class="separator:ab76ba691d2e9d65ea1496bc0295dc8e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a048c60e49ba771c31419ea3a22a17d31"><td class="memItemLeft" align="right" valign="top">character(1), parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#a048c60e49ba771c31419ea3a22a17d31">NULL_SK</a> = achar(30)</td></tr>
 <tr class="separator:a048c60e49ba771c31419ea3a22a17d31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9833c091dfda7ec1ff8476bda463626"><td class="memItemLeft" align="right" valign="top">character(1), parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#ac9833c091dfda7ec1ff8476bda463626">BELL</a> = achar(7)</td></tr>
+<tr class="separator:ac9833c091dfda7ec1ff8476bda463626"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee6a99f8b5cb89091c947486e90bf317"><td class="memItemLeft" align="right" valign="top">character(1), parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#aee6a99f8b5cb89091c947486e90bf317">NLC</a> = achar(10)</td></tr>
 <tr class="separator:aee6a99f8b5cb89091c947486e90bf317"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ceae39b5d39380b6b5d753bab72db9c"><td class="memItemLeft" align="right" valign="top">character(1), parameter&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceConstants__mod.html#a0ceae39b5d39380b6b5d753bab72db9c">TAB</a> = achar(9)</td></tr>
@@ -329,7 +360,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00268">268</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00272">272</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -351,11 +382,27 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00254">254</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00258">258</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="ac9833c091dfda7ec1ff8476bda463626" name="ac9833c091dfda7ec1ff8476bda463626"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9833c091dfda7ec1ff8476bda463626">&#9670;&nbsp;</a></span>BELL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">character(1), parameter Constants_mod::BELL = achar(7)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00130">130</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+
+</div>
+</div>
 <a id="aeddb2167caf5107eaa90958928a3b9b2" name="aeddb2167caf5107eaa90958928a3b9b2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeddb2167caf5107eaa90958928a3b9b2">&#9670;&nbsp;</a></span>CARRIAGE_RETURN</h2>
 
@@ -368,7 +415,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00197">197</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00201">201</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -386,7 +433,7 @@ Variables</h2></td></tr>
 
 <p>complex kind. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00073">73</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00075">75</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -404,7 +451,7 @@ Variables</h2></td></tr>
 
 <p>quad-precision complex kind. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00076">76</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00078">78</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -422,7 +469,7 @@ Variables</h2></td></tr>
 
 <p>single-precision complex kind. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00074">74</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00076">76</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -440,7 +487,7 @@ Variables</h2></td></tr>
 
 <p>double-precision complex kind. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00075">75</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00077">77</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -456,7 +503,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00200">200</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00204">204</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -474,7 +521,7 @@ Variables</h2></td></tr>
 
 <p>the smallest representable real increment (highest precision) by the machine </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00108">108</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00111">111</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -492,7 +539,7 @@ Variables</h2></td></tr>
 
 <p>1 (erg) = ERG2KEV (keV) </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00143">143</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00147">147</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -508,7 +555,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00199">199</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00203">203</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -524,7 +571,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00198">198</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00202">202</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -540,7 +587,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00230">230</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00234">234</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -556,7 +603,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00231">231</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00235">235</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -574,7 +621,25 @@ Variables</h2></td></tr>
 
 <p>= 1.5707963267948966192313216916398_RK </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00090">90</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00093">93</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+
+</div>
+</div>
+<a id="af9b333c426d45f8da3587b607375777a" name="af9b333c426d45f8da3587b607375777a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9b333c426d45f8da3587b607375777a">&#9670;&nbsp;</a></span>HK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">integer, parameter Constants_mod::HK = kind(&quot;ascii&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>default character kind (ASCII). </p>
+
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00079">79</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -592,7 +657,7 @@ Variables</h2></td></tr>
 
 <p>largest number of kind RK </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00118">118</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00121">121</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -610,7 +675,7 @@ Variables</h2></td></tr>
 
 <p>largest number of kind RK </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00110">110</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00113">113</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -645,9 +710,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>default 16-bit integer kind in Fortran mode. </p>
+<p>16-bit integer kind in Fortran mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00067">67</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00069">69</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -663,9 +728,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>default 32-bit integer kind in Fortran mode. </p>
+<p>32-bit integer kind in Fortran mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00068">68</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00070">70</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -681,9 +746,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>default 64-bit integer kind in Fortran mode. </p>
+<p>64-bit integer kind in Fortran mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00069">69</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00071">71</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -699,7 +764,25 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>default 8-bit integer kind in Fortran mode. </p>
+<p>8-bit integer kind in Fortran mode. </p>
+
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00068">68</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+
+</div>
+</div>
+<a id="a5a72349c3871cbc0d3a0d07e9267e20a" name="a5a72349c3871cbc0d3a0d07e9267e20a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a72349c3871cbc0d3a0d07e9267e20a">&#9670;&nbsp;</a></span>IKD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">integer, parameter Constants_mod::IKD = selected_int_kind(2_IK * range(0_IK))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>integer kind twice as large as the default <a class="el" href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">IK</a> integer kind. </p>
 
 <p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00066">66</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
@@ -719,7 +802,7 @@ Variables</h2></td></tr>
 
 <p>Inverse of the natural Log of 2 (= 0.693147180559945_RK). </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00093">93</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00096">96</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -737,7 +820,7 @@ Variables</h2></td></tr>
 
 <p>= inverse Pi. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00091">91</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00094">94</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -755,7 +838,7 @@ Variables</h2></td></tr>
 
 <p>= inverse of the square root of Pi. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00102">102</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00105">105</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -773,7 +856,7 @@ Variables</h2></td></tr>
 
 <p>Inverse Square root of 2. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00103">103</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00106">106</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -791,7 +874,7 @@ Variables</h2></td></tr>
 
 <p>1/sqrt(2*Pi) (= 0.398942280401432_RK) </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00104">104</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00107">107</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -809,7 +892,7 @@ Variables</h2></td></tr>
 
 <p>1 (keV) = KEV2ERG (erg) </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00144">144</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00148">148</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -825,7 +908,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00165">165</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00169">169</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -843,7 +926,7 @@ Variables</h2></td></tr>
 
 <p>Log10 of Napier constant (= 0.434294481903259_RK). </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00107">107</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00110">110</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -859,7 +942,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00145">145</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00149">149</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -877,7 +960,7 @@ Variables</h2></td></tr>
 
 <p>Natural Log of 0.5. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00094">94</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00097">97</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -895,7 +978,7 @@ Variables</h2></td></tr>
 
 <p>Log(1/sqrt(2Pi)), used in Gaussian distribution. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00105">105</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00108">108</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -911,7 +994,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00146">146</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00150">150</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -929,7 +1012,7 @@ Variables</h2></td></tr>
 
 <p>ln(2pi) (= 1.144729885849400_RK) </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00096">96</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00099">99</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -947,7 +1030,7 @@ Variables</h2></td></tr>
 
 <p>Natural Log of 10 (= 2.302585092994046_RK). </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00095">95</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00098">98</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -965,7 +1048,7 @@ Variables</h2></td></tr>
 
 <p>Natural Log of 2 (= 0.693147180559945_RK). </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00092">92</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00095">95</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -983,7 +1066,7 @@ Variables</h2></td></tr>
 
 <p>ln(2pi) (= 1.837877066409345_RK) </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00097">97</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00100">100</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1001,7 +1084,7 @@ Variables</h2></td></tr>
 
 <p>log of the largest number of kind RK </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00112">112</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00115">115</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1019,7 +1102,7 @@ Variables</h2></td></tr>
 
 <p>the natural logarithm of the positive virtually-infinite integer. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00121">121</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00124">124</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1037,7 +1120,7 @@ Variables</h2></td></tr>
 
 <p>represents the logarithm of the largest representable number </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00116">116</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00119">119</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1055,7 +1138,7 @@ Variables</h2></td></tr>
 
 <p>log of the smallest number of kind RK </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00113">113</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00116">116</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1089,7 +1172,7 @@ Variables</h2></td></tr>
 
 <p>Napier number e. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00099">99</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00102">102</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1107,7 +1190,7 @@ Variables</h2></td></tr>
 
 <p>negative virtually-infinite integer. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00120">120</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00123">123</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1125,7 +1208,7 @@ Variables</h2></td></tr>
 
 <p>negative virtual infinite real. Defined to avoid underflow/overflow and compatibility with Dynamic languages. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00115">115</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00118">118</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1143,7 +1226,7 @@ Variables</h2></td></tr>
 
 <p>represents the logarithm of the smallest representable number </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00117">117</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00120">120</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1159,7 +1242,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00127">127</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00131">131</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1175,7 +1258,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00124">124</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00127">127</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1193,7 +1276,7 @@ Variables</h2></td></tr>
 
 <p>the value used to represent unassigned variables. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00123">123</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00126">126</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1209,7 +1292,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00125">125</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00128">128</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1225,7 +1308,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00139">139</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00143">143</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1243,7 +1326,7 @@ Variables</h2></td></tr>
 
 <p>= 3.141592653589793238462643383279502884197_RK : The irrational number Pi. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00087">87</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00090">90</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1259,7 +1342,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00246">246</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00250">250</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1270,14 +1353,14 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">integer(<a class="el" href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">IK</a>), parameter Constants_mod::POSINF_IK = <a class="el" href="namespaceConstants__mod.html#a5c6cba7f011d7b0541c04de226995100">HUGE_IK</a> / 2_IK</td>
+          <td class="memname">integer(<a class="el" href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">IK</a>), parameter Constants_mod::POSINF_IK = (<a class="el" href="namespaceConstants__mod.html#a5c6cba7f011d7b0541c04de226995100">HUGE_IK</a> - 1_IK) / 2_IK</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>positive virtually-infinite integer. the division is done to avoid overflow in output </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00119">119</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00122">122</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1295,7 +1378,7 @@ Variables</h2></td></tr>
 
 <p>positive virtual infinite real. The division is done to avoid overflow in output </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00114">114</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00117">117</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1311,7 +1394,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00164">164</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00168">168</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1329,7 +1412,7 @@ Variables</h2></td></tr>
 
 <p>= 0.78539816339744830961566084581988_RK </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00089">89</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00092">92</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1364,9 +1447,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>default 128-bit real kind in Fortran mode. </p>
+<p>128-bit real kind in Fortran mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00072">72</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00074">74</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1384,7 +1467,7 @@ Variables</h2></td></tr>
 
 <p>quad-precision. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00083">83</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00086">86</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1400,9 +1483,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>default 32-bit real kind in Fortran mode. </p>
+<p>32-bit real kind in Fortran mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00070">70</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00072">72</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1420,7 +1503,7 @@ Variables</h2></td></tr>
 
 <p>single-precision. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00081">81</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00084">84</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1436,9 +1519,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>default 64-bit real kind in Fortran mode. </p>
+<p>64-bit real kind in Fortran mode. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00071">71</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00073">73</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1456,7 +1539,25 @@ Variables</h2></td></tr>
 
 <p>double-precision. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00082">82</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00085">85</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+
+</div>
+</div>
+<a id="a58283f24a8cd213875995283702d772f" name="a58283f24a8cd213875995283702d772f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58283f24a8cd213875995283702d772f">&#9670;&nbsp;</a></span>RKD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">integer, parameter Constants_mod::RKD = selected_int_kind(2_IK * range(0_RK))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>integer kind twice as large as the default <a class="el" href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">IK</a> integer kind. </p>
+
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00067">67</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1474,7 +1575,7 @@ Variables</h2></td></tr>
 
 <p>real kind precision. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00080">80</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00083">83</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1492,7 +1593,7 @@ Variables</h2></td></tr>
 
 <p>the smallest representable real increment (highest precision) by the machine </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00109">109</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00112">112</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1510,7 +1611,7 @@ Variables</h2></td></tr>
 
 <p>Square root of PI/2 (= 1.2533141373155_RK) </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00106">106</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00109">109</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1528,7 +1629,7 @@ Variables</h2></td></tr>
 
 <p>Square root of Pi. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00100">100</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00103">103</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1546,7 +1647,7 @@ Variables</h2></td></tr>
 
 <p>Square root of 2. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00098">98</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00101">101</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1564,7 +1665,7 @@ Variables</h2></td></tr>
 
 <p>Square root of 2Pi. </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00101">101</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00104">104</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1580,7 +1681,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00128">128</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00132">132</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1598,7 +1699,7 @@ Variables</h2></td></tr>
 
 <p>tiniest number of kind RK </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00111">111</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00114">114</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1616,7 +1717,7 @@ Variables</h2></td></tr>
 
 <p>= 6.283185307179586476925286766559005768394_RK </p>
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00088">88</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00091">91</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1632,28 +1733,19 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00129">129</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Constants__mod_8f90_source.html#l00133">133</a> of file <a class="el" href="Constants__mod_8f90_source.html">Constants_mod.f90</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="namespaceConstants__mod.html">Constants_mod</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:36 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:13 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

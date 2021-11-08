@@ -1,0 +1,319 @@
+\hypertarget{namespaceMathCumPropExp__mod}{}\doxysection{Math\+Cum\+Prop\+Exp\+\_\+mod Module Reference}
+\label{namespaceMathCumPropExp__mod}\index{MathCumPropExp\_mod@{MathCumPropExp\_mod}}
+
+
+This module contains the procedures and interface for computing the cumulative proportions of the exponential of an array.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfaceMathCumPropExp__mod_1_1genCumPropExp}{gen\+Cum\+Prop\+Exp}}
+\begin{DoxyCompactList}\small\item\em Generate and return the cumulative sum of the proportions of the exponential of the input array, optionally in the backward direction and, optionally reverse the output cumulative sum upon return. The returned array is normalized such that all of its elements fall in the range $[0,1]$. All operations are performed while avoiding arithmetic overflow. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceMathCumPropExp__mod_1_1getCumPropExp}{get\+Cum\+Prop\+Exp}}
+\begin{DoxyCompactList}\small\item\em Return the cumulative sum of the proportions of the exponential of the input array, optionally in the backward direction and, optionally reverse the output cumulative sum upon return. The returned array is normalized such that all of its elements fall in the range $[0,1]$. All operations are performed while avoiding arithmetic overflow. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+pure real(RK) function, dimension(len\+Array) \mbox{\hyperlink{namespaceMathCumPropExp__mod_a7f183a0a85870936365afaceb1c05a63}{gen\+Cum\+Prop\+Exp\+\_\+\+RK}} (Array, max\+Array, len\+Array)
+\begin{DoxyCompactList}\small\item\em {\bfseries{\mbox{[}LEGACY code\mbox{]}}}~\newline
+ Generate and return the normalized cumulative sum (i.\+e., Cumulative Density Function (CDF)) of the exponentials of the input real vector robustly (without overflow or underflow). The last element of the returned vector is one. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceMathCumPropExp__mod_ab2cd8dbaf81b08c846b8bc50ba1c111c}{MODULE\+\_\+\+NAME}} = \char`\"{}@Math\+Cum\+Prop\+Exp\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains the procedures and interface for computing the cumulative proportions of the exponential of an array. 
+
+\label{namespaceMathCumPropExp__mod_benchmark-genCumPropExp_vs_getCumPropExp}%
+\Hypertarget{namespaceMathCumPropExp__mod_benchmark-genCumPropExp_vs_getCumPropExp}%
+{\bfseries{Benchmark \+:: The runtime performance of \mbox{\hyperlink{interfaceMathCumPropExp__mod_1_1genCumPropExp}{gen\+Cum\+Prop\+Exp}} vs. \mbox{\hyperlink{interfaceMathCumPropExp__mod_1_1getCumPropExp}{get\+Cum\+Prop\+Exp}}}} \href{\#benchmark-genCumPropExp_vs_getCumPropExp}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00001}00001 \textcolor{fortran_comment}{! Test the performance of `genCumPropExp()` vs. `getCumPropExp()`.}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00002}00002 \textcolor{fortran_statement}{program} benchmark}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00004}00004     \textcolor{fortran_statement}{use }\textcolor{fortran_inrinsic_module}{iso\_fortran\_env}, \textcolor{fortran_statement}{only}:\textcolor{fortran_named_const}{ error\_unit}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00005}00005     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00006}00006     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceBench__mod}{Bench\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00008}00008     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00010}00010     \textcolor{fortran_statement}{integer}(IK)                         :: i}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00011}00011     \textcolor{fortran_statement}{integer}(IK)                         :: iarr}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00012}00012     \textcolor{fortran_statement}{integer}(IK)                         :: fileUnit}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00013}00013     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}             :: NARR\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00014}00014     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}             :: NBENCH\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00015}00015     \textcolor{fortran_statement}{integer}(IK)                         :: ArraySize(NARR)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00016}00016 \textcolor{fortran_statement}{    real}(RK)                            :: dummySum\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.\_RK}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00017}00017 \textcolor{fortran_statement}{    real}(RK)                            :: maxArray}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00018}00018 \textcolor{fortran_statement}{    real}(RK)    ,\textcolor{fortran_attribute}{ allocatable}           :: Array(:)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00019}00019 \textcolor{fortran_statement}{    real}(RK)    ,\textcolor{fortran_attribute}{ allocatable}           :: CumPropExp(:)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00020}00020     \textcolor{fortran_statement}{type}(Bench\_type)                    :: Bench(NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00022}00022     Bench(\textcolor{fortran_numeric_literal}{1})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}genCumPropExp"{}}, exec\textcolor{fortran_operator_symbols}{ = }genCumPropExp , getOverhead\textcolor{fortran_operator_symbols}{ = }getOverhead)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00023}00023     Bench(\textcolor{fortran_numeric_literal}{2})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}getCumPropExp"{}}, exec\textcolor{fortran_operator_symbols}{ = }getCumPropExp , getOverhead\textcolor{fortran_operator_symbols}{ = }getOverhead)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00025}00025     ArraySize\textcolor{fortran_operator_symbols}{ = }[(\textcolor{fortran_numeric_literal}{ 2\_IK}\textcolor{fortran_operator_symbols}{*}\textcolor{fortran_operator_symbols}{*}iarr, iarr\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}, NARR )]}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00027}00027 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00028}00028 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}genCumPropExp() vs. getCumPropExp()"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00029}00029 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00031}00031 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnit, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.out"{}}, status\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}replace"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00033}00033 \textcolor{fortran_statement}{        write}(fileUnit, \textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) \textcolor{fortran_string}{"{}ArraySize"{}}, (Bench(i)\textcolor{fortran_operator_symbols}{\%}name, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00035}00035         loopOverArraySize: \textcolor{fortran_keywordflow}{do} iarr\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NARR}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00037}00037 \textcolor{fortran_statement}{            allocate}(Array(ArraySize(iarr)))}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00038}00038 \textcolor{fortran_statement}{            allocate}(CumPropExp(ArraySize(iarr)),\textcolor{fortran_spcifier}{ source}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.\_RK})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00039}00039 \textcolor{fortran_statement}{            write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Benchmarking with array size"{}}, ArraySize(iarr)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00041}00041             \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00042}00042 \textcolor{fortran_statement}{                call} Bench(i)\textcolor{fortran_operator_symbols}{\%}time(Bench(i)\textcolor{fortran_operator_symbols}{\%}Timing, minsec\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{1\_RK})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00043}00043 \textcolor{fortran_keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00044}00044 \textcolor{fortran_statement}{            write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) ArraySize(iarr), (Bench(i)\textcolor{fortran_operator_symbols}{\%}Timing\textcolor{fortran_operator_symbols}{\%}Stat\textcolor{fortran_operator_symbols}{\%}mean, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00046}00046 \textcolor{fortran_statement}{            deallocate}(Array, CumPropExp)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00048}00048 \textcolor{fortran_keywordflow}{        end do} loopOverArraySize}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00049}00049 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) dummySum}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00050}00050 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00052}00052 \textcolor{fortran_statement}{    close}(fileUnit)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00054}00054 \textcolor{fortran_statement}{contains}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00056}00056     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00057}00057     \textcolor{fortran_comment}{! procedure wrappers.}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00058}00058     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00060}00060 \textcolor{fortran_statement}{    subroutine} getOverhead()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00061}00061 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00062}00062 \textcolor{fortran_statement}{        call} getDummy()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00063}00063     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00065}00065 \textcolor{fortran_statement}{    subroutine} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00066}00066 \textcolor{fortran_statement}{        call}\textcolor{fortran_subroutine}{ random\_number}(Array)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00067}00067         maxArray\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{maxval}(Array)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00068}00068     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00070}00070 \textcolor{fortran_statement}{    subroutine} getDummy()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00071}00071         dummySum\textcolor{fortran_operator_symbols}{ = }dummySum\textcolor{fortran_operator_symbols}{ + }CumPropExp(\textcolor{fortran_numeric_literal}{1})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00072}00072     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00074}00074 \textcolor{fortran_statement}{    subroutine} genCumPropExp()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00075}00075         \textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00076}00076             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMathCumPropExp__mod}{MathCumPropExp\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceMathCumPropExp__mod_1_1genCumPropExp}{genCumPropExp}}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00077}00077 \textcolor{fortran_statement}{            call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00078}00078             CumPropExp\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceMathCumPropExp__mod_1_1genCumPropExp}{genCumPropExp}}(Array, maxArray)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00079}00079 \textcolor{fortran_statement}{            call} getDummy()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00080}00080 \textcolor{fortran_keywordflow}{        end block}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00081}00081     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00083}00083 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceMathCumPropExp__mod_1_1getCumPropExp}{getCumPropExp}}()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00084}00084         \textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00085}00085             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMathCumPropExp__mod}{MathCumPropExp\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceMathCumPropExp__mod_1_1getCumPropExp}{getCumPropExp}}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00086}00086 \textcolor{fortran_statement}{            call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00087}00087 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{interfaceMathCumPropExp__mod_1_1getCumPropExp}{getCumPropExp}}(CumPropExp, Array, maxArray)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00088}00088 \textcolor{fortran_statement}{            call} getDummy()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00089}00089 \textcolor{fortran_keywordflow}{        end block}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00090}00090     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00092}00092 \textcolor{fortran_statement}{end program }benchmark}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceMathCumPropExp__mod_compileb-unix-gnu-genCumPropExp_vs_getCumPropExp}%
+\Hypertarget{namespaceMathCumPropExp__mod_compileb-unix-gnu-genCumPropExp_vs_getCumPropExp}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compileb-unix-gnu-genCumPropExp_vs_getCumPropExp}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceMathCumPropExp__mod_compileb-unix-intel-genCumPropExp_vs_getCumPropExp}%
+\Hypertarget{namespaceMathCumPropExp__mod_compileb-unix-intel-genCumPropExp_vs_getCumPropExp}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compileb-unix-intel-genCumPropExp_vs_getCumPropExp}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceMathCumPropExp__mod_postprocb-genCumPropExp_vs_getCumPropExp}%
+\Hypertarget{namespaceMathCumPropExp__mod_postprocb-genCumPropExp_vs_getCumPropExp}%
+{\bfseries{Postprocessing of the output}} \href{\#postprocb-genCumPropExp_vs_getCumPropExp}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00004}00004 \textcolor{keyword}{import} seaborn \textcolor{keyword}{as} sns}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00005}00005 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00006}00006 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00007}00007 sns.set()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00009}00009 fontsize = 14}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00011}00011 methods = [\textcolor{stringliteral}{"{}genCumPropExp"{}}, \textcolor{stringliteral}{"{}getCumPropExp"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00013}00013 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.out"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00019}00019 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00020}00020 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00022}00022 \textcolor{keywordflow}{for} method \textcolor{keywordflow}{in} methods:}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00023}00023     plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00024}00024             , df[method].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00025}00025             , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00026}00026             )}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00028}00028 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00029}00029 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00030}00030 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00031}00031 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime [ seconds ]"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00032}00032 ax.set\_title(\textcolor{stringliteral}{"{}genCumPropExp() vs. getCumPropExp().\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00033}00033 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00034}00034 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00035}00035 ax.legend   ( methods}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00036}00036            \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00037}00037            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00038}00038             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00039}00039             )}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00041}00041 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00042}00042 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genCumPropExp\_vs\_getCumPropExp.runtime.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00048}00048 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00049}00049 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00051}00051 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00052}00052         , df[\textcolor{stringliteral}{"{}genCumPropExp"{}}].values / df[\textcolor{stringliteral}{"{}getCumPropExp"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00053}00053         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00054}00054         , color = \textcolor{stringliteral}{"{}r"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00055}00055         )}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00056}00056 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00057}00057         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00058}00058         , linestyle = \textcolor{stringliteral}{"{}-\/-\/"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00059}00059         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00060}00060         , color = \textcolor{stringliteral}{"{}black"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00061}00061         )}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00063}00063 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00064}00064 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00065}00065 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00066}00066 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime Ratio ( genCumPropExp / getCumPropExp )"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00067}00067 ax.set\_title(\textcolor{stringliteral}{"{}genCumPropExp() vs. getCumPropExp().\(\backslash\)nLower than 1 means genCumPropExp() is faster."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00068}00068 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00069}00069 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00070}00070 ax.legend   ( [\textcolor{stringliteral}{"{}Runtime Ratio"{}}, \textcolor{stringliteral}{"{}equality"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00071}00071             , loc = \textcolor{stringliteral}{"{}center left"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00072}00072             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00073}00073             , bbox\_to\_anchor = (1, 0.5)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00074}00074             )}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00076}00076 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00077}00077 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genCumPropExp\_vs\_getCumPropExp.runtime.ratio.png"{}})}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceMathCumPropExp__mod_visb-genCumPropExp_vs_getCumPropExp}%
+\Hypertarget{namespaceMathCumPropExp__mod_visb-genCumPropExp_vs_getCumPropExp}%
+{\bfseries{Visualization of the benchmark output}} \href{\#visb-genCumPropExp_vs_getCumPropExp}{\texttt{ ⛓}} \DoxyHorRuler{0}
+   ~\newline
+ \label{namespaceMathCumPropExp__mod_moralb-genCumPropExp_vs_getCumPropExp}%
+\Hypertarget{namespaceMathCumPropExp__mod_moralb-genCumPropExp_vs_getCumPropExp}%
+{\bfseries{Benchmark moral}} \href{\#moralb-genCumPropExp_vs_getCumPropExp}{\texttt{ ⛓}} \DoxyHorRuler{0}
+
+\begin{DoxyEnumerate}
+\item Counter-\/intuitively, the functional interface appears to be faster than the procedural (subroutine) interface, although, eventually, the subroutine interface becomes more efficient for very large arrays (of size 100 elements and more).
+\item This observation is unexpected, but we must follow the evidence wherever it leads to (, unless we find a bug in the implementation, which seems unlikely).
+\end{DoxyEnumerate}
+\end{DoxyParagraph}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000013}{Test}}]\mbox{\hyperlink{namespaceTest__MathCumPropExp__mod}{Test\+\_\+\+Math\+Cum\+Prop\+Exp\+\_\+mod}}\end{DoxyRefDesc}
+
+
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Thursday 12\+:45 AM, August 20, 2021, Dallas, TX 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceMathCumPropExp__mod_a7f183a0a85870936365afaceb1c05a63}\label{namespaceMathCumPropExp__mod_a7f183a0a85870936365afaceb1c05a63}} 
+\index{MathCumPropExp\_mod@{MathCumPropExp\_mod}!genCumPropExp\_RK@{genCumPropExp\_RK}}
+\index{genCumPropExp\_RK@{genCumPropExp\_RK}!MathCumPropExp\_mod@{MathCumPropExp\_mod}}
+\doxysubsubsection{\texorpdfstring{genCumPropExp\_RK()}{genCumPropExp\_RK()}}
+{\footnotesize\ttfamily pure real(RK) function, dimension(len\+Array) Math\+Cum\+Prop\+Exp\+\_\+mod\+::gen\+Cum\+Prop\+Exp\+\_\+\+RK (\begin{DoxyParamCaption}\item[{real(RK)}]{Array,  }\item[{real(RK)}]{max\+Array,  }\item[{integer(IK)}]{len\+Array }\end{DoxyParamCaption})}
+
+
+
+{\bfseries{\mbox{[}LEGACY code\mbox{]}}}~\newline
+ Generate and return the normalized cumulative sum (i.\+e., Cumulative Density Function (CDF)) of the exponentials of the input real vector robustly (without overflow or underflow). The last element of the returned vector is one. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Array} & \+: The input contiguous vector of log-\/values whose log-\/sum-\/exp must be computed. \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+Array} & \+: The maximum of the input {\ttfamily Array} argument ({\ttfamily max\+Array = maxval(\+Array)}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len\+Array} & \+: The length of the input Array.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Cum\+Prop\+Exp} \+: A real vector of the same length as the input array {\ttfamily Array}.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+This routine is only kept for backward compatibility and should not be used in production code. Instead, use the procedures under the generic interface \mbox{\hyperlink{interfaceMathCumPropExp__mod_1_1getCumPropExp}{get\+Cum\+Prop\+Exp}}.
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000016}{Test}}]\mbox{\hyperlink{namespaceTest__MathCumPropExp__mod}{Test\+\_\+\+Math\+Cum\+Prop\+Exp\+\_\+mod}}\end{DoxyRefDesc}
+
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 25, 2015, 2\+:21 PM, Institute for Fusion Studies, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{MathCumPropExp__mod_8f90_source_l00412}{412}} of file \mbox{\hyperlink{MathCumPropExp__mod_8f90_source}{Math\+Cum\+Prop\+Exp\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceMathCumPropExp__mod_ab2cd8dbaf81b08c846b8bc50ba1c111c}\label{namespaceMathCumPropExp__mod_ab2cd8dbaf81b08c846b8bc50ba1c111c}} 
+\index{MathCumPropExp\_mod@{MathCumPropExp\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!MathCumPropExp\_mod@{MathCumPropExp\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character($\ast$), parameter Math\+Cum\+Prop\+Exp\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Math\+Cum\+Prop\+Exp\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{MathCumPropExp__mod_8f90_source_l00074}{74}} of file \mbox{\hyperlink{MathCumPropExp__mod_8f90_source}{Math\+Cum\+Prop\+Exp\+\_\+mod.\+f90}}.
+

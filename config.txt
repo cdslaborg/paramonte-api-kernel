@@ -270,30 +270,58 @@ TAB_SIZE               = 4
 # a double escape (\\{ and \\})
 
 ALIASES =
-ALIASES += usage="\par<b>Example usage</b>"
+ALIASES += legacy="**[LEGACY code]**<br>"
+ALIASES += interface="\anchor interface **Possible calling interfaces** [⛓](#interface) \par"
+ALIASES += interface{1}="\anchor interface-\1 **Possible interfaces** [⛓](#interface-\1) \par"
+ALIASES += example="\anchor example **Example usage** [⛓](#example) \par"
+ALIASES += example{1}="\anchor example-\1 **Example usage** [⛓](#example-\1) \par"
+ALIASES += benchmark="\anchor benchmark **Benchmark** [⛓](#benchmark) \par"
+ALIASES += benchmark{1}="\anchor benchmark-\1 **Benchmark :: \1** [⛓](#benchmark-\1) \par"
+ALIASES += benchmark{2}="\anchor benchmark-\1 **Benchmark :: \2** [⛓](#benchmark-\1) \par"
 ALIASES += abbr="\remark For details of naming abbreviations, see [this page](@ref ParaMonteAbbreviationGuidlines)."
 ALIASES += naming="\remark For details of the naming conventions, see [this page](@ref ParaMonteNamingConventions)."
 ALIASES += license="\remark This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href='https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work' target='_blank'><b>publications of the ParaMonte library</b></a>."
 ALIASES += warnpure="\warning This procedure is `impure` when the library is compiled with macro `CHECK_ENABLED=1`. By default, it is `pure` in `release` build and `impure` in `debug` and `testing` builds."
-ALIASES += compile="<b>Example Unix compile command via GNU `gfortran` compiler</b>\include{lineno .sh} build.gnu.sh<b>Example Unix compile command via Intel `ifort` compiler</b>\include{lineno .sh} build.intel.sh"
-ALIASES += output="<b>Example output</b>"
+ALIASES += warnrecursive="\warning This algorithm is recursive and as such, requires stack allocation, which could lead to runtime stack-overflow errors."
+ALIASES += pure="\remark This procedure is `pure`."
+ALIASES += elemental="\remark This procedure is `elemental`."
+ALIASES += compile="\n \anchor compile-unix-gnu <b>Example Unix compile command via GNU `gfortran` compiler</b> [⛓](#compile-unix-gnu) \include{lineno .sh} build.gnu.sh \n \anchor compile-unix-intel <b>Example Unix compile command via Intel `ifort` compiler</b> [⛓](#compile-unix-intel) \include{lineno .sh} build.intel.sh"
+ALIASES += compileb="\n \anchor compileb-unix-gnu <b>Example Unix compile command via GNU `gfortran` compiler</b> [⛓](#compileb-unix-gnu) \include{lineno .sh} build.gnu.sh \n \anchor compileb-unix-intel <b>Example Unix compile command via Intel `ifort` compiler</b> [⛓](#compileb-unix-intel) \include{lineno .sh} build.intel.sh"
+ALIASES += compileb{1}="\n \anchor compileb-unix-gnu-\1 <b>Example Unix compile command via GNU `gfortran` compiler</b> [⛓](#compileb-unix-gnu-\1) \include{lineno .sh} build.gnu.sh \n \anchor compileb-unix-intel-\1 <b>Example Unix compile command via Intel `ifort` compiler</b> [⛓](#compileb-unix-intel-\1) \include{lineno .sh} build.intel.sh"
+ALIASES += output="\n \anchor output **Example output** [⛓](#output)"
+ALIASES += outputb="\n \anchor outputb **Benchmark output** [⛓](#outputb)"
+ALIASES += output{1}="\n \anchor output-\1 **Example output** [⛓](#output-\1)"
+ALIASES += outputb{1}="\n \anchor outputb-\1 **Benchmark output** [⛓](#outputb-\1)"
+ALIASES += postproc="\n \anchor postproc **Postprocessing of the example output** [⛓](#postproc)"
+ALIASES += postprocb="\n \anchor postprocb **Postprocessing of the benchmark output** [⛓](#postprocb)"
+ALIASES += postproc{1}="\n \anchor postproc-\1 **Postprocessing of the output** [⛓](#postproc-\1)"
+ALIASES += postprocb{1}="\n \anchor postprocb-\1 **Postprocessing of the output** [⛓](#postprocb-\1)"
+ALIASES += vis="\n \anchor vis **Visualization of the example output** [⛓](#vis) <hr>"
+ALIASES += visb="\n \anchor visb **Visualization of the benchmark output** [⛓](#visb) <hr>"
+ALIASES += vis{1}="\n \anchor vis-\1 **Visualization of the example output** [⛓](#vis-\1) <hr>"
+ALIASES += visb{1}="\n \anchor visb-\1 **Visualization of the benchmark output** [⛓](#visb-\1) <hr>"
+ALIASES += moralb="\n \anchor moralb **Benchmark moral** [⛓](#moralb) <hr>"
+ALIASES += moralb{1}="\n \anchor moralb-\1 **Benchmark moral** [⛓](#moralb-\1) <hr>"
 ALIASES += final="\abbr \naming \license<br>"
 
 ALIASES += RK="[RK](@ref        Constants_mod::RK)"
 ALIASES += RK32="[RK32](@ref    Constants_mod::RK32)"
 ALIASES += RK64="[RK64](@ref    Constants_mod::RK64)"
 ALIASES += RK128="[RK128](@ref  Constants_mod::RK128)"
+ALIASES += RKALL="\RK32, \RK64, or \RK128"
 
 ALIASES += CK="[CK](@ref        Constants_mod::CK)"
 ALIASES += CK32="[CK32](@ref    Constants_mod::CK32)"
 ALIASES += CK64="[CK64](@ref    Constants_mod::CK64)"
 ALIASES += CK128="[CK128](@ref  Constants_mod::CK128)"
+ALIASES += CKALL="\CK32, \CK64, or \CK128"
 
 ALIASES += IK="[IK](@ref        Constants_mod::IK)"
 ALIASES += IK8="[IK8](@ref      Constants_mod::IK8)"
 ALIASES += IK16="[IK16](@ref    Constants_mod::IK16)"
 ALIASES += IK32="[IK32](@ref    Constants_mod::IK32)"
 ALIASES += IK64="[IK64](@ref    Constants_mod::IK64)"
+ALIASES += IKALL="\IK8, \IK16, \IK32, or \IK64"
 
 # Set the OPTIMIZE_OUTPUT_FOR_C tag to YES if your project consists of C sources
 # only. Doxygen will then generate output that is more tailored for C. For
@@ -1002,7 +1030,8 @@ EXCLUDE_SYMBOLS        =
 # that contain example code fragments that are included (see the \include
 # command).
 
-EXAMPLE_PATH    ="./bin/example/kernel/"
+EXAMPLE_PATH    ="$(ParaMonte_BLD_DIR)/"
+EXAMPLE_PATH   +="$(ParaMonteDeploy_BLD_DIR)/"
 EXAMPLE_PATH   +="../../example/kernel/"
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
@@ -1017,13 +1046,16 @@ EXAMPLE_PATTERNS       = *
 # irrespective of the value of the RECURSIVE tag.
 # The default value is: NO.
 
-EXAMPLE_RECURSIVE      = YES
+EXAMPLE_RECURSIVE      = NO
 
 # The IMAGE_PATH tag can be used to specify one or more files or directories
 # that contain images that are to be included in the documentation (see the
 # \image command).
 
-IMAGE_PATH             =
+#IMAGE_PATH      =
+#IMAGE_PATH      ="$(ParaMonte_BLD_DIR)/"
+#IMAGE_PATH     +="$(ParaMonteDeploy_BLD_DIR)/"
+IMAGE_PATH      ="./bld/release/Fortran/"
 
 # The INPUT_FILTER tag can be used to specify a program that doxygen should
 # invoke to filter for each input file. Doxygen will invoke the filter program
@@ -1599,7 +1631,7 @@ DISABLE_INDEX          = NO
 # The default value is: NO.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-GENERATE_TREEVIEW      = NO
+GENERATE_TREEVIEW      = YES
 
 # The ENUM_VALUES_PER_LINE tag can be used to set the number of enum values that
 # doxygen will group on one line in the generated HTML documentation.

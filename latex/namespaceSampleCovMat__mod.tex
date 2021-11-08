@@ -1,0 +1,214 @@
+\hypertarget{namespaceSampleCovMat__mod}{}\doxysection{Sample\+Cov\+Mat\+\_\+mod Module Reference}
+\label{namespaceSampleCovMat__mod}\index{SampleCovMat\_mod@{SampleCovMat\_mod}}
+
+
+This module contains the classes and procedures for computing the related properties to the covariance matrices and of data samples.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interfaceSampleCovMat__mod_1_1genCovUpp}{gen\+Cov\+Upp}}
+\begin{DoxyCompactList}\small\item\em Generate and return the {\bfseries{upper triangle}} of the covariance matrix of the input shifted, optionally-\/weighted, sample {\ttfamily Shifted\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSampleCovMat__mod_a2ec1489e5207591db94fb8a412f6c872}{gen\+Cov\+Mat\+From\+Cor\+Upp}} (nd, Std\+Vec, Cor\+Upp)
+\begin{DoxyCompactList}\small\item\em Convert the input correlation matrix to the output covariance matrix. \end{DoxyCompactList}\item 
+PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSampleCovMat__mod_ad74a3b159fd2793baf541c410cec77d4}{gen\+Cov\+Upp\+From\+Cor\+Upp}} (nd, Std\+Vec, Cor\+Upp)
+\begin{DoxyCompactList}\small\item\em Convert the upper-\/triangle correlation matrix to the upper-\/triangle covariance matrix. \end{DoxyCompactList}\item 
+PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSampleCovMat__mod_a8969e6bc64007ff847fd0d333ccc4fcf}{gen\+Cov\+Upp\+From\+Cor\+Low}} (nd, Std\+Vec, Cor\+Low)
+\begin{DoxyCompactList}\small\item\em Convert the lower-\/triangle correlation matrix to the upper-\/triangle covariance matrix. \end{DoxyCompactList}\item 
+PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSampleCovMat__mod_a0f2cb18a878935c932c36d701103de2f}{gen\+Cov\+Low\+From\+Cor\+Upp}} (nd, Std\+Vec, Cor\+Upp)
+\begin{DoxyCompactList}\small\item\em Convert the upper-\/triangle correlation matrix to the lower-\/triangle covariance matrix. \end{DoxyCompactList}\item 
+PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSampleCovMat__mod_ad5625730e0cccd838d43c67a6487697b}{gen\+Cov\+Low\+From\+Cor\+Low}} (nd, Std\+Vec, Cor\+Low)
+\begin{DoxyCompactList}\small\item\em Convert the lower-\/triangle correlation matrix to the lower-\/triangle covariance matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character(len= $\ast$), parameter \mbox{\hyperlink{namespaceSampleCovMat__mod_a5a78b44f80aa136ca2681fb18f8b5751}{MODULE\+\_\+\+NAME}} = \char`\"{}@Sample\+Cov\+Mat\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains the classes and procedures for computing the related properties to the covariance matrices and of data samples. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Tuesday 01\+:45 AM, August 21, 2018, Dallas, TX 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceSampleCovMat__mod_ad5625730e0cccd838d43c67a6487697b}\label{namespaceSampleCovMat__mod_ad5625730e0cccd838d43c67a6487697b}} 
+\index{SampleCovMat\_mod@{SampleCovMat\_mod}!genCovLowFromCorLow@{genCovLowFromCorLow}}
+\index{genCovLowFromCorLow@{genCovLowFromCorLow}!SampleCovMat\_mod@{SampleCovMat\_mod}}
+\doxysubsubsection{\texorpdfstring{genCovLowFromCorLow()}{genCovLowFromCorLow()}}
+{\footnotesize\ttfamily PURE real(RK) function, dimension(nd,nd) Sample\+Cov\+Mat\+\_\+mod\+::gen\+Cov\+Low\+From\+Cor\+Low (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Std\+Vec,  }\item[{real(RK)}]{Cor\+Low }\end{DoxyParamCaption})}
+
+
+
+Convert the lower-\/triangle correlation matrix to the lower-\/triangle covariance matrix. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The rank of the correlation matrix. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Std\+Vec} & \+: The input standard deviation vector of length {\ttfamily nd}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cor\+Low} & \+: The lower-\/triangle correlation matrix. The upper-\/triangle will not be used.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Cov\+Low} \+: The lower triangle of the covariance matrix. The upper-\/triangle will NOT be set.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas at Austin.
+\end{DoxyAuthor}
+\begin{DoxyWarning}{Warning}
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{SampleCovMat__mod_8f90_source_l00522}{522}} of file \mbox{\hyperlink{SampleCovMat__mod_8f90_source}{Sample\+Cov\+Mat\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceSampleCovMat__mod_a0f2cb18a878935c932c36d701103de2f}\label{namespaceSampleCovMat__mod_a0f2cb18a878935c932c36d701103de2f}} 
+\index{SampleCovMat\_mod@{SampleCovMat\_mod}!genCovLowFromCorUpp@{genCovLowFromCorUpp}}
+\index{genCovLowFromCorUpp@{genCovLowFromCorUpp}!SampleCovMat\_mod@{SampleCovMat\_mod}}
+\doxysubsubsection{\texorpdfstring{genCovLowFromCorUpp()}{genCovLowFromCorUpp()}}
+{\footnotesize\ttfamily PURE real(RK) function, dimension(nd,nd) Sample\+Cov\+Mat\+\_\+mod\+::gen\+Cov\+Low\+From\+Cor\+Upp (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Std\+Vec,  }\item[{real(RK)}]{Cor\+Upp }\end{DoxyParamCaption})}
+
+
+
+Convert the upper-\/triangle correlation matrix to the lower-\/triangle covariance matrix. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The rank of the correlation matrix. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Std\+Vec} & \+: The input standard deviation vector of length {\ttfamily nd}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cor\+Upp} & \+: The upper-\/triangle correlation matrix. The lower-\/triangle will not be used.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Cov\+Low} \+: The lower triangle of the covariance matrix. The upper-\/triangle will NOT be set.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas at Austin.
+\end{DoxyAuthor}
+\begin{DoxyWarning}{Warning}
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{SampleCovMat__mod_8f90_source_l00487}{487}} of file \mbox{\hyperlink{SampleCovMat__mod_8f90_source}{Sample\+Cov\+Mat\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceSampleCovMat__mod_a2ec1489e5207591db94fb8a412f6c872}\label{namespaceSampleCovMat__mod_a2ec1489e5207591db94fb8a412f6c872}} 
+\index{SampleCovMat\_mod@{SampleCovMat\_mod}!genCovMatFromCorUpp@{genCovMatFromCorUpp}}
+\index{genCovMatFromCorUpp@{genCovMatFromCorUpp}!SampleCovMat\_mod@{SampleCovMat\_mod}}
+\doxysubsubsection{\texorpdfstring{genCovMatFromCorUpp()}{genCovMatFromCorUpp()}}
+{\footnotesize\ttfamily PURE real(RK) function, dimension(nd,nd) Sample\+Cov\+Mat\+\_\+mod\+::gen\+Cov\+Mat\+From\+Cor\+Upp (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Std\+Vec,  }\item[{real(RK)}]{Cor\+Upp }\end{DoxyParamCaption})}
+
+
+
+Convert the input correlation matrix to the output covariance matrix. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The rank of the correlation matrix. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Std\+Vec} & \+: The input standard deviation vector of length {\ttfamily nd}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cor\+Upp} & \+: The upper-\/triangle correlation matrix. The lower-\/triangle will not be used.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Cov\+Mat\+Full} \+: The full covariance matrix.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas at Austin.
+\end{DoxyAuthor}
+\begin{DoxyWarning}{Warning}
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{SampleCovMat__mod_8f90_source_l00382}{382}} of file \mbox{\hyperlink{SampleCovMat__mod_8f90_source}{Sample\+Cov\+Mat\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceSampleCovMat__mod_a8969e6bc64007ff847fd0d333ccc4fcf}\label{namespaceSampleCovMat__mod_a8969e6bc64007ff847fd0d333ccc4fcf}} 
+\index{SampleCovMat\_mod@{SampleCovMat\_mod}!genCovUppFromCorLow@{genCovUppFromCorLow}}
+\index{genCovUppFromCorLow@{genCovUppFromCorLow}!SampleCovMat\_mod@{SampleCovMat\_mod}}
+\doxysubsubsection{\texorpdfstring{genCovUppFromCorLow()}{genCovUppFromCorLow()}}
+{\footnotesize\ttfamily PURE real(RK) function, dimension(nd,nd) Sample\+Cov\+Mat\+\_\+mod\+::gen\+Cov\+Upp\+From\+Cor\+Low (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Std\+Vec,  }\item[{real(RK)}]{Cor\+Low }\end{DoxyParamCaption})}
+
+
+
+Convert the lower-\/triangle correlation matrix to the upper-\/triangle covariance matrix. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The rank of the correlation matrix. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Std\+Vec} & \+: The input standard deviation vector of length {\ttfamily nd}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cor\+Low} & \+: The lower-\/triangle correlation matrix. The upper-\/triangle will not be used.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Cov\+Upp} \+: The upper triangle of the covariance matrix. The lower-\/triangle will NOT be set.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas at Austin.
+\end{DoxyAuthor}
+\begin{DoxyWarning}{Warning}
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{SampleCovMat__mod_8f90_source_l00452}{452}} of file \mbox{\hyperlink{SampleCovMat__mod_8f90_source}{Sample\+Cov\+Mat\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceSampleCovMat__mod_ad74a3b159fd2793baf541c410cec77d4}\label{namespaceSampleCovMat__mod_ad74a3b159fd2793baf541c410cec77d4}} 
+\index{SampleCovMat\_mod@{SampleCovMat\_mod}!genCovUppFromCorUpp@{genCovUppFromCorUpp}}
+\index{genCovUppFromCorUpp@{genCovUppFromCorUpp}!SampleCovMat\_mod@{SampleCovMat\_mod}}
+\doxysubsubsection{\texorpdfstring{genCovUppFromCorUpp()}{genCovUppFromCorUpp()}}
+{\footnotesize\ttfamily PURE real(RK) function, dimension(nd,nd) Sample\+Cov\+Mat\+\_\+mod\+::gen\+Cov\+Upp\+From\+Cor\+Upp (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Std\+Vec,  }\item[{real(RK)}]{Cor\+Upp }\end{DoxyParamCaption})}
+
+
+
+Convert the upper-\/triangle correlation matrix to the upper-\/triangle covariance matrix. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The rank of the correlation matrix. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Std\+Vec} & \+: The input standard deviation vector of length {\ttfamily nd}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Cor\+Upp} & \+: The upper-\/triangle correlation matrix. The lower-\/triangle will not be used.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Cov\+Upp} \+: The upper triangle of the covariance matrix. The lower-\/triangle will NOT be set.
+\end{DoxyReturn}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas at Austin.
+\end{DoxyAuthor}
+\begin{DoxyWarning}{Warning}
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{SampleCovMat__mod_8f90_source_l00417}{417}} of file \mbox{\hyperlink{SampleCovMat__mod_8f90_source}{Sample\+Cov\+Mat\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceSampleCovMat__mod_a5a78b44f80aa136ca2681fb18f8b5751}\label{namespaceSampleCovMat__mod_a5a78b44f80aa136ca2681fb18f8b5751}} 
+\index{SampleCovMat\_mod@{SampleCovMat\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!SampleCovMat\_mod@{SampleCovMat\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character(len=$\ast$), parameter Sample\+Cov\+Mat\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Sample\+Cov\+Mat\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{SampleCovMat__mod_8f90_source_l00055}{55}} of file \mbox{\hyperlink{SampleCovMat__mod_8f90_source}{Sample\+Cov\+Mat\+\_\+mod.\+f90}}.
+

@@ -1,0 +1,95 @@
+\hypertarget{namespacePartition__mod}{}\doxysection{Partition\+\_\+mod Module Reference}
+\label{namespacePartition__mod}\index{Partition\_mod@{Partition\_mod}}
+
+
+This module contains procedures and routines for ellipsoidal partitioning of a given set of points by either minimizing the volumes of the bounding ellipsoids or maximizing their densities, when an estimate of density is provided by the user.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \mbox{\hyperlink{structPartition__mod_1_1BaseProp__type}{Base\+Prop\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em Abstract class containing the basic properties of partitions that are common between the exploration stage and the final output partitions. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfacePartition__mod_1_1getPartition__proc}{get\+Partition\+\_\+proc}}
+\item 
+type \mbox{\hyperlink{structPartition__mod_1_1KmeansTry__type}{Kmeans\+Try\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The base class for generating a vector of Kmeans objects that hold the properties of different Kmeans attempts at any given level of partitioning. \end{DoxyCompactList}\item 
+type \mbox{\hyperlink{structPartition__mod_1_1Method__type}{Method\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structPartition__mod_1_1Method__type}{Method\+\_\+type}}} class for specifying which minimum-\/volume partitioning method to be used. \end{DoxyCompactList}\item 
+type \mbox{\hyperlink{structPartition__mod_1_1ParProp__type}{Par\+Prop\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The base class for generating objects that hold partition properties at any given level of partitioning based on either volume or density criterion. \end{DoxyCompactList}\item 
+type \mbox{\hyperlink{structPartition__mod_1_1ParPropTry__type}{Par\+Prop\+Try\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The subclass for generating objects that hold partition properties at any given level of partitioning based for any partitioning criterion. \end{DoxyCompactList}\item 
+type \mbox{\hyperlink{structPartition__mod_1_1ParPropTryDen__type}{Par\+Prop\+Try\+Den\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The subclass for generating objects that hold partition properties at any given level of partitioning based on the density criterion. \end{DoxyCompactList}\item 
+type \mbox{\hyperlink{structPartition__mod_1_1ParPropTryVol__type}{Par\+Prop\+Try\+Vol\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The subclass for generating objects that hold partition properties at any given level of partitioning based on the volume criterion. \end{DoxyCompactList}\item 
+type \mbox{\hyperlink{structPartition__mod_1_1Partition__type}{Partition\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structPartition__mod_1_1Partition__type}{Partition\+\_\+type}}} abstract class for Partition derived types. Partitions an input array {\ttfamily Point(nd,np)} with {\ttfamily nd} attributes and {\ttfamily np} observations (points). \end{DoxyCompactList}\item 
+type \mbox{\hyperlink{structPartition__mod_1_1PartitionBase__type}{Partition\+Base\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The class for generating objects that hold the final output partition properties. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{structPartition__mod_1_1PartitionMaxDen__type}{Partition\+Max\+Den\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structPartition__mod_1_1PartitionMaxDen__type}{Partition\+Max\+Den\+\_\+type}}} class. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{structPartition__mod_1_1PartitionMinVol__type}{Partition\+Min\+Vol\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structPartition__mod_1_1PartitionMinVol__type}{Partition\+Min\+Vol\+\_\+type}}} class. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfacePartition__mod_1_1write__proc}{write\+\_\+proc}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+real(RK) function, dimension(npmin\+:npmax) \mbox{\hyperlink{namespacePartition__mod_ae22193cc2d0f5d723e80d545b7da5efd}{get\+Bias\+Correction\+Scale\+Factor\+Sq}} (nd, npmin, npmax)
+\item 
+PURE real(RK) function \mbox{\hyperlink{namespacePartition__mod_aefb7e60f95f0c429c70e94768b4d123e}{gen\+Log\+Like\+Fitness}} (count, log\+Vol\+Ratio)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespacePartition__mod_a8cbaa502f97ed7e18aac5119c6427df2}{MODULE\+\_\+\+NAME}} = \char`\"{}@Partition\+\_\+mod\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains procedures and routines for ellipsoidal partitioning of a given set of points by either minimizing the volumes of the bounding ellipsoids or maximizing their densities, when an estimate of density is provided by the user. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespacePartition__mod_aefb7e60f95f0c429c70e94768b4d123e}\label{namespacePartition__mod_aefb7e60f95f0c429c70e94768b4d123e}} 
+\index{Partition\_mod@{Partition\_mod}!genLogLikeFitness@{genLogLikeFitness}}
+\index{genLogLikeFitness@{genLogLikeFitness}!Partition\_mod@{Partition\_mod}}
+\doxysubsubsection{\texorpdfstring{genLogLikeFitness()}{genLogLikeFitness()}}
+{\footnotesize\ttfamily PURE real(RK) function Partition\+\_\+mod\+::gen\+Log\+Like\+Fitness (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{count,  }\item[{real(RK)}]{log\+Vol\+Ratio }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Partition__mod_8f90_source_l00540}{540}} of file \mbox{\hyperlink{Partition__mod_8f90_source}{Partition\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespacePartition__mod_ae22193cc2d0f5d723e80d545b7da5efd}\label{namespacePartition__mod_ae22193cc2d0f5d723e80d545b7da5efd}} 
+\index{Partition\_mod@{Partition\_mod}!getBiasCorrectionScaleFactorSq@{getBiasCorrectionScaleFactorSq}}
+\index{getBiasCorrectionScaleFactorSq@{getBiasCorrectionScaleFactorSq}!Partition\_mod@{Partition\_mod}}
+\doxysubsubsection{\texorpdfstring{getBiasCorrectionScaleFactorSq()}{getBiasCorrectionScaleFactorSq()}}
+{\footnotesize\ttfamily real(RK) function, dimension(npmin\+:npmax) Partition\+\_\+mod\+::get\+Bias\+Correction\+Scale\+Factor\+Sq (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{integer(IK), intent(in)}]{npmin,  }\item[{integer(IK), intent(in)}]{npmax }\end{DoxyParamCaption})}
+
+\begin{DoxyWarning}{Warning}
+This function 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{Partition__mod_8f90_source_l00497}{497}} of file \mbox{\hyperlink{Partition__mod_8f90_source}{Partition\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacePartition__mod_a8cbaa502f97ed7e18aac5119c6427df2}\label{namespacePartition__mod_a8cbaa502f97ed7e18aac5119c6427df2}} 
+\index{Partition\_mod@{Partition\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!Partition\_mod@{Partition\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character($\ast$), parameter Partition\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Partition\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{Partition__mod_8f90_source_l00064}{64}} of file \mbox{\hyperlink{Partition__mod_8f90_source}{Partition\+\_\+mod.\+f90}}.
+

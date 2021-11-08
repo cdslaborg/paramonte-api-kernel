@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Test__Matrix__mod_0dRoutines__smod_0dgenMatSymFromMatLowDia_8inc_8f90_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4d389600729eb25db92af3e09978356f.html">tests</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">Test_Matrix_mod@Routines_smod@genMatSymFromMatLowDia.inc.f90</div></div>
 </div><!--header-->
@@ -134,37 +150,27 @@ $(function() {
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                                                                            ,<span class="fortran_operator_symbols"> -</span><span class="fortran_numeric_literal">4._RK</span>,<span class="fortran_operator_symbols"> +</span><span class="fortran_numeric_literal">5._RK</span>,<span class="fortran_numeric_literal"> 1</span><span class="fortran_numeric_literal">2._RK</span> ], shape<span class="fortran_operator_symbols"> = </span><span class="fortran_function">shape</span>(MatSym_ref) ))</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="fortran_statement">        real</span>(RK)    ,<span class="fortran_attribute"> parameter</span> :: Dia(nd)<span class="fortran_operator_symbols"> = </span>[<span class="fortran_numeric_literal"> 1</span><span class="fortran_numeric_literal">0._RK</span>,<span class="fortran_numeric_literal"> 1</span><span class="fortran_numeric_literal">1._RK</span>,<span class="fortran_numeric_literal"> 1</span><span class="fortran_numeric_literal">2._RK</span> ]</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="fortran_statement">        real</span>(RK)                :: MatSym(nd,nd)</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="fortran_statement">integer</span>(IK)             :: i, j</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        MatSym<span class="fortran_operator_symbols"> = </span>genMatSymFromMatLow(MatLow_ref,Dia)</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        assertion<span class="fortran_operator_symbols"> = </span><span class="fortran_function">all</span>( abs(MatSym<span class="fortran_operator_symbols"> - </span>MatSym_ref)<span class="fortran_operator_symbols"> &lt; </span>TOLERANCE )</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="fortran_keywordflow">if</span> (Test<span class="fortran_operator_symbols">%</span>isVerboseMode <span class="fortran_operator_logical">.and.</span> <span class="fortran_operator_logical">.not.</span> assertion) <span class="fortran_keywordflow">then</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="fortran_comment">! LCOV_EXCL_START</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="fortran_statement">            write</span>(Test<span class="fortran_operator_symbols">%</span>outputUnit,<span class="fortran_string">&quot;(*(g0,:,&#39;, &#39;))&quot;</span>)</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="fortran_statement">            write</span>(Test<span class="fortran_operator_symbols">%</span>outputUnit,<span class="fortran_string">&quot;(*(g0,:,&#39;, &#39;))&quot;</span>) <span class="fortran_string">&quot;MatSym_ref  = &quot;</span>, MatSym_ref</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="fortran_statement">            write</span>(Test<span class="fortran_operator_symbols">%</span>outputUnit,<span class="fortran_string">&quot;(*(g0,:,&#39;, &#39;))&quot;</span>) <span class="fortran_string">&quot;MatSym      = &quot;</span>, MatSym</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="fortran_statement">            write</span>(Test<span class="fortran_operator_symbols">%</span>outputUnit,<span class="fortran_string">&quot;(*(g0,:,&#39;, &#39;))&quot;</span>)</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="fortran_comment">! LCOV_EXCL_STOP</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="fortran_keywordflow">        end if</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        MatSym<span class="fortran_operator_symbols"> = </span>genMatSymFromMatLow(MatLow_ref,Dia)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        assertion<span class="fortran_operator_symbols"> = </span><span class="fortran_function">all</span>( abs(MatSym<span class="fortran_operator_symbols"> - </span>MatSym_ref)<span class="fortran_operator_symbols"> &lt; </span>TOLERANCE )</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="fortran_keywordflow">if</span> (Test<span class="fortran_operator_symbols">%</span>isVerboseMode <span class="fortran_operator_logical">.and.</span> <span class="fortran_operator_logical">.not.</span> assertion) <span class="fortran_keywordflow">then</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="fortran_comment">! LCOV_EXCL_START</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="fortran_statement">            write</span>(Test<span class="fortran_operator_symbols">%</span>outputUnit,<span class="fortran_string">&quot;(*(g0,:,&#39;, &#39;))&quot;</span>)</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="fortran_statement">            write</span>(Test<span class="fortran_operator_symbols">%</span>outputUnit,<span class="fortran_string">&quot;(*(g0,:,&#39;, &#39;))&quot;</span>) <span class="fortran_string">&quot;MatSym_ref  = &quot;</span>, MatSym_ref</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="fortran_statement">            write</span>(Test<span class="fortran_operator_symbols">%</span>outputUnit,<span class="fortran_string">&quot;(*(g0,:,&#39;, &#39;))&quot;</span>) <span class="fortran_string">&quot;MatSym      = &quot;</span>, MatSym</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="fortran_statement">            write</span>(Test<span class="fortran_operator_symbols">%</span>outputUnit,<span class="fortran_string">&quot;(*(g0,:,&#39;, &#39;))&quot;</span>)</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="fortran_comment">! LCOV_EXCL_STOP</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="fortran_keywordflow">        end if</span></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4d389600729eb25db92af3e09978356f.html">tests</a></li><li class="navelem"><a class="el" href="Test__Matrix__mod_0dRoutines__smod_0dgenMatSymFromMatLowDia_8inc_8f90.html">Test_Matrix_mod@Routines_smod@genMatSymFromMatLowDia.inc.f90</a></li>
+        <li class="footer">Generated on Wed Oct 20 2021 12:39:54 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:10 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

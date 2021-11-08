@@ -1,0 +1,103 @@
+\hypertarget{interfaceMatrixComparison__mod_1_1isEqualLow}{}\doxysection{Matrix\+Comparison\+\_\+mod\+::is\+Equal\+Low Interface Reference}
+\label{interfaceMatrixComparison__mod_1_1isEqualLow}\index{MatrixComparison\_mod::isEqualLow@{MatrixComparison\_mod::isEqualLow}}
+
+
+Generate a logical value of {\ttfamily .true.} if the lower-\/triangle ~\newline
+ elements of the two input square matrices are equal within the given input threshold.  
+
+
+
+
+\doxysubsection{Detailed Description}
+Generate a logical value of {\ttfamily .true.} if the lower-\/triangle ~\newline
+ elements of the two input square matrices are equal within the given input threshold. 
+
+This function interface is a shortcut to avoid loops for comparing lower triangles of two matrices. While writing the loop is simple, this function provides a cleaner solution.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Matrix1} & \+: The first input contiguous square matrix of shape {\ttfamily (ndim,ndim)} of type {\ttfamily real} and kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Matrix2} & \+: The second input contiguous square matrix of the same shape, type, and kind as {\ttfamily Matrix1}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em tol} & \+: The threshold below which the corresponding elements of the two matrices are assumed to be equal.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily is\+Equal} \+: The output {\ttfamily logical} of default kind, indicating if the all elements of the lower-\/triangles of the two input matrices are equal within the specified tolerance {\ttfamily tol}.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The input matrices must be square. This condition is checked only when the preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED} evaluates to true.
+
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{interfaceMatrixComparison__mod_1_1isEqualLowDia}{is\+Equal\+Low\+Dia}} ~\newline
+ \mbox{\hyperlink{interfaceMatrixComparison__mod_1_1isEqualUppDia}{is\+Equal\+Upp\+Dia}} ~\newline
+ \mbox{\hyperlink{interfaceMatrixComparison__mod_1_1isEqualUpp}{is\+Equal\+Upp}} ~\newline
+
+\end{DoxySeeAlso}
+\label{namespaceInterpLinear__mod_example}%
+\Hypertarget{namespaceInterpLinear__mod_example}%
+{\bfseries{Example usage}} \href{\#example}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-gnu}%
+\Hypertarget{namespaceBench__mod_compile-unix-gnu}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compile-unix-gnu}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceMatrixComparison__mod_1_1isEqualLow_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceMatrixComparison__mod_1_1isEqualLow_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceMatrixComparison__mod_1_1isEqualLow_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-intel}%
+\Hypertarget{namespaceBench__mod_compile-unix-intel}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compile-unix-intel}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceMatrixComparison__mod_1_1isEqualLow_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceMatrixComparison__mod_1_1isEqualLow_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceMatrixComparison__mod_1_1isEqualLow_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_output}%
+\Hypertarget{namespaceBench__mod_output}%
+{\bfseries{Example output}} \href{\#output}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000033}{Test}}]Test\+\_\+\+Matrix\+Comparison\+\_\+mod\end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000027}{Todo}}]The functionality of this interface can be expanded to cover complex numbers.\end{DoxyRefDesc}
+
+
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Wednesday 11\+:40 PM, September 15, 2021, Dallas, TX 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{MatrixComparison__mod_8f90_source_l00105}{105}} of file \mbox{\hyperlink{MatrixComparison__mod_8f90_source}{Matrix\+Comparison\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{MatrixComparison__mod_8f90}{Matrix\+Comparison\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

@@ -2,19 +2,19 @@
 \label{interfaceSample__mod_1_1genCovUpp}\index{Sample\_mod::genCovUpp@{Sample\_mod::genCovUpp}}
 
 
-Return the {\bfseries{upper triangle}} covariance matrix of the input shifted, optionally-\/weighted, sample {\ttfamily Shifted\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero.  
+Return the {\bfseries{upper triangle}} of the covariance matrix of the input shifted, optionally-\/weighted, sample {\ttfamily Shifted\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero.  
 
 
 
 
 \doxysubsection{Detailed Description}
-Return the {\bfseries{upper triangle}} covariance matrix of the input shifted, optionally-\/weighted, sample {\ttfamily Shifted\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. 
+Return the {\bfseries{upper triangle}} of the covariance matrix of the input shifted, optionally-\/weighted, sample {\ttfamily Shifted\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em Shifted\+Sample} & \+: The contiguous array of real type of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} of shape {\ttfamily (\+:,\+:)} containing the sample. The input sample must be shifted such that its mean is the origin (zero). If needed, the sample can be shifted by computing its mean via \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{gen\+Mean()}} and passing it together with the sample to either \mbox{\hyperlink{interfaceSample__mod_1_1getShifted}{get\+Shifted()}} or \mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{gen\+Shifted()}} to shift the sample toward the origin. \\
+\mbox{\texttt{ in}}  & {\em Shifted\+Sample} & \+: The contiguous array of real type of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} of shape {\ttfamily (\+:,\+:)} containing the sample. The input sample must be shifted such that its mean is the origin (zero). If needed, the sample can be shifted by computing its mean via gen\+Mean and passing its negative together with the sample to either gen\+Shifted or get\+Shifted to shift the sample toward the origin. \\
 \hline
-\mbox{\texttt{ in}}  & {\em Weight} & \+: The contiguous array of shape {\ttfamily (\+:)} of type integer of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} or real of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} containing the sample weights. The length of {\ttfamily Weight} must match the length of {\ttfamily Shifted\+Sample} along its longest axis. For example, if {\ttfamily Shifted\+Sample} has shape {\ttfamily (nd,np)} and {\ttfamily np \texorpdfstring{$>$}{>} nd}, then {\ttfamily Weight} must have the shape {\ttfamily (np)} ({\bfseries{optional}}, default = {\ttfamily 1}, that is, all points in the sample have equal weights).\\
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The contiguous array of shape {\ttfamily (\+:)} of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} or {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} containing the sample weights. The length of {\ttfamily Weight} must match the length of {\ttfamily Shifted\+Sample} along its longest axis. For example, if {\ttfamily Shifted\+Sample} has shape {\ttfamily (nd,np)} and {\ttfamily np \texorpdfstring{$>$}{>} nd}, then {\ttfamily Weight} must have the shape {\ttfamily (np)} ({\bfseries{optional}}, default = {\ttfamily 1}, that is, all points in the sample have equal weights).\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -24,8 +24,53 @@ Return the {\bfseries{upper triangle}} covariance matrix of the input shifted, o
 This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
 \end{DoxyWarning}
 \begin{DoxyNote}{Note}
-If the full symmetric covariance matrix is needed, it can be obtained by passing the output of this procedure to the subroutine \mbox{\hyperlink{interfaceMatrix__mod_1_1symmetrizeMatUpp}{Matrix\+\_\+mod\+::symmetrize\+Mat\+Upp()}}.
+The full symmetric covariance matrix, if needed, can be obtained by passing the output of this procedure to the subroutine \mbox{\hyperlink{interfaceMatrix__mod_1_1symmetrizeMatUpp}{symmetrize\+Mat\+Upp}} or the equivalent function \mbox{\hyperlink{interfaceMatrix__mod_1_1genMatSymFromMatUpp}{gen\+Mat\+Sym\+From\+Mat\+Upp}}.
 \end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+gen\+Mean~\newline
+ gen\+Variance~\newline
+ \mbox{\hyperlink{namespaceSample__mod_aa2c2cc79f34ed2846aac905662807ca8}{gen\+Cor\+Upp\+From\+Cov\+Upp}}
+\end{DoxySeeAlso}
+\label{namespaceInterpLinear__mod_usage}%
+\Hypertarget{namespaceInterpLinear__mod_usage}%
+{\bfseries{Example usage}} \href{\#usage}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-gnu}%
+\Hypertarget{namespaceBench__mod_compile-unix-gnu}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compile-unix-gnu}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genCovUpp_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genCovUpp_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genCovUpp_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-intel}%
+\Hypertarget{namespaceBench__mod_compile-unix-intel}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compile-unix-intel}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genCovUpp_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genCovUpp_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genCovUpp_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_output}%
+\Hypertarget{namespaceBench__mod_output}%
+{\bfseries{Example output}} \href{\#output}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000023}{Test}}]\mbox{\hyperlink{namespaceTest__Sample__mod}{Test\+\_\+\+Sample\+\_\+mod}}\end{DoxyRefDesc}
+
+
 \begin{DoxyRemark}{Remarks}
 For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
 
@@ -39,7 +84,7 @@ Amir Shahmoradi, Saturday 2\+:48 AM, August 22, 2021, Dallas, TX
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l02071}{2071}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00108}{108}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 
 
 

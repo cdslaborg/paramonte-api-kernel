@@ -15,5 +15,5 @@ var searchData=
   ['minimizepowell_12',['minimizePowell',['../interfaceOptimization__mod_1_1minimize.html#a55d9cc0842045aeeea71efeed4bc7209',1,'Optimization_mod::minimize::minimizePowell()'],['../namespaceOptimization__mod.html#a0bb55a9fefd0fe7acdfc1317bbf4b4e6',1,'Optimization_mod::minimizePowell()'],['../structOptimization__mod_1_1PowellMinimum__type.html#a7b6603faee5a005aa261c18351d67182',1,'Optimization_mod::PowellMinimum_type::minimizePowell()']]],
   ['mkdir_13',['mkdir',['../structPath__mod_1_1Path__type.html#aacad04796ed0b81a3e0ed9d0a5b26be3',1,'Path_mod::Path_type::mkdir()'],['../namespacePath__mod.html#a21549274757a5d6ae58896a50be6dde4',1,'Path_mod::mkdir()']]],
   ['modify_14',['modify',['../structPath__mod_1_1Path__type.html#ae82003e83c3463978838ebbad9f5a1e1',1,'Path_mod::Path_type::modify()'],['../namespacePath__mod.html#a12b3c2e955ac475226f06389917768b8',1,'Path_mod::modify()']]],
-  ['multiplymatrix_15',['multiplyMatrix',['../namespaceMatrix__mod.html#ab5fdddf828a95d49d960001885b3eceb',1,'Matrix_mod']]]
+  ['multiplymatrix_15',['multiplyMatrix',['../namespaceMatrixMultiply__mod.html#aeff48c7ff885f290a78640770e4a1193',1,'MatrixMultiply_mod']]]
 ];

@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('structString__mod_1_1StrSplit__type.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespaceString__mod.html">String_mod</a></li><li class="navelem"><a class="el" href="structString__mod_1_1StrSplit__type.html">StrSplit_type</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
@@ -126,17 +142,51 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:ad672cb85529bf79107399d6f096eea5b inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a352e45ca47cdf1e7c578517e8e06ad84 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">nopass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a352e45ca47cdf1e7c578517e8e06ad84">isDigit</a></td></tr>
 <tr class="separator:a352e45ca47cdf1e7c578517e8e06ad84 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f1ab90c53aea032ca38697cb9166d10 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">procedure, nopass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a5f1ab90c53aea032ca38697cb9166d10">int</a> =&gt; <a class="el" href="namespaceString__mod.html#a39f8ac9d5727e6e4bf1187ed9f873b4f">char2int</a>, int32=&gt; <a class="el" href="namespaceString__mod.html#a6211342a946d80cbdee652a8a3e48630">char2int32</a>, int64=&gt; <a class="el" href="namespaceString__mod.html#ab898b2fdbcd961bd91ee7550965fdbcc">char2int64</a></td></tr>
-<tr class="separator:a5f1ab90c53aea032ca38697cb9166d10 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae01cc88ae141e54a2f6703040a10f364 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">procedure, nopass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#ae01cc88ae141e54a2f6703040a10f364">real</a> =&gt; <a class="el" href="namespaceString__mod.html#aa6450b384b4143de3b45095896e458e6">char2real</a>, real32=&gt; <a class="el" href="namespaceString__mod.html#ae6d1236fd58ad13349a9c4cf9beddec2">char2real32</a>, real64=&gt; <a class="el" href="namespaceString__mod.html#aa158363f5bfdb4e949e2f456dd411886">char2real64</a></td></tr>
-<tr class="separator:ae01cc88ae141e54a2f6703040a10f364 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae458c88d39dc818a8444919bf6498b5f inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">procedure, nopass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#ae458c88d39dc818a8444919bf6498b5f">pad</a> =&gt; <a class="el" href="namespaceString__mod.html#a6af661c9ba1dbd7b57356c0902230373">padChar</a></td></tr>
 <tr class="separator:ae458c88d39dc818a8444919bf6498b5f inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac15ef0f70a9c98a95e94408d69f52069 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">procedure, nopass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#ac15ef0f70a9c98a95e94408d69f52069">int</a> =&gt; <a class="el" href="namespaceString__mod.html#a39f8ac9d5727e6e4bf1187ed9f873b4f">char2int</a></td></tr>
+<tr class="separator:ac15ef0f70a9c98a95e94408d69f52069 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a169a5e008df4cf6e62e912235acca6be inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">procedure, nopass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a169a5e008df4cf6e62e912235acca6be">real</a> =&gt; <a class="el" href="namespaceString__mod.html#aa6450b384b4143de3b45095896e458e6">char2real</a></td></tr>
+<tr class="separator:a169a5e008df4cf6e62e912235acca6be inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ab07f0850d6ab9ae077fd148bfcc638 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a8ab07f0850d6ab9ae077fd148bfcc638">if</a></td></tr>
+<tr class="separator:a8ab07f0850d6ab9ae077fd148bfcc638 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5be10b5f9b67810619cc2e89c44470cf inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a5be10b5f9b67810619cc2e89c44470cf">IK64_ENABLED</a></td></tr>
+<tr class="separator:a5be10b5f9b67810619cc2e89c44470cf inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a446869d6b38b6b68be9e331acbe96c58 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">procedure, nopass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a446869d6b38b6b68be9e331acbe96c58">int64</a> =&gt; <a class="el" href="namespaceString__mod.html#ab898b2fdbcd961bd91ee7550965fdbcc">char2int64</a></td></tr>
+<tr class="separator:a446869d6b38b6b68be9e331acbe96c58 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f5cbf5d1445280ae062392f74863437 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a8f5cbf5d1445280ae062392f74863437">endif</a></td></tr>
+<tr class="separator:a8f5cbf5d1445280ae062392f74863437 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ab07f0850d6ab9ae077fd148bfcc638 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a8ab07f0850d6ab9ae077fd148bfcc638">if</a></td></tr>
+<tr class="separator:a8ab07f0850d6ab9ae077fd148bfcc638 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83d2269337b8293d34369a2a64cd6a25 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a83d2269337b8293d34369a2a64cd6a25">IK32_ENABLED</a></td></tr>
+<tr class="separator:a83d2269337b8293d34369a2a64cd6a25 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3d01b7aaa04664eda21562ef694a2e5 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">procedure, nopass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#ab3d01b7aaa04664eda21562ef694a2e5">int32</a> =&gt; <a class="el" href="namespaceString__mod.html#a6211342a946d80cbdee652a8a3e48630">char2int32</a></td></tr>
+<tr class="separator:ab3d01b7aaa04664eda21562ef694a2e5 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f5cbf5d1445280ae062392f74863437 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a8f5cbf5d1445280ae062392f74863437">endif</a></td></tr>
+<tr class="separator:a8f5cbf5d1445280ae062392f74863437 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ab07f0850d6ab9ae077fd148bfcc638 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a8ab07f0850d6ab9ae077fd148bfcc638">if</a></td></tr>
+<tr class="separator:a8ab07f0850d6ab9ae077fd148bfcc638 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1f830d02e5640bc812df67235f6c4d6 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#ad1f830d02e5640bc812df67235f6c4d6">RK64_ENABLED</a></td></tr>
+<tr class="separator:ad1f830d02e5640bc812df67235f6c4d6 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b4f3b4356555c4a30728706fbdd70c8 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">procedure, nopass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a1b4f3b4356555c4a30728706fbdd70c8">real64</a> =&gt; <a class="el" href="namespaceString__mod.html#aa158363f5bfdb4e949e2f456dd411886">char2real64</a></td></tr>
+<tr class="separator:a1b4f3b4356555c4a30728706fbdd70c8 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f5cbf5d1445280ae062392f74863437 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a8f5cbf5d1445280ae062392f74863437">endif</a></td></tr>
+<tr class="separator:a8f5cbf5d1445280ae062392f74863437 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ab07f0850d6ab9ae077fd148bfcc638 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a8ab07f0850d6ab9ae077fd148bfcc638">if</a></td></tr>
+<tr class="separator:a8ab07f0850d6ab9ae077fd148bfcc638 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63f179f08f9b1862dff8c1b632292588 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a63f179f08f9b1862dff8c1b632292588">RK32_ENABLED</a></td></tr>
+<tr class="separator:a63f179f08f9b1862dff8c1b632292588 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd1f1b25c3310c998151579e0257d032 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">procedure, nopass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#abd1f1b25c3310c998151579e0257d032">real32</a> =&gt; <a class="el" href="namespaceString__mod.html#ae6d1236fd58ad13349a9c4cf9beddec2">char2real32</a></td></tr>
+<tr class="separator:abd1f1b25c3310c998151579e0257d032 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f5cbf5d1445280ae062392f74863437 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a8f5cbf5d1445280ae062392f74863437">endif</a></td></tr>
+<tr class="separator:a8f5cbf5d1445280ae062392f74863437 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8aea94ae972d01e46d9e85387af93020 inherit pub_methods_structString__mod_1_1String__type"><td class="memItemLeft" align="right" valign="top">pure type(<a class="el" href="structString__mod_1_1String__type.html">String_type</a>) function, dimension(size(AssumedChar, kind=IK))&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString__mod_1_1String__type.html#a8aea94ae972d01e46d9e85387af93020">constructString</a> (AssumedChar)</td></tr>
+<tr class="separator:a8aea94ae972d01e46d9e85387af93020 inherit pub_methods_structString__mod_1_1String__type"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The <code><a class="el" href="structString__mod_1_1StrSplit__type.html" title="The StrSplit_type class with a container component for string parts.">StrSplit_type</a></code> class with a container component for string parts. </p>
 
-<p class="definition">Definition at line <a class="el" href="String__mod_8f90_source.html#l00121">121</a> of file <a class="el" href="String__mod_8f90_source.html">String_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="String__mod_8f90_source.html#l00149">149</a> of file <a class="el" href="String__mod_8f90_source.html">String_mod.f90</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a4506937e083d93466e7e688a3e56c727" name="a4506937e083d93466e7e688a3e56c727"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4506937e083d93466e7e688a3e56c727">&#9670;&nbsp;</a></span>nPart</h2>
@@ -152,7 +202,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The number of parts in the string. </p>
 
-<p class="definition">Definition at line <a class="el" href="String__mod_8f90_source.html#l00123">123</a> of file <a class="el" href="String__mod_8f90_source.html">String_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="String__mod_8f90_source.html#l00151">151</a> of file <a class="el" href="String__mod_8f90_source.html">String_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -170,7 +220,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The string parts. </p>
 
-<p class="definition">Definition at line <a class="el" href="String__mod_8f90_source.html#l00122">122</a> of file <a class="el" href="String__mod_8f90_source.html">String_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="String__mod_8f90_source.html#l00150">150</a> of file <a class="el" href="String__mod_8f90_source.html">String_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -178,23 +228,14 @@ Additional Inherited Members</h2></td></tr>
 <li>/home/amir/git/paramonte/src/kernel/<a class="el" href="String__mod_8f90_source.html">String_mod.f90</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="namespaceString__mod.html">String_mod</a></li><li class="navelem"><a class="el" href="structString__mod_1_1StrSplit__type.html">StrSplit_type</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:45 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:19 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

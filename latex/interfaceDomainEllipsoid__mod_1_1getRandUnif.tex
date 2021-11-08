@@ -41,14 +41,17 @@ where {\ttfamily Rep\+Mat} is the representative matrix of the ellipsoid whose C
 \mbox{\texttt{ in}}  & {\em log\+Vol\+Unit\+Ball} & \+: The natural logarithm of the volume of an {\ttfamily nd}-\/dimensional ball of unit radius. ({\bfseries{optional}}. If present, random vectors will be drawn from an ellipsoid of unit-\/volume.)\\
 \hline
 \end{DoxyParams}
-\begin{DoxyParagraph}{Example usage}
+\label{namespaceInterpLinear__mod_example}%
+\Hypertarget{namespaceInterpLinear__mod_example}%
+{\bfseries{Example usage}} \href{\#example}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{fortran_statement}{program} test}
 \DoxyCodeLine{}
 \DoxyCodeLine{    \textcolor{fortran_statement}{implicit none}}
 \DoxyCodeLine{    \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}} \textcolor{fortran_comment}{! (Here `RK` can point to any of \(\backslash\)RK32, \(\backslash\)RK64, \(\backslash\)RK128)}}
-\DoxyCodeLine{    \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMatrix__mod}{Matrix\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceMatrix__mod_1_1genDiag}{genDiag}}, \mbox{\hyperlink{interfaceMatrix__mod_1_1getChoLow}{getChoLow}}}
+\DoxyCodeLine{    \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMatrixDiag__mod}{MatrixDiag\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceMatrixDiag__mod_1_1genDiag}{genDiag}}}
+\DoxyCodeLine{    \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMatrixCholesky__mod}{MatrixCholesky\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceMatrixCholesky__mod_1_1getChoLow}{getChoLow}}}
 \DoxyCodeLine{    \textcolor{fortran_statement}{use }GeometryEllipsoid\_mod, \textcolor{fortran_statement}{only}: getLogVolUnitBall}
 \DoxyCodeLine{    \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceDomainEllipsoid__mod}{DomainEllipsoid\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1getRandUnif}{getRandUnif}}}
 \DoxyCodeLine{    \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}     :: NDIM\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{3\_IK}  \textcolor{fortran_comment}{! the number of dimensions of the ellipsoid.}}
@@ -69,9 +72,9 @@ where {\ttfamily Rep\+Mat} is the representative matrix of the ellipsoid whose C
 \DoxyCodeLine{\textcolor{fortran_statement}{    call} \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1getRandUnif}{getRandUnif}}(Rand, Mean)        \textcolor{fortran_comment}{! generate a single NDIM-\/dimensional uniform random vector with the input Mean Vector.}}
 \DoxyCodeLine{\textcolor{fortran_statement}{    call} \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1getRandUnif}{getRandUnif}}(RandSample, Mean)  \textcolor{fortran_comment}{! generate NSIM NDIM-\/dimensional uniform random vectors with the input Mean Vector.}}
 \DoxyCodeLine{}
-\DoxyCodeLine{    ChoLowCovUpp\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceMatrix__mod_1_1genDiag}{genDiag}}(NDIM, NDIM, diag\textcolor{fortran_operator_symbols}{ = }Mean, offDiag\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{6})      \textcolor{fortran_comment}{! The representative matrix of the ellipsoid.}}
+\DoxyCodeLine{    ChoLowCovUpp\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceMatrixDiag__mod_1_1genDiag}{genDiag}}(NDIM, NDIM, diag\textcolor{fortran_operator_symbols}{ = }Mean, offDiag\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{6})      \textcolor{fortran_comment}{! The representative matrix of the ellipsoid.}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{fortran_statement}{    call} \mbox{\hyperlink{interfaceMatrix__mod_1_1getChoLow}{getChoLow}}(NDIM,ChoLowCovUpp,ChoDia) \textcolor{fortran_comment}{! Compute the Cholesky factorization of the representative matrix.}}
+\DoxyCodeLine{\textcolor{fortran_statement}{    call} \mbox{\hyperlink{interfaceMatrixCholesky__mod_1_1getChoLow}{getChoLow}}(NDIM,ChoLowCovUpp,ChoDia) \textcolor{fortran_comment}{! Compute the Cholesky factorization of the representative matrix.}}
 \DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{fortran_statement}{    call} \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1getRandUnif}{getRandUnif}}(Rand, Mean, ChoLowCovUpp)                  \textcolor{fortran_comment}{! generate a single NDIM-\/dimensional uniform random vector with the input Mean Vector and shape structure.}}
 \DoxyCodeLine{\textcolor{fortran_statement}{    call} \mbox{\hyperlink{interfaceDomainEllipsoid__mod_1_1getRandUnif}{getRandUnif}}(RandSample, Mean, ChoLowCovUpp, ChoDia)    \textcolor{fortran_comment}{! generate NSIM NDIM-\/dimensional uniform random vectors with the input Mean Vector and shape structure.}}
@@ -97,7 +100,7 @@ Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00170}{170}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source_l00171}{171}} of file \mbox{\hyperlink{DomainEllipsoid__mod_8f90_source}{Domain\+Ellipsoid\+\_\+mod.\+f90}}.
 
 
 

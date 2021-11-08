@@ -1,0 +1,341 @@
+\hypertarget{namespaceTest__mod}{}\doxysection{Test\+\_\+mod Module Reference}
+\label{namespaceTest__mod}\index{Test\_mod@{Test\_mod}}
+
+
+This is the driver module of the unit testing framework of the Para\+Monte kernel routines.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+type \mbox{\hyperlink{structTest__mod_1_1File__type}{File\+\_\+type}}
+\item 
+type \mbox{\hyperlink{structTest__mod_1_1private}{private}}
+\item 
+interface \mbox{\hyperlink{interfaceTest__mod_1_1test__func__proc}{test\+\_\+func\+\_\+proc}}
+\item 
+interface \mbox{\hyperlink{structTest__mod_1_1Test__type}{Test\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \mbox{\hyperlink{namespaceTest__mod_ae0a3bd1ff7e148b464d4e4ef1c3fe797}{setup}} ()
+\begin{DoxyCompactList}\small\item\em Initialize the test for the first time. This function must be called at the beginning of the main test file, before any testing is done. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceTest__mod_a9612928d23d1dedb33964f0207b12074}{finalize}} ()
+\item 
+type(\mbox{\hyperlink{structTest__mod_1_1Test__type}{Test\+\_\+type}}) function \mbox{\hyperlink{namespaceTest__mod_a1e22dbdf84a39cadf05e6246be5079e8}{construct\+Test}} (module\+Name, in\+Dir, out\+Dir)
+\item 
+subroutine \mbox{\hyperlink{namespaceTest__mod_abf18959b7f4f918a2e8fc1511c767392}{run\+Test}} (Test, test\+\_\+func, test\+\_\+func\+\_\+name)
+\begin{DoxyCompactList}\small\item\em This procedure must be called by all MPI/\+CAF processors. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceTest__mod_aed8202328bd2b5902a5446706e17a144}{assert}} (Test, assertion, desc)
+\begin{DoxyCompactList}\small\item\em Test the validity of the input assertion and if it does not hold, ~\newline
+ \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceTest__mod_a62bda6e84e247cded10cb86ac601bc1d}{finalize\+Test}} (Test)
+\item 
+real(RK) function \mbox{\hyperlink{namespaceTest__mod_a902916ca13f8bdf76d495cd045dcdf07}{get\+Log\+Func\+MVN}} (ndim, Point)
+\item 
+real(RK) function \mbox{\hyperlink{namespaceTest__mod_abdafcdf8c6f139f50e657eb4cb669f13}{get\+Log\+Func\+Banana2D}} (ndim, Point)
+\item 
+real(RK) function \mbox{\hyperlink{namespaceTest__mod_a6f6c6c0362fdc3a155cf3bdd8e749101}{get\+Log\+Func\+Egg\+Box2D}} (ndim, Point)
+\begin{DoxyCompactList}\small\item\em Return the 2D Egg\+Box function in the cubic unit domain \mbox{[}0,1\mbox{]}. \end{DoxyCompactList}\item 
+type(\mbox{\hyperlink{structTest__mod_1_1File__type}{File\+\_\+type}}) function \mbox{\hyperlink{namespaceTest__mod_ad7d4dad469de6ee8371483d4f3d2abca}{open\+File}} (Test, path, label, status, position)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceTest__mod_acd55c33f1fd1fcd991f41fe677ea3b84}{MODULE\+\_\+\+NAME}} = \char`\"{}Test\+\_\+mod\char`\"{}
+\item 
+real(RK) \mbox{\hyperlink{namespaceTest__mod_adf697c9dfd2acd8c744bd9f5297a5ccd}{mv\+\_\+time\+Total}}
+\item 
+integer(IK) \mbox{\hyperlink{namespaceTest__mod_abc6878492b669a7db79ffea8cac9425e}{mv\+\_\+test\+Counter\+Old}}
+\item 
+integer(IK) \mbox{\hyperlink{namespaceTest__mod_a4d3bd04aeb5538f8c4d25eb544bf3f1c}{mv\+\_\+test\+Counter}}
+\item 
+integer(IK) \mbox{\hyperlink{namespaceTest__mod_a79a601ee9beb3b2bf52ed14852e312a6}{mv\+\_\+nfail\+Max}}
+\item 
+integer(IK) \mbox{\hyperlink{namespaceTest__mod_acd1e5ba2971a0a616c5a0da48753e0f9}{mv\+\_\+nfail}}
+\item 
+integer(IK) \mbox{\hyperlink{namespaceTest__mod_aeb9970d601969533a2f053be7ebac57d}{mv\+\_\+npass}}
+\item 
+type(\mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}}), dimension(\+:), allocatable \mbox{\hyperlink{namespaceTest__mod_a6529e6a81762754f2d007067cbd83aa3}{mv\+\_\+\+Failed\+Test\+Func\+Name}}
+\item 
+character(\+:), allocatable \mbox{\hyperlink{namespaceTest__mod_ad086581bbcf343ec6e463b9e5a57d18a}{mc\+\_\+passed\+String}}
+\item 
+character(\+:), allocatable \mbox{\hyperlink{namespaceTest__mod_a7a42c8841de0b215d2a5e0d85a9c43e2}{mc\+\_\+failed\+String}}
+\item 
+type(\mbox{\hyperlink{structParallelism__mod_1_1Image__type}{Image\+\_\+type}}) \mbox{\hyperlink{namespaceTest__mod_a45f48c4773d34040aa32c398f5494551}{mv\+\_\+\+Image}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the driver module of the unit testing framework of the Para\+Monte kernel routines. 
+
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi LCOV\+\_\+\+EXCL\+\_\+\+START 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceTest__mod_aed8202328bd2b5902a5446706e17a144}\label{namespaceTest__mod_aed8202328bd2b5902a5446706e17a144}} 
+\index{Test\_mod@{Test\_mod}!assert@{assert}}
+\index{assert@{assert}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{assert()}{assert()}}
+{\footnotesize\ttfamily subroutine Test\+\_\+mod\+::assert (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structTest__mod_1_1Test__type}{Test\+\_\+type}})}]{Test,  }\item[{logical, intent(in)}]{assertion,  }\item[{character($\ast$), intent(in), optional}]{desc }\end{DoxyParamCaption})}
+
+
+
+Test the validity of the input assertion and if it does not hold, ~\newline
+ 
+
+
+\begin{DoxyEnumerate}
+\item in {\ttfamily debug} and {\ttfamily testing} modes, call {\ttfamily error stop} while posting the assertion description {\ttfamily desc} and,
+\begin{DoxyEnumerate}
+\item in {\ttfamily release} mode, report the test failure and continue with the rest of the tests.
+\end{DoxyEnumerate}
+\end{DoxyEnumerate}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em Test} & \+: An object of class \mbox{\hyperlink{structTest__mod_1_1Test__type}{Test\+\_\+type}} (passed implicitly). \\
+\hline
+\mbox{\texttt{ in}}  & {\em assertion} & \+: An input scalar of type {\ttfamily logical} of default kind containing the assertion to be tested. \\
+\hline
+\mbox{\texttt{ in}}  & {\em desc} & \+: An input assumed-\/length character of default kind containing a description of assertion to be printed on screen only if {\ttfamily assertion = .false.} and the tests are run in {\ttfamily debug} mode.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+This procedure is a method of the class \mbox{\hyperlink{structTest__mod_1_1Test__type}{Test\+\_\+type}}.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, April 20, 2015, 1\+:11 AM, Institute for Fusion Studies, University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00386}{386}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_a1e22dbdf84a39cadf05e6246be5079e8}\label{namespaceTest__mod_a1e22dbdf84a39cadf05e6246be5079e8}} 
+\index{Test\_mod@{Test\_mod}!constructTest@{constructTest}}
+\index{constructTest@{constructTest}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{constructTest()}{constructTest()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structTest__mod_1_1Test__type}{Test\+\_\+type}}) function Test\+\_\+mod\+::construct\+Test (\begin{DoxyParamCaption}\item[{character($\ast$)}]{module\+Name,  }\item[{character($\ast$)}]{in\+Dir,  }\item[{character($\ast$)}]{out\+Dir }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00246}{246}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_a9612928d23d1dedb33964f0207b12074}\label{namespaceTest__mod_a9612928d23d1dedb33964f0207b12074}} 
+\index{Test\_mod@{Test\_mod}!finalize@{finalize}}
+\index{finalize@{finalize}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{finalize()}{finalize()}}
+{\footnotesize\ttfamily subroutine Test\+\_\+mod\+::finalize}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00180}{180}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_a62bda6e84e247cded10cb86ac601bc1d}\label{namespaceTest__mod_a62bda6e84e247cded10cb86ac601bc1d}} 
+\index{Test\_mod@{Test\_mod}!finalizeTest@{finalizeTest}}
+\index{finalizeTest@{finalizeTest}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{finalizeTest()}{finalizeTest()}}
+{\footnotesize\ttfamily subroutine Test\+\_\+mod\+::finalize\+Test (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structTest__mod_1_1Test__type}{Test\+\_\+type}})}]{Test }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00478}{478}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_abdafcdf8c6f139f50e657eb4cb669f13}\label{namespaceTest__mod_abdafcdf8c6f139f50e657eb4cb669f13}} 
+\index{Test\_mod@{Test\_mod}!getLogFuncBanana2D@{getLogFuncBanana2D}}
+\index{getLogFuncBanana2D@{getLogFuncBanana2D}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{getLogFuncBanana2D()}{getLogFuncBanana2D()}}
+{\footnotesize\ttfamily real(RK) function Test\+\_\+mod\+::get\+Log\+Func\+Banana2D (\begin{DoxyParamCaption}\item[{integer(IK), intent(in), value}]{ndim,  }\item[{real(RK)}]{Point }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00551}{551}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_a6f6c6c0362fdc3a155cf3bdd8e749101}\label{namespaceTest__mod_a6f6c6c0362fdc3a155cf3bdd8e749101}} 
+\index{Test\_mod@{Test\_mod}!getLogFuncEggBox2D@{getLogFuncEggBox2D}}
+\index{getLogFuncEggBox2D@{getLogFuncEggBox2D}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{getLogFuncEggBox2D()}{getLogFuncEggBox2D()}}
+{\footnotesize\ttfamily real(RK) function Test\+\_\+mod\+::get\+Log\+Func\+Egg\+Box2D (\begin{DoxyParamCaption}\item[{integer(IK), intent(in), value}]{ndim,  }\item[{real(RK)}]{Point }\end{DoxyParamCaption})}
+
+
+
+Return the 2D Egg\+Box function in the cubic unit domain \mbox{[}0,1\mbox{]}. 
+
+\begin{DoxyRemark}{Remarks}
+The log(integral) of this function in the unit domain is {\ttfamily 235.\+88}. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00607}{607}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_a902916ca13f8bdf76d495cd045dcdf07}\label{namespaceTest__mod_a902916ca13f8bdf76d495cd045dcdf07}} 
+\index{Test\_mod@{Test\_mod}!getLogFuncMVN@{getLogFuncMVN}}
+\index{getLogFuncMVN@{getLogFuncMVN}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{getLogFuncMVN()}{getLogFuncMVN()}}
+{\footnotesize\ttfamily real(RK) function Test\+\_\+mod\+::get\+Log\+Func\+MVN (\begin{DoxyParamCaption}\item[{integer(IK), intent(in), value}]{ndim,  }\item[{real(RK)}]{Point }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00500}{500}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_ad7d4dad469de6ee8371483d4f3d2abca}\label{namespaceTest__mod_ad7d4dad469de6ee8371483d4f3d2abca}} 
+\index{Test\_mod@{Test\_mod}!openFile@{openFile}}
+\index{openFile@{openFile}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{openFile()}{openFile()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structTest__mod_1_1File__type}{File\+\_\+type}}) function Test\+\_\+mod\+::open\+File (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structTest__mod_1_1Test__type}{Test\+\_\+type}})}]{Test,  }\item[{character($\ast$), intent(in), optional}]{path,  }\item[{character($\ast$), intent(in), optional}]{label,  }\item[{character($\ast$), intent(in), optional}]{status,  }\item[{character($\ast$), intent(in), optional}]{position }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00622}{622}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_abf18959b7f4f918a2e8fc1511c767392}\label{namespaceTest__mod_abf18959b7f4f918a2e8fc1511c767392}} 
+\index{Test\_mod@{Test\_mod}!runTest@{runTest}}
+\index{runTest@{runTest}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{runTest()}{runTest()}}
+{\footnotesize\ttfamily subroutine Test\+\_\+mod\+::run\+Test (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structTest__mod_1_1Test__type}{Test\+\_\+type}})}]{Test,  }\item[{procedure(\mbox{\hyperlink{interfaceTest__mod_1_1test__func__proc}{test\+\_\+func\+\_\+proc}})}]{test\+\_\+func,  }\item[{character($\ast$), intent(in)}]{test\+\_\+func\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+This procedure must be called by all MPI/\+CAF processors. 
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00332}{332}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_ae0a3bd1ff7e148b464d4e4ef1c3fe797}\label{namespaceTest__mod_ae0a3bd1ff7e148b464d4e4ef1c3fe797}} 
+\index{Test\_mod@{Test\_mod}!setup@{setup}}
+\index{setup@{setup}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily subroutine Test\+\_\+mod\+::setup}
+
+
+
+Initialize the test for the first time. This function must be called at the beginning of the main test file, before any testing is done. 
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00145}{145}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceTest__mod_a7a42c8841de0b215d2a5e0d85a9c43e2}\label{namespaceTest__mod_a7a42c8841de0b215d2a5e0d85a9c43e2}} 
+\index{Test\_mod@{Test\_mod}!mc\_failedString@{mc\_failedString}}
+\index{mc\_failedString@{mc\_failedString}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{mc\_failedString}{mc\_failedString}}
+{\footnotesize\ttfamily character(\+:), allocatable Test\+\_\+mod\+::mc\+\_\+failed\+String}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00076}{76}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_ad086581bbcf343ec6e463b9e5a57d18a}\label{namespaceTest__mod_ad086581bbcf343ec6e463b9e5a57d18a}} 
+\index{Test\_mod@{Test\_mod}!mc\_passedString@{mc\_passedString}}
+\index{mc\_passedString@{mc\_passedString}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{mc\_passedString}{mc\_passedString}}
+{\footnotesize\ttfamily character(\+:), allocatable Test\+\_\+mod\+::mc\+\_\+passed\+String}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00075}{75}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_acd55c33f1fd1fcd991f41fe677ea3b84}\label{namespaceTest__mod_acd55c33f1fd1fcd991f41fe677ea3b84}} 
+\index{Test\_mod@{Test\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character($\ast$), parameter Test\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}Test\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00065}{65}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_a6529e6a81762754f2d007067cbd83aa3}\label{namespaceTest__mod_a6529e6a81762754f2d007067cbd83aa3}} 
+\index{Test\_mod@{Test\_mod}!mv\_FailedTestFuncName@{mv\_FailedTestFuncName}}
+\index{mv\_FailedTestFuncName@{mv\_FailedTestFuncName}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{mv\_FailedTestFuncName}{mv\_FailedTestFuncName}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}}), dimension(\+:), allocatable Test\+\_\+mod\+::mv\+\_\+\+Failed\+Test\+Func\+Name}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00073}{73}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_a45f48c4773d34040aa32c398f5494551}\label{namespaceTest__mod_a45f48c4773d34040aa32c398f5494551}} 
+\index{Test\_mod@{Test\_mod}!mv\_Image@{mv\_Image}}
+\index{mv\_Image@{mv\_Image}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{mv\_Image}{mv\_Image}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structParallelism__mod_1_1Image__type}{Image\+\_\+type}}) Test\+\_\+mod\+::mv\+\_\+\+Image}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00078}{78}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_acd1e5ba2971a0a616c5a0da48753e0f9}\label{namespaceTest__mod_acd1e5ba2971a0a616c5a0da48753e0f9}} 
+\index{Test\_mod@{Test\_mod}!mv\_nfail@{mv\_nfail}}
+\index{mv\_nfail@{mv\_nfail}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{mv\_nfail}{mv\_nfail}}
+{\footnotesize\ttfamily integer(IK) Test\+\_\+mod\+::mv\+\_\+nfail}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00071}{71}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_a79a601ee9beb3b2bf52ed14852e312a6}\label{namespaceTest__mod_a79a601ee9beb3b2bf52ed14852e312a6}} 
+\index{Test\_mod@{Test\_mod}!mv\_nfailMax@{mv\_nfailMax}}
+\index{mv\_nfailMax@{mv\_nfailMax}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{mv\_nfailMax}{mv\_nfailMax}}
+{\footnotesize\ttfamily integer(IK) Test\+\_\+mod\+::mv\+\_\+nfail\+Max}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00070}{70}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_aeb9970d601969533a2f053be7ebac57d}\label{namespaceTest__mod_aeb9970d601969533a2f053be7ebac57d}} 
+\index{Test\_mod@{Test\_mod}!mv\_npass@{mv\_npass}}
+\index{mv\_npass@{mv\_npass}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{mv\_npass}{mv\_npass}}
+{\footnotesize\ttfamily integer(IK) Test\+\_\+mod\+::mv\+\_\+npass}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00072}{72}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_a4d3bd04aeb5538f8c4d25eb544bf3f1c}\label{namespaceTest__mod_a4d3bd04aeb5538f8c4d25eb544bf3f1c}} 
+\index{Test\_mod@{Test\_mod}!mv\_testCounter@{mv\_testCounter}}
+\index{mv\_testCounter@{mv\_testCounter}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{mv\_testCounter}{mv\_testCounter}}
+{\footnotesize\ttfamily integer(IK) Test\+\_\+mod\+::mv\+\_\+test\+Counter}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00069}{69}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_abc6878492b669a7db79ffea8cac9425e}\label{namespaceTest__mod_abc6878492b669a7db79ffea8cac9425e}} 
+\index{Test\_mod@{Test\_mod}!mv\_testCounterOld@{mv\_testCounterOld}}
+\index{mv\_testCounterOld@{mv\_testCounterOld}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{mv\_testCounterOld}{mv\_testCounterOld}}
+{\footnotesize\ttfamily integer(IK) Test\+\_\+mod\+::mv\+\_\+test\+Counter\+Old}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00068}{68}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceTest__mod_adf697c9dfd2acd8c744bd9f5297a5ccd}\label{namespaceTest__mod_adf697c9dfd2acd8c744bd9f5297a5ccd}} 
+\index{Test\_mod@{Test\_mod}!mv\_timeTotal@{mv\_timeTotal}}
+\index{mv\_timeTotal@{mv\_timeTotal}!Test\_mod@{Test\_mod}}
+\doxysubsubsection{\texorpdfstring{mv\_timeTotal}{mv\_timeTotal}}
+{\footnotesize\ttfamily real(RK) Test\+\_\+mod\+::mv\+\_\+time\+Total}
+
+
+
+Definition at line \mbox{\hyperlink{Test__mod_8f90_source_l00067}{67}} of file \mbox{\hyperlink{Test__mod_8f90_source}{Test\+\_\+mod.\+f90}}.
+

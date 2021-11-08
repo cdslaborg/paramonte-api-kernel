@@ -1,0 +1,371 @@
+\hypertarget{namespaceParaNest__ChainFileContents__mod}{}\doxysection{Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod Module Reference}
+\label{namespaceParaNest__ChainFileContents__mod}\index{ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}}
+
+
+This module contains procedures and routines for the chain file contents of the Para\+Nest sampler.  
+
+
+\doxysubsection*{Data Types}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions/\+Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+type(\mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}) function \mbox{\hyperlink{namespaceParaNest__ChainFileContents__mod_ab9b38b8a00974b49ed855b42267935b1}{construct\+Chain\+File\+Contents}} (ndim, alloc\+Size, domain\+Axes\+Name\+List, chain\+File\+Path, chain\+File\+Form, len\+Header, delimiter, chain\+Size)
+\begin{DoxyCompactList}\small\item\em This is the constructor of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Return an object of class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}} given the input specifications. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceParaNest__ChainFileContents__mod_a821bfa4960ebe397063e0680ebaa4ded}{allocate\+Chain}} (CFC, ndim, alloc\+Size)
+\begin{DoxyCompactList}\small\item\em This is the constructor of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Return an object of class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}} given the input specifications. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceParaNest__ChainFileContents__mod_abc3e6b9e7d373e4629e6480052013eca}{read\+Chain\+File\+Contents}} (CFC, chain\+File\+Path, chain\+File\+Form, Err, len\+Header, ndim, delimiter, chain\+Size, alloc\+Size)
+\begin{DoxyCompactList}\small\item\em This is a method of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Return and store the contents of a Para\+Nest simulation output chain file in the object of class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}. \end{DoxyCompactList}\item 
+pure integer(IK) function \mbox{\hyperlink{namespaceParaNest__ChainFileContents__mod_a0ca390add59660d26352b14efa2f7c79}{get\+Ess}} (len\+Log\+Weight, Log\+Weight, max\+Log\+Weight)
+\begin{DoxyCompactList}\small\item\em This is a method of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Return the effective sample size (ESS) of the current input Para\+Nest chain. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceParaNest__ChainFileContents__mod_aa3a73b3655a1ab094a8b93d8da433ff1}{nullify\+Chain\+File\+Contents}} (CFC, start\+Index, end\+Index)
+\begin{DoxyCompactList}\small\item\em This is a method of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Reset the components of the chain object to an unlikely value for the purpose of error catching and debugging. Store the modified components as part of the input object of class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceParaNest__ChainFileContents__mod_a0ea7c4bac379eb3d15193025b6f44e67}{get\+Len\+Header}} (CFC, ndim, is\+Binary, chain\+File\+Format)
+\begin{DoxyCompactList}\small\item\em This is a method of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Return the length of the header of the chain file. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceParaNest__ChainFileContents__mod_a18171509eb566613110c879f7d241f55}{write\+Header}} (CFC, ndim, chain\+File\+Unit, is\+Binary, chain\+File\+Format)
+\begin{DoxyCompactList}\small\item\em This is a method of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Write the requested header to the chain file. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceParaNest__ChainFileContents__mod_a2d470c4e4c3ef0d00de5875276101170}{write\+Ascii\+Chain}} (CFC, ibeg, iend, chain\+File\+Unit, chain\+File\+Format)
+\begin{DoxyCompactList}\small\item\em This is a method of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Write the chain properties to the chain file in ascii format. \end{DoxyCompactList}\item 
+subroutine \mbox{\hyperlink{namespaceParaNest__ChainFileContents__mod_a1707c0c601618985b65514894563ee8a}{write\+Binary\+Chain}} (CFC, ibeg, iend, chain\+File\+Unit)
+\begin{DoxyCompactList}\small\item\em This is a method of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Write the chain properties to the chain file in binary format. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+character($\ast$), parameter \mbox{\hyperlink{namespaceParaNest__ChainFileContents__mod_a0eb7e341269d4e2842306bdf035d8f62}{MODULE\+\_\+\+NAME}} = \char`\"{}@\char`\"{}//PMSM\%Para\+Nest//\char`\"{}@Para\+Monte\+Chain\+File\+Contents\+\_\+mod\char`\"{}
+\item 
+character($\ast$), dimension($\ast$), parameter \mbox{\hyperlink{namespaceParaNest__ChainFileContents__mod_a8bbea68b254c9efb4103dffd2f51437c}{COL\+\_\+\+HEADER\+\_\+\+DEFAULT}} = \mbox{[} \char`\"{}Process\+ID \char`\"{} , \char`\"{}Mean\+Acceptance\+Rate \char`\"{} , \char`\"{}Log\+Domain\+Size \char`\"{} , \char`\"{}Log\+Integral \char`\"{} , \char`\"{}Log\+Max\+Relative\+Error \char`\"{} , \char`\"{}Sample\+Log\+Weight \char`\"{} , \char`\"{}Sample\+Log\+Func \char`\"{} \mbox{]}
+\item 
+integer(IK), parameter \mbox{\hyperlink{namespaceParaNest__ChainFileContents__mod_ae3b224f2d44876f63170b21783590d1f}{NUM\+\_\+\+DEF\+\_\+\+COL}} = size(\mbox{\hyperlink{namespaceParaNest__ChainFileContents__mod_a8bbea68b254c9efb4103dffd2f51437c}{COL\+\_\+\+HEADER\+\_\+\+DEFAULT}})
+\begin{DoxyCompactList}\small\item\em the number of columns in the chain file other than the State columns \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This module contains procedures and routines for the chain file contents of the Para\+Nest sampler. 
+
+\begin{DoxyRemark}{Remarks}
+This module requires preprocessing, prior to compilation.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{namespaceParaNest__ChainFileContents__mod_a821bfa4960ebe397063e0680ebaa4ded}\label{namespaceParaNest__ChainFileContents__mod_a821bfa4960ebe397063e0680ebaa4ded}} 
+\index{ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}!allocateChain@{allocateChain}}
+\index{allocateChain@{allocateChain}!ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}}
+\doxysubsubsection{\texorpdfstring{allocateChain()}{allocateChain()}}
+{\footnotesize\ttfamily subroutine Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod\+::allocate\+Chain (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}})}]{CFC,  }\item[{integer(IK), intent(in)}]{ndim,  }\item[{integer(IK)}]{alloc\+Size }\end{DoxyParamCaption})}
+
+
+
+This is the constructor of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Return an object of class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}} given the input specifications. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em CFC} & \+: An object of class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em ndim} & \+: The number of dimensions of the domain of the objective function. \\
+\hline
+\mbox{\texttt{ in}}  & {\em alloc\+Size} & \+: The target allocation size of the chain ({\bfseries{optional}}, default is {\ttfamily chain\+Size}, otherwise will be inferred).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000044}{Todo}}]\+: All of the following arrays could be merged into a single 2D arrays or Array of Structures for better IO and data locality. \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source_l00200}{200}} of file \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source}{Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceParaNest__ChainFileContents__mod_ab9b38b8a00974b49ed855b42267935b1}\label{namespaceParaNest__ChainFileContents__mod_ab9b38b8a00974b49ed855b42267935b1}} 
+\index{ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}!constructChainFileContents@{constructChainFileContents}}
+\index{constructChainFileContents@{constructChainFileContents}!ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}}
+\doxysubsubsection{\texorpdfstring{constructChainFileContents()}{constructChainFileContents()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}) function Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod\+::construct\+Chain\+File\+Contents (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{ndim,  }\item[{integer(IK)}]{alloc\+Size,  }\item[{character($\ast$)}]{domain\+Axes\+Name\+List,  }\item[{character($\ast$)}]{chain\+File\+Path,  }\item[{character($\ast$)}]{chain\+File\+Form,  }\item[{integer(IK)}]{len\+Header,  }\item[{character($\ast$), intent(in), optional}]{delimiter,  }\item[{integer(IK)}]{chain\+Size }\end{DoxyParamCaption})}
+
+
+
+This is the constructor of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Return an object of class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}} given the input specifications. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em ndim} & \+: The number of dimensions of the domain of the objective function. \\
+\hline
+\mbox{\texttt{ in}}  & {\em alloc\+Size} & \+: The target allocation size of the chain ({\bfseries{optional}}, default = {\ttfamily chain\+Size}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em domain\+Axes\+Name\+List} & \+: The list of variable names corresponding to each axis of the domain of the objective function ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Path} & \+: The path to the output chain file ({\bfseries{optional}}, if present, the file contents will be read). \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Form} & \+: The file format of the chain file ({\ttfamily \char`\"{}binary\char`\"{}} vs. {\ttfamily \char`\"{}ascii\char`\"{}}) ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em len\+Header} & \+: The full length of the first line in the input file (the header line) ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em delimiter} & \+: The delimiter symbol used in the chain file ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+Size} & \+: The full length of the chain in the output file ({\bfseries{optional}}, will be inferred if missing).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily CFC} \+: An object of class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}} containing the chain.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+If {\ttfamily chain\+File\+Path} is given, then the rest of the optional arguments {\bfseries{must be also given}}. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source_l00133}{133}} of file \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source}{Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceParaNest__ChainFileContents__mod_a0ca390add59660d26352b14efa2f7c79}\label{namespaceParaNest__ChainFileContents__mod_a0ca390add59660d26352b14efa2f7c79}} 
+\index{ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}!getEss@{getEss}}
+\index{getEss@{getEss}!ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}}
+\doxysubsubsection{\texorpdfstring{getEss()}{getEss()}}
+{\footnotesize\ttfamily pure integer(IK) function Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod\+::get\+Ess (\begin{DoxyParamCaption}\item[{integer(IK)}]{len\+Log\+Weight,  }\item[{real(RK)}]{Log\+Weight,  }\item[{real(RK)}]{max\+Log\+Weight }\end{DoxyParamCaption})}
+
+
+
+This is a method of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Return the effective sample size (ESS) of the current input Para\+Nest chain. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em len\+Log\+Weight} & \+: The length of the input vector {\ttfamily Log\+Weight}. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em Log\+Weight} & \+: The input vector of weights to be used for computing the {\ttfamily ess}. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em max\+Log\+Weight} & \+: The maximum value of the input vector {\ttfamily Log\+Weight}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily ess} \+: The effective sample size. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source_l00664}{664}} of file \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source}{Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceParaNest__ChainFileContents__mod_a0ea7c4bac379eb3d15193025b6f44e67}\label{namespaceParaNest__ChainFileContents__mod_a0ea7c4bac379eb3d15193025b6f44e67}} 
+\index{ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}!getLenHeader@{getLenHeader}}
+\index{getLenHeader@{getLenHeader}!ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}}
+\doxysubsubsection{\texorpdfstring{getLenHeader()}{getLenHeader()}}
+{\footnotesize\ttfamily subroutine Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod\+::get\+Len\+Header (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}})}]{CFC,  }\item[{integer(IK), intent(in)}]{ndim,  }\item[{logical}]{is\+Binary,  }\item[{character($\ast$)}]{chain\+File\+Format }\end{DoxyParamCaption})}
+
+
+
+This is a method of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Return the length of the header of the chain file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em CFC} & \+: The object of class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em ndim} & \+: The number of dimensions of the domain of the objective function. \\
+\hline
+\mbox{\texttt{ in}}  & {\em is\+Binary} & \+: The logical flag indicating whether the file is in {\ttfamily binary} format. \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Format} & \+: The Fortran IO formatting string to be used to read the contents of the chain file ({\bfseries{optional}}). This argument is only required with a non-\/binary chain file, i.\+e., when {\ttfamily is\+Binary = .false.}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source_l00718}{718}} of file \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source}{Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceParaNest__ChainFileContents__mod_aa3a73b3655a1ab094a8b93d8da433ff1}\label{namespaceParaNest__ChainFileContents__mod_aa3a73b3655a1ab094a8b93d8da433ff1}} 
+\index{ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}!nullifyChainFileContents@{nullifyChainFileContents}}
+\index{nullifyChainFileContents@{nullifyChainFileContents}!ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}}
+\doxysubsubsection{\texorpdfstring{nullifyChainFileContents()}{nullifyChainFileContents()}}
+{\footnotesize\ttfamily subroutine Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod\+::nullify\+Chain\+File\+Contents (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}})}]{CFC,  }\item[{integer(IK)}]{start\+Index,  }\item[{integer(IK)}]{end\+Index }\end{DoxyParamCaption})}
+
+
+
+This is a method of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Reset the components of the chain object to an unlikely value for the purpose of error catching and debugging. Store the modified components as part of the input object of class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em CFC} & \+: The number of dimensions of the domain of the objective function. \\
+\hline
+\mbox{\texttt{ in}}  & {\em start\+Index} & \+: The beginning index beyond which the component values will be reset. \\
+\hline
+\mbox{\texttt{ in}}  & {\em end\+Index} & \+: The ending index below which the component values will be reset. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source_l00689}{689}} of file \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source}{Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceParaNest__ChainFileContents__mod_abc3e6b9e7d373e4629e6480052013eca}\label{namespaceParaNest__ChainFileContents__mod_abc3e6b9e7d373e4629e6480052013eca}} 
+\index{ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}!readChainFileContents@{readChainFileContents}}
+\index{readChainFileContents@{readChainFileContents}!ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}}
+\doxysubsubsection{\texorpdfstring{readChainFileContents()}{readChainFileContents()}}
+{\footnotesize\ttfamily subroutine Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod\+::read\+Chain\+File\+Contents (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}})}]{CFC,  }\item[{character($\ast$)}]{chain\+File\+Path,  }\item[{character($\ast$)}]{chain\+File\+Form,  }\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err,  }\item[{integer(IK)}]{len\+Header,  }\item[{integer(IK), intent(in), optional}]{ndim,  }\item[{character($\ast$), intent(in), optional}]{delimiter,  }\item[{integer(IK)}]{chain\+Size,  }\item[{integer(IK)}]{alloc\+Size }\end{DoxyParamCaption})}
+
+
+
+This is a method of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Return and store the contents of a Para\+Nest simulation output chain file in the object of class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em CFC} & \+: The object of class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Path} & \+: The list of variable names corresponding to each axis of the domain of the objective function. \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Form} & \+: The file format of the chain file ({\ttfamily \char`\"{}binary\char`\"{}} vs. {\ttfamily \char`\"{}compact\char`\"{}} vs. {\ttfamily \char`\"{}verbose\char`\"{}}). \\
+\hline
+\mbox{\texttt{ out}}  & {\em Err} & \+: An object of class \mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}} containing information about whether an error has occurred. \\
+\hline
+\mbox{\texttt{ in}}  & {\em len\+Header} & \+: The full length of the first line in the input file (the header line) ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em ndim} & \+: The number of dimensions of the domain of the objective function ({\bfseries{optional}}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em delimiter} & \+: The delimiter symbol used in the chain file ({\bfseries{optional}}, will be inferred if missing). \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+Size} & \+: The size of the complete chain in the output file ({\bfseries{optional}}, will be inferred if missing). \\
+\hline
+\mbox{\texttt{ in}}  & {\em alloc\+Size} & \+: The allocation size of the chain ({\bfseries{optional}}, default = {\ttfamily chain\+Size}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+Failure to provide the input optional argument {\ttfamily chain\+Size} will lead to the entire chain file being read into the chain object. This could potentially be catastrophic if the chain size is larger than the available virtual memory. At best, it will result in an IO twice slower than possible, since the file will have to be read twice.
+
+When {\ttfamily chain\+File\+Form = \char`\"{}binary\char`\"{}}, {\ttfamily len\+Header} and {\ttfamily delimiter} must be also provided.
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+If {\ttfamily alloc\+Size} is missing in the input file, the entire file will be read into the chain object. 
+\end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source_l00254}{254}} of file \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source}{Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceParaNest__ChainFileContents__mod_a2d470c4e4c3ef0d00de5875276101170}\label{namespaceParaNest__ChainFileContents__mod_a2d470c4e4c3ef0d00de5875276101170}} 
+\index{ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}!writeAsciiChain@{writeAsciiChain}}
+\index{writeAsciiChain@{writeAsciiChain}!ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}}
+\doxysubsubsection{\texorpdfstring{writeAsciiChain()}{writeAsciiChain()}}
+{\footnotesize\ttfamily subroutine Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod\+::write\+Ascii\+Chain (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}})}]{CFC,  }\item[{integer(IK), intent(in)}]{ibeg,  }\item[{integer(IK), intent(in)}]{iend,  }\item[{integer(IK)}]{chain\+File\+Unit,  }\item[{character($\ast$)}]{chain\+File\+Format }\end{DoxyParamCaption})}
+
+
+
+This is a method of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Write the chain properties to the chain file in ascii format. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em CFC} & \+: The object of class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em ibeg} & \+: The beginning index of the chain starting with which the elements of the chain will be written to the output file. \\
+\hline
+\mbox{\texttt{ in}}  & {\em iend} & \+: The index of the last record up to which the chain will be written to the output file. \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Unit} & \+: The unit ID of the chain file to which the header should be written. \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Format} & \+: The Fortran IO formatting string to be used to read the contents of the chain file. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source_l00811}{811}} of file \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source}{Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceParaNest__ChainFileContents__mod_a1707c0c601618985b65514894563ee8a}\label{namespaceParaNest__ChainFileContents__mod_a1707c0c601618985b65514894563ee8a}} 
+\index{ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}!writeBinaryChain@{writeBinaryChain}}
+\index{writeBinaryChain@{writeBinaryChain}!ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}}
+\doxysubsubsection{\texorpdfstring{writeBinaryChain()}{writeBinaryChain()}}
+{\footnotesize\ttfamily subroutine Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod\+::write\+Binary\+Chain (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}})}]{CFC,  }\item[{integer(IK), intent(in)}]{ibeg,  }\item[{integer(IK), intent(in)}]{iend,  }\item[{integer(IK)}]{chain\+File\+Unit }\end{DoxyParamCaption})}
+
+
+
+This is a method of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Write the chain properties to the chain file in binary format. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em CFC} & \+: The object of class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em ibeg} & \+: The beginning index of the chain starting with which the elements of the chain will be written to the output file. \\
+\hline
+\mbox{\texttt{ in}}  & {\em iend} & \+: The index of the last record up to which the chain will be written to the output file. \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Unit} & \+: The unit ID of the chain file to which the header should be written. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source_l00845}{845}} of file \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source}{Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceParaNest__ChainFileContents__mod_a18171509eb566613110c879f7d241f55}\label{namespaceParaNest__ChainFileContents__mod_a18171509eb566613110c879f7d241f55}} 
+\index{ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}!writeHeader@{writeHeader}}
+\index{writeHeader@{writeHeader}!ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}}
+\doxysubsubsection{\texorpdfstring{writeHeader()}{writeHeader()}}
+{\footnotesize\ttfamily subroutine Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod\+::write\+Header (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}})}]{CFC,  }\item[{integer(IK), intent(in)}]{ndim,  }\item[{integer(IK)}]{chain\+File\+Unit,  }\item[{logical}]{is\+Binary,  }\item[{character($\ast$)}]{chain\+File\+Format }\end{DoxyParamCaption})}
+
+
+
+This is a method of the class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}.~\newline
+ Write the requested header to the chain file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em CFC} & \+: The object of class \mbox{\hyperlink{structParaNest__ChainFileContents__mod_1_1ChainFileContents__type}{Chain\+File\+Contents\+\_\+type}}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em ndim} & \+: The number of dimensions of the domain of the objective function. \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Unit} & \+: The unit ID of the chain file to which the header should be written. \\
+\hline
+\mbox{\texttt{ in}}  & {\em is\+Binary} & \+: The logical flag indicating whether the file is in {\ttfamily binary} format. \\
+\hline
+\mbox{\texttt{ in}}  & {\em chain\+File\+Format} & \+: The Fortran IO formatting string to be used to read the contents of the chain file ({\bfseries{optional}}). This argument is only required with a non-\/binary chain file, i.\+e., when {\ttfamily is\+Binary = .false.}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source_l00765}{765}} of file \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source}{Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceParaNest__ChainFileContents__mod_a8bbea68b254c9efb4103dffd2f51437c}\label{namespaceParaNest__ChainFileContents__mod_a8bbea68b254c9efb4103dffd2f51437c}} 
+\index{ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}!COL\_HEADER\_DEFAULT@{COL\_HEADER\_DEFAULT}}
+\index{COL\_HEADER\_DEFAULT@{COL\_HEADER\_DEFAULT}!ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}}
+\doxysubsubsection{\texorpdfstring{COL\_HEADER\_DEFAULT}{COL\_HEADER\_DEFAULT}}
+{\footnotesize\ttfamily character($\ast$), dimension($\ast$), parameter Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod\+::\+COL\+\_\+\+HEADER\+\_\+\+DEFAULT = \mbox{[} \char`\"{}Process\+ID \char`\"{} , \char`\"{}Mean\+Acceptance\+Rate \char`\"{} , \char`\"{}Log\+Domain\+Size \char`\"{} , \char`\"{}Log\+Integral \char`\"{} , \char`\"{}Log\+Max\+Relative\+Error \char`\"{} , \char`\"{}Sample\+Log\+Weight \char`\"{} , \char`\"{}Sample\+Log\+Func \char`\"{} \mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source_l00065}{65}} of file \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source}{Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceParaNest__ChainFileContents__mod_a0eb7e341269d4e2842306bdf035d8f62}\label{namespaceParaNest__ChainFileContents__mod_a0eb7e341269d4e2842306bdf035d8f62}} 
+\index{ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}!MODULE\_NAME@{MODULE\_NAME}}
+\index{MODULE\_NAME@{MODULE\_NAME}!ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}}
+\doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
+{\footnotesize\ttfamily character($\ast$), parameter Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@\char`\"{}//PMSM\%Para\+Nest//\char`\"{}@Para\+Monte\+Chain\+File\+Contents\+\_\+mod\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source_l00063}{63}} of file \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source}{Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceParaNest__ChainFileContents__mod_ae3b224f2d44876f63170b21783590d1f}\label{namespaceParaNest__ChainFileContents__mod_ae3b224f2d44876f63170b21783590d1f}} 
+\index{ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}!NUM\_DEF\_COL@{NUM\_DEF\_COL}}
+\index{NUM\_DEF\_COL@{NUM\_DEF\_COL}!ParaNest\_ChainFileContents\_mod@{ParaNest\_ChainFileContents\_mod}}
+\doxysubsubsection{\texorpdfstring{NUM\_DEF\_COL}{NUM\_DEF\_COL}}
+{\footnotesize\ttfamily integer(IK), parameter Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod\+::\+NUM\+\_\+\+DEF\+\_\+\+COL = size(\mbox{\hyperlink{namespaceParaNest__ChainFileContents__mod_a8bbea68b254c9efb4103dffd2f51437c}{COL\+\_\+\+HEADER\+\_\+\+DEFAULT}})}
+
+
+
+the number of columns in the chain file other than the State columns 
+
+
+
+Definition at line \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source_l00074}{74}} of file \mbox{\hyperlink{ParaNest__ChainFileContents__mod_8f90_source}{Para\+Nest\+\_\+\+Chain\+File\+Contents\+\_\+mod.\+f90}}.
+

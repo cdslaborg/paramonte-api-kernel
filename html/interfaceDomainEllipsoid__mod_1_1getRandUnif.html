@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('interfaceDomainEllipsoid__mod_1_1getRandUnif.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespaceDomainEllipsoid__mod.html">DomainEllipsoid_mod</a></li><li class="navelem"><a class="el" href="interfaceDomainEllipsoid__mod_1_1getRandUnif.html">getRandUnif</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">DomainEllipsoid_mod::getRandUnif Interface Reference</div></div>
 </div><!--header-->
@@ -100,11 +116,12 @@ $(function() {
   </table>
   </dd>
 </dl>
-<dl class="section user"><dt>Example usage</dt><dd><div class="fragment"><div class="line"><span class="fortran_statement">program</span> test</div>
+<p><a class="anchor" id="example"></a><b>Example usage</b> <a href="#example">⛓</a> </p><dl class="section user"><dt></dt><dd><div class="fragment"><div class="line"><span class="fortran_statement">program</span> test</div>
 <div class="line"> </div>
 <div class="line">    <span class="fortran_statement">implicit none</span></div>
 <div class="line">    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceConstants__mod.html">Constants_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_variable" href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">IK</a>, <a class="code hl_variable" href="namespaceConstants__mod.html#a2d9d57f0148a7016d900f471e5f28069">RK</a> <span class="fortran_comment">! (Here `RK` can point to any of \RK32, \RK64, \RK128)</span></div>
-<div class="line">    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceMatrix__mod.html">Matrix_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceMatrix__mod_1_1genDiag.html">genDiag</a>, <a class="code hl_interface" href="interfaceMatrix__mod_1_1getChoLow.html">getChoLow</a></div>
+<div class="line">    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceMatrixDiag__mod.html">MatrixDiag_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceMatrixDiag__mod_1_1genDiag.html">genDiag</a></div>
+<div class="line">    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceMatrixCholesky__mod.html">MatrixCholesky_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceMatrixCholesky__mod_1_1getChoLow.html">getChoLow</a></div>
 <div class="line">    <span class="fortran_statement">use </span>GeometryEllipsoid_mod, <span class="fortran_statement">only</span>: getLogVolUnitBall</div>
 <div class="line">    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceDomainEllipsoid__mod.html">DomainEllipsoid_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceDomainEllipsoid__mod_1_1getRandUnif.html">getRandUnif</a></div>
 <div class="line">    <span class="fortran_statement">integer</span>(IK) ,<span class="fortran_attribute"> parameter</span>     :: NDIM<span class="fortran_operator_symbols"> = </span><span class="fortran_numeric_literal">3_IK</span>  <span class="fortran_comment">! the number of dimensions of the ellipsoid.</span></div>
@@ -125,9 +142,9 @@ $(function() {
 <div class="line"><span class="fortran_statement">    call</span> <a class="code hl_interface" href="interfaceDomainEllipsoid__mod_1_1getRandUnif.html">getRandUnif</a>(Rand, Mean)        <span class="fortran_comment">! generate a single NDIM-dimensional uniform random vector with the input Mean Vector.</span></div>
 <div class="line"><span class="fortran_statement">    call</span> <a class="code hl_interface" href="interfaceDomainEllipsoid__mod_1_1getRandUnif.html">getRandUnif</a>(RandSample, Mean)  <span class="fortran_comment">! generate NSIM NDIM-dimensional uniform random vectors with the input Mean Vector.</span></div>
 <div class="line"> </div>
-<div class="line">    ChoLowCovUpp<span class="fortran_operator_symbols"> = </span><a class="code hl_interface" href="interfaceMatrix__mod_1_1genDiag.html">genDiag</a>(NDIM, NDIM, diag<span class="fortran_operator_symbols"> = </span>Mean, offDiag<span class="fortran_operator_symbols"> = </span><span class="fortran_numeric_literal">0.</span><span class="fortran_numeric_literal">6</span>)      <span class="fortran_comment">! The representative matrix of the ellipsoid.</span></div>
+<div class="line">    ChoLowCovUpp<span class="fortran_operator_symbols"> = </span><a class="code hl_interface" href="interfaceMatrixDiag__mod_1_1genDiag.html">genDiag</a>(NDIM, NDIM, diag<span class="fortran_operator_symbols"> = </span>Mean, offDiag<span class="fortran_operator_symbols"> = </span><span class="fortran_numeric_literal">0.</span><span class="fortran_numeric_literal">6</span>)      <span class="fortran_comment">! The representative matrix of the ellipsoid.</span></div>
 <div class="line"> </div>
-<div class="line"><span class="fortran_statement">    call</span> <a class="code hl_interface" href="interfaceMatrix__mod_1_1getChoLow.html">getChoLow</a>(NDIM,ChoLowCovUpp,ChoDia) <span class="fortran_comment">! Compute the Cholesky factorization of the representative matrix.</span></div>
+<div class="line"><span class="fortran_statement">    call</span> <a class="code hl_interface" href="interfaceMatrixCholesky__mod_1_1getChoLow.html">getChoLow</a>(NDIM,ChoLowCovUpp,ChoDia) <span class="fortran_comment">! Compute the Cholesky factorization of the representative matrix.</span></div>
 <div class="line"> </div>
 <div class="line"><span class="fortran_statement">    call</span> <a class="code hl_interface" href="interfaceDomainEllipsoid__mod_1_1getRandUnif.html">getRandUnif</a>(Rand, Mean, ChoLowCovUpp)                  <span class="fortran_comment">! generate a single NDIM-dimensional uniform random vector with the input Mean Vector and shape structure.</span></div>
 <div class="line"><span class="fortran_statement">    call</span> <a class="code hl_interface" href="interfaceDomainEllipsoid__mod_1_1getRandUnif.html">getRandUnif</a>(RandSample, Mean, ChoLowCovUpp, ChoDia)    <span class="fortran_comment">! generate NSIM NDIM-dimensional uniform random vectors with the input Mean Vector and shape structure.</span></div>
@@ -136,14 +153,15 @@ $(function() {
 <div class="line"><span class="fortran_statement">    call</span> <a class="code hl_interface" href="interfaceDomainEllipsoid__mod_1_1getRandUnif.html">getRandUnif</a>(RandSample, Mean, ChoLowCovUpp, ChoDia, logVolUnitBall)    <span class="fortran_comment">! generate NSIM NDIM-dimensional uniform random vectors with the input Mean Vector and shape structure, but with a unit volume.</span></div>
 <div class="line"> </div>
 <div class="line"><span class="fortran_statement">end program </span>test</div>
-<div class="ttc" id="ainterfaceDomainEllipsoid__mod_1_1getRandUnif_html"><div class="ttname"><a href="interfaceDomainEllipsoid__mod_1_1getRandUnif.html">DomainEllipsoid_mod::getRandUnif</a></div><div class="ttdoc">Generate and return a vector of shape (nd) or a matrix of shape (nd,np) of randomly uniformly distrib...</div><div class="ttdef"><b>Definition:</b> <a href="DomainEllipsoid__mod_8f90_source.html#l00170">DomainEllipsoid_mod.f90:170</a></div></div>
-<div class="ttc" id="ainterfaceMatrix__mod_1_1genDiag_html"><div class="ttname"><a href="interfaceMatrix__mod_1_1genDiag.html">Matrix_mod::genDiag</a></div><div class="ttdef"><b>Definition:</b> <a href="Matrix__mod_8f90_source.html#l00073">Matrix_mod.f90:73</a></div></div>
-<div class="ttc" id="ainterfaceMatrix__mod_1_1getChoLow_html"><div class="ttname"><a href="interfaceMatrix__mod_1_1getChoLow.html">Matrix_mod::getChoLow</a></div><div class="ttdoc">Return the lower-triangle of the Cholesky factorization  of of the input symmetric positive-definite ...</div><div class="ttdef"><b>Definition:</b> <a href="Matrix__mod_8f90_source.html#l00861">Matrix_mod.f90:861</a></div></div>
+<div class="ttc" id="ainterfaceDomainEllipsoid__mod_1_1getRandUnif_html"><div class="ttname"><a href="interfaceDomainEllipsoid__mod_1_1getRandUnif.html">DomainEllipsoid_mod::getRandUnif</a></div><div class="ttdoc">Generate and return a vector of shape (nd) or a matrix of shape (nd,np) of randomly uniformly distrib...</div><div class="ttdef"><b>Definition:</b> <a href="DomainEllipsoid__mod_8f90_source.html#l00171">DomainEllipsoid_mod.f90:171</a></div></div>
+<div class="ttc" id="ainterfaceMatrixCholesky__mod_1_1getChoLow_html"><div class="ttname"><a href="interfaceMatrixCholesky__mod_1_1getChoLow.html">MatrixCholesky_mod::getChoLow</a></div><div class="ttdoc">Return the lower-triangle of the Cholesky factorization  of the symmetric positive-definite matrix re...</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCholesky__mod_8f90_source.html#l00143">MatrixCholesky_mod.f90:143</a></div></div>
+<div class="ttc" id="ainterfaceMatrixDiag__mod_1_1genDiag_html"><div class="ttname"><a href="interfaceMatrixDiag__mod_1_1genDiag.html">MatrixDiag_mod::genDiag</a></div><div class="ttdoc">Generate and return the diagonal elements of the input matrix of arbitrary shape.</div><div class="ttdef"><b>Definition:</b> <a href="MatrixDiag__mod_8f90_source.html#l00059">MatrixDiag_mod.f90:59</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html"><div class="ttname"><a href="namespaceConstants__mod.html">Constants_mod</a></div><div class="ttdoc">This module contains the mathematical and programming constants.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00046">Constants_mod.f90:46</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html_a2bf4d6767c9954d3a495d10ab6b538d6"><div class="ttname"><a href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">Constants_mod::IK</a></div><div class="ttdeci">integer, parameter IK</div><div class="ttdoc">default integer kind in Fortran mode.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00060">Constants_mod.f90:60</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html_a2d9d57f0148a7016d900f471e5f28069"><div class="ttname"><a href="namespaceConstants__mod.html#a2d9d57f0148a7016d900f471e5f28069">Constants_mod::RK</a></div><div class="ttdeci">integer, parameter RK</div><div class="ttdoc">default real kind in Fortran mode.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00061">Constants_mod.f90:61</a></div></div>
 <div class="ttc" id="anamespaceDomainEllipsoid__mod_html"><div class="ttname"><a href="namespaceDomainEllipsoid__mod.html">DomainEllipsoid_mod</a></div><div class="ttdoc">This module contains the classes and procedures for setting up the domain attribute of samplers of cl...</div><div class="ttdef"><b>Definition:</b> <a href="DomainEllipsoid__mod_8f90_source.html#l00048">DomainEllipsoid_mod.f90:48</a></div></div>
-<div class="ttc" id="anamespaceMatrix__mod_html"><div class="ttname"><a href="namespaceMatrix__mod.html">Matrix_mod</a></div><div class="ttdoc">This module contains mathematical procedures relevant to matrix operations and linear algebra.</div><div class="ttdef"><b>Definition:</b> <a href="Matrix__mod_8f90_source.html#l00052">Matrix_mod.f90:52</a></div></div>
+<div class="ttc" id="anamespaceMatrixCholesky__mod_html"><div class="ttname"><a href="namespaceMatrixCholesky__mod.html">MatrixCholesky_mod</a></div><div class="ttdoc">This module contains mathematical procedures relevant to matrix operations and linear algebra.</div><div class="ttdef"><b>Definition:</b> <a href="MatrixCholesky__mod_8f90_source.html#l00078">MatrixCholesky_mod.f90:78</a></div></div>
+<div class="ttc" id="anamespaceMatrixDiag__mod_html"><div class="ttname"><a href="namespaceMatrixDiag__mod.html">MatrixDiag_mod</a></div><div class="ttdoc">This module contains mathematical procedures relevant to generating diagonal matrices or extracting t...</div><div class="ttdef"><b>Definition:</b> <a href="MatrixDiag__mod_8f90_source.html#l00051">MatrixDiag_mod.f90:51</a></div></div>
 </div><!-- fragment --></dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
 <dd>
@@ -153,28 +171,19 @@ This software is distributed under the MIT-license. If you use any parts or conc
 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, University of Texas at Austin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DomainEllipsoid__mod_8f90_source.html#l00170">170</a> of file <a class="el" href="DomainEllipsoid__mod_8f90_source.html">DomainEllipsoid_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DomainEllipsoid__mod_8f90_source.html#l00171">171</a> of file <a class="el" href="DomainEllipsoid__mod_8f90_source.html">DomainEllipsoid_mod.f90</a>.</p>
 </div><hr/>The documentation for this interface was generated from the following file:<ul>
 <li>/home/amir/git/paramonte/src/kernel/<a class="el" href="DomainEllipsoid__mod_8f90_source.html">DomainEllipsoid_mod.f90</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="namespaceDomainEllipsoid__mod.html">DomainEllipsoid_mod</a></li><li class="navelem"><a class="el" href="interfaceDomainEllipsoid__mod_1_1getRandUnif.html">getRandUnif</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:39 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:15 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

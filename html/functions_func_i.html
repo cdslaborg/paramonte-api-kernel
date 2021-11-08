@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -59,6 +63,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('functions_func_i.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -77,10 +97,15 @@ $(function() {
 &#160;
 
 <h3><a id="index_i" name="index_i"></a>- i -</h3><ul>
-<li>indexArray_IK()&#160;:&#160;<a class="el" href="interfaceSort__mod_1_1indexArray.html#ae7cd7723e7d7e8592517e0bdb5adb0c1">Sort_mod::indexArray</a></li>
-<li>indexArray_RK()&#160;:&#160;<a class="el" href="interfaceSort__mod_1_1indexArray.html#a2ad8f3831c3511700156ef10a1958e09">Sort_mod::indexArray</a></li>
+<li>if()&#160;:&#160;<a class="el" href="structString__mod_1_1IntStr__type.html#ab45151a1a21de82ed0d5e7b7069a03b5">String_mod::IntStr_type</a>, <a class="el" href="structString__mod_1_1RealStr__type.html#a7062b52453b110e348757e390eb0c124">String_mod::RealStr_type</a>, <a class="el" href="structString__mod_1_1String__type.html#a8ab07f0850d6ab9ae077fd148bfcc638">String_mod::String_type</a></li>
+<li>IK16_ENABLED()&#160;:&#160;<a class="el" href="structString__mod_1_1IntStr__type.html#ab1f010ed7bae5a3d9265b65f1b7e81dd">String_mod::IntStr_type</a></li>
+<li>IK32_ENABLED()&#160;:&#160;<a class="el" href="structString__mod_1_1IntStr__type.html#ac595abf8ceaef94154dc8ad6cb381d0b">String_mod::IntStr_type</a>, <a class="el" href="structString__mod_1_1String__type.html#a83d2269337b8293d34369a2a64cd6a25">String_mod::String_type</a></li>
+<li>IK64_ENABLED()&#160;:&#160;<a class="el" href="structString__mod_1_1IntStr__type.html#a461e26e828cb3b7af10d41632630fce1">String_mod::IntStr_type</a>, <a class="el" href="structString__mod_1_1String__type.html#a5be10b5f9b67810619cc2e89c44470cf">String_mod::String_type</a></li>
+<li>IK8_ENABLED()&#160;:&#160;<a class="el" href="structString__mod_1_1IntStr__type.html#a60bd752a3bde74e77e390ef450ad0ee2">String_mod::IntStr_type</a></li>
 <li>informUser()&#160;:&#160;<a class="el" href="structParaMonte__mod_1_1ParaMonte__type.html#a374c56c995aa8a1b452b6d1ed90aa042">ParaMonte_mod::ParaMonte_type</a></li>
-<li>int()&#160;:&#160;<a class="el" href="structString__mod_1_1String__type.html#a5f1ab90c53aea032ca38697cb9166d10">String_mod::String_type</a></li>
+<li>int()&#160;:&#160;<a class="el" href="structString__mod_1_1String__type.html#ac15ef0f70a9c98a95e94408d69f52069">String_mod::String_type</a></li>
+<li>int32()&#160;:&#160;<a class="el" href="structString__mod_1_1String__type.html#ab3d01b7aaa04664eda21562ef694a2e5">String_mod::String_type</a></li>
+<li>int64()&#160;:&#160;<a class="el" href="structString__mod_1_1String__type.html#a446869d6b38b6b68be9e331acbe96c58">String_mod::String_type</a></li>
 <li>integrand_proc()&#160;:&#160;<a class="el" href="interfaceIntegration__mod_1_1integrand__proc.html#a875b385ed2c44fa9bf4302d5e537d40c">Integration_mod::integrand_proc</a></li>
 <li>integrator_proc()&#160;:&#160;<a class="el" href="interfaceIntegration__mod_1_1integrator__proc.html#afbc52f5ba18b6031ef16dc85d2c9856e">Integration_mod::integrator_proc</a></li>
 <li>isDigit()&#160;:&#160;<a class="el" href="structString__mod_1_1String__type.html#a352e45ca47cdf1e7c578517e8e06ad84">String_mod::String_type</a></li>
@@ -88,25 +113,20 @@ $(function() {
 <li>isIdenticalDomain()&#160;:&#160;<a class="el" href="interfaceDomainEllipsoid__mod_1_1isEqual.html#a7b46c636f91ffd018fbef6fb52d236d9">DomainEllipsoid_mod::isEqual</a>, <a class="el" href="interfaceDomainEllipsoid__mod_1_1operator_07_0a_0a_08.html#aa7565553b4a579935e020ad7a4c246a5">DomainEllipsoid_mod::operator(==)</a></li>
 <li>isIdenticalDomainAlmost()&#160;:&#160;<a class="el" href="interfaceDomainEllipsoid__mod_1_1isEqual.html#a69e07c977040a92554d0b8fb98d399f7">DomainEllipsoid_mod::isEqual</a></li>
 <li>isInteger()&#160;:&#160;<a class="el" href="structString__mod_1_1String__type.html#ad672cb85529bf79107399d6f096eea5b">String_mod::String_type</a></li>
+<li>isLarger_D0()&#160;:&#160;<a class="el" href="interfaceString__mod_1_1operator_07_4_08.html#ad95798209e4daf3ee05131d889297c06">String_mod::operator(&gt;)</a></li>
+<li>isLargerEqual_D0()&#160;:&#160;<a class="el" href="interfaceString__mod_1_1operator_07_4_0a_08.html#a58e57408de508e6b9a0c0d307ca29128">String_mod::operator(&gt;=)</a></li>
+<li>isNotEqual_D0()&#160;:&#160;<a class="el" href="interfaceString__mod_1_1operator_07_2_0a_08.html#a77873539bb8ff144dde27d181caf5134">String_mod::operator(/=)</a></li>
+<li>isSmaller_D0()&#160;:&#160;<a class="el" href="interfaceString__mod_1_1operator_07_3_08.html#ae44c309618c457c77898965fb5448585">String_mod::operator(&lt;)</a></li>
+<li>isSmallerEqual_D0()&#160;:&#160;<a class="el" href="interfaceString__mod_1_1operator_07_3_0a_08.html#a8381d14c74dcac3d875f9909db697c57">String_mod::operator(&lt;=)</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:46 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:21 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

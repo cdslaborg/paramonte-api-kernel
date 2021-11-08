@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Test__Integration__mod_8f90_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4d389600729eb25db92af3e09978356f.html">tests</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">Test_Integration_mod.f90</div></div>
 </div><!--header-->
@@ -130,13 +146,13 @@ $(function() {
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="fortran_comment">!use QuadPackDouble_mod, only: dqagi</span></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceConstants__mod.html">Constants_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_variable" href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">IK</a>, <a class="code hl_variable" href="namespaceConstants__mod.html#a2d9d57f0148a7016d900f471e5f28069">RK</a></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceErr__mod.html">Err_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_struct" href="structErr__mod_1_1Err__type.html">Err_type</a></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="fortran_statement">use </span>Test_mod, <span class="fortran_statement">only</span>: Test_type</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceTest__mod.html">Test_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="fortran_attribute">    private</span></div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="fortran_attribute">    public</span> :: <a class="code hl_function" href="namespaceTest__Integration__mod.html#a8e33a4c60233939485aa1c567b01c14d">test_Integration</a></div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="namespaceTest__Integration__mod.html#ad8b8a340accd928028124fa4ca241fc8">   58</a></span>    <span class="fortran_statement">type</span>(Test_type) :: <a class="code hl_variable" href="namespaceTest__Integration__mod.html#ad8b8a340accd928028124fa4ca241fc8">Test</a></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="namespaceTest__Integration__mod.html#ad8b8a340accd928028124fa4ca241fc8">   58</a></span>    <span class="fortran_statement">type</span>(<a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a>) :: <a class="code hl_variable" href="namespaceTest__Integration__mod.html#ad8b8a340accd928028124fa4ca241fc8">Test</a></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
@@ -146,13 +162,13 @@ $(function() {
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="namespaceTest__Integration__mod.html#a8e33a4c60233939485aa1c567b01c14d">   66</a></span><span class="fortran_statement">    subroutine</span> <a class="code hl_function" href="namespaceTest__Integration__mod.html#a8e33a4c60233939485aa1c567b01c14d">test_Integration</a>()</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="fortran_statement">implicit none</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <a class="code hl_variable" href="namespaceTest__Integration__mod.html#ad8b8a340accd928028124fa4ca241fc8">Test</a><span class="fortran_operator_symbols"> = </span>Test_type(moduleName<span class="fortran_operator_symbols">=</span><a class="code hl_variable" href="namespaceConstants__mod.html#ade87ed33b235f099b65904dc21cbe01e">MODULE_NAME</a>)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <a class="code hl_variable" href="namespaceTest__Integration__mod.html#ad8b8a340accd928028124fa4ca241fc8">Test</a><span class="fortran_operator_symbols"> = </span><a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a>(moduleName<span class="fortran_operator_symbols">=</span><a class="code hl_variable" href="namespaceConstants__mod.html#ade87ed33b235f099b65904dc21cbe01e">MODULE_NAME</a>)</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Integration__mod.html#ad8b8a340accd928028124fa4ca241fc8">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__Integration__mod.html#a9ba4b1b6772595edd56de4d4791f3c41">test_doQuadRombOpen_1</a>, <span class="fortran_string">&quot;test_doQuadRombOpen_1&quot;</span>)</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Integration__mod.html#ad8b8a340accd928028124fa4ca241fc8">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__Integration__mod.html#a6f0d68d537d7ed1a06cfd8fddd6d5ba0">test_doQuadRombOpen_2</a>, <span class="fortran_string">&quot;test_doQuadRombOpen_2&quot;</span>)</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Integration__mod.html#ad8b8a340accd928028124fa4ca241fc8">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__Integration__mod.html#a8a7ed3bfcecf7b14b9ca0c99bc052db0">test_doQuadRombOpen_3</a>, <span class="fortran_string">&quot;test_doQuadRombOpen_3&quot;</span>)</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Integration__mod.html#ad8b8a340accd928028124fa4ca241fc8">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__Integration__mod.html#aa22865e7a571c16572abea54dbe208ac">test_doQuadRombOpen_4</a>, <span class="fortran_string">&quot;test_doQuadRombOpen_4&quot;</span>)</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Integration__mod.html#ad8b8a340accd928028124fa4ca241fc8">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__Integration__mod.html#a62d8bfc70075230dae509de3b475cc35">test_doQuadRombClosed_1</a>, <span class="fortran_string">&quot;test_doQuadRombClosed_1&quot;</span>)</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Integration__mod.html#ad8b8a340accd928028124fa4ca241fc8">Test</a><span class="fortran_operator_symbols">%</span>finalize()</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Integration__mod.html#ad8b8a340accd928028124fa4ca241fc8">Test</a><span class="fortran_operator_symbols">%</span><a class="code hl_function" href="namespaceTest__mod.html#a9612928d23d1dedb33964f0207b12074">finalize</a>()</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="fortran_statement">end subroutine </span><a class="code hl_function" href="namespaceTest__Integration__mod.html#a8e33a4c60233939485aa1c567b01c14d">test_Integration</a></div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
@@ -465,12 +481,12 @@ $(function() {
 <div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span> </div>
 <div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span><span class="fortran_statement">end module </span><a class="code hl_namespace" href="namespaceTest__Integration__mod.html">Test_Integration_mod</a> ! LCOV_EXCL_LINE</div>
 <div class="ttc" id="anamespaceConstants__mod_html"><div class="ttname"><a href="namespaceConstants__mod.html">Constants_mod</a></div><div class="ttdoc">This module contains the mathematical and programming constants.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00046">Constants_mod.f90:46</a></div></div>
-<div class="ttc" id="anamespaceConstants__mod_html_a0c8475fc3f2507c7a04f3ee9d7f3c17c"><div class="ttname"><a href="namespaceConstants__mod.html#a0c8475fc3f2507c7a04f3ee9d7f3c17c">Constants_mod::INVERSE_SQRT_PI</a></div><div class="ttdeci">real(RK), parameter INVERSE_SQRT_PI</div><div class="ttdoc">= inverse of the square root of Pi.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00102">Constants_mod.f90:102</a></div></div>
+<div class="ttc" id="anamespaceConstants__mod_html_a0c8475fc3f2507c7a04f3ee9d7f3c17c"><div class="ttname"><a href="namespaceConstants__mod.html#a0c8475fc3f2507c7a04f3ee9d7f3c17c">Constants_mod::INVERSE_SQRT_PI</a></div><div class="ttdeci">real(RK), parameter INVERSE_SQRT_PI</div><div class="ttdoc">= inverse of the square root of Pi.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00105">Constants_mod.f90:105</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html_a2bf4d6767c9954d3a495d10ab6b538d6"><div class="ttname"><a href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">Constants_mod::IK</a></div><div class="ttdeci">integer, parameter IK</div><div class="ttdoc">default integer kind in Fortran mode.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00060">Constants_mod.f90:60</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html_a2d9d57f0148a7016d900f471e5f28069"><div class="ttname"><a href="namespaceConstants__mod.html#a2d9d57f0148a7016d900f471e5f28069">Constants_mod::RK</a></div><div class="ttdeci">integer, parameter RK</div><div class="ttdoc">default real kind in Fortran mode.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00061">Constants_mod.f90:61</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html_ade87ed33b235f099b65904dc21cbe01e"><div class="ttname"><a href="namespaceConstants__mod.html#ade87ed33b235f099b65904dc21cbe01e">Constants_mod::MODULE_NAME</a></div><div class="ttdeci">character(*), parameter MODULE_NAME</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00054">Constants_mod.f90:54</a></div></div>
-<div class="ttc" id="anamespaceConstants__mod_html_ae20f65c52232a3d3123fc70642f67e0c"><div class="ttname"><a href="namespaceConstants__mod.html#ae20f65c52232a3d3123fc70642f67e0c">Constants_mod::POSINF_RK</a></div><div class="ttdeci">real(RK), parameter POSINF_RK</div><div class="ttdoc">positive virtual infinite real. The division is done to avoid overflow in output</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00114">Constants_mod.f90:114</a></div></div>
-<div class="ttc" id="anamespaceConstants__mod_html_afea162bb8db916f002c4a45780cf4cf2"><div class="ttname"><a href="namespaceConstants__mod.html#afea162bb8db916f002c4a45780cf4cf2">Constants_mod::NEGLOGINF_RK</a></div><div class="ttdeci">real(RK), parameter NEGLOGINF_RK</div><div class="ttdoc">represents the logarithm of the smallest representable number</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00117">Constants_mod.f90:117</a></div></div>
+<div class="ttc" id="anamespaceConstants__mod_html_ae20f65c52232a3d3123fc70642f67e0c"><div class="ttname"><a href="namespaceConstants__mod.html#ae20f65c52232a3d3123fc70642f67e0c">Constants_mod::POSINF_RK</a></div><div class="ttdeci">real(RK), parameter POSINF_RK</div><div class="ttdoc">positive virtual infinite real. The division is done to avoid overflow in output</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00117">Constants_mod.f90:117</a></div></div>
+<div class="ttc" id="anamespaceConstants__mod_html_afea162bb8db916f002c4a45780cf4cf2"><div class="ttname"><a href="namespaceConstants__mod.html#afea162bb8db916f002c4a45780cf4cf2">Constants_mod::NEGLOGINF_RK</a></div><div class="ttdeci">real(RK), parameter NEGLOGINF_RK</div><div class="ttdoc">represents the logarithm of the smallest representable number</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00120">Constants_mod.f90:120</a></div></div>
 <div class="ttc" id="anamespaceErr__mod_html"><div class="ttname"><a href="namespaceErr__mod.html">Err_mod</a></div><div class="ttdoc">This module contains classes and procedures for reporting and handling errors.</div><div class="ttdef"><b>Definition:</b> <a href="Err__mod_8f90_source.html#l00046">Err_mod.f90:46</a></div></div>
 <div class="ttc" id="anamespaceIntegration__mod_html"><div class="ttname"><a href="namespaceIntegration__mod.html">Integration_mod</a></div><div class="ttdoc">This module contains classes and procedures to perform numerical integrations.</div><div class="ttdef"><b>Definition:</b> <a href="Integration__mod_8f90_source.html#l00046">Integration_mod.f90:46</a></div></div>
 <div class="ttc" id="anamespaceIntegration__mod_html_a2afac450765cc9aeecb83147d5edd584"><div class="ttname"><a href="namespaceIntegration__mod.html#a2afac450765cc9aeecb83147d5edd584">Integration_mod::doQuadRombOpen</a></div><div class="ttdeci">recursive subroutine doQuadRombOpen(getFunc, integrate, lowerLim, upperLim, maxRelativeError, nRefinement, integral, relativeError, numFuncEval, ierr)</div><div class="ttdoc">Return the integral of function getFunc in the open range [lowerLim,upperLim] using Adaptive Romberg ...</div><div class="ttdef"><b>Definition:</b> <a href="Integration__mod_8f90_source.html#l00169">Integration_mod.f90:180</a></div></div>
@@ -488,25 +504,19 @@ $(function() {
 <div class="ttc" id="anamespaceTest__Integration__mod_html_aa22865e7a571c16572abea54dbe208ac"><div class="ttname"><a href="namespaceTest__Integration__mod.html#aa22865e7a571c16572abea54dbe208ac">Test_Integration_mod::test_doQuadRombOpen_4</a></div><div class="ttdeci">logical function test_doQuadRombOpen_4()</div><div class="ttdef"><b>Definition:</b> <a href="Test__Integration__mod_8f90_source.html#l00246">Test_Integration_mod.f90:247</a></div></div>
 <div class="ttc" id="anamespaceTest__Integration__mod_html_ad8b8a340accd928028124fa4ca241fc8"><div class="ttname"><a href="namespaceTest__Integration__mod.html#ad8b8a340accd928028124fa4ca241fc8">Test_Integration_mod::Test</a></div><div class="ttdeci">type(Test_type) Test</div><div class="ttdef"><b>Definition:</b> <a href="Test__Integration__mod_8f90_source.html#l00058">Test_Integration_mod.f90:58</a></div></div>
 <div class="ttc" id="anamespaceTest__Integration__mod_html_aeb370c8319db8a3be4492172df194e8c"><div class="ttname"><a href="namespaceTest__Integration__mod.html#aeb370c8319db8a3be4492172df194e8c">Test_Integration_mod::getTestFuncOpenInterval_1</a></div><div class="ttdeci">real(RK) function getTestFuncOpenInterval_1(x)</div><div class="ttdef"><b>Definition:</b> <a href="Test__Integration__mod_8f90_source.html#l00355">Test_Integration_mod.f90:356</a></div></div>
+<div class="ttc" id="anamespaceTest__mod_html"><div class="ttname"><a href="namespaceTest__mod.html">Test_mod</a></div><div class="ttdoc">This is the driver module of the unit testing framework of the ParaMonte kernel routines.</div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00054">Test_mod.f90:54</a></div></div>
+<div class="ttc" id="anamespaceTest__mod_html_a9612928d23d1dedb33964f0207b12074"><div class="ttname"><a href="namespaceTest__mod.html#a9612928d23d1dedb33964f0207b12074">Test_mod::finalize</a></div><div class="ttdeci">subroutine finalize()</div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00180">Test_mod.f90:181</a></div></div>
 <div class="ttc" id="astructErr__mod_1_1Err__type_html"><div class="ttname"><a href="structErr__mod_1_1Err__type.html">Err_mod::Err_type</a></div><div class="ttdoc">The error type.</div><div class="ttdef"><b>Definition:</b> <a href="Err__mod_8f90_source.html#l00063">Err_mod.f90:63</a></div></div>
+<div class="ttc" id="astructTest__mod_1_1Test__type_html"><div class="ttname"><a href="structTest__mod_1_1Test__type.html">Test_mod::Test_type</a></div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00101">Test_mod.f90:101</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4d389600729eb25db92af3e09978356f.html">tests</a></li><li class="navelem"><a class="el" href="Test__Integration__mod_8f90.html">Test_Integration_mod.f90</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:32 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:10 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

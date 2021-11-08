@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Set__mod_0dRoutines__smod_0dcomplementRangeOrdered_8inc_8f90_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">Set_mod@Routines_smod@complementRangeOrdered.inc.f90</div></div>
 </div><!--header-->
@@ -125,46 +141,36 @@ $(function() {
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="fortran_statement">integer</span>(IK) :: lenComplement</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="fortran_statement">integer</span>(IK) :: lenOrderedSuperSet</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="fortran_statement">integer</span>(IK) :: lenOrderedSet</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="fortran_statement">integer</span>(IK) :: upper_IK</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="fortran_statement">integer</span>(IK) :: lower_IK</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="fortran_statement">integer</span>(IK) :: jstart</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="fortran_statement">integer</span>(IK) :: i, j</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        upper_IK<span class="fortran_operator_symbols"> = </span><span class="fortran_function">int</span>(upper,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK)</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        lower_IK<span class="fortran_operator_symbols"> = </span><span class="fortran_function">int</span>(lower,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK)</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        lenOrderedSet<span class="fortran_operator_symbols"> = </span><span class="fortran_function">size</span>(OrderedSet,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK)</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="fortran_statement">        allocate</span>(Complement(upper_IK<span class="fortran_operator_symbols"> - </span>lower_IK<span class="fortran_operator_symbols"> + </span><span class="fortran_numeric_literal">1_IK</span><span class="fortran_operator_symbols"> - </span>lenOrderedSet))</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        jstart<span class="fortran_operator_symbols"> = </span><span class="fortran_numeric_literal">1_IK</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        lenComplement<span class="fortran_operator_symbols"> = </span><span class="fortran_numeric_literal">0_IK</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        loopOverOrderedSuperSet: <span class="fortran_keywordflow">do</span> i<span class="fortran_operator_symbols"> = </span>lower_IK, upper_IK</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            loopOverOrderedSet: <span class="fortran_keywordflow">do</span> j<span class="fortran_operator_symbols"> = </span>jstart, lenOrderedSet</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                <span class="fortran_keywordflow">if</span> (i<span class="fortran_operator_symbols"> =</span><span class="fortran_operator_symbols">= </span>OrderedSet(j)) <span class="fortran_keywordflow">then</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                    jstart<span class="fortran_operator_symbols"> = </span>jstart<span class="fortran_operator_symbols"> + </span><span class="fortran_numeric_literal">1_IK</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="fortran_statement">                    cycle</span> loopOverOrderedSuperSet</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="fortran_keywordflow">                end if</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="fortran_keywordflow">            end do</span> loopOverOrderedSet</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            lenComplement<span class="fortran_operator_symbols"> = </span>lenComplement<span class="fortran_operator_symbols"> + </span><span class="fortran_numeric_literal">1_IK</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            Complement(lenComplement)<span class="fortran_operator_symbols"> = </span>i</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="fortran_keywordflow">        end do</span> loopOverOrderedSuperSet</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="fortran_statement">integer</span>(IK) :: lenOrderedSet</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="fortran_statement">integer</span>(IK) :: upper_IK</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="fortran_statement">integer</span>(IK) :: lower_IK</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="fortran_statement">integer</span>(IK) :: jstart</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="fortran_statement">integer</span>(IK) :: i, j</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        upper_IK<span class="fortran_operator_symbols"> = </span><span class="fortran_function">int</span>(upper,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        lower_IK<span class="fortran_operator_symbols"> = </span><span class="fortran_function">int</span>(lower,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        lenOrderedSet<span class="fortran_operator_symbols"> = </span><span class="fortran_function">size</span>(OrderedSet,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK)</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="fortran_statement">        allocate</span>(Complement(upper_IK<span class="fortran_operator_symbols"> - </span>lower_IK<span class="fortran_operator_symbols"> + </span><span class="fortran_numeric_literal">1_IK</span><span class="fortran_operator_symbols"> - </span>lenOrderedSet))</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        jstart<span class="fortran_operator_symbols"> = </span><span class="fortran_numeric_literal">1_IK</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        lenComplement<span class="fortran_operator_symbols"> = </span><span class="fortran_numeric_literal">0_IK</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        loopOverOrderedSuperSet: <span class="fortran_keywordflow">do</span> i<span class="fortran_operator_symbols"> = </span>lower_IK, upper_IK</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            loopOverOrderedSet: <span class="fortran_keywordflow">do</span> j<span class="fortran_operator_symbols"> = </span>jstart, lenOrderedSet</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                <span class="fortran_keywordflow">if</span> (i<span class="fortran_operator_symbols"> =</span><span class="fortran_operator_symbols">= </span>OrderedSet(j)) <span class="fortran_keywordflow">then</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                    jstart<span class="fortran_operator_symbols"> = </span>jstart<span class="fortran_operator_symbols"> + </span><span class="fortran_numeric_literal">1_IK</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="fortran_statement">                    cycle</span> loopOverOrderedSuperSet</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="fortran_keywordflow">                end if</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="fortran_keywordflow">            end do</span> loopOverOrderedSet</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            lenComplement<span class="fortran_operator_symbols"> = </span>lenComplement<span class="fortran_operator_symbols"> + </span><span class="fortran_numeric_literal">1_IK</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            Complement(lenComplement)<span class="fortran_operator_symbols"> = </span>i</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="fortran_keywordflow">        end do</span> loopOverOrderedSuperSet</div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="Set__mod_0dRoutines__smod_0dcomplementRangeOrdered_8inc_8f90.html">Set_mod@Routines_smod@complementRangeOrdered.inc.f90</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:30 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:09 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

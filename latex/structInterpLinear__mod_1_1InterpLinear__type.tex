@@ -8,11 +8,11 @@ This is the generic interface for the constructor of \mbox{\hyperlink{structInte
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-procedure, pass \mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type_a20d131a1cb74d64b5501961dcdc96b9b}{predict\+\_\+0D}}
+procedure, pass \mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type_a15170958cd0ff02d986cf9ece14b4924}{predict\+\_\+\+D0}}
 \begin{DoxyCompactList}\small\item\em A dynamic method for performing interpolation on scalar inputs. \end{DoxyCompactList}\item 
-procedure, pass \mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type_a750b7b4c7d1130caa8ac168b855f9dfc}{predict\+\_\+1D}}
+procedure, pass \mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type_af587c0748fa743b179c2713c5f84379e}{predict\+\_\+\+D1}}
 \begin{DoxyCompactList}\small\item\em A dynamic method for performing interpolation on vector inputs. \end{DoxyCompactList}\item 
-generic \mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type_a77562cdb63af12f3f29007e5e078a073}{predict}} =$>$ \mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type_a20d131a1cb74d64b5501961dcdc96b9b}{predict\+\_\+0D}}, \mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type_a750b7b4c7d1130caa8ac168b855f9dfc}{predict\+\_\+1D}}
+generic \mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type_a92adc229bacdf8ff90021aaec0823f8c}{predict}} =$>$ \mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type_a15170958cd0ff02d986cf9ece14b4924}{predict\+\_\+\+D0}}, \mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type_af587c0748fa743b179c2713c5f84379e}{predict\+\_\+\+D1}}
 \item 
 type(\mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type}{Interp\+Linear\+\_\+type}}) function \mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type_ae127cf399b1445a47b06f3e23c005ae2}{construct\+Interp\+Linear}} (\mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type_a5366f1b176fb629e9a80572b4c8023eb}{SortedX}}, SortedY, Err)
 \begin{DoxyCompactList}\small\item\em Return an objects of type \mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type}{Interp\+Linear\+\_\+type}} for linear interpolation. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -33,7 +33,8 @@ real(RK), dimension(\+:,\+:), allocatable \mbox{\hyperlink{structInterpLinear__m
 This is the generic interface for the constructor of \mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type}{Interp\+Linear\+\_\+mod}}. 
 
 \begin{DoxySeeAlso}{See also}
-\mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type_ae127cf399b1445a47b06f3e23c005ae2}{constructor}}. 
+\mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type_ae127cf399b1445a47b06f3e23c005ae2}{constructor}} ~\newline
+ 
 \end{DoxySeeAlso}
 
 
@@ -70,9 +71,11 @@ The input {\ttfamily SortedX} is the vector of nodes of the linear interpolation
 
 Since there are {\ttfamily num\+Node} interpolation nodes, there exist {\ttfamily ninterp = num\+Node -\/ 1} such equations as in the above. To expedite future interpolations based on the input nodes, the two fixed coefficients in the above equation are stored in the {\ttfamily Coef} component on the object for each equation corresponding to a linear interpolation between two adjacet points.
 
-Once the interpolation coefficients are computed, user can call the \mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type_a77562cdb63af12f3f29007e5e078a073}{predict()}} method of the returned object to interpolate at arbitrary input query points.
+Once the interpolation coefficients are computed, user can call the \mbox{\hyperlink{structInterpLinear__mod_1_1InterpLinear__type_a92adc229bacdf8ff90021aaec0823f8c}{predict()}} method of the returned object to interpolate at arbitrary input query points.
 
-\begin{DoxyParagraph}{Example usage}
+\label{namespaceInterpLinear__mod_example}%
+\Hypertarget{namespaceInterpLinear__mod_example}%
+{\bfseries{Example usage}} \href{\#example}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{fortran_statement}{program} test}
@@ -86,13 +89,13 @@ Once the interpolation coefficients are computed, user can call the \mbox{\hyper
 
 \end{DoxyParagraph}
 \begin{DoxyRemark}{Remarks}
-If needed, the input values for {\ttfamily SortedX} and {\ttfamily SortedY} can be sorted in ascending order by calling either \mbox{\hyperlink{interfaceSort__mod_1_1sortArray}{sort\+Array()}} or \mbox{\hyperlink{interfaceSort__mod_1_1indexArray}{index\+Array()}}. 
+If needed, the input values for {\ttfamily SortedX} and {\ttfamily SortedY} can be sorted in ascending order by calling either \mbox{\hyperlink{interfaceSort__mod_1_1sort}{sort()}} or \mbox{\hyperlink{interfaceSort__mod_1_1sortIndex}{sort\+Index()}}. 
 \end{DoxyRemark}
 
 
-Definition at line \mbox{\hyperlink{InterpLinear__mod_8f90_source_l00085}{85}} of file \mbox{\hyperlink{InterpLinear__mod_8f90_source}{Interp\+Linear\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{InterpLinear__mod_8f90_source_l00087}{87}} of file \mbox{\hyperlink{InterpLinear__mod_8f90_source}{Interp\+Linear\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{structInterpLinear__mod_1_1InterpLinear__type_a77562cdb63af12f3f29007e5e078a073}\label{structInterpLinear__mod_1_1InterpLinear__type_a77562cdb63af12f3f29007e5e078a073}} 
+\mbox{\Hypertarget{structInterpLinear__mod_1_1InterpLinear__type_a92adc229bacdf8ff90021aaec0823f8c}\label{structInterpLinear__mod_1_1InterpLinear__type_a92adc229bacdf8ff90021aaec0823f8c}} 
 \index{InterpLinear\_mod::InterpLinear\_type@{InterpLinear\_mod::InterpLinear\_type}!predict@{predict}}
 \index{predict@{predict}!InterpLinear\_mod::InterpLinear\_type@{InterpLinear\_mod::InterpLinear\_type}}
 \doxysubsubsection{\texorpdfstring{predict()}{predict()}}
@@ -102,11 +105,11 @@ Definition at line \mbox{\hyperlink{InterpLinear__mod_8f90_source_l00085}{85}} o
 
 Definition at line \mbox{\hyperlink{InterpLinear__mod_8f90_source_l00021}{21}} of file \mbox{\hyperlink{InterpLinear__mod_8f90_source}{Interp\+Linear\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{structInterpLinear__mod_1_1InterpLinear__type_a20d131a1cb74d64b5501961dcdc96b9b}\label{structInterpLinear__mod_1_1InterpLinear__type_a20d131a1cb74d64b5501961dcdc96b9b}} 
-\index{InterpLinear\_mod::InterpLinear\_type@{InterpLinear\_mod::InterpLinear\_type}!predict\_0D@{predict\_0D}}
-\index{predict\_0D@{predict\_0D}!InterpLinear\_mod::InterpLinear\_type@{InterpLinear\_mod::InterpLinear\_type}}
-\doxysubsubsection{\texorpdfstring{predict\_0D()}{predict\_0D()}}
-{\footnotesize\ttfamily procedure, pass Interp\+Linear\+\_\+mod\+::\+Interp\+Linear\+\_\+type\+::predict\+\_\+0D}
+\mbox{\Hypertarget{structInterpLinear__mod_1_1InterpLinear__type_a15170958cd0ff02d986cf9ece14b4924}\label{structInterpLinear__mod_1_1InterpLinear__type_a15170958cd0ff02d986cf9ece14b4924}} 
+\index{InterpLinear\_mod::InterpLinear\_type@{InterpLinear\_mod::InterpLinear\_type}!predict\_D0@{predict\_D0}}
+\index{predict\_D0@{predict\_D0}!InterpLinear\_mod::InterpLinear\_type@{InterpLinear\_mod::InterpLinear\_type}}
+\doxysubsubsection{\texorpdfstring{predict\_D0()}{predict\_D0()}}
+{\footnotesize\ttfamily procedure, pass Interp\+Linear\+\_\+mod\+::\+Interp\+Linear\+\_\+type\+::predict\+\_\+\+D0}
 
 
 
@@ -116,11 +119,11 @@ A dynamic method for performing interpolation on scalar inputs.
 
 Definition at line \mbox{\hyperlink{InterpLinear__mod_8f90_source_l00019}{19}} of file \mbox{\hyperlink{InterpLinear__mod_8f90_source}{Interp\+Linear\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{structInterpLinear__mod_1_1InterpLinear__type_a750b7b4c7d1130caa8ac168b855f9dfc}\label{structInterpLinear__mod_1_1InterpLinear__type_a750b7b4c7d1130caa8ac168b855f9dfc}} 
-\index{InterpLinear\_mod::InterpLinear\_type@{InterpLinear\_mod::InterpLinear\_type}!predict\_1D@{predict\_1D}}
-\index{predict\_1D@{predict\_1D}!InterpLinear\_mod::InterpLinear\_type@{InterpLinear\_mod::InterpLinear\_type}}
-\doxysubsubsection{\texorpdfstring{predict\_1D()}{predict\_1D()}}
-{\footnotesize\ttfamily procedure, pass Interp\+Linear\+\_\+mod\+::\+Interp\+Linear\+\_\+type\+::predict\+\_\+1D}
+\mbox{\Hypertarget{structInterpLinear__mod_1_1InterpLinear__type_af587c0748fa743b179c2713c5f84379e}\label{structInterpLinear__mod_1_1InterpLinear__type_af587c0748fa743b179c2713c5f84379e}} 
+\index{InterpLinear\_mod::InterpLinear\_type@{InterpLinear\_mod::InterpLinear\_type}!predict\_D1@{predict\_D1}}
+\index{predict\_D1@{predict\_D1}!InterpLinear\_mod::InterpLinear\_type@{InterpLinear\_mod::InterpLinear\_type}}
+\doxysubsubsection{\texorpdfstring{predict\_D1()}{predict\_D1()}}
+{\footnotesize\ttfamily procedure, pass Interp\+Linear\+\_\+mod\+::\+Interp\+Linear\+\_\+type\+::predict\+\_\+\+D1}
 
 
 

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['bandspectrum_5fmod_0',['BandSpectrum_mod',['../namespaceBandSpectrum__mod.html',1,'']]],
-  ['batse_5fmod_1',['Batse_mod',['../namespaceBatse__mod.html',1,'']]]
+  ['bench_5fmod_0',['Bench_mod',['../namespaceBench__mod.html',1,'']]]
 ];

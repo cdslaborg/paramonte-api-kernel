@@ -10,7 +10,7 @@ var searchData=
   ['path_5ftype_7',['Path_type',['../structPath__mod_1_1Path__type.html',1,'Path_mod']]],
   ['position_5ftype_8',['Position_type',['../structFile__mod_1_1Position__type.html',1,'File_mod']]],
   ['powellminimum_5ftype_9',['PowellMinimum_type',['../structOptimization__mod_1_1PowellMinimum__type.html',1,'Optimization_mod']]],
-  ['private_10',['private',['../structConstants__mod_1_1private.html',1,'Constants_mod::private'],['../structDistUni__mod_1_1private.html',1,'DistUni_mod::private'],['../structParallelism__mod_1_1private.html',1,'Parallelism_mod::private'],['../structSpecBase__DomainAxesNameList__mod_1_1private.html',1,'SpecBase_DomainAxesNameList_mod::private'],['../structSystem__mod_1_1private.html',1,'System_mod::private']]],
+  ['private_10',['private',['../structConstants__mod_1_1private.html',1,'Constants_mod::private'],['../structDecoration__mod_1_1private.html',1,'Decoration_mod::private'],['../structDistUni__mod_1_1private.html',1,'DistUni_mod::private'],['../structParallelism__mod_1_1private.html',1,'Parallelism_mod::private'],['../structSpecBase__DomainAxesNameList__mod_1_1private.html',1,'SpecBase_DomainAxesNameList_mod::private'],['../structSystem__mod_1_1private.html',1,'System_mod::private'],['../structTest__mod_1_1private.html',1,'Test_mod::private']]],
   ['prop_5ftype_11',['Prop_type',['../structKmeans__mod_1_1Prop__type.html',1,'Kmeans_mod']]],
   ['proposal_5ftype_12',['Proposal_type',['../structSpecMCMC__Proposal__mod_1_1Proposal__type.html',1,'SpecMCMC_Proposal_mod']]],
   ['proposaladaptationcount_5ftype_13',['ProposalAdaptationCount_type',['../structSpecDRAM__ProposalAdaptationCount__mod_1_1ProposalAdaptationCount__type.html',1,'SpecDRAM_ProposalAdaptationCount_mod']]],

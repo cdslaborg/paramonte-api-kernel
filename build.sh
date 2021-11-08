@@ -15,55 +15,102 @@ cat << EndOfMessage
 
     script flag definitions:
 
-        -x | --xrun             : the ParaMonte library example run enabled: true, false
-        -X | --xbuild           : the ParaMonte library example build enabled: true, false
+        -E | --bench            : the ParaMonte library benchmark enabled: true, false
+        -N | --benchpp          : the ParaMonte library benchmark postptocessing enabled: true, false
         -b | --build            : the ParaMonte library build type: release, testing, debug
+        -x | --exam             : the ParaMonte library example build enabled: true, false
+        -X | --xpostproc        : the ParaMonte library example post-processing enabled: true, false
+        -k | --keepold          : Keep the old builds and files of the ParaMonte example and benchmaks: true, false
+        -F | --fresh            : Wipe the entire old build and rebuild library from scratch.
         -f | --fortran          : path to Fortran compiler. If provided, the ParaMonte library will be built via the specified compiler.
         -j | --njob             : the default number of processes via which the ParaMonte library will be built for the requested configuration: positive integer
         -h | --help             : help with the script usage
+        --benchfile             : the ParaMonte library benchmark and postptocessing file.
+
+    Example usage:
+
+        # build in `release` mode,
+        # build and run example files, 
+        # run example files postprocessing, 
+        # build and run ParaMonte benchmark files, 
+        # build and run ParaMonte benchmark postprocessing, 
+        # keep any old existing ParaMonte example/benchmark files.
+
+        ./build.sh -b release -x kernel -X true --bench true --benchpp true --keepold true
 
 EndOfMessage
 }
 
 # set the build configuration.
 
-BTYPE="release"
-NUM_JOB_FLAG="-j 2"
-EXAM_RUN_ENABLED="true"
-EXAM_BUILD_ENABLED="true"
-
 # set the preferred compiler path.
 
-unset PREFERRED_COMPILER_PATH_FLAG
+unset fortran_flag
 PREFERRED_COMPILER_PATH="/usr/bin/gfortran-10"
 if [ -f "${PREFERRED_COMPILER_PATH}" ]; then
     echo >&2 "-- ParaMonteDoxygen - The preferred ParaMonte Doxygen documentation compiler choice detected: ${PREFERRED_COMPILER_PATH}"
-    PREFERRED_COMPILER_PATH_FLAG="-f ${PREFERRED_COMPILER_PATH}"
+    fortran_flag="-f ${PREFERRED_COMPILER_PATH}"
 else
     echo >&2 "-- ParaMonteDoxygen - WARNING: The preferred ParaMonte Doxygen documentation compiler choice not detected. Building with the default available compiler..."
 fi
+
+
+BTYPE="release"
+NUM_JOB_FLAG="-j 2"
+keepold_flag="--keepold true"
+ParaMonte_BUILD_ENABLED="true"
+CLEAN_BUILD_ENABLED="false"
+xpostproc_flag="--xpostproc true"
+build_flag="--build ${BTYPE}"
+benchpp_flag="--benchpp true"
+bench_flag="--bench true"
+exam_flag="--exam kernel"
+benchfile_flag=""
+check_flag=""
+compiler_suite_flag="--compiler_suite gnu"
 
 #fetch the user options.
 
 while [ "$1" != "" ]; do
     case $1 in
-        -X | --xbuild )         shift
-                                EXAM_BUILD_ENABLED="$1"
+        -s | --compiler_suite ) shift
+                                compiler_suite_flag="--compiler_suite $1"
+                                ;;
+        -P | --pmbuild )        shift
+                                ParaMonte_BUILD_ENABLED="$1"
+                                ;;
+        -X | --xpostproc )      shift
+                                xpostproc_flag="--xpostproc $1"
+                                ;;
+        -x | --exam )           shift
+                                exam_flag="--exam $1"
                                 ;;
         -b | --build )          shift
                                 BTYPE="$1"
+                                build_flag="--build ${BTYPE}"
                                 ;;
-        -f | --build )          shift
-                                BTYPE="$1"
+        -E | --bench )          shift
+                                bench_flag="--bench $1"
                                 ;;
-        -x | --xrun )           shift
-                                EXAM_RUN_ENABLED="$1"
+        -N | --benchpp )        shift
+                                benchpp_flag="--benchpp $1"
                                 ;;
         -j | --njob )           shift
                                 NUM_JOB_FLAG="--njob $1"
                                 ;;
         -f | --fortran )        shift
-                                PREFERRED_COMPILER_PATH_FLAG="-f $1"
+                                fortran_flag="-f $1"
+                                ;;
+        -C | --check )          shift
+                                check_flag="--check $1"
+                                ;;
+        -k | --keepold )        shift
+                                keepold_flag="--keepold $1"
+                                ;;
+        -F | --fresh )          CLEAN_BUILD_ENABLED="true"
+                                ;;
+        --benchfile )           shift
+                                benchfile_flag="--benchfile $1"
                                 ;;
         * )                     usage
                                 echo >&2 ""
@@ -81,30 +128,51 @@ done
 
 DOXYGEN_BIN_DIR="${FILE_DIR}"/bin
 echo >&2 "-- ParaMonteDoxygen - The ParaMonte binary install directory: ${DOXYGEN_BIN_DIR}"
+DOXYGEN_BLD_DIR="${FILE_DIR}"/bld/"${BTYPE}"
+echo >&2 "-- ParaMonteDoxygen - The ParaMonte binary install directory: ${DOXYGEN_BLD_DIR}"
 
-if [ "${EXAM_BUILD_ENABLED}" = "true" ]; then
-    if [ -d "${DOXYGEN_BIN_DIR}" ]; then
-        echo >&2 "-- ParaMonteDoxygen - The ParaMonte binary install directory exists. Deleting the old contents..."
-        rm -rf "${DOXYGEN_BIN_DIR}" || {
-        echo >&2 
-        echo >&2 "-- ParaMonteDoxygen - FATAL: Failed to delete the ParaMonte binary install directory: ${DOXYGEN_BIN_DIR}"
-        echo >&2 
-        exit 1
-        }
+if [ "${ParaMonte_BUILD_ENABLED}" = "true" ]; then
+
+    if [ "${CLEAN_BUILD_ENABLED}" = "true" ]; then
+        if [ -d "${DOXYGEN_BIN_DIR}" ]; then
+            echo >&2 "-- ParaMonteDoxygen - The ParaMonte binary install directory exists. Deleting the old contents..."
+            rm -rf "${DOXYGEN_BIN_DIR}" || {
+            echo >&2
+            echo >&2 "-- ParaMonteDoxygen - FATAL: Failed to delete the ParaMonte binary install directory: ${DOXYGEN_BIN_DIR}"
+            echo >&2
+            exit 1
+            }
+        fi
+        if [ -d "${DOXYGEN_BLD_DIR}" ]; then
+            echo >&2 "-- ParaMonteDoxygen - The ParaMonte binary install directory exists. Deleting the old contents..."
+            rm -rf "${DOXYGEN_BLD_DIR}" || {
+            echo >&2
+            echo >&2 "-- ParaMonteDoxygen - FATAL: Failed to delete the ParaMonte binary install directory: ${DOXYGEN_BLD_DIR}"
+            echo >&2
+            exit 1
+            }
+        fi
     fi
+
     cd "${FILE_DIR}"/../.. &&
     ./install.sh \
     --lang fortran \
     --lib shared \
     --par none \
     --mem heap \
-    --build "${BTYPE}" \
+    ${compiler_suite_flag} \
+    ${exam_flag} \
+    ${build_flag} \
+    ${bench_flag} \
+    ${benchpp_flag} \
+    ${benchfile_flag} \
+    ${xpostproc_flag} \
+    ${keepold_flag} \
+    ${check_flag} \
     -t none \
-    -x kernel \
-    --check none \
-    -s gnu \
+    --bdir "${DOXYGEN_BLD_DIR}" \
     --idir "${DOXYGEN_BIN_DIR}" \
-    ${PREFERRED_COMPILER_PATH_FLAG} \
+    ${fortran_flag} \
     ${NUM_JOB_FLAG} && \
     cd "${FILE_DIR}" || {
         echo >&2
@@ -114,27 +182,25 @@ if [ "${EXAM_BUILD_ENABLED}" = "true" ]; then
     }
 fi
 
-# Build and run the kernel examples in the Doxygen bin directory to generate documentation example output files.
+# Build the kernel documentation. The env variable ParaMonte_BLD_DIR is used in the Doxygen config file.
 
-if [ "${EXAM_RUN_ENABLED}" = "true" ]; then
-    for moduleDir in "${FILE_DIR}/bin/example/kernel"/*; do
-        moduleName="$(basename "${moduleDir}")"
-        for procDir in "${moduleDir}"/*; do
-            procName="$(basename "${procDir}")"
-            cd "${procDir}" && ./build.sh && {
-                echo >&2 "-- ParaMonteDoxygen - ParaMonte example build and run succeeded: ${moduleName}@${procName}"
-            } || {
-                echo >&2 "-- ParaMonteDoxygen - Failed to build and run the ${moduleName}@${procName} example. exiting..."
-                echo >&2 "-- ParaMonteDoxygen - source directory: ${procDir}"
-                echo >&2
-                exit 1
-            }
-        done
-    done
+ParaMonte_BLD_DIR="${DOXYGEN_BLD_DIR}/Fortran"; export ParaMonte_BLD_DIR
+if ! [ -d "${ParaMonte_BLD_DIR}" ]; then
+    echo >&2
+    echo >&2 "-- ParaMonteDoxygen - Failed to detect the ParaMonte Doxygen build directory: ${ParaMonte_BLD_DIR}"
+    echo >&2 "-- ParaMonteDoxygen - exiting..."
+    echo >&2
+    exit 1
 fi
-echo >&2
 
-# Build the kernel documentation.
+ParaMonteDeploy_BLD_DIR="${ParaMonte_BLD_DIR}/deploy"; export ParaMonteDeploy_BLD_DIR
+if ! [ -d "${ParaMonteDeploy_BLD_DIR}" ]; then
+    echo >&2
+    echo >&2 "-- ParaMonteDoxygen - Failed to detect the ParaMonte Doxygen build directory: ${ParaMonteDeploy_BLD_DIR}"
+    echo >&2 "-- ParaMonteDoxygen - exiting..."
+    echo >&2
+    exit 1
+fi
 
 cd "${FILE_DIR}" && ../../build/doxygen/build/bin/doxygen "${FILE_DIR}/config.txt" || {
     echo >&2

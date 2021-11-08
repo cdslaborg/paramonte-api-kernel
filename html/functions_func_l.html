@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -59,6 +63,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('functions_func_l.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -78,28 +98,17 @@ $(function() {
 
 <h3><a id="index_l" name="index_l"></a>- l -</h3><ul>
 <li>linify()&#160;:&#160;<a class="el" href="structPath__mod_1_1Path__type.html#a24c34022f54bd4c966593fca26aa483c">Path_mod::Path_type</a></li>
-<li>log2str()&#160;:&#160;<a class="el" href="interfaceString__mod_1_1num2char.html#a672058906db5c0a309cb11da1ba51be2">String_mod::num2char</a></li>
 <li>logpdf()&#160;:&#160;<a class="el" href="structDistMultiNorm__mod_1_1DistMultiNorm__type.html#a8415a9a3a812620539da264de573717a">DistMultiNorm_mod::DistMultiNorm_type</a>, <a class="el" href="structDistMultiNormGrid__mod_1_1DistMultiNormGrid__type.html#aa94377d885e77b0e93b4ee62dca84aee">DistMultiNormGrid_mod::DistMultiNormGrid_type</a>, <a class="el" href="structDistMultiNormLogGammaMix__mod_1_1DistMultiNormLogGammaMix__type.html#a6abc459ac90b838948faaba0de8cc248">DistMultiNormLogGammaMix_mod::DistMultiNormLogGammaMix_type</a>, <a class="el" href="structDistMultiNormShellMix__mod_1_1DistMultiNormShellMix__type.html#a0ca21b372c3a457fb561b9cc70e0b0b7">DistMultiNormShellMix_mod::DistMultiNormShellMix_type</a>, <a class="el" href="structDistMultiUnifCube__mod_1_1DistMultiUnifCube__type.html#aa2092125ca9c1e70b1170269a84b6e37">DistMultiUnifCube_mod::DistMultiUnifCube_type</a>, <a class="el" href="structDistUni__mod_1_1DistUni__type.html#a225129e4ed12149b3661274d67766678">DistUni_mod::DistUni_type</a>, <a class="el" href="structDistUniExp__mod_1_1DistUniExp__type.html#a38f652578fed44b8d3b0ddbdffbd8e62">DistUniExp_mod::DistUniExp_type</a>, <a class="el" href="structDistUniLogGamma__mod_1_1DistUniLogGamma__type.html#a8f54485b48bd3e80fa7aae51acc805ca">DistUniLogGamma_mod::DistUniLogGamma_type</a>, <a class="el" href="structDistUniNorm__mod_1_1DistUniNorm__type.html#a7a71a77e80125d527372f6d4115a99d5">DistUniNorm_mod::DistUniNorm_type</a></li>
-<li>logpdf_proc()&#160;:&#160;<a class="el" href="interfaceDistMulti__mod_1_1logpdf__proc.html#ade20617ad7c100981521470d79a6e4c5">DistMulti_mod::logpdf_proc</a>, <a class="el" href="interfaceDistUni__mod_1_1logpdf__proc.html#a3edad91f0f3a42a147815bbd4eaff66c">DistUni_mod::logpdf_proc</a></li>
+<li>logpdf_proc()&#160;:&#160;<a class="el" href="interfaceDistMulti__mod_1_1logpdf__proc.html#ade20617ad7c100981521470d79a6e4c5">DistMulti_mod::logpdf_proc</a>, <a class="el" href="interfaceDistUni__mod_1_1logpdf__proc.html#a11d6179ff9c93e4f52e03f305ca7f6f1">DistUni_mod::logpdf_proc</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:46 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:21 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

@@ -1,4 +1,24 @@
 var searchData=
 [
-  ['optimization_5fmod_0',['Optimization_mod',['../namespaceOptimization__mod.html',1,'']]]
+  ['math_5fmod_0',['Math_mod',['../namespaceMath__mod.html',1,'']]],
+  ['mathcumpropexp_5fmod_1',['MathCumPropExp_mod',['../namespaceMathCumPropExp__mod.html',1,'']]],
+  ['mathcumsum_5fmod_2',['MathCumSum_mod',['../namespaceMathCumSum__mod.html',1,'']]],
+  ['mathlinspace_5fmod_3',['MathLinSpace_mod',['../namespaceMathLinSpace__mod.html',1,'']]],
+  ['mathlogaddexp_5fmod_4',['MathLogAddExp_mod',['../namespaceMathLogAddExp__mod.html',1,'']]],
+  ['mathlogspace_5fmod_5',['MathLogSpace_mod',['../namespaceMathLogSpace__mod.html',1,'']]],
+  ['mathlogsub_5fmod_6',['MathLogSub_mod',['../namespaceMathLogSub__mod.html',1,'']]],
+  ['mathlogsumexp_5fmod_7',['MathLogSumExp_mod',['../namespaceMathLogSumExp__mod.html',1,'']]],
+  ['mathminmax_5fmod_8',['MathMinMax_mod',['../namespaceMathMinMax__mod.html',1,'']]],
+  ['matrix_5fmod_9',['Matrix_mod',['../namespaceMatrix__mod.html',1,'']]],
+  ['matrixcholesky_5fmod_10',['MatrixCholesky_mod',['../namespaceMatrixCholesky__mod.html',1,'']]],
+  ['matrixcomparison_5fmod_11',['MatrixComparison_mod',['../namespaceMatrixComparison__mod.html',1,'']]],
+  ['matrixcopy_5fmod_12',['MatrixCopy_mod',['../namespaceMatrixCopy__mod.html',1,'']]],
+  ['matrixdiag_5fmod_13',['MatrixDiag_mod',['../namespaceMatrixDiag__mod.html',1,'']]],
+  ['matrixeigen_5fmod_14',['MatrixEigen_mod',['../namespaceMatrixEigen__mod.html',1,'']]],
+  ['matrixinverse_5fmod_15',['MatrixInverse_mod',['../namespaceMatrixInverse__mod.html',1,'']]],
+  ['matrixlup_5fmod_16',['MatrixLUP_mod',['../namespaceMatrixLUP__mod.html',1,'']]],
+  ['matrixmultiply_5fmod_17',['MatrixMultiply_mod',['../namespaceMatrixMultiply__mod.html',1,'']]],
+  ['matrixscale_5fmod_18',['MatrixScale_mod',['../namespaceMatrixScale__mod.html',1,'']]],
+  ['matrixsymmetry_5fmod_19',['MatrixSymmetry_mod',['../namespaceMatrixSymmetry__mod.html',1,'']]],
+  ['misc_5fmod_20',['Misc_mod',['../namespaceMisc__mod.html',1,'']]]
 ];

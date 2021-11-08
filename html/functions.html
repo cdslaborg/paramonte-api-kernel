@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -59,6 +63,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('functions.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -89,11 +109,12 @@ $(function() {
 <li>addSplashScreen()&#160;:&#160;<a class="el" href="structParaMonte__mod_1_1ParaMonte__type.html#a81531068c667a4b420c86ec4f7e6eaf6">ParaMonte_mod::ParaMonte_type</a></li>
 <li>allocate()&#160;:&#160;<a class="el" href="structKmeans__mod_1_1Prop__type.html#a29f43efd7b935190375d69a4f249ad2f">Kmeans_mod::Prop_type</a>, <a class="el" href="structKmeansOOP__mod_1_1KmeansOOP__type.html#a8f5d9b01ad54e0f39e011b36bfcebd79">KmeansOOP_mod::KmeansOOP_type</a></li>
 <li>allocateKmeans()&#160;:&#160;<a class="el" href="structKmeans__mod_1_1Kmeans__type.html#aed716c6593051372ad50b8ce4d20b71b">Kmeans_mod::Kmeans_type</a></li>
-<li>alpha&#160;:&#160;<a class="el" href="structTest__BandSpectrum__mod_1_1BandSpec__type.html#a56d70f931a489b78313db37ec377158f">Test_BandSpectrum_mod::BandSpec_type</a></li>
+<li>alpha&#160;:&#160;<a class="el" href="structTest__SpectrumBand__mod_1_1BandSpec__type.html#a521ee4b794ad108ee74796d8cbcc0933">Test_SpectrumBand_mod::BandSpec_type</a></li>
 <li>Arg&#160;:&#160;<a class="el" href="structSystem__mod_1_1CmdArg__type.html#a75c206d18300dec23f3fbb266bc952ed">System_mod::CmdArg_type</a></li>
 <li>arth_IK()&#160;:&#160;<a class="el" href="interfaceMisc__mod_1_1arth.html#aed68661a0f6c8fb602c96dc950e312b1">Misc_mod::arth</a></li>
 <li>arth_RK()&#160;:&#160;<a class="el" href="interfaceMisc__mod_1_1arth.html#ae6d700122b2302dc833cfb5ce515d742">Misc_mod::arth</a></li>
 <li>ascii&#160;:&#160;<a class="el" href="structConstants__mod_1_1private.html#aa221d43e7ce318be02980282beeb36d0">Constants_mod::private</a>, <a class="el" href="structSpecBase__OutputRestartFileFormat__mod_1_1OutputRestartFileFormat__type.html#a03e472d3495f19c016436f076136b31e">SpecBase_OutputRestartFileFormat_mod::OutputRestartFileFormat_type</a></li>
+<li>assert()&#160;:&#160;<a class="el" href="structTest__mod_1_1Test__type.html#a335e5b5b4f156c2255cb2f7b3700ff7e">Test_mod::Test_type</a></li>
 <li>asynchronous&#160;:&#160;<a class="el" href="structFile__mod_1_1File__type.html#a52c626cd6112e00c708d2cd4bb2216e5">File_mod::File_type</a></li>
 <li>AutoCorrDirect&#160;:&#160;<a class="el" href="structTest__CrossCorr__mod_1_1AutoCorr__type.html#a948e67543f82170b5c7518951e4ca98e">Test_CrossCorr_mod::AutoCorr_type</a></li>
 <li>AutoCorrDirect_ref&#160;:&#160;<a class="el" href="structTest__CrossCorr__mod_1_1AutoCorr__type.html#ab7a91a1b42797dffac02f5b10254695d">Test_CrossCorr_mod::AutoCorr_type</a></li>
@@ -104,23 +125,13 @@ $(function() {
 <li>avgTimePerFunCalInSec&#160;:&#160;<a class="el" href="structParaMonte__mod_1_1Stat__type.html#a107cd647697c50d0ba313281452425e8">ParaMonte_mod::Stat_type</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:46 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:21 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

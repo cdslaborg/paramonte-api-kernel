@@ -8,16 +8,6 @@ This module contains the classes and procedures for computing various statistica
 \doxysubsection*{Data Types}
 \begin{DoxyCompactItemize}
 \item 
-interface \mbox{\hyperlink{interfaceSample__mod_1_1genCovUpp}{gen\+Cov\+Upp}}
-\begin{DoxyCompactList}\small\item\em Return the {\bfseries{upper triangle}} covariance matrix of the input shifted, optionally-\/weighted, sample {\ttfamily Shifted\+Sample} whose shape is by default assumed to be {\ttfamily (nd,np)} or {\ttfamily (nd,np)} such that {\ttfamily nd \texorpdfstring{$<$}{<} np} always holds, where {\ttfamily nd} represents the number of attributes (dimensions) of the sample and {\ttfamily np} represents the number of data points in the sample. Note that by definition, {\ttfamily np \texorpdfstring{$>$}{>} nd} must hold. The input sample must be normalized in the sense that its mean is zero. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{gen\+Mean}}
-\begin{DoxyCompactList}\small\item\em Generate and return the (weighted) mean of the input {\ttfamily Sample}, optionally weighted by the input {\ttfamily Weight}. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{gen\+Shifted}}
-\begin{DoxyCompactList}\small\item\em Generate a sample of shape {\ttfamily (np)}, or {\ttfamily (nd,np)} or {\ttfamily (np,nd)} that is shifted by the specified input {\ttfamily Amount} along the (optionally) specified axis {\ttfamily dim}. Here, {\ttfamily nd} stands for the number of dimensions (data attributes) of the input {\ttfamily Sample} and {\ttfamily np} represents the number of data points in the {\ttfamily Sample}. If the input {\ttfamily Amount} is the negative of the mean of the sample, then the returned sample will have a mean of zero. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceSample__mod_1_1genVariance}{gen\+Variance}}
-\begin{DoxyCompactList}\small\item\em Generate and return the variance of the input array of shape {\ttfamily (np)} or {\ttfamily (nd,np)} or {\ttfamily (np,nd)} where {\ttfamily nd} is the number of data dimensions (the number of data attributes) and {\ttfamily np} is the number of data points. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceSample__mod_1_1getShifted}{get\+Shifted}}
-\begin{DoxyCompactList}\small\item\em Return a sample of shape {\ttfamily (np)}, or {\ttfamily (nd,np)} or {\ttfamily (np,nd)} that is shifted by the specified input {\ttfamily Amount} along the (optionally) specified axis {\ttfamily dim}. Here, {\ttfamily nd} stands for the number of dimensions (data attributes) of the input {\ttfamily Sample} and {\ttfamily np} represents the number of data points in the {\ttfamily Sample}. If the input {\ttfamily Amount} is the negative of the mean of the sample, then the returned sample will have a mean of zero. \end{DoxyCompactList}\item 
 interface \mbox{\hyperlink{interfaceSample__mod_1_1transform}{transform}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions/\+Subroutines}
@@ -28,7 +18,7 @@ real(RK) function, dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSam
 PURE subroutine \mbox{\hyperlink{namespaceSample__mod_af9dafbc79f11fc37f384877e49f3bf27}{get\+Cho\+Low\+Cov\+Upp}} (nd, np, Mean, Sample, Cho\+Low\+Cov\+Upp, Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Return the lower triangle Cholesky Factor of the covariance matrix of a set of points in the lower part of {\ttfamily Cho\+Low\+Cov\+Upp}. The upper part of {\ttfamily Cho\+Low\+Cov\+Upp}, including the diagonal elements of it, will contain the covariance matrix of the sample. The output argument {\ttfamily Cho\+Dia}, contains the diagonal terms of Cholesky Factor. \end{DoxyCompactList}\item 
 subroutine \mbox{\hyperlink{namespaceSample__mod_a1e5daab49859d9c21c4ec3c916ec963d}{get\+Cho\+Low\+Cov\+Upp\+High\+Dim}} (nd, np, Mean, Sample, Cho\+Low\+Cov\+Upp, Cho\+Dia)
-\begin{DoxyCompactList}\small\item\em Return the lower triangle Cholesky Factor of the covariance matrix of a set of points in the lower part of {\ttfamily Cho\+Low\+Cov\+Upp}. The upper part of {\ttfamily Cho\+Low\+Cov\+Upp}, including the diagonal elements of it, will contain the covariance matrix of the sample. The output argument {\ttfamily Cho\+Dia}, contains the diagonal terms of Cholesky Factor. This routine delivers the same functionality of \mbox{\hyperlink{namespaceSample__mod_af9dafbc79f11fc37f384877e49f3bf27}{get\+Cho\+Low\+Cov\+Upp()}}. However, it is considerably faster, by a few factors, for {\ttfamily nd \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} 10}. Furthermore, it requires significantly less runtime memory, by about half. The exact amount of speedup depends heavily on the architecture and memory layout of the runtime system. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Return the lower triangle Cholesky Factor of the covariance matrix of a set of points in the lower part of {\ttfamily Cho\+Low\+Cov\+Upp}. The upper part of {\ttfamily Cho\+Low\+Cov\+Upp}, including the diagonal elements of it, will contain the covariance matrix of the sample. The output argument {\ttfamily Cho\+Dia}, contains the diagonal terms of Cholesky Factor. This routine delivers the same functionality of \mbox{\hyperlink{namespaceSample__mod_af9dafbc79f11fc37f384877e49f3bf27}{get\+Cho\+Low\+Cov\+Upp}}. However, it is considerably faster, by a few factors, for {\ttfamily nd \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} 10}. Furthermore, it requires significantly less runtime memory, by about half. The exact amount of speedup depends heavily on the architecture and memory layout of the runtime system. \end{DoxyCompactList}\item 
 subroutine \mbox{\hyperlink{namespaceSample__mod_a5f2a3ba527c41a88f8afefabf3385a9e}{get\+Mean\+Cov}} (np, nd, Sample, Cov\+Mat, Mean, Mahal\+Sq, Inv\+Cov\+Mat, sqrt\+Det\+Inv\+Cov\+Mat)
 \begin{DoxyCompactList}\small\item\em Return the sample mean, covariance matrix, the Mahalanobis distances squared of the points with respect to the sample, and the square root of the determinant of the inverse covariance matrix of the sample. \end{DoxyCompactList}\item 
 PURE subroutine \mbox{\hyperlink{namespaceSample__mod_ab54f1da8d61065ad511b74648331cdab}{get\+Mean\+Cov\+Trans}} (np, nd, Sample, Cov\+Mat, Mean, Mahal\+Sq, Inv\+Cov\+Mat, sqrt\+Det\+Inv\+Cov\+Mat)
@@ -43,21 +33,11 @@ subroutine \mbox{\hyperlink{namespaceSample__mod_ab6c8a951bf35c59402a30d6d17a6d1
 \begin{DoxyCompactList}\small\item\em Given two input sample means and covariance matrices, return the combination of them as a single mean and covariance matrix. \end{DoxyCompactList}\item 
 subroutine \mbox{\hyperlink{namespaceSample__mod_a81524ddc27a48db65744d80cfad9b348}{merge\+Mean\+Cov\+Upp\+Dense}} (nd, npA, MeanA, Cov\+UppA, npB, MeanB, Cov\+UppB)
 \begin{DoxyCompactList}\small\item\em Given two input sample means and covariance matrices, return the combination of them as a single mean and covariance matrix. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_a44441497c46d27639eb9b422d1d4251d}{get\+Cor\+Upp\+From\+Cov\+Upp}} (nd, Cov\+Upp)
+PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_aa2c2cc79f34ed2846aac905662807ca8}{gen\+Cor\+Upp\+From\+Cov\+Upp}} (nd, Cov\+Upp)
 \begin{DoxyCompactList}\small\item\em Convert the upper-\/triangle covariance matrix to the upper-\/triangle correlation matrix. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_a006be94969ee33fe9d9ad6c2a438a9c6}{gen\+Cov\+Upp\+From\+Cor\+Upp}} (nd, Std\+Vec, Cor\+Upp)
-\begin{DoxyCompactList}\small\item\em Convert the upper-\/triangle correlation matrix to the upper-\/triangle covariance matrix. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_aaa488173222177596255901083dbc639}{gen\+Cov\+Upp\+From\+Cor\+Low}} (nd, Std\+Vec, Cor\+Low)
-\begin{DoxyCompactList}\small\item\em Convert the lower-\/triangle correlation matrix to the upper-\/triangle covariance matrix. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_afb2e3c5d56a87f0cadd6304ffee5d823}{get\+Cov\+Low\+From\+Cor\+Upp}} (nd, Std\+Vec, Cor\+Upp)
-\begin{DoxyCompactList}\small\item\em Convert the upper-\/triangle correlation matrix to the lower-\/triangle covariance matrix. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_ad9a218dda4eed8c4d86cdc9513621d56}{get\+Cov\+Low\+From\+Cor\+Low}} (nd, Std\+Vec, Cor\+Low)
-\begin{DoxyCompactList}\small\item\em Convert the lower-\/triangle correlation matrix to the lower-\/triangle covariance matrix. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceSample__mod_a9a540e0c59a19fedbcc311a5530617eb}{get\+Cov\+Mat\+From\+Cor\+Upp}} (nd, Std\+Vec, Cor\+Upp)
-\begin{DoxyCompactList}\small\item\em Convert the input correlation matrix to the output covariance matrix. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_a864d7c57c9dbfac5186cdc337985d48e}{transform\+\_\+2D}} (Sample, Cho\+Low, Cho\+Dia, dim, tenabled)
+PURE real(RK) function, dimension(\+:,\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_af6b68f8cb050e0c1abd3b785ce90b81b}{transform\+\_\+\+D2}} (Sample, Cho\+Low, Cho\+Dia, dim, tenabled)
 \begin{DoxyCompactList}\small\item\em Return the transformed sample according to the input Cholesky factorization. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_ae3f7288e349a6a7f5150a35a96194361}{transform\+\_\+1D}} (Point, Cho\+Low, Cho\+Dia)
+pure real(RK) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceSample__mod_a96ce1f1fd63ab042dc497a6874c92f92}{transform\+\_\+\+D1}} (Point, Cho\+Low, Cho\+Dia)
 \begin{DoxyCompactList}\small\item\em Return the transformed sample according to the input Cholesky factorization. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -75,27 +55,25 @@ Amir Shahmoradi, Thursday 12\+:45 AM, August 20, 2021, Dallas, TX
 
 
 \doxysubsection{Function/\+Subroutine Documentation}
-\mbox{\Hypertarget{namespaceSample__mod_aaa488173222177596255901083dbc639}\label{namespaceSample__mod_aaa488173222177596255901083dbc639}} 
-\index{Sample\_mod@{Sample\_mod}!genCovUppFromCorLow@{genCovUppFromCorLow}}
-\index{genCovUppFromCorLow@{genCovUppFromCorLow}!Sample\_mod@{Sample\_mod}}
-\doxysubsubsection{\texorpdfstring{genCovUppFromCorLow()}{genCovUppFromCorLow()}}
-{\footnotesize\ttfamily PURE real(RK) function, dimension(nd,nd) Sample\+\_\+mod\+::gen\+Cov\+Upp\+From\+Cor\+Low (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Std\+Vec,  }\item[{real(RK)}]{Cor\+Low }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{namespaceSample__mod_aa2c2cc79f34ed2846aac905662807ca8}\label{namespaceSample__mod_aa2c2cc79f34ed2846aac905662807ca8}} 
+\index{Sample\_mod@{Sample\_mod}!genCorUppFromCovUpp@{genCorUppFromCovUpp}}
+\index{genCorUppFromCovUpp@{genCorUppFromCovUpp}!Sample\_mod@{Sample\_mod}}
+\doxysubsubsection{\texorpdfstring{genCorUppFromCovUpp()}{genCorUppFromCovUpp()}}
+{\footnotesize\ttfamily PURE real(RK) function, dimension(nd,nd) Sample\+\_\+mod\+::gen\+Cor\+Upp\+From\+Cov\+Upp (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Cov\+Upp }\end{DoxyParamCaption})}
 
 
 
-Convert the lower-\/triangle correlation matrix to the upper-\/triangle covariance matrix. 
+Convert the upper-\/triangle covariance matrix to the upper-\/triangle correlation matrix. 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em nd} & \+: The rank of the correlation matrix. \\
+\mbox{\texttt{ in}}  & {\em nd} & \+: The rank of the covariance matrix. \\
 \hline
-\mbox{\texttt{ in}}  & {\em Std\+Vec} & \+: The input standard deviation vector of length {\ttfamily nd}. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Cor\+Low} & \+: The lower-\/triangle correlation matrix. The upper-\/triangle will not be used.\\
+\mbox{\texttt{ in}}  & {\em Cov\+Upp} & \+: The upper-\/triangle covariance matrix. The lower-\/triangle will not be used.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-{\ttfamily Cov\+Upp} \+: The upper triangle of the covariance matrix. The lower-\/triangle will NOT be set.
+{\ttfamily Cor\+Upp} \+: The upper triangle of the correlation matrix. The lower-\/triangle will NOT be set.
 \end{DoxyReturn}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas at Austin.
@@ -105,39 +83,7 @@ This procedure is {\ttfamily impure} when the library is compiled with macro {\t
 \end{DoxyWarning}
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l02993}{2993}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceSample__mod_a006be94969ee33fe9d9ad6c2a438a9c6}\label{namespaceSample__mod_a006be94969ee33fe9d9ad6c2a438a9c6}} 
-\index{Sample\_mod@{Sample\_mod}!genCovUppFromCorUpp@{genCovUppFromCorUpp}}
-\index{genCovUppFromCorUpp@{genCovUppFromCorUpp}!Sample\_mod@{Sample\_mod}}
-\doxysubsubsection{\texorpdfstring{genCovUppFromCorUpp()}{genCovUppFromCorUpp()}}
-{\footnotesize\ttfamily PURE real(RK) function, dimension(nd,nd) Sample\+\_\+mod\+::gen\+Cov\+Upp\+From\+Cor\+Upp (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Std\+Vec,  }\item[{real(RK)}]{Cor\+Upp }\end{DoxyParamCaption})}
-
-
-
-Convert the upper-\/triangle correlation matrix to the upper-\/triangle covariance matrix. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em nd} & \+: The rank of the correlation matrix. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Std\+Vec} & \+: The input standard deviation vector of length {\ttfamily nd}. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Cor\+Upp} & \+: The upper-\/triangle correlation matrix. The lower-\/triangle will not be used.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Cov\+Upp} \+: The upper triangle of the covariance matrix. The lower-\/triangle will NOT be set.
-\end{DoxyReturn}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas at Austin.
-\end{DoxyAuthor}
-\begin{DoxyWarning}{Warning}
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
-\end{DoxyWarning}
-
-
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l02958}{2958}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00808}{808}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceSample__mod_ad81590c5ba27d04d70741fb7af3f94d0}\label{namespaceSample__mod_ad81590c5ba27d04d70741fb7af3f94d0}} 
 \index{Sample\_mod@{Sample\_mod}!genInvCovMat@{genInvCovMat}}
@@ -162,14 +108,14 @@ Return the full inverse covariance matrix of the input {\ttfamily Shifted\+Sampl
 {\ttfamily Inv\+Cov\+Mat} \+: The full inverse covariance matrix of shape {\ttfamily (nd,nd)} of the input normalized sample.
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
-If needed, the sample normalization before passing it to this procedure can be done by calling the appropriate function under the generic interface \mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{Sample\+\_\+mod\+::gen\+Shifted()}}.
+If needed, the sample normalization before passing it to this procedure can be done by calling the appropriate function under the generic interface Sample\+\_\+mod\+::gen\+Shifted.
 \end{DoxyNote}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Sunday 8\+:48 PM, August 22, 2021, Dallas, TX 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l02221}{2221}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00108}{108}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceSample__mod_af9dafbc79f11fc37f384877e49f3bf27}\label{namespaceSample__mod_af9dafbc79f11fc37f384877e49f3bf27}} 
 \index{Sample\_mod@{Sample\_mod}!getChoLowCovUpp@{getChoLowCovUpp}}
@@ -210,7 +156,7 @@ This software is distributed under the MIT-\/license. If you use any parts or co
 
 \end{DoxyRemark}
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000018}{Todo}}]The efficiency of this code can be further improved.\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{todo__todo000042}{Todo}}]The efficiency of this code can be further improved.\end{DoxyRefDesc}
 
 
 \begin{DoxyAuthor}{Author}
@@ -218,7 +164,7 @@ Amir Shahmoradi, April 23, 2017, 1\+:36 AM, ICES, University of Texas at Austin
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l02319}{2319}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00207}{207}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceSample__mod_a1e5daab49859d9c21c4ec3c916ec963d}\label{namespaceSample__mod_a1e5daab49859d9c21c4ec3c916ec963d}} 
 \index{Sample\_mod@{Sample\_mod}!getChoLowCovUppHighDim@{getChoLowCovUppHighDim}}
@@ -228,7 +174,7 @@ Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l02319}{2319}} of fi
 
 
 
-Return the lower triangle Cholesky Factor of the covariance matrix of a set of points in the lower part of {\ttfamily Cho\+Low\+Cov\+Upp}. The upper part of {\ttfamily Cho\+Low\+Cov\+Upp}, including the diagonal elements of it, will contain the covariance matrix of the sample. The output argument {\ttfamily Cho\+Dia}, contains the diagonal terms of Cholesky Factor. This routine delivers the same functionality of \mbox{\hyperlink{namespaceSample__mod_af9dafbc79f11fc37f384877e49f3bf27}{get\+Cho\+Low\+Cov\+Upp()}}. However, it is considerably faster, by a few factors, for {\ttfamily nd \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} 10}. Furthermore, it requires significantly less runtime memory, by about half. The exact amount of speedup depends heavily on the architecture and memory layout of the runtime system. 
+Return the lower triangle Cholesky Factor of the covariance matrix of a set of points in the lower part of {\ttfamily Cho\+Low\+Cov\+Upp}. The upper part of {\ttfamily Cho\+Low\+Cov\+Upp}, including the diagonal elements of it, will contain the covariance matrix of the sample. The output argument {\ttfamily Cho\+Dia}, contains the diagonal terms of Cholesky Factor. This routine delivers the same functionality of \mbox{\hyperlink{namespaceSample__mod_af9dafbc79f11fc37f384877e49f3bf27}{get\+Cho\+Low\+Cov\+Upp}}. However, it is considerably faster, by a few factors, for {\ttfamily nd \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>} 10}. Furthermore, it requires significantly less runtime memory, by about half. The exact amount of speedup depends heavily on the architecture and memory layout of the runtime system. 
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -246,7 +192,7 @@ Return the lower triangle Cholesky Factor of the covariance matrix of a set of p
 \hline
 \end{DoxyParams}
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000019}{Todo}}]The efficiency of this code can be further improved.\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{todo__todo000043}{Todo}}]The efficiency of this code can be further improved.\end{DoxyRefDesc}
 
 
 \begin{DoxyAuthor}{Author}
@@ -254,133 +200,7 @@ Amir Shahmoradi, Oct 16, 2009, 11\+:14 AM, Michigan
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l02376}{2376}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceSample__mod_a44441497c46d27639eb9b422d1d4251d}\label{namespaceSample__mod_a44441497c46d27639eb9b422d1d4251d}} 
-\index{Sample\_mod@{Sample\_mod}!getCorUppFromCovUpp@{getCorUppFromCovUpp}}
-\index{getCorUppFromCovUpp@{getCorUppFromCovUpp}!Sample\_mod@{Sample\_mod}}
-\doxysubsubsection{\texorpdfstring{getCorUppFromCovUpp()}{getCorUppFromCovUpp()}}
-{\footnotesize\ttfamily PURE real(RK) function, dimension(nd,nd) Sample\+\_\+mod\+::get\+Cor\+Upp\+From\+Cov\+Upp (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Cov\+Upp }\end{DoxyParamCaption})}
-
-
-
-Convert the upper-\/triangle covariance matrix to the upper-\/triangle correlation matrix. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em nd} & \+: The rank of the covariance matrix. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Cov\+Upp} & \+: The upper-\/triangle covariance matrix. The lower-\/triangle will not be used.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Cor\+Upp} \+: The upper triangle of the correlation matrix. The lower-\/triangle will NOT be set.
-\end{DoxyReturn}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas at Austin.
-\end{DoxyAuthor}
-\begin{DoxyWarning}{Warning}
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
-\end{DoxyWarning}
-
-
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l02920}{2920}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceSample__mod_ad9a218dda4eed8c4d86cdc9513621d56}\label{namespaceSample__mod_ad9a218dda4eed8c4d86cdc9513621d56}} 
-\index{Sample\_mod@{Sample\_mod}!getCovLowFromCorLow@{getCovLowFromCorLow}}
-\index{getCovLowFromCorLow@{getCovLowFromCorLow}!Sample\_mod@{Sample\_mod}}
-\doxysubsubsection{\texorpdfstring{getCovLowFromCorLow()}{getCovLowFromCorLow()}}
-{\footnotesize\ttfamily PURE real(RK) function, dimension(nd,nd) Sample\+\_\+mod\+::get\+Cov\+Low\+From\+Cor\+Low (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Std\+Vec,  }\item[{real(RK)}]{Cor\+Low }\end{DoxyParamCaption})}
-
-
-
-Convert the lower-\/triangle correlation matrix to the lower-\/triangle covariance matrix. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em nd} & \+: The rank of the correlation matrix. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Std\+Vec} & \+: The input standard deviation vector of length {\ttfamily nd}. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Cor\+Low} & \+: The lower-\/triangle correlation matrix. The upper-\/triangle will not be used.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Cov\+Low} \+: The lower triangle of the covariance matrix. The upper-\/triangle will NOT be set.
-\end{DoxyReturn}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas at Austin.
-\end{DoxyAuthor}
-\begin{DoxyWarning}{Warning}
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
-\end{DoxyWarning}
-
-
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l03063}{3063}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceSample__mod_afb2e3c5d56a87f0cadd6304ffee5d823}\label{namespaceSample__mod_afb2e3c5d56a87f0cadd6304ffee5d823}} 
-\index{Sample\_mod@{Sample\_mod}!getCovLowFromCorUpp@{getCovLowFromCorUpp}}
-\index{getCovLowFromCorUpp@{getCovLowFromCorUpp}!Sample\_mod@{Sample\_mod}}
-\doxysubsubsection{\texorpdfstring{getCovLowFromCorUpp()}{getCovLowFromCorUpp()}}
-{\footnotesize\ttfamily PURE real(RK) function, dimension(nd,nd) Sample\+\_\+mod\+::get\+Cov\+Low\+From\+Cor\+Upp (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Std\+Vec,  }\item[{real(RK)}]{Cor\+Upp }\end{DoxyParamCaption})}
-
-
-
-Convert the upper-\/triangle correlation matrix to the lower-\/triangle covariance matrix. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em nd} & \+: The rank of the correlation matrix. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Std\+Vec} & \+: The input standard deviation vector of length {\ttfamily nd}. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Cor\+Upp} & \+: The upper-\/triangle correlation matrix. The lower-\/triangle will not be used.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Cov\+Low} \+: The lower triangle of the covariance matrix. The upper-\/triangle will NOT be set.
-\end{DoxyReturn}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas at Austin.
-\end{DoxyAuthor}
-\begin{DoxyWarning}{Warning}
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
-\end{DoxyWarning}
-
-
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l03028}{3028}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceSample__mod_a9a540e0c59a19fedbcc311a5530617eb}\label{namespaceSample__mod_a9a540e0c59a19fedbcc311a5530617eb}} 
-\index{Sample\_mod@{Sample\_mod}!getCovMatFromCorUpp@{getCovMatFromCorUpp}}
-\index{getCovMatFromCorUpp@{getCovMatFromCorUpp}!Sample\_mod@{Sample\_mod}}
-\doxysubsubsection{\texorpdfstring{getCovMatFromCorUpp()}{getCovMatFromCorUpp()}}
-{\footnotesize\ttfamily PURE real(RK) function, dimension(nd,nd) Sample\+\_\+mod\+::get\+Cov\+Mat\+From\+Cor\+Upp (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{nd,  }\item[{real(RK)}]{Std\+Vec,  }\item[{real(RK)}]{Cor\+Upp }\end{DoxyParamCaption})}
-
-
-
-Convert the input correlation matrix to the output covariance matrix. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em nd} & \+: The rank of the correlation matrix. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Std\+Vec} & \+: The input standard deviation vector of length {\ttfamily nd}. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Cor\+Upp} & \+: The upper-\/triangle correlation matrix. The lower-\/triangle will not be used.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Cov\+Mat\+Full} \+: The full covariance matrix.
-\end{DoxyReturn}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas at Austin.
-\end{DoxyAuthor}
-\begin{DoxyWarning}{Warning}
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds. 
-\end{DoxyWarning}
-
-
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l03098}{3098}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00264}{264}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceSample__mod_a5f2a3ba527c41a88f8afefabf3385a9e}\label{namespaceSample__mod_a5f2a3ba527c41a88f8afefabf3385a9e}} 
 \index{Sample\_mod@{Sample\_mod}!getMeanCov@{getMeanCov}}
@@ -421,7 +241,8 @@ Note the shape of the input {\ttfamily Sample(np,nd)}.
 For more information, see Geisser \& Cornfield (1963) \char`\"{}\+Posterior distributions for multivariate normal parameters\char`\"{}. Also, Box and Tiao (1973), \char`\"{}\+Bayesian Inference in Statistical Analysis\char`\"{} Page 421.
 \end{DoxyNote}
 \begin{DoxySeeAlso}{See also}
-\mbox{\hyperlink{namespaceSample__mod_ab54f1da8d61065ad511b74648331cdab}{get\+Mean\+Cov\+Trans}}
+\mbox{\hyperlink{namespaceSample__mod_ab54f1da8d61065ad511b74648331cdab}{get\+Mean\+Cov\+Trans}} ~\newline
+
 \end{DoxySeeAlso}
 \begin{DoxyRemark}{Remarks}
 For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
@@ -436,7 +257,7 @@ Amir Shahmoradi, Oct 16, 2009, 11\+:14 AM, Michigan
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l02440}{2440}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00328}{328}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceSample__mod_ab54f1da8d61065ad511b74648331cdab}\label{namespaceSample__mod_ab54f1da8d61065ad511b74648331cdab}} 
 \index{Sample\_mod@{Sample\_mod}!getMeanCovTrans@{getMeanCovTrans}}
@@ -486,7 +307,7 @@ This procedure is {\ttfamily impure} when the library is compiled with macro {\t
 \end{DoxyWarning}
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l02525}{2525}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00413}{413}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceSample__mod_ae9487a1bd8fb8e417b2ad4b193e63c41}\label{namespaceSample__mod_ae9487a1bd8fb8e417b2ad4b193e63c41}} 
 \index{Sample\_mod@{Sample\_mod}!getMeanCovUppTrans@{getMeanCovUppTrans}}
@@ -524,7 +345,7 @@ Amir Shahmoradi, Oct 16, 2009, 11\+:14 AM, Michigan
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l02601}{2601}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00489}{489}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceSample__mod_a69fe9bd0741ff89ecef392e6c4df1308}\label{namespaceSample__mod_a69fe9bd0741ff89ecef392e6c4df1308}} 
 \index{Sample\_mod@{Sample\_mod}!getMeanCovUppTransWeighted@{getMeanCovUppTransWeighted}}
@@ -570,7 +391,7 @@ This procedure is {\ttfamily impure} when the library is compiled with macro {\t
 \end{DoxyWarning}
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l02665}{2665}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00553}{553}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceSample__mod_a64b836f780040d4b71c0a63c77ea5231}\label{namespaceSample__mod_a64b836f780040d4b71c0a63c77ea5231}} 
 \index{Sample\_mod@{Sample\_mod}!mergeMeanCov@{mergeMeanCov}}
@@ -611,7 +432,7 @@ Amir Shahmoradi, Oct 16, 2009, 11\+:14 AM, Michigan
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l02735}{2735}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00623}{623}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceSample__mod_ab6c8a951bf35c59402a30d6d17a6d193}\label{namespaceSample__mod_ab6c8a951bf35c59402a30d6d17a6d193}} 
 \index{Sample\_mod@{Sample\_mod}!mergeMeanCovUpp@{mergeMeanCovUpp}}
@@ -648,7 +469,7 @@ Given two input sample means and covariance matrices, return the combination of 
 This subroutine is the same as \mbox{\hyperlink{namespaceSample__mod_a64b836f780040d4b71c0a63c77ea5231}{merge\+Mean\+Cov}}, with the {\bfseries{important difference}} that only the upper triangles and diagonals of the input covariance matrices need to be given by the user\+: {\ttfamily Cov\+UppA}, {\ttfamily Cov\+UppB} This alternative implementation is 6-\/7 times faster, with all compiler optimization flags on. In addition, all computational coefficients are predefined in this implementation, resulting in an extra 10\%-\/15\% efficiency gain.
 \end{DoxyRemark}
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000020}{Todo}}]The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector.\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{todo__todo000044}{Todo}}]The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector.\end{DoxyRefDesc}
 
 
 \begin{DoxyAuthor}{Author}
@@ -656,7 +477,7 @@ Amir Shahmoradi, Nov 24, 2020, 4\+:19 AM, Dallas, TX
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l02794}{2794}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00682}{682}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceSample__mod_a81524ddc27a48db65744d80cfad9b348}\label{namespaceSample__mod_a81524ddc27a48db65744d80cfad9b348}} 
 \index{Sample\_mod@{Sample\_mod}!mergeMeanCovUppDense@{mergeMeanCovUppDense}}
@@ -689,7 +510,7 @@ Given two input sample means and covariance matrices, return the combination of 
 This subroutine is the same as \mbox{\hyperlink{namespaceSample__mod_ab6c8a951bf35c59402a30d6d17a6d193}{merge\+Mean\+Cov\+Upp}}, with the {\bfseries{important difference}} that the resulting output mean and covariance matrices are written to the input arguments {\ttfamily MeanB}, {\ttfamily Cov\+UppB}. This alternative implementation results in another extra 15\%-\/20\% efficiency gain. This result is based on the benchmarks with Intel Fortran compiler 19.\+4 with all compiler optimization flags on.
 \end{DoxyRemark}
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000021}{Todo}}]The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector.\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{todo__todo000045}{Todo}}]The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector.\end{DoxyRefDesc}
 
 
 \begin{DoxyAuthor}{Author}
@@ -697,13 +518,13 @@ Amir Shahmoradi, Nov 25, 2020, 1\+:00 AM, Dallas, TX
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l02862}{2862}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00750}{750}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceSample__mod_ae3f7288e349a6a7f5150a35a96194361}\label{namespaceSample__mod_ae3f7288e349a6a7f5150a35a96194361}} 
-\index{Sample\_mod@{Sample\_mod}!transform\_1D@{transform\_1D}}
-\index{transform\_1D@{transform\_1D}!Sample\_mod@{Sample\_mod}}
-\doxysubsubsection{\texorpdfstring{transform\_1D()}{transform\_1D()}}
-{\footnotesize\ttfamily pure real(RK) function, dimension(\+:), allocatable Sample\+\_\+mod\+::transform\+\_\+1D (\begin{DoxyParamCaption}\item[{real(RK)}]{Point,  }\item[{real(RK)}]{Cho\+Low,  }\item[{real(RK)}]{Cho\+Dia }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{namespaceSample__mod_a96ce1f1fd63ab042dc497a6874c92f92}\label{namespaceSample__mod_a96ce1f1fd63ab042dc497a6874c92f92}} 
+\index{Sample\_mod@{Sample\_mod}!transform\_D1@{transform\_D1}}
+\index{transform\_D1@{transform\_D1}!Sample\_mod@{Sample\_mod}}
+\doxysubsubsection{\texorpdfstring{transform\_D1()}{transform\_D1()}}
+{\footnotesize\ttfamily pure real(RK) function, dimension(\+:), allocatable Sample\+\_\+mod\+::transform\+\_\+\+D1 (\begin{DoxyParamCaption}\item[{real(RK)}]{Point,  }\item[{real(RK)}]{Cho\+Low,  }\item[{real(RK)}]{Cho\+Dia }\end{DoxyParamCaption})}
 
 
 
@@ -726,13 +547,13 @@ Amir Shahmoradi, Monday 4\+:00 AM, August 23, 2021, Dallas, TX
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l03236}{3236}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00957}{957}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceSample__mod_a864d7c57c9dbfac5186cdc337985d48e}\label{namespaceSample__mod_a864d7c57c9dbfac5186cdc337985d48e}} 
-\index{Sample\_mod@{Sample\_mod}!transform\_2D@{transform\_2D}}
-\index{transform\_2D@{transform\_2D}!Sample\_mod@{Sample\_mod}}
-\doxysubsubsection{\texorpdfstring{transform\_2D()}{transform\_2D()}}
-{\footnotesize\ttfamily PURE real(RK) function, dimension(\+:,\+:), allocatable Sample\+\_\+mod\+::transform\+\_\+2D (\begin{DoxyParamCaption}\item[{real(RK)}]{Sample,  }\item[{real(RK)}]{Cho\+Low,  }\item[{real(RK)}]{Cho\+Dia,  }\item[{integer(IK), intent(in), optional}]{dim,  }\item[{logical, intent(in), optional}]{tenabled }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{namespaceSample__mod_af6b68f8cb050e0c1abd3b785ce90b81b}\label{namespaceSample__mod_af6b68f8cb050e0c1abd3b785ce90b81b}} 
+\index{Sample\_mod@{Sample\_mod}!transform\_D2@{transform\_D2}}
+\index{transform\_D2@{transform\_D2}!Sample\_mod@{Sample\_mod}}
+\doxysubsubsection{\texorpdfstring{transform\_D2()}{transform\_D2()}}
+{\footnotesize\ttfamily PURE real(RK) function, dimension(\+:,\+:), allocatable Sample\+\_\+mod\+::transform\+\_\+\+D2 (\begin{DoxyParamCaption}\item[{real(RK)}]{Sample,  }\item[{real(RK)}]{Cho\+Low,  }\item[{real(RK)}]{Cho\+Dia,  }\item[{integer(IK), intent(in), optional}]{dim,  }\item[{logical, intent(in), optional}]{tenabled }\end{DoxyParamCaption})}
 
 
 
@@ -762,7 +583,7 @@ This procedure is {\ttfamily impure} when the library is compiled with macro {\t
 \end{DoxyWarning}
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l03138}{3138}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00851}{851}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 
 
 
@@ -775,5 +596,5 @@ Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l03138}{3138}} of fi
 
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00060}{60}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00066}{66}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 

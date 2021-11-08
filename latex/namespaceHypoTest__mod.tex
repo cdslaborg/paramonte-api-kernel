@@ -8,14 +8,14 @@ This module contains the classes and procedures for various statistical hypothes
 \doxysubsection*{Data Types}
 \begin{DoxyCompactItemize}
 \item 
-interface \mbox{\hyperlink{interfaceHypoTest__mod_1_1getCDF__proc}{get\+CDF\+\_\+proc}}
+interface \mbox{\hyperlink{interfaceHypoTest__mod_1_1genCDF__proc}{gen\+CDF\+\_\+proc}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
-subroutine \mbox{\hyperlink{namespaceHypoTest__mod_a69bced9db8db083e5d5b1df177f85a63}{do\+KS1}} (np, Point, get\+CDF, stat\+KS, prob\+KS, Err)
-\begin{DoxyCompactList}\small\item\em Return the one-\/sample Kolmogorov–\+Smirnov (KS) test results for the null hypothesis that the data in vector {\ttfamily Point} comes from a distribution whose CDF is specified by the input {\ttfamily get\+CDF()} function. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceHypoTest__mod_a71353e6680d92e25c775f8c7b52924c2}{do\+Uniform\+KS1}} (np, Point, stat\+KS, prob\+KS, Err)
+subroutine \mbox{\hyperlink{namespaceHypoTest__mod_a9a12c7ec56403177e75072b4216bb03c}{do\+KS1}} (np, Point, \mbox{\hyperlink{Test__HypoTest__mod_8f90_ac52f65050eca011f07497b7f1a17789c}{gen\+CDF}}, stat\+KS, prob\+KS)
+\begin{DoxyCompactList}\small\item\em Return the one-\/sample Kolmogorov–\+Smirnov (KS) test results for the null hypothesis that the data in vector {\ttfamily Point} comes from a distribution whose CDF is specified by the input {\ttfamily \mbox{\hyperlink{Test__HypoTest__mod_8f90_ac52f65050eca011f07497b7f1a17789c}{gen\+CDF()}}} function. \end{DoxyCompactList}\item 
+pure subroutine \mbox{\hyperlink{namespaceHypoTest__mod_a3f9a679fa85a5d73452d364057503456}{do\+Uniform\+KS1}} (np, Point, stat\+KS, prob\+KS)
 \begin{DoxyCompactList}\small\item\em Return the one-\/sample Kolmogorov–\+Smirnov (KS) test results for the assumption that the points originate from a uniform distribution in \mbox{[}0,1\mbox{]}. So, all Point must be in \mbox{[}0,1\mbox{]} on input. \end{DoxyCompactList}\item 
 pure subroutine \mbox{\hyperlink{namespaceHypoTest__mod_a9b1713b6e4a561a1efa87a81f526d550}{do\+Sorted\+KS2}} (Sorted\+Sample1, Sorted\+Sample2, prob\+KS, stat\+KS, lambda)
 \item 
@@ -43,15 +43,15 @@ Amir Shahmoradi
 
 
 \doxysubsection{Function/\+Subroutine Documentation}
-\mbox{\Hypertarget{namespaceHypoTest__mod_a69bced9db8db083e5d5b1df177f85a63}\label{namespaceHypoTest__mod_a69bced9db8db083e5d5b1df177f85a63}} 
+\mbox{\Hypertarget{namespaceHypoTest__mod_a9a12c7ec56403177e75072b4216bb03c}\label{namespaceHypoTest__mod_a9a12c7ec56403177e75072b4216bb03c}} 
 \index{HypoTest\_mod@{HypoTest\_mod}!doKS1@{doKS1}}
 \index{doKS1@{doKS1}!HypoTest\_mod@{HypoTest\_mod}}
 \doxysubsubsection{\texorpdfstring{doKS1()}{doKS1()}}
-{\footnotesize\ttfamily subroutine Hypo\+Test\+\_\+mod\+::do\+KS1 (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point,  }\item[{procedure(\mbox{\hyperlink{interfaceHypoTest__mod_1_1getCDF__proc}{get\+CDF\+\_\+proc}})}]{get\+CDF,  }\item[{real(RK)}]{stat\+KS,  }\item[{real(RK)}]{prob\+KS,  }\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily subroutine Hypo\+Test\+\_\+mod\+::do\+KS1 (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point,  }\item[{procedure(\mbox{\hyperlink{interfaceHypoTest__mod_1_1genCDF__proc}{gen\+CDF\+\_\+proc}})}]{gen\+CDF,  }\item[{real(RK)}]{stat\+KS,  }\item[{real(RK)}]{prob\+KS }\end{DoxyParamCaption})}
 
 
 
-Return the one-\/sample Kolmogorov–\+Smirnov (KS) test results for the null hypothesis that the data in vector {\ttfamily Point} comes from a distribution whose CDF is specified by the input {\ttfamily get\+CDF()} function. 
+Return the one-\/sample Kolmogorov–\+Smirnov (KS) test results for the null hypothesis that the data in vector {\ttfamily Point} comes from a distribution whose CDF is specified by the input {\ttfamily \mbox{\hyperlink{Test__HypoTest__mod_8f90_ac52f65050eca011f07497b7f1a17789c}{gen\+CDF()}}} function. 
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -59,13 +59,11 @@ Return the one-\/sample Kolmogorov–\+Smirnov (KS) test results for the null hy
 \hline
 \mbox{\texttt{ in,out}}  & {\em Point} & \+: The sample. On return, this array will be sorted in Ascending order. \\
 \hline
-\mbox{\texttt{ in}}  & {\em get\+CDF} & \+: The function returning the Cumulative Distribution Function (CDF) of the sample. \\
+\mbox{\texttt{ in}}  & {\em gen\+CDF} & \+: The function returning the Cumulative Distribution Function (CDF) of the sample. \\
 \hline
 \mbox{\texttt{ out}}  & {\em stat\+KS} & \+: The KS test statistic. \\
 \hline
-\mbox{\texttt{ out}}  & {\em prob\+KS} & \+: The {\ttfamily p}-\/value of the test, returned as a scalar value in the range {\ttfamily \mbox{[}0,1\mbox{]}}. The output {\ttfamily prob\+KS} is the probability of observing a test statistic as extreme as, or more extreme than, the observed value under the null hypothesis. Small values of {\ttfamily prob\+KS} cast doubt on the validity of the null hypothesis. \\
-\hline
-\mbox{\texttt{ out}}  & {\em Err} & \+: An object of class \mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}} containing information about the occurrence of any error during the KS test computation.\\
+\mbox{\texttt{ out}}  & {\em prob\+KS} & \+: The {\ttfamily p}-\/value of the test, returned as a scalar value in the range {\ttfamily \mbox{[}0,1\mbox{]}}. The output {\ttfamily prob\+KS} is the probability of observing a test statistic as extreme as, or more extreme than, the observed value under the null hypothesis. Small values of {\ttfamily prob\+KS} cast doubt on the validity of the null hypothesis.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyAuthor}{Author}
@@ -73,7 +71,7 @@ Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{HypoTest__mod_8f90_source_l00086}{86}} of file \mbox{\hyperlink{HypoTest__mod_8f90_source}{Hypo\+Test\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{HypoTest__mod_8f90_source_l00084}{84}} of file \mbox{\hyperlink{HypoTest__mod_8f90_source}{Hypo\+Test\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceHypoTest__mod_a9b1713b6e4a561a1efa87a81f526d550}\label{namespaceHypoTest__mod_a9b1713b6e4a561a1efa87a81f526d550}} 
 \index{HypoTest\_mod@{HypoTest\_mod}!doSortedKS2@{doSortedKS2}}
@@ -86,13 +84,13 @@ It is imperative to convert {\ttfamily ns1} and {\ttfamily ns2} to real numbers 
 \end{DoxyWarning}
 
 
-Definition at line \mbox{\hyperlink{HypoTest__mod_8f90_source_l00186}{186}} of file \mbox{\hyperlink{HypoTest__mod_8f90_source}{Hypo\+Test\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{HypoTest__mod_8f90_source_l00176}{176}} of file \mbox{\hyperlink{HypoTest__mod_8f90_source}{Hypo\+Test\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceHypoTest__mod_a71353e6680d92e25c775f8c7b52924c2}\label{namespaceHypoTest__mod_a71353e6680d92e25c775f8c7b52924c2}} 
+\mbox{\Hypertarget{namespaceHypoTest__mod_a3f9a679fa85a5d73452d364057503456}\label{namespaceHypoTest__mod_a3f9a679fa85a5d73452d364057503456}} 
 \index{HypoTest\_mod@{HypoTest\_mod}!doUniformKS1@{doUniformKS1}}
 \index{doUniformKS1@{doUniformKS1}!HypoTest\_mod@{HypoTest\_mod}}
 \doxysubsubsection{\texorpdfstring{doUniformKS1()}{doUniformKS1()}}
-{\footnotesize\ttfamily pure subroutine Hypo\+Test\+\_\+mod\+::do\+Uniform\+KS1 (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point,  }\item[{real(RK)}]{stat\+KS,  }\item[{real(RK)}]{prob\+KS,  }\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure subroutine Hypo\+Test\+\_\+mod\+::do\+Uniform\+KS1 (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{np,  }\item[{real(RK)}]{Point,  }\item[{real(RK)}]{stat\+KS,  }\item[{real(RK)}]{prob\+KS }\end{DoxyParamCaption})}
 
 
 
@@ -106,17 +104,25 @@ Return the one-\/sample Kolmogorov–\+Smirnov (KS) test results for the assumpt
 \hline
 \mbox{\texttt{ out}}  & {\em stat\+KS} & \+: The KS test statistic. \\
 \hline
-\mbox{\texttt{ out}}  & {\em prob\+KS} & \+: The {\ttfamily p}-\/value of the test, returned as a scalar value in the range {\ttfamily \mbox{[}0,1\mbox{]}}. The output {\ttfamily prob\+KS} is the probability of observing a test statistic as extreme as, or more extreme than, the observed value under the null hypothesis. Small values of {\ttfamily prob\+KS} cast doubt on the validity of the null hypothesis. \\
-\hline
-\mbox{\texttt{ out}}  & {\em Err} & \+: An object of class \mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}} containing information about the occurrence of any error during the KS test computation.\\
+\mbox{\texttt{ out}}  & {\em prob\+KS} & \+: The {\ttfamily p}-\/value of the test, returned as a scalar value in the range {\ttfamily \mbox{[}0,1\mbox{]}}. The output {\ttfamily prob\+KS} is the probability of observing a test statistic as extreme as, or more extreme than, the observed value under the null hypothesis. Small values of {\ttfamily prob\+KS} cast doubt on the validity of the null hypothesis.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+This procedure is {\ttfamily pure}.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas at Austin. 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{HypoTest__mod_8f90_source_l00145}{145}} of file \mbox{\hyperlink{HypoTest__mod_8f90_source}{Hypo\+Test\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{HypoTest__mod_8f90_source_l00140}{140}} of file \mbox{\hyperlink{HypoTest__mod_8f90_source}{Hypo\+Test\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceHypoTest__mod_af9a2a92248a447839e842c9af0ad3ba4}\label{namespaceHypoTest__mod_af9a2a92248a447839e842c9af0ad3ba4}} 
 \index{HypoTest\_mod@{HypoTest\_mod}!getCumDenComKS@{getCumDenComKS}}
@@ -144,7 +150,7 @@ Amir Shahmoradi, Wednesday 1\+:59 AM, August 11, 2021, Dallas, TX.
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{HypoTest__mod_8f90_source_l00330}{330}} of file \mbox{\hyperlink{HypoTest__mod_8f90_source}{Hypo\+Test\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{HypoTest__mod_8f90_source_l00320}{320}} of file \mbox{\hyperlink{HypoTest__mod_8f90_source}{Hypo\+Test\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceHypoTest__mod_afaf041f5755ee5fb485c009517d15e23}\label{namespaceHypoTest__mod_afaf041f5755ee5fb485c009517d15e23}} 
 \index{HypoTest\_mod@{HypoTest\_mod}!getCumDenKS@{getCumDenKS}}
@@ -172,7 +178,7 @@ Amir Shahmoradi, Wednesday 1\+:59 AM, August 11, 2021, Dallas, TX.
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{HypoTest__mod_8f90_source_l00292}{292}} of file \mbox{\hyperlink{HypoTest__mod_8f90_source}{Hypo\+Test\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{HypoTest__mod_8f90_source_l00282}{282}} of file \mbox{\hyperlink{HypoTest__mod_8f90_source}{Hypo\+Test\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceHypoTest__mod_ab5f30f617da1bafdfd133cb39349815e}\label{namespaceHypoTest__mod_ab5f30f617da1bafdfd133cb39349815e}} 
 \index{HypoTest\_mod@{HypoTest\_mod}!getProbKS@{getProbKS}}
@@ -189,7 +195,7 @@ Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{HypoTest__mod_8f90_source_l00238}{238}} of file \mbox{\hyperlink{HypoTest__mod_8f90_source}{Hypo\+Test\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{HypoTest__mod_8f90_source_l00228}{228}} of file \mbox{\hyperlink{HypoTest__mod_8f90_source}{Hypo\+Test\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceHypoTest__mod_a62396d0c3660827fff0186d9dfe16417}\label{namespaceHypoTest__mod_a62396d0c3660827fff0186d9dfe16417}} 
 \index{HypoTest\_mod@{HypoTest\_mod}!getSampleDisparity@{getSampleDisparity}}
@@ -226,7 +232,7 @@ Amir Shahmoradi, Monday 1\+:51 AM, August 9, 2021, Dallas, TX.
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{HypoTest__mod_8f90_source_l00377}{377}} of file \mbox{\hyperlink{HypoTest__mod_8f90_source}{Hypo\+Test\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{HypoTest__mod_8f90_source_l00367}{367}} of file \mbox{\hyperlink{HypoTest__mod_8f90_source}{Hypo\+Test\+\_\+mod.\+f90}}.
 
 
 

@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Test__StarFormation__mod_8f90_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4d389600729eb25db92af3e09978356f.html">tests</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">Test_StarFormation_mod.f90</div></div>
 </div><!--header-->
@@ -128,13 +144,13 @@ $(function() {
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceStarFormation__mod.html">StarFormation_mod</a></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceErr__mod.html">Err_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_struct" href="structErr__mod_1_1Err__type.html">Err_type</a></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="fortran_statement">use </span>Test_mod, <span class="fortran_statement">only</span>: Test_type</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceTest__mod.html">Test_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="fortran_attribute">    private</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="fortran_attribute">    public</span> :: <a class="code hl_function" href="namespaceTest__StarFormation__mod.html#a92e315ab298a8bb3d7a9eef1c715ef79">test_StarFormation</a></div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="namespaceTest__StarFormation__mod.html#a533ae977041e02037b2e54847c74d797">   56</a></span>    <span class="fortran_statement">type</span>(Test_type) :: <a class="code hl_variable" href="namespaceTest__StarFormation__mod.html#a533ae977041e02037b2e54847c74d797">Test</a></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="namespaceTest__StarFormation__mod.html#a533ae977041e02037b2e54847c74d797">   56</a></span>    <span class="fortran_statement">type</span>(<a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a>) :: <a class="code hl_variable" href="namespaceTest__StarFormation__mod.html#a533ae977041e02037b2e54847c74d797">Test</a></div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
@@ -144,7 +160,7 @@ $(function() {
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="namespaceTest__StarFormation__mod.html#a92e315ab298a8bb3d7a9eef1c715ef79">   64</a></span><span class="fortran_statement">    subroutine</span> <a class="code hl_function" href="namespaceTest__StarFormation__mod.html#a92e315ab298a8bb3d7a9eef1c715ef79">test_StarFormation</a>()</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="fortran_statement">implicit none</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <a class="code hl_variable" href="namespaceTest__StarFormation__mod.html#a533ae977041e02037b2e54847c74d797">Test</a><span class="fortran_operator_symbols"> = </span>Test_type(moduleName<span class="fortran_operator_symbols">=</span><a class="code hl_variable" href="namespaceErr__mod.html#a658759f4402b77a47bad9adf07ea44fa">MODULE_NAME</a>)</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <a class="code hl_variable" href="namespaceTest__StarFormation__mod.html#a533ae977041e02037b2e54847c74d797">Test</a><span class="fortran_operator_symbols"> = </span><a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a>(moduleName<span class="fortran_operator_symbols">=</span><a class="code hl_variable" href="namespaceErr__mod.html#a658759f4402b77a47bad9adf07ea44fa">MODULE_NAME</a>)</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__StarFormation__mod.html#a533ae977041e02037b2e54847c74d797">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__StarFormation__mod.html#a30243958c525a621ab54c4b18dd2a64c">test_getLogRateH06</a>, <span class="fortran_string">&quot;test_getLogRateH06&quot;</span>)</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__StarFormation__mod.html#a533ae977041e02037b2e54847c74d797">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__StarFormation__mod.html#a3da49fa91011b1de832639f10ea77c5e">test_getLogRateL08</a>, <span class="fortran_string">&quot;test_getLogRateL08&quot;</span>)</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__StarFormation__mod.html#a533ae977041e02037b2e54847c74d797">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__StarFormation__mod.html#a26a2d06cc4035bbc1b4a85773100b7f0">test_getLogRateB10</a>, <span class="fortran_string">&quot;test_getLogRateB10&quot;</span>)</div>
@@ -164,7 +180,7 @@ $(function() {
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__StarFormation__mod.html#a533ae977041e02037b2e54847c74d797">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__StarFormation__mod.html#a1c92244a6bbc375b2c1c3ebc8f28d18d">test_getLogBinaryMergerRateLognormM14_1</a>, <span class="fortran_string">&quot;test_getLogBinaryMergerRateLognormM14_1&quot;</span>)</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__StarFormation__mod.html#a533ae977041e02037b2e54847c74d797">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__StarFormation__mod.html#ad17a49495587ad66fff0afe9e0e0164b">test_getLogBinaryMergerRateLognormM17_1</a>, <span class="fortran_string">&quot;test_getLogBinaryMergerRateLognormM17_1&quot;</span>)</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__StarFormation__mod.html#a533ae977041e02037b2e54847c74d797">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__StarFormation__mod.html#ade0c42f5cf7c87a795ad66e29735d635">test_getLogBinaryMergerRateLognormF18_1</a>, <span class="fortran_string">&quot;test_getLogBinaryMergerRateLognormF18_1&quot;</span>)</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__StarFormation__mod.html#a533ae977041e02037b2e54847c74d797">Test</a><span class="fortran_operator_symbols">%</span>finalize()</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__StarFormation__mod.html#a533ae977041e02037b2e54847c74d797">Test</a><span class="fortran_operator_symbols">%</span><a class="code hl_function" href="namespaceTest__mod.html#a9612928d23d1dedb33964f0207b12074">finalize</a>()</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="fortran_statement">end subroutine </span><a class="code hl_function" href="namespaceTest__StarFormation__mod.html#a92e315ab298a8bb3d7a9eef1c715ef79">test_StarFormation</a></div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
@@ -908,7 +924,7 @@ $(function() {
 <div class="line"><a id="l00827" name="l00827"></a><span class="lineno">  827</span> </div>
 <div class="line"><a id="l00828" name="l00828"></a><span class="lineno">  828</span><span class="fortran_statement">end module </span><a class="code hl_namespace" href="namespaceTest__StarFormation__mod.html">Test_StarFormation_mod</a> ! LCOV_EXCL_LINE</div>
 <div class="ttc" id="anamespaceConstants__mod_html"><div class="ttname"><a href="namespaceConstants__mod.html">Constants_mod</a></div><div class="ttdoc">This module contains the mathematical and programming constants.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00046">Constants_mod.f90:46</a></div></div>
-<div class="ttc" id="anamespaceConstants__mod_html_a2a237aad212d8b56b0000553021996f6"><div class="ttname"><a href="namespaceConstants__mod.html#a2a237aad212d8b56b0000553021996f6">Constants_mod::HUGE_RK</a></div><div class="ttdeci">real(RK), parameter HUGE_RK</div><div class="ttdoc">largest number of kind RK</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00110">Constants_mod.f90:110</a></div></div>
+<div class="ttc" id="anamespaceConstants__mod_html_a2a237aad212d8b56b0000553021996f6"><div class="ttname"><a href="namespaceConstants__mod.html#a2a237aad212d8b56b0000553021996f6">Constants_mod::HUGE_RK</a></div><div class="ttdeci">real(RK), parameter HUGE_RK</div><div class="ttdoc">largest number of kind RK</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00113">Constants_mod.f90:113</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html_a2bf4d6767c9954d3a495d10ab6b538d6"><div class="ttname"><a href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">Constants_mod::IK</a></div><div class="ttdeci">integer, parameter IK</div><div class="ttdoc">default integer kind in Fortran mode.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00060">Constants_mod.f90:60</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html_a2d9d57f0148a7016d900f471e5f28069"><div class="ttname"><a href="namespaceConstants__mod.html#a2d9d57f0148a7016d900f471e5f28069">Constants_mod::RK</a></div><div class="ttdeci">integer, parameter RK</div><div class="ttdoc">default real kind in Fortran mode.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00061">Constants_mod.f90:61</a></div></div>
 <div class="ttc" id="anamespaceCosmology__mod_html"><div class="ttname"><a href="namespaceCosmology__mod.html">Cosmology_mod</a></div><div class="ttdoc">This module contains procedures and constants for cosmological calculations.</div><div class="ttdef"><b>Definition:</b> <a href="Cosmology__mod_8f90_source.html#l00046">Cosmology_mod.f90:46</a></div></div>
@@ -940,25 +956,19 @@ $(function() {
 <div class="ttc" id="anamespaceTest__StarFormation__mod_html_ade0c42f5cf7c87a795ad66e29735d635"><div class="ttname"><a href="namespaceTest__StarFormation__mod.html#ade0c42f5cf7c87a795ad66e29735d635">Test_StarFormation_mod::test_getLogBinaryMergerRateLognormF18_1</a></div><div class="ttdeci">logical function test_getLogBinaryMergerRateLognormF18_1()</div><div class="ttdef"><b>Definition:</b> <a href="Test__StarFormation__mod_8f90_source.html#l00660">Test_StarFormation_mod.f90:661</a></div></div>
 <div class="ttc" id="anamespaceTest__StarFormation__mod_html_ae2e69cf638c3d23619b16122b8cf63ff"><div class="ttname"><a href="namespaceTest__StarFormation__mod.html#ae2e69cf638c3d23619b16122b8cf63ff">Test_StarFormation_mod::test_getLogBinaryMergerRateLognormB10_1</a></div><div class="ttdeci">logical function test_getLogBinaryMergerRateLognormB10_1()</div><div class="ttdef"><b>Definition:</b> <a href="Test__StarFormation__mod_8f90_source.html#l00534">Test_StarFormation_mod.f90:535</a></div></div>
 <div class="ttc" id="anamespaceTest__StarFormation__mod_html_af96abc17b326f786abbf8321b37c280b"><div class="ttname"><a href="namespaceTest__StarFormation__mod.html#af96abc17b326f786abbf8321b37c280b">Test_StarFormation_mod::test_getBinaryMergerRate_2</a></div><div class="ttdeci">logical function test_getBinaryMergerRate_2()</div><div class="ttdef"><b>Definition:</b> <a href="Test__StarFormation__mod_8f90_source.html#l00753">Test_StarFormation_mod.f90:754</a></div></div>
+<div class="ttc" id="anamespaceTest__mod_html"><div class="ttname"><a href="namespaceTest__mod.html">Test_mod</a></div><div class="ttdoc">This is the driver module of the unit testing framework of the ParaMonte kernel routines.</div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00054">Test_mod.f90:54</a></div></div>
+<div class="ttc" id="anamespaceTest__mod_html_a9612928d23d1dedb33964f0207b12074"><div class="ttname"><a href="namespaceTest__mod.html#a9612928d23d1dedb33964f0207b12074">Test_mod::finalize</a></div><div class="ttdeci">subroutine finalize()</div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00180">Test_mod.f90:181</a></div></div>
 <div class="ttc" id="astructErr__mod_1_1Err__type_html"><div class="ttname"><a href="structErr__mod_1_1Err__type.html">Err_mod::Err_type</a></div><div class="ttdoc">The error type.</div><div class="ttdef"><b>Definition:</b> <a href="Err__mod_8f90_source.html#l00063">Err_mod.f90:63</a></div></div>
+<div class="ttc" id="astructTest__mod_1_1Test__type_html"><div class="ttname"><a href="structTest__mod_1_1Test__type.html">Test_mod::Test_type</a></div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00101">Test_mod.f90:101</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4d389600729eb25db92af3e09978356f.html">tests</a></li><li class="navelem"><a class="el" href="Test__StarFormation__mod_8f90.html">Test_StarFormation_mod.f90</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:34 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:11 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

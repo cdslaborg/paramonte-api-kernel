@@ -11,21 +11,29 @@ This module contains classes and procedures for decorating and outputting text.
 type \mbox{\hyperlink{structDecoration__mod_1_1Ansi__type}{Ansi\+\_\+type}}
 \item 
 interface \mbox{\hyperlink{interfaceDecoration__mod_1_1constructDecoration}{construct\+Decoration}}
-\begin{DoxyCompactList}\small\item\em The constructor of the \mbox{\hyperlink{structDecoration__mod_1_1decoration__type}{Decoration\+\_\+type}} class. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{structDecoration__mod_1_1decoration__type}{decoration\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The constructor of the \mbox{\hyperlink{structDecoration__mod_1_1Decoration__type}{Decoration\+\_\+type}} class. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{structDecoration__mod_1_1Decoration__type}{Decoration\+\_\+type}}
 \begin{DoxyCompactList}\small\item\em The decoration class. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{structDecoration__mod_1_1Display__type}{Display\+\_\+type}}
+\item 
 interface \mbox{\hyperlink{interfaceDecoration__mod_1_1drawLine}{draw\+Line}}
 \begin{DoxyCompactList}\small\item\em Return a string which is a pattern repetition for the requested width. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceDecoration__mod_1_1dump}{dump}}
+\item 
 interface \mbox{\hyperlink{interfaceDecoration__mod_1_1getListOfLines}{get\+List\+Of\+Lines}}
 \begin{DoxyCompactList}\small\item\em Convert a string to a list of lines. \end{DoxyCompactList}\item 
+type \mbox{\hyperlink{structDecoration__mod_1_1Margin__type}{Margin\+\_\+type}}
+\item 
+type \mbox{\hyperlink{structDecoration__mod_1_1private}{private}}
+\item 
 interface \mbox{\hyperlink{interfaceDecoration__mod_1_1sandwich}{sandwich}}
 \begin{DoxyCompactList}\small\item\em Sandwich the input string with the input symbol for the requested thickness on both ends of the string. \end{DoxyCompactList}\item 
-type \mbox{\hyperlink{structDecoration__mod_1_1wrapper__type}{wrapper\+\_\+type}}
+type \mbox{\hyperlink{structDecoration__mod_1_1Wrapper__type}{Wrapper\+\_\+type}}
 \item 
 interface \mbox{\hyperlink{interfaceDecoration__mod_1_1wrapText}{wrap\+Text}}
 \begin{DoxyCompactList}\small\item\em Wrap the input text to fit it within the requested line width. \end{DoxyCompactList}\item 
 interface \mbox{\hyperlink{interfaceDecoration__mod_1_1write}{write}}
-\begin{DoxyCompactList}\small\item\em Write the decorated text to the output. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Write a decorated assumed length character or 2D matrix to the output. \end{DoxyCompactList}\item 
 interface \mbox{\hyperlink{interfaceDecoration__mod_1_1writeDecoratedList}{write\+Decorated\+List}}
 \begin{DoxyCompactList}\small\item\em Given a list of lines and the requested characteristics, this function wraps the text to within the maximum width specified. \end{DoxyCompactList}\item 
 interface \mbox{\hyperlink{interfaceDecoration__mod_1_1writeDecoratedText}{write\+Decorated\+Text}}
@@ -33,9 +41,15 @@ interface \mbox{\hyperlink{interfaceDecoration__mod_1_1writeDecoratedText}{write
 \doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
+type(\mbox{\hyperlink{structDecoration__mod_1_1Display__type}{Display\+\_\+type}}) function \mbox{\hyperlink{namespaceDecoration__mod_ad25e8f977a51a73bfd3866f6a237c363}{construct\+Display}} (unit, file, status, position, margin\+Top, margin\+Right, margin\+Bottom, margin\+Left, count, delim)
+\item 
+subroutine \mbox{\hyperlink{namespaceDecoration__mod_a051a9227608fcea9f866c46dfedad485}{finalize\+Display}} (Disp)
+\item 
+character(\+:) function, allocatable \mbox{\hyperlink{namespaceDecoration__mod_ae84475215c0ec270b5b1f1bf20865c23}{gen\+Display\+Format}} (Disp, margin\+Left, delim, sticky)
+\item 
 character(\+:) function, allocatable \mbox{\hyperlink{namespaceDecoration__mod_a76b55a3d8e76a00bb8032a2cbde39a4c}{style}} (string, attr, clfg, clbg)
 \begin{DoxyCompactList}\small\item\em Wrap the input text with ANSI/\+VT100 Control sequences to stylize and color the string. \end{DoxyCompactList}\item 
-pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceDecoration__mod_ab9b27fe0dfe0391c9cadb6ad7fe9ffeb}{get\+Generic\+Format}} (width, precision, delim, prefix)
+PURE character(\+:) function, allocatable \mbox{\hyperlink{namespaceDecoration__mod_aa1d724b3e1122f64a7765850c85f79cc}{get\+Generic\+Format}} (width, precision, delim, prefix)
 \begin{DoxyCompactList}\small\item\em Return an IO Fortran format given the input characteristics. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -79,11 +93,41 @@ Amir Shahmoradi
 
 
 \doxysubsection{Function/\+Subroutine Documentation}
-\mbox{\Hypertarget{namespaceDecoration__mod_ab9b27fe0dfe0391c9cadb6ad7fe9ffeb}\label{namespaceDecoration__mod_ab9b27fe0dfe0391c9cadb6ad7fe9ffeb}} 
+\mbox{\Hypertarget{namespaceDecoration__mod_ad25e8f977a51a73bfd3866f6a237c363}\label{namespaceDecoration__mod_ad25e8f977a51a73bfd3866f6a237c363}} 
+\index{Decoration\_mod@{Decoration\_mod}!constructDisplay@{constructDisplay}}
+\index{constructDisplay@{constructDisplay}!Decoration\_mod@{Decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{constructDisplay()}{constructDisplay()}}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structDecoration__mod_1_1Display__type}{Display\+\_\+type}}) function Decoration\+\_\+mod\+::construct\+Display (\begin{DoxyParamCaption}\item[{integer(IK), intent(in), optional}]{unit,  }\item[{character($\ast$), intent(in), optional}]{file,  }\item[{character($\ast$), intent(in), optional}]{status,  }\item[{character($\ast$), intent(in), optional}]{position,  }\item[{integer(IK)}]{margin\+Top,  }\item[{integer(IK)}]{margin\+Right,  }\item[{integer(IK)}]{margin\+Bottom,  }\item[{integer(IK)}]{margin\+Left,  }\item[{integer(IK), intent(in), optional}]{count,  }\item[{character($\ast$), intent(in), optional}]{delim }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00979}{979}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDecoration__mod_a051a9227608fcea9f866c46dfedad485}\label{namespaceDecoration__mod_a051a9227608fcea9f866c46dfedad485}} 
+\index{Decoration\_mod@{Decoration\_mod}!finalizeDisplay@{finalizeDisplay}}
+\index{finalizeDisplay@{finalizeDisplay}!Decoration\_mod@{Decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{finalizeDisplay()}{finalizeDisplay()}}
+{\footnotesize\ttfamily subroutine Decoration\+\_\+mod\+::finalize\+Display (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structDecoration__mod_1_1Display__type}{Display\+\_\+type}})}]{Disp }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l01018}{1018}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDecoration__mod_ae84475215c0ec270b5b1f1bf20865c23}\label{namespaceDecoration__mod_ae84475215c0ec270b5b1f1bf20865c23}} 
+\index{Decoration\_mod@{Decoration\_mod}!genDisplayFormat@{genDisplayFormat}}
+\index{genDisplayFormat@{genDisplayFormat}!Decoration\_mod@{Decoration\_mod}}
+\doxysubsubsection{\texorpdfstring{genDisplayFormat()}{genDisplayFormat()}}
+{\footnotesize\ttfamily character(\+:) function, allocatable Decoration\+\_\+mod\+::gen\+Display\+Format (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structDecoration__mod_1_1Display__type}{Display\+\_\+type}})}]{Disp,  }\item[{integer(IK)}]{margin\+Left,  }\item[{character($\ast$), intent(in), optional}]{delim,  }\item[{logical, intent(in), optional}]{sticky }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l01034}{1034}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDecoration__mod_aa1d724b3e1122f64a7765850c85f79cc}\label{namespaceDecoration__mod_aa1d724b3e1122f64a7765850c85f79cc}} 
 \index{Decoration\_mod@{Decoration\_mod}!getGenericFormat@{getGenericFormat}}
 \index{getGenericFormat@{getGenericFormat}!Decoration\_mod@{Decoration\_mod}}
 \doxysubsubsection{\texorpdfstring{getGenericFormat()}{getGenericFormat()}}
-{\footnotesize\ttfamily pure character(\+:) function, allocatable Decoration\+\_\+mod\+::get\+Generic\+Format (\begin{DoxyParamCaption}\item[{integer(IK), intent(in), optional}]{width,  }\item[{integer(IK), intent(in), optional}]{precision,  }\item[{character($\ast$), intent(in), optional}]{delim,  }\item[{character($\ast$), intent(in), optional}]{prefix }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily PURE character(\+:) function, allocatable Decoration\+\_\+mod\+::get\+Generic\+Format (\begin{DoxyParamCaption}\item[{integer(IK), intent(in), optional}]{width,  }\item[{integer(IK), intent(in), optional}]{precision,  }\item[{character($\ast$), intent(in), optional}]{delim,  }\item[{character($\ast$), intent(in), optional}]{prefix }\end{DoxyParamCaption})}
 
 
 
@@ -105,7 +149,7 @@ Return an IO Fortran format given the input characteristics.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00494}{494}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l01222}{1222}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDecoration__mod_a76b55a3d8e76a00bb8032a2cbde39a4c}\label{namespaceDecoration__mod_a76b55a3d8e76a00bb8032a2cbde39a4c}} 
 \index{Decoration\_mod@{Decoration\_mod}!style@{style}}
@@ -164,7 +208,7 @@ Possible Foreground / Background colors are the following\+:
 \end{DoxyRemark}
 
 
-Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00382}{382}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l01110}{1110}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
 
 
 
@@ -177,7 +221,7 @@ Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00382}{382}} of
 
 
 
-Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00067}{67}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00068}{68}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDecoration__mod_a8b826bd2207e65adce9abd7d13b991b2}\label{namespaceDecoration__mod_a8b826bd2207e65adce9abd7d13b991b2}} 
 \index{Decoration\_mod@{Decoration\_mod}!ANSI\_COLOR\_LIST\_LEN@{ANSI\_COLOR\_LIST\_LEN}}
@@ -187,7 +231,7 @@ Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00067}{67}} of 
 
 
 
-Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00068}{68}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00069}{69}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDecoration__mod_a6e42aba3cd2c19809270105096df5271}\label{namespaceDecoration__mod_a6e42aba3cd2c19809270105096df5271}} 
 \index{Decoration\_mod@{Decoration\_mod}!DECORATION\_THICKNESS\_HORZ@{DECORATION\_THICKNESS\_HORZ}}
@@ -197,7 +241,7 @@ Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00068}{68}} of 
 
 
 
-Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00056}{56}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00057}{57}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDecoration__mod_a274cb9f0dc8093763f326c386309c84a}\label{namespaceDecoration__mod_a274cb9f0dc8093763f326c386309c84a}} 
 \index{Decoration\_mod@{Decoration\_mod}!DECORATION\_THICKNESS\_VERT@{DECORATION\_THICKNESS\_VERT}}
@@ -207,7 +251,7 @@ Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00056}{56}} of 
 
 
 
-Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00057}{57}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00058}{58}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDecoration__mod_a7581ab9b285da37ce4ff35f896bbec16}\label{namespaceDecoration__mod_a7581ab9b285da37ce4ff35f896bbec16}} 
 \index{Decoration\_mod@{Decoration\_mod}!DECORATION\_WIDTH@{DECORATION\_WIDTH}}
@@ -217,7 +261,7 @@ Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00057}{57}} of 
 
 
 
-Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00055}{55}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00056}{56}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDecoration__mod_ab4b61a550d316d81125ec2327e82c319}\label{namespaceDecoration__mod_ab4b61a550d316d81125ec2327e82c319}} 
 \index{Decoration\_mod@{Decoration\_mod}!GENERIC\_OUTPUT\_FORMAT@{GENERIC\_OUTPUT\_FORMAT}}
@@ -227,7 +271,7 @@ Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00055}{55}} of 
 
 
 
-Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00062}{62}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00063}{63}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDecoration__mod_aa802c33655995e2b0c3770126e15bc52}\label{namespaceDecoration__mod_aa802c33655995e2b0c3770126e15bc52}} 
 \index{Decoration\_mod@{Decoration\_mod}!GENERIC\_TABBED\_FORMAT@{GENERIC\_TABBED\_FORMAT}}
@@ -237,7 +281,7 @@ Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00062}{62}} of 
 
 
 
-Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00063}{63}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00064}{64}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDecoration__mod_aea447b213bf4cdeab2803976af2b2cc5}\label{namespaceDecoration__mod_aea447b213bf4cdeab2803976af2b2cc5}} 
 \index{Decoration\_mod@{Decoration\_mod}!INDENT@{INDENT}}
@@ -247,7 +291,7 @@ Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00063}{63}} of 
 
 
 
-Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00060}{60}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00061}{61}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDecoration__mod_a68d020d1e5239ba03959d2737de6ca7f}\label{namespaceDecoration__mod_a68d020d1e5239ba03959d2737de6ca7f}} 
 \index{Decoration\_mod@{Decoration\_mod}!mc\_AnsiAttributeList@{mc\_AnsiAttributeList}}
@@ -257,7 +301,7 @@ Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00060}{60}} of 
 
 
 
-Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00074}{74}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00075}{75}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDecoration__mod_a66a1afb7d429666f5117dadb4277eda6}\label{namespaceDecoration__mod_a66a1afb7d429666f5117dadb4277eda6}} 
 \index{Decoration\_mod@{Decoration\_mod}!mc\_AnsiBackgroundColorList@{mc\_AnsiBackgroundColorList}}
@@ -267,7 +311,7 @@ Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00074}{74}} of 
 
 
 
-Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00076}{76}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00077}{77}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDecoration__mod_a8c9abddbf07a96cb42e3e499d7caba54}\label{namespaceDecoration__mod_a8c9abddbf07a96cb42e3e499d7caba54}} 
 \index{Decoration\_mod@{Decoration\_mod}!mc\_AnsiForegroundColorList@{mc\_AnsiForegroundColorList}}
@@ -277,7 +321,7 @@ Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00076}{76}} of 
 
 
 
-Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00075}{75}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00076}{76}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDecoration__mod_a7c54f238f6226d3c2ec0c5484e8c4809}\label{namespaceDecoration__mod_a7c54f238f6226d3c2ec0c5484e8c4809}} 
 \index{Decoration\_mod@{Decoration\_mod}!MODULE\_NAME@{MODULE\_NAME}}
@@ -287,7 +331,7 @@ Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00075}{75}} of 
 
 
 
-Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00053}{53}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00054}{54}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDecoration__mod_a716a4138da51089963cf7f1e2b64e52e}\label{namespaceDecoration__mod_a716a4138da51089963cf7f1e2b64e52e}} 
 \index{Decoration\_mod@{Decoration\_mod}!STAR@{STAR}}
@@ -297,7 +341,7 @@ Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00053}{53}} of 
 
 
 
-Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00058}{58}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00059}{59}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDecoration__mod_a966ffab0d973c2468db2418bb4edb8f3}\label{namespaceDecoration__mod_a966ffab0d973c2468db2418bb4edb8f3}} 
 \index{Decoration\_mod@{Decoration\_mod}!TAB@{TAB}}
@@ -307,5 +351,5 @@ Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00058}{58}} of 
 
 
 
-Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00059}{59}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Decoration__mod_8f90_source_l00060}{60}} of file \mbox{\hyperlink{Decoration__mod_8f90_source}{Decoration\+\_\+mod.\+f90}}.
 

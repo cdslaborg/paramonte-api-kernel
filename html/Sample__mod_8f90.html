@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Sample__mod_8f90.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Types</a> &#124;
@@ -91,21 +107,6 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Types</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSample__mod_1_1genMean.html">Sample_mod::genMean</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate and return the (weighted) mean of the input <code>Sample</code>, optionally weighted by the input <code>Weight</code>.  <a href="interfaceSample__mod_1_1genMean.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSample__mod_1_1genShifted.html">Sample_mod::genShifted</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a sample of shape <code>(np)</code>, or <code>(nd,np)</code> or <code>(np,nd)</code> that is shifted by the specified input <code>Amount</code> along the (optionally) specified axis <code>dim</code>. Here, <code>nd</code> stands for the number of dimensions (data attributes) of the input <code>Sample</code> and <code>np</code> represents the number of data points in the <code>Sample</code>. If the input <code>Amount</code> is the negative of the mean of the sample, then the returned sample will have a mean of zero.  <a href="interfaceSample__mod_1_1genShifted.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSample__mod_1_1getShifted.html">Sample_mod::getShifted</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a sample of shape <code>(np)</code>, or <code>(nd,np)</code> or <code>(np,nd)</code> that is shifted by the specified input <code>Amount</code> along the (optionally) specified axis <code>dim</code>. Here, <code>nd</code> stands for the number of dimensions (data attributes) of the input <code>Sample</code> and <code>np</code> represents the number of data points in the <code>Sample</code>. If the input <code>Amount</code> is the negative of the mean of the sample, then the returned sample will have a mean of zero.  <a href="interfaceSample__mod_1_1getShifted.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSample__mod_1_1genVariance.html">Sample_mod::genVariance</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate and return the variance of the input array of shape <code>(np)</code> or <code>(nd,np)</code> or <code>(np,nd)</code> where <code>nd</code> is the number of data dimensions (the number of data attributes) and <code>np</code> is the number of data points.  <a href="interfaceSample__mod_1_1genVariance.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSample__mod_1_1genCovUpp.html">Sample_mod::genCovUpp</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the <b>upper triangle</b> covariance matrix of the input shifted, optionally-weighted, sample <code>ShiftedSample</code> whose shape is by default assumed to be <code>(nd,np)</code> or <code>(nd,np)</code> such that <code>nd &lt; np</code> always holds, where <code>nd</code> represents the number of attributes (dimensions) of the sample and <code>np</code> represents the number of data points in the sample. Note that by definition, <code>np &gt; nd</code> must hold. The input sample must be normalized in the sense that its mean is zero.  <a href="interfaceSample__mod_1_1genCovUpp.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceSample__mod_1_1transform.html">Sample_mod::transform</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -124,7 +125,7 @@ Functions/Subroutines</h2></td></tr>
 <tr class="memdesc:af9dafbc79f11fc37f384877e49f3bf27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the lower triangle Cholesky Factor of the covariance matrix of a set of points in the lower part of <code>ChoLowCovUpp</code>. The upper part of <code>ChoLowCovUpp</code>, including the diagonal elements of it, will contain the covariance matrix of the sample. The output argument <code>ChoDia</code>, contains the diagonal terms of Cholesky Factor.  <a href="namespaceSample__mod.html#af9dafbc79f11fc37f384877e49f3bf27">More...</a><br /></td></tr>
 <tr class="separator:af9dafbc79f11fc37f384877e49f3bf27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e5daab49859d9c21c4ec3c916ec963d"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSample__mod.html#a1e5daab49859d9c21c4ec3c916ec963d">Sample_mod::getChoLowCovUppHighDim</a> (nd, np, Mean, Sample, ChoLowCovUpp, ChoDia)</td></tr>
-<tr class="memdesc:a1e5daab49859d9c21c4ec3c916ec963d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the lower triangle Cholesky Factor of the covariance matrix of a set of points in the lower part of <code>ChoLowCovUpp</code>. The upper part of <code>ChoLowCovUpp</code>, including the diagonal elements of it, will contain the covariance matrix of the sample. The output argument <code>ChoDia</code>, contains the diagonal terms of Cholesky Factor. This routine delivers the same functionality of <a class="el" href="namespaceSample__mod.html#af9dafbc79f11fc37f384877e49f3bf27">getChoLowCovUpp()</a>. However, it is considerably faster, by a few factors, for <code>nd &gt;&gt; 10</code>. Furthermore, it requires significantly less runtime memory, by about half. The exact amount of speedup depends heavily on the architecture and memory layout of the runtime system.  <a href="namespaceSample__mod.html#a1e5daab49859d9c21c4ec3c916ec963d">More...</a><br /></td></tr>
+<tr class="memdesc:a1e5daab49859d9c21c4ec3c916ec963d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the lower triangle Cholesky Factor of the covariance matrix of a set of points in the lower part of <code>ChoLowCovUpp</code>. The upper part of <code>ChoLowCovUpp</code>, including the diagonal elements of it, will contain the covariance matrix of the sample. The output argument <code>ChoDia</code>, contains the diagonal terms of Cholesky Factor. This routine delivers the same functionality of <a class="el" href="namespaceSample__mod.html#af9dafbc79f11fc37f384877e49f3bf27">getChoLowCovUpp</a>. However, it is considerably faster, by a few factors, for <code>nd &gt;&gt; 10</code>. Furthermore, it requires significantly less runtime memory, by about half. The exact amount of speedup depends heavily on the architecture and memory layout of the runtime system.  <a href="namespaceSample__mod.html#a1e5daab49859d9c21c4ec3c916ec963d">More...</a><br /></td></tr>
 <tr class="separator:a1e5daab49859d9c21c4ec3c916ec963d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f2a3ba527c41a88f8afefabf3385a9e"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSample__mod.html#a5f2a3ba527c41a88f8afefabf3385a9e">Sample_mod::getMeanCov</a> (np, nd, Sample, CovMat, Mean, MahalSq, InvCovMat, sqrtDetInvCovMat)</td></tr>
 <tr class="memdesc:a5f2a3ba527c41a88f8afefabf3385a9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the sample mean, covariance matrix, the Mahalanobis distances squared of the points with respect to the sample, and the square root of the determinant of the inverse covariance matrix of the sample.  <a href="namespaceSample__mod.html#a5f2a3ba527c41a88f8afefabf3385a9e">More...</a><br /></td></tr>
@@ -147,30 +148,15 @@ Functions/Subroutines</h2></td></tr>
 <tr class="memitem:a81524ddc27a48db65744d80cfad9b348"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSample__mod.html#a81524ddc27a48db65744d80cfad9b348">Sample_mod::mergeMeanCovUppDense</a> (nd, npA, MeanA, CovUppA, npB, MeanB, CovUppB)</td></tr>
 <tr class="memdesc:a81524ddc27a48db65744d80cfad9b348"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given two input sample means and covariance matrices, return the combination of them as a single mean and covariance matrix.  <a href="namespaceSample__mod.html#a81524ddc27a48db65744d80cfad9b348">More...</a><br /></td></tr>
 <tr class="separator:a81524ddc27a48db65744d80cfad9b348"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44441497c46d27639eb9b422d1d4251d"><td class="memItemLeft" align="right" valign="top">PURE real(RK) function, dimension(nd, nd)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSample__mod.html#a44441497c46d27639eb9b422d1d4251d">Sample_mod::getCorUppFromCovUpp</a> (nd, CovUpp)</td></tr>
-<tr class="memdesc:a44441497c46d27639eb9b422d1d4251d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the upper-triangle covariance matrix to the upper-triangle correlation matrix.  <a href="namespaceSample__mod.html#a44441497c46d27639eb9b422d1d4251d">More...</a><br /></td></tr>
-<tr class="separator:a44441497c46d27639eb9b422d1d4251d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a006be94969ee33fe9d9ad6c2a438a9c6"><td class="memItemLeft" align="right" valign="top">PURE real(RK) function, dimension(nd, nd)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSample__mod.html#a006be94969ee33fe9d9ad6c2a438a9c6">Sample_mod::genCovUppFromCorUpp</a> (nd, StdVec, CorUpp)</td></tr>
-<tr class="memdesc:a006be94969ee33fe9d9ad6c2a438a9c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the upper-triangle correlation matrix to the upper-triangle covariance matrix.  <a href="namespaceSample__mod.html#a006be94969ee33fe9d9ad6c2a438a9c6">More...</a><br /></td></tr>
-<tr class="separator:a006be94969ee33fe9d9ad6c2a438a9c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa488173222177596255901083dbc639"><td class="memItemLeft" align="right" valign="top">PURE real(RK) function, dimension(nd, nd)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSample__mod.html#aaa488173222177596255901083dbc639">Sample_mod::genCovUppFromCorLow</a> (nd, StdVec, CorLow)</td></tr>
-<tr class="memdesc:aaa488173222177596255901083dbc639"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the lower-triangle correlation matrix to the upper-triangle covariance matrix.  <a href="namespaceSample__mod.html#aaa488173222177596255901083dbc639">More...</a><br /></td></tr>
-<tr class="separator:aaa488173222177596255901083dbc639"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb2e3c5d56a87f0cadd6304ffee5d823"><td class="memItemLeft" align="right" valign="top">PURE real(RK) function, dimension(nd, nd)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSample__mod.html#afb2e3c5d56a87f0cadd6304ffee5d823">Sample_mod::getCovLowFromCorUpp</a> (nd, StdVec, CorUpp)</td></tr>
-<tr class="memdesc:afb2e3c5d56a87f0cadd6304ffee5d823"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the upper-triangle correlation matrix to the lower-triangle covariance matrix.  <a href="namespaceSample__mod.html#afb2e3c5d56a87f0cadd6304ffee5d823">More...</a><br /></td></tr>
-<tr class="separator:afb2e3c5d56a87f0cadd6304ffee5d823"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9a218dda4eed8c4d86cdc9513621d56"><td class="memItemLeft" align="right" valign="top">PURE real(RK) function, dimension(nd, nd)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSample__mod.html#ad9a218dda4eed8c4d86cdc9513621d56">Sample_mod::getCovLowFromCorLow</a> (nd, StdVec, CorLow)</td></tr>
-<tr class="memdesc:ad9a218dda4eed8c4d86cdc9513621d56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the lower-triangle correlation matrix to the lower-triangle covariance matrix.  <a href="namespaceSample__mod.html#ad9a218dda4eed8c4d86cdc9513621d56">More...</a><br /></td></tr>
-<tr class="separator:ad9a218dda4eed8c4d86cdc9513621d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a540e0c59a19fedbcc311a5530617eb"><td class="memItemLeft" align="right" valign="top">PURE real(RK) function, dimension(nd, nd)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSample__mod.html#a9a540e0c59a19fedbcc311a5530617eb">Sample_mod::getCovMatFromCorUpp</a> (nd, StdVec, CorUpp)</td></tr>
-<tr class="memdesc:a9a540e0c59a19fedbcc311a5530617eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the input correlation matrix to the output covariance matrix.  <a href="namespaceSample__mod.html#a9a540e0c59a19fedbcc311a5530617eb">More...</a><br /></td></tr>
-<tr class="separator:a9a540e0c59a19fedbcc311a5530617eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a864d7c57c9dbfac5186cdc337985d48e"><td class="memItemLeft" align="right" valign="top">PURE real(RK) function, dimension(:,:), allocatable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSample__mod.html#a864d7c57c9dbfac5186cdc337985d48e">Sample_mod::transform_2D</a> (Sample, ChoLow, ChoDia, dim, tenabled)</td></tr>
-<tr class="memdesc:a864d7c57c9dbfac5186cdc337985d48e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the transformed sample according to the input Cholesky factorization.  <a href="namespaceSample__mod.html#a864d7c57c9dbfac5186cdc337985d48e">More...</a><br /></td></tr>
-<tr class="separator:a864d7c57c9dbfac5186cdc337985d48e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3f7288e349a6a7f5150a35a96194361"><td class="memItemLeft" align="right" valign="top">pure real(RK) function, dimension(:), allocatable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSample__mod.html#ae3f7288e349a6a7f5150a35a96194361">Sample_mod::transform_1D</a> (Point, ChoLow, ChoDia)</td></tr>
-<tr class="memdesc:ae3f7288e349a6a7f5150a35a96194361"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the transformed sample according to the input Cholesky factorization.  <a href="namespaceSample__mod.html#ae3f7288e349a6a7f5150a35a96194361">More...</a><br /></td></tr>
-<tr class="separator:ae3f7288e349a6a7f5150a35a96194361"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2c2cc79f34ed2846aac905662807ca8"><td class="memItemLeft" align="right" valign="top">PURE real(RK) function, dimension(nd, nd)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSample__mod.html#aa2c2cc79f34ed2846aac905662807ca8">Sample_mod::genCorUppFromCovUpp</a> (nd, CovUpp)</td></tr>
+<tr class="memdesc:aa2c2cc79f34ed2846aac905662807ca8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the upper-triangle covariance matrix to the upper-triangle correlation matrix.  <a href="namespaceSample__mod.html#aa2c2cc79f34ed2846aac905662807ca8">More...</a><br /></td></tr>
+<tr class="separator:aa2c2cc79f34ed2846aac905662807ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6b68f8cb050e0c1abd3b785ce90b81b"><td class="memItemLeft" align="right" valign="top">PURE real(RK) function, dimension(:,:), allocatable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSample__mod.html#af6b68f8cb050e0c1abd3b785ce90b81b">Sample_mod::transform_D2</a> (Sample, ChoLow, ChoDia, dim, tenabled)</td></tr>
+<tr class="memdesc:af6b68f8cb050e0c1abd3b785ce90b81b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the transformed sample according to the input Cholesky factorization.  <a href="namespaceSample__mod.html#af6b68f8cb050e0c1abd3b785ce90b81b">More...</a><br /></td></tr>
+<tr class="separator:af6b68f8cb050e0c1abd3b785ce90b81b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96ce1f1fd63ab042dc497a6874c92f92"><td class="memItemLeft" align="right" valign="top">pure real(RK) function, dimension(:), allocatable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSample__mod.html#a96ce1f1fd63ab042dc497a6874c92f92">Sample_mod::transform_D1</a> (Point, ChoLow, ChoDia)</td></tr>
+<tr class="memdesc:a96ce1f1fd63ab042dc497a6874c92f92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the transformed sample according to the input Cholesky factorization.  <a href="namespaceSample__mod.html#a96ce1f1fd63ab042dc497a6874c92f92">More...</a><br /></td></tr>
+<tr class="separator:a96ce1f1fd63ab042dc497a6874c92f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -178,23 +164,14 @@ Variables</h2></td></tr>
 <tr class="separator:a09a467371587c98f96236755496f7f13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="Sample__mod_8f90.html">Sample_mod.f90</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:35 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:12 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('namespaceStatistics__mod.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,7 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Types</a> &#124;
@@ -137,9 +157,9 @@ Functions/Subroutines</h2></td></tr>
 <tr class="memitem:a7e1e77ed5824c9e5cf8ab67717f7a93d"><td class="memItemLeft" align="right" valign="top">real(RK) function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceStatistics__mod.html#a7e1e77ed5824c9e5cf8ab67717f7a93d">genRandLogn</a> (mean, std)</td></tr>
 <tr class="memdesc:a7e1e77ed5824c9e5cf8ab67717f7a93d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a log-normally distributed deviate with the given mean and standard deviation.  <a href="namespaceStatistics__mod.html#a7e1e77ed5824c9e5cf8ab67717f7a93d">More...</a><br /></td></tr>
 <tr class="separator:a7e1e77ed5824c9e5cf8ab67717f7a93d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac97484e7143f65df0c9e587dc850b4ef"><td class="memItemLeft" align="right" valign="top">pure real(RK) function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceStatistics__mod.html#ac97484e7143f65df0c9e587dc850b4ef">getLogProbMVU</a> (nd, logSqrtDetCovMat)</td></tr>
-<tr class="memdesc:ac97484e7143f65df0c9e587dc850b4ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the natural logarithm of the probability density function value of a point uniformly distributed within an ellipsoid, whose logarithm of the square root of the determinant of its representative covariance matrix is given by <code>logSqrtDetCovMat</code>.  <a href="namespaceStatistics__mod.html#ac97484e7143f65df0c9e587dc850b4ef">More...</a><br /></td></tr>
-<tr class="separator:ac97484e7143f65df0c9e587dc850b4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4f9c197132d2334d1fd59c177873a1b"><td class="memItemLeft" align="right" valign="top">PURE real(RK) function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceStatistics__mod.html#ad4f9c197132d2334d1fd59c177873a1b">getLogProbMVU</a> (nd, logSqrtDetCovMat)</td></tr>
+<tr class="memdesc:ad4f9c197132d2334d1fd59c177873a1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the natural logarithm of the probability density function value of a point uniformly distributed within an ellipsoid, whose logarithm of the square root of the determinant of its representative covariance matrix is given by <code>logSqrtDetCovMat</code>.  <a href="namespaceStatistics__mod.html#ad4f9c197132d2334d1fd59c177873a1b">More...</a><br /></td></tr>
+<tr class="separator:ad4f9c197132d2334d1fd59c177873a1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34224817b97015a952f6d049f94ab1b7"><td class="memItemLeft" align="right" valign="top">pure real(RK) function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceStatistics__mod.html#a34224817b97015a952f6d049f94ab1b7">getLogProbLognSP</a> (logMean, inverseVariance, logSqrtInverseVariance, logPoint)</td></tr>
 <tr class="memdesc:a34224817b97015a952f6d049f94ab1b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the natural logarithm of the Lognormal probability density function.  <a href="namespaceStatistics__mod.html#a34224817b97015a952f6d049f94ab1b7">More...</a><br /></td></tr>
 <tr class="separator:a34224817b97015a952f6d049f94ab1b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -388,7 +408,7 @@ If the Cholesky factorization fails, the component <code>RandCorMat(1,1) = -1</c
 <dl class="section remark"><dt>Remarks</dt><dd>This subroutine is very slow for high matrix dimensions ( <code>nd &gt;~ 10</code> ).</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01128">1128</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01129">1129</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -709,10 +729,10 @@ This routine is solely kept for backward compatibility reasons. The Fortran intr
 <dd>
 The onus is on the user to ensure that the input (<code>alpha</code>, <code>beta</code>) shape parameters are positive.</dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This procedure performs all calculations in <code>real32</code> real kind. If 64-bit accuracy matters more than performance, then use the <a class="el" href="namespaceStatistics__mod.html#a6f2bac87eb4e963f359c89840f4702a3">getBetaCDF_RK64</a> for a more-accurate double-precision but slower results.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000026">Todo:</a></b></dt><dd>The efficiency of this code can be improved by making <code>x</code> a vector on input.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000055">Todo:</a></b></dt><dd>The efficiency of this code can be improved by making <code>x</code> a vector on input.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01368">1368</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01369">1369</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -762,10 +782,10 @@ The onus is on the user to ensure that the input (<code>alpha</code>, <code>beta
 <dd>
 The onus is on the user to ensure that the input (<code>alpha</code>, <code>beta</code>) shape parameters are positive.</dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This procedure performs all calculations in <a class="el" href="namespaceConstants__mod.html#a855643f887b4c787e6542e9e7849680f">RK64</a> (<code>real64</code>) real kind. If performance matters more than 64-bit accuracy, then use the <a class="el" href="namespaceStatistics__mod.html#a1fd519cf4d71eb72a8b096f60398b46f">getBetaCDF_RK32</a> for a faster, but less-accurate single-precision results.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000027">Todo:</a></b></dt><dd>The efficiency of this code can be improved by making <code>x</code> a vector on input.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000056">Todo:</a></b></dt><dd>The efficiency of this code can be improved by making <code>x</code> a vector on input.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01422">1422</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01423">1423</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -813,7 +833,7 @@ The onus is on the user to ensure that the input (<code>alpha</code>, <code>beta
 <dl class="section return"><dt>Returns</dt><dd><code>betaCDF</code> : The BCF value at the given input point.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01463">1463</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01464">1464</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -861,7 +881,7 @@ The onus is on the user to ensure that the input (<code>alpha</code>, <code>beta
 <dl class="section return"><dt>Returns</dt><dd><code>betaCDF</code> : The BCF value at the given input point.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01525">1525</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01526">1526</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -910,7 +930,7 @@ The onus is on the user to ensure that the input (<code>alpha</code>, <code>beta
 <dl class="section warning"><dt>Warning</dt><dd>The input value for <code>avg</code> <b>must</b> be larger than <code>0.</code>. This condition is not checked for.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday February 22, 2017, 3:22 1:51 AM, Dallas, Texas. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01329">1329</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01330">1330</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -958,7 +978,7 @@ The onus is on the user to ensure that the input (<code>alpha</code>, <code>beta
 <dl class="section return"><dt>Returns</dt><dd><code>LogProbGeo</code> : An output vector of length <code>numTrial</code> representing the geometric PDF values.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01233">1233</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01234">1234</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1014,7 +1034,7 @@ The onus is on the user to ensure that the input (<code>alpha</code>, <code>beta
 <dl class="section warning"><dt>Warning</dt><dd>Any value of SuccessStep must be an integer numbers between <code>1</code> and <code>maxNumTrial</code>. The onus is on the user to ensure this condition holds.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01274">1274</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01275">1275</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1615,14 +1635,14 @@ The onus is on the user to ensure that the input (<code>alpha</code>, <code>beta
 
 </div>
 </div>
-<a id="ac97484e7143f65df0c9e587dc850b4ef" name="ac97484e7143f65df0c9e587dc850b4ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac97484e7143f65df0c9e587dc850b4ef">&#9670;&nbsp;</a></span>getLogProbMVU()</h2>
+<a id="ad4f9c197132d2334d1fd59c177873a1b" name="ad4f9c197132d2334d1fd59c177873a1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4f9c197132d2334d1fd59c177873a1b">&#9670;&nbsp;</a></span>getLogProbMVU()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">pure real(RK) function Statistics_mod::getLogProbMVU </td>
+          <td class="memname">PURE real(RK) function Statistics_mod::getLogProbMVU </td>
           <td>(</td>
           <td class="paramtype">integer(IK), intent(in)&#160;</td>
           <td class="paramname"><em>nd</em>, </td>
@@ -1861,7 +1881,7 @@ The onus is on the user to ensure that the input (<code>alpha</code>, <code>beta
 </dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01582">1582</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Statistics__mod_8f90_source.html#l01583">1583</a> of file <a class="el" href="Statistics__mod_8f90_source.html">Statistics_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -1883,23 +1903,14 @@ The onus is on the user to ensure that the input (<code>alpha</code>, <code>beta
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="namespaceStatistics__mod.html">Statistics_mod</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:44 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:19 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

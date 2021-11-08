@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('SpecMCMC__ProposalStartPointRandomized__mod_8f90_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">SpecMCMC_ProposalStartPointRandomized_mod.f90</div></div>
 </div><!--header-->
@@ -156,7 +172,7 @@ $(function() {
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">#if INTEL_COMPILER_ENABLED &amp;&amp; DLL_ENABLED &amp;&amp; (WINDOWS_ENABLED || DARWIN_ENABLED)</span></div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor"></span><span class="fortran_directive_intel">        !DEC$ ATTRIBUTES DLLEXPORT </span>:: <a class="code hl_function" href="namespaceSpecMCMC__ProposalStartPointRandomized__mod.html#abcf66a12cb587e694ad5ea15145e7072">construct</a></div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor"></span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_function" href="namespaceString__mod.html#ae6466d5ac218cfc89e869bebdec2ddd3">log2str</a></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor"></span>        <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceString__mod.html">String_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a></div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="fortran_statement">character</span>(<span class="fortran_operator_symbols">*</span>),<span class="fortran_attribute"> intent(in)</span>                :: methodName</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="fortran_statement">type</span>(<a class="code hl_interface" href="structSpecMCMC__ProposalStartPointRandomized__mod_1_1ProposalStartPointRandomized__type.html">ProposalStartPointRandomized_type</a>) :: self</div>
@@ -169,7 +185,7 @@ $(function() {
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="fortran_string"></span><span class="fortran_string">        &amp;proposalStartPoint that is not provided as input only that element will initialized randomly if proposalStartPointRandomized=TRUE. &amp;</span></div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="fortran_string"></span><span class="fortran_string">        &amp;Also, note that even if proposalStartPoint is randomly initialized, its random value will be deterministic between different &amp;</span></div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="fortran_string"></span><span class="fortran_string">        &amp;independent runs of &quot;</span><span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span>methodName<span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_string">&quot; if the input variable randomSeed is provided by the user. &amp;</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="fortran_string"></span><span class="fortran_string">        &amp;The default value is &quot;</span><span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><a class="code hl_function" href="namespaceString__mod.html#ae6466d5ac218cfc89e869bebdec2ddd3">log2str</a>(self<span class="fortran_operator_symbols">%</span>def)<span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_string">&quot;.&quot;</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="fortran_string"></span><span class="fortran_string">        &amp;The default value is &quot;</span><span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><a class="code hl_interface" href="interfaceString__mod_1_1val2char.html">val2char</a>(self<span class="fortran_operator_symbols">%</span>def)<span class="fortran_operator_symbols"> /</span><span class="fortran_operator_symbols">/ </span><span class="fortran_string">&quot;.&quot;</span></div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="fortran_statement">end function </span><a class="code hl_function" href="namespaceSpecMCMC__ProposalStartPointRandomized__mod.html#abcf66a12cb587e694ad5ea15145e7072">construct</a></div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
@@ -198,6 +214,7 @@ $(function() {
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
 <div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="fortran_statement">end module </span><a class="code hl_namespace" href="namespaceSpecMCMC__ProposalStartPointRandomized__mod.html">SpecMCMC_ProposalStartPointRandomized_mod</a> ! LCOV_EXCL_LINE</div>
+<div class="ttc" id="ainterfaceString__mod_1_1val2char_html"><div class="ttname"><a href="interfaceString__mod_1_1val2char.html">String_mod::val2char</a></div><div class="ttdoc">Convert the input value to an output allocatable character, with the requested format and sign symbol...</div><div class="ttdef"><b>Definition:</b> <a href="String__mod_8f90_source.html#l00305">String_mod.f90:305</a></div></div>
 <div class="ttc" id="anamespaceSpecMCMC__ProposalStartPointRandomized__mod_html"><div class="ttname"><a href="namespaceSpecMCMC__ProposalStartPointRandomized__mod.html">SpecMCMC_ProposalStartPointRandomized_mod</a></div><div class="ttdoc">This module contains the classes and procedures for setting up the proposalStartPointRandomized attri...</div><div class="ttdef"><b>Definition:</b> <a href="SpecMCMC__ProposalStartPointRandomized__mod_8f90_source.html#l00048">SpecMCMC_ProposalStartPointRandomized_mod.f90:48</a></div></div>
 <div class="ttc" id="anamespaceSpecMCMC__ProposalStartPointRandomized__mod_html_a00fc04585e67f7be589c7e38f5fb524f"><div class="ttname"><a href="namespaceSpecMCMC__ProposalStartPointRandomized__mod.html#a00fc04585e67f7be589c7e38f5fb524f">SpecMCMC_ProposalStartPointRandomized_mod::MODULE_NAME</a></div><div class="ttdeci">character(*), parameter MODULE_NAME</div><div class="ttdef"><b>Definition:</b> <a href="SpecMCMC__ProposalStartPointRandomized__mod_8f90_source.html#l00052">SpecMCMC_ProposalStartPointRandomized_mod.f90:52</a></div></div>
 <div class="ttc" id="anamespaceSpecMCMC__ProposalStartPointRandomized__mod_html_a3be4950ca05405d15e80da10537c67d5"><div class="ttname"><a href="namespaceSpecMCMC__ProposalStartPointRandomized__mod.html#a3be4950ca05405d15e80da10537c67d5">SpecMCMC_ProposalStartPointRandomized_mod::nullifyNameListVar</a></div><div class="ttdeci">subroutine nullifyNameListVar(self)</div><div class="ttdef"><b>Definition:</b> <a href="SpecMCMC__ProposalStartPointRandomized__mod_8f90_source.html#l00098">SpecMCMC_ProposalStartPointRandomized_mod.f90:99</a></div></div>
@@ -205,26 +222,16 @@ $(function() {
 <div class="ttc" id="anamespaceSpecMCMC__ProposalStartPointRandomized__mod_html_aa671a50e350af65aacfbb247c69956db"><div class="ttname"><a href="namespaceSpecMCMC__ProposalStartPointRandomized__mod.html#aa671a50e350af65aacfbb247c69956db">SpecMCMC_ProposalStartPointRandomized_mod::set</a></div><div class="ttdeci">subroutine set(self, proposalStartPointRandomized)</div><div class="ttdef"><b>Definition:</b> <a href="SpecMCMC__ProposalStartPointRandomized__mod_8f90_source.html#l00109">SpecMCMC_ProposalStartPointRandomized_mod.f90:110</a></div></div>
 <div class="ttc" id="anamespaceSpecMCMC__ProposalStartPointRandomized__mod_html_abcf66a12cb587e694ad5ea15145e7072"><div class="ttname"><a href="namespaceSpecMCMC__ProposalStartPointRandomized__mod.html#abcf66a12cb587e694ad5ea15145e7072">SpecMCMC_ProposalStartPointRandomized_mod::construct</a></div><div class="ttdeci">type(ProposalStartPointRandomized_type) function construct(methodName)</div><div class="ttdef"><b>Definition:</b> <a href="SpecMCMC__ProposalStartPointRandomized__mod_8f90_source.html#l00076">SpecMCMC_ProposalStartPointRandomized_mod.f90:77</a></div></div>
 <div class="ttc" id="anamespaceString__mod_html"><div class="ttname"><a href="namespaceString__mod.html">String_mod</a></div><div class="ttdoc">This module contains the classes and procedures for various string manipulations.</div><div class="ttdef"><b>Definition:</b> <a href="String__mod_8f90_source.html#l00054">String_mod.f90:54</a></div></div>
-<div class="ttc" id="anamespaceString__mod_html_ae6466d5ac218cfc89e869bebdec2ddd3"><div class="ttname"><a href="namespaceString__mod.html#ae6466d5ac218cfc89e869bebdec2ddd3">String_mod::log2str</a></div><div class="ttdeci">pure character(:) function, allocatable log2str(value)</div><div class="ttdoc">Convert the input logical value to value and return the result.</div><div class="ttdef"><b>Definition:</b> <a href="String__mod_8f90_source.html#l00640">String_mod.f90:641</a></div></div>
 <div class="ttc" id="astructSpecMCMC__ProposalStartPointRandomized__mod_1_1ProposalStartPointRandomized__type_html"><div class="ttname"><a href="structSpecMCMC__ProposalStartPointRandomized__mod_1_1ProposalStartPointRandomized__type.html">SpecMCMC_ProposalStartPointRandomized_mod::ProposalStartPointRandomized_type</a></div><div class="ttdef"><b>Definition:</b> <a href="SpecMCMC__ProposalStartPointRandomized__mod_8f90_source.html#l00056">SpecMCMC_ProposalStartPointRandomized_mod.f90:56</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="SpecMCMC__ProposalStartPointRandomized__mod_8f90.html">SpecMCMC_ProposalStartPointRandomized_mod.f90</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:31 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:09 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('structSpecBase__OutputSampleSize__mod_1_1OutputSampleSize__type.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespaceSpecBase__OutputSampleSize__mod.html">SpecBase_OutputSampleSize_mod</a></li><li class="navelem"><a class="el" href="structSpecBase__OutputSampleSize__mod_1_1OutputSampleSize__type.html">OutputSampleSize_type</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -88,10 +104,12 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab05a551b2e51e8a1cac52da0ff307748"><td class="memItemLeft" align="right" valign="top">procedure, pass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSpecBase__OutputSampleSize__mod_1_1OutputSampleSize__type.html#ab05a551b2e51e8a1cac52da0ff307748">set</a> =&gt; <a class="el" href="namespaceSpecBase__OutputSampleSize__mod.html#a15d11eaf9e57e695f6aee5fce22eb24a">setSampleSize</a>, <a class="el" href="namespaceSpecBase__OutputSampleSize__mod.html#abe1bd5eaabb4a81dcbc365cb5a6fda53">nullifyNameListVar</a></td></tr>
-<tr class="separator:ab05a551b2e51e8a1cac52da0ff307748"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a176fb835d3eb41960964cb1bcfbe28"><td class="memItemLeft" align="right" valign="top">type(<a class="el" href="structSpecBase__OutputSampleSize__mod_1_1OutputSampleSize__type.html">OutputSampleSize_type</a>) function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSpecBase__OutputSampleSize__mod_1_1OutputSampleSize__type.html#a6a176fb835d3eb41960964cb1bcfbe28">constructSampleSize</a> (methodName)</td></tr>
-<tr class="separator:a6a176fb835d3eb41960964cb1bcfbe28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcb960476bde1148fd1543077514e56f"><td class="memItemLeft" align="right" valign="top">procedure, pass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSpecBase__OutputSampleSize__mod_1_1OutputSampleSize__type.html#afcb960476bde1148fd1543077514e56f">set</a></td></tr>
+<tr class="separator:afcb960476bde1148fd1543077514e56f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72fdea8f9f0c5ddff67da001b335bccb"><td class="memItemLeft" align="right" valign="top">pass&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSpecBase__OutputSampleSize__mod_1_1OutputSampleSize__type.html#a72fdea8f9f0c5ddff67da001b335bccb">nullifyNameListVar</a></td></tr>
+<tr class="separator:a72fdea8f9f0c5ddff67da001b335bccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5379dad8a5916e1a8539686978cffecc"><td class="memItemLeft" align="right" valign="top">type(<a class="el" href="structSpecBase__OutputSampleSize__mod_1_1OutputSampleSize__type.html">OutputSampleSize_type</a>) function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSpecBase__OutputSampleSize__mod_1_1OutputSampleSize__type.html#a5379dad8a5916e1a8539686978cffecc">construct</a> (methodName)</td></tr>
+<tr class="separator:a5379dad8a5916e1a8539686978cffecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -112,14 +130,14 @@ Public Attributes</h2></td></tr>
 <div class="textblock">
 <p class="definition">Definition at line <a class="el" href="SpecBase__OutputSampleSize__mod_8f90_source.html#l00057">57</a> of file <a class="el" href="SpecBase__OutputSampleSize__mod_8f90_source.html">SpecBase_OutputSampleSize_mod.f90</a>.</p>
 </div><h2 class="groupheader">Member Function/Subroutine Documentation</h2>
-<a id="a6a176fb835d3eb41960964cb1bcfbe28" name="a6a176fb835d3eb41960964cb1bcfbe28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a176fb835d3eb41960964cb1bcfbe28">&#9670;&nbsp;</a></span>constructSampleSize()</h2>
+<a id="a5379dad8a5916e1a8539686978cffecc" name="a5379dad8a5916e1a8539686978cffecc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5379dad8a5916e1a8539686978cffecc">&#9670;&nbsp;</a></span>construct()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">type(<a class="el" href="structSpecBase__OutputSampleSize__mod_1_1OutputSampleSize__type.html">OutputSampleSize_type</a>) function SpecBase_OutputSampleSize_mod::OutputSampleSize_type::constructSampleSize </td>
+          <td class="memname">type(<a class="el" href="structSpecBase__OutputSampleSize__mod_1_1OutputSampleSize__type.html">OutputSampleSize_type</a>) function SpecBase_OutputSampleSize_mod::OutputSampleSize_type::construct </td>
           <td>(</td>
           <td class="paramtype">character(*)&#160;</td>
           <td class="paramname"><em>methodName</em></td><td>)</td>
@@ -132,8 +150,24 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ab05a551b2e51e8a1cac52da0ff307748" name="ab05a551b2e51e8a1cac52da0ff307748"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab05a551b2e51e8a1cac52da0ff307748">&#9670;&nbsp;</a></span>set()</h2>
+<a id="a72fdea8f9f0c5ddff67da001b335bccb" name="a72fdea8f9f0c5ddff67da001b335bccb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72fdea8f9f0c5ddff67da001b335bccb">&#9670;&nbsp;</a></span>nullifyNameListVar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">pass SpecBase_OutputSampleSize_mod::OutputSampleSize_type::nullifyNameListVar</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SpecBase__OutputSampleSize__mod_8f90_source.html#l00065">65</a> of file <a class="el" href="SpecBase__OutputSampleSize__mod_8f90_source.html">SpecBase_OutputSampleSize_mod.f90</a>.</p>
+
+</div>
+</div>
+<a id="afcb960476bde1148fd1543077514e56f" name="afcb960476bde1148fd1543077514e56f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcb960476bde1148fd1543077514e56f">&#9670;&nbsp;</a></span>set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -249,23 +283,14 @@ Public Attributes</h2></td></tr>
 <li>/home/amir/git/paramonte/src/kernel/<a class="el" href="SpecBase__OutputSampleSize__mod_8f90_source.html">SpecBase_OutputSampleSize_mod.f90</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="namespaceSpecBase__OutputSampleSize__mod.html">SpecBase_OutputSampleSize_mod</a></li><li class="navelem"><a class="el" href="structSpecBase__OutputSampleSize__mod_1_1OutputSampleSize__type.html">OutputSampleSize_type</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:44 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:18 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

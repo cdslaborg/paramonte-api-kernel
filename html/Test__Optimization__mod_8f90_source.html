@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Test__Optimization__mod_8f90_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4d389600729eb25db92af3e09978356f.html">tests</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">Test_Optimization_mod.f90</div></div>
 </div><!--header-->
@@ -127,13 +143,13 @@ $(function() {
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespaceTest__Optimization__mod.html">   46</a></span><span class="fortran_statement">module</span> <a class="code hl_namespace" href="namespaceTest__Optimization__mod.html">Test_Optimization_mod</a></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceOptimization__mod.html">Optimization_mod</a></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="fortran_statement">use </span>Test_mod, <span class="fortran_statement">only</span>: Test_type</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceTest__mod.html">Test_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="fortran_attribute">    private</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="fortran_attribute">    public</span> :: <a class="code hl_function" href="namespaceTest__Optimization__mod.html#a01b9accde99593f91bd3c2db2903ddb7">test_Optimization</a></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceTest__Optimization__mod.html#ac8b98dd1b9926d16cbf062f51a9ce4f3">   55</a></span>    <span class="fortran_statement">type</span>(Test_type) :: <a class="code hl_variable" href="namespaceTest__Optimization__mod.html#ac8b98dd1b9926d16cbf062f51a9ce4f3">Test</a></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceTest__Optimization__mod.html#ac8b98dd1b9926d16cbf062f51a9ce4f3">   55</a></span>    <span class="fortran_statement">type</span>(<a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a>) :: <a class="code hl_variable" href="namespaceTest__Optimization__mod.html#ac8b98dd1b9926d16cbf062f51a9ce4f3">Test</a></div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="structTest__Optimization__mod_1_1TestFuncRosenBrock1D__type.html">   57</a></span>    <span class="fortran_statement">type</span> :: <a class="code hl_struct" href="structTest__Optimization__mod_1_1TestFuncRosenBrock1D__type.html">TestFuncRosenBrock1D_type</a></div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="fortran_comment">! MATLAB reference code:</span></div>
@@ -171,11 +187,11 @@ $(function() {
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="namespaceTest__Optimization__mod.html#a01b9accde99593f91bd3c2db2903ddb7">   91</a></span><span class="fortran_statement">    subroutine</span> <a class="code hl_function" href="namespaceTest__Optimization__mod.html#a01b9accde99593f91bd3c2db2903ddb7">test_Optimization</a>()</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="fortran_statement">implicit none</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <a class="code hl_variable" href="namespaceTest__Optimization__mod.html#ac8b98dd1b9926d16cbf062f51a9ce4f3">Test</a><span class="fortran_operator_symbols"> = </span>Test_type(moduleName<span class="fortran_operator_symbols">=</span><a class="code hl_variable" href="namespaceOptimization__mod.html#ab8841786d6fa40c374bc95adfa54fcbb">MODULE_NAME</a>)</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <a class="code hl_variable" href="namespaceTest__Optimization__mod.html#ac8b98dd1b9926d16cbf062f51a9ce4f3">Test</a><span class="fortran_operator_symbols"> = </span><a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a>(moduleName<span class="fortran_operator_symbols">=</span><a class="code hl_variable" href="namespaceOptimization__mod.html#ab8841786d6fa40c374bc95adfa54fcbb">MODULE_NAME</a>)</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Optimization__mod.html#ac8b98dd1b9926d16cbf062f51a9ce4f3">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__Optimization__mod.html#a8ceb1294d6d11c0c0e2afc4e6228523a">test_BrentMinimum_type_1</a>, <span class="fortran_string">&quot;test_BrentMinimum_type_1&quot;</span>)</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Optimization__mod.html#ac8b98dd1b9926d16cbf062f51a9ce4f3">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__Optimization__mod.html#a27236a00109f4bd131256f6305bf3972">test_BrentMinimum_type_2</a>, <span class="fortran_string">&quot;test_BrentMinimum_type_2&quot;</span>)</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Optimization__mod.html#ac8b98dd1b9926d16cbf062f51a9ce4f3">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__Optimization__mod.html#aaa475ac8644bf906a048f4066024c80d">test_PowellMinimum_type_1</a>, <span class="fortran_string">&quot;test_PowellMinimum_type_1&quot;</span>) <span class="fortran_comment">! The internal function passing as actual argument causes segfault with Gfortran (any version) on Windows subsystem for Linux.</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Optimization__mod.html#ac8b98dd1b9926d16cbf062f51a9ce4f3">Test</a><span class="fortran_operator_symbols">%</span>finalize()</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Optimization__mod.html#ac8b98dd1b9926d16cbf062f51a9ce4f3">Test</a><span class="fortran_operator_symbols">%</span><a class="code hl_function" href="namespaceTest__mod.html#a9612928d23d1dedb33964f0207b12074">finalize</a>()</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="fortran_statement">end subroutine </span><a class="code hl_function" href="namespaceTest__Optimization__mod.html#a01b9accde99593f91bd3c2db2903ddb7">test_Optimization</a></div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
@@ -377,26 +393,20 @@ $(function() {
 <div class="ttc" id="anamespaceTest__Optimization__mod_html_aaa475ac8644bf906a048f4066024c80d"><div class="ttname"><a href="namespaceTest__Optimization__mod.html#aaa475ac8644bf906a048f4066024c80d">Test_Optimization_mod::test_PowellMinimum_type_1</a></div><div class="ttdeci">logical function test_PowellMinimum_type_1()</div><div class="ttdef"><b>Definition:</b> <a href="Test__Optimization__mod_8f90_source.html#l00205">Test_Optimization_mod.f90:206</a></div></div>
 <div class="ttc" id="anamespaceTest__Optimization__mod_html_ac8b98dd1b9926d16cbf062f51a9ce4f3"><div class="ttname"><a href="namespaceTest__Optimization__mod.html#ac8b98dd1b9926d16cbf062f51a9ce4f3">Test_Optimization_mod::Test</a></div><div class="ttdeci">type(Test_type) Test</div><div class="ttdef"><b>Definition:</b> <a href="Test__Optimization__mod_8f90_source.html#l00055">Test_Optimization_mod.f90:55</a></div></div>
 <div class="ttc" id="anamespaceTest__Optimization__mod_html_af90b46d7683335d2e8387d70bb2eeb82"><div class="ttname"><a href="namespaceTest__Optimization__mod.html#af90b46d7683335d2e8387d70bb2eeb82">Test_Optimization_mod::getTestFuncRosenBrock2D</a></div><div class="ttdeci">pure real(RK) function getTestFuncRosenBrock2D(ndim, Point)</div><div class="ttdef"><b>Definition:</b> <a href="Test__Optimization__mod_8f90_source.html#l00274">Test_Optimization_mod.f90:275</a></div></div>
+<div class="ttc" id="anamespaceTest__mod_html"><div class="ttname"><a href="namespaceTest__mod.html">Test_mod</a></div><div class="ttdoc">This is the driver module of the unit testing framework of the ParaMonte kernel routines.</div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00054">Test_mod.f90:54</a></div></div>
+<div class="ttc" id="anamespaceTest__mod_html_a9612928d23d1dedb33964f0207b12074"><div class="ttname"><a href="namespaceTest__mod.html#a9612928d23d1dedb33964f0207b12074">Test_mod::finalize</a></div><div class="ttdeci">subroutine finalize()</div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00180">Test_mod.f90:181</a></div></div>
 <div class="ttc" id="astructTest__Optimization__mod_1_1TestFuncRosenBrock1D__type_html"><div class="ttname"><a href="structTest__Optimization__mod_1_1TestFuncRosenBrock1D__type.html">Test_Optimization_mod::TestFuncRosenBrock1D_type</a></div><div class="ttdef"><b>Definition:</b> <a href="Test__Optimization__mod_8f90_source.html#l00057">Test_Optimization_mod.f90:57</a></div></div>
 <div class="ttc" id="astructTest__Optimization__mod_1_1TestFuncRosenBrock2D__type_html"><div class="ttname"><a href="structTest__Optimization__mod_1_1TestFuncRosenBrock2D__type.html">Test_Optimization_mod::TestFuncRosenBrock2D_type</a></div><div class="ttdef"><b>Definition:</b> <a href="Test__Optimization__mod_8f90_source.html#l00071">Test_Optimization_mod.f90:71</a></div></div>
+<div class="ttc" id="astructTest__mod_1_1Test__type_html"><div class="ttname"><a href="structTest__mod_1_1Test__type.html">Test_mod::Test_type</a></div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00101">Test_mod.f90:101</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4d389600729eb25db92af3e09978356f.html">tests</a></li><li class="navelem"><a class="el" href="Test__Optimization__mod_8f90.html">Test_Optimization_mod.f90</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:32 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:10 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

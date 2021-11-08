@@ -5,14 +5,22 @@
 \item 
 type \mbox{\hyperlink{structDecoration__mod_1_1Ansi__type}{Decoration\+\_\+mod\+::\+Ansi\+\_\+type}}
 \item 
-interface \mbox{\hyperlink{structDecoration__mod_1_1decoration__type}{Decoration\+\_\+mod\+::decoration\+\_\+type}}
+interface \mbox{\hyperlink{structDecoration__mod_1_1Decoration__type}{Decoration\+\_\+mod\+::\+Decoration\+\_\+type}}
 \begin{DoxyCompactList}\small\item\em The decoration class. \end{DoxyCompactList}\item 
-type \mbox{\hyperlink{structDecoration__mod_1_1wrapper__type}{Decoration\+\_\+mod\+::wrapper\+\_\+type}}
+type \mbox{\hyperlink{structDecoration__mod_1_1Wrapper__type}{Decoration\+\_\+mod\+::\+Wrapper\+\_\+type}}
 \item 
 interface \mbox{\hyperlink{interfaceDecoration__mod_1_1constructDecoration}{Decoration\+\_\+mod\+::construct\+Decoration}}
-\begin{DoxyCompactList}\small\item\em The constructor of the \mbox{\hyperlink{structDecoration__mod_1_1decoration__type}{Decoration\+\_\+type}} class. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em The constructor of the \mbox{\hyperlink{structDecoration__mod_1_1Decoration__type}{Decoration\+\_\+type}} class. \end{DoxyCompactList}\item 
+type \mbox{\hyperlink{structDecoration__mod_1_1private}{Decoration\+\_\+mod\+::private}}
+\item 
+type \mbox{\hyperlink{structDecoration__mod_1_1Margin__type}{Decoration\+\_\+mod\+::\+Margin\+\_\+type}}
+\item 
+interface \mbox{\hyperlink{structDecoration__mod_1_1Display__type}{Decoration\+\_\+mod\+::\+Display\+\_\+type}}
+\item 
 interface \mbox{\hyperlink{interfaceDecoration__mod_1_1write}{Decoration\+\_\+mod\+::write}}
-\begin{DoxyCompactList}\small\item\em Write the decorated text to the output. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Write a decorated assumed length character or 2D matrix to the output. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceDecoration__mod_1_1dump}{Decoration\+\_\+mod\+::dump}}
+\item 
 interface \mbox{\hyperlink{interfaceDecoration__mod_1_1writeDecoratedText}{Decoration\+\_\+mod\+::write\+Decorated\+Text}}
 \begin{DoxyCompactList}\small\item\em Given a text and the requested characteristics, this function wraps the text to within the maximum width specified. \end{DoxyCompactList}\item 
 interface \mbox{\hyperlink{interfaceDecoration__mod_1_1writeDecoratedList}{Decoration\+\_\+mod\+::write\+Decorated\+List}}
@@ -33,9 +41,15 @@ module \mbox{\hyperlink{namespaceDecoration__mod}{Decoration\+\_\+mod}}
 \doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
+type(Display\+\_\+type) function \mbox{\hyperlink{namespaceDecoration__mod_ad25e8f977a51a73bfd3866f6a237c363}{Decoration\+\_\+mod\+::construct\+Display}} (unit, file, status, position, margin\+Top, margin\+Right, margin\+Bottom, margin\+Left, count, delim)
+\item 
+subroutine \mbox{\hyperlink{namespaceDecoration__mod_a051a9227608fcea9f866c46dfedad485}{Decoration\+\_\+mod\+::finalize\+Display}} (Disp)
+\item 
+character(\+:) function, allocatable \mbox{\hyperlink{namespaceDecoration__mod_ae84475215c0ec270b5b1f1bf20865c23}{Decoration\+\_\+mod\+::gen\+Display\+Format}} (Disp, margin\+Left, delim, sticky)
+\item 
 character(\+:) function, allocatable \mbox{\hyperlink{namespaceDecoration__mod_a76b55a3d8e76a00bb8032a2cbde39a4c}{Decoration\+\_\+mod\+::style}} (string, attr, clfg, clbg)
 \begin{DoxyCompactList}\small\item\em Wrap the input text with ANSI/\+VT100 Control sequences to stylize and color the string. \end{DoxyCompactList}\item 
-pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceDecoration__mod_ab9b27fe0dfe0391c9cadb6ad7fe9ffeb}{Decoration\+\_\+mod\+::get\+Generic\+Format}} (width, precision, delim, prefix)
+PURE character(\+:) function, allocatable \mbox{\hyperlink{namespaceDecoration__mod_aa1d724b3e1122f64a7765850c85f79cc}{Decoration\+\_\+mod\+::get\+Generic\+Format}} (width, precision, delim, prefix)
 \begin{DoxyCompactList}\small\item\em Return an IO Fortran format given the input characteristics. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}

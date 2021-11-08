@@ -1,38 +1,5 @@
 \hypertarget{Matrix__mod_8f90}{}\doxysection{/home/amir/git/paramonte/src/kernel/\+Matrix\+\_\+mod.f90 File Reference}
 \label{Matrix__mod_8f90}\index{/home/amir/git/paramonte/src/kernel/Matrix\_mod.f90@{/home/amir/git/paramonte/src/kernel/Matrix\_mod.f90}}
-\doxysubsection*{Data Types}
-\begin{DoxyCompactItemize}
-\item 
-interface \mbox{\hyperlink{interfaceMatrix__mod_1_1genInvMatLow}{Matrix\+\_\+mod\+::gen\+Inv\+Mat\+Low}}
-\item 
-interface \mbox{\hyperlink{interfaceMatrix__mod_1_1genEye}{Matrix\+\_\+mod\+::gen\+Eye}}
-\item 
-interface \mbox{\hyperlink{interfaceMatrix__mod_1_1genDiag}{Matrix\+\_\+mod\+::gen\+Diag}}
-\item 
-interface \mbox{\hyperlink{interfaceMatrix__mod_1_1symmetrizeMatUpp}{Matrix\+\_\+mod\+::symmetrize\+Mat\+Upp}}
-\item 
-interface \mbox{\hyperlink{interfaceMatrix__mod_1_1symmetrizeMatLow}{Matrix\+\_\+mod\+::symmetrize\+Mat\+Low}}
-\item 
-interface \mbox{\hyperlink{interfaceMatrix__mod_1_1genMatSymFromMatUpp}{Matrix\+\_\+mod\+::gen\+Mat\+Sym\+From\+Mat\+Upp}}
-\begin{DoxyCompactList}\small\item\em Generate and return a symmetric matrix from the input upper-\/triangular square matrix. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceMatrix__mod_1_1genMatSymFromMatLow}{Matrix\+\_\+mod\+::gen\+Mat\+Sym\+From\+Mat\+Low}}
-\begin{DoxyCompactList}\small\item\em Generate and return a symmetric matrix from the input lower-\/triangular square matrix. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceMatrix__mod_1_1genScaledMat}{Matrix\+\_\+mod\+::gen\+Scaled\+Mat}}
-\begin{DoxyCompactList}\small\item\em Return a matrix resulting from the multiplication of the input {\ttfamily facupp} with the upper triangle of the input square matrix and {\ttfamily faclow} with the lower triangle of the input matrix and {\ttfamily facdia} with the diagonal elements of the input matrix. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceMatrix__mod_1_1operator_07_8udtimes_8_08}{Matrix\+\_\+mod\+::operator(.\+udtimes.)}}
-\begin{DoxyCompactList}\small\item\em Return a matrix resulting from the multiplication of the input factor with the upper triangle of the input square matrix. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceMatrix__mod_1_1operator_07_8ldtimes_8_08}{Matrix\+\_\+mod\+::operator(.\+ldtimes.)}}
-\begin{DoxyCompactList}\small\item\em Return a matrix resulting from the multiplication of the input factor with the lower triangle of the input square matrix. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceMatrix__mod_1_1copyUpp2Upp}{Matrix\+\_\+mod\+::copy\+Upp2\+Upp}}
-\begin{DoxyCompactList}\small\item\em Copy the upper-\/triangle (excluding diagonals) of the input {\ttfamily from} square matrix to the upper-\/triangle of the input matrix {\ttfamily to}. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceMatrix__mod_1_1copyUppDia2UppDia}{Matrix\+\_\+mod\+::copy\+Upp\+Dia2\+Upp\+Dia}}
-\begin{DoxyCompactList}\small\item\em Copy the upper-\/triangle and diagonals of the input {\ttfamily from} square matrix to the upper-\/triangle and diagonals of the input matrix {\ttfamily to}. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceMatrix__mod_1_1copyLow2Low}{Matrix\+\_\+mod\+::copy\+Low2\+Low}}
-\begin{DoxyCompactList}\small\item\em Copy the lower-\/triangle (excluding diagonals) of the input {\ttfamily from} square matrix to the lower-\/triangle of the input matrix {\ttfamily to}. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceMatrix__mod_1_1copyLowDia2LowDia}{Matrix\+\_\+mod\+::copy\+Low\+Dia2\+Low\+Dia}}
-\begin{DoxyCompactList}\small\item\em Copy the lower-\/triangle and diagonals of the input {\ttfamily from} square matrix to the lower-\/triangle and diagonals of the input matrix {\ttfamily to}. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceMatrix__mod_1_1getChoLow}{Matrix\+\_\+mod\+::get\+Cho\+Low}}
-\begin{DoxyCompactList}\small\item\em Return the lower-\/triangle of the Cholesky factorization $L$ of of the input symmetric positive-\/definite matrix represented by the upper-\/triangle of the input argument $\texttt{ChoLowMatUpp} = L.L^T$. On input, the upper triangle of {\ttfamily Cho\+Low\+Mat\+Upp} should be given, which remains intact on output. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Modules}
 \begin{DoxyCompactItemize}
 \item 
@@ -41,44 +8,6 @@ module \mbox{\hyperlink{namespaceMatrix__mod}{Matrix\+\_\+mod}}
 \doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
-pure real(RK) function, dimension(n, m) \mbox{\hyperlink{namespaceMatrix__mod_ad2bf798f82cfa14da6cdd4c36bc56212}{Matrix\+\_\+mod\+::gen\+Eye\+Mat}} (n, m, diag, offdiag)
-\begin{DoxyCompactList}\small\item\em Generate an eye matrix of shape {\ttfamily (n,m)}. Note that all elements of the output matrix are equal. To generate a matrix with unequal diagonal elements, use \mbox{\hyperlink{namespaceMatrix__mod_a38b6183d46d9c14c48b1f2ecf779a3ec}{gen\+Diag\+Mat()}}. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceMatrix__mod_a109dcb9855f82559060157ef5ec7cd64}{Matrix\+\_\+mod\+::gen\+Diag}} (Matrix)
-\begin{DoxyCompactList}\small\item\em Generate the diagonal elements of the input matrix of shape {\ttfamily (n,m)}. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a5bda432e1784184b0bb5ac704aa8f322}{Matrix\+\_\+mod\+::set\+Diag}} (Matrix, Diag)
-\begin{DoxyCompactList}\small\item\em Set the diagonal elements of the input matrix of shape {\ttfamily (n,m)} to the input {\ttfamily Diag} values. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a0ad8376152ddc2ca46cba4648159f7dc}{Matrix\+\_\+mod\+::set\+Diag\+Off\+Diag}} (Matrix, Diag, offdiag)
-\begin{DoxyCompactList}\small\item\em Set the diagonal elements of the input matrix of shape {\ttfamily (n,m)} to the input values. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(n, m) \mbox{\hyperlink{namespaceMatrix__mod_a38b6183d46d9c14c48b1f2ecf779a3ec}{Matrix\+\_\+mod\+::gen\+Diag\+Mat}} (n, m, Diag, offdiag)
-\begin{DoxyCompactList}\small\item\em Generate a diagonal matrix of shape {\ttfamily (n,m)} with the input diagonal and off-\/diagonal values. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_ab4964548047f585df1d88308c61e625f}{Matrix\+\_\+mod\+::get\+Cho\+Upp}} (nd, Cho\+Upp\+Cov\+Low, Cho\+Dia)
-\begin{DoxyCompactList}\small\item\em Return the Cholesky factorization of the input positive-\/definite matrix. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_aab3d6c2d51ad94f13c5c0854c39837da}{Matrix\+\_\+mod\+::get\+Inv\+Mat\+Cho\+Upp}} (nd, Cho\+Low, Cho\+Dia, Inv\+Mat\+Cho\+Upp, Inv\+Mat\+Cho\+Dia)
-\begin{DoxyCompactList}\small\item\em Return the upper-\/triangle of the inverse of a Cholesky factorization specified by its lower-\/triangle and diagonal on input. \end{DoxyCompactList}\item 
-subroutine \mbox{\hyperlink{namespaceMatrix__mod_a38fe64ed0bf75bbf51aa55d6985c3eb2}{Matrix\+\_\+mod\+::solve\+Linear\+Pos\+Def\+System}} (nd, Pos\+Def\+Mat, Cho\+Dia, Intercept, Input\+Solution)
-\begin{DoxyCompactList}\small\item\em Solve the linear equation system of the form\+: $ \texttt{PosDefMat} \times \texttt{InputSolution} = \texttt{Intercept} $. \end{DoxyCompactList}\item 
-PURE subroutine \mbox{\hyperlink{namespaceMatrix__mod_aa08a21e9b35cd8a96d4442b300d3d993}{Matrix\+\_\+mod\+::get\+Inv\+Pos\+Def\+Mat\+Sqrt\+Det}} (nd, Mat\+Inv\+Mat, sqrt\+Det\+Inv\+Pos\+Def\+Mat)
-\begin{DoxyCompactList}\small\item\em Return the inverse matrix of a symmetric-\/positive-\/definite input matrix, which is given in the upper triangle of {\ttfamily Mat\+Inv\+Mat}. On output {\ttfamily Mat\+Inv\+Mat} is completely overwritten by in the inverse of the matrix. Also, return the square root of determinant of the inverse matrix. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a9d5274f6fbae77140a1857d6ef6ee5a3}{Matrix\+\_\+mod\+::gen\+Inv\+Mat\+From\+Cho\+Low}} (nd, Cho\+Low, Cho\+Dia)
-\begin{DoxyCompactList}\small\item\em Generate the inverse matrix of a symmetric-\/positive-\/definite matrix, whose Cholesky Lower triangle is given in the lower part of {\ttfamily Cho\+Low} and and its diagonal elements in {\ttfamily Cho\+Dia}. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a76ec4b86aea74261b244135e13fac1a9}{Matrix\+\_\+mod\+::gen\+Inv\+Low\+From\+Cho\+Low}} (nd, Cho\+Low, Cho\+Dia)
-\begin{DoxyCompactList}\small\item\em Generate the lower-\/triangle and diagonals of the inverse matrix of a symmetric-\/positive-\/definite matrix whose Cholesky Lower triangle is given in the lower part of {\ttfamily Cho\+Low} and and its diagonal elements in {\ttfamily Cho\+Dia}. \end{DoxyCompactList}\item 
-PURE real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_aa0e14f76a6bcf3fe00093b00e53941da}{Matrix\+\_\+mod\+::gen\+Inv\+Pos\+Def\+Mat}} (nd, Pos\+Def\+Mat)
-\begin{DoxyCompactList}\small\item\em Generate the inverse matrix of an input symmetric-\/positive-\/definite matrix {\ttfamily Pos\+Def\+Mat}. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a25964c69dbad682f38a592e967603ad0}{Matrix\+\_\+mod\+::get\+Inv\+Mat\+Det}} (nd, Matrix\+LU, Inverse\+Matrix, det\+Inv\+Mat, failed)
-\begin{DoxyCompactList}\small\item\em Return the inverse matrix {\ttfamily Inverse\+Matrix} of a {\ttfamily (nd,nd)} input matrix {\ttfamily Matrix\+LU}, and its determinant, using {\ttfamily LU} decomposition. \end{DoxyCompactList}\item 
-real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_ac24f1194af9d684d461cd232e3f34922}{Matrix\+\_\+mod\+::gen\+Inv\+Mat}} (nd, Matrix, failed)
-\begin{DoxyCompactList}\small\item\em Return the inverse matrix {\ttfamily Inverse\+Matrix} of a {\ttfamily (nd,nd)} input matrix {\ttfamily Matrix}, and its determinant, using {\ttfamily LU} decomposition. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_aac8f2d0b109398411325d5d8396c830c}{Matrix\+\_\+mod\+::gen\+Inv\+Mat\+Low}} (nd, Mat\+Low)
-\begin{DoxyCompactList}\small\item\em Return the inverse matrix {\ttfamily Inv\+Mat\+Low} of an input lower-\/triangle matrix of shape {\ttfamily (nd,nd)}. The upper triangle of the input matrix will not be used. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a3c4bc8f850a7b80ac4599f7bb1324f5b}{Matrix\+\_\+mod\+::gen\+Inv\+Cho\+Low}} (nd, Mat\+Low, Diagonal)
-\begin{DoxyCompactList}\small\item\em Return the inverse matrix {\ttfamily Inv\+Mat\+Low} of an input lower-\/triangle matrix of shape {\ttfamily (nd,nd)} whose diagonal elements are given separately as the input {\ttfamily Diagonal} of length {\ttfamily nd}. The upper triangle of the input matrix will not be used. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_ad3895979ae15658f13ac2484b3fb979d}{Matrix\+\_\+mod\+::solve\+Linear\+System}} (nd, LU, Permutation, Input\+Solution)
-\begin{DoxyCompactList}\small\item\em Solve the set of {\ttfamily nd} linear equations {\ttfamily Matrix $\ast$ X = Input\+Solution}. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a9a49998b46ee8253af18b1872bdcd503}{Matrix\+\_\+mod\+::get\+LU}} (nd, Matrix\+LU, Permutation, parity, failed)
-\begin{DoxyCompactList}\small\item\em Return the LU decomposition of the input matrix {\ttfamily Matrix\+LU(nd,nd)}. \end{DoxyCompactList}\item 
-subroutine \mbox{\hyperlink{namespaceMatrix__mod_ab5fdddf828a95d49d960001885b3eceb}{Matrix\+\_\+mod\+::multiply\+Matrix}} (A, rowsA, colsA, B, rowsB, colsB, C)
-\begin{DoxyCompactList}\small\item\em Return the product of two matrices. The product of two matrices is defined by {\ttfamily c(i,j) = a(i,1)$\ast$b(1,j) + a(i,2)$\ast$b(2,j) + ... + a(i,n)$\ast$b(n,j)}. \end{DoxyCompactList}\item 
 real(RK) function \mbox{\hyperlink{namespaceMatrix__mod_ab4337db6f2d5ea89918b3790725f5030}{Matrix\+\_\+mod\+::gen\+Det}} (Matrix, failed)
 \begin{DoxyCompactList}\small\item\em Return the determinant of a given the square matrix of shape {\ttfamily (ndim,ndim)} via LU factorization. \end{DoxyCompactList}\item 
 real(RK) function \mbox{\hyperlink{namespaceMatrix__mod_a352c825e089edab3afba704b938aec7b}{Matrix\+\_\+mod\+::gen\+Sqrt\+Det\+Pos\+Def\+Mat}} (nd, Pos\+Def\+Mat)
@@ -87,26 +16,8 @@ pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_aae657307af71e1630308b5409
 \begin{DoxyCompactList}\small\item\em Return the natural logarithm of the square root of the determinant of a given positive-\/definite matrix {\ttfamily Pos\+Def\+Mat} of shape {\ttfamily (nd,nd)} using Cholesky factorization. \end{DoxyCompactList}\item 
 pure logical function \mbox{\hyperlink{namespaceMatrix__mod_abe639c9192bfff252cad932b2d2fe4aa}{Matrix\+\_\+mod\+::is\+Pos\+Def}} (nd, Matrix)
 \begin{DoxyCompactList}\small\item\em Return {\ttfamily .false.} value for {\ttfamily is\+Pos\+Def}, if the Cholesky decomposition of the input matrix fails (i.\+e. matrix is not positive definite), otherwise return {\ttfamily .true.}. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(size(Vector1), size(Vector2)) \mbox{\hyperlink{namespaceMatrix__mod_aff3658ff36af2b2d9af41c2e22d9125a}{Matrix\+\_\+mod\+::gen\+Outer\+Prod}} (Vector1, Vector2)
-\begin{DoxyCompactList}\small\item\em Return the outer product of the two input matrices. \end{DoxyCompactList}\item 
 pure real(RK) function, dimension(rank, rank) \mbox{\hyperlink{namespaceMatrix__mod_a0e1071f0d571d57fe97f315272d9d027}{Matrix\+\_\+mod\+::gen\+Sorted\+Pos\+Def\+Mat}} (rank, Pos\+Def\+Mat\+Upper, len\+Col\+Indx, Col\+Indx, Col\+Indx\+Map)
 \begin{DoxyCompactList}\small\item\em Generate an ordered matrix of the input matrix by rearranging the columns corresponding to {\ttfamily Col\+Indx} to into the corresponding columns in {\ttfamily Col\+Indx\+Map}, while keeping the rest of the matrix structure intact, such that if it is positive-\/definite, it remains positive-\/definite. For example,. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a9ca1389e61962728cdc6fab5cfab5f61}{Matrix\+\_\+mod\+::symmetrize\+Mat\+Upp\+Dia}} (nd, Upper\+Square\+Matrix, Diagonal)
-\begin{DoxyCompactList}\small\item\em Symmetrize an input upper-\/triangular square matrix by copying the upper triangle to the lower triangle and copying its diagonals from the input diagonal. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a380d82b78fdad3bc5d7896bd5de258cc}{Matrix\+\_\+mod\+::gen\+Lower\+From\+Upper}} (nd, Upper, diag\+Enabled)
-\begin{DoxyCompactList}\small\item\em Convert an upper square triangular matrix to a lower square triangular matrix. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_acf98a7927893f820a414d78288172119}{Matrix\+\_\+mod\+::gen\+Upper\+From\+Lower}} (nd, Lower, diag\+Enabled)
-\begin{DoxyCompactList}\small\item\em Convert a lower square triangular matrix to an upper square triangular matrix. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_a550e69a89e31c4276425dc93bb997803}{Matrix\+\_\+mod\+::gen\+Lower\+From\+Lower}} (nd, Lower, diag\+Enabled)
-\begin{DoxyCompactList}\small\item\em Duplicate and return a lower square triangular matrix while ignoring the upper triangle of the input matrix. Convert a lower square triangular matrix to a lower square triangular matrix. \end{DoxyCompactList}\item 
-pure real(RK) function, dimension(nd, nd) \mbox{\hyperlink{namespaceMatrix__mod_ad5b2567dd04f56c46ff13fc49d8ccc0e}{Matrix\+\_\+mod\+::gen\+Upper\+From\+Upper}} (nd, Upper, diag\+Enabled)
-\begin{DoxyCompactList}\small\item\em Duplicate and return an upper square triangular matrix while ignoring the lower triangle of the input matrix. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_ad8dfe3beb50a7acc2182c459c1604c0d}{Matrix\+\_\+mod\+::symmetrize\+Mat\+Low\+Dia}} (nd, Lower\+Square\+Matrix, Diagonal)
-\begin{DoxyCompactList}\small\item\em Symmetrize an input lower-\/triangular square matrix by copying the lower triangle to the upper triangle and copying its diagonals from the input diagonal. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a07b2c0f4397964b55d24ab9fee96814b}{Matrix\+\_\+mod\+::symmetrize\+Mat\+Upp}} (nd, Upper\+Square\+Matrix)
-\begin{DoxyCompactList}\small\item\em Symmetrize an input upper-\/triangular square matrix by copying the upper triangle to the lower triangle. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceMatrix__mod_a3be752eb237f9b534e53a5202eb7fd02}{Matrix\+\_\+mod\+::symmetrize\+Mat\+Low}} (nd, Lower\+Square\+Matrix)
-\begin{DoxyCompactList}\small\item\em Symmetrize an input lower-\/triangular square matrix by copying the lower triangle to the upper triangle. \end{DoxyCompactList}\item 
 PURE subroutine \mbox{\hyperlink{namespaceMatrix__mod_ab617158b63b3fd705761001646416311}{Matrix\+\_\+mod\+::get\+Regres\+Coef}} (rank\+PDM, rank\+S11, rank\+S22, Pos\+Def\+Mat, Regres\+Coef\+Mat, failed, Schur\+Complement)
 \begin{DoxyCompactList}\small\item\em Return the the Regression Coefficient Matrix, whose dimension is {\ttfamily rank\+S11} by {\ttfamily rank\+S22}, as well as optionally the Schur complement of the {\ttfamily S22} block of rank {\ttfamily rank\+S22} of the input matrix {\ttfamily Pos\+Def\+Mat} of rank {\ttfamily rank\+PDM}. For example, if,. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}

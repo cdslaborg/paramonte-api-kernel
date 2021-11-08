@@ -1,21 +1,10 @@
 var searchData=
 [
-  ['main_2ef90_0',['main.f90',['../main_8f90.html',1,'']]],
-  ['math_5fmod_2ef90_1',['Math_mod.f90',['../Math__mod_8f90.html',1,'']]],
-  ['matrix_5fmod_2ef90_2',['Matrix_mod.f90',['../Matrix__mod_8f90.html',1,'']]],
-  ['matrix_5fmod_40routines_5fsmod_2ef90_3',['Matrix_mod@Routines_smod.f90',['../Matrix__mod_0dRoutines__smod_8f90.html',1,'']]],
-  ['matrix_5fmod_40routines_5fsmod_40copylow2low_2einc_2ef90_4',['Matrix_mod@Routines_smod@copyLow2Low.inc.f90',['../Matrix__mod_0dRoutines__smod_0dcopyLow2Low_8inc_8f90.html',1,'']]],
-  ['matrix_5fmod_40routines_5fsmod_40copylowdia2lowdia_2einc_2ef90_5',['Matrix_mod@Routines_smod@copyLowDia2LowDia.inc.f90',['../Matrix__mod_0dRoutines__smod_0dcopyLowDia2LowDia_8inc_8f90.html',1,'']]],
-  ['matrix_5fmod_40routines_5fsmod_40copyupp2upp_2einc_2ef90_6',['Matrix_mod@Routines_smod@copyUpp2Upp.inc.f90',['../Matrix__mod_0dRoutines__smod_0dcopyUpp2Upp_8inc_8f90.html',1,'']]],
-  ['matrix_5fmod_40routines_5fsmod_40copyuppdia2uppdia_2einc_2ef90_7',['Matrix_mod@Routines_smod@copyUppDia2UppDia.inc.f90',['../Matrix__mod_0dRoutines__smod_0dcopyUppDia2UppDia_8inc_8f90.html',1,'']]],
-  ['matrix_5fmod_40routines_5fsmod_40genmatsymfrommatlow_2einc_2ef90_8',['Matrix_mod@Routines_smod@genMatSymFromMatLow.inc.f90',['../Matrix__mod_0dRoutines__smod_0dgenMatSymFromMatLow_8inc_8f90.html',1,'']]],
-  ['matrix_5fmod_40routines_5fsmod_40genmatsymfrommatlowdia_2einc_2ef90_9',['Matrix_mod@Routines_smod@genMatSymFromMatLowDia.inc.f90',['../Matrix__mod_0dRoutines__smod_0dgenMatSymFromMatLowDia_8inc_8f90.html',1,'']]],
-  ['matrix_5fmod_40routines_5fsmod_40genmatsymfrommatupp_2einc_2ef90_10',['Matrix_mod@Routines_smod@genMatSymFromMatUpp.inc.f90',['../Matrix__mod_0dRoutines__smod_0dgenMatSymFromMatUpp_8inc_8f90.html',1,'']]],
-  ['matrix_5fmod_40routines_5fsmod_40genmatsymfrommatuppdia_2einc_2ef90_11',['Matrix_mod@Routines_smod@genMatSymFromMatUppDia.inc.f90',['../Matrix__mod_0dRoutines__smod_0dgenMatSymFromMatUppDia_8inc_8f90.html',1,'']]],
-  ['matrix_5fmod_40routines_5fsmod_40genscaledmat_2einc_2ef90_12',['Matrix_mod@Routines_smod@genScaledMat.inc.f90',['../Matrix__mod_0dRoutines__smod_0dgenScaledMat_8inc_8f90.html',1,'']]],
-  ['matrix_5fmod_40routines_5fsmod_40genscaledmatlowdia_2einc_2ef90_13',['Matrix_mod@Routines_smod@genScaledMatLowDia.inc.f90',['../Matrix__mod_0dRoutines__smod_0dgenScaledMatLowDia_8inc_8f90.html',1,'']]],
-  ['matrix_5fmod_40routines_5fsmod_40genscaledmatuppdia_2einc_2ef90_14',['Matrix_mod@Routines_smod@genScaledMatUppDia.inc.f90',['../Matrix__mod_0dRoutines__smod_0dgenScaledMatUppDia_8inc_8f90.html',1,'']]],
-  ['matrix_5fmod_40routines_5fsmod_40getcholow_2einc_2ef90_15',['Matrix_mod@Routines_smod@getChoLow.inc.f90',['../Matrix__mod_0dRoutines__smod_0dgetChoLow_8inc_8f90.html',1,'']]],
-  ['matrixeigen_5fmod_2ef90_16',['MatrixEigen_mod.f90',['../MatrixEigen__mod_8f90.html',1,'']]],
-  ['misc_5fmod_2ef90_17',['Misc_mod.f90',['../Misc__mod_8f90.html',1,'']]]
+  ['linsys_5fmod_2ef90_0',['LinSys_mod.f90',['../LinSys__mod_8f90.html',1,'']]],
+  ['linsys_5fmod_40routines_5fsmod_2ef90_1',['LinSys_mod@Routines_smod.f90',['../LinSys__mod_0dRoutines__smod_8f90.html',1,'']]],
+  ['linsys_5fmod_40routines_5fsmod_40solvelinsyscholow_2einc_2ef90_2',['LinSys_mod@Routines_smod@solveLinSysChoLow.inc.f90',['../LinSys__mod_0dRoutines__smod_0dsolveLinSysChoLow_8inc_8f90.html',1,'']]],
+  ['linsys_5fmod_40routines_5fsmod_40solvelinsyscholowrighthand_2einc_2ef90_3',['LinSys_mod@Routines_smod@solveLinSysChoLowRightHand.inc.f90',['../LinSys__mod_0dRoutines__smod_0dsolveLinSysChoLowRightHand_8inc_8f90.html',1,'']]],
+  ['linsys_5fmod_40routines_5fsmod_40solvelinsyschoupp_2einc_2ef90_4',['LinSys_mod@Routines_smod@solveLinSysChoUpp.inc.f90',['../LinSys__mod_0dRoutines__smod_0dsolveLinSysChoUpp_8inc_8f90.html',1,'']]],
+  ['linsys_5fmod_40routines_5fsmod_40solvelinsyschoupprighthand_2einc_2ef90_5',['LinSys_mod@Routines_smod@solveLinSysChoUppRightHand.inc.f90',['../LinSys__mod_0dRoutines__smod_0dsolveLinSysChoUppRightHand_8inc_8f90.html',1,'']]],
+  ['linsys_5fmod_40routines_5fsmod_40solvelinsyslup_2einc_2ef90_6',['LinSys_mod@Routines_smod@solveLinSysLUP.inc.f90',['../LinSys__mod_0dRoutines__smod_0dsolveLinSysLUP_8inc_8f90.html',1,'']]]
 ];

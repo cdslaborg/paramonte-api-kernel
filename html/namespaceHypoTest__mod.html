@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('namespaceHypoTest__mod.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,7 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Types</a> &#124;
@@ -87,17 +107,17 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Types</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceHypoTest__mod_1_1getCDF__proc.html">getCDF_proc</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceHypoTest__mod_1_1genCDF__proc.html">genCDF_proc</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions/Subroutines</h2></td></tr>
-<tr class="memitem:a69bced9db8db083e5d5b1df177f85a63"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHypoTest__mod.html#a69bced9db8db083e5d5b1df177f85a63">doKS1</a> (np, Point, getCDF, statKS, probKS, Err)</td></tr>
-<tr class="memdesc:a69bced9db8db083e5d5b1df177f85a63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the one-sample Kolmogorov–Smirnov (KS) test results for the null hypothesis that the data in vector <code>Point</code> comes from a distribution whose CDF is specified by the input <code>getCDF()</code> function.  <a href="namespaceHypoTest__mod.html#a69bced9db8db083e5d5b1df177f85a63">More...</a><br /></td></tr>
-<tr class="separator:a69bced9db8db083e5d5b1df177f85a63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71353e6680d92e25c775f8c7b52924c2"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHypoTest__mod.html#a71353e6680d92e25c775f8c7b52924c2">doUniformKS1</a> (np, Point, statKS, probKS, Err)</td></tr>
-<tr class="memdesc:a71353e6680d92e25c775f8c7b52924c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the one-sample Kolmogorov–Smirnov (KS) test results for the assumption that the points originate from a uniform distribution in [0,1]. So, all Point must be in [0,1] on input.  <a href="namespaceHypoTest__mod.html#a71353e6680d92e25c775f8c7b52924c2">More...</a><br /></td></tr>
-<tr class="separator:a71353e6680d92e25c775f8c7b52924c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a12c7ec56403177e75072b4216bb03c"><td class="memItemLeft" align="right" valign="top">subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHypoTest__mod.html#a9a12c7ec56403177e75072b4216bb03c">doKS1</a> (np, Point, <a class="el" href="Test__HypoTest__mod_8f90.html#ac52f65050eca011f07497b7f1a17789c">genCDF</a>, statKS, probKS)</td></tr>
+<tr class="memdesc:a9a12c7ec56403177e75072b4216bb03c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the one-sample Kolmogorov–Smirnov (KS) test results for the null hypothesis that the data in vector <code>Point</code> comes from a distribution whose CDF is specified by the input <code><a class="el" href="Test__HypoTest__mod_8f90.html#ac52f65050eca011f07497b7f1a17789c">genCDF()</a></code> function.  <a href="namespaceHypoTest__mod.html#a9a12c7ec56403177e75072b4216bb03c">More...</a><br /></td></tr>
+<tr class="separator:a9a12c7ec56403177e75072b4216bb03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f9a679fa85a5d73452d364057503456"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHypoTest__mod.html#a3f9a679fa85a5d73452d364057503456">doUniformKS1</a> (np, Point, statKS, probKS)</td></tr>
+<tr class="memdesc:a3f9a679fa85a5d73452d364057503456"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the one-sample Kolmogorov–Smirnov (KS) test results for the assumption that the points originate from a uniform distribution in [0,1]. So, all Point must be in [0,1] on input.  <a href="namespaceHypoTest__mod.html#a3f9a679fa85a5d73452d364057503456">More...</a><br /></td></tr>
+<tr class="separator:a3f9a679fa85a5d73452d364057503456"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b1713b6e4a561a1efa87a81f526d550"><td class="memItemLeft" align="right" valign="top">pure subroutine&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHypoTest__mod.html#a9b1713b6e4a561a1efa87a81f526d550">doSortedKS2</a> (SortedSample1, SortedSample2, probKS, statKS, lambda)</td></tr>
 <tr class="separator:a9b1713b6e4a561a1efa87a81f526d550"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5f30f617da1bafdfd133cb39349815e"><td class="memItemLeft" align="right" valign="top">pure real(RK) function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceHypoTest__mod.html#ab5f30f617da1bafdfd133cb39349815e">getProbKS</a> (lambda)</td></tr>
@@ -122,8 +142,8 @@ Variables</h2></td></tr>
 <div class="textblock"><p >This module contains the classes and procedures for various statistical hypothesis testing methods. For more information, see the description of this attribute in the body of the module. </p>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi </dd></dl>
 </div><h2 class="groupheader">Function/Subroutine Documentation</h2>
-<a id="a69bced9db8db083e5d5b1df177f85a63" name="a69bced9db8db083e5d5b1df177f85a63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69bced9db8db083e5d5b1df177f85a63">&#9670;&nbsp;</a></span>doKS1()</h2>
+<a id="a9a12c7ec56403177e75072b4216bb03c" name="a9a12c7ec56403177e75072b4216bb03c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a12c7ec56403177e75072b4216bb03c">&#9670;&nbsp;</a></span>doKS1()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -143,8 +163,8 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">procedure(<a class="el" href="interfaceHypoTest__mod_1_1getCDF__proc.html">getCDF_proc</a>)&#160;</td>
-          <td class="paramname"><em>getCDF</em>, </td>
+          <td class="paramtype">procedure(<a class="el" href="interfaceHypoTest__mod_1_1genCDF__proc.html">genCDF_proc</a>)&#160;</td>
+          <td class="paramname"><em>genCDF</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -156,13 +176,7 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">real(RK)&#160;</td>
-          <td class="paramname"><em>probKS</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">type(<a class="el" href="structErr__mod_1_1Err__type.html">Err_type</a>)&#160;</td>
-          <td class="paramname"><em>Err</em>&#160;</td>
+          <td class="paramname"><em>probKS</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -172,21 +186,20 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return the one-sample Kolmogorov–Smirnov (KS) test results for the null hypothesis that the data in vector <code>Point</code> comes from a distribution whose CDF is specified by the input <code>getCDF()</code> function. </p>
+<p>Return the one-sample Kolmogorov–Smirnov (KS) test results for the null hypothesis that the data in vector <code>Point</code> comes from a distribution whose CDF is specified by the input <code><a class="el" href="Test__HypoTest__mod_8f90.html#ac52f65050eca011f07497b7f1a17789c">genCDF()</a></code> function. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">np</td><td>: The number of points in the input vector <code>Point</code>. </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">Point</td><td>: The sample. On return, this array will be sorted in Ascending order. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">getCDF</td><td>: The function returning the Cumulative Distribution Function (CDF) of the sample. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">genCDF</td><td>: The function returning the Cumulative Distribution Function (CDF) of the sample. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">statKS</td><td>: The KS test statistic. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">probKS</td><td>: The <code>p</code>-value of the test, returned as a scalar value in the range <code>[0,1]</code>. The output <code>probKS</code> is the probability of observing a test statistic as extreme as, or more extreme than, the observed value under the null hypothesis. Small values of <code>probKS</code> cast doubt on the validity of the null hypothesis. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">Err</td><td>: An object of class <a class="el" href="structErr__mod_1_1Err__type.html">Err_type</a> containing information about the occurrence of any error during the KS test computation.</td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">probKS</td><td>: The <code>p</code>-value of the test, returned as a scalar value in the range <code>[0,1]</code>. The output <code>probKS</code> is the probability of observing a test statistic as extreme as, or more extreme than, the observed value under the null hypothesis. Small values of <code>probKS</code> cast doubt on the validity of the null hypothesis.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="HypoTest__mod_8f90_source.html#l00086">86</a> of file <a class="el" href="HypoTest__mod_8f90_source.html">HypoTest_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HypoTest__mod_8f90_source.html#l00084">84</a> of file <a class="el" href="HypoTest__mod_8f90_source.html">HypoTest_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -235,12 +248,12 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section warning"><dt>Warning</dt><dd>It is imperative to convert <code>ns1</code> and <code>ns2</code> to real numbers below before multiplication to avoid integer overflow.</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="HypoTest__mod_8f90_source.html#l00186">186</a> of file <a class="el" href="HypoTest__mod_8f90_source.html">HypoTest_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HypoTest__mod_8f90_source.html#l00176">176</a> of file <a class="el" href="HypoTest__mod_8f90_source.html">HypoTest_mod.f90</a>.</p>
 
 </div>
 </div>
-<a id="a71353e6680d92e25c775f8c7b52924c2" name="a71353e6680d92e25c775f8c7b52924c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a71353e6680d92e25c775f8c7b52924c2">&#9670;&nbsp;</a></span>doUniformKS1()</h2>
+<a id="a3f9a679fa85a5d73452d364057503456" name="a3f9a679fa85a5d73452d364057503456"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f9a679fa85a5d73452d364057503456">&#9670;&nbsp;</a></span>doUniformKS1()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -267,13 +280,7 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">real(RK)&#160;</td>
-          <td class="paramname"><em>probKS</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">type(<a class="el" href="structErr__mod_1_1Err__type.html">Err_type</a>)&#160;</td>
-          <td class="paramname"><em>Err</em>&#160;</td>
+          <td class="paramname"><em>probKS</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -289,14 +296,21 @@ Variables</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">np</td><td>: The number of points in the input vector <code>Point</code>. </td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">Point</td><td>: The sample. On return, this array will be sorted in Ascending order. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">statKS</td><td>: The KS test statistic. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">probKS</td><td>: The <code>p</code>-value of the test, returned as a scalar value in the range <code>[0,1]</code>. The output <code>probKS</code> is the probability of observing a test statistic as extreme as, or more extreme than, the observed value under the null hypothesis. Small values of <code>probKS</code> cast doubt on the validity of the null hypothesis. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">Err</td><td>: An object of class <a class="el" href="structErr__mod_1_1Err__type.html">Err_type</a> containing information about the occurrence of any error during the KS test computation.</td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">probKS</td><td>: The <code>p</code>-value of the test, returned as a scalar value in the range <code>[0,1]</code>. The output <code>probKS</code> is the probability of observing a test statistic as extreme as, or more extreme than, the observed value under the null hypothesis. Small values of <code>probKS</code> cast doubt on the validity of the null hypothesis.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section remark"><dt>Remarks</dt><dd>This procedure is <code>pure</code>.</dd>
+<dd>
+For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
+<dd>
+For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
+<dd>
+This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
+</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="HypoTest__mod_8f90_source.html#l00145">145</a> of file <a class="el" href="HypoTest__mod_8f90_source.html">HypoTest_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HypoTest__mod_8f90_source.html#l00140">140</a> of file <a class="el" href="HypoTest__mod_8f90_source.html">HypoTest_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -327,7 +341,7 @@ Variables</h2></td></tr>
 <dl class="section warning"><dt>Warning</dt><dd>The input <code>z</code> must be non-negative. If it is, then <code>cumDenKS = 0.</code> will be returned.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Wednesday 1:59 AM, August 11, 2021, Dallas, TX. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="HypoTest__mod_8f90_source.html#l00330">330</a> of file <a class="el" href="HypoTest__mod_8f90_source.html">HypoTest_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HypoTest__mod_8f90_source.html#l00320">320</a> of file <a class="el" href="HypoTest__mod_8f90_source.html">HypoTest_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -358,7 +372,7 @@ Variables</h2></td></tr>
 <dl class="section warning"><dt>Warning</dt><dd>The input <code>z</code> must be non-negative. If it is, then <code>cumDenKS = 0.</code> will be returned.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Wednesday 1:59 AM, August 11, 2021, Dallas, TX. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="HypoTest__mod_8f90_source.html#l00292">292</a> of file <a class="el" href="HypoTest__mod_8f90_source.html">HypoTest_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HypoTest__mod_8f90_source.html#l00282">282</a> of file <a class="el" href="HypoTest__mod_8f90_source.html">HypoTest_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -381,7 +395,7 @@ Variables</h2></td></tr>
 <p>Return the Kolmogorov–Smirnov (KS) probability. </p>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="HypoTest__mod_8f90_source.html#l00238">238</a> of file <a class="el" href="HypoTest__mod_8f90_source.html">HypoTest_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HypoTest__mod_8f90_source.html#l00228">228</a> of file <a class="el" href="HypoTest__mod_8f90_source.html">HypoTest_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -452,7 +466,7 @@ Variables</h2></td></tr>
 For any value <code>Index</code> that is unity, the effective sample size will be 0: \( N_e = \frac{N_1 \times N_2}{N_1 + N_2} \). As such, for the sake of comprehensiveness, its KS probability is assigned a value of <code>1</code> and KS statistic of <code>0</code>.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday 1:51 AM, August 9, 2021, Dallas, TX. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="HypoTest__mod_8f90_source.html#l00377">377</a> of file <a class="el" href="HypoTest__mod_8f90_source.html">HypoTest_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="HypoTest__mod_8f90_source.html#l00367">367</a> of file <a class="el" href="HypoTest__mod_8f90_source.html">HypoTest_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -474,23 +488,14 @@ For any value <code>Index</code> that is unity, the effective sample size will b
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="namespaceHypoTest__mod.html">HypoTest_mod</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:40 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:16 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

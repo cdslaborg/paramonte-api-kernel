@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Test__ParaXXXX__mod_8inc_8f90_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4d389600729eb25db92af3e09978356f.html">tests</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">Test_ParaXXXX_mod.inc.f90</div></div>
 </div><!--header-->
@@ -154,7 +170,7 @@ $(function() {
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor"></span> </div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceConstants__mod.html">Constants_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_variable" href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">IK</a>, <a class="code hl_variable" href="namespaceConstants__mod.html#a2d9d57f0148a7016d900f471e5f28069">RK</a></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="fortran_statement">use </span>Test_mod, <span class="fortran_statement">only</span>: Test_type, getLogFuncMVN</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceTest__mod.html">Test_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a>, <a class="code hl_function" href="namespaceTest__mod.html#a902916ca13f8bdf76d495cd045dcdf07">getLogFuncMVN</a></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="fortran_statement">use </span>ParaXXXX_mod</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="fortran_comment">!use Statistics_mod, only: paradramPrintEnabled</span></div>
@@ -342,7 +358,7 @@ $(function() {
 <div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="fortran_statement">    subroutine</span> test_ParaXXXX()</div>
 <div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        <span class="fortran_statement">implicit none</span></div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        Test<span class="fortran_operator_symbols"> = </span>Test_type(moduleName<span class="fortran_operator_symbols">=</span><a class="code hl_variable" href="namespaceConstants__mod.html#ade87ed33b235f099b65904dc21cbe01e">MODULE_NAME</a>)</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        Test<span class="fortran_operator_symbols"> = </span><a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a>(moduleName<span class="fortran_operator_symbols">=</span><a class="code hl_variable" href="namespaceConstants__mod.html#ade87ed33b235f099b65904dc21cbe01e">MODULE_NAME</a>)</div>
 <div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span><span class="fortran_statement">        call</span> Test<span class="fortran_operator_symbols">%</span>run(test_runSampler_1 , <span class="fortran_string">&quot;test_runSampler_1&quot;</span>)</div>
 <div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="fortran_statement">        call</span> Test<span class="fortran_operator_symbols">%</span>run(test_runSampler_2 , <span class="fortran_string">&quot;test_runSampler_2&quot;</span>)</div>
@@ -504,7 +520,7 @@ $(function() {
 <div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span><span class="fortran_statement">        call</span> Test<span class="fortran_operator_symbols">%</span>run(test_SpecDRAM_ProposalDelayedRejectionScaleFactor_type_4, <span class="fortran_string">&quot;test_SpecDRAM_ProposalDelayedRejectionScaleFactor_type_4&quot;</span>)</div>
 <div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span><span class="fortran_statement">        call</span> Test<span class="fortran_operator_symbols">%</span>run(test_SpecDRAM_ProposalDelayedRejectionScaleFactor_type_5, <span class="fortran_string">&quot;test_SpecDRAM_ProposalDelayedRejectionScaleFactor_type_5&quot;</span>)</div>
 <div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span> </div>
-<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span><span class="fortran_statement">        call</span> Test<span class="fortran_operator_symbols">%</span>finalize()</div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span><span class="fortran_statement">        call</span> Test<span class="fortran_operator_symbols">%</span><a class="code hl_function" href="namespaceTest__mod.html#a9612928d23d1dedb33964f0207b12074">finalize</a>()</div>
 <div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>    <span class="fortran_statement">end subroutine </span>test_ParaXXXX</div>
 <div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span> </div>
 <div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
@@ -519,24 +535,19 @@ $(function() {
 <div class="ttc" id="anamespaceConstants__mod_html_a2bf4d6767c9954d3a495d10ab6b538d6"><div class="ttname"><a href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">Constants_mod::IK</a></div><div class="ttdeci">integer, parameter IK</div><div class="ttdoc">default integer kind in Fortran mode.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00060">Constants_mod.f90:60</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html_a2d9d57f0148a7016d900f471e5f28069"><div class="ttname"><a href="namespaceConstants__mod.html#a2d9d57f0148a7016d900f471e5f28069">Constants_mod::RK</a></div><div class="ttdeci">integer, parameter RK</div><div class="ttdoc">default real kind in Fortran mode.</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00061">Constants_mod.f90:61</a></div></div>
 <div class="ttc" id="anamespaceConstants__mod_html_ade87ed33b235f099b65904dc21cbe01e"><div class="ttname"><a href="namespaceConstants__mod.html#ade87ed33b235f099b65904dc21cbe01e">Constants_mod::MODULE_NAME</a></div><div class="ttdeci">character(*), parameter MODULE_NAME</div><div class="ttdef"><b>Definition:</b> <a href="Constants__mod_8f90_source.html#l00054">Constants_mod.f90:54</a></div></div>
+<div class="ttc" id="anamespaceTest__mod_html"><div class="ttname"><a href="namespaceTest__mod.html">Test_mod</a></div><div class="ttdoc">This is the driver module of the unit testing framework of the ParaMonte kernel routines.</div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00054">Test_mod.f90:54</a></div></div>
+<div class="ttc" id="anamespaceTest__mod_html_a902916ca13f8bdf76d495cd045dcdf07"><div class="ttname"><a href="namespaceTest__mod.html#a902916ca13f8bdf76d495cd045dcdf07">Test_mod::getLogFuncMVN</a></div><div class="ttdeci">real(RK) function getLogFuncMVN(ndim, Point)</div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00500">Test_mod.f90:501</a></div></div>
+<div class="ttc" id="anamespaceTest__mod_html_a9612928d23d1dedb33964f0207b12074"><div class="ttname"><a href="namespaceTest__mod.html#a9612928d23d1dedb33964f0207b12074">Test_mod::finalize</a></div><div class="ttdeci">subroutine finalize()</div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00180">Test_mod.f90:181</a></div></div>
+<div class="ttc" id="astructTest__mod_1_1Test__type_html"><div class="ttname"><a href="structTest__mod_1_1Test__type.html">Test_mod::Test_type</a></div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00101">Test_mod.f90:101</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4d389600729eb25db92af3e09978356f.html">tests</a></li><li class="navelem"><a class="el" href="Test__ParaXXXX__mod_8inc_8f90.html">Test_ParaXXXX_mod.inc.f90</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:33 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:11 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

@@ -1,0 +1,77 @@
+\hypertarget{interfaceLinSys__mod_1_1solveLinSysPLU}{}\doxysection{Lin\+Sys\+\_\+mod\+::solve\+Lin\+Sys\+PLU Interface Reference}
+\label{interfaceLinSys__mod_1_1solveLinSysPLU}\index{LinSys\_mod::solveLinSysPLU@{LinSys\_mod::solveLinSysPLU}}
+
+
+Solve the set of {\ttfamily nd} linear equations {\ttfamily Matrix $\ast$ X = Solution}.  
+
+
+
+
+\doxysubsection{Detailed Description}
+Solve the set of {\ttfamily nd} linear equations {\ttfamily Matrix $\ast$ X = Solution}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nd} & \+: The size of the square matrix and its {\ttfamily LU} decomposition -\/ {\ttfamily nd} by {\ttfamily nd}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em LU} & \+: The LU factorization of the matrix, determined by the routine get\+PLU. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Row\+Perm} & \+: The permutation vector returned by get\+PLU. \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em Solution} & \+: The right-\/hand-\/side vector of length {\ttfamily nd}. On output, it is completely overwritten by the solution to the system.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+The input {\ttfamily nd}, {\ttfamily LU}, and {\ttfamily Row\+Perm} parameters are not modified by this routine and, can be left in place for successive calls with different right-\/hand sides {\ttfamily Solution}.
+
+This routine takes into account the possibility that {\ttfamily Solution} will begin with many zero elements, and is therefore efficient for matrix inversion.
+
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+
+\end{DoxyAuthor}
+Solve the set of {\ttfamily nd} linear equations of the form, \begin{equation} A \cdot X = B \end{equation} where $A$ is the coefficient matrix represented by its Pivoted LU decomposition matrix {\ttfamily Coef\+Mat\+PLU}, $X$ is the output solution, and $B$ is the right-\/hand-\/side vector of constants.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em Solution} & \+: The input contiguous vector of size {\ttfamily nd} of type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}, representing the right-\/hand-\/side $B$ in the system of linear equations to be solved. ~ On output, it is completely overwritten by the solution $X$. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Coef\+Mat\+PLU} & \+: The input contiguous square matrix of shape {\ttfamily (nd,nd)} of the same type and kind as {\ttfamily Solution}. This matrix is returned by the call to \mbox{\hyperlink{interfaceMatrixPLU__mod_1_1getPLU}{get\+PLU}}. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Row\+Perm} & \+: The output contiguous vector of size {\ttfamily nd} of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} containing the pivot indices. This vector is returned by the call to \mbox{\hyperlink{interfaceMatrixPLU__mod_1_1getPLU}{get\+PLU}}. \\
+\hline
+\mbox{\texttt{ out}}  & {\em Parity} & \+: An output real of the same type and kind as the input {\ttfamily Coef\+Mat\+PLU} whose value is {\ttfamily +1} if the number of row interchanges is even, otherwise it is {\ttfamily -\/1}. \\
+\hline
+\mbox{\texttt{ out}}  & {\em failed} & \+: The output {\ttfamily logical} of default kind that is {\ttfamily .true.} if a singular matrix is detected, indicating the PLU decomposition failure.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000010}{Test}}]Test\+\_\+\+Lin\+Sys\+\_\+mod\end{DoxyRefDesc}
+
+
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Apr 21, 2017, 1\+:43 PM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{LinSys__mod_8f90_source_l00111}{111}} of file \mbox{\hyperlink{LinSys__mod_8f90_source}{Lin\+Sys\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{LinSys__mod_8f90}{Lin\+Sys\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

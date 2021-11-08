@@ -33,15 +33,15 @@ pure real(RK) function \mbox{\hyperlink{namespaceDistUniExp__mod_a4192a3687d1215
 \begin{DoxyCompactList}\small\item\em Return the variance of the exponential distribution with rate parameter {\ttfamily lambda}. \end{DoxyCompactList}\item 
 pure real(RK) function \mbox{\hyperlink{namespaceDistUniExp__mod_a52c8ba36543ac10d6736445e1d2db8cd}{get\+Std}} (lambda)
 \begin{DoxyCompactList}\small\item\em Return the standard deviation of the exponential distribution with rate parameter {\ttfamily lambda}. \end{DoxyCompactList}\item 
-pure real(RK) function \mbox{\hyperlink{namespaceDistUniExp__mod_aea33213b60a314d7615f621e4cfcf8f1}{get\+Skewness}} ()
+pure real(RK) function \mbox{\hyperlink{namespaceDistUniExp__mod_a3d9dd5986d558b32da3e65aed52bcb64}{gen\+Skewness}} ()
 \begin{DoxyCompactList}\small\item\em Return the skewness of the exponential distribution with rate parameter {\ttfamily lambda}. \end{DoxyCompactList}\item 
 pure real(RK) function \mbox{\hyperlink{namespaceDistUniExp__mod_a0f8f50fed15ebf0983c8110554867329}{get\+Kurtosis}} ()
 \begin{DoxyCompactList}\small\item\em Return the kurtosis of the exponential distribution with rate parameter {\ttfamily lambda}. \end{DoxyCompactList}\item 
 pure real(RK) function \mbox{\hyperlink{namespaceDistUniExp__mod_a42ef5c5724521d7e737ec1324357a50d}{get\+Entropy}} (lambda)
 \begin{DoxyCompactList}\small\item\em Return the entropy of the exponential distribution with rate parameter {\ttfamily lambda}. \end{DoxyCompactList}\item 
-pure real(RK) function \mbox{\hyperlink{namespaceDistUniExp__mod_a59e7ca6fd34a9b692d92ae8734e26321}{get\+MGF}} (lambda, t)
+pure real(RK) function \mbox{\hyperlink{namespaceDistUniExp__mod_a26eca35b696dfa5270c16f4c4d6885c7}{get\+Exp\+MGF}} (lambda, t)
 \begin{DoxyCompactList}\small\item\em Return the value of moment-\/generating function of the exponential distribution with rate parameter {\ttfamily lambda} at input {\ttfamily t}. \end{DoxyCompactList}\item 
-pure real(RK) function \mbox{\hyperlink{namespaceDistUniExp__mod_adb5404ec1c711a78cf63a482cfc5d98d}{get\+Fisher\+Info}} (lambda)
+pure real(RK) function \mbox{\hyperlink{namespaceDistUniExp__mod_aaf49cf10a8578c7204d37b345585ce99}{get\+Exp\+Fisher\+Info}} (lambda)
 \begin{DoxyCompactList}\small\item\em Return the Fisher Information of the exponential distribution with rate parameter {\ttfamily lambda} at input {\ttfamily t}. \end{DoxyCompactList}\item 
 pure real(RK) function \mbox{\hyperlink{namespaceDistUniExp__mod_a1deeefca7f84d4ed0fc433217caff68e}{get\+KLD}} (lambda\+Ref, lambda)
 \begin{DoxyCompactList}\small\item\em Return the Kullback-\/\+Leibler divergence of the exponential distribution with rate parameter {\ttfamily lambda} from the reference exponential distribution with rate parameter {\ttfamily lambda}. \end{DoxyCompactList}\item 
@@ -164,6 +164,23 @@ Amir Shahmoradi, Monday March 6, 2017, 3\+:22 pm, ICES, The University of Texas 
 
 Definition at line \mbox{\hyperlink{DistUniExp__mod_8f90_source_l00455}{455}} of file \mbox{\hyperlink{DistUniExp__mod_8f90_source}{Dist\+Uni\+Exp\+\_\+mod.\+f90}}.
 
+\mbox{\Hypertarget{namespaceDistUniExp__mod_a3d9dd5986d558b32da3e65aed52bcb64}\label{namespaceDistUniExp__mod_a3d9dd5986d558b32da3e65aed52bcb64}} 
+\index{DistUniExp\_mod@{DistUniExp\_mod}!genSkewness@{genSkewness}}
+\index{genSkewness@{genSkewness}!DistUniExp\_mod@{DistUniExp\_mod}}
+\doxysubsubsection{\texorpdfstring{genSkewness()}{genSkewness()}}
+{\footnotesize\ttfamily pure real(RK) function Dist\+Uni\+Exp\+\_\+mod\+::gen\+Skewness}
+
+
+
+Return the skewness of the exponential distribution with rate parameter {\ttfamily lambda}. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily skewness} \+: The skewness of the exponential distribution. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DistUniExp__mod_8f90_source_l00262}{262}} of file \mbox{\hyperlink{DistUniExp__mod_8f90_source}{Dist\+Uni\+Exp\+\_\+mod.\+f90}}.
+
 \mbox{\Hypertarget{namespaceDistUniExp__mod_a42ef5c5724521d7e737ec1324357a50d}\label{namespaceDistUniExp__mod_a42ef5c5724521d7e737ec1324357a50d}} 
 \index{DistUniExp\_mod@{DistUniExp\_mod}!getEntropy@{getEntropy}}
 \index{getEntropy@{getEntropy}!DistUniExp\_mod@{DistUniExp\_mod}}
@@ -186,11 +203,11 @@ Return the entropy of the exponential distribution with rate parameter {\ttfamil
 
 Definition at line \mbox{\hyperlink{DistUniExp__mod_8f90_source_l00294}{294}} of file \mbox{\hyperlink{DistUniExp__mod_8f90_source}{Dist\+Uni\+Exp\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceDistUniExp__mod_adb5404ec1c711a78cf63a482cfc5d98d}\label{namespaceDistUniExp__mod_adb5404ec1c711a78cf63a482cfc5d98d}} 
-\index{DistUniExp\_mod@{DistUniExp\_mod}!getFisherInfo@{getFisherInfo}}
-\index{getFisherInfo@{getFisherInfo}!DistUniExp\_mod@{DistUniExp\_mod}}
-\doxysubsubsection{\texorpdfstring{getFisherInfo()}{getFisherInfo()}}
-{\footnotesize\ttfamily pure real(RK) function Dist\+Uni\+Exp\+\_\+mod\+::get\+Fisher\+Info (\begin{DoxyParamCaption}\item[{real(RK), intent(in)}]{lambda }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{namespaceDistUniExp__mod_aaf49cf10a8578c7204d37b345585ce99}\label{namespaceDistUniExp__mod_aaf49cf10a8578c7204d37b345585ce99}} 
+\index{DistUniExp\_mod@{DistUniExp\_mod}!getExpFisherInfo@{getExpFisherInfo}}
+\index{getExpFisherInfo@{getExpFisherInfo}!DistUniExp\_mod@{DistUniExp\_mod}}
+\doxysubsubsection{\texorpdfstring{getExpFisherInfo()}{getExpFisherInfo()}}
+{\footnotesize\ttfamily pure real(RK) function Dist\+Uni\+Exp\+\_\+mod\+::get\+Exp\+Fisher\+Info (\begin{DoxyParamCaption}\item[{real(RK), intent(in)}]{lambda }\end{DoxyParamCaption})}
 
 
 
@@ -207,6 +224,33 @@ Return the Fisher Information of the exponential distribution with rate paramete
 
 
 Definition at line \mbox{\hyperlink{DistUniExp__mod_8f90_source_l00337}{337}} of file \mbox{\hyperlink{DistUniExp__mod_8f90_source}{Dist\+Uni\+Exp\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceDistUniExp__mod_a26eca35b696dfa5270c16f4c4d6885c7}\label{namespaceDistUniExp__mod_a26eca35b696dfa5270c16f4c4d6885c7}} 
+\index{DistUniExp\_mod@{DistUniExp\_mod}!getExpMGF@{getExpMGF}}
+\index{getExpMGF@{getExpMGF}!DistUniExp\_mod@{DistUniExp\_mod}}
+\doxysubsubsection{\texorpdfstring{getExpMGF()}{getExpMGF()}}
+{\footnotesize\ttfamily pure real(RK) function Dist\+Uni\+Exp\+\_\+mod\+::get\+Exp\+MGF (\begin{DoxyParamCaption}\item[{real(RK), intent(in)}]{lambda,  }\item[{real(RK), intent(in)}]{t }\end{DoxyParamCaption})}
+
+
+
+Return the value of moment-\/generating function of the exponential distribution with rate parameter {\ttfamily lambda} at input {\ttfamily t}. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em lambda} & \+: The rate parameter of the exponential distribution. \\
+\hline
+\mbox{\texttt{ in}}  & {\em t} & \+: The input value at which the MGF is to be computed.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily mgf} \+: The value of moment-\/generating function of the exponential distribution.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+The input value of {\ttfamily t} must be smaller than the input {\ttfamily lambda}\+: {\ttfamily t \texorpdfstring{$<$}{<} lambda}. {\bfseries{This condition is NOT checked in this routine to ensure the procedure purity. Therefore, $\ast$$\ast$the onus is on the user to ensure this condition holds}}. 
+\end{DoxyWarning}
+
+
+Definition at line \mbox{\hyperlink{DistUniExp__mod_8f90_source_l00318}{318}} of file \mbox{\hyperlink{DistUniExp__mod_8f90_source}{Dist\+Uni\+Exp\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDistUniExp__mod_a1deeefca7f84d4ed0fc433217caff68e}\label{namespaceDistUniExp__mod_a1deeefca7f84d4ed0fc433217caff68e}} 
 \index{DistUniExp\_mod@{DistUniExp\_mod}!getKLD@{getKLD}}
@@ -333,33 +377,6 @@ Return the median of the exponential distribution with rate parameter {\ttfamily
 
 Definition at line \mbox{\hyperlink{DistUniExp__mod_8f90_source_l00176}{176}} of file \mbox{\hyperlink{DistUniExp__mod_8f90_source}{Dist\+Uni\+Exp\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceDistUniExp__mod_a59e7ca6fd34a9b692d92ae8734e26321}\label{namespaceDistUniExp__mod_a59e7ca6fd34a9b692d92ae8734e26321}} 
-\index{DistUniExp\_mod@{DistUniExp\_mod}!getMGF@{getMGF}}
-\index{getMGF@{getMGF}!DistUniExp\_mod@{DistUniExp\_mod}}
-\doxysubsubsection{\texorpdfstring{getMGF()}{getMGF()}}
-{\footnotesize\ttfamily pure real(RK) function Dist\+Uni\+Exp\+\_\+mod\+::get\+MGF (\begin{DoxyParamCaption}\item[{real(RK), intent(in)}]{lambda,  }\item[{real(RK), intent(in)}]{t }\end{DoxyParamCaption})}
-
-
-
-Return the value of moment-\/generating function of the exponential distribution with rate parameter {\ttfamily lambda} at input {\ttfamily t}. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em lambda} & \+: The rate parameter of the exponential distribution. \\
-\hline
-\mbox{\texttt{ in}}  & {\em t} & \+: The input value at which the MGF is to be computed.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily mgf} \+: The value of moment-\/generating function of the exponential distribution.
-\end{DoxyReturn}
-\begin{DoxyWarning}{Warning}
-The input value of {\ttfamily t} must be smaller than the input {\ttfamily lambda}\+: {\ttfamily t \texorpdfstring{$<$}{<} lambda}. {\bfseries{This condition is NOT checked in this routine to ensure the procedure purity. Therefore, $\ast$$\ast$the onus is on the user to ensure this condition holds}}. 
-\end{DoxyWarning}
-
-
-Definition at line \mbox{\hyperlink{DistUniExp__mod_8f90_source_l00318}{318}} of file \mbox{\hyperlink{DistUniExp__mod_8f90_source}{Dist\+Uni\+Exp\+\_\+mod.\+f90}}.
-
 \mbox{\Hypertarget{namespaceDistUniExp__mod_ad17edaf0302a98bfef78aab7c7519b65}\label{namespaceDistUniExp__mod_ad17edaf0302a98bfef78aab7c7519b65}} 
 \index{DistUniExp\_mod@{DistUniExp\_mod}!getMode@{getMode}}
 \index{getMode@{getMode}!DistUniExp\_mod@{DistUniExp\_mod}}
@@ -376,23 +393,6 @@ Return the mode of the exponential distribution with rate parameter {\ttfamily l
 
 
 Definition at line \mbox{\hyperlink{DistUniExp__mod_8f90_source_l00211}{211}} of file \mbox{\hyperlink{DistUniExp__mod_8f90_source}{Dist\+Uni\+Exp\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceDistUniExp__mod_aea33213b60a314d7615f621e4cfcf8f1}\label{namespaceDistUniExp__mod_aea33213b60a314d7615f621e4cfcf8f1}} 
-\index{DistUniExp\_mod@{DistUniExp\_mod}!getSkewness@{getSkewness}}
-\index{getSkewness@{getSkewness}!DistUniExp\_mod@{DistUniExp\_mod}}
-\doxysubsubsection{\texorpdfstring{getSkewness()}{getSkewness()}}
-{\footnotesize\ttfamily pure real(RK) function Dist\+Uni\+Exp\+\_\+mod\+::get\+Skewness}
-
-
-
-Return the skewness of the exponential distribution with rate parameter {\ttfamily lambda}. 
-
-\begin{DoxyReturn}{Returns}
-{\ttfamily skewness} \+: The skewness of the exponential distribution. 
-\end{DoxyReturn}
-
-
-Definition at line \mbox{\hyperlink{DistUniExp__mod_8f90_source_l00262}{262}} of file \mbox{\hyperlink{DistUniExp__mod_8f90_source}{Dist\+Uni\+Exp\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceDistUniExp__mod_a52c8ba36543ac10d6736445e1d2db8cd}\label{namespaceDistUniExp__mod_a52c8ba36543ac10d6736445e1d2db8cd}} 
 \index{DistUniExp\_mod@{DistUniExp\_mod}!getStd@{getStd}}

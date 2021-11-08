@@ -14,7 +14,7 @@ Generate a sample of shape {\ttfamily (np)}, or {\ttfamily (nd,np)} or {\ttfamil
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em Sample} & \+: The input contiguous array of type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} of shape {\ttfamily (np)}, {\ttfamily (nd,np)}, or {\ttfamily (np,nd)} containing the sample. \\
 \hline
-\mbox{\texttt{ in}}  & {\em Amount} & \+: The scalar or the contiguous vector of the same type and kind as {\ttfamily Sample} representing the amount by which the input sample must be shifted. If the input {\ttfamily Sample} is a 1D array, then {\ttfamily Amount} must be a scalar. If the input {\ttfamily Sample} is a 2D array, then {\ttfamily Amount} must be a vector of size {\ttfamily nd}. If the sample is to be shifted toward the origin to have a mean of zero, then the input {\ttfamily Amount} corresponds to the negative of the current mean of the sample that is returned by procedures collectively represented by the generic interface \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{gen\+Mean()}}. Note that the size of the input {\ttfamily Amount} must be consistent with the size of the input {\ttfamily Sample}. If the input argument {\ttfamily dim = 2} (default) then, {\ttfamily size(\+Amount) == size(Sample,dim=2)} must hold. If the input argument {\ttfamily dim = 1} (default) then, {\ttfamily size(\+Amount) == size(Sample,dim=1)} must hold. \\
+\mbox{\texttt{ in}}  & {\em Amount} & \+: The scalar or the contiguous vector of the same type and kind as {\ttfamily Sample} representing the amount by which the input sample must be shifted. If the input {\ttfamily Sample} is a 1D array, then {\ttfamily Amount} must be a scalar. If the input {\ttfamily Sample} is a 2D array, then {\ttfamily Amount} must be a vector of size {\ttfamily nd}. If the sample is to be shifted toward the origin to have a mean of zero, then the input {\ttfamily Amount} corresponds to the negative of the current mean of the sample that is returned by procedures collectively represented by the generic interface \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{gen\+Mean}}. Note that the size of the input {\ttfamily Amount} must be consistent with the size of the input {\ttfamily Sample}. If the input argument {\ttfamily dim = 2} (default) then, {\ttfamily size(\+Amount) == size(Sample,dim=2)} must hold. If the input argument {\ttfamily dim = 1} (default) then, {\ttfamily size(\+Amount) == size(Sample,dim=1)} must hold. \\
 \hline
 \mbox{\texttt{ in}}  & {\em dim} & \+: An integer indicating which dimension of the input {\ttfamily Sample} iterates over the individual data points. If {\ttfamily dim = 1} or {\ttfamily dim /= 2}, the input {\ttfamily Sample} is assumed to have the shape {\ttfamily (np,nd)}. If {\ttfamily dim = 2}, the input {\ttfamily Sample} is assumed to have the shape {\ttfamily (nd,np)} ({\bfseries{optional}}, default = {\ttfamily 2}. {\bfseries{This input argument is available only if the input {\ttfamily Sample} is a 2D array}}.). \\
 \hline
@@ -30,9 +30,11 @@ Note the difference in the shape of the input {\ttfamily Sample(\+:,\+:)} vs. th
 This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
 \end{DoxyWarning}
 \begin{DoxySeeAlso}{See also}
-\mbox{\hyperlink{interfaceSample__mod_1_1getShifted}{get\+Shifted()}}
+\mbox{\hyperlink{interfaceSample__mod_1_1getShifted}{get\+Shifted}}
 \end{DoxySeeAlso}
-\begin{DoxyParagraph}{Example usage}
+\label{namespaceInterpLinear__mod_usage}%
+\Hypertarget{namespaceInterpLinear__mod_usage}%
+{\bfseries{Example usage}} \href{\#usage}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00001}00001 \textcolor{fortran_statement}{program} example}
@@ -40,154 +42,165 @@ This procedure is {\ttfamily impure} when the library is compiled with macro {\t
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00003}00003     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00004}00004     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceSample__mod}{Sample\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00005}00005 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00006}00006     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}     :: NDIM\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00007}00007     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}     :: NSIM\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{4\_IK}}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00008}00008 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00009}00009 \textcolor{fortran_statement}{    real}(RK32)                  :: Sample\_RK32(NDIM,NSIM)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00010}00010 \textcolor{fortran_statement}{    real}(RK64)                  :: Sample\_RK64(NDIM,NSIM)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00011}00011 \textcolor{fortran_statement}{    real}(RK128)                 :: Sample\_RK128(NDIM,NSIM)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00012}00012 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00013}00013 \textcolor{fortran_statement}{    real}(RK32)  ,\textcolor{fortran_attribute}{ allocatable}   :: ShiftedSample\_RK32(:,:)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00014}00014 \textcolor{fortran_statement}{    real}(RK64)  ,\textcolor{fortran_attribute}{ allocatable}   :: ShiftedSample\_RK64(:,:)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00015}00015 \textcolor{fortran_statement}{    real}(RK128) ,\textcolor{fortran_attribute}{ allocatable}   :: ShiftedSample\_RK128(:,:)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00016}00016 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00017}00017     \textcolor{fortran_statement}{integer}(IK)                 :: fileUnit, i}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00006}00006     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00008}00008     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}     :: NDIM\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00009}00009     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}     :: NSIM\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{4\_IK}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00011}00011 \textcolor{fortran_statement}{    real}(RK32)                  :: Sample\_RK32(NDIM,NSIM)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00012}00012 \textcolor{fortran_statement}{    real}(RK64)                  :: Sample\_RK64(NDIM,NSIM)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00013}00013 \textcolor{fortran_statement}{    real}(RK128)                 :: Sample\_RK128(NDIM,NSIM)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00015}00015 \textcolor{fortran_statement}{    real}(RK32)  ,\textcolor{fortran_attribute}{ allocatable}   :: ShiftedSample\_RK32(:,:)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00016}00016 \textcolor{fortran_statement}{    real}(RK64)  ,\textcolor{fortran_attribute}{ allocatable}   :: ShiftedSample\_RK64(:,:)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00017}00017 \textcolor{fortran_statement}{    real}(RK128) ,\textcolor{fortran_attribute}{ allocatable}   :: ShiftedSample\_RK128(:,:)}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00019}00019 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnit, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.out"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00019}00019     \textcolor{fortran_statement}{integer}(IK)                 :: fileUnit, i}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00020}00020 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00021}00021     \textcolor{fortran_comment}{! Generate a ranSample is centered at `Mean = [( 0.5\_RK, i = 1, NDIM )]`.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00021}00021 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnit, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.out"{}})}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00022}00022 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00023}00023 \textcolor{fortran_statement}{    call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_RK32)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00024}00024 \textcolor{fortran_statement}{    call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_RK64)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00025}00025 \textcolor{fortran_statement}{    call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_RK128)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00026}00026 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00027}00027     \textcolor{fortran_comment}{! Shift the samples along the second dimension to the origin to have a mean of zero along the second dimension.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00023}00023     \textcolor{fortran_comment}{! Generate a ranSample is centered at `Mean = [( 0.5\_RK, i = 1, NDIM )]`.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00025}00025 \textcolor{fortran_statement}{    call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_RK32)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00026}00026 \textcolor{fortran_statement}{    call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_RK64)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00027}00027 \textcolor{fortran_statement}{    call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_RK128)}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00028}00028 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00029}00029     ShiftedSample\_RK32\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK32    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00030}00030     ShiftedSample\_RK64\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK64    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00031}00031     ShiftedSample\_RK128\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK128   ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128 ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00032}00032 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00033}00033     \textcolor{fortran_comment}{! Output the values to an external file.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00029}00029     \textcolor{fortran_comment}{! Shift the samples along the second dimension to the origin to have a mean of zero along the second dimension.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00031}00031     ShiftedSample\_RK32\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK32    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00032}00032     ShiftedSample\_RK64\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK64    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00033}00033     ShiftedSample\_RK128\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK128   ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128 ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00034}00034 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00035}00035 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00036}00036 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Sample mean across the second dimension:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00035}00035     \textcolor{fortran_comment}{! Output the values to an external file.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00036}00036 }
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00037}00037 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00038}00038 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00039}00039 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK32,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00040}00040 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00041}00041 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00042}00042 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK64,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00043}00043 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00044}00044 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00045}00045 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK128,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00046}00046 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00047}00047 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00048}00048     \textcolor{fortran_comment}{! Shift the samples along the first dimension to the origin to have a mean of zero along the first dimension.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00038}00038 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Sample mean across the second dimension:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00039}00039 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00040}00040 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00041}00041 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK32,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00042}00042 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00043}00043 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00044}00044 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK64,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00045}00045 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00046}00046 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00047}00047 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK128,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00048}00048 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00049}00049 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00050}00050     ShiftedSample\_RK32\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK32    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00051}00051     ShiftedSample\_RK64\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK64    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00052}00052     ShiftedSample\_RK128\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK128   ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128 ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00053}00053 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00054}00054     \textcolor{fortran_comment}{! Output the values to an external file.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00050}00050     \textcolor{fortran_comment}{! Shift the samples along the first dimension to the origin to have a mean of zero along the first dimension.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00052}00052     ShiftedSample\_RK32\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK32    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00053}00053     ShiftedSample\_RK64\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK64    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00054}00054     ShiftedSample\_RK128\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK128   ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128 ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00055}00055 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00056}00056 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00057}00057 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Sample mean across the first dimension:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00056}00056     \textcolor{fortran_comment}{! Output the values to an external file.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00057}00057 }
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00058}00058 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00059}00059 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00060}00060 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK32,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00061}00061 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00062}00062 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00063}00063 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK64,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00064}00064 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00065}00065 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00066}00066 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK128,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00067}00067 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00068}00068 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00069}00069     \textcolor{fortran_comment}{! Shift the samples along the first dimension to the origin to have a mean of zero along the first dimension.}}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00070}00070     \textcolor{fortran_comment}{! In doing so, generate a transposed array. This can potentially save time compared to calling the `transpose()` intrinsic.}}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00071}00071 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00072}00072     ShiftedSample\_RK32\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK32    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}, tenabled\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00073}00073     ShiftedSample\_RK64\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK64    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}, tenabled\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00074}00074     ShiftedSample\_RK128\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK128   ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128 ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}, tenabled\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00075}00075 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00076}00076     \textcolor{fortran_comment}{! Output the values to an external file.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00059}00059 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Sample mean across the first dimension:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00060}00060 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00061}00061 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00062}00062 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK32,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00063}00063 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00064}00064 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00065}00065 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK64,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00066}00066 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00067}00067 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00068}00068 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK128,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00069}00069 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00071}00071     \textcolor{fortran_comment}{! Shift the samples along the first dimension to the origin to have a mean of zero along the first dimension.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00072}00072     \textcolor{fortran_comment}{! In doing so, generate a transposed array. This can potentially save time compared to calling the `transpose()` intrinsic.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00074}00074     ShiftedSample\_RK32\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK32    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}, tenabled\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00075}00075     ShiftedSample\_RK64\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK64    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}, tenabled\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00076}00076     ShiftedSample\_RK128\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK128   ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128 ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}, tenabled\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.})}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00077}00077 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00078}00078 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00079}00079 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Sample shape:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00078}00078     \textcolor{fortran_comment}{! Output the values to an external file.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00079}00079 }
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00080}00080 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00081}00081 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample shape RK32:"{}},\textcolor{fortran_function}{ shape}(Sample\_RK32)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00082}00082 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample shape RK32:"{}},\textcolor{fortran_function}{ shape}(ShiftedSample\_RK32)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00083}00083 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00084}00084 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample shape RK64:"{}},\textcolor{fortran_function}{ shape}(Sample\_RK64)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00085}00085 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample shape RK64:"{}},\textcolor{fortran_function}{ shape}(ShiftedSample\_RK64)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00086}00086 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00087}00087 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample shape RK128:"{}},\textcolor{fortran_function}{ shape}(Sample\_RK128)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00088}00088 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample shape RK128:"{}},\textcolor{fortran_function}{ shape}(ShiftedSample\_RK128)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00089}00089 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00090}00090 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00091}00091     \textcolor{fortran_comment}{! Shift a 1D array.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00081}00081 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Sample shape:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00082}00082 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00083}00083 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample shape RK32:"{}},\textcolor{fortran_function}{ shape}(Sample\_RK32)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00084}00084 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample shape RK32:"{}},\textcolor{fortran_function}{ shape}(ShiftedSample\_RK32)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00085}00085 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00086}00086 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample shape RK64:"{}},\textcolor{fortran_function}{ shape}(Sample\_RK64)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00087}00087 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample shape RK64:"{}},\textcolor{fortran_function}{ shape}(ShiftedSample\_RK64)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00088}00088 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00089}00089 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample shape RK128:"{}},\textcolor{fortran_function}{ shape}(Sample\_RK128)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00090}00090 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample shape RK128:"{}},\textcolor{fortran_function}{ shape}(ShiftedSample\_RK128)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00091}00091 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00092}00092 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00093}00093     \textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00093}00093     \textcolor{fortran_comment}{! Shift a 1D array.}}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00094}00094 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00095}00095         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}} \textcolor{fortran_comment}{! default real kind}}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00096}00096 \textcolor{fortran_statement}{        real}(RK) :: ShiftedSample\_1D(NSIM)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00097}00097 \textcolor{fortran_statement}{        real}(RK) :: Sample\_1D(NSIM)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00098}00098 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00099}00099 \textcolor{fortran_statement}{        call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_1D)}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00100}00100         ShiftedSample\_1D\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_1D,\textcolor{fortran_numeric_literal}{ 1.\_RK})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00101}00101 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00102}00102         \textcolor{fortran_comment}{! Output the values to an external file.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00095}00095     \textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00097}00097         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}} \textcolor{fortran_comment}{! default real kind}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00098}00098 \textcolor{fortran_statement}{        real}(RK) :: ShiftedSample\_D1(NSIM)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00099}00099 \textcolor{fortran_statement}{        real}(RK) :: Sample\_D1(NSIM)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00101}00101 \textcolor{fortran_statement}{        call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_D1)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00102}00102         ShiftedSample\_D1\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_D1,\textcolor{fortran_numeric_literal}{ 1.\_RK})}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00103}00103 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00104}00104 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00105}00105 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}1D sample shifted by +1:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00104}00104         \textcolor{fortran_comment}{! Output the values to an external file.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00105}00105 }
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00106}00106 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00107}00107 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample:"{}}, Sample\_1D}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00108}00108 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample:"{}}, ShiftedSample\_1D}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00109}00109 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00110}00110 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00111}00111 \textcolor{fortran_keywordflow}{    end block}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00107}00107 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}1D sample shifted by +1:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00108}00108 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00109}00109 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample:"{}}, Sample\_D1}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00110}00110 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample:"{}}, ShiftedSample\_D1}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00111}00111 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00112}00112 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00113}00113 \textcolor{fortran_statement}{end program }example}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00113}00113 \textcolor{fortran_keywordflow}{    end block}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00115}00115 \textcolor{fortran_statement}{end program }example}
 
 \end{DoxyCodeInclude}
- {\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-gnu}%
+\Hypertarget{namespaceBench__mod_compile-unix-gnu}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compile-unix-gnu}{\texttt{ ⛓}} 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00001}00001 \#!/bin/bash}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00003}00003 ./main.exe}
 
 \end{DoxyCodeInclude}
-{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-intel}%
+\Hypertarget{namespaceBench__mod_compile-unix-intel}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compile-unix-intel}{\texttt{ ⛓}} 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00001}00001 \#!/bin/bash}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00003}00003 ./main.exe}
 
 \end{DoxyCodeInclude}
- {\bfseries{Example output}} 
+ ~\newline
+ \label{namespaceBench__mod_output}%
+\Hypertarget{namespaceBench__mod_output}%
+{\bfseries{Example output}} \href{\#output}{\texttt{ ⛓}} 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00001}00001 }
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00002}00002 Sample mean across the second dimension:}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00003}00003 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00004}00004 original sample mean RK32: 0.502623081 0.476239771}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00005}00005  shifted sample mean RK32: 0.00000000 0.00000000}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00004}00004 original sample mean RK32: 0.276590347 0.436867177}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00005}00005  shifted sample mean RK32: -\/0.149011612E-\/7 -\/0.149011612E-\/7}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00006}00006 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00007}00007 original sample mean RK64: 0.75856526486869669 0.41472255788349693}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00008}00008  shifted sample mean RK64: -\/0.83266726846886741E-\/16 0.0000000000000000}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00007}00007 original sample mean RK64: 0.70988686604059226 0.45596615740782465}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00008}00008  shifted sample mean RK64: -\/0.83266726846886741E-\/16 -\/0.27755575615628914E-\/16}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00009}00009 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00010}00010 original sample mean RK128: 0.595645095717737339105930464277394401 0.596651696282777905693345243962521083}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00011}00011  shifted sample mean RK128: 0.240741243048404481631997242823115915E-\/34 0.00000000000000000000000000000000000}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00010}00010 original sample mean RK128: 0.583241947354325585807998226415689201 0.575395766155352129600044189101276579}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00011}00011  shifted sample mean RK128: 0.481482486096808963263994485646231830E-\/34 0.00000000000000000000000000000000000}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00012}00012 }
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00013}00013 }
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00014}00014 Sample mean across the first dimension:}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00015}00015 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00016}00016 original sample mean RK32: 0.537063718 0.370896012 0.701533914 0.348232031}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00017}00017  shifted sample mean RK32: 0.298023224E-\/7 0.00000000 0.00000000 0.00000000}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00016}00016 original sample mean RK32: 0.239790440 0.209370762 0.454283118 0.523470640}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00017}00017  shifted sample mean RK32: 0.00000000 0.00000000 0.00000000 0.298023224E-\/7}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00019}00019 original sample mean RK64: 0.43776819051702376 0.31560896721703496 0.67445931603626674 0.91873917173406161}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00020}00020  shifted sample mean RK64: 0.0000000000000000 0.0000000000000000 0.0000000000000000 0.0000000000000000}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00019}00019 original sample mean RK64: 0.50519992009976233 0.65490975473766166 0.73753177997217245 0.43406459208723724}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00020}00020  shifted sample mean RK64: -\/0.55511151231257827E-\/16 -\/0.55511151231257827E-\/16 0.0000000000000000 0.0000000000000000}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00021}00021 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00022}00022 original sample mean RK128: 0.927331242849577272040244812735155542 0.447781364841935827644441153382032120 0.678461971593697245596037830608348608 0.331019004715820144317827619754294746}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00022}00022 original sample mean RK128: 0.666815399015142603716751082670752271 0.841689577016955223438140332252714272 0.402567192130082721446165893720152761 0.406203258857174882215027522390312351}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00023}00023  shifted sample mean RK128: 0.00000000000000000000000000000000000 0.00000000000000000000000000000000000 0.00000000000000000000000000000000000 0.00000000000000000000000000000000000}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00024}00024 }
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00025}00025 }
@@ -205,19 +218,253 @@ This procedure is {\ttfamily impure} when the library is compiled with macro {\t
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00037}00037 }
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00038}00038 1D sample shifted by +1:}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00039}00039 }
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00040}00040 original sample: 0.15196121820203312 0.69811718064124673E-\/1 0.92581596798933086 0.36567346156503211}
-\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00041}00041  shifted sample: 1.1519612182020331 1.0698117180641247 1.9258159679893310 1.3656734615650321}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00040}00040 original sample: 0.94160438344588926 0.91517556192901839 0.50920298708568013 0.83956008800490134}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00041}00041  shifted sample: 1.9416043834458891 1.9151755619290185 1.5092029870856800 1.8395600880049012}
 \DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00042}00042 }
 
 \end{DoxyCodeInclude}
 
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000002}{Test}}]test\+\_\+gen\+Shifted\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000024}{Test}}]test\+\_\+gen\+Shifted\end{DoxyRefDesc}
 
 
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000015}{Todo}}]The functionality of this interface can be expanded in the future to include shifting of higher dimensional input {\ttfamily Sample} and whole {\ttfamily Sample} input arrays of arbitrary shape, although the latter is trivial using the Fortran array syntax. Note that for {\ttfamily NDIM /= 2} input {\ttfamily Sample}, the optional argument {\ttfamily tenabled} becomes undefined.\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{todo__todo000039}{Todo}}]The functionality of this interface can be expanded in the future to include shifting of higher dimensional input {\ttfamily Sample} and whole {\ttfamily Sample} input arrays of arbitrary shape, although the latter is trivial using the Fortran array syntax. Note that for {\ttfamily NDIM /= 2} input {\ttfamily Sample}, the optional argument {\ttfamily tenabled} becomes undefined.\end{DoxyRefDesc}
+
+
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Saturday 2\+:48 AM, August 22, 2021, Dallas, TX
+\end{DoxyAuthor}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Sample} & \+: The input contiguous array of type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} of shape {\ttfamily (np)}, {\ttfamily (nd,np)}, or {\ttfamily (np,nd)} containing the sample. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Amount} & \+: The scalar or the contiguous vector of the same type and kind as {\ttfamily Sample} representing the amount by which the input sample must be shifted. If the input {\ttfamily Sample} is a 1D array, then {\ttfamily Amount} must be a scalar. If the input {\ttfamily Sample} is a 2D array, then {\ttfamily Amount} must be a vector of size {\ttfamily nd}. If the sample is to be shifted toward the origin to have a mean of zero, then the input {\ttfamily Amount} corresponds to the negative of the current mean of the sample that is returned by procedures collectively represented by the generic interface \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{gen\+Mean}}. Note that the size of the input {\ttfamily Amount} must be consistent with the size of the input {\ttfamily Sample}. If the input argument {\ttfamily dim = 2} (default) then, {\ttfamily size(\+Amount) == size(Sample,dim=2)} must hold. If the input argument {\ttfamily dim = 1} (default) then, {\ttfamily size(\+Amount) == size(Sample,dim=1)} must hold. \\
+\hline
+\mbox{\texttt{ in}}  & {\em dim} & \+: An integer indicating which dimension of the input {\ttfamily Sample} iterates over the individual data points. If {\ttfamily dim = 1} or {\ttfamily dim /= 2}, the input {\ttfamily Sample} is assumed to have the shape {\ttfamily (np,nd)}. If {\ttfamily dim = 2}, the input {\ttfamily Sample} is assumed to have the shape {\ttfamily (nd,np)} ({\bfseries{optional}}, default = {\ttfamily 2}. {\bfseries{This input argument is available only if the input {\ttfamily Sample} is a 2D array}}.). \\
+\hline
+\mbox{\texttt{ in}}  & {\em tenabled} & \+: A logical value that if {\ttfamily .true.}, the output {\ttfamily Shifted\+Sample} will have the transposed shape of the input {\ttfamily Sample(\+:,\+:)}. Note that {\ttfamily tenabled} stands for {\ttfamily transpose\+Enabled} ({\bfseries{optional}}, default = {\ttfamily .false.}. {\bfseries{This input argument is available only if the input {\ttfamily Sample} is a 2D array}}.).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Shifted\+Sample} \+: The output allocatable shifted sample of the same type and kind as {\ttfamily Sample}. If the input sample is a 1D array, then {\ttfamily Shifted\+Sample} has the same shape and size as that of {\ttfamily Sample}. If the input sample is a 2D array, then {\ttfamily Shifted\+Sample} has the shape of either {\ttfamily (np,nd)} or {\ttfamily (np,nd)}, depending on the specified values for the input argument {\ttfamily tenabled}.
+\end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+Note the difference in the shape of the input {\ttfamily Sample(\+:,\+:)} vs. the output {\ttfamily Shifted\+Sample(\+:,\+:)} as determined by {\ttfamily dim} and {\ttfamily tenabled}.
+
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{interfaceSample__mod_1_1getShifted}{get\+Shifted}}
+\end{DoxySeeAlso}
+\label{namespaceInterpLinear__mod_usage}%
+\Hypertarget{namespaceInterpLinear__mod_usage}%
+{\bfseries{Example usage}} \href{\#usage}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00001}00001 \textcolor{fortran_statement}{program} example}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00003}00003     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00004}00004     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceSample__mod}{Sample\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00006}00006     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00008}00008     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}     :: NDIM\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00009}00009     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}     :: NSIM\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{4\_IK}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00011}00011 \textcolor{fortran_statement}{    real}(RK32)                  :: Sample\_RK32(NDIM,NSIM)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00012}00012 \textcolor{fortran_statement}{    real}(RK64)                  :: Sample\_RK64(NDIM,NSIM)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00013}00013 \textcolor{fortran_statement}{    real}(RK128)                 :: Sample\_RK128(NDIM,NSIM)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00015}00015 \textcolor{fortran_statement}{    real}(RK32)  ,\textcolor{fortran_attribute}{ allocatable}   :: ShiftedSample\_RK32(:,:)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00016}00016 \textcolor{fortran_statement}{    real}(RK64)  ,\textcolor{fortran_attribute}{ allocatable}   :: ShiftedSample\_RK64(:,:)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00017}00017 \textcolor{fortran_statement}{    real}(RK128) ,\textcolor{fortran_attribute}{ allocatable}   :: ShiftedSample\_RK128(:,:)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00019}00019     \textcolor{fortran_statement}{integer}(IK)                 :: fileUnit, i}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00021}00021 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnit, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.out"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00023}00023     \textcolor{fortran_comment}{! Generate a ranSample is centered at `Mean = [( 0.5\_RK, i = 1, NDIM )]`.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00025}00025 \textcolor{fortran_statement}{    call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_RK32)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00026}00026 \textcolor{fortran_statement}{    call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_RK64)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00027}00027 \textcolor{fortran_statement}{    call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_RK128)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00029}00029     \textcolor{fortran_comment}{! Shift the samples along the second dimension to the origin to have a mean of zero along the second dimension.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00031}00031     ShiftedSample\_RK32\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK32    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00032}00032     ShiftedSample\_RK64\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK64    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00033}00033     ShiftedSample\_RK128\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK128   ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128 ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00035}00035     \textcolor{fortran_comment}{! Output the values to an external file.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00037}00037 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00038}00038 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Sample mean across the second dimension:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00039}00039 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00040}00040 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00041}00041 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK32,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00042}00042 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00043}00043 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00044}00044 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK64,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00045}00045 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00046}00046 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00047}00047 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK128,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00048}00048 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00050}00050     \textcolor{fortran_comment}{! Shift the samples along the first dimension to the origin to have a mean of zero along the first dimension.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00052}00052     ShiftedSample\_RK32\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK32    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00053}00053     ShiftedSample\_RK64\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK64    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00054}00054     ShiftedSample\_RK128\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK128   ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128 ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00056}00056     \textcolor{fortran_comment}{! Output the values to an external file.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00058}00058 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00059}00059 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Sample mean across the first dimension:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00060}00060 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00061}00061 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00062}00062 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK32:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK32,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00063}00063 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00064}00064 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00065}00065 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK64:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK64,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00066}00066 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00067}00067 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00068}00068 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample mean RK128:"{}}, \mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(ShiftedSample\_RK128,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00069}00069 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00071}00071     \textcolor{fortran_comment}{! Shift the samples along the first dimension to the origin to have a mean of zero along the first dimension.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00072}00072     \textcolor{fortran_comment}{! In doing so, generate a transposed array. This can potentially save time compared to calling the `transpose()` intrinsic.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00074}00074     ShiftedSample\_RK32\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK32    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK32  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}, tenabled\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00075}00075     ShiftedSample\_RK64\textcolor{fortran_operator_symbols}{  = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK64    ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK64  ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}, tenabled\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00076}00076     ShiftedSample\_RK128\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_RK128   ,\textcolor{fortran_operator_symbols}{ -\/}\mbox{\hyperlink{interfaceSample__mod_1_1genMean}{genMean}}(Sample\_RK128 ,\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}),\textcolor{fortran_spcifier}{ dim}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}, tenabled\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00078}00078     \textcolor{fortran_comment}{! Output the values to an external file.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00080}00080 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00081}00081 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Sample shape:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00082}00082 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00083}00083 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample shape RK32:"{}},\textcolor{fortran_function}{ shape}(Sample\_RK32)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00084}00084 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample shape RK32:"{}},\textcolor{fortran_function}{ shape}(ShiftedSample\_RK32)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00085}00085 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00086}00086 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample shape RK64:"{}},\textcolor{fortran_function}{ shape}(Sample\_RK64)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00087}00087 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample shape RK64:"{}},\textcolor{fortran_function}{ shape}(ShiftedSample\_RK64)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00088}00088 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00089}00089 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample shape RK128:"{}},\textcolor{fortran_function}{ shape}(Sample\_RK128)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00090}00090 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample shape RK128:"{}},\textcolor{fortran_function}{ shape}(ShiftedSample\_RK128)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00091}00091 \textcolor{fortran_statement}{    write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00093}00093     \textcolor{fortran_comment}{! Shift a 1D array.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00095}00095     \textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00097}00097         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}} \textcolor{fortran_comment}{! default real kind}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00098}00098 \textcolor{fortran_statement}{        real}(RK) :: ShiftedSample\_D1(NSIM)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00099}00099 \textcolor{fortran_statement}{        real}(RK) :: Sample\_D1(NSIM)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00101}00101 \textcolor{fortran_statement}{        call}\textcolor{fortran_subroutine}{ random\_number}(Sample\_D1)}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00102}00102         ShiftedSample\_D1\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceSample__mod_1_1genShifted}{genShifted}}(Sample\_D1,\textcolor{fortran_numeric_literal}{ 1.\_RK})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00104}00104         \textcolor{fortran_comment}{! Output the values to an external file.}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00105}00105 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00106}00106 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00107}00107 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}1D sample shifted by +1:"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00108}00108 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00109}00109 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}original sample:"{}}, Sample\_D1}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00110}00110 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{} shifted sample:"{}}, ShiftedSample\_D1}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00111}00111 \textcolor{fortran_statement}{        write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00113}00113 \textcolor{fortran_keywordflow}{    end block}}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00115}00115 \textcolor{fortran_statement}{end program }example}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-gnu}%
+\Hypertarget{namespaceBench__mod_compile-unix-gnu}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compile-unix-gnu}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-intel}%
+\Hypertarget{namespaceBench__mod_compile-unix-intel}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compile-unix-intel}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_output}%
+\Hypertarget{namespaceBench__mod_output}%
+{\bfseries{Example output}} \href{\#output}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00002}00002 Sample mean across the second dimension:}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00004}00004 original sample mean RK32: 0.276590347 0.436867177}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00005}00005  shifted sample mean RK32: -\/0.149011612E-\/7 -\/0.149011612E-\/7}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00007}00007 original sample mean RK64: 0.70988686604059226 0.45596615740782465}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00008}00008  shifted sample mean RK64: -\/0.83266726846886741E-\/16 -\/0.27755575615628914E-\/16}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00010}00010 original sample mean RK128: 0.583241947354325585807998226415689201 0.575395766155352129600044189101276579}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00011}00011  shifted sample mean RK128: 0.481482486096808963263994485646231830E-\/34 0.00000000000000000000000000000000000}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00014}00014 Sample mean across the first dimension:}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00016}00016 original sample mean RK32: 0.239790440 0.209370762 0.454283118 0.523470640}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00017}00017  shifted sample mean RK32: 0.00000000 0.00000000 0.00000000 0.298023224E-\/7}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00019}00019 original sample mean RK64: 0.50519992009976233 0.65490975473766166 0.73753177997217245 0.43406459208723724}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00020}00020  shifted sample mean RK64: -\/0.55511151231257827E-\/16 -\/0.55511151231257827E-\/16 0.0000000000000000 0.0000000000000000}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00022}00022 original sample mean RK128: 0.666815399015142603716751082670752271 0.841689577016955223438140332252714272 0.402567192130082721446165893720152761 0.406203258857174882215027522390312351}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00023}00023  shifted sample mean RK128: 0.00000000000000000000000000000000000 0.00000000000000000000000000000000000 0.00000000000000000000000000000000000 0.00000000000000000000000000000000000}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00026}00026 Sample shape:}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00028}00028 original sample shape RK32: 2 4}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00029}00029  shifted sample shape RK32: 4 2}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00031}00031 original sample shape RK64: 2 4}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00032}00032  shifted sample shape RK64: 4 2}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00034}00034 original sample shape RK128: 2 4}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00035}00035  shifted sample shape RK128: 4 2}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00038}00038 1D sample shifted by +1:}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00040}00040 original sample: 0.94160438344588926 0.91517556192901839 0.50920298708568013 0.83956008800490134}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00041}00041  shifted sample: 1.9416043834458891 1.9151755619290185 1.5092029870856800 1.8395600880049012}
+\DoxyCodeLine{\Hypertarget{interfaceSample__mod_1_1genShifted_l00042}00042 }
+
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000030}{Test}}]test\+\_\+gen\+Shifted\end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000048}{Todo}}]The functionality of this interface can be expanded in the future to include shifting of higher dimensional input {\ttfamily Sample} and whole {\ttfamily Sample} input arrays of arbitrary shape, although the latter is trivial using the Fortran array syntax. Note that for {\ttfamily NDIM /= 2} input {\ttfamily Sample}, the optional argument {\ttfamily tenabled} becomes undefined.\end{DoxyRefDesc}
 
 
 \begin{DoxyRemark}{Remarks}
@@ -233,7 +480,7 @@ Amir Shahmoradi, Saturday 2\+:48 AM, August 22, 2021, Dallas, TX
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00672}{672}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Sample__mod_8f90_source_l00668}{668}} of file \mbox{\hyperlink{Sample__mod_8f90_source}{Sample\+\_\+mod.\+f90}}.
 
 
 

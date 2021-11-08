@@ -13,9 +13,9 @@ interface \mbox{\hyperlink{interfaceQuantile__mod_1_1getMedian}{get\+Median}}
 \doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
-pure subroutine \mbox{\hyperlink{namespaceQuantile__mod_ac01f235b429e7d57c0de2ba0b33dbcf9}{get\+Quantile}} (Point, Sorted\+Quantile\+Probability, Quantile, failed, Weight, sum\+Weight)
+PURE subroutine \mbox{\hyperlink{namespaceQuantile__mod_a260b8b6b941b1cd27f742522c0b95ee2}{get\+Quantile}} (Point, Sorted\+Quantile\+Probability, Quantile, Weight, sum\+Weight)
 \begin{DoxyCompactList}\small\item\em Return the quantiles of an input sample of points, given the input quantile probabilities. \end{DoxyCompactList}\item 
-pure subroutine \mbox{\hyperlink{namespaceQuantile__mod_a641a00debc18efebc42711dabcc585b5}{get\+Median\+\_\+\+RK}} (len\+Array, Array, median, failed)
+pure subroutine \mbox{\hyperlink{namespaceQuantile__mod_a738277d250916a48d685f521b1d80687}{get\+Median\+\_\+\+RK}} (len\+Array, Array, median)
 \begin{DoxyCompactList}\small\item\em Return the median of the input vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -33,11 +33,11 @@ Amir Shahmoradi
 
 
 \doxysubsection{Function/\+Subroutine Documentation}
-\mbox{\Hypertarget{namespaceQuantile__mod_a641a00debc18efebc42711dabcc585b5}\label{namespaceQuantile__mod_a641a00debc18efebc42711dabcc585b5}} 
+\mbox{\Hypertarget{namespaceQuantile__mod_a738277d250916a48d685f521b1d80687}\label{namespaceQuantile__mod_a738277d250916a48d685f521b1d80687}} 
 \index{Quantile\_mod@{Quantile\_mod}!getMedian\_RK@{getMedian\_RK}}
 \index{getMedian\_RK@{getMedian\_RK}!Quantile\_mod@{Quantile\_mod}}
 \doxysubsubsection{\texorpdfstring{getMedian\_RK()}{getMedian\_RK()}}
-{\footnotesize\ttfamily pure subroutine Quantile\+\_\+mod\+::get\+Median\+\_\+\+RK (\begin{DoxyParamCaption}\item[{integer(IK)}]{len\+Array,  }\item[{real(RK)}]{Array,  }\item[{real(RK), intent(out)}]{median,  }\item[{logical, intent(out)}]{failed }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure subroutine Quantile\+\_\+mod\+::get\+Median\+\_\+\+RK (\begin{DoxyParamCaption}\item[{integer(IK)}]{len\+Array,  }\item[{real(RK)}]{Array,  }\item[{real(RK), intent(out)}]{median }\end{DoxyParamCaption})}
 
 
 
@@ -59,13 +59,13 @@ On return, the value of {\ttfamily failed} must be checked for any potential occ
 \end{DoxyWarning}
 
 
-Definition at line \mbox{\hyperlink{Quantile__mod_8f90_source_l00149}{149}} of file \mbox{\hyperlink{Quantile__mod_8f90_source}{Quantile\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Quantile__mod_8f90_source_l00148}{148}} of file \mbox{\hyperlink{Quantile__mod_8f90_source}{Quantile\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceQuantile__mod_ac01f235b429e7d57c0de2ba0b33dbcf9}\label{namespaceQuantile__mod_ac01f235b429e7d57c0de2ba0b33dbcf9}} 
+\mbox{\Hypertarget{namespaceQuantile__mod_a260b8b6b941b1cd27f742522c0b95ee2}\label{namespaceQuantile__mod_a260b8b6b941b1cd27f742522c0b95ee2}} 
 \index{Quantile\_mod@{Quantile\_mod}!getQuantile@{getQuantile}}
 \index{getQuantile@{getQuantile}!Quantile\_mod@{Quantile\_mod}}
 \doxysubsubsection{\texorpdfstring{getQuantile()}{getQuantile()}}
-{\footnotesize\ttfamily pure subroutine Quantile\+\_\+mod\+::get\+Quantile (\begin{DoxyParamCaption}\item[{real(RK)}]{Point,  }\item[{real(RK)}]{Sorted\+Quantile\+Probability,  }\item[{real(RK)}]{Quantile,  }\item[{logical, intent(out)}]{failed,  }\item[{integer(IK)}]{Weight,  }\item[{integer(IK)}]{sum\+Weight }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily PURE subroutine Quantile\+\_\+mod\+::get\+Quantile (\begin{DoxyParamCaption}\item[{real(RK)}]{Point,  }\item[{real(RK)}]{Sorted\+Quantile\+Probability,  }\item[{real(RK)}]{Quantile,  }\item[{integer(IK)}]{Weight,  }\item[{integer(IK)}]{sum\+Weight }\end{DoxyParamCaption})}
 
 
 
@@ -79,8 +79,6 @@ Return the quantiles of an input sample of points, given the input quantile prob
 \hline
 \mbox{\texttt{ out}}  & {\em Quantile} & \+: The output vector of length {\ttfamily nq}, representing the quantiles corresponding to the input {\ttfamily Sorted\+Quantile\+Probability} probabilities. \\
 \hline
-\mbox{\texttt{ out}}  & {\em failed} & \+: The output logical flag indicating if an error occurred during sorting of the input set of points. \\
-\hline
 \mbox{\texttt{ in}}  & {\em Weight} & \+: The vector of length {\ttfamily np} representing the weights of the points in the input sample. \\
 \hline
 \mbox{\texttt{ in}}  & {\em sum\+Weight} & \+: The sum of the vector weights of the points\+: {\ttfamily sum(\+Weight)}.\\
@@ -89,12 +87,15 @@ Return the quantiles of an input sample of points, given the input quantile prob
 \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
+\begin{DoxyWarning}{Warning}
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+\end{DoxyWarning}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Sep 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Quantile__mod_8f90_source_l00089}{89}} of file \mbox{\hyperlink{Quantile__mod_8f90_source}{Quantile\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Quantile__mod_8f90_source_l00090}{90}} of file \mbox{\hyperlink{Quantile__mod_8f90_source}{Quantile\+\_\+mod.\+f90}}.
 
 
 

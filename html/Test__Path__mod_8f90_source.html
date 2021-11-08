@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('Test__Path__mod_8f90_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,11 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4d389600729eb25db92af3e09978356f.html">tests</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">Test_Path_mod.f90</div></div>
 </div><!--header-->
@@ -127,13 +143,13 @@ $(function() {
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespaceTest__Path__mod.html">   46</a></span><span class="fortran_statement">module</span> <a class="code hl_namespace" href="namespaceTest__Path__mod.html">Test_Path_mod</a></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespacePath__mod.html">Path_mod</a></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="fortran_statement">use </span>Test_mod, <span class="fortran_statement">only</span>: Test_type</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceTest__mod.html">Test_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a></div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="fortran_attribute">    private</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="fortran_attribute">    public</span> :: <a class="code hl_function" href="namespaceTest__Path__mod.html#a7ca299a03f0e2a86db09569677a858f2">test_Path</a></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceTest__Path__mod.html#a9873c19187c869b6cacde585fc1f105d">   55</a></span>    <span class="fortran_statement">type</span>(Test_type) :: <a class="code hl_variable" href="namespaceTest__Path__mod.html#a9873c19187c869b6cacde585fc1f105d">Test</a></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceTest__Path__mod.html#a9873c19187c869b6cacde585fc1f105d">   55</a></span>    <span class="fortran_statement">type</span>(<a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a>) :: <a class="code hl_variable" href="namespaceTest__Path__mod.html#a9873c19187c869b6cacde585fc1f105d">Test</a></div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
@@ -145,7 +161,7 @@ $(function() {
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <a class="code hl_variable" href="namespaceTest__Path__mod.html#a9873c19187c869b6cacde585fc1f105d">Test</a><span class="fortran_operator_symbols"> = </span>Test_type(moduleName<span class="fortran_operator_symbols">=</span><a class="code hl_variable" href="namespacePath__mod.html#a13eefdf3fecc1f3933d2db4d0718c936">MODULE_NAME</a>)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <a class="code hl_variable" href="namespaceTest__Path__mod.html#a9873c19187c869b6cacde585fc1f105d">Test</a><span class="fortran_operator_symbols"> = </span><a class="code hl_interface" href="structTest__mod_1_1Test__type.html">Test_type</a>(moduleName<span class="fortran_operator_symbols">=</span><a class="code hl_variable" href="namespacePath__mod.html#a13eefdf3fecc1f3933d2db4d0718c936">MODULE_NAME</a>)</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Path__mod.html#a9873c19187c869b6cacde585fc1f105d">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__Path__mod.html#ac1fdbe6c9e537fbcb53271438c75eed9">test_isdir_1</a>, <span class="fortran_string">&quot;test_isdir_1&quot;</span>)</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Path__mod.html#a9873c19187c869b6cacde585fc1f105d">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__Path__mod.html#a4a515f4887017808e7f3492a19209f97">test_query_1</a>, <span class="fortran_string">&quot;test_query_1&quot;</span>)</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Path__mod.html#a9873c19187c869b6cacde585fc1f105d">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__Path__mod.html#aec5d7bb6551587b79e27a7038368b2e5">test_query_2</a>, <span class="fortran_string">&quot;test_query_2&quot;</span>)</div>
@@ -166,7 +182,7 @@ $(function() {
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Path__mod.html#a9873c19187c869b6cacde585fc1f105d">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__Path__mod.html#a0cda3a73fafb705b1a55e6d524beb091">test_getDirNameExt_2</a>, <span class="fortran_string">&quot;test_getDirNameExt_2&quot;</span>)</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Path__mod.html#a9873c19187c869b6cacde585fc1f105d">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__Path__mod.html#a809f09b0de1f62e71695e029810a1f87">test_getDirFullName_1</a>, <span class="fortran_string">&quot;test_getDirFullName_1&quot;</span>)</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Path__mod.html#a9873c19187c869b6cacde585fc1f105d">Test</a><span class="fortran_operator_symbols">%</span>run(<a class="code hl_function" href="namespaceTest__Path__mod.html#a0defd2bb5724d1d72140f92fd614adb8">test_getDirFullName_2</a>, <span class="fortran_string">&quot;test_getDirFullName_2&quot;</span>)</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Path__mod.html#a9873c19187c869b6cacde585fc1f105d">Test</a><span class="fortran_operator_symbols">%</span>finalize()</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="fortran_statement">        call</span> <a class="code hl_variable" href="namespaceTest__Path__mod.html#a9873c19187c869b6cacde585fc1f105d">Test</a><span class="fortran_operator_symbols">%</span><a class="code hl_function" href="namespaceTest__mod.html#a9612928d23d1dedb33964f0207b12074">finalize</a>()</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="fortran_statement">end subroutine </span><a class="code hl_function" href="namespaceTest__Path__mod.html#a7ca299a03f0e2a86db09569677a858f2">test_Path</a></div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
@@ -183,7 +199,7 @@ $(function() {
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="namespaceTest__Path__mod.html#a4a515f4887017808e7f3492a19209f97">  107</a></span><span class="fortran_statement">    function</span> <a class="code hl_function" href="namespaceTest__Path__mod.html#a4a515f4887017808e7f3492a19209f97">test_query_1</a>()<span class="fortran_statement"> result</span>(assertion)</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="fortran_comment">!use String_mod, only: num2char</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="fortran_comment">!use String_mod, only: val2char</span></div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="fortran_statement">        logical</span>         :: assertion</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="fortran_statement">type</span>(Path_type) :: Path</div>
@@ -202,7 +218,7 @@ $(function() {
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="namespaceTest__Path__mod.html#aec5d7bb6551587b79e27a7038368b2e5">  128</a></span><span class="fortran_statement">    function</span> <a class="code hl_function" href="namespaceTest__Path__mod.html#aec5d7bb6551587b79e27a7038368b2e5">test_query_2</a>()<span class="fortran_statement"> result</span>(assertion)</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="fortran_comment">!use String_mod, only: num2char</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="fortran_comment">!use String_mod, only: val2char</span></div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="fortran_statement">        logical</span>         :: assertion</div>
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <span class="fortran_statement">type</span>(Path_type) :: Path</div>
@@ -247,7 +263,7 @@ $(function() {
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="namespaceTest__Path__mod.html#ac97731c1d2333ebd760a665f06e569c3">  175</a></span><span class="fortran_statement">    function</span> <a class="code hl_function" href="namespaceTest__Path__mod.html#ac97731c1d2333ebd760a665f06e569c3">test_constructPath</a>()<span class="fortran_statement"> result</span>(assertion)</div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        <span class="fortran_comment">!use String_mod, only: num2char</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        <span class="fortran_comment">!use String_mod, only: val2char</span></div>
 <div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <span class="fortran_statement">implicit none</span></div>
 <div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="fortran_statement">        logical</span>         :: assertion</div>
 <div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <span class="fortran_statement">type</span>(Path_type) :: Path</div>
@@ -740,27 +756,21 @@ $(function() {
 <div class="ttc" id="anamespaceTest__Path__mod_html_adaae5963ef15338a10e2761f9fe564e3"><div class="ttname"><a href="namespaceTest__Path__mod.html#adaae5963ef15338a10e2761f9fe564e3">Test_Path_mod::test_query_3</a></div><div class="ttdeci">logical function test_query_3()</div><div class="ttdoc">When the optional OS is provided, the results must be the same as when it is not provided.</div><div class="ttdef"><b>Definition:</b> <a href="Test__Path__mod_8f90_source.html#l00149">Test_Path_mod.f90:150</a></div></div>
 <div class="ttc" id="anamespaceTest__Path__mod_html_ae63ee6cbcc086a7dfd9e3124120da68b"><div class="ttname"><a href="namespaceTest__Path__mod.html#ae63ee6cbcc086a7dfd9e3124120da68b">Test_Path_mod::test_mkdir_3</a></div><div class="ttdeci">logical function test_mkdir_3()</div><div class="ttdoc">Test whether all processors are capable of generating directories, without the input optional argumen...</div><div class="ttdef"><b>Definition:</b> <a href="Test__Path__mod_8f90_source.html#l00638">Test_Path_mod.f90:639</a></div></div>
 <div class="ttc" id="anamespaceTest__Path__mod_html_aec5d7bb6551587b79e27a7038368b2e5"><div class="ttname"><a href="namespaceTest__Path__mod.html#aec5d7bb6551587b79e27a7038368b2e5">Test_Path_mod::test_query_2</a></div><div class="ttdeci">logical function test_query_2()</div><div class="ttdoc">When the original path is allocated but is empty, guery() must return an error message.</div><div class="ttdef"><b>Definition:</b> <a href="Test__Path__mod_8f90_source.html#l00128">Test_Path_mod.f90:129</a></div></div>
+<div class="ttc" id="anamespaceTest__mod_html"><div class="ttname"><a href="namespaceTest__mod.html">Test_mod</a></div><div class="ttdoc">This is the driver module of the unit testing framework of the ParaMonte kernel routines.</div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00054">Test_mod.f90:54</a></div></div>
+<div class="ttc" id="anamespaceTest__mod_html_a9612928d23d1dedb33964f0207b12074"><div class="ttname"><a href="namespaceTest__mod.html#a9612928d23d1dedb33964f0207b12074">Test_mod::finalize</a></div><div class="ttdeci">subroutine finalize()</div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00180">Test_mod.f90:181</a></div></div>
 <div class="ttc" id="astructErr__mod_1_1Err__type_html"><div class="ttname"><a href="structErr__mod_1_1Err__type.html">Err_mod::Err_type</a></div><div class="ttdoc">The error type.</div><div class="ttdef"><b>Definition:</b> <a href="Err__mod_8f90_source.html#l00063">Err_mod.f90:63</a></div></div>
 <div class="ttc" id="astructSystem__mod_1_1OS__type_html"><div class="ttname"><a href="structSystem__mod_1_1OS__type.html">System_mod::OS_type</a></div><div class="ttdoc">The OS_type class.</div><div class="ttdef"><b>Definition:</b> <a href="System__mod_8f90_source.html#l00122">System_mod.f90:122</a></div></div>
 <div class="ttc" id="astructSystem__mod_1_1RandomFileName__type_html"><div class="ttname"><a href="structSystem__mod_1_1RandomFileName__type.html">System_mod::RandomFileName_type</a></div><div class="ttdoc">The RandomFileName_type class.</div><div class="ttdef"><b>Definition:</b> <a href="System__mod_8f90_source.html#l00069">System_mod.f90:69</a></div></div>
+<div class="ttc" id="astructTest__mod_1_1Test__type_html"><div class="ttname"><a href="structTest__mod_1_1Test__type.html">Test_mod::Test_type</a></div><div class="ttdef"><b>Definition:</b> <a href="Test__mod_8f90_source.html#l00101">Test_mod.f90:101</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4d389600729eb25db92af3e09978356f.html">tests</a></li><li class="navelem"><a class="el" href="Test__Path__mod_8f90.html">Test_Path_mod.f90</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:33 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:11 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

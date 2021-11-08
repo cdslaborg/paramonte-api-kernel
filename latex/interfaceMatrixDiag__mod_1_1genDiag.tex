@@ -1,0 +1,136 @@
+\hypertarget{interfaceMatrixDiag__mod_1_1genDiag}{}\doxysection{Matrix\+Diag\+\_\+mod\+::gen\+Diag Interface Reference}
+\label{interfaceMatrixDiag__mod_1_1genDiag}\index{MatrixDiag\_mod::genDiag@{MatrixDiag\_mod::genDiag}}
+
+
+Generate and return the diagonal elements of the input matrix of arbitrary shape.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+pure real(RK) function, dimension(n, m) \mbox{\hyperlink{interfaceMatrixDiag__mod_1_1genDiag_aedffa3b7559244c7f60ea7d25c98392e}{gen\+Eye\+Mat}} (n, m, diag, offdiag)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Generate and return the diagonal elements of the input matrix of arbitrary shape. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Matrix} & \+: The input contiguous array of rank {\ttfamily 2} of either ~\newline
+ ~ type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} or ~\newline
+ ~ type {\ttfamily complex} of kind \mbox{\hyperlink{namespaceConstants__mod_ac8b456bd9511bc9a52b4a03bda4b72df}{CK32}}, \mbox{\hyperlink{namespaceConstants__mod_aa6ea61256fca0b20db0ec2b90755b9f3}{CK64}}, or \mbox{\hyperlink{namespaceConstants__mod_ad3873e1ecc5eb3cf3651f72630cae087}{CK128}} ~\newline
+ ~ representing the matrix whose diagonal elements is to be retrieved. \\
+\hline
+\mbox{\texttt{ in}}  & {\em ndiag} & \+: The input positive {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} representing the number of diagonal elements to be extracted from the input {\ttfamily Matrix}. ({\bfseries{optional}}, default = {\ttfamily minval(shape(\+Matrix) -\/ \mbox{[}srow, scol\mbox{]}) + 1}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em srow} & \+: The input positive {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} representing the starting row of the input {\ttfamily Matrix} from which the diagonal elements will be extracted ({\bfseries{optional}}, default = {\ttfamily 1}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em scol} & \+: The input positive {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} representing the starting column of the input {\ttfamily Matrix} from which the diagonal elements will be extracted ({\bfseries{optional}}, default = {\ttfamily 1}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily Diag} \+: The allocatable output diagonal elements of the input {\ttfamily Matrix}. It is of the same type and kind as the input {\ttfamily Matrix}.
+\end{DoxyReturn}
+\label{interfaceLinSys__mod_1_1solveLinSysChoUpp_interface}%
+\Hypertarget{interfaceLinSys__mod_1_1solveLinSysChoUpp_interface}%
+{\bfseries{Possible calling interfaces}} \href{\#interface}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Diag\textcolor{fortran_operator_symbols}{ = }genDiag(Matrix)}
+\DoxyCodeLine{Diag\textcolor{fortran_operator_symbols}{ = }genDiag(Matrix, ndiag)}
+\DoxyCodeLine{Diag\textcolor{fortran_operator_symbols}{ = }genDiag(Matrix, ndiag, srow)}
+\DoxyCodeLine{Diag\textcolor{fortran_operator_symbols}{ = }genDiag(Matrix, ndiag, scol)}
+\DoxyCodeLine{Diag\textcolor{fortran_operator_symbols}{ = }genDiag(Matrix, ndiag, srow, scol)}
+
+\end{DoxyCode}
+
+\end{DoxyParagraph}
+\begin{DoxyWarning}{Warning}
+If {\ttfamily ndiag} is simultaneously present as input argument with {\ttfamily srow} and {\ttfamily scol} input arguments, then the conditions {\ttfamily size(Matrix, dim = 1) \texorpdfstring{$>$}{>}= srow + ndiag -\/ 1} and {\ttfamily size(Matrix, dim = 2) \texorpdfstring{$>$}{>}= scol + ndiag -\/ 1} must hold. These conditions are checked only when the preprocessor flag {\ttfamily CHECK\+\_\+\+ENABLED=1} is set at build time.
+
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{interfaceMatrixDiag__mod_1_1genEye}{gen\+Eye}} ~\newline
+ \mbox{\hyperlink{interfaceMatrixDiag__mod_1_1getEye}{get\+Eye}} ~\newline
+ \mbox{\hyperlink{interfaceMatrixDiag__mod_1_1genDiagMat}{gen\+Diag\+Mat}} ~\newline
+
+\end{DoxySeeAlso}
+\label{namespaceInterpLinear__mod_example}%
+\Hypertarget{namespaceInterpLinear__mod_example}%
+{\bfseries{Example usage}} \href{\#example}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-gnu}%
+\Hypertarget{namespaceBench__mod_compile-unix-gnu}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compile-unix-gnu}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceMatrixDiag__mod_1_1genDiag_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceMatrixDiag__mod_1_1genDiag_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceMatrixDiag__mod_1_1genDiag_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-intel}%
+\Hypertarget{namespaceBench__mod_compile-unix-intel}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compile-unix-intel}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceMatrixDiag__mod_1_1genDiag_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceMatrixDiag__mod_1_1genDiag_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceMatrixDiag__mod_1_1genDiag_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_output}%
+\Hypertarget{namespaceBench__mod_output}%
+{\bfseries{Example output}} \href{\#output}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000038}{Test}}]\mbox{\hyperlink{namespaceTest__MatrixDiag__mod}{Test\+\_\+\+Matrix\+Diag\+\_\+mod}}\end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000032}{Todo}}]The functionality of this interface can be expanded to make the input argument {\ttfamily ncol} optional by adding further possible interfaces.\end{DoxyRefDesc}
+
+
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Apr 21, 2017, 1\+:54 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{MatrixDiag__mod_8f90_source_l00059}{59}} of file \mbox{\hyperlink{MatrixDiag__mod_8f90_source}{Matrix\+Diag\+\_\+mod.\+f90}}.
+
+
+
+\doxysubsection{Member Function/\+Subroutine Documentation}
+\mbox{\Hypertarget{interfaceMatrixDiag__mod_1_1genDiag_aedffa3b7559244c7f60ea7d25c98392e}\label{interfaceMatrixDiag__mod_1_1genDiag_aedffa3b7559244c7f60ea7d25c98392e}} 
+\index{MatrixDiag\_mod::genDiag@{MatrixDiag\_mod::genDiag}!genEyeMat@{genEyeMat}}
+\index{genEyeMat@{genEyeMat}!MatrixDiag\_mod::genDiag@{MatrixDiag\_mod::genDiag}}
+\doxysubsubsection{\texorpdfstring{genEyeMat()}{genEyeMat()}}
+{\footnotesize\ttfamily pure real(RK) function, dimension(n,m) Matrix\+Diag\+\_\+mod\+::gen\+Diag\+::gen\+Eye\+Mat (\begin{DoxyParamCaption}\item[{integer(IK), intent(in)}]{n,  }\item[{integer(IK), intent(in)}]{m,  }\item[{real(RK), intent(in), optional}]{diag,  }\item[{real(RK), intent(in), optional}]{offdiag }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{MatrixDiag__mod_8f90_source_l00733}{733}} of file \mbox{\hyperlink{MatrixDiag__mod_8f90_source}{Matrix\+Diag\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{MatrixDiag__mod_8f90}{Matrix\+Diag\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

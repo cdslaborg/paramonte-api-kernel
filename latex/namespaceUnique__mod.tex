@@ -15,7 +15,7 @@ interface \mbox{\hyperlink{interfaceUnique__mod_1_1genUnique}{gen\+Unique}}
 \doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
-pure subroutine \mbox{\hyperlink{namespaceUnique__mod_a7fc2b3f81d575f9a544ee7a6a25852f6}{find\+Unique\+Value\+Count\+\_\+\+IK}} (len\+Vector, Vector, len\+Unique, Unique\+Value, Unique\+Count, Unique\+Index, Err)
+PURE subroutine \mbox{\hyperlink{namespaceUnique__mod_a6b87b2b9b5ab1d30ea29f31635e6546f}{find\+Unique\+Value\+Count\+\_\+\+IK}} (Vector, len\+Unique, Unique\+Value, Unique\+Count, Unique\+Index, sorting)
 \begin{DoxyCompactList}\small\item\em Find the unique values in the input integer vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -33,11 +33,11 @@ Amir Shahmoradi
 
 
 \doxysubsection{Function/\+Subroutine Documentation}
-\mbox{\Hypertarget{namespaceUnique__mod_a7fc2b3f81d575f9a544ee7a6a25852f6}\label{namespaceUnique__mod_a7fc2b3f81d575f9a544ee7a6a25852f6}} 
+\mbox{\Hypertarget{namespaceUnique__mod_a6b87b2b9b5ab1d30ea29f31635e6546f}\label{namespaceUnique__mod_a6b87b2b9b5ab1d30ea29f31635e6546f}} 
 \index{Unique\_mod@{Unique\_mod}!findUniqueValueCount\_IK@{findUniqueValueCount\_IK}}
 \index{findUniqueValueCount\_IK@{findUniqueValueCount\_IK}!Unique\_mod@{Unique\_mod}}
 \doxysubsubsection{\texorpdfstring{findUniqueValueCount\_IK()}{findUniqueValueCount\_IK()}}
-{\footnotesize\ttfamily pure subroutine Unique\+\_\+mod\+::find\+Unique\+Value\+Count\+\_\+\+IK (\begin{DoxyParamCaption}\item[{integer(IK)}]{len\+Vector,  }\item[{integer(IK)}]{Vector,  }\item[{integer(IK)}]{len\+Unique,  }\item[{integer(IK)}]{Unique\+Value,  }\item[{integer(IK)}]{Unique\+Count,  }\item[{type(IV)}]{Unique\+Index,  }\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily PURE subroutine Unique\+\_\+mod\+::find\+Unique\+Value\+Count\+\_\+\+IK (\begin{DoxyParamCaption}\item[{integer(IK)}]{Vector,  }\item[{integer(IK)}]{len\+Unique,  }\item[{integer(IK)}]{Unique\+Value,  }\item[{integer(IK)}]{Unique\+Count,  }\item[{type(IV)}]{Unique\+Index,  }\item[{integer(IK), intent(in), optional}]{sorting }\end{DoxyParamCaption})}
 
 
 
@@ -55,17 +55,19 @@ Find the unique values in the input integer vector.
 \hline
 \mbox{\texttt{ out}}  & {\em Unique\+Count} & \+: The counts of each unique value in the input vector. \\
 \hline
-\mbox{\texttt{ out}}  & {\em Unique\+Index} & \+: A jagged\+Array of type \mbox{\hyperlink{structArrayJagged__mod_1_1IntVec__type}{Int\+Vec\+\_\+type}} of length {\ttfamily len\+Unique}, the ith element of which is a vector of length {\ttfamily Unique\+Count(i)} that contains the indices of {\ttfamily Vector} where {\ttfamily Unique\+Value(i)} occur ({\bfseries{optional}}). \\
+\mbox{\texttt{ out}}  & {\em Unique\+Index} & \+: A jagged\+Array of type \mbox{\hyperlink{structArrayJagged__mod_1_1Vector__type__IK}{Vector\+\_\+type\+\_\+\+IK}} of length {\ttfamily len\+Unique}, the ith element of which is a vector of length {\ttfamily Unique\+Count(i)} that contains the indices of {\ttfamily Vector} where {\ttfamily Unique\+Value(i)} occur ({\bfseries{optional}}). \\
 \hline
-\mbox{\texttt{ out}}  & {\em Err} & \+: An object of type \mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}}. If present, the output {\ttfamily Unique\+Count} will be sorted {\bfseries{descending}} and along with it {\ttfamily Unique\+Value} and {\ttfamily Unique\+Index} ({\bfseries{optional}}). \\
+\mbox{\texttt{ in}}  & {\em sorting} & \+: The input {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}. If {\ttfamily 0}, the output {\ttfamily Unique\+Count} will be not be sorted. If {\ttfamily -\/1}, the output {\ttfamily Unique\+Count} will be sorted in {\bfseries{descending}} order and along with it {\ttfamily Unique\+Value} and {\ttfamily Unique\+Index}. If {\ttfamily +1}, the output {\ttfamily Unique\+Count} will be sorted in {\bfseries{ascending}} order and along with it {\ttfamily Unique\+Value} and {\ttfamily Unique\+Index}. ({\bfseries{optional}}, default = {\ttfamily 0\+\_\+\+IK})\\
 \hline
 \end{DoxyParams}
 \begin{DoxyWarning}{Warning}
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+
 To avoid extra data copy and improve performance, the output arrays {\ttfamily Unique\+Count} and {\ttfamily Unique\+Value} will not be resized from {\ttfamily (1\+:len\+Vector)} to {\ttfamily (1\+:len\+Unique)}. The onus is on the user to ensure only the elements {\ttfamily (1\+:len\+Unique)} are used for any subsequent work as only these elements are meaningful. {\bfseries{However}}, if {\ttfamily Err} argument is present, the two aforementioned arrays will be ordered and then automatically resized to {\ttfamily (1\+:len\+Unique)}. 
 \end{DoxyWarning}
 
 
-Definition at line \mbox{\hyperlink{Unique__mod_8f90_source_l00145}{145}} of file \mbox{\hyperlink{Unique__mod_8f90_source}{Unique\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Unique__mod_8f90_source_l00156}{156}} of file \mbox{\hyperlink{Unique__mod_8f90_source}{Unique\+\_\+mod.\+f90}}.
 
 
 

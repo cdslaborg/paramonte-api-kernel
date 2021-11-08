@@ -10,6 +10,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -58,6 +62,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('namespaceDistMultiUnifEllipsoid__mod.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,7 +93,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Types</a> &#124;
@@ -90,9 +110,9 @@ Data Types</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type.html">DistMultiUnifEllipsoid_type</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This type creates objects for representing MultiVariate Uniform distribution with ellipsoidal support (domain of definition).  <a href="structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDistMultiUnifEllipsoid__mod_1_1genLogPDF.html">genLogPDF</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDistMultiUnifEllipsoid__mod_1_1genLogProbDenMVUE.html">genLogProbDenMVUE</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDistMultiUnifEllipsoid__mod_1_1genRand.html">genRand</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceDistMultiUnifEllipsoid__mod_1_1genRandMVUE.html">genRandMVUE</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -100,15 +120,15 @@ Functions/Subroutines</h2></td></tr>
 <tr class="memitem:a4975f00148bbb1266c83562a6d038467"><td class="memItemLeft" align="right" valign="top">type(<a class="el" href="structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type.html">DistMultiUnifEllipsoid_type</a>) function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDistMultiUnifEllipsoid__mod.html#a4975f00148bbb1266c83562a6d038467">construct</a> (ndim, Mean, RepUpp, isCovUpp, Err)</td></tr>
 <tr class="memdesc:a4975f00148bbb1266c83562a6d038467"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an object of type <a class="el" href="structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type.html">DistMultiUnifEllipsoid_type</a> containing the properties of the specified MultiVariate Uniform (MVU) distribution in <code>ndim</code> dimensions.  <a href="namespaceDistMultiUnifEllipsoid__mod.html#a4975f00148bbb1266c83562a6d038467">More...</a><br /></td></tr>
 <tr class="separator:a4975f00148bbb1266c83562a6d038467"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f6e71dbb11e01f1cfcb4813bb4a7316"><td class="memItemLeft" align="right" valign="top">pure real(RK) function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDistMultiUnifEllipsoid__mod.html#a0f6e71dbb11e01f1cfcb4813bb4a7316">genLogPDF_method</a> (self)</td></tr>
-<tr class="memdesc:a0f6e71dbb11e01f1cfcb4813bb4a7316"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the log-value of the probability density function (PDF). Note that a PDF is, by definition, normalized and integrates to one over the support of the distribution.  <a href="namespaceDistMultiUnifEllipsoid__mod.html#a0f6e71dbb11e01f1cfcb4813bb4a7316">More...</a><br /></td></tr>
-<tr class="separator:a0f6e71dbb11e01f1cfcb4813bb4a7316"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1843f66b23bc3054df690a878cbeb1b"><td class="memItemLeft" align="right" valign="top">real(RK) function, dimension(self%ndim)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDistMultiUnifEllipsoid__mod.html#ad1843f66b23bc3054df690a878cbeb1b">genRand_1D</a> (self)</td></tr>
-<tr class="memdesc:ad1843f66b23bc3054df690a878cbeb1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a random number deviate given the current parameters of the distribution.  <a href="namespaceDistMultiUnifEllipsoid__mod.html#ad1843f66b23bc3054df690a878cbeb1b">More...</a><br /></td></tr>
-<tr class="separator:ad1843f66b23bc3054df690a878cbeb1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8dcdea8e6bb944d4df1750c5be09f062"><td class="memItemLeft" align="right" valign="top">real(RK) function, dimension(self%ndim)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDistMultiUnifEllipsoid__mod.html#a8dcdea8e6bb944d4df1750c5be09f062">genRand_2D</a> (self)</td></tr>
-<tr class="memdesc:a8dcdea8e6bb944d4df1750c5be09f062"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a random number deviate given the current parameters of the distribution.  <a href="namespaceDistMultiUnifEllipsoid__mod.html#a8dcdea8e6bb944d4df1750c5be09f062">More...</a><br /></td></tr>
-<tr class="separator:a8dcdea8e6bb944d4df1750c5be09f062"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68f3bbde9db9df6687d5435f22508cc3"><td class="memItemLeft" align="right" valign="top">pure real(RK) function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDistMultiUnifEllipsoid__mod.html#a68f3bbde9db9df6687d5435f22508cc3">genLogPDF</a> (self)</td></tr>
+<tr class="memdesc:a68f3bbde9db9df6687d5435f22508cc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the log-value of the probability density function (PDF). Note that a PDF is, by definition, normalized and integrates to one over the support of the distribution.  <a href="namespaceDistMultiUnifEllipsoid__mod.html#a68f3bbde9db9df6687d5435f22508cc3">More...</a><br /></td></tr>
+<tr class="separator:a68f3bbde9db9df6687d5435f22508cc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9b32d4bc0a0de24b79e8afaa8376f1a"><td class="memItemLeft" align="right" valign="top">real(RK) function, dimension(self%ndim)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDistMultiUnifEllipsoid__mod.html#ae9b32d4bc0a0de24b79e8afaa8376f1a">genRand_D1</a> (self)</td></tr>
+<tr class="memdesc:ae9b32d4bc0a0de24b79e8afaa8376f1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a random number deviate given the current parameters of the distribution.  <a href="namespaceDistMultiUnifEllipsoid__mod.html#ae9b32d4bc0a0de24b79e8afaa8376f1a">More...</a><br /></td></tr>
+<tr class="separator:ae9b32d4bc0a0de24b79e8afaa8376f1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac756fac4a39f1bc0cda1690cee8a97f5"><td class="memItemLeft" align="right" valign="top">real(RK) function, dimension(self%ndim)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDistMultiUnifEllipsoid__mod.html#ac756fac4a39f1bc0cda1690cee8a97f5">genRand_D2</a> (self)</td></tr>
+<tr class="memdesc:ac756fac4a39f1bc0cda1690cee8a97f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a random number deviate given the current parameters of the distribution.  <a href="namespaceDistMultiUnifEllipsoid__mod.html#ac756fac4a39f1bc0cda1690cee8a97f5">More...</a><br /></td></tr>
+<tr class="separator:ac756fac4a39f1bc0cda1690cee8a97f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc9fff0f6a5c4e746e286c7fb3ef2841"><td class="memItemLeft" align="right" valign="top">pure real(RK) function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceDistMultiUnifEllipsoid__mod.html#acc9fff0f6a5c4e746e286c7fb3ef2841">genLogProbDenFromDetInvRepMat_RK</a> (logDetInvRepMat, logVolUnitBall)</td></tr>
 <tr class="memdesc:acc9fff0f6a5c4e746e286c7fb3ef2841"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the probability density function of the Multivariate Uniform distribution whose representative matrix has determinant of <code>logDetInvRepMat</code>.  <a href="namespaceDistMultiUnifEllipsoid__mod.html#acc9fff0f6a5c4e746e286c7fb3ef2841">More...</a><br /></td></tr>
 <tr class="separator:acc9fff0f6a5c4e746e286c7fb3ef2841"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,32 +202,32 @@ Variables</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">ndim</td><td>: The number of dimensions of the domain. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">Mean</td><td>: The mean (center) of the distribution (<b>optional</b>, default = <code>[(0., i = 1, ndim)]</code>). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">RepUpp</td><td>: The upper triangle and diagonal elements of the representative matrix of the ellipsoidal domain. The lower triangle is not used (<b>optional</b>, default = <code>(ndim + 2) *</code><a class="el" href="interfaceMatrix__mod_1_1genEye.html">identity matrix</a>). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">RepUpp</td><td>: The upper triangle and diagonal elements of the representative matrix of the ellipsoidal domain. The lower triangle is not used (<b>optional</b>, default = <code>(ndim + 2) *</code><a class="el" href="interfaceMatrixDiag__mod_1_1genEye.html">identity matrix</a>). </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">isCovUpp</td><td>: An input logical value. If <code>isCovUpp = .true.</code>, then the input <code>RepUpp</code> is assumed to be <code>CovUpp</code> representing the upper triangle of the covariance matrix of the distribution (<b>optional</b>, default = <code>.false.</code>). The input argument <code>isCovUpp</code> is relevant only when <code>RepUpp</code> is also present among the input arguments. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">Err</td><td>: An object of type <a class="el" href="structErr__mod_1_1Err__type.html">Err_mod::Err_type</a> containing error information. (<b>optional</b>, if not provided and an error occurs, it will lead to a complete program halt).</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>self</code> : An object of type <a class="el" href="structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type.html">DistMultiUnifEllipsoid_type</a>.</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>If not readily available, an input upper-triangle covariance matrix can be constructed by calling <a class="el" href="namespaceSample__mod.html#a006be94969ee33fe9d9ad6c2a438a9c6">genCovUppFromCorUpp()</a>. Furthermore, the covariance matrix can be converted to a representative matrix by multiplying each element of the covariance matrix with <code>(ndim + 2)</code> where <code>ndim</code> is the number of dimensions of the domain of the distribution.</dd>
+<dl class="section remark"><dt>Remarks</dt><dd>If not readily available, an input upper-triangle covariance matrix can be constructed by calling genCovUppFromCorUpp(). Furthermore, the covariance matrix can be converted to a representative matrix by multiplying each element of the covariance matrix with <code>(ndim + 2)</code> where <code>ndim</code> is the number of dimensions of the domain of the distribution.</dd>
 <dd>
 This routine computes the inverse of the input covariance matrix. As such, if an error occurs, the first element of <code>selfChoLow</code> (<code>selfChoLow(1,1)</code>) will be set to a negative number. Additionally, if the input argument <code>Err</code> is present, an error message will be returned in <code>Errmsg</code> and <code>Erroccurred = .true.</code>.</dd>
 <dd>
 By default, when the input argument <code>RepUpp</code> is missing, the returned ellipsoidal MVU distribution will have an identity representative matrix, meaning that the covariance matrix of the distribution is <b>not</b> identity. To generate a distribution object with identity covariance matrix, pass an identity matrix for <code>RepUpp</code> input argument and set the input argument <code>isCovUpp = .true.</code>.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, University of Texas at Austin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html#l00172">172</a> of file <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html">DistMultiUnifEllipsoid_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html#l00179">179</a> of file <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html">DistMultiUnifEllipsoid_mod.f90</a>.</p>
 
 </div>
 </div>
-<a id="a0f6e71dbb11e01f1cfcb4813bb4a7316" name="a0f6e71dbb11e01f1cfcb4813bb4a7316"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f6e71dbb11e01f1cfcb4813bb4a7316">&#9670;&nbsp;</a></span>genLogPDF_method()</h2>
+<a id="a68f3bbde9db9df6687d5435f22508cc3" name="a68f3bbde9db9df6687d5435f22508cc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68f3bbde9db9df6687d5435f22508cc3">&#9670;&nbsp;</a></span>genLogPDF()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">pure real(RK) function DistMultiUnifEllipsoid_mod::genLogPDF_method </td>
+          <td class="memname">pure real(RK) function DistMultiUnifEllipsoid_mod::genLogPDF </td>
           <td>(</td>
           <td class="paramtype">class(<a class="el" href="structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type.html">DistMultiUnifEllipsoid_type</a>), intent(in)&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -226,7 +246,7 @@ By default, when the input argument <code>RepUpp</code> is missing, the returned
 <dl class="section return"><dt>Returns</dt><dd><code>logval</code> : The natural logarithm of the PDF of the distribution.</dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This procedure is only provided for the sake of consistency with the interfaces of other distributions. Otherwise, note that the PDF of uniform distribution is constants for all supported values in the domain. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html#l00256">256</a> of file <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html">DistMultiUnifEllipsoid_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html#l00265">265</a> of file <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html">DistMultiUnifEllipsoid_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -267,7 +287,7 @@ By default, when the input argument <code>RepUpp</code> is missing, the returned
 <dl class="section return"><dt>Returns</dt><dd><code>logProbDen</code> : The natural logarithm of the PDF of the distribution.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, April 23, 2017, 12:36 AM, ICES, University of Texas at Austin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html#l00321">321</a> of file <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html">DistMultiUnifEllipsoid_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html#l00329">329</a> of file <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html">DistMultiUnifEllipsoid_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -322,18 +342,18 @@ By default, when the input argument <code>RepUpp</code> is missing, the returned
 <dl class="section return"><dt>Returns</dt><dd><code>logProbDen</code> : The natural logarithm of the PDF of the distribution.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, April 23, 2017, 12:36 AM, ICES, University of Texas at Austin </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html#l00354">354</a> of file <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html">DistMultiUnifEllipsoid_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html#l00362">362</a> of file <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html">DistMultiUnifEllipsoid_mod.f90</a>.</p>
 
 </div>
 </div>
-<a id="ad1843f66b23bc3054df690a878cbeb1b" name="ad1843f66b23bc3054df690a878cbeb1b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1843f66b23bc3054df690a878cbeb1b">&#9670;&nbsp;</a></span>genRand_1D()</h2>
+<a id="ae9b32d4bc0a0de24b79e8afaa8376f1a" name="ae9b32d4bc0a0de24b79e8afaa8376f1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9b32d4bc0a0de24b79e8afaa8376f1a">&#9670;&nbsp;</a></span>genRand_D1()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">real(RK) function, dimension(self%ndim) DistMultiUnifEllipsoid_mod::genRand_1D </td>
+          <td class="memname">real(RK) function, dimension(self%ndim) DistMultiUnifEllipsoid_mod::genRand_D1 </td>
           <td>(</td>
           <td class="paramtype">class(<a class="el" href="structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type.html">DistMultiUnifEllipsoid_type</a>), intent(in)&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -351,18 +371,18 @@ By default, when the input argument <code>RepUpp</code> is missing, the returned
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>Randev</code> : The random deviate vector of length <code>selfndim</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html#l00275">275</a> of file <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html">DistMultiUnifEllipsoid_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html#l00283">283</a> of file <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html">DistMultiUnifEllipsoid_mod.f90</a>.</p>
 
 </div>
 </div>
-<a id="a8dcdea8e6bb944d4df1750c5be09f062" name="a8dcdea8e6bb944d4df1750c5be09f062"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8dcdea8e6bb944d4df1750c5be09f062">&#9670;&nbsp;</a></span>genRand_2D()</h2>
+<a id="ac756fac4a39f1bc0cda1690cee8a97f5" name="ac756fac4a39f1bc0cda1690cee8a97f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac756fac4a39f1bc0cda1690cee8a97f5">&#9670;&nbsp;</a></span>genRand_D2()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">real(RK) function, dimension(self%ndim) DistMultiUnifEllipsoid_mod::genRand_2D </td>
+          <td class="memname">real(RK) function, dimension(self%ndim) DistMultiUnifEllipsoid_mod::genRand_D2 </td>
           <td>(</td>
           <td class="paramtype">class(<a class="el" href="structDistMultiUnifEllipsoid__mod_1_1DistMultiUnifEllipsoid__type.html">DistMultiUnifEllipsoid_type</a>), intent(in)&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -380,7 +400,7 @@ By default, when the input argument <code>RepUpp</code> is missing, the returned
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>Randev</code> : The random deviate vector of length <code>selfndim</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html#l00293">293</a> of file <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html">DistMultiUnifEllipsoid_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html#l00301">301</a> of file <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html">DistMultiUnifEllipsoid_mod.f90</a>.</p>
 
 </div>
 </div>
@@ -397,28 +417,19 @@ By default, when the input argument <code>RepUpp</code> is missing, the returned
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html#l00060">60</a> of file <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html">DistMultiUnifEllipsoid_mod.f90</a>.</p>
+<p class="definition">Definition at line <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html#l00066">66</a> of file <a class="el" href="DistMultiUnifEllipsoid__mod_8f90_source.html">DistMultiUnifEllipsoid_mod.f90</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
     <!-- start footer part -->
-    <hr class="footer"/>
-    <div style="text-align:center">
-        <p>
-            <a href="https://www.cdslab.org/paramonte"><b>ParaMonte: Plain Powerful Parallel Monte Carlo Library</b></a>&nbsp;
-            &copy; Copyright 2012 - Present, <a href="https://www.cdslab.org" target="_blank"><b>The Computational Data Science Lab</b></a>
-            <br/>
-        </p>
+    <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+      <ul>
+        <li class="navelem"><a class="el" href="namespaceDistMultiUnifEllipsoid__mod.html">DistMultiUnifEllipsoid_mod</a></li>
+        <li class="footer">Generated on Mon Nov 8 2021 10:43:38 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+      </ul>
     </div>
-    <address class="footer">
-        <small>
-            Generated on Tue Sep 28 2021 22:22:14 for ParaMonte by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a>
-            <!--
-            1.9.3
-            -->
-        </small>
-    </address>
     <div style="color: #ffffff; float: none; width: 100%;">
         <span style="font-size:0.8em">
             <script type="text/javascript">

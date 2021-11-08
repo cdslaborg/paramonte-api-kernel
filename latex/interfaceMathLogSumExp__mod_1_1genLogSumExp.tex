@@ -1,0 +1,465 @@
+\hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp}{}\doxysection{Math\+Log\+Sum\+Exp\+\_\+mod\+::gen\+Log\+Sum\+Exp Interface Reference}
+\label{interfaceMathLogSumExp__mod_1_1genLogSumExp}\index{MathLogSumExp\_mod::genLogSumExp@{MathLogSumExp\_mod::genLogSumExp}}
+
+
+Generate and return the natural logarithm of the sum of the exponential of the input {\ttfamily Array} robustly (without numerical overflow).  
+
+
+
+
+\doxysubsection{Detailed Description}
+Generate and return the natural logarithm of the sum of the exponential of the input {\ttfamily Array} robustly (without numerical overflow). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Array} & \+: The input contiguous array of shape {\ttfamily (\+:)} of either ~\newline
+ \&bsp; type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} or, ~\newline
+ \&bsp; type {\ttfamily complex} of kind \mbox{\hyperlink{namespaceConstants__mod_ac8b456bd9511bc9a52b4a03bda4b72df}{CK32}}, \mbox{\hyperlink{namespaceConstants__mod_aa6ea61256fca0b20db0ec2b90755b9f3}{CK64}}, or \mbox{\hyperlink{namespaceConstants__mod_ad3873e1ecc5eb3cf3651f72630cae087}{CK128}}, ~\newline
+ whose natural logarithm of sum of the exponential of its elements will be generated and returned. \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+Array} & \+: The input scalar of the same type and kind as the input {\ttfamily Array} representing the maximum value in {\ttfamily Array} (i.\+e., {\ttfamily max\+Array = maxval(\+Array)}). If the input {\ttfamily Array} is of {\ttfamily complex} type. \\
+\hline
+\mbox{\texttt{ in}}  & {\em cenabled} & \+: The input scalar of type {\ttfamily logical} of default kind. If {\ttfamily .true.}, then runtime checks for underflow occurrence will be enabled (hence the name {\ttfamily cenabled} standing for {\itshape Checks ENABLED}). Enabling this option can aid runtime efficiency when the division of a significant number of elements of {\ttfamily Array} (for example, half or more) by {\ttfamily max\+Array} causes underflow. In such cases, the exponentiation is avoided if {\ttfamily cenabled = .true.} leading to faster runtime by avoiding exponentiation since it is highly expensive (on the order of $\sim$200 CPU cycles). See \href{\#benchmark-genLogSumExp}{\texttt{ the relevant benchmark here}}. ({\bfseries{optional}}, default = {\ttfamily .false.}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily log\+Sum\+Exp} \+: The output scalar of the same type and kind as the input {\ttfamily Array} containing the natural logarithm of the sum of the exponential of the input {\ttfamily Array} robustly (without numerical overflow).
+\end{DoxyReturn}
+\label{interfaceLinSys__mod_1_1solveLinSysChoUpp_interface}%
+\Hypertarget{interfaceLinSys__mod_1_1solveLinSysChoUpp_interface}%
+{\bfseries{Possible calling interfaces}} \href{\#interface}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{    \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMathLogSumExp__mod}{MathLogSumExp\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}}
+\DoxyCodeLine{    logSumExp\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}(Array(\textcolor{fortran_numeric_literal}{1}:np), maxArray)}
+\DoxyCodeLine{    logSumExp\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}(Array(\textcolor{fortran_numeric_literal}{1}:np), maxArray, cenabled)}
+\DoxyCodeLine{\textcolor{fortran_keywordflow}{end block}}
+\DoxyCodeLine{!}
+
+\end{DoxyCode}
+
+\end{DoxyParagraph}
+\begin{DoxyWarning}{Warning}
+The input value of {\ttfamily max\+Array} must represent the maximum value among the elements of the input {\ttfamily Array}, that is, {\ttfamily real(max\+Array) == maxval(real(\+Array))} must hold. The validity of this is only checked if the preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED=1} is set at build time.
+
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{interfaceMathCumSum__mod_1_1genCumSum}{gen\+Cum\+Sum}}~\newline
+ \mbox{\hyperlink{interfaceMathCumSum__mod_1_1getCumSum}{get\+Cum\+Sum}}~\newline
+ gen\+Log\+Sub\+Exp~\newline
+ \mbox{\hyperlink{interfaceMathCumPropExp__mod_1_1genCumPropExp}{gen\+Cum\+Prop\+Exp}}~\newline
+ \mbox{\hyperlink{interfaceMathCumPropExp__mod_1_1getCumPropExp}{get\+Cum\+Prop\+Exp}}~\newline
+
+\end{DoxySeeAlso}
+\label{namespaceInterpLinear__mod_example}%
+\Hypertarget{namespaceInterpLinear__mod_example}%
+{\bfseries{Example usage}} \href{\#example}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00001}00001 \textcolor{fortran_statement}{program} example}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00003}00003     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceDecoration__mod}{Decoration\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{structDecoration__mod_1_1Display__type}{Display\_type}}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00004}00004     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_ac8b456bd9511bc9a52b4a03bda4b72df}{CK32}}, \mbox{\hyperlink{namespaceConstants__mod_aa6ea61256fca0b20db0ec2b90755b9f3}{CK64}}, \mbox{\hyperlink{namespaceConstants__mod_ad3873e1ecc5eb3cf3651f72630cae087}{CK128}}, \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00005}00005     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMathLogSumExp__mod}{MathLogSumExp\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}} \textcolor{fortran_comment}{! also accessible from Math\_mod.}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00007}00007     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00009}00009     \textcolor{fortran_statement}{type}(Display\_type) :: Disp}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00011}00011     Disp\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structDecoration__mod_1_1Display__type}{Display\_type}}(file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.out.f90"{}}, marginBottom\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00013}00013 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}!\%\%\%\%\%\%\%\%\%\%"{}}, marginBottom\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00014}00014 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}32-\/bit real"{}}, marginBottom\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00015}00015 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}!\%\%\%\%\%\%\%\%\%\%"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00017}00017 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}exp( genLogSumExp( Array = log([1.\_RK32, 2.\_RK32, 3.\_RK32, 4.\_RK32]), maxArray = log(4.\_RK32) ) )"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00018}00018 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_function}{ exp}( \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}( Array\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}([\textcolor{fortran_numeric_literal}{1.\_RK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{ 2.\_RK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{ 3.\_RK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{ 4.\_RK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2}]), maxArray\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}(\textcolor{fortran_numeric_literal}{4.\_RK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2}) ) ) )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00020}00020 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}!\%\%\%\%\%\%\%\%\%\%"{}}, marginBottom\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00021}00021 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}64-\/bit real"{}}, marginBottom\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00022}00022 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}!\%\%\%\%\%\%\%\%\%\%"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00024}00024 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}exp( genLogSumExp( Array = log([1.\_RK64, 2.\_RK64, 3.\_RK64, 4.\_RK64]), maxArray = log(4.\_RK64) ) )"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00025}00025 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_function}{ exp}( \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}( Array\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}([\textcolor{fortran_numeric_literal}{1.\_RK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_numeric_literal}{ 2.\_RK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_numeric_literal}{ 3.\_RK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_numeric_literal}{ 4.\_RK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4}]), maxArray\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}(\textcolor{fortran_numeric_literal}{4.\_RK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4}) ) ) )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00027}00027 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}!\%\%\%\%\%\%\%\%\%\%\%"{}}, marginBottom\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00028}00028 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}128-\/bit real"{}}, marginBottom\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00029}00029 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}!\%\%\%\%\%\%\%\%\%\%\%"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00031}00031 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}exp( genLogSumExp( Array = log([1.\_RK128, 2.\_RK128, 3.\_RK128, 4.\_RK128]), maxArray = log(4.\_RK128) ) )"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00032}00032 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_function}{ exp}( \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}( Array\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}([\textcolor{fortran_numeric_literal}{1.\_RK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8},\textcolor{fortran_numeric_literal}{ 2.\_RK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8},\textcolor{fortran_numeric_literal}{ 3.\_RK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8},\textcolor{fortran_numeric_literal}{ 4.\_RK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8}]), maxArray\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}(\textcolor{fortran_numeric_literal}{4.\_RK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8}) ) ) )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00034}00034 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}!\%\%\%\%\%\%\%\%\%\%\%\%\%"{}}, marginBottom\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00035}00035 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}32-\/bit complex"{}}, marginBottom\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00036}00036 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}!\%\%\%\%\%\%\%\%\%\%\%\%\%"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00038}00038 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}exp( genLogSumExp( Array = cmplx(log([(1.\_CK32,-\/1.\_CK32), (2.\_CK32,-\/2.\_CK32), (3.\_CK32,-\/3.\_CK32)]), kind = CK32), maxArray = log((3.\_CK32,-\/3.\_CK32)) ) )"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00039}00039 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_function}{ exp}( \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}( Array\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{cmplx}(\textcolor{fortran_function}{log}([(\textcolor{fortran_numeric_literal}{1.\_CK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{1.\_CK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2}), (\textcolor{fortran_numeric_literal}{2.\_CK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{2.\_CK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2}), (\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2})]),\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceConstants__mod_ac8b456bd9511bc9a52b4a03bda4b72df}{CK32}}), maxArray\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}((\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2})) ) ) )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00041}00041 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}!\%\%\%\%\%\%\%\%\%\%\%\%\%"{}}, marginBottom\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00042}00042 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}64-\/bit complex"{}}, marginBottom\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00043}00043 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}!\%\%\%\%\%\%\%\%\%\%\%\%\%"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00045}00045 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}exp( genLogSumExp( Array = cmplx(log([(1.\_CK64,-\/1.\_CK64), (2.\_CK64,-\/2.\_CK64), (3.\_CK64,-\/3.\_CK64)]), kind = CK64), maxArray = log((3.\_CK64,-\/3.\_CK64)) ) )"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00046}00046 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_function}{ exp}( \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}( Array\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{cmplx}(\textcolor{fortran_function}{log}([(\textcolor{fortran_numeric_literal}{1.\_CK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{1.\_CK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4}), (\textcolor{fortran_numeric_literal}{2.\_CK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{2.\_CK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4}), (\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4})]),\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceConstants__mod_aa6ea61256fca0b20db0ec2b90755b9f3}{CK64}}), maxArray\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}((\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4})) ) ) )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00048}00048 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}!\%\%\%\%\%\%\%\%\%\%\%\%\%\%"{}}, marginBottom\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00049}00049 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}128-\/bit complex"{}}, marginBottom\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0\_IK})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00050}00050 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}!\%\%\%\%\%\%\%\%\%\%\%\%\%\%"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00052}00052 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}exp( genLogSumExp( Array = cmplx(log([(1.\_CK128,-\/1.\_CK128), (2.\_CK128,-\/2.\_CK128), (3.\_CK128,-\/3.\_CK128)]), kind = CK128), maxArray = log((3.\_CK128,-\/3.\_CK128)) ) )"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00053}00053 \textcolor{fortran_statement}{    call} Disp\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_function}{ exp}( \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}( Array\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{cmplx}(\textcolor{fortran_function}{log}([(\textcolor{fortran_numeric_literal}{1.\_CK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{1.\_CK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8}), (\textcolor{fortran_numeric_literal}{2.\_CK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{2.\_CK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8}), (\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8})]),\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceConstants__mod_ad3873e1ecc5eb3cf3651f72630cae087}{CK128}}), maxArray\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}((\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8})) ) ) )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00055}00055 \textcolor{fortran_statement}{end program }example}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-gnu}%
+\Hypertarget{namespaceBench__mod_compile-unix-gnu}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compile-unix-gnu}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-intel}%
+\Hypertarget{namespaceBench__mod_compile-unix-intel}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compile-unix-intel}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_output}%
+\Hypertarget{namespaceBench__mod_output}%
+{\bfseries{Example output}} \href{\#output}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00001}00001 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00002}00002 \textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_operator_symbols}{-\/}bit real}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00003}00003 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00005}00005 \textcolor{fortran_function}{exp}( \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}( Array\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}([\textcolor{fortran_numeric_literal}{1.\_RK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{ 2.\_RK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{ 3.\_RK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{ 4.\_RK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2}]), maxArray\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}(\textcolor{fortran_numeric_literal}{4.\_RK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2}) ) )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00007}00007 \textcolor{fortran_operator_symbols}{+}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00009}00009 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00010}00010 \textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4}\textcolor{fortran_operator_symbols}{-\/}bit real}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00011}00011 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00013}00013 \textcolor{fortran_function}{exp}( \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}( Array\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}([\textcolor{fortran_numeric_literal}{1.\_RK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_numeric_literal}{ 2.\_RK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_numeric_literal}{ 3.\_RK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_numeric_literal}{ 4.\_RK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4}]), maxArray\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}(\textcolor{fortran_numeric_literal}{4.\_RK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4}) ) )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00015}00015 \textcolor{fortran_operator_symbols}{+}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{2}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00017}00017 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00018}00018 \textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8}\textcolor{fortran_operator_symbols}{-\/}bit real}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00019}00019 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00021}00021 \textcolor{fortran_function}{exp}( \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}( Array\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}([\textcolor{fortran_numeric_literal}{1.\_RK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8},\textcolor{fortran_numeric_literal}{ 2.\_RK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8},\textcolor{fortran_numeric_literal}{ 3.\_RK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8},\textcolor{fortran_numeric_literal}{ 4.\_RK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8}]), maxArray\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}(\textcolor{fortran_numeric_literal}{4.\_RK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8}) ) )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00023}00023 \textcolor{fortran_operator_symbols}{+}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00025}00025 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00026}00026 \textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_operator_symbols}{-\/}bit complex}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00027}00027 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00029}00029 \textcolor{fortran_function}{exp}( \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}( Array\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{cmplx}(\textcolor{fortran_function}{log}([(\textcolor{fortran_numeric_literal}{1.\_CK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{1.\_CK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2}), (\textcolor{fortran_numeric_literal}{2.\_CK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{2.\_CK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2}), (\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2})]),\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceConstants__mod_ac8b456bd9511bc9a52b4a03bda4b72df}{CK32}}), maxArray\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}((\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{3}\textcolor{fortran_numeric_literal}{2})) ) )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00031}00031 (\textcolor{fortran_operator_symbols}{+}\textcolor{fortran_numeric_literal}{6.}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{4}\textcolor{fortran_numeric_literal}{8},\textcolor{fortran_operator_symbols}{ -\/}\textcolor{fortran_numeric_literal}{6.}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{4}\textcolor{fortran_numeric_literal}{8})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00033}00033 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00034}00034 \textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4}\textcolor{fortran_operator_symbols}{-\/}bit complex}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00035}00035 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00037}00037 \textcolor{fortran_function}{exp}( \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}( Array\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{cmplx}(\textcolor{fortran_function}{log}([(\textcolor{fortran_numeric_literal}{1.\_CK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{1.\_CK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4}), (\textcolor{fortran_numeric_literal}{2.\_CK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{2.\_CK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4}), (\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4})]),\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceConstants__mod_aa6ea61256fca0b20db0ec2b90755b9f3}{CK64}}), maxArray\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}((\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{6}\textcolor{fortran_numeric_literal}{4})) ) )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00039}00039 (\textcolor{fortran_operator_symbols}{+}\textcolor{fortran_numeric_literal}{6.}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0},\textcolor{fortran_operator_symbols}{ -\/}\textcolor{fortran_numeric_literal}{5.}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{1})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00041}00041 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00042}00042 \textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8}\textcolor{fortran_operator_symbols}{-\/}bit complex}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00043}00043 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00045}00045 \textcolor{fortran_function}{exp}( \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}( Array\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{cmplx}(\textcolor{fortran_function}{log}([(\textcolor{fortran_numeric_literal}{1.\_CK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{1.\_CK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8}), (\textcolor{fortran_numeric_literal}{2.\_CK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{2.\_CK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8}), (\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8})]),\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceConstants__mod_ad3873e1ecc5eb3cf3651f72630cae087}{CK128}}), maxArray\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{log}((\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8},\textcolor{fortran_operator_symbols}{-\/}\textcolor{fortran_numeric_literal}{3.\_CK}\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{8})) ) )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00047}00047 (\textcolor{fortran_operator_symbols}{+}\textcolor{fortran_numeric_literal}{6.}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{0},\textcolor{fortran_operator_symbols}{ -\/}\textcolor{fortran_numeric_literal}{5.}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{3})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00048}00048 }
+
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\label{interfaceMathLogSumExp__mod_1_1genLogSumExp_benchmark-genLogSumExp}%
+\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_benchmark-genLogSumExp}%
+{\bfseries{Benchmark \+:: The effects of {\ttfamily cenabled} on runtime efficiency}} \href{\#benchmark-genLogSumExp}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+The following program compares the runtime performance of \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{gen\+Log\+Sum\+Exp}} algorithm with and without checking for underflows. 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00001}00001 \textcolor{fortran_comment}{! Test the performance of `genLogSumExp()` with and without underflow check vs. direct computation of `logSumExp`.}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00002}00002 \textcolor{fortran_statement}{program} benchmark}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00004}00004     \textcolor{fortran_statement}{use }\textcolor{fortran_inrinsic_module}{iso\_fortran\_env}, \textcolor{fortran_statement}{only}:\textcolor{fortran_named_const}{ error\_unit}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00005}00005     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00006}00006     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceBench__mod}{Bench\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00008}00008     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00010}00010     \textcolor{fortran_statement}{integer}(IK)                         :: i}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00011}00011     \textcolor{fortran_statement}{integer}(IK)                         :: iarr}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00012}00012     \textcolor{fortran_statement}{integer}(IK)                         :: fileUnitN}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00013}00013     \textcolor{fortran_statement}{integer}(IK)                         :: fileUnitU}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00014}00014     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}             :: NARR\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00015}00015     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}             :: NBENCH\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{3\_IK}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00016}00016     \textcolor{fortran_statement}{integer}(IK)                         :: ArraySize(NARR)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00017}00017 \textcolor{fortran_statement}{    real}(RK)                            :: dummySum\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.\_RK}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00018}00018 \textcolor{fortran_statement}{    real}(RK)                            :: maxArray}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00019}00019 \textcolor{fortran_statement}{    real}(RK)    ,\textcolor{fortran_attribute}{ allocatable}           :: Array(:)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00020}00020 \textcolor{fortran_statement}{    real}(RK)                            :: logSumExp}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00021}00021     \textcolor{fortran_statement}{type}(Bench\_type)                    :: Bench(\textcolor{fortran_numeric_literal}{2},NBENCH)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00022}00022 \textcolor{fortran_statement}{    logical}                             :: underflowEnabled}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00024}00024     Bench(\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{1})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}genLogSumExpCheckDisabled "{}}, exec\textcolor{fortran_operator_symbols}{ = }genLogSumExpCheckDisabled , getOverhead\textcolor{fortran_operator_symbols}{ = }getOverhead)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00025}00025     Bench(\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{2})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}genLogSumExpCheckEnabled "{}}, exec\textcolor{fortran_operator_symbols}{ = }genLogSumExpCheckEnabled , getOverhead\textcolor{fortran_operator_symbols}{ = }getOverhead)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00026}00026     Bench(\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{3})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}genLogSumExpDirect"{}}, exec\textcolor{fortran_operator_symbols}{ = }genLogSumExpDirect, getOverhead\textcolor{fortran_operator_symbols}{ = }getOverhead)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00028}00028     ArraySize\textcolor{fortran_operator_symbols}{ = }[(\textcolor{fortran_numeric_literal}{ 2\_IK}\textcolor{fortran_operator_symbols}{*}\textcolor{fortran_operator_symbols}{*}iarr, iarr\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}, NARR )]}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00030}00030 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00031}00031 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}genLogSumExp(..., cenabled = .false.) vs. genLogSumExp(..., cenabled = .true.) vs. direct method."{}}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00032}00032 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00034}00034 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnitN, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.normal.out"{}}, status\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}replace"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00035}00035 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnitU, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.underflow.out"{}}, status\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}replace"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00037}00037 \textcolor{fortran_statement}{        write}(fileUnitN, \textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) \textcolor{fortran_string}{"{}ArraySize"{}}, (Bench(\textcolor{fortran_numeric_literal}{1},i)\textcolor{fortran_operator_symbols}{\%}name, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00038}00038 \textcolor{fortran_statement}{        write}(fileUnitU, \textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) \textcolor{fortran_string}{"{}ArraySize"{}}, (Bench(\textcolor{fortran_numeric_literal}{2},i)\textcolor{fortran_operator_symbols}{\%}name, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00040}00040         loopOverArraySize: \textcolor{fortran_keywordflow}{do} iarr\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NARR}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00042}00042 \textcolor{fortran_statement}{            allocate}(Array(ArraySize(iarr)))}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00043}00043 \textcolor{fortran_statement}{            write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Benchmarking with array size"{}}, ArraySize(iarr)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00045}00045             underflowEnabled\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.false.}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00046}00046             \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00047}00047             \textcolor{fortran_comment}{!do i = NBENCH, 1, -\/1}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00048}00048 \textcolor{fortran_statement}{                call} Bench(\textcolor{fortran_numeric_literal}{1},i)\textcolor{fortran_operator_symbols}{\%}time(Bench(\textcolor{fortran_numeric_literal}{1},i)\textcolor{fortran_operator_symbols}{\%}Timing, minsec\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{7\_RK})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00049}00049 \textcolor{fortran_keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00050}00050 \textcolor{fortran_statement}{            write}(fileUnitN,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) ArraySize(iarr), (Bench(\textcolor{fortran_numeric_literal}{1},i)\textcolor{fortran_operator_symbols}{\%}Timing\textcolor{fortran_operator_symbols}{\%}Stat\textcolor{fortran_operator_symbols}{\%}mean, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00052}00052             underflowEnabled\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00053}00053             \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00054}00054 \textcolor{fortran_statement}{                call} Bench(\textcolor{fortran_numeric_literal}{2},i)\textcolor{fortran_operator_symbols}{\%}time(Bench(\textcolor{fortran_numeric_literal}{2},i)\textcolor{fortran_operator_symbols}{\%}Timing, minsec\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{7\_RK})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00055}00055 \textcolor{fortran_keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00056}00056 \textcolor{fortran_statement}{            write}(fileUnitU,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) ArraySize(iarr), (Bench(\textcolor{fortran_numeric_literal}{2},i)\textcolor{fortran_operator_symbols}{\%}Timing\textcolor{fortran_operator_symbols}{\%}Stat\textcolor{fortran_operator_symbols}{\%}mean, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00058}00058 \textcolor{fortran_statement}{            deallocate}(Array)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00060}00060 \textcolor{fortran_keywordflow}{        end do} loopOverArraySize}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00061}00061 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) dummySum}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00062}00062 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00064}00064 \textcolor{fortran_statement}{    close}(fileUnitN)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00065}00065 \textcolor{fortran_statement}{    close}(fileUnitU)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00067}00067 \textcolor{fortran_statement}{contains}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00069}00069     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00070}00070     \textcolor{fortran_comment}{! procedure wrappers.}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00071}00071     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00073}00073 \textcolor{fortran_statement}{    subroutine} getOverhead()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00074}00074 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00075}00075 \textcolor{fortran_statement}{        call} getDummy()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00076}00076     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00078}00078 \textcolor{fortran_statement}{    subroutine} getArray()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00079}00079 \textcolor{fortran_statement}{        call}\textcolor{fortran_subroutine}{ random\_number}(Array)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00080}00080         \textcolor{fortran_keywordflow}{if} (underflowEnabled) Array\textcolor{fortran_operator_symbols}{ = }Array\textcolor{fortran_operator_symbols}{ * }(\textcolor{fortran_function}{maxexponent}(\textcolor{fortran_numeric_literal}{0.\_RK})\textcolor{fortran_operator_symbols}{ -\/ }\textcolor{fortran_function}{minexponent}(\textcolor{fortran_numeric_literal}{0.\_RK}))\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_function}{minexponent}(\textcolor{fortran_numeric_literal}{0.\_RK})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00081}00081         maxArray\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{maxval}(Array)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00082}00082     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00084}00084 \textcolor{fortran_statement}{    subroutine} getDummy()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00085}00085         dummySum\textcolor{fortran_operator_symbols}{ = }dummySum\textcolor{fortran_operator_symbols}{ + }logSumExp}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00086}00086     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00088}00088 \textcolor{fortran_statement}{    subroutine} genLogSumExpCheckDisabled()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00089}00089         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMathLogSumExp__mod}{MathLogSumExp\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00090}00090 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00091}00091         logSumExp\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}(Array, maxArray)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00092}00092 \textcolor{fortran_statement}{        call} getDummy()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00093}00093     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00095}00095 \textcolor{fortran_statement}{    subroutine} genLogSumExpCheckEnabled()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00096}00096         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMathLogSumExp__mod}{MathLogSumExp\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00097}00097 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00098}00098         logSumExp\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{genLogSumExp}}(Array, maxArray, cenabled\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00099}00099 \textcolor{fortran_statement}{        call} getDummy()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00100}00100     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00102}00102 \textcolor{fortran_statement}{    subroutine} genLogSumExpDirect()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00103}00103 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00104}00104         logSumExp\textcolor{fortran_operator_symbols}{ = }maxArray\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_function}{log}(\textcolor{fortran_function}{sum}(\textcolor{fortran_function}{exp}(Array\textcolor{fortran_operator_symbols}{ -\/ }maxArray)))}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00105}00105 \textcolor{fortran_statement}{        call} getDummy()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00106}00106     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00108}00108 \textcolor{fortran_statement}{end program }benchmark}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{interfaceMathLogSumExp__mod_1_1genLogSumExp_compileb-unix-gnu-genLogSumExp}%
+\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_compileb-unix-gnu-genLogSumExp}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compileb-unix-gnu-genLogSumExp}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{interfaceMathLogSumExp__mod_1_1genLogSumExp_compileb-unix-intel-genLogSumExp}%
+\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_compileb-unix-intel-genLogSumExp}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compileb-unix-intel-genLogSumExp}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{interfaceMathLogSumExp__mod_1_1genLogSumExp_postprocb-genLogSumExp}%
+\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_postprocb-genLogSumExp}%
+{\bfseries{Postprocessing of the output}} \href{\#postprocb-genLogSumExp}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00004}00004 \textcolor{keyword}{import} seaborn \textcolor{keyword}{as} sns}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00005}00005 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00006}00006 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00007}00007 sns.set()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00009}00009 fontsize = 14}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00011}00011 methods = [\textcolor{stringliteral}{"{}Direct Method"{}}, \textcolor{stringliteral}{"{}cenabled = .false."{}}, \textcolor{stringliteral}{"{}cenabled = .true."{}}]}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00017}00017 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.normal.out"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00019}00019 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00020}00020 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00022}00022 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00023}00023         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00024}00024         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00025}00025         , linestyle = \textcolor{stringliteral}{"{}-\/-\/"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00026}00026         , color = \textcolor{stringliteral}{"{}black"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00027}00027         )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00028}00028 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00029}00029         , df[\textcolor{stringliteral}{"{}genLogSumExpCheckDisabled"{}}].values / df[\textcolor{stringliteral}{"{}genLogSumExpDirect"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00030}00030         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00031}00031         )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00032}00032 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00033}00033         , df[\textcolor{stringliteral}{"{}genLogSumExpCheckEnabled"{}}].values / df[\textcolor{stringliteral}{"{}genLogSumExpDirect"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00034}00034         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00035}00035         )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00037}00037 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00038}00038 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00039}00039 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00040}00040 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime Ratio (W.R.T. Direct Method)"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00041}00041 ax.set\_title(\textcolor{stringliteral}{"{}genLogSumExp performance when the\(\backslash\)ninput array causes no underflow instances.\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00042}00042 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00043}00043 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00044}00044 ax.legend   ( methods}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00045}00045            \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00046}00046            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00047}00047             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00048}00048             )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00050}00050 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00051}00051 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genLogSumExp.normal.png"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00057}00057 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.underflow.out"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00059}00059 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00060}00060 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00062}00062 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00063}00063         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00064}00064         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00065}00065         , linestyle = \textcolor{stringliteral}{"{}-\/-\/"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00066}00066         , color = \textcolor{stringliteral}{"{}black"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00067}00067         )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00068}00068 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00069}00069         , df[\textcolor{stringliteral}{"{}genLogSumExpCheckDisabled"{}}].values / df[\textcolor{stringliteral}{"{}genLogSumExpDirect"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00070}00070         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00071}00071         )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00072}00072 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00073}00073         , df[\textcolor{stringliteral}{"{}genLogSumExpCheckEnabled"{}}].values / df[\textcolor{stringliteral}{"{}genLogSumExpDirect"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00074}00074         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00075}00075         )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00077}00077 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00078}00078 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00079}00079 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00080}00080 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime Ratio ( W.R.T. Direct Method )"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00081}00081 ax.set\_title(\textcolor{stringliteral}{"{}genLogSumExp performance when the\(\backslash\)ninput array causes many underflow instances.\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00082}00082 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00083}00083 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00084}00084 ax.legend   ( methods}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00085}00085            \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00086}00086            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00087}00087             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00088}00088             )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00090}00090 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00091}00091 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genLogSumExp.underflow.png"{}})}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{interfaceMathLogSumExp__mod_1_1genLogSumExp_visb-genLogSumExp}%
+\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_visb-genLogSumExp}%
+{\bfseries{Visualization of the benchmark output}} \href{\#visb-genLogSumExp}{\texttt{ ⛓}} \DoxyHorRuler{0}
+   ~\newline
+ \label{interfaceMathLogSumExp__mod_1_1genLogSumExp_moralb-genLogSumExp}%
+\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_moralb-genLogSumExp}%
+{\bfseries{Benchmark moral}} \href{\#moralb-genLogSumExp}{\texttt{ ⛓}} \DoxyHorRuler{0}
+
+\begin{DoxyEnumerate}
+\item If the input array has many (half the size of array or more) elements whose division by the {\ttfamily maxval(\+Array)} causes underflow, then setting {\ttfamily cenabled = .true.} when calling \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{gen\+Log\+Sum\+Exp}} will likely result in a faster runtime. Conversely, if the divisions are not expected to cause any or too many underflows, then set {\ttfamily cenabled = .true.} to improve cache coherence and runtime performance (at the expense of occasional expensive but redundant exponentiations).
+\item Note the performance of manual computation against \mbox{\hyperlink{interfaceMathLogSumExp__mod_1_1genLogSumExp}{gen\+Log\+Sum\+Exp}} with or without setting the optional argument {\ttfamily cenabled}.
+\end{DoxyEnumerate}
+\end{DoxyParagraph}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000027}{Test}}]\mbox{\hyperlink{namespaceTest__MathLogSumExp__mod}{Test\+\_\+\+Math\+Log\+Sum\+Exp\+\_\+mod}}\end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000024}{Todo}}]This generic interface can be expanded to include input arrays with {\ttfamily Weight}s.\end{DoxyRefDesc}
+
+
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, Tuesday 08\+:49 PM, August 10, 2021, Dallas, TX 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{MathLogSumExp__mod_8f90_source_l00142}{142}} of file \mbox{\hyperlink{MathLogSumExp__mod_8f90_source}{Math\+Log\+Sum\+Exp\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{MathLogSumExp__mod_8f90}{Math\+Log\+Sum\+Exp\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

@@ -16,7 +16,7 @@ This function is a handy shortcut for symmetrizing upper-\/triangular square mat
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{ in}}  & {\em Mat\+Upp} & \+: The square matrix whose elements shall be all reals of either \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} kinds. \\
 \hline
-\mbox{\texttt{ in}}  & {\em Dia} & \+: The diagonal elements of the output matrix. This optional input argument is particularly useful when symmetrizing the upper triangle of a Cholesky factorization. ({\bfseries{optional}}, The default will be the diagonal elements of {\ttfamily Mat\+Upp}).\\
+\mbox{\texttt{ in}}  & {\em Dia} & \+: The diagonal elements of the output matrix. This optional input argument is particularly useful when symmetrizing the upper triangle of a Cholesky factorization. ({\bfseries{optional}}, The default will be the diagonal elements of the input {\ttfamily Mat\+Upp}).\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -30,8 +30,53 @@ This procedure is {\ttfamily impure} when the library is compiled with macro {\t
 \begin{DoxySeeAlso}{See also}
 \mbox{\hyperlink{interfaceMatrix__mod_1_1genMatSymFromMatLow}{gen\+Mat\+Sym\+From\+Mat\+Low}} ~\newline
  \mbox{\hyperlink{interfaceMatrix__mod_1_1symmetrizeMatUpp}{symmetrize\+Mat\+Upp}} ~\newline
- \mbox{\hyperlink{interfaceMatrix__mod_1_1symmetrizeMatLow}{symmetrize\+Mat\+Low}}
+ \mbox{\hyperlink{interfaceMatrix__mod_1_1symmetrizeMatLow}{symmetrize\+Mat\+Low}} ~\newline
+
 \end{DoxySeeAlso}
+\label{namespaceInterpLinear__mod_usage}%
+\Hypertarget{namespaceInterpLinear__mod_usage}%
+{\bfseries{Example usage}} \href{\#usage}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-gnu}%
+\Hypertarget{namespaceBench__mod_compile-unix-gnu}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compile-unix-gnu}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceMatrix__mod_1_1genMatSymFromMatUpp_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceMatrix__mod_1_1genMatSymFromMatUpp_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceMatrix__mod_1_1genMatSymFromMatUpp_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-intel}%
+\Hypertarget{namespaceBench__mod_compile-unix-intel}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compile-unix-intel}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceMatrix__mod_1_1genMatSymFromMatUpp_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceMatrix__mod_1_1genMatSymFromMatUpp_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceMatrix__mod_1_1genMatSymFromMatUpp_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_output}%
+\Hypertarget{namespaceBench__mod_output}%
+{\bfseries{Example output}} \href{\#output}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000017}{Test}}]\mbox{\hyperlink{namespaceTest__Matrix__mod}{Test\+\_\+\+Matrix\+\_\+mod}}\end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000027}{Todo}}]The functionality of this interface can be expanded to cover complex numbers.\end{DoxyRefDesc}
+
+
 \begin{DoxyRemark}{Remarks}
 For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
 
@@ -45,7 +90,7 @@ Amir Shahmoradi, Sunday 3\+:33 PM, September 19, 2021, Dallas, TX
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00122}{122}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Matrix__mod_8f90_source_l00320}{320}} of file \mbox{\hyperlink{Matrix__mod_8f90_source}{Matrix\+\_\+mod.\+f90}}.
 
 
 
