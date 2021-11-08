@@ -1,6 +1,5 @@
 var NAVTREEINDEX16 =
 {
-"namespaceDistMultiUnifCube__mod.html":[4,0,21],
 "namespaceDistMultiUnifCube__mod.html#a0a7caee9d1898e7fa37691c20dc3415e":[4,0,21,11],
 "namespaceDistMultiUnifCube__mod.html#a22b94e93b16e2524ede718484872e81a":[4,0,21,9],
 "namespaceDistMultiUnifCube__mod.html#a3fb3b5b4af24f22416724a88c19b9970":[4,0,21,12],
@@ -249,5 +248,6 @@ var NAVTREEINDEX16 =
 "namespaceMatrixCopy__mod.html#a5fb9a2489081cbd69eb3a358507c65c6":[4,0,56,5],
 "namespaceMatrixCopy__mod.html#a8c889686f4c4eaa8486129be81cc7a34":[4,0,56,7],
 "namespaceMatrixCopy__mod.html#a93a33a2a9989a86bc7d9ff73d32b36ca":[4,0,56,6],
-"namespaceMatrixCopy__mod.html#ae73bb7a536b7229a4d5ad5c083c5c9cd":[4,0,56,8]
+"namespaceMatrixCopy__mod.html#ae73bb7a536b7229a4d5ad5c083c5c9cd":[4,0,56,8],
+"namespaceMatrixDiag__mod.html":[4,0,57]
 };

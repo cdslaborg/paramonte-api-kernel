@@ -663,6 +663,5 @@ var annotated_dup =
     [ "Unique_mod", "namespaceUnique__mod.html", [
       [ "findUnique", "interfaceUnique__mod_1_1findUnique.html", "interfaceUnique__mod_1_1findUnique" ],
       [ "genUnique", "interfaceUnique__mod_1_1genUnique.html", null ]
-    ] ],
-    [ "tt", "interfacett.html", null ]
+    ] ]
 ];

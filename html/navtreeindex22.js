@@ -1,6 +1,5 @@
 var NAVTREEINDEX22 =
 {
-"namespaceTest__Matrix__mod.html#aaa89c9d3a00441aa5a5ed5c41f31229a":[4,0,188,1],
 "namespaceTest__Matrix__mod.html#ac8452b1dc4af243e9b5a26573eb2d851":[4,0,188,0],
 "namespaceTest__Misc__mod.html":[4,0,196],
 "namespaceTest__Misc__mod.html#a000e80c58034e8fc3f3dbbf0555a1686":[4,0,196,7],
@@ -249,5 +248,6 @@ var NAVTREEINDEX22 =
 "namespaceTest__StarFormation__mod.html#a6c6ef41fe30973fdd75addfe07eb539b":[4,0,221,18],
 "namespaceTest__StarFormation__mod.html#a7a4da660996c9ab40d16b9fe20d5f8cb":[4,0,221,5],
 "namespaceTest__StarFormation__mod.html#a92e315ab298a8bb3d7a9eef1c715ef79":[4,0,221,20],
-"namespaceTest__StarFormation__mod.html#a9f6275dc79829b6d28ef55bf7d430cb6":[4,0,221,0]
+"namespaceTest__StarFormation__mod.html#a9f6275dc79829b6d28ef55bf7d430cb6":[4,0,221,0],
+"namespaceTest__StarFormation__mod.html#ac7f1223e6efcb2b71aaa20d836daeeb1":[4,0,221,6]
 };

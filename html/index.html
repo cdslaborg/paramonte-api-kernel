@@ -317,13 +317,106 @@ ParaMonte Kernel Documentation Guidelines</h1>
 </li>
 </ul>
 </li>
-<li><b>ParaMonte Doxygen custom commands</b>.<br  />
- To simplify documentation and avoid retyping certain frequently used keywords and sentences, a number of Doxygen aliases are predfined in the ParaMonte Doxygen <code>config.txt</code> file. These include (but are not limited to):<ul>
+<li><p class="startli"><b>ParaMonte Doxygen custom commands</b>.<br  />
+ To simplify documentation and avoid retyping certain frequently used keywords and sentences, a number of Doxygen aliases are predfined in the ParaMonte Doxygen <code>config.txt</code> file. These include (but are not limited to):</p><ul>
 <li><code>\warnpure</code> Inserts a <code>\warning</code> about procedures that are <code>impure</code> when the library is build the preprocessor macro <code>CHECK_ENABLED=1</code>.</li>
 <li><code>\elemental</code> Inserts a <code>\remark</code> tag indicating that the procedure of interest is <code>elemental</code>.</li>
 <li><code>\pure</code> Inserts a <code>\remark</code> tag indicating that the procedure of interest is <code>pure</code>.</li>
-<li><code>\ </code></li>
+<li><code>\interface</code> Starts a <b>Possible calling interfaces</b> paragraph where different calling interfaces of a procedure can be listed.</li>
+<li><code>\benchmark</code> Starts a new <b>Benchmark</b> paragraph which is hyper-linked to the generic anchor <code>#benchmark</code> at the same location on the same page.</li>
+<li><code>\benchmark{xxx}</code> Starts a new <b>Benchmark</b> paragraph which is hyper-linked to the specific anchor <code>#benchmark-xxx</code> at the same location on the same page.</li>
+<li><code>\benchmark{xxx, This is the benchmark title}</code> Starts a new <b>Benchmark</b> paragraph which is hyper-linked to the specific anchor <code>#benchmark-xxx</code> at the same location on the same page with the title <code>This is the benchmark title</code>.</li>
+<li><code>\example</code> Starts a new <b>Example usage</b> paragraph which is hyper-linked to the generic anchor <code>#example</code> at the same location on the same page.</li>
+<li><code>\example{xxx}</code> Starts a new <b>Example usage</b> paragraph which is hyper-linked to the specific anchor <code>#example-xxx</code> at the same location on the same page.</li>
+<li><code>\compile</code> Inserts the set of example compile commands.</li>
+<li><code>\output</code> Inserts a title line for the output section of an example paragraph.</li>
+<li><code>\postproc</code> Inserts a title line for the postprocessing section of an example paragraph.</li>
+<li><code>\abbr</code> Inserts a <code>\remark</code> tag about the naming abbreviations used in the library.</li>
+<li><code>\naming</code> Inserts a <code>\remark</code> tag about the naming conventions used in the library.</li>
+<li><code>\license</code> Inserts a <code>\remark</code> tag about the generic licensing of the library.</li>
+<li><code>\final</code> Inserts the set of final generic remarks that should appear at the end of each documentation section.</li>
+<li><code>\RK</code> Inserts a hyper-link reference to the default <code>real</code> kind used in the library.</li>
+<li><code>\RK32</code> Inserts a hyper-link reference to the <code>real32</code> real kind used in the library.</li>
+<li><code>\RK64</code> Inserts a hyper-link reference to the <code>real64</code> real kind used in the library.</li>
+<li><code>\RK128</code> Inserts a hyper-link reference to the <code>real128</code> real kind used in the library.</li>
+<li><code>\CK</code> Inserts a hyper-link reference to the default <code>complex</code> kind used in the library.</li>
+<li><code>\CK32</code> Inserts a hyper-link reference to the <code>real32</code> complex kind used in the library.</li>
+<li><code>\CK64</code> Inserts a hyper-link reference to the <code>real64</code> complex kind used in the library.</li>
+<li><code>\CK128</code> Inserts a hyper-link reference to the <code>real128</code> complex kind used in the library.</li>
+<li><code>\IK8</code> Inserts a hyper-link reference to the <code>int8</code> integer kind used in the library.</li>
+<li><code>\IK16</code> Inserts a hyper-link reference to the <code>int16</code> integer kind used in the library.</li>
+<li><code>\IK32</code> Inserts a hyper-link reference to the <code>int32</code> integer kind used in the library.</li>
+<li><code>\IK64</code> Inserts a hyper-link reference to the <code>int64</code> integer kind used in the library.</li>
 </ul>
+<p class="startli">For an up-to-date list of all available aliases, check the value of the Doxygen <code>ALIASES</code> option in <code>config.txt</code>.</p>
+</li>
+<li>Avoid the insertion of an empty documentation line between any two lines of a single Doxygen paragraph. This is crucial when the whole paragraph is indented by a vertical line as is done by Doxygen for <code>\warning</code>, <code>\remark</code>, <code>\note</code> and other similar tags. Example: See the aforementioned tags in the example below.</li>
+<li><a class="anchor" id="example-ParaMonteKernelDocumentationGuidelines"></a><b>Example usage</b> <a href="#example-ParaMonteKernelDocumentationGuidelines">⛓</a> <dl class="section user"><dt></dt><dd>The following is an example documentation for a procedure: <pre class="fragment">      !&gt;  \brief
+      !&gt;  Generate and return the variance of the input array of shape `(np)` or `(nd,np)` or `(np,nd)` where `nd` is the number of
+      !&gt;  data dimensions (the number of data attributes) and `np` is the number of data points.
+      !&gt;
+      !&gt;  \param[in]  Sample  :   The input contiguous array of type `real` of kind \RKALL of shape `(np)`, `(nd,np)`, or `(np,nd)`
+      !&gt;                          containing the sample. If `Sample` is a 2D array, then the direction along which the variance is computed
+      !&gt;                          is dictated by the optional input argument `dim`.
+      !&gt;  \param[in]  Weight  :   The contiguous vector of shape `(np)` either type `real` of the same kind as the input `Sample` or type `integer`
+      !&gt;                          of kind \IKALL, containing the corresponding weight of each data points in `Sample`
+      !&gt;                          (**optional**, default = a vector of ones).
+      !&gt;  \param[in]  Mean    :   The input scalar or contiguous vector of shape `(nd)` of the same type and kind as the input `Sample` containing
+      !&gt;                          the `Sample` mean along the (optionally) specified dimension `dim`. If the input `Sample` is a 1D array, then `Mean`
+      !&gt;                          must be a scalar. Otherwise, if `Mean` is a 2D array, then `Mean` must be a vector whose size is the same as
+      !&gt;                          the size of at least one of the dimensions of `Sample`.
+      !&gt;                          (**optional**. If missing, then the input argument `shifted` must be present indicating whether the input `Sample`
+      !&gt;                          is already centered at the origin or it has to be shifted to the origin by the procedure).
+      !&gt;  \param[in]  shifted :   The input logical of default kind indicating whether the input `Sample` is already centered at the origin or
+      !&gt;                          the it has to be shifted to the origin by the procedure (**optional**. If missing, then the input
+      !&gt;                          argument `Mean` must be present).
+      !&gt;  \param[in]  biased  :   The input logical of default kind indicating whether the output variance should be corrected for small sample-size
+      !&gt;                          bias. Set this argument to `.false.` to avoid biased variance computation, in particular, when the sample size `np`
+      !&gt;                          is small.
+      !&gt;  \param[in]  dim     :   An integer of default kind \IK indicating which dimension of the input `Sample` iterates over the individual data points.
+      !&gt;                          If `dim = 1` or `dim /= 2`, the input `Sample` is assumed to have the shape `(np,nd)`.
+      !&gt;                          If `dim = 2`, the input `Sample` is assumed to have the shape `(nd,np)`
+      !&gt;                          (**optional**, default = `2`. **This input argument is available only if the input `Sample` is a 2D array**.).
+      !&gt;
+      !&gt;  \return
+      !&gt;  `variance`          :   The output variance of the input sample of the same type and kind as the input `Sample`.
+      !&gt;                          It is a scalar only if the input `Sample` is a 1D array. Otherwise, it is an allocatable array of shape `(nd)`.
+      !&gt;
+      !&gt;  \warnpure
+      !&gt;
+      !&gt;  \note
+      !&gt;  One also use the concise Fortran syntax to achieve the same goal as this function:
+      !&gt;  \code{fortran}
+      !&gt;
+      !&gt;       mean = sum(Weight*Sample) / sum(Weight)
+      !&gt;       variance = sum( (Weight*(Sample-mean))**2 ) / (sum(Weight)-1)
+      !&gt;
+      !&gt;  \endcode
+      !&gt;  But the above concise version will be slightly slower as it involves three loops instead of two.
+      !&gt;
+      !&gt;  \see
+      !&gt;  [genMean()](@ref SampleMean_mod::genMean) &lt;br&gt;
+      !&gt;
+      !&gt;  \example
+      !&gt;  \include{lineno} example/kernel/Sample_mod/genVariance/main.f90
+      !&gt;  \compile
+      !&gt;  \output
+      !&gt;  \include{lineno} example/kernel/Sample_mod/genVariance/main.out
+      !&gt;
+      !&gt;  \test
+      !&gt;  [test_genVariance](@ref Test_Sample_mod::test_genVariance)
+      !&gt;
+      !&gt;  \todo
+      !&gt;  The performance of this code can improved.
+      !&gt;
+      !&gt;  \bug
+      !&gt;  This code used to have a well-known bug in version 1.1, but is now resolved.
+      !&gt;
+      !&gt;  \final
+      !&gt;
+      !&gt;  \author
+      !&gt;  Amir Shahmoradi, Monday 02:15 AM, September 27, 2021, Dallas, TX</pre> <br  />
+ The above example documentation snippet will generate an HTML similar to this documentation. Note the lack of an empty line among the commands that immediately follow <code>\example</code>. This is essential to keep the entire example section in the same paragraph. </dd></dl>
 </li>
 </ul>
 </div></div><!-- PageDoc -->
@@ -332,7 +425,7 @@ ParaMonte Kernel Documentation Guidelines</h1>
     <!-- start footer part -->
     <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
       <ul>
-        <li class="footer">Generated on Mon Nov 8 2021 11:34:05 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+        <li class="footer">Generated on Mon Nov 8 2021 14:00:42 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
       </ul>
     </div>
     <div style="color: #ffffff; float: none; width: 100%;">

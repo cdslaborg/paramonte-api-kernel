@@ -1,6 +1,5 @@
 var NAVTREEINDEX18 =
 {
-"namespaceSort__mod.html#aee658b69c133ba8d2da19f1df2a837ea":[4,0,96,19],
 "namespaceSpecBase__Description__mod.html":[4,0,97],
 "namespaceSpecBase__Description__mod.html#a3155561475e06ecdf95b69588b5ac876":[4,0,97,4],
 "namespaceSpecBase__Description__mod.html#a8370203dcfcccf9e565eb93fa3674075":[4,0,97,3],
@@ -249,5 +248,6 @@ var NAVTREEINDEX18 =
 "namespaceSpecDRAM__mod.html#a2425c40063c207842320619a10994555":[4,0,127,5],
 "namespaceSpecDRAM__mod.html#a4a0981ca0da9204e689390bbcb6d1eb2":[4,0,127,2],
 "namespaceSpecDRAM__mod.html#a4efc09c10a0a0e92aab4c18aa3d28989":[4,0,127,4],
-"namespaceSpecDRAM__mod.html#a7ffc2b3540541af5d7fd4f0fc009ac08":[4,0,127,6]
+"namespaceSpecDRAM__mod.html#a7ffc2b3540541af5d7fd4f0fc009ac08":[4,0,127,6],
+"namespaceSpecDRAM__mod.html#a9832e2661989112df809cc86c51789a8":[4,0,127,3]
 };

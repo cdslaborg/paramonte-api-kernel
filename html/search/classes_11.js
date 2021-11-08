@@ -11,6 +11,5 @@ var searchData=
   ['timer_5ftype_8',['Timer_type',['../structTimer__mod_1_1Timer__type.html',1,'Timer_mod']]],
   ['timercpu_5ftype_9',['TimerCPU_type',['../structTimerCPU__mod_1_1TimerCPU__type.html',1,'TimerCPU_mod']]],
   ['timing_5ftype_10',['Timing_type',['../structBench__mod_1_1Timing__type.html',1,'Bench_mod']]],
-  ['transform_11',['transform',['../interfaceSample__mod_1_1transform.html',1,'Sample_mod']]],
-  ['tt_12',['tt',['../interfacett.html',1,'']]]
+  ['transform_11',['transform',['../interfaceSample__mod_1_1transform.html',1,'Sample_mod']]]
 ];

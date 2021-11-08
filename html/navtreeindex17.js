@@ -1,6 +1,5 @@
 var NAVTREEINDEX17 =
 {
-"namespaceMatrixDiag__mod.html":[4,0,57],
 "namespaceMatrixDiag__mod.html#a03876bf9f96e840da03a9535cbd123c7":[4,0,57,4],
 "namespaceMatrixDiag__mod.html#a17f24eb79f347706f5be4168060dc1cc":[4,0,57,7],
 "namespaceMatrixDiag__mod.html#a3286351ad6a273a18924fafaecd50513":[4,0,57,6],
@@ -249,5 +248,6 @@ var NAVTREEINDEX17 =
 "namespaceSample__mod.html#af9dafbc79f11fc37f384877e49f3bf27":[4,0,87,3],
 "namespaceSet__mod.html":[4,0,95],
 "namespaceSet__mod.html#afa33dcec67c11b429f99fac93bdb04c3":[4,0,95,8],
-"namespaceSort__mod.html":[4,0,96]
+"namespaceSort__mod.html":[4,0,96],
+"namespaceSort__mod.html#aee658b69c133ba8d2da19f1df2a837ea":[4,0,96,19]
 };

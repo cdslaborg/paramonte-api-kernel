@@ -25,10 +25,10 @@ Generate and return an {\ttfamily Array\+New} of the same type and kind as the i
 \hline
 \mbox{\texttt{ in}}  & {\em iseq} & \+: The optional external user-\/specified function that takes two input {\bfseries{explicit-\/shape}} arguments of the same type and kind as the input {\ttfamily Array} and returns a scalar of type {\ttfamily logical} of default kind that is {\ttfamily .true.} if all elements of the the two input arguments are equal, otherwise, it is {\ttfamily .false.}. The sizes of the two input arguments are both equal to the size the input {\ttfamily Pattern} if it is an array or its length if it is a scalar character. This user-\/defined is extremely useful in cases where a user-\/defined equality test is needed, for example, when the array segments should match the input {\ttfamily Pattern} only within a given threshold or, when the case-\/sensitivity in character comparisons do not matter. In such cases, user can define a custom equality criterion within the user-\/defined external function {\ttfamily iseq} to achieve the goal ({\bfseries{optional}}, the default equality operator is {\ttfamily ==}). The following illustrates the generic interface of {\ttfamily iseq}, 
 \begin{DoxyCode}{1}
-\DoxyCodeLine{\textcolor{fortran_statement}{function} iseq(ArraySegment, Pattern, lenPattern)\textcolor{fortran_statement}{ result} (isEqual)}
+\DoxyCodeLine{\textcolor{fortran_statement}{function} iseq(lenPattern, Pattern, ArraySegment)\textcolor{fortran_statement}{ result} (isEqual)}
 \DoxyCodeLine{    \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}}
 \DoxyCodeLine{    \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ intent(in)}    :: lenPattern}
-\DoxyCodeLine{    \textcolor{fortran_statement}{TYPE}(KIND)  ,\textcolor{fortran_attribute}{ intent(in)}    :: ArraySegment(lenPattern), Pattern(lenPattern)}
+\DoxyCodeLine{    \textcolor{fortran_statement}{TYPE}(KIND)  ,\textcolor{fortran_attribute}{ intent(in)}    :: Pattern(lenPattern), ArraySegment(lenPattern)}
 \DoxyCodeLine{\textcolor{fortran_statement}{    logical}                     :: isEqual}
 \DoxyCodeLine{\textcolor{fortran_statement}{end function}}
 
@@ -369,19 +369,19 @@ split~\newline
 \DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00286}00286 }
 \DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00287}00287 \textcolor{fortran_statement}{contains}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00288}00288 }
-\DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00289}00289 \textcolor{fortran_attribute}{    pure}\textcolor{fortran_statement}{ function} isEqual\_RK(ArraySegment, Pattern, lenPattern)\textcolor{fortran_statement}{ result}(iseq)}
+\DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00289}00289 \textcolor{fortran_attribute}{    pure}\textcolor{fortran_statement}{ function} isEqual\_RK(lenPattern, Pattern, ArraySegment)\textcolor{fortran_statement}{ result}(iseq)}
 \DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00290}00290         \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ intent(in)}    :: lenPattern}
 \DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00291}00291 \textcolor{fortran_statement}{        real}(RK)    ,\textcolor{fortran_attribute}{ intent(in)}    :: Pattern(lenPattern), ArraySegment(lenPattern)}
 \DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00292}00292 \textcolor{fortran_statement}{        logical}                     :: iseq}
-\DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00293}00293         iseq\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{all}(abs(ArraySegment)\textcolor{fortran_operator_symbols}{ -\/ }abs(Pattern)\textcolor{fortran_operator_symbols}{ < }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{5\_RK})}
+\DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00293}00293         iseq\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{all}(abs(abs(Pattern)\textcolor{fortran_operator_symbols}{ -\/ }abs(ArraySegment))\textcolor{fortran_operator_symbols}{ < }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{5\_RK})}
 \DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00294}00294     \textcolor{fortran_statement}{end function}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00295}00295 }
-\DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00296}00296 \textcolor{fortran_attribute}{    pure}\textcolor{fortran_statement}{ function} isEqual\_achar(ArraySegment, Pattern, lenPattern)\textcolor{fortran_statement}{ result}(iseq)}
+\DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00296}00296 \textcolor{fortran_attribute}{    pure}\textcolor{fortran_statement}{ function} isEqual\_achar(lenPattern, Pattern, ArraySegment)\textcolor{fortran_statement}{ result}(iseq)}
 \DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00297}00297         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceString__mod}{String\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceString__mod_ade10dffb10b5ed445fec280457aa9eb4}{getLowerCase}}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00298}00298         \textcolor{fortran_statement}{integer}(IK)             ,\textcolor{fortran_attribute}{ intent(in)}    :: lenPattern}
 \DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00299}00299         \textcolor{fortran_statement}{character}(lenPattern)   ,\textcolor{fortran_attribute}{ intent(in)}    :: Pattern, ArraySegment}
 \DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00300}00300 \textcolor{fortran_statement}{        logical}                                 :: iseq}
-\DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00301}00301         iseq\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceString__mod_ade10dffb10b5ed445fec280457aa9eb4}{getLowerCase}}(ArraySegment)\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{= }Pattern}
+\DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00301}00301         iseq\textcolor{fortran_operator_symbols}{ = }Pattern\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{= }\mbox{\hyperlink{namespaceString__mod_ade10dffb10b5ed445fec280457aa9eb4}{getLowerCase}}(ArraySegment)}
 \DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00302}00302     \textcolor{fortran_statement}{end function}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00303}00303 }
 \DoxyCodeLine{\Hypertarget{interfaceArrayReplace__mod_1_1replace_l00304}00304 \textcolor{fortran_statement}{end program }example}
