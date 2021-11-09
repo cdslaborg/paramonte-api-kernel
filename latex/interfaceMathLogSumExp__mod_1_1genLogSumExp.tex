@@ -335,90 +335,96 @@ The following program compares the runtime performance of \mbox{\hyperlink{inter
 \DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
 \DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00002}00002 }
 \DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00004}00004 \textcolor{keyword}{import} seaborn \textcolor{keyword}{as} sns}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00005}00005 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00006}00006 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00007}00007 sns.set()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00004}00004 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00005}00005 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00007}00007 fontsize = 14}
 \DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00008}00008 }
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00009}00009 fontsize = 14}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00009}00009 methods = [\textcolor{stringliteral}{"{}Direct Method"{}}, \textcolor{stringliteral}{"{}cenabled = .false."{}}, \textcolor{stringliteral}{"{}cenabled = .true."{}}]}
 \DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00010}00010 }
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00011}00011 methods = [\textcolor{stringliteral}{"{}Direct Method"{}}, \textcolor{stringliteral}{"{}cenabled = .false."{}}, \textcolor{stringliteral}{"{}cenabled = .true."{}}]}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00012}00012 }
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00015}00015 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.normal.out"{}})}
 \DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00016}00016 }
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00017}00017 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.normal.out"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00019}00019 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00020}00020 ax = plt.subplot()}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00021}00021 }
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00022}00022 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00023}00023         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00024}00024         , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00025}00025         , linestyle = \textcolor{stringliteral}{"{}-\/-\/"{}}}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00026}00026         , color = \textcolor{stringliteral}{"{}black"{}}}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00027}00027         )}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00028}00028 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00029}00029         , df[\textcolor{stringliteral}{"{}genLogSumExpCheckDisabled"{}}].values / df[\textcolor{stringliteral}{"{}genLogSumExpDirect"{}}].values}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00030}00030         , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00031}00031         )}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00032}00032 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00033}00033         , df[\textcolor{stringliteral}{"{}genLogSumExpCheckEnabled"{}}].values / df[\textcolor{stringliteral}{"{}genLogSumExpDirect"{}}].values}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00034}00034         , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00035}00035         )}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00036}00036 }
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00037}00037 plt.xticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00038}00038 plt.yticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00039}00039 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00040}00040 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime Ratio (W.R.T. Direct Method)"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00041}00041 ax.set\_title(\textcolor{stringliteral}{"{}genLogSumExp performance when the\(\backslash\)ninput array causes no underflow instances.\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00042}00042 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00043}00043 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00044}00044 ax.legend   ( methods}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00045}00045            \textcolor{comment}{\#, loc='center left'}}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00046}00046            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00047}00047             , fontsize = fontsize}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00048}00048             )}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00049}00049 }
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00050}00050 plt.tight\_layout()}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00051}00051 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genLogSumExp.normal.png"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00052}00052 }
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00053}00053 }
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00056}00056 }
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00057}00057 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.underflow.out"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00017}00017 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00018}00018 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00020}00020 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00021}00021         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00022}00022         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00023}00023         , linestyle = \textcolor{stringliteral}{"{}-\/-\/"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00024}00024         , color = \textcolor{stringliteral}{"{}black"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00025}00025         )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00026}00026 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00027}00027         , df[\textcolor{stringliteral}{"{}genLogSumExpCheckDisabled"{}}].values / df[\textcolor{stringliteral}{"{}genLogSumExpDirect"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00028}00028         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00029}00029         )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00030}00030 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00031}00031         , df[\textcolor{stringliteral}{"{}genLogSumExpCheckEnabled"{}}].values / df[\textcolor{stringliteral}{"{}genLogSumExpDirect"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00032}00032         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00033}00033         )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00035}00035 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00036}00036 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00037}00037 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00038}00038 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime Ratio (W.R.T. Direct Method)"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00039}00039 ax.set\_title(\textcolor{stringliteral}{"{}genLogSumExp performance when the\(\backslash\)ninput array causes no underflow instances.\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00040}00040 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00041}00041 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00042}00042 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00043}00043 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00044}00044 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00045}00045 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00046}00046 ax.legend   ( methods}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00047}00047            \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00048}00048            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00049}00049             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00050}00050             )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00052}00052 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00053}00053 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genLogSumExp.normal.png"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00055}00055 }
 \DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00058}00058 }
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00059}00059 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00060}00060 ax = plt.subplot()}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00061}00061 }
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00062}00062 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00063}00063         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00064}00064         , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00065}00065         , linestyle = \textcolor{stringliteral}{"{}-\/-\/"{}}}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00066}00066         , color = \textcolor{stringliteral}{"{}black"{}}}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00067}00067         )}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00068}00068 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00069}00069         , df[\textcolor{stringliteral}{"{}genLogSumExpCheckDisabled"{}}].values / df[\textcolor{stringliteral}{"{}genLogSumExpDirect"{}}].values}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00070}00070         , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00071}00071         )}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00072}00072 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00073}00073         , df[\textcolor{stringliteral}{"{}genLogSumExpCheckEnabled"{}}].values / df[\textcolor{stringliteral}{"{}genLogSumExpDirect"{}}].values}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00074}00074         , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00075}00075         )}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00076}00076 }
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00077}00077 plt.xticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00078}00078 plt.yticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00079}00079 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00080}00080 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime Ratio ( W.R.T. Direct Method )"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00081}00081 ax.set\_title(\textcolor{stringliteral}{"{}genLogSumExp performance when the\(\backslash\)ninput array causes many underflow instances.\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00082}00082 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00083}00083 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00084}00084 ax.legend   ( methods}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00085}00085            \textcolor{comment}{\#, loc='center left'}}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00086}00086            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00087}00087             , fontsize = fontsize}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00088}00088             )}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00089}00089 }
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00090}00090 plt.tight\_layout()}
-\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00091}00091 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genLogSumExp.underflow.png"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00059}00059 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.underflow.out"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00061}00061 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00062}00062 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00064}00064 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00065}00065         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00066}00066         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00067}00067         , linestyle = \textcolor{stringliteral}{"{}-\/-\/"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00068}00068         , color = \textcolor{stringliteral}{"{}black"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00069}00069         )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00070}00070 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00071}00071         , df[\textcolor{stringliteral}{"{}genLogSumExpCheckDisabled"{}}].values / df[\textcolor{stringliteral}{"{}genLogSumExpDirect"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00072}00072         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00073}00073         )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00074}00074 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00075}00075         , df[\textcolor{stringliteral}{"{}genLogSumExpCheckEnabled"{}}].values / df[\textcolor{stringliteral}{"{}genLogSumExpDirect"{}}].values}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00076}00076         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00077}00077         )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00079}00079 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00080}00080 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00081}00081 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00082}00082 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime Ratio ( W.R.T. Direct Method )"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00083}00083 ax.set\_title(\textcolor{stringliteral}{"{}genLogSumExp performance when the\(\backslash\)ninput array causes many underflow instances.\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00084}00084 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00085}00085 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00086}00086 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00087}00087 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00088}00088 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00089}00089 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00090}00090 ax.legend   ( methods}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00091}00091            \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00092}00092            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00093}00093             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00094}00094             )}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00096}00096 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{interfaceMathLogSumExp__mod_1_1genLogSumExp_l00097}00097 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genLogSumExp.underflow.png"{}})}
 
 \end{DoxyCodeInclude}
  ~\newline

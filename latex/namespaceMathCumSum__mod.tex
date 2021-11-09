@@ -22,9 +22,9 @@ character($\ast$), parameter \mbox{\hyperlink{namespaceMathCumSum__mod_a17d50fa7
 \doxysubsection{Detailed Description}
 This module contains the procedures and interface for computing the cumulative sum of an array. 
 
-\label{namespaceMathCumSum__mod_benchmark-genCumPropExp_vs_getCumSum}%
-\Hypertarget{namespaceMathCumSum__mod_benchmark-genCumPropExp_vs_getCumSum}%
-{\bfseries{Benchmark \+:: The runtime performance of \mbox{\hyperlink{interfaceMathCumSum__mod_1_1genCumSum}{gen\+Cum\+Sum}} vs. \mbox{\hyperlink{interfaceMathCumSum__mod_1_1getCumSum}{get\+Cum\+Sum}}}} \href{\#benchmark-genCumPropExp_vs_getCumSum}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+\label{namespaceMathCumSum__mod_benchmark-genCumSum_vs_getCumSum}%
+\Hypertarget{namespaceMathCumSum__mod_benchmark-genCumSum_vs_getCumSum}%
+{\bfseries{Benchmark \+:: The runtime performance of \mbox{\hyperlink{interfaceMathCumSum__mod_1_1genCumSum}{gen\+Cum\+Sum}} vs. \mbox{\hyperlink{interfaceMathCumSum__mod_1_1getCumSum}{get\+Cum\+Sum}}}} \href{\#benchmark-genCumSum_vs_getCumSum}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00001}00001 \textcolor{fortran_comment}{! Test the performance of `genCumSum()` vs. `getCumSum()`.}}
@@ -157,79 +157,85 @@ This module contains the procedures and interface for computing the cumulative s
 \DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
 \DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00002}00002 }
 \DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00004}00004 \textcolor{keyword}{import} seaborn \textcolor{keyword}{as} sns}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00005}00005 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00006}00006 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00007}00007 sns.set()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00004}00004 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00005}00005 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00007}00007 fontsize = 14}
 \DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00008}00008 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00009}00009 fontsize = 14}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00009}00009 methods = [\textcolor{stringliteral}{"{}getCumSum"{}}, \textcolor{stringliteral}{"{}genCumSum"{}}, \textcolor{stringliteral}{"{}genCumSum\_withBounds"{}}]}
 \DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00010}00010 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00011}00011 methods = [\textcolor{stringliteral}{"{}getCumSum"{}}, \textcolor{stringliteral}{"{}genCumSum"{}}, \textcolor{stringliteral}{"{}genCumSum\_withBounds"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00011}00011 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.out"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00012}00012 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00013}00013 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.out"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00014}00014 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00015}00015 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00019}00019 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00020}00020 ax = plt.subplot()}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00021}00021 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00022}00022 \textcolor{keywordflow}{for} method \textcolor{keywordflow}{in} methods:}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00023}00023     plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00024}00024             , df[method].values}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00025}00025             , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00026}00026             )}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00027}00027 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00028}00028 plt.xticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00029}00029 plt.yticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00030}00030 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00031}00031 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime [ seconds ]"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00032}00032 ax.set\_title(\textcolor{stringliteral}{"{}getCumSum() vs. genCumSum() vs. genCumSum\_withBounds()\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00033}00033 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00034}00034 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00035}00035 ax.legend   ( methods}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00036}00036            \textcolor{comment}{\#, loc='center left'}}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00037}00037            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00038}00038             , fontsize = fontsize}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00039}00039             )}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00040}00040 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00041}00041 plt.tight\_layout()}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00042}00042 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genCumSum\_vs\_getCumSum.runtime.png"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00043}00043 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00044}00044 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00047}00047 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00048}00048 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00049}00049 ax = plt.subplot()}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00050}00050 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00051}00051 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00052}00052         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00053}00053         , linestyle = \textcolor{stringliteral}{"{}-\/-\/"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00054}00054         , color = \textcolor{stringliteral}{"{}black"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00055}00055         , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00056}00056         )}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00057}00057 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00058}00058         , df[\textcolor{stringliteral}{"{}genCumSum"{}}].values / df[\textcolor{stringliteral}{"{}getCumSum"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00059}00059         , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00060}00060         )}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00061}00061 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00062}00062         , df[\textcolor{stringliteral}{"{}genCumSum\_withBounds"{}}].values / df[\textcolor{stringliteral}{"{}getCumSum"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00063}00063         , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00064}00064         )}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00065}00065 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00066}00066 plt.xticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00067}00067 plt.yticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00068}00068 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00069}00069 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime compared to getCumSum()"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00070}00070 ax.set\_title(\textcolor{stringliteral}{"{}genCumSum / getCumSum vs. genCumSum\_withBounds / getCumSum\(\backslash\)nLower means faster. Lower than 1 means faster than getCumSum()."{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00071}00071 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00072}00072 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00073}00073 ax.legend   ( [\textcolor{stringliteral}{"{}equality"{}}, \textcolor{stringliteral}{"{}genCumSum"{}}, \textcolor{stringliteral}{"{}genCumSum\_withBounds"{}}]}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00074}00074            \textcolor{comment}{\#, bbox\_to\_anchor = (1, 0.5)}}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00075}00075            \textcolor{comment}{\#, loc = "{}center left"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00076}00076             , fontsize = fontsize}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00077}00077             )}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00078}00078 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00079}00079 plt.tight\_layout()}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00080}00080 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genCumSum\_vs\_getCumSum.runtime.ratio.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00017}00017 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00018}00018 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00020}00020 \textcolor{keywordflow}{for} method \textcolor{keywordflow}{in} methods:}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00021}00021     plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00022}00022             , df[method].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00023}00023             , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00024}00024             )}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00026}00026 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00027}00027 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00028}00028 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00029}00029 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime [ seconds ]"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00030}00030 ax.set\_title(\textcolor{stringliteral}{"{}getCumSum() vs. genCumSum() vs. genCumSum\_withBounds()\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00031}00031 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00032}00032 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00033}00033 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00034}00034 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00035}00035 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00036}00036 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00037}00037 ax.legend   ( methods}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00038}00038            \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00039}00039            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00040}00040             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00041}00041             )}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00043}00043 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00044}00044 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genCumSum\_vs\_getCumSum.runtime.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00050}00050 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00051}00051 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00053}00053 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00054}00054         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00055}00055         , linestyle = \textcolor{stringliteral}{"{}-\/-\/"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00056}00056        \textcolor{comment}{\#, color = "{}black"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00057}00057         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00058}00058         )}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00059}00059 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00060}00060         , df[\textcolor{stringliteral}{"{}genCumSum"{}}].values / df[\textcolor{stringliteral}{"{}getCumSum"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00061}00061         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00062}00062         )}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00063}00063 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00064}00064         , df[\textcolor{stringliteral}{"{}genCumSum\_withBounds"{}}].values / df[\textcolor{stringliteral}{"{}getCumSum"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00065}00065         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00066}00066         )}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00068}00068 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00069}00069 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00070}00070 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00071}00071 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime compared to getCumSum()"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00072}00072 ax.set\_title(\textcolor{stringliteral}{"{}genCumSum / getCumSum vs. genCumSum\_withBounds / getCumSum\(\backslash\)nLower means faster. Lower than 1 means faster than getCumSum()."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00073}00073 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00074}00074 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00075}00075 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00076}00076 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00077}00077 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00078}00078 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00079}00079 ax.legend   ( [\textcolor{stringliteral}{"{}equality"{}}, \textcolor{stringliteral}{"{}genCumSum"{}}, \textcolor{stringliteral}{"{}genCumSum\_withBounds"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00080}00080            \textcolor{comment}{\#, bbox\_to\_anchor = (1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00081}00081            \textcolor{comment}{\#, loc = "{}center left"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00082}00082             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00083}00083             )}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00085}00085 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumSum__mod_l00086}00086 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genCumSum\_vs\_getCumSum.runtime.ratio.png"{}})}
 
 \end{DoxyCodeInclude}
  ~\newline

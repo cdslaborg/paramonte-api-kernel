@@ -256,89 +256,95 @@ Here is a code snippet for a performance comparison of the different sorting alg
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00002}00002 }
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00004}00004 \textcolor{keyword}{import} seaborn \textcolor{keyword}{as} sns}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00005}00005 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00006}00006 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00007}00007 sns.set()}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00004}00004 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00005}00005 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00007}00007 fontsize = 15}
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00008}00008 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00009}00009 fontsize = 15}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00010}00010 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00011}00011 colnames =  [ \textcolor{stringliteral}{"{}sortBubble"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00012}00012             , \textcolor{stringliteral}{"{}sortHeap"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00013}00013            \textcolor{comment}{\#, "{}sortHeapRecursive"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00014}00014            \textcolor{comment}{\#, "{}sortInsertion"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00015}00015            \textcolor{comment}{\#, "{}sortInsertionBinary"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00016}00016             , \textcolor{stringliteral}{"{}sortInsertionDouble"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00017}00017             , \textcolor{stringliteral}{"{}sortMergeRecursive"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00018}00018             , \textcolor{stringliteral}{"{}sortSelection"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00019}00019             , \textcolor{stringliteral}{"{}sortShell"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00020}00020             , \textcolor{stringliteral}{"{}sortDualPivotRecursive"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00021}00021            \textcolor{comment}{\#, "{}sortRecursive"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00022}00022             ]}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00009}00009 colnames =  [ \textcolor{stringliteral}{"{}sortBubble"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00010}00010             , \textcolor{stringliteral}{"{}sortHeap"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00011}00011            \textcolor{comment}{\#, "{}sortHeapRecursive"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00012}00012            \textcolor{comment}{\#, "{}sortInsertion"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00013}00013            \textcolor{comment}{\#, "{}sortInsertionBinary"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00014}00014             , \textcolor{stringliteral}{"{}sortInsertionDouble"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00015}00015             , \textcolor{stringliteral}{"{}sortMergeRecursive"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00016}00016             , \textcolor{stringliteral}{"{}sortSelection"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00017}00017             , \textcolor{stringliteral}{"{}sortShell"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00018}00018             , \textcolor{stringliteral}{"{}sortDualPivotRecursive"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00019}00019            \textcolor{comment}{\#, "{}sortRecursive"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00020}00020             ]}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00022}00022 dtypes = [\textcolor{stringliteral}{"{}random"{}}, \textcolor{stringliteral}{"{}sorted"{}}]}
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00023}00023 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00024}00024 dtypes = [\textcolor{stringliteral}{"{}random"{}}, \textcolor{stringliteral}{"{}sorted"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00024}00024 }
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00025}00025 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00026}00026 df = \{\}}
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00027}00027 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00028}00028 df = \{\}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00028}00028 \textcolor{keywordflow}{for} dtype \textcolor{keywordflow}{in} dtypes:}
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00029}00029 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00030}00030 \textcolor{keywordflow}{for} dtype \textcolor{keywordflow}{in} dtypes:}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00030}00030     df[dtype] = pd.read\_csv(\textcolor{stringliteral}{"{}main.\{\}.out"{}}.format(dtype))}
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00031}00031 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00032}00032     df[dtype] = pd.read\_csv(\textcolor{stringliteral}{"{}main.\{\}.out"{}}.format(dtype))}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00033}00033 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00034}00034     ax = plt.figure(figsize = 1.25*np.array([9.4,4.8]), dpi = 200)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00035}00035     ax = plt.subplot()}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00036}00036 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00037}00037     \textcolor{keywordflow}{for} colname \textcolor{keywordflow}{in} colnames:}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00038}00038         plt.plot( df[dtype].values[:,0]}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00039}00039                 , df[dtype][colname].values / df[dtype][\textcolor{stringliteral}{"{}sort"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00040}00040                 , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00041}00041                 )}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00042}00042 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00043}00043     plt.xticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00044}00044     plt.yticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00045}00045     ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size (\# elements)"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00046}00046     ax.set\_ylabel(\textcolor{stringliteral}{"{}Time normalized to sort() timing"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00047}00047     ax.set\_title(\textcolor{stringliteral}{"{}Benchmarking of sorting algorithms compared to sort().\(\backslash\)nInput data is "{}} + \textcolor{stringliteral}{r"{}\$\(\backslash\)mathrm\{\(\backslash\)bf\{"{}} + dtype + \textcolor{stringliteral}{"{}\}\}\$. Lower is better."{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00048}00048     ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00049}00049     ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00050}00050     ax.legend   ( colnames}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00051}00051                 , loc=\textcolor{stringliteral}{'center left'}}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00052}00052                 , bbox\_to\_anchor=(1, 0.5)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00053}00053                 , fontsize = fontsize}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00054}00054                 )}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00055}00055 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00056}00056     plt.tight\_layout()}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00057}00057     plt.savefig(\textcolor{stringliteral}{"{}benchmark.sorting.\{\}.png"{}}.format(dtype))}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00058}00058 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00032}00032     ax = plt.figure(figsize = 1.25*np.array([9.4,4.8]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00033}00033     ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00035}00035     \textcolor{keywordflow}{for} colname \textcolor{keywordflow}{in} colnames:}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00036}00036         plt.plot( df[dtype].values[:,0]}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00037}00037                 , df[dtype][colname].values / df[dtype][\textcolor{stringliteral}{"{}sort"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00038}00038                 , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00039}00039                 )}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00041}00041     plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00042}00042     plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00043}00043     ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size (\# elements)"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00044}00044     ax.set\_ylabel(\textcolor{stringliteral}{"{}Time normalized to sort() timing"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00045}00045     ax.set\_title(\textcolor{stringliteral}{"{}Benchmarking of sorting algorithms compared to sort().\(\backslash\)nInput data is "{}} + \textcolor{stringliteral}{r"{}\$\(\backslash\)mathrm\{\(\backslash\)bf\{"{}} + dtype + \textcolor{stringliteral}{"{}\}\}\$. Lower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00046}00046     ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00047}00047     ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00048}00048     plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00049}00049     plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00050}00050     ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00051}00051     ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00052}00052     ax.legend   ( colnames}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00053}00053                 , loc=\textcolor{stringliteral}{'center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00054}00054                 , bbox\_to\_anchor=(1, 0.5)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00055}00055                 , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00056}00056                 )}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00058}00058     plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00059}00059     plt.savefig(\textcolor{stringliteral}{"{}benchmark.sorting.\{\}.png"{}}.format(dtype))}
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00060}00060 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00061}00061 ax = plt.figure(figsize = 1.25*np.array([9.4,4.8]), dpi = 200)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00062}00062 ax = plt.subplot()}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00063}00063 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00064}00064 colnames.append(\textcolor{stringliteral}{"{}sort"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00063}00063 ax = plt.figure(figsize = 1.25*np.array([9.4,4.8]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00064}00064 ax = plt.subplot()}
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00065}00065 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00066}00066 \textcolor{keywordflow}{for} colname \textcolor{keywordflow}{in} colnames:}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00067}00067     plt.plot( df[\textcolor{stringliteral}{"{}random"{}}].values[:,0]}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00068}00068             , df[\textcolor{stringliteral}{"{}sorted"{}}][colname].values / df[\textcolor{stringliteral}{"{}random"{}}][colname].values}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00069}00069             , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00070}00070             )}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00071}00071 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00072}00072 plt.xticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00073}00073 plt.yticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00074}00074 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size (\# elements)"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00075}00075 ax.set\_ylabel(\textcolor{stringliteral}{"{}Sorting Time Ratio ( Sorted / Random Input Array )"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00076}00076 ax.set\_title(\textcolor{stringliteral}{"{}Sorted / Random input-\/arrays sorting-\/time ratio. Lower is better."{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00077}00077 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00078}00078 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00079}00079 ax.legend   ( colnames}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00080}00080             , loc=\textcolor{stringliteral}{'center left'}}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00081}00081             , bbox\_to\_anchor=(1, 0.5)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00082}00082             , fontsize = fontsize}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00083}00083             )}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00084}00084 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00085}00085 plt.tight\_layout()}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00086}00086 plt.savefig(\textcolor{stringliteral}{"{}benchmark.sorting.random.sorted.ratio.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00066}00066 colnames.append(\textcolor{stringliteral}{"{}sort"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00068}00068 \textcolor{keywordflow}{for} colname \textcolor{keywordflow}{in} colnames:}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00069}00069     plt.plot( df[\textcolor{stringliteral}{"{}random"{}}].values[:,0]}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00070}00070             , df[\textcolor{stringliteral}{"{}sorted"{}}][colname].values / df[\textcolor{stringliteral}{"{}random"{}}][colname].values}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00071}00071             , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00072}00072             )}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00074}00074 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00075}00075 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00076}00076 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size (\# elements)"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00077}00077 ax.set\_ylabel(\textcolor{stringliteral}{"{}Sorting Time Ratio ( Sorted / Random Input Array )"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00078}00078 ax.set\_title(\textcolor{stringliteral}{"{}Sorted / Random input-\/arrays sorting-\/time ratio. Lower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00079}00079 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00080}00080 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00081}00081 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00082}00082 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00083}00083 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00084}00084 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00085}00085 ax.legend   ( colnames}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00086}00086             , loc=\textcolor{stringliteral}{'center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00087}00087             , bbox\_to\_anchor=(1, 0.5)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00088}00088             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00089}00089             )}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00091}00091 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00092}00092 plt.savefig(\textcolor{stringliteral}{"{}benchmark.sorting.random.sorted.ratio.png"{}})}
 
 \end{DoxyCodeInclude}
  ~\newline
@@ -475,77 +481,83 @@ The following program generates a performance comparison of the \mbox{\hyperlink
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00002}00002 }
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00004}00004 \textcolor{keyword}{import} seaborn \textcolor{keyword}{as} sns}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00005}00005 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00006}00006 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00007}00007 sns.set()}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00004}00004 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00005}00005 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00007}00007 fontsize = 15}
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00008}00008 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00009}00009 fontsize = 15}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00009}00009 }
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00010}00010 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00011}00011 dtypes = [\textcolor{stringliteral}{"{}random"{}}, \textcolor{stringliteral}{"{}sorted"{}}]}
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00012}00012 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00013}00013 dtypes = [\textcolor{stringliteral}{"{}random"{}}, \textcolor{stringliteral}{"{}sorted"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00013}00013 \textcolor{keywordflow}{for} dtype \textcolor{keywordflow}{in} dtypes:}
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00014}00014 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00015}00015 \textcolor{keywordflow}{for} dtype \textcolor{keywordflow}{in} dtypes:}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00015}00015     df = pd.read\_csv(\textcolor{stringliteral}{"{}main.\{\}.out"{}}.format(dtype))}
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00016}00016 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00017}00017     df = pd.read\_csv(\textcolor{stringliteral}{"{}main.\{\}.out"{}}.format(dtype))}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00017}00017     }
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00019}00019     }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00020}00020 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00021}00021     ax = plt.figure(figsize = 1.25*np.array([9.4,4.8]), dpi = 200)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00022}00022     ax = plt.subplot()}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00023}00023 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00024}00024     \textcolor{keywordflow}{for} colname \textcolor{keywordflow}{in} df.columns[1:]:}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00025}00025         plt.plot( df.values[:,0]}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00026}00026                 , df[colname].values}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00027}00027                 , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00028}00028                 )}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00029}00029 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00030}00030     plt.xticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00031}00031     plt.yticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00032}00032     ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size (\# elements)"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00033}00033     ax.set\_ylabel(\textcolor{stringliteral}{"{}Time [ seconds ]"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00034}00034     ax.set\_title(\textcolor{stringliteral}{"{}Timing of sort() vs. sortIndex(). Input data is \{\}.\(\backslash\)n Lower is better."{}}.format(dtype), fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00035}00035     ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00036}00036     ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00037}00037     ax.legend   ( df.columns[1:]}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00038}00038                 , loc=\textcolor{stringliteral}{'center left'}}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00039}00039                 , bbox\_to\_anchor=(1, 0.5)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00040}00040                 , fontsize = fontsize}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00041}00041                 )}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00042}00042 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00043}00043     plt.tight\_layout()}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00044}00044     plt.savefig(\textcolor{stringliteral}{"{}benchmark.sorting\_vs\_indexing.\{\}.png"{}}.format(dtype))}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00045}00045 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00046}00046     }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00019}00019     ax = plt.figure(figsize = 1.25*np.array([9.4,4.8]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00020}00020     ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00022}00022     \textcolor{keywordflow}{for} colname \textcolor{keywordflow}{in} df.columns[1:]:}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00023}00023         plt.plot( df.values[:,0]}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00024}00024                 , df[colname].values}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00025}00025                 , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00026}00026                 )}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00028}00028     plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00029}00029     plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00030}00030     ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size (\# elements)"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00031}00031     ax.set\_ylabel(\textcolor{stringliteral}{"{}Time [ seconds ]"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00032}00032     ax.set\_title(\textcolor{stringliteral}{"{}Timing of sort() vs. sortIndex(). Input data is \{\}.\(\backslash\)n Lower is better."{}}.format(dtype), fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00033}00033     ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00034}00034     ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00035}00035     plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00036}00036     plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00037}00037     ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00038}00038     ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00039}00039     ax.legend   ( df.columns[1:]}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00040}00040                 , loc=\textcolor{stringliteral}{'center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00041}00041                 , bbox\_to\_anchor=(1, 0.5)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00042}00042                 , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00043}00043                 )}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00045}00045     plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00046}00046     plt.savefig(\textcolor{stringliteral}{"{}benchmark.sorting\_vs\_indexing.\{\}.png"{}}.format(dtype))}
 \DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00047}00047 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00048}00048     ax = plt.figure(figsize = 1.25*np.array([9.4,4.8]), dpi = 200)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00049}00049     ax = plt.subplot()}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00050}00050 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00051}00051     start = 0}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00052}00052     \textcolor{keywordflow}{for} colname \textcolor{keywordflow}{in} df.columns[2:]:}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00053}00053         plt.plot( df.values[start:,0]}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00054}00054                 , df[colname].values[start:] / df[\textcolor{stringliteral}{"{}sort"{}}].values[start:]}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00055}00055                 , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00056}00056                 )}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00057}00057 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00058}00058     plt.xticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00059}00059     plt.yticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00060}00060     ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size (\# elements)"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00061}00061     ax.set\_ylabel(\textcolor{stringliteral}{"{}Time Ratio ( sortIndex() / sort() )"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00062}00062     ax.set\_title(\textcolor{stringliteral}{"{}Ratio of timing of sortIndex() to sort(). Input data is \{\}."{}}.format(dtype), fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00063}00063     ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00064}00064     \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00065}00065     ax.legend   ( df.columns[2:]}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00066}00066                 , loc=\textcolor{stringliteral}{'center left'}}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00067}00067                 , bbox\_to\_anchor=(1, 0.5)}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00068}00068                 , fontsize = fontsize}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00069}00069                 )}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00070}00070 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00071}00071     plt.tight\_layout()}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00072}00072     plt.savefig(\textcolor{stringliteral}{"{}benchmark.sorting\_vs\_indexing.\{\}.ratio.png"{}}.format(dtype))}
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00073}00073 }
-\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00048}00048     }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00050}00050     ax = plt.figure(figsize = 1.25*np.array([9.4,4.8]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00051}00051     ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00053}00053     start = 0}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00054}00054     \textcolor{keywordflow}{for} colname \textcolor{keywordflow}{in} df.columns[2:]:}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00055}00055         plt.plot( df.values[start:,0]}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00056}00056                 , df[colname].values[start:] / df[\textcolor{stringliteral}{"{}sort"{}}].values[start:]}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00057}00057                 , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00058}00058                 )}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00060}00060     plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00061}00061     plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00062}00062     ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size (\# elements)"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00063}00063     ax.set\_ylabel(\textcolor{stringliteral}{"{}Time Ratio ( sortIndex() / sort() )"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00064}00064     ax.set\_title(\textcolor{stringliteral}{"{}Ratio of timing of sortIndex() to sort(). Input data is \{\}."{}}.format(dtype), fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00065}00065     ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00066}00066     \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00067}00067     plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00068}00068     plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00069}00069     ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00070}00070     ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00071}00071     ax.legend   ( df.columns[2:]}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00072}00072                 , loc=\textcolor{stringliteral}{'center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00073}00073                 , bbox\_to\_anchor=(1, 0.5)}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00074}00074                 , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00075}00075                 )}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00077}00077     plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00078}00078     plt.savefig(\textcolor{stringliteral}{"{}benchmark.sorting\_vs\_indexing.\{\}.ratio.png"{}}.format(dtype))}
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{namespaceSort__mod_l00080}00080 }
 
 \end{DoxyCodeInclude}
  ~\newline

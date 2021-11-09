@@ -148,81 +148,87 @@ Here is a code snippet to compare the performances of the Cholesky factorization
 \DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
 \DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00002}00002 }
 \DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00004}00004 \textcolor{keyword}{import} seaborn \textcolor{keyword}{as} sns}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00005}00005 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00006}00006 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00007}00007 sns.set()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00004}00004 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00005}00005 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00007}00007 fontsize = 14}
 \DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00008}00008 }
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00009}00009 fontsize = 14}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00009}00009 methods = [\textcolor{stringliteral}{"{}safe assumed-\/shape"{}}, \textcolor{stringliteral}{"{}unsafe explicit-\/shape"{}}]}
 \DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00010}00010 }
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00011}00011 methods = [\textcolor{stringliteral}{"{}safe assumed-\/shape"{}}, \textcolor{stringliteral}{"{}unsafe explicit-\/shape"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00011}00011 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.out"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00012}00012 }
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00013}00013 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.out"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00014}00014 }
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00015}00015 }
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00019}00019 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00020}00020 ax = plt.subplot()}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00021}00021 }
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00022}00022 plt.plot( df[\textcolor{stringliteral}{"{}MatrixRank"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00023}00023         , df[\textcolor{stringliteral}{"{}assumedShape"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00024}00024         , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00025}00025         )}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00026}00026 plt.plot( df[\textcolor{stringliteral}{"{}MatrixRank"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00027}00027         , df[\textcolor{stringliteral}{"{}explicitShape"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00028}00028         , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00029}00029         )}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00030}00030 }
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00031}00031 plt.xticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00032}00032 plt.yticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00033}00033 ax.set\_xlabel(\textcolor{stringliteral}{"{}Matrix Rank ( Size Along Each Dimension )"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00034}00034 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime [ seconds ]"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00035}00035 ax.set\_title(\textcolor{stringliteral}{"{}Cholesky Factorization Runtime:\(\backslash\)nSafe Assumed-\/Shape vs. Unsafe Explicit-\/Shape Interface.\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00036}00036 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00037}00037 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00038}00038 ax.legend   ( methods}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00039}00039            \textcolor{comment}{\#, loc='center left'}}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00040}00040            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00041}00041             , fontsize = fontsize}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00042}00042             )}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00043}00043 }
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00044}00044 plt.tight\_layout()}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00045}00045 plt.savefig(\textcolor{stringliteral}{"{}benchmark.getChoLow\_assumed\_vs\_explicit.runtime.png"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00046}00046 }
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00047}00047 }
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00050}00050 }
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00051}00051 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00052}00052 ax = plt.subplot()}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00053}00053 }
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00054}00054 plt.plot( df[\textcolor{stringliteral}{"{}MatrixRank"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00055}00055         , np.ones( len(df[\textcolor{stringliteral}{"{}MatrixRank"{}}].values) )}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00056}00056         , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00057}00057         , linestyle = \textcolor{stringliteral}{"{}-\/-\/"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00058}00058         , color = \textcolor{stringliteral}{"{}black"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00059}00059         )}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00060}00060 plt.plot( df[\textcolor{stringliteral}{"{}MatrixRank"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00061}00061         , df[\textcolor{stringliteral}{"{}assumedShape"{}}].values / df[\textcolor{stringliteral}{"{}explicitShape"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00062}00062         , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00063}00063         , color = \textcolor{stringliteral}{"{}r"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00064}00064         )}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00065}00065 }
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00066}00066 plt.xticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00067}00067 plt.yticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00068}00068 ax.set\_xlabel(\textcolor{stringliteral}{"{}Matrix Rank ( Size Along Each Dimension )"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00069}00069 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime [ seconds ]"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00070}00070 ax.set\_title(\textcolor{stringliteral}{"{}"{}"{}Cholesky Factorization Runtime Ratio:}}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00071}00071 \textcolor{stringliteral}{Safe Assumed-\/Shape to Unsafe Explicit-\/Shape Interface.}}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00072}00072 \textcolor{stringliteral}{A value < 1 implies better performance of assumed-\/shape."{}"{}"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00073}00073 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00074}00074 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00075}00075 ax.legend   ( [\textcolor{stringliteral}{"{}Equality"{}}, \textcolor{stringliteral}{"{}Runtime Ratio"{}}]}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00076}00076            \textcolor{comment}{\#, loc='center left'}}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00077}00077            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00078}00078             , fontsize = fontsize}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00079}00079             )}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00080}00080 }
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00081}00081 plt.tight\_layout()}
-\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00082}00082 plt.savefig(\textcolor{stringliteral}{"{}benchmark.getChoLow\_assumed\_vs\_explicit.runtime.ratio.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00017}00017 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00018}00018 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00020}00020 plt.plot( df[\textcolor{stringliteral}{"{}MatrixRank"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00021}00021         , df[\textcolor{stringliteral}{"{}assumedShape"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00022}00022         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00023}00023         )}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00024}00024 plt.plot( df[\textcolor{stringliteral}{"{}MatrixRank"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00025}00025         , df[\textcolor{stringliteral}{"{}explicitShape"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00026}00026         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00027}00027         )}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00029}00029 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00030}00030 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00031}00031 ax.set\_xlabel(\textcolor{stringliteral}{"{}Matrix Rank ( Size Along Each Dimension )"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00032}00032 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime [ seconds ]"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00033}00033 ax.set\_title(\textcolor{stringliteral}{"{}Cholesky Factorization Runtime:\(\backslash\)nSafe Assumed-\/Shape vs. Unsafe Explicit-\/Shape Interface.\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00034}00034 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00035}00035 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00036}00036 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00037}00037 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00038}00038 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00039}00039 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00040}00040 ax.legend   ( methods}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00041}00041            \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00042}00042            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00043}00043             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00044}00044             )}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00046}00046 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00047}00047 plt.savefig(\textcolor{stringliteral}{"{}benchmark.getChoLow\_assumed\_vs\_explicit.runtime.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00053}00053 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00054}00054 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00056}00056 plt.plot( df[\textcolor{stringliteral}{"{}MatrixRank"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00057}00057         , np.ones( len(df[\textcolor{stringliteral}{"{}MatrixRank"{}}].values) )}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00058}00058         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00059}00059         , linestyle = \textcolor{stringliteral}{"{}-\/-\/"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00060}00060         , color = \textcolor{stringliteral}{"{}black"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00061}00061         )}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00062}00062 plt.plot( df[\textcolor{stringliteral}{"{}MatrixRank"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00063}00063         , df[\textcolor{stringliteral}{"{}assumedShape"{}}].values / df[\textcolor{stringliteral}{"{}explicitShape"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00064}00064         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00065}00065         , color = \textcolor{stringliteral}{"{}r"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00066}00066         )}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00068}00068 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00069}00069 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00070}00070 ax.set\_xlabel(\textcolor{stringliteral}{"{}Matrix Rank ( Size Along Each Dimension )"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00071}00071 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime [ seconds ]"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00072}00072 ax.set\_title(\textcolor{stringliteral}{"{}"{}"{}Cholesky Factorization Runtime Ratio:}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00073}00073 \textcolor{stringliteral}{Safe Assumed-\/Shape to Unsafe Explicit-\/Shape Interface.}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00074}00074 \textcolor{stringliteral}{A value < 1 implies better performance of assumed-\/shape."{}"{}"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00075}00075 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00076}00076 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00077}00077 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00078}00078 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00079}00079 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00080}00080 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00081}00081 ax.legend   ( [\textcolor{stringliteral}{"{}Equality"{}}, \textcolor{stringliteral}{"{}Runtime Ratio"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00082}00082            \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00083}00083            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00084}00084             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00085}00085             )}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00087}00087 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixCholesky__mod_l00088}00088 plt.savefig(\textcolor{stringliteral}{"{}benchmark.getChoLow\_assumed\_vs\_explicit.runtime.ratio.png"{}})}
 
 \end{DoxyCodeInclude}
  ~\newline

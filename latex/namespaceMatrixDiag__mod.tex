@@ -35,6 +35,235 @@ character($\ast$), parameter \mbox{\hyperlink{namespaceMatrixDiag__mod_a17f24eb7
 \doxysubsection{Detailed Description}
 This module contains mathematical procedures relevant to generating diagonal matrices or extracting the diagonal elements of matrices. 
 
+\label{namespaceMatrixDiag__mod_benchmark-genEye_vs_getEye}%
+\Hypertarget{namespaceMatrixDiag__mod_benchmark-genEye_vs_getEye}%
+{\bfseries{Benchmark \+:: The runtime performance of \mbox{\hyperlink{interfaceMatrixDiag__mod_1_1genEye}{gen\+Eye}} vs. \mbox{\hyperlink{interfaceMatrixDiag__mod_1_1getEye}{get\+Eye}}}} \href{\#benchmark-genEye_vs_getEye}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00001}00001 \textcolor{fortran_comment}{! Test the performance of `genEye()` vs. `getEye()`.}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00002}00002 \textcolor{fortran_statement}{program} benchmark}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00004}00004     \textcolor{fortran_statement}{use }\textcolor{fortran_inrinsic_module}{iso\_fortran\_env}, \textcolor{fortran_statement}{only}:\textcolor{fortran_named_const}{ error\_unit}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00005}00005     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00006}00006     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceBench__mod}{Bench\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00008}00008     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00010}00010     \textcolor{fortran_statement}{integer}(IK)                         :: i}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00011}00011     \textcolor{fortran_statement}{integer}(IK)                         :: irank}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00012}00012     \textcolor{fortran_statement}{integer}(IK)                         :: fileUnit}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00013}00013     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}             :: NRANK\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00014}00014     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}             :: NBENCH\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{3\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00015}00015     \textcolor{fortran_statement}{integer}(IK)                         :: EyeRank(NRANK)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00016}00016 \textcolor{fortran_statement}{    real}(RK)                            :: dummySum\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.\_RK}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00017}00017 \textcolor{fortran_statement}{    real}(RK)    ,\textcolor{fortran_attribute}{ allocatable}           :: Eye(:,:)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00018}00018     \textcolor{fortran_statement}{type}(Bench\_type)                    :: Bench(NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00020}00020     Bench(\textcolor{fortran_numeric_literal}{1})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}getEye"{}}, exec\textcolor{fortran_operator_symbols}{ = }getEye , getOverhead\textcolor{fortran_operator_symbols}{ = }getOverhead)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00021}00021     Bench(\textcolor{fortran_numeric_literal}{2})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}genEye"{}}, exec\textcolor{fortran_operator_symbols}{ = }genEye , getOverhead\textcolor{fortran_operator_symbols}{ = }getOverhead)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00022}00022     Bench(\textcolor{fortran_numeric_literal}{3})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}genEye\_reshape"{}}, exec\textcolor{fortran_operator_symbols}{ = }genEye\_reshape , getOverhead\textcolor{fortran_operator_symbols}{ = }getOverhead)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00024}00024     EyeRank\textcolor{fortran_operator_symbols}{ = }[(\textcolor{fortran_numeric_literal}{ 2\_IK}\textcolor{fortran_operator_symbols}{*}\textcolor{fortran_operator_symbols}{*}irank, irank\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}, NRANK )]}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00026}00026 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00027}00027 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}getEye() vs. genEye() vs. genEye\_reshape()"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00028}00028 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00030}00030 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnit, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.out"{}}, status\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}replace"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00032}00032 \textcolor{fortran_statement}{        write}(fileUnit, \textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) \textcolor{fortran_string}{"{}EyeRank"{}}, (Bench(i)\textcolor{fortran_operator_symbols}{\%}name, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00034}00034         loopOverEyeRank: \textcolor{fortran_keywordflow}{do} irank\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NRANK}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00036}00036 \textcolor{fortran_statement}{            write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Benchmarking with rank"{}}, EyeRank(irank)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00038}00038             \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00039}00039                 \textcolor{fortran_keywordflow}{if} (Bench(i)\textcolor{fortran_operator_symbols}{\%}name\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{= }\textcolor{fortran_string}{"{}getEye"{}})\textcolor{fortran_statement}{ allocate}( Eye(EyeRank(irank),EyeRank(irank)) )}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00040}00040 \textcolor{fortran_statement}{                call} Bench(i)\textcolor{fortran_operator_symbols}{\%}time(Bench(i)\textcolor{fortran_operator_symbols}{\%}Timing)\textcolor{fortran_comment}{!, minsec = 0.1\_RK)}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00041}00041                 \textcolor{fortran_keywordflow}{if} (Bench(i)\textcolor{fortran_operator_symbols}{\%}name\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{= }\textcolor{fortran_string}{"{}getEye"{}})\textcolor{fortran_statement}{ deallocate}(Eye)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00042}00042 \textcolor{fortran_keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00043}00043 \textcolor{fortran_statement}{            write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) EyeRank(irank), (Bench(i)\textcolor{fortran_operator_symbols}{\%}Timing\textcolor{fortran_operator_symbols}{\%}Stat\textcolor{fortran_operator_symbols}{\%}mean, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00045}00045 \textcolor{fortran_statement}{            deallocate}(Eye)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00047}00047 \textcolor{fortran_keywordflow}{        end do} loopOverEyeRank}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00048}00048 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) dummySum}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00049}00049 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00051}00051 \textcolor{fortran_statement}{    close}(fileUnit)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00053}00053 \textcolor{fortran_statement}{contains}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00055}00055     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00056}00056     \textcolor{fortran_comment}{! procedure wrappers.}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00057}00057     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00059}00059 \textcolor{fortran_statement}{    subroutine} getOverhead()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00060}00060 \textcolor{fortran_statement}{        call} getDummy()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00061}00061     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00063}00063 \textcolor{fortran_statement}{    subroutine} getDummy()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00064}00064         dummySum\textcolor{fortran_operator_symbols}{ = }dummySum\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_function}{sum}(Eye)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00065}00065     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00067}00067 \textcolor{fortran_statement}{    subroutine} getEye()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00068}00068         \textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00069}00069             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMatrixDiag__mod}{MatrixDiag\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceMatrixDiag__mod_1_1getEye}{getEye}}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00070}00070 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{interfaceMatrixDiag__mod_1_1getEye}{getEye}}(Eye)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00071}00071 \textcolor{fortran_statement}{            call} getDummy()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00072}00072 \textcolor{fortran_keywordflow}{        end block}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00073}00073     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00075}00075 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceMatrixDiag__mod_1_1genEye}{genEye}}()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00076}00076         \textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00077}00077             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMatrixDiag__mod}{MatrixDiag\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceMatrixDiag__mod_1_1genEye}{genEye}}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00078}00078             Eye\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceMatrixDiag__mod_1_1genEye}{genEye}}(EyeRank(irank), EyeRank(irank))}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00079}00079 \textcolor{fortran_statement}{            call} getDummy()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00080}00080 \textcolor{fortran_keywordflow}{        end block}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00081}00081     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00083}00083 \textcolor{fortran_statement}{    subroutine} genEye\_reshape()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00084}00084         Eye\textcolor{fortran_operator_symbols}{ = }genEye\_reshape\_func(EyeRank(irank))}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00085}00085 \textcolor{fortran_statement}{        call} getDummy()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00086}00086     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00088}00088 \textcolor{fortran_attribute}{    pure}\textcolor{fortran_statement}{ function} genEye\_reshape\_func(n)\textcolor{fortran_statement}{ result}(Eye)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00089}00089         \textcolor{fortran_statement}{integer}(IK),\textcolor{fortran_attribute}{ intent(in)} :: n}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00090}00090 \textcolor{fortran_statement}{        real}(RK)                :: Eye(n,n)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00091}00091         \textcolor{fortran_statement}{integer}(IK)             :: k, j}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00092}00092         Eye\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{reshape}([\textcolor{fortran_numeric_literal}{1.\_RK}, ([(\textcolor{fortran_numeric_literal}{0.\_RK}, k\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, n)],\textcolor{fortran_numeric_literal}{ 1.\_RK}, j\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, n\textcolor{fortran_operator_symbols}{ -\/ }\textcolor{fortran_numeric_literal}{1})],\textcolor{fortran_function}{ shape}(Eye))}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00093}00093     \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00095}00095 \textcolor{fortran_statement}{end program }benchmark}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceMatrixDiag__mod_compileb-unix-gnu-genEye_vs_getEye}%
+\Hypertarget{namespaceMatrixDiag__mod_compileb-unix-gnu-genEye_vs_getEye}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compileb-unix-gnu-genEye_vs_getEye}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceMatrixDiag__mod_compileb-unix-intel-genEye_vs_getEye}%
+\Hypertarget{namespaceMatrixDiag__mod_compileb-unix-intel-genEye_vs_getEye}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compileb-unix-intel-genEye_vs_getEye}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceMatrixDiag__mod_postprocb-genEye_vs_getEye}%
+\Hypertarget{namespaceMatrixDiag__mod_postprocb-genEye_vs_getEye}%
+{\bfseries{Postprocessing of the output}} \href{\#postprocb-genEye_vs_getEye}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00004}00004 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00005}00005 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00007}00007 fontsize = 14}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00009}00009 methods = [\textcolor{stringliteral}{"{}getEye"{}}, \textcolor{stringliteral}{"{}genEye"{}}, \textcolor{stringliteral}{"{}genEye\_reshape"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00011}00011 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.out"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00017}00017 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00018}00018 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00020}00020 \textcolor{keywordflow}{for} method \textcolor{keywordflow}{in} methods:}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00021}00021     plt.plot( df[\textcolor{stringliteral}{"{}EyeRank"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00022}00022             , df[method].values}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00023}00023             , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00024}00024             )}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00026}00026 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00027}00027 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00028}00028 ax.set\_xlabel(\textcolor{stringliteral}{"{}Eye Rank"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00029}00029 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime [ seconds ]"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00030}00030 ax.set\_title(\textcolor{stringliteral}{"{}getEye() vs. genEye() vs. genEye\_reshape()\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00031}00031 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00032}00032 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00033}00033 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00034}00034 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00035}00035 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00036}00036 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00037}00037 ax.legend   ( methods}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00038}00038            \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00039}00039            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00040}00040             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00041}00041             )}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00043}00043 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00044}00044 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genEye\_vs\_getEye.runtime.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00050}00050 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00051}00051 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00053}00053 plt.plot( df[\textcolor{stringliteral}{"{}EyeRank"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00054}00054         , np.ones(len(df[\textcolor{stringliteral}{"{}EyeRank"{}}].values))}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00055}00055         , linestyle = \textcolor{stringliteral}{"{}-\/-\/"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00056}00056        \textcolor{comment}{\#, color = "{}black"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00057}00057         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00058}00058         )}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00059}00059 plt.plot( df[\textcolor{stringliteral}{"{}EyeRank"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00060}00060         , df[\textcolor{stringliteral}{"{}genEye"{}}].values / df[\textcolor{stringliteral}{"{}getEye"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00061}00061         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00062}00062         )}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00063}00063 plt.plot( df[\textcolor{stringliteral}{"{}EyeRank"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00064}00064         , df[\textcolor{stringliteral}{"{}genEye\_reshape"{}}].values / df[\textcolor{stringliteral}{"{}getEye"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00065}00065         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00066}00066         )}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00068}00068 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00069}00069 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00070}00070 ax.set\_xlabel(\textcolor{stringliteral}{"{}Eye Rank"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00071}00071 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime compared to getEye()"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00072}00072 ax.set\_title(\textcolor{stringliteral}{"{}genEye / getEye vs. genEye\_reshape / getEye\(\backslash\)nLower means faster. Lower than 1 means faster than getEye()."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00073}00073 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00074}00074 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00075}00075 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00076}00076 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00077}00077 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00078}00078 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00079}00079 ax.legend   ( [\textcolor{stringliteral}{"{}equality"{}}, \textcolor{stringliteral}{"{}genEye"{}}, \textcolor{stringliteral}{"{}genEye\_reshape"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00080}00080            \textcolor{comment}{\#, bbox\_to\_anchor = (1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00081}00081            \textcolor{comment}{\#, loc = "{}center left"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00082}00082             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00083}00083             )}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00085}00085 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceMatrixDiag__mod_l00086}00086 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genEye\_vs\_getEye.runtime.ratio.png"{}})}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceMatrixDiag__mod_visb-genEye_vs_getEye}%
+\Hypertarget{namespaceMatrixDiag__mod_visb-genEye_vs_getEye}%
+{\bfseries{Visualization of the benchmark output}} \href{\#visb-genEye_vs_getEye}{\texttt{ ⛓}} \DoxyHorRuler{0}
+   ~\newline
+ \label{namespaceMatrixDiag__mod_moralb-genEye_vs_getEye}%
+\Hypertarget{namespaceMatrixDiag__mod_moralb-genEye_vs_getEye}%
+{\bfseries{Benchmark moral}} \href{\#moralb-genEye_vs_getEye}{\texttt{ ⛓}} \DoxyHorRuler{0}
+
+\begin{DoxyEnumerate}
+\item The procedures under the generic interface \mbox{\hyperlink{interfaceMatrixDiag__mod_1_1genEye}{gen\+Eye}} are functions while the procedures under the generic interface \mbox{\hyperlink{interfaceMatrixDiag__mod_1_1getEye}{get\+Eye}} are subroutines. From the benchmark results, it appears that the functional interface performs less efficiently than the subroutine interface.
+\item Furthermore, the {\ttfamily gen\+Eye()} implementation with a {\ttfamily reshape()} and implicit-\/loop appears to be 4-\/16 times slower than the subroutine implementation and 2-\/4 times slower than the function implementation.
+\end{DoxyEnumerate}
+\end{DoxyParagraph}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000037}{Test}}]\mbox{\hyperlink{namespaceTest__MatrixDiag__mod}{Test\+\_\+\+Matrix\+Diag\+\_\+mod}}\end{DoxyRefDesc}
+
+
 \begin{DoxyRemark}{Remarks}
 For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
 
@@ -57,7 +286,7 @@ Amir Shahmoradi, Friday 1\+:54 AM, April 21, 2017, ICES, The University of Texas
 
 
 
-Definition at line \mbox{\hyperlink{MatrixDiag__mod_8f90_source_l00725}{725}} of file \mbox{\hyperlink{MatrixDiag__mod_8f90_source}{Matrix\+Diag\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{MatrixDiag__mod_8f90_source_l00745}{745}} of file \mbox{\hyperlink{MatrixDiag__mod_8f90_source}{Matrix\+Diag\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrixDiag__mod_afc9267a54d40572e1eb10087e40312f5}\label{namespaceMatrixDiag__mod_afc9267a54d40572e1eb10087e40312f5}} 
 \index{MatrixDiag\_mod@{MatrixDiag\_mod}!setDiag@{setDiag}}
@@ -89,7 +318,7 @@ Amir Shahmoradi, Friday 1\+:59 AM, August 27, 2021, Dallas, TX
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{MatrixDiag__mod_8f90_source_l00800}{800}} of file \mbox{\hyperlink{MatrixDiag__mod_8f90_source}{Matrix\+Diag\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{MatrixDiag__mod_8f90_source_l00820}{820}} of file \mbox{\hyperlink{MatrixDiag__mod_8f90_source}{Matrix\+Diag\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceMatrixDiag__mod_a3286351ad6a273a18924fafaecd50513}\label{namespaceMatrixDiag__mod_a3286351ad6a273a18924fafaecd50513}} 
 \index{MatrixDiag\_mod@{MatrixDiag\_mod}!setDiagOffDiag@{setDiagOffDiag}}
@@ -123,7 +352,7 @@ Amir Shahmoradi, Friday 1\+:59 AM, August 27, 2021, Dallas, TX
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{MatrixDiag__mod_8f90_source_l00828}{828}} of file \mbox{\hyperlink{MatrixDiag__mod_8f90_source}{Matrix\+Diag\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{MatrixDiag__mod_8f90_source_l00848}{848}} of file \mbox{\hyperlink{MatrixDiag__mod_8f90_source}{Matrix\+Diag\+\_\+mod.\+f90}}.
 
 
 
@@ -136,5 +365,5 @@ Definition at line \mbox{\hyperlink{MatrixDiag__mod_8f90_source_l00828}{828}} of
 
 
 
-Definition at line \mbox{\hyperlink{MatrixDiag__mod_8f90_source_l00055}{55}} of file \mbox{\hyperlink{MatrixDiag__mod_8f90_source}{Matrix\+Diag\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{MatrixDiag__mod_8f90_source_l00075}{75}} of file \mbox{\hyperlink{MatrixDiag__mod_8f90_source}{Matrix\+Diag\+\_\+mod.\+f90}}.
 

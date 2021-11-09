@@ -155,76 +155,82 @@ This module contains the procedures and interface for computing the cumulative p
 \DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
 \DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00002}00002 }
 \DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00004}00004 \textcolor{keyword}{import} seaborn \textcolor{keyword}{as} sns}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00005}00005 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00006}00006 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00007}00007 sns.set()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00004}00004 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00005}00005 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00007}00007 fontsize = 14}
 \DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00008}00008 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00009}00009 fontsize = 14}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00009}00009 methods = [\textcolor{stringliteral}{"{}genCumPropExp"{}}, \textcolor{stringliteral}{"{}getCumPropExp"{}}]}
 \DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00010}00010 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00011}00011 methods = [\textcolor{stringliteral}{"{}genCumPropExp"{}}, \textcolor{stringliteral}{"{}getCumPropExp"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00011}00011 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.out"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00012}00012 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00013}00013 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.out"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00014}00014 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00015}00015 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00019}00019 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00020}00020 ax = plt.subplot()}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00021}00021 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00022}00022 \textcolor{keywordflow}{for} method \textcolor{keywordflow}{in} methods:}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00023}00023     plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00024}00024             , df[method].values}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00025}00025             , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00026}00026             )}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00027}00027 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00028}00028 plt.xticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00029}00029 plt.yticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00030}00030 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00031}00031 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime [ seconds ]"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00032}00032 ax.set\_title(\textcolor{stringliteral}{"{}genCumPropExp() vs. getCumPropExp().\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00033}00033 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00034}00034 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00035}00035 ax.legend   ( methods}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00036}00036            \textcolor{comment}{\#, loc='center left'}}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00037}00037            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00038}00038             , fontsize = fontsize}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00039}00039             )}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00040}00040 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00041}00041 plt.tight\_layout()}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00042}00042 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genCumPropExp\_vs\_getCumPropExp.runtime.png"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00043}00043 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00044}00044 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00047}00047 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00048}00048 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00049}00049 ax = plt.subplot()}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00050}00050 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00051}00051 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00052}00052         , df[\textcolor{stringliteral}{"{}genCumPropExp"{}}].values / df[\textcolor{stringliteral}{"{}getCumPropExp"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00053}00053         , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00054}00054         , color = \textcolor{stringliteral}{"{}r"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00055}00055         )}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00056}00056 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00057}00057         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00058}00058         , linestyle = \textcolor{stringliteral}{"{}-\/-\/"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00059}00059         , linewidth = 2}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00060}00060         , color = \textcolor{stringliteral}{"{}black"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00061}00061         )}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00062}00062 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00063}00063 plt.xticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00064}00064 plt.yticks(fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00065}00065 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00066}00066 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime Ratio ( genCumPropExp / getCumPropExp )"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00067}00067 ax.set\_title(\textcolor{stringliteral}{"{}genCumPropExp() vs. getCumPropExp().\(\backslash\)nLower than 1 means genCumPropExp() is faster."{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00068}00068 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00069}00069 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00070}00070 ax.legend   ( [\textcolor{stringliteral}{"{}Runtime Ratio"{}}, \textcolor{stringliteral}{"{}equality"{}}]}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00071}00071             , loc = \textcolor{stringliteral}{"{}center left"{}}}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00072}00072             , fontsize = fontsize}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00073}00073             , bbox\_to\_anchor = (1, 0.5)}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00074}00074             )}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00075}00075 }
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00076}00076 plt.tight\_layout()}
-\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00077}00077 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genCumPropExp\_vs\_getCumPropExp.runtime.ratio.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00017}00017 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00018}00018 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00020}00020 \textcolor{keywordflow}{for} method \textcolor{keywordflow}{in} methods:}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00021}00021     plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00022}00022             , df[method].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00023}00023             , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00024}00024             )}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00026}00026 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00027}00027 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00028}00028 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00029}00029 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime [ seconds ]"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00030}00030 ax.set\_title(\textcolor{stringliteral}{"{}genCumPropExp() vs. getCumPropExp().\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00031}00031 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00032}00032 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00033}00033 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00034}00034 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00035}00035 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00036}00036 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00037}00037 ax.legend   ( methods}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00038}00038            \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00039}00039            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00040}00040             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00041}00041             )}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00043}00043 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00044}00044 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genCumPropExp\_vs\_getCumPropExp.runtime.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00050}00050 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00051}00051 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00053}00053 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00054}00054         , df[\textcolor{stringliteral}{"{}genCumPropExp"{}}].values / df[\textcolor{stringliteral}{"{}getCumPropExp"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00055}00055         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00056}00056         , color = \textcolor{stringliteral}{"{}r"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00057}00057         )}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00058}00058 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00059}00059         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00060}00060         , linestyle = \textcolor{stringliteral}{"{}-\/-\/"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00061}00061         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00062}00062         , color = \textcolor{stringliteral}{"{}black"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00063}00063         )}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00065}00065 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00066}00066 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00067}00067 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00068}00068 ax.set\_ylabel(\textcolor{stringliteral}{"{}RunTime Ratio ( genCumPropExp / getCumPropExp )"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00069}00069 ax.set\_title(\textcolor{stringliteral}{"{}genCumPropExp() vs. getCumPropExp().\(\backslash\)nLower than 1 means genCumPropExp() is faster."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00070}00070 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00071}00071 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00072}00072 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00073}00073 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00074}00074 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00075}00075 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00076}00076 ax.legend   ( [\textcolor{stringliteral}{"{}Runtime Ratio"{}}, \textcolor{stringliteral}{"{}equality"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00077}00077             , loc = \textcolor{stringliteral}{"{}center left"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00078}00078             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00079}00079             , bbox\_to\_anchor = (1, 0.5)}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00080}00080             )}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00082}00082 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceMathCumPropExp__mod_l00083}00083 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genCumPropExp\_vs\_getCumPropExp.runtime.ratio.png"{}})}
 
 \end{DoxyCodeInclude}
  ~\newline
