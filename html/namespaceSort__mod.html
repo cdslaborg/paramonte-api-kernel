@@ -605,8 +605,8 @@ Variables</h2></td></tr>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    ax.tick_params(axis = <span class="stringliteral">&quot;y&quot;</span>, which = <span class="stringliteral">&quot;minor&quot;</span>)</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    ax.tick_params(axis = <span class="stringliteral">&quot;x&quot;</span>, which = <span class="stringliteral">&quot;minor&quot;</span>)</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    ax.legend   ( df.columns[1:]</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                , loc=<span class="stringliteral">&#39;center left&#39;</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                , bbox_to_anchor=(1, 0.5)</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>               <span class="comment">#, loc=&#39;center left&#39;</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>               <span class="comment">#, bbox_to_anchor=(1, 0.5)</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                , fontsize = fontsize</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                )</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
@@ -619,33 +619,40 @@ Variables</h2></td></tr>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    ax = plt.subplot()</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    start = 0</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">for</span> colname <span class="keywordflow">in</span> df.columns[2:]:</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        plt.plot( df.values[start:,0]</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                , df[colname].values[start:] / df[<span class="stringliteral">&quot;sort&quot;</span>].values[start:]</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                , linewidth = 2</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                )</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    plt.xticks(fontsize = fontsize)</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    plt.yticks(fontsize = fontsize)</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    ax.set_xlabel(<span class="stringliteral">&quot;Array Size (# elements)&quot;</span>, fontsize = fontsize)</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    ax.set_ylabel(<span class="stringliteral">&quot;Time Ratio ( sortIndex() / sort() )&quot;</span>, fontsize = fontsize)</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    ax.set_title(<span class="stringliteral">&quot;Ratio of timing of sortIndex() to sort(). Input data is {}.&quot;</span>.format(dtype), fontsize = fontsize)</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    ax.set_xscale(<span class="stringliteral">&quot;log&quot;</span>)</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">#ax.set_yscale(&quot;log&quot;)</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    plt.minorticks_on()</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    plt.grid(b = <span class="keyword">True</span>, which = <span class="stringliteral">&quot;both&quot;</span>, axis = <span class="stringliteral">&quot;both&quot;</span>, color=<span class="stringliteral">&#39;0.85&#39;</span>, linestyle=<span class="stringliteral">&#39;-&#39;</span>)</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    ax.tick_params(axis = <span class="stringliteral">&quot;y&quot;</span>, which = <span class="stringliteral">&quot;minor&quot;</span>)</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    ax.tick_params(axis = <span class="stringliteral">&quot;x&quot;</span>, which = <span class="stringliteral">&quot;minor&quot;</span>)</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    ax.legend   ( df.columns[2:]</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                , loc=<span class="stringliteral">&#39;center left&#39;</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                , bbox_to_anchor=(1, 0.5)</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                , fontsize = fontsize</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                )</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    plt.tight_layout()</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    plt.savefig(<span class="stringliteral">&quot;benchmark.sorting_vs_indexing.{}.ratio.png&quot;</span>.format(dtype))</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    plt.plot( df.values[:,0]</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            , np.ones(len(df.values[:,0]))</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            , linestyle = <span class="stringliteral">&quot;--&quot;</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            , linewidth = 2</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>           <span class="comment">#, color = &quot;black&quot;</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            )</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">for</span> colname <span class="keywordflow">in</span> df.columns[2:]:</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        plt.plot( df.values[start:,0]</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                , df[colname].values[start:] / df[<span class="stringliteral">&quot;sort&quot;</span>].values[start:]</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                , linewidth = 2</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                )</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    plt.xticks(fontsize = fontsize)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    plt.yticks(fontsize = fontsize)</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    ax.set_xlabel(<span class="stringliteral">&quot;Array Size (# elements)&quot;</span>, fontsize = fontsize)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    ax.set_ylabel(<span class="stringliteral">&quot;Time Ratio ( sortIndex() / sort() )&quot;</span>, fontsize = fontsize)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    ax.set_title(<span class="stringliteral">&quot;Ratio of timing of sortIndex() to sort(). Input data is {}.&quot;</span>.format(dtype), fontsize = fontsize)</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    ax.set_xscale(<span class="stringliteral">&quot;log&quot;</span>)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="comment">#ax.set_yscale(&quot;log&quot;)</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    plt.minorticks_on()</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    plt.grid(b = <span class="keyword">True</span>, which = <span class="stringliteral">&quot;both&quot;</span>, axis = <span class="stringliteral">&quot;both&quot;</span>, color=<span class="stringliteral">&#39;0.85&#39;</span>, linestyle=<span class="stringliteral">&#39;-&#39;</span>)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    ax.tick_params(axis = <span class="stringliteral">&quot;y&quot;</span>, which = <span class="stringliteral">&quot;minor&quot;</span>)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    ax.tick_params(axis = <span class="stringliteral">&quot;x&quot;</span>, which = <span class="stringliteral">&quot;minor&quot;</span>)</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    ax.legend   ( [<span class="stringliteral">&quot;Equality Line&quot;</span>] + list(df.columns[2:])</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>               <span class="comment">#, bbox_to_anchor=(1, 0.5)</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>               <span class="comment">#, loc=&#39;center left&#39;</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                , fontsize = fontsize</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                )</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    plt.tight_layout()</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    plt.savefig(<span class="stringliteral">&quot;benchmark.sorting_vs_indexing.{}.ratio.png&quot;</span>.format(dtype))</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
 </div><!-- fragment --> <br  />
  <a class="anchor" id="visb-sorting_vs_indexing"></a><b>Visualization of the benchmark output</b> <a href="#visb-sorting_vs_indexing">⛓</a> <hr  />
  <div class="image">
@@ -697,7 +704,7 @@ This software is distributed under the MIT-license. If you use any parts or conc
     <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
       <ul>
         <li class="navelem"><a class="el" href="namespaceSort__mod.html">Sort_mod</a></li>
-        <li class="footer">Generated on Tue Nov 9 2021 01:31:47 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+        <li class="footer">Generated on Tue Nov 9 2021 11:01:03 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
       </ul>
     </div>
     <div style="color: #ffffff; float: none; width: 100%;">
