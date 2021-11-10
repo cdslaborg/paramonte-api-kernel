@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"ObservatoryComptonBatse__mod_8f90.html#a621f1158c0af87289d46eb9a6894a410":[6,0,0,147,23],
 "ObservatoryComptonBatse__mod_8f90.html#a6734f7bd9cbe580b9fdb870f9c4cb417":[6,0,0,147,25],
 "ObservatoryComptonBatse__mod_8f90.html#a71d3544708ee94fb558e31f8ec02abba":[6,0,0,147,29],
 "ObservatoryComptonBatse__mod_8f90.html#a7946a63c290cce3fedab99bceb35eb07":[6,0,0,147,14],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "SampleMean__mod_0dRoutines__smod_0dgenMean__D1_8inc_8f90_source.html":[6,0,0,207],
 "SampleMean__mod_0dRoutines__smod_0dgenMean__D2_8inc_8f90.html":[6,0,0,208],
 "SampleMean__mod_0dRoutines__smod_0dgenMean__D2_8inc_8f90_source.html":[6,0,0,208],
-"SampleMean__mod_0dRoutines__smod_8f90.html":[6,0,0,206],
-"SampleMean__mod_0dRoutines__smod_8f90_source.html":[6,0,0,206]
+"SampleMean__mod_0dRoutines__smod_8f90.html":[6,0,0,206]
 };

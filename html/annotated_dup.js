@@ -43,7 +43,8 @@ var annotated_dup =
       [ "Vector_type_RK64", "structArrayJagged__mod_1_1Vector__type__RK64.html", "structArrayJagged__mod_1_1Vector__type__RK64" ]
     ] ],
     [ "ArrayReplace_mod", "namespaceArrayReplace__mod.html", [
-      [ "replace", "interfaceArrayReplace__mod_1_1replace.html", null ]
+      [ "genReplaced", "interfaceArrayReplace__mod_1_1genReplaced.html", null ],
+      [ "getReplaced", "interfaceArrayReplace__mod_1_1getReplaced.html", null ]
     ] ],
     [ "ArrayResize_mod", "namespaceArrayResize__mod.html", [
       [ "resize", "interfaceArrayResize__mod_1_1resize.html", null ]
