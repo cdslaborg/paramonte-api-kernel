@@ -5,7 +5,7 @@ var searchData=
   ['finalizedisplay_2',['finalizeDisplay',['../structDecoration__mod_1_1Display__type.html#a100f38b6966651221ecbf64f839d8e38',1,'Decoration_mod::Display_type::finalizeDisplay()'],['../namespaceDecoration__mod.html#a051a9227608fcea9f866c46dfedad485',1,'Decoration_mod::finalizeDisplay()']]],
   ['finalizeimages_3',['finalizeImages',['../namespaceParallelism__mod.html#aa7f8ae5589e49d51a94bf69386e4e2dd',1,'Parallelism_mod']]],
   ['finalizetest_4',['finalizeTest',['../namespaceTest__mod.html#a62bda6e84e247cded10cb86ac601bc1d',1,'Test_mod']]],
-  ['finduniquevaluecount_5fik_5',['findUniqueValueCount_IK',['../interfaceUnique__mod_1_1findUnique.html#a28008e93c6f90d9e086dbf3d6cbea6ce',1,'Unique_mod::findUnique::findUniqueValueCount_IK()'],['../namespaceUnique__mod.html#a6b87b2b9b5ab1d30ea29f31635e6546f',1,'Unique_mod::findUniqueValueCount_IK()']]],
+  ['finduniquevaluecount_5fik_5',['findUniqueValueCount_IK',['../interfaceArrayUnique__mod_1_1findUnique.html#a0dfa25d488ba5632019d08e626b3d61c',1,'ArrayUnique_mod::findUnique::findUniqueValueCount_IK()'],['../namespaceArrayUnique__mod.html#ac8b4cb81f630b1cd01169f622c629834',1,'ArrayUnique_mod::findUniqueValueCount_IK()']]],
   ['fit_6',['fit',['../structFitGeoCyclic__mod_1_1FitGeoCyclic__type.html#ad3605288df5a1e05505f65200cb6924f',1,'FitGeoCyclic_mod::FitGeoCyclic_type']]],
   ['fitgeocycliclogpdf_7',['fitGeoCyclicLogPDF',['../namespaceFitGeoCyclic__mod.html#a1c31498edcd69664be787f9942aaecea',1,'FitGeoCyclic_mod']]],
   ['four1_8',['four1',['../namespaceCrossCorr__mod.html#a23ced55aaf636ca29f41c5de2c0c6b2e',1,'CrossCorr_mod']]],

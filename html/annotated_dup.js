@@ -3,9 +3,9 @@ var annotated_dup =
     [ "ArrayComparison_mod", "namespaceArrayComparison__mod.html", [
       [ "iseqall", "interfaceArrayComparison__mod_1_1iseqall.html", null ]
     ] ],
-    [ "ArrayContains_mod", "namespaceArrayContains__mod.html", [
-      [ "genReplaced", "interfaceArrayContains__mod_1_1genReplaced.html", null ],
-      [ "getReplaced", "interfaceArrayContains__mod_1_1getReplaced.html", null ]
+    [ "ArrayFind_mod", "namespaceArrayFind__mod.html", [
+      [ "genReplaced", "interfaceArrayFind__mod_1_1genReplaced.html", null ],
+      [ "getReplaced", "interfaceArrayFind__mod_1_1getReplaced.html", null ]
     ] ],
     [ "ArrayJagged_mod", "namespaceArrayJagged__mod.html", [
       [ "Cube_type_char", "structArrayJagged__mod_1_1Cube__type__char.html", "structArrayJagged__mod_1_1Cube__type__char" ],
@@ -52,6 +52,10 @@ var annotated_dup =
     ] ],
     [ "ArrayResize_mod", "namespaceArrayResize__mod.html", [
       [ "resize", "interfaceArrayResize__mod_1_1resize.html", null ]
+    ] ],
+    [ "ArrayUnique_mod", "namespaceArrayUnique__mod.html", [
+      [ "findUnique", "interfaceArrayUnique__mod_1_1findUnique.html", "interfaceArrayUnique__mod_1_1findUnique" ],
+      [ "genUnique", "interfaceArrayUnique__mod_1_1genUnique.html", null ]
     ] ],
     [ "Bench_mod", "namespaceBench__mod.html", [
       [ "Bench_type", "structBench__mod_1_1Bench__type.html", "structBench__mod_1_1Bench__type" ],
@@ -664,9 +668,5 @@ var annotated_dup =
     [ "TimerCPU_mod", "namespaceTimerCPU__mod.html", [
       [ "Time_type", "structTimerCPU__mod_1_1Time__type.html", "structTimerCPU__mod_1_1Time__type" ],
       [ "TimerCPU_type", "structTimerCPU__mod_1_1TimerCPU__type.html", "structTimerCPU__mod_1_1TimerCPU__type" ]
-    ] ],
-    [ "Unique_mod", "namespaceUnique__mod.html", [
-      [ "findUnique", "interfaceUnique__mod_1_1findUnique.html", "interfaceUnique__mod_1_1findUnique" ],
-      [ "genUnique", "interfaceUnique__mod_1_1genUnique.html", null ]
     ] ]
 ];

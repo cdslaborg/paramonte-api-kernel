@@ -5,7 +5,7 @@ var dir_dc43877d82dd332f9fb2071fcca799d6 =
     [ "ArrayComparison_mod.f90", "ArrayComparison__mod_8f90.html", "ArrayComparison__mod_8f90" ],
     [ "ArrayComparison_mod@Routines_smod.f90", "ArrayComparison__mod_0dRoutines__smod_8f90.html", null ],
     [ "ArrayComparison_mod@Routines_smod@iseqall_D1.inc.f90", "ArrayComparison__mod_0dRoutines__smod_0diseqall__D1_8inc_8f90.html", null ],
-    [ "ArrayContains_mod.f90", "ArrayContains__mod_8f90.html", "ArrayContains__mod_8f90" ],
+    [ "ArrayFind_mod.f90", "ArrayFind__mod_8f90.html", "ArrayFind__mod_8f90" ],
     [ "ArrayJagged_mod.f90", "ArrayJagged__mod_8f90.html", "ArrayJagged__mod_8f90" ],
     [ "ArrayReplace_mod.f90", "ArrayReplace__mod_8f90.html", "ArrayReplace__mod_8f90" ],
     [ "ArrayReplace_mod@Routines_smod.f90", "ArrayReplace__mod_0dRoutines__smod_8f90.html", null ],
@@ -16,6 +16,10 @@ var dir_dc43877d82dd332f9fb2071fcca799d6 =
     [ "ArrayResize_mod.f90", "ArrayResize__mod_8f90.html", "ArrayResize__mod_8f90" ],
     [ "ArrayResize_mod@Routines_smod.f90", "ArrayResize__mod_0dRoutines__smod_8f90.html", null ],
     [ "ArrayResize_mod@Routines_smod@resize_D1.inc.f90", "ArrayResize__mod_0dRoutines__smod_0dresize__D1_8inc_8f90.html", null ],
+    [ "ArrayUnique_mod.f90", "ArrayUnique__mod_8f90.html", "ArrayUnique__mod_8f90" ],
+    [ "ArrayUnique_mod@Routines_smod.f90", "ArrayUnique__mod_0dRoutines__smod_8f90.html", null ],
+    [ "ArrayUnique_mod@Routines_smod@unique_D1.inc.f90", "ArrayUnique__mod_0dRoutines__smod_0dunique__D1_8inc_8f90.html", null ],
+    [ "ArrayUnique_mod@Routines_smod@uniqueCustom_D1.inc.f90", "ArrayUnique__mod_0dRoutines__smod_0duniqueCustom__D1_8inc_8f90.html", null ],
     [ "Bench_mod.f90", "Bench__mod_8f90.html", "Bench__mod_8f90" ],
     [ "ClusteredPoint_mod.f90", "ClusteredPoint__mod_8f90.html", "ClusteredPoint__mod_8f90" ],
     [ "Constants_mod.f90", "Constants__mod_8f90.html", "Constants__mod_8f90" ],
@@ -337,8 +341,5 @@ var dir_dc43877d82dd332f9fb2071fcca799d6 =
     [ "System_mod.f90", "System__mod_8f90.html", "System__mod_8f90" ],
     [ "Timer_mod.f90", "Timer__mod_8f90.html", "Timer__mod_8f90" ],
     [ "TimerCPU_mod.f90", "TimerCPU__mod_8f90.html", "TimerCPU__mod_8f90" ],
-    [ "TranGaus_mod.f90", "TranGaus__mod_8f90.html", "TranGaus__mod_8f90" ],
-    [ "Unique_mod.f90", "Unique__mod_8f90.html", "Unique__mod_8f90" ],
-    [ "Unique_mod@Routines_smod.f90", "Unique__mod_0dRoutines__smod_8f90.html", null ],
-    [ "Unique_mod@Routines_smod@genUnique.inc.f90", "Unique__mod_0dRoutines__smod_0dgenUnique_8inc_8f90.html", null ]
+    [ "TranGaus_mod.f90", "TranGaus__mod_8f90.html", "TranGaus__mod_8f90" ]
 ];

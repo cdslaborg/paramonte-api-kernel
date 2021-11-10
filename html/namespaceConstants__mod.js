@@ -36,6 +36,7 @@ var namespaceConstants__mod =
     [ "INVERSE_SQRT_TWO_PI", "namespaceConstants__mod.html#a0a2539f4ac642bd98bb9f939c1c16322", null ],
     [ "KEV2ERG", "namespaceConstants__mod.html#a81ebb51564237bfe6c354975d95a0cea", null ],
     [ "LANG_IS", "namespaceConstants__mod.html#afce9b98b5225b949959619fcfb57fb1c", null ],
+    [ "LK", "namespaceConstants__mod.html#a68ac316f10b57be996670bc7c0abed9d", null ],
     [ "LOG10_NAPIER", "namespaceConstants__mod.html#a2a314e7d9b2c30d4fedc6bb270cf9967", null ],
     [ "LOG_ERG2KEV", "namespaceConstants__mod.html#a3f317f24359f0c0b6185ba9e4f8c21b9", null ],
     [ "LOG_HALF", "namespaceConstants__mod.html#aa887fe87ecab97ea70ed2a4e55796a11", null ],

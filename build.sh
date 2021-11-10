@@ -56,7 +56,7 @@ fi
 
 
 BTYPE="release"
-NUM_JOB_FLAG="-j 2"
+num_job_flag="-j 2"
 keepold_flag="--keepold true"
 ParaMonte_BUILD_ENABLED="true"
 CLEAN_BUILD_ENABLED="false"
@@ -96,7 +96,7 @@ while [ "$1" != "" ]; do
                                 benchpp_flag="--benchpp $1"
                                 ;;
         -j | --njob )           shift
-                                NUM_JOB_FLAG="--njob $1"
+                                num_job_flag="--njob $1"
                                 ;;
         -f | --fortran )        shift
                                 fortran_flag="-f $1"
@@ -177,7 +177,7 @@ if [ "${ParaMonte_BUILD_ENABLED}" = "true" ]; then
     --bdir "${DOXYGEN_BLD_DIR}" \
     --idir "${DOXYGEN_BIN_DIR}" \
     ${fortran_flag} \
-    ${NUM_JOB_FLAG} && \
+    ${num_job_flag} && \
     cd "${FILE_DIR}" || {
         echo >&2
         echo >&2 "-- ParaMonteDoxygen - Failed to build the ParaMonte library for Doxygen examples. exiting..."

@@ -7,6 +7,7 @@ var dir_4d389600729eb25db92af3e09978356f =
     [ "Test_ArrayReplace_mod.f90", "Test__ArrayReplace__mod_8f90.html", "Test__ArrayReplace__mod_8f90" ],
     [ "Test_ArrayReplace_mod@Routines_smod.f90", "Test__ArrayReplace__mod_0dRoutines__smod_8f90.html", null ],
     [ "Test_ArrayReplace_mod@Routines_smod@replace.inc.f90", "Test__ArrayReplace__mod_0dRoutines__smod_0dreplace_8inc_8f90.html", null ],
+    [ "Test_ArrayUnique_mod.f90", "Test__ArrayUnique__mod_8f90.html", "Test__ArrayUnique__mod_8f90" ],
     [ "Test_Constants_mod.f90", "Test__Constants__mod_8f90.html", "Test__Constants__mod_8f90" ],
     [ "Test_CorCoef_mod.f90", "Test__CorCoef__mod_8f90.html", "Test__CorCoef__mod_8f90" ],
     [ "Test_Cosmology_mod.f90", "Test__Cosmology__mod_8f90.html", "Test__Cosmology__mod_8f90" ],
@@ -194,6 +195,5 @@ var dir_4d389600729eb25db92af3e09978356f =
     [ "Test_System_mod.f90", "Test__System__mod_8f90.html", "Test__System__mod_8f90" ],
     [ "Test_Timer_mod.f90", "Test__Timer__mod_8f90.html", "Test__Timer__mod_8f90" ],
     [ "Test_TimerCPU_mod.f90", "Test__TimerCPU__mod_8f90.html", "Test__TimerCPU__mod_8f90" ],
-    [ "Test_TranGaus_mod.f90", "Test__TranGaus__mod_8f90.html", "Test__TranGaus__mod_8f90" ],
-    [ "Test_Unique_mod.f90", "Test__Unique__mod_8f90.html", "Test__Unique__mod_8f90" ]
+    [ "Test_TranGaus_mod.f90", "Test__TranGaus__mod_8f90.html", "Test__TranGaus__mod_8f90" ]
 ];

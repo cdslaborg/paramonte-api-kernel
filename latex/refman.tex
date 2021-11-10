@@ -198,10 +198,11 @@
 \chapter{Module Documentation}
 \input{namespaceArray__mod}
 \input{namespaceArrayComparison__mod}
-\input{namespaceArrayContains__mod}
+\input{namespaceArrayFind__mod}
 \input{namespaceArrayJagged__mod}
 \input{namespaceArrayReplace__mod}
 \input{namespaceArrayResize__mod}
+\input{namespaceArrayUnique__mod}
 \input{namespaceBench__mod}
 \input{namespaceClusteredPoint__mod}
 \input{namespaceConstants__mod}
@@ -351,6 +352,7 @@
 \input{namespaceSystem__mod}
 \input{namespaceTest__Array__mod}
 \input{namespaceTest__ArrayReplace__mod}
+\input{namespaceTest__ArrayUnique__mod}
 \input{namespaceTest__Constants__mod}
 \input{namespaceTest__CorCoef__mod}
 \input{namespaceTest__Cosmology__mod}
@@ -425,11 +427,9 @@
 \input{namespaceTest__Timer__mod}
 \input{namespaceTest__TimerCPU__mod}
 \input{namespaceTest__TranGaus__mod}
-\input{namespaceTest__Unique__mod}
 \input{namespaceTimer__mod}
 \input{namespaceTimerCPU__mod}
 \input{namespaceTranGaus__mod}
-\input{namespaceUnique__mod}
 \chapter{Data Type Documentation}
 \input{structFile__mod_1_1Access__type}
 \input{structFile__mod_1_1Action__type}
@@ -512,7 +512,7 @@
 \input{structTest__mod_1_1File__type}
 \input{structFileContents__mod_1_1FileContents__type}
 \input{structFileList__mod_1_1FileList__type}
-\input{interfaceUnique__mod_1_1findUnique}
+\input{interfaceArrayUnique__mod_1_1findUnique}
 \input{structFitGeoCyclic__mod_1_1FitGeoCyclic__type}
 \input{structParallelism__mod_1_1ForkJoin__type}
 \input{structFile__mod_1_1Form__type}
@@ -556,12 +556,12 @@
 \input{interfaceDistMultiUnifEllipsoid__mod_1_1genRandMVUE}
 \input{interfaceDomain__mod_1_1genRandUnif__proc__D1}
 \input{interfaceDomain__mod_1_1genRandUnif__proc__D2}
-\input{interfaceArrayContains__mod_1_1genReplaced}
+\input{interfaceArrayFind__mod_1_1genReplaced}
 \input{interfaceArrayReplace__mod_1_1genReplaced}
 \input{interfaceString__mod_1_1genReverse}
 \input{interfaceMatrixScale__mod_1_1genScaledMat}
 \input{interfaceSampleShift__mod_1_1genShifted}
-\input{interfaceUnique__mod_1_1genUnique}
+\input{interfaceArrayUnique__mod_1_1genUnique}
 \input{interfaceSampleVariance__mod_1_1genVariance}
 \input{interfaceStatistics__mod_1_1getBetaCDF}
 \input{interfaceStatistics__mod_1_1getBetaContinuedFraction}
@@ -608,7 +608,7 @@
 \input{interfaceConstants__mod_1_1getPosInf}
 \input{interfaceDomainEllipsoid__mod_1_1getRandUnif}
 \input{interfaceStarFormation__mod_1_1getRateDensity__proc}
-\input{interfaceArrayContains__mod_1_1getReplaced}
+\input{interfaceArrayFind__mod_1_1getReplaced}
 \input{interfaceArrayReplace__mod_1_1getReplaced}
 \input{interfaceSampleShift__mod_1_1getShifted}
 \input{interfaceMath__mod_1_1getSumExp}
@@ -677,8 +677,8 @@
 \input{structSystem__mod_1_1OS__type}
 \input{structSpecBase__OutputChainFileFormat__mod_1_1OutputChainFileFormat__type}
 \input{structSpecMCMC__OutputChainSize__mod_1_1OutputChainSize__type}
-\input{interfaceSpecBase__OutputColumnWidth__mod_1_1OutputColumnWidth__type}
 \input{structSpecBase__OutputColumnWidth__mod_1_1outputColumnWidth__type}
+\input{interfaceSpecBase__OutputColumnWidth__mod_1_1OutputColumnWidth__type}
 \input{structSpecBase__OutputDelimiter__mod_1_1OutputDelimiter__type}
 \input{structSpecBase__OutputFileName__mod_1_1OutputFileName__type}
 \input{structSpecBase__OutputOverwriteEnabled__mod_1_1OutputOverwriteEnabled__type}
@@ -821,8 +821,8 @@
 \input{ArrayComparison__mod_0dRoutines__smod_8f90_source}
 \input{ArrayComparison__mod_0dRoutines__smod_0diseqall__D1_8inc_8f90}
 \input{ArrayComparison__mod_0dRoutines__smod_0diseqall__D1_8inc_8f90_source}
-\input{ArrayContains__mod_8f90}
-\input{ArrayContains__mod_8f90_source}
+\input{ArrayFind__mod_8f90}
+\input{ArrayFind__mod_8f90_source}
 \input{ArrayJagged__mod_8f90}
 \input{ArrayJagged__mod_8f90_source}
 \input{ArrayReplace__mod_8f90}
@@ -843,6 +843,14 @@
 \input{ArrayResize__mod_0dRoutines__smod_8f90_source}
 \input{ArrayResize__mod_0dRoutines__smod_0dresize__D1_8inc_8f90}
 \input{ArrayResize__mod_0dRoutines__smod_0dresize__D1_8inc_8f90_source}
+\input{ArrayUnique__mod_8f90}
+\input{ArrayUnique__mod_8f90_source}
+\input{ArrayUnique__mod_0dRoutines__smod_8f90}
+\input{ArrayUnique__mod_0dRoutines__smod_8f90_source}
+\input{ArrayUnique__mod_0dRoutines__smod_0dunique__D1_8inc_8f90}
+\input{ArrayUnique__mod_0dRoutines__smod_0dunique__D1_8inc_8f90_source}
+\input{ArrayUnique__mod_0dRoutines__smod_0duniqueCustom__D1_8inc_8f90}
+\input{ArrayUnique__mod_0dRoutines__smod_0duniqueCustom__D1_8inc_8f90_source}
 \input{Bench__mod_8f90}
 \input{Bench__mod_8f90_source}
 \input{ClusteredPoint__mod_8f90}
@@ -1457,6 +1465,8 @@
 \input{Test__ArrayReplace__mod_0dRoutines__smod_8f90_source}
 \input{Test__ArrayReplace__mod_0dRoutines__smod_0dreplace_8inc_8f90}
 \input{Test__ArrayReplace__mod_0dRoutines__smod_0dreplace_8inc_8f90_source}
+\input{Test__ArrayUnique__mod_8f90}
+\input{Test__ArrayUnique__mod_8f90_source}
 \input{Test__Constants__mod_8f90}
 \input{Test__Constants__mod_8f90_source}
 \input{Test__CorCoef__mod_8f90}
@@ -1833,20 +1843,12 @@
 \input{Test__TimerCPU__mod_8f90_source}
 \input{Test__TranGaus__mod_8f90}
 \input{Test__TranGaus__mod_8f90_source}
-\input{Test__Unique__mod_8f90}
-\input{Test__Unique__mod_8f90_source}
 \input{Timer__mod_8f90}
 \input{Timer__mod_8f90_source}
 \input{TimerCPU__mod_8f90}
 \input{TimerCPU__mod_8f90_source}
 \input{TranGaus__mod_8f90}
 \input{TranGaus__mod_8f90_source}
-\input{Unique__mod_8f90}
-\input{Unique__mod_8f90_source}
-\input{Unique__mod_0dRoutines__smod_8f90}
-\input{Unique__mod_0dRoutines__smod_8f90_source}
-\input{Unique__mod_0dRoutines__smod_0dgenUnique_8inc_8f90}
-\input{Unique__mod_0dRoutines__smod_0dgenUnique_8inc_8f90_source}
 %--- End generated contents ---
 % Index
   \backmatter

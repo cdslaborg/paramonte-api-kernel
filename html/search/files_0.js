@@ -4,7 +4,7 @@ var searchData=
   ['arraycomparison_5fmod_2ef90_1',['ArrayComparison_mod.f90',['../ArrayComparison__mod_8f90.html',1,'']]],
   ['arraycomparison_5fmod_40routines_5fsmod_2ef90_2',['ArrayComparison_mod@Routines_smod.f90',['../ArrayComparison__mod_0dRoutines__smod_8f90.html',1,'']]],
   ['arraycomparison_5fmod_40routines_5fsmod_40iseqall_5fd1_2einc_2ef90_3',['ArrayComparison_mod@Routines_smod@iseqall_D1.inc.f90',['../ArrayComparison__mod_0dRoutines__smod_0diseqall__D1_8inc_8f90.html',1,'']]],
-  ['arraycontains_5fmod_2ef90_4',['ArrayContains_mod.f90',['../ArrayContains__mod_8f90.html',1,'']]],
+  ['arrayfind_5fmod_2ef90_4',['ArrayFind_mod.f90',['../ArrayFind__mod_8f90.html',1,'']]],
   ['arrayjagged_5fmod_2ef90_5',['ArrayJagged_mod.f90',['../ArrayJagged__mod_8f90.html',1,'']]],
   ['arrayreplace_5fmod_2ef90_6',['ArrayReplace_mod.f90',['../ArrayReplace__mod_8f90.html',1,'']]],
   ['arrayreplace_5fmod_40routines_5fsmod_2ef90_7',['ArrayReplace_mod@Routines_smod.f90',['../ArrayReplace__mod_0dRoutines__smod_8f90.html',1,'']]],
@@ -14,5 +14,9 @@ var searchData=
   ['arrayreplace_5fmod_40routines_5fsmod_40replaceinstance_5fd1_2einc_2ef90_11',['ArrayReplace_mod@Routines_smod@replaceInstance_D1.inc.f90',['../ArrayReplace__mod_0dRoutines__smod_0dreplaceInstance__D1_8inc_8f90.html',1,'']]],
   ['arrayresize_5fmod_2ef90_12',['ArrayResize_mod.f90',['../ArrayResize__mod_8f90.html',1,'']]],
   ['arrayresize_5fmod_40routines_5fsmod_2ef90_13',['ArrayResize_mod@Routines_smod.f90',['../ArrayResize__mod_0dRoutines__smod_8f90.html',1,'']]],
-  ['arrayresize_5fmod_40routines_5fsmod_40resize_5fd1_2einc_2ef90_14',['ArrayResize_mod@Routines_smod@resize_D1.inc.f90',['../ArrayResize__mod_0dRoutines__smod_0dresize__D1_8inc_8f90.html',1,'']]]
+  ['arrayresize_5fmod_40routines_5fsmod_40resize_5fd1_2einc_2ef90_14',['ArrayResize_mod@Routines_smod@resize_D1.inc.f90',['../ArrayResize__mod_0dRoutines__smod_0dresize__D1_8inc_8f90.html',1,'']]],
+  ['arrayunique_5fmod_2ef90_15',['ArrayUnique_mod.f90',['../ArrayUnique__mod_8f90.html',1,'']]],
+  ['arrayunique_5fmod_40routines_5fsmod_2ef90_16',['ArrayUnique_mod@Routines_smod.f90',['../ArrayUnique__mod_0dRoutines__smod_8f90.html',1,'']]],
+  ['arrayunique_5fmod_40routines_5fsmod_40unique_5fd1_2einc_2ef90_17',['ArrayUnique_mod@Routines_smod@unique_D1.inc.f90',['../ArrayUnique__mod_0dRoutines__smod_0dunique__D1_8inc_8f90.html',1,'']]],
+  ['arrayunique_5fmod_40routines_5fsmod_40uniquecustom_5fd1_2einc_2ef90_18',['ArrayUnique_mod@Routines_smod@uniqueCustom_D1.inc.f90',['../ArrayUnique__mod_0dRoutines__smod_0duniqueCustom__D1_8inc_8f90.html',1,'']]]
 ];

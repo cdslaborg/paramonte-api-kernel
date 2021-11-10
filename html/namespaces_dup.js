@@ -4,10 +4,11 @@ var namespaces_dup =
       [ "MODULE_NAME", "namespaceArray__mod.html#ab61502fe8ce3b44504d3e29999a1a625", null ]
     ] ],
     [ "ArrayComparison_mod", "namespaceArrayComparison__mod.html", "namespaceArrayComparison__mod" ],
-    [ "ArrayContains_mod", "namespaceArrayContains__mod.html", "namespaceArrayContains__mod" ],
+    [ "ArrayFind_mod", "namespaceArrayFind__mod.html", "namespaceArrayFind__mod" ],
     [ "ArrayJagged_mod", "namespaceArrayJagged__mod.html", "namespaceArrayJagged__mod" ],
     [ "ArrayReplace_mod", "namespaceArrayReplace__mod.html", "namespaceArrayReplace__mod" ],
     [ "ArrayResize_mod", "namespaceArrayResize__mod.html", "namespaceArrayResize__mod" ],
+    [ "ArrayUnique_mod", "namespaceArrayUnique__mod.html", "namespaceArrayUnique__mod" ],
     [ "Bench_mod", "namespaceBench__mod.html", "namespaceBench__mod" ],
     [ "ClusteredPoint_mod", "namespaceClusteredPoint__mod.html", "namespaceClusteredPoint__mod" ],
     [ "Constants_mod", "namespaceConstants__mod.html", "namespaceConstants__mod" ],
@@ -254,6 +255,12 @@ var namespaces_dup =
     [ "Test_ArrayReplace_mod", "namespaceTest__ArrayReplace__mod.html", [
       [ "test_ArrayReplace", "namespaceTest__ArrayReplace__mod.html#a36c5d5ed9b00ad2e3d44b53e250cf05b", null ],
       [ "Test", "namespaceTest__ArrayReplace__mod.html#a204c0c75ce025758927bbcfc09244477", null ]
+    ] ],
+    [ "Test_ArrayUnique_mod", "namespaceTest__ArrayUnique__mod.html", [
+      [ "test_findUnique_1", "namespaceTest__ArrayUnique__mod.html#a3c10237f5e500530c5db1219f69dae96", null ],
+      [ "test_genUnique_1", "namespaceTest__ArrayUnique__mod.html#aad370978a9aac5278da5fa7c9660e734", null ],
+      [ "test_Unique", "namespaceTest__ArrayUnique__mod.html#a42ff6c1d92ce5b2546dffaa0e59df764", null ],
+      [ "Test", "namespaceTest__ArrayUnique__mod.html#a098e0e9213cf2f474ba2c3c4f28ee982", null ]
     ] ],
     [ "Test_Constants_mod", "namespaceTest__Constants__mod.html", [
       [ "test_Constants", "namespaceTest__Constants__mod.html#a8915da7f87f89d1b05e1fb9ee91b3428", null ],
@@ -1106,12 +1113,6 @@ var namespaces_dup =
       [ "test_TranGaus", "namespaceTest__TranGaus__mod.html#a7d951b01ee58079673bbd52355b0ae14", null ],
       [ "Test", "namespaceTest__TranGaus__mod.html#a3ac364ee271e46786804d5ef39ade0e8", null ]
     ] ],
-    [ "Test_Unique_mod", "namespaceTest__Unique__mod.html", [
-      [ "test_findUnique_1", "namespaceTest__Unique__mod.html#a4320cb09823f57000f207f5f0d014794", null ],
-      [ "test_genUnique_1", "namespaceTest__Unique__mod.html#a9d357c6282fe60514f0630d9f1e79a52", null ],
-      [ "test_Unique", "namespaceTest__Unique__mod.html#adafdf8afd41301589b37c10528e24504", null ],
-      [ "Test", "namespaceTest__Unique__mod.html#aaeac186fa8271ecb6622cf142dd21e10", null ]
-    ] ],
     [ "Timer_mod", "namespaceTimer__mod.html", "namespaceTimer__mod" ],
     [ "TimerCPU_mod", "namespaceTimerCPU__mod.html", "namespaceTimerCPU__mod" ],
     [ "TranGaus_mod", "namespaceTranGaus__mod.html", [
@@ -1134,6 +1135,5 @@ var namespaces_dup =
       [ "VEC_YU_2", "namespaceTranGaus__mod.html#abd5b2d913cd13c9166d019b159a9b918", null ],
       [ "VEC_YU_3", "namespaceTranGaus__mod.html#a6a88859a5059a6fac4d134884bc5acf1", null ],
       [ "VEC_YU_4", "namespaceTranGaus__mod.html#ab19477ff578cb5f7cf4b18c707e42d10", null ]
-    ] ],
-    [ "Unique_mod", "namespaceUnique__mod.html", "namespaceUnique__mod" ]
+    ] ]
 ];
