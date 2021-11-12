@@ -6,10 +6,19 @@ var namespaces_dup =
     [ "ArrayComparison_mod", "namespaceArrayComparison__mod.html", "namespaceArrayComparison__mod" ],
     [ "ArrayFind_mod", "namespaceArrayFind__mod.html", "namespaceArrayFind__mod" ],
     [ "ArrayJagged_mod", "namespaceArrayJagged__mod.html", "namespaceArrayJagged__mod" ],
+    [ "ArrayRemap_mod", "namespaceArrayRemap__mod.html", "namespaceArrayRemap__mod" ],
     [ "ArrayReplace_mod", "namespaceArrayReplace__mod.html", "namespaceArrayReplace__mod" ],
     [ "ArrayResize_mod", "namespaceArrayResize__mod.html", "namespaceArrayResize__mod" ],
+    [ "ArrayShuffle_mod", "namespaceArrayShuffle__mod.html", "namespaceArrayShuffle__mod" ],
     [ "ArrayUnique_mod", "namespaceArrayUnique__mod.html", "namespaceArrayUnique__mod" ],
+    [ "Bench_MatrixLUP_mod", "namespaceBench__MatrixLUP__mod.html", [
+      [ "bench_MatrixLUP", "namespaceBench__MatrixLUP__mod.html#ad03b2df28672e40bde13c9a724af4b37", null ],
+      [ "ludcmp", "namespaceBench__MatrixLUP__mod.html#a5fcc6c2919d39e60c22a68858e00b22d", null ]
+    ] ],
     [ "Bench_mod", "namespaceBench__mod.html", "namespaceBench__mod" ],
+    [ "Bench_Remap_mod", "namespaceBench__Remap__mod.html", [
+      [ "bench_Remap", "namespaceBench__Remap__mod.html#a47ee3c7b34a9ba778ad506e6d9461163", null ]
+    ] ],
     [ "ClusteredPoint_mod", "namespaceClusteredPoint__mod.html", "namespaceClusteredPoint__mod" ],
     [ "Constants_mod", "namespaceConstants__mod.html", "namespaceConstants__mod" ],
     [ "CorCoef_mod", "namespaceCorCoef__mod.html", "namespaceCorCoef__mod" ],

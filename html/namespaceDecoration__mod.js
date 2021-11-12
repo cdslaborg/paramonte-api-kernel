@@ -15,8 +15,6 @@ var namespaceDecoration__mod =
     [ "write", "interfaceDecoration__mod_1_1write.html", null ],
     [ "writeDecoratedList", "interfaceDecoration__mod_1_1writeDecoratedList.html", null ],
     [ "writeDecoratedText", "interfaceDecoration__mod_1_1writeDecoratedText.html", null ],
-    [ "constructDisplay", "namespaceDecoration__mod.html#ad25e8f977a51a73bfd3866f6a237c363", null ],
-    [ "finalizeDisplay", "namespaceDecoration__mod.html#a051a9227608fcea9f866c46dfedad485", null ],
     [ "genDisplayFormat", "namespaceDecoration__mod.html#ae84475215c0ec270b5b1f1bf20865c23", null ],
     [ "getGenericFormat", "namespaceDecoration__mod.html#aa1d724b3e1122f64a7765850c85f79cc", null ],
     [ "style", "namespaceDecoration__mod.html#a76b55a3d8e76a00bb8032a2cbde39a4c", null ],

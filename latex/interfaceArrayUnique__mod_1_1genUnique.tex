@@ -55,13 +55,13 @@ The purity of the procedure breaks when the input external procedure {\ttfamily 
 Note that in Fortran, trailing blanks are ignored in character comparison, that is, {\ttfamily \char`\"{}\+Fortran\char`\"{} == \char`\"{}\+Fortran \char`\"{}} yields {\ttfamily .true.}.
 \end{DoxyWarning}
 \begin{DoxyRemark}{Remarks}
-The functions under this interface are slightly slower than the get\+Unique subroutine implementations.
+The functions under this interface are slightly slower than the \mbox{\hyperlink{interfaceArrayUnique__mod_1_1getUnique}{get\+Unique}} subroutine implementations.
 \end{DoxyRemark}
 \begin{DoxyNote}{Note}
 If needed, use \mbox{\hyperlink{interfaceSort__mod_1_1sort}{sort}} to sort the output unique values (in ascending order).
 \end{DoxyNote}
 \begin{DoxySeeAlso}{See also}
-get\+Unique~\newline
+\mbox{\hyperlink{interfaceArrayUnique__mod_1_1getUnique}{get\+Unique}}~\newline
 
 \end{DoxySeeAlso}
 \label{namespaceInterpLinear__mod_example}%
@@ -319,11 +319,11 @@ get\+Unique~\newline
 
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000007}{Test}}]\mbox{\hyperlink{namespaceTest__ArrayUnique__mod}{Test\+\_\+\+Array\+Unique\+\_\+mod}}\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000010}{Test}}]\mbox{\hyperlink{namespaceTest__ArrayUnique__mod}{Test\+\_\+\+Array\+Unique\+\_\+mod}}\end{DoxyRefDesc}
 
 
 \begin{DoxyRefDesc}{Bug}
-\item[\mbox{\hyperlink{bug__bug000005}{Bug}}]The Intel Fortran compiler Classic 2021.\+2.\+0 has a bug for the following interface definition \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{bug__bug000006}{Bug}}]The Intel Fortran compiler Classic 2021.\+2.\+0 has a bug for the following interface definition \end{DoxyRefDesc}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{fortran_comment}{character(len(Array,IK)), allocatable   :: Unique(:)}}
@@ -339,10 +339,10 @@ get\+Unique~\newline
 \DoxyCodeLine{\textcolor{fortran_statement}{allocate}(\textcolor{fortran_statement}{character}(\textcolor{fortran_function}{len}(Array,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }IK)) :: Unique(lenUnique))}
 
 \end{DoxyCode}
- However, this introduces {\ttfamily internal compiler error\+: Segmentation fault} with gfortran versions 10 and 11. As such, the interface is currently written differently for the two compilers. For now, the decision was made to remove the assumed-\/length character vector interface entirely.
+ However, this introduces {\ttfamily internal compiler error\+: Segmentation fault} with gfortran versions 10 and 11. As such, the interface is currently written differently for the two compilers.
 
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000005}{Todo}}]This generic interface can be extended to 2D input objects. ~\newline
+\item[\mbox{\hyperlink{todo__todo000007}{Todo}}]This generic interface can be extended to 2D input objects. ~\newline
  The internal compiler error with {\ttfamily ifort} and {\ttfamily gfortran} has to be fixed in the future versions. ~\newline
 \end{DoxyRefDesc}
 

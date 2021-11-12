@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['finalize_0',['finalize',['../structParallelism__mod_1_1Image__type.html#a7d6e1a633c0827eaa72388a3dbf42f89',1,'Parallelism_mod::Image_type::finalize()'],['../structTest__mod_1_1Test__type.html#a8dcde4ca10a98add9bb7985c163a6503',1,'Test_mod::Test_type::finalize()'],['../namespaceTest__mod.html#a9612928d23d1dedb33964f0207b12074',1,'Test_mod::finalize()']]],
+  ['finalize_0',['finalize',['../structParallelism__mod_1_1Image__type.html#a7d6e1a633c0827eaa72388a3dbf42f89',1,'Parallelism_mod::Image_type::finalize()'],['../structTest__mod_1_1Test__type.html#a8dcde4ca10a98add9bb7985c163a6503',1,'Test_mod::Test_type::finalize()'],['../main_8f90.html#aa646a4f73f657768d771c4904325603d',1,'finalize():&#160;main.f90'],['../namespaceTest__mod.html#a9612928d23d1dedb33964f0207b12074',1,'Test_mod::finalize()']]],
   ['finalizebench_1',['finalizeBench',['../namespaceBench__mod.html#a8f3249a84c6762174cafe01ef8179a85',1,'Bench_mod']]],
-  ['finalizedisplay_2',['finalizeDisplay',['../structDecoration__mod_1_1Display__type.html#a100f38b6966651221ecbf64f839d8e38',1,'Decoration_mod::Display_type::finalizeDisplay()'],['../namespaceDecoration__mod.html#a051a9227608fcea9f866c46dfedad485',1,'Decoration_mod::finalizeDisplay()']]],
+  ['finalizedisplay_2',['finalizeDisplay',['../structDecoration__mod_1_1Display__type.html#a100f38b6966651221ecbf64f839d8e38',1,'Decoration_mod::Display_type']]],
   ['finalizeimages_3',['finalizeImages',['../namespaceParallelism__mod.html#aa7f8ae5589e49d51a94bf69386e4e2dd',1,'Parallelism_mod']]],
   ['finalizetest_4',['finalizeTest',['../namespaceTest__mod.html#a62bda6e84e247cded10cb86ac601bc1d',1,'Test_mod']]],
   ['finduniquevaluecount_5fik_5',['findUniqueValueCount_IK',['../interfaceArrayUnique__mod_1_1findUnique.html#a0dfa25d488ba5632019d08e626b3d61c',1,'ArrayUnique_mod::findUnique::findUniqueValueCount_IK()'],['../namespaceArrayUnique__mod.html#ac8b4cb81f630b1cd01169f622c629834',1,'ArrayUnique_mod::findUniqueValueCount_IK()']]],

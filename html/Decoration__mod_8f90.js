@@ -15,8 +15,6 @@ var Decoration__mod_8f90 =
     [ "Decoration_mod::sandwich", "interfaceDecoration__mod_1_1sandwich.html", null ],
     [ "Decoration_mod::getListOfLines", "interfaceDecoration__mod_1_1getListOfLines.html", null ],
     [ "Decoration_mod::wrapText", "interfaceDecoration__mod_1_1wrapText.html", null ],
-    [ "constructDisplay", "Decoration__mod_8f90.html#ad25e8f977a51a73bfd3866f6a237c363", null ],
-    [ "finalizeDisplay", "Decoration__mod_8f90.html#a051a9227608fcea9f866c46dfedad485", null ],
     [ "genDisplayFormat", "Decoration__mod_8f90.html#ae84475215c0ec270b5b1f1bf20865c23", null ],
     [ "getGenericFormat", "Decoration__mod_8f90.html#aa1d724b3e1122f64a7765850c85f79cc", null ],
     [ "style", "Decoration__mod_8f90.html#a76b55a3d8e76a00bb8032a2cbde39a4c", null ],

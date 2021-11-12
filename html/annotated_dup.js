@@ -46,6 +46,9 @@ var annotated_dup =
       [ "Vector_type_RK32", "structArrayJagged__mod_1_1Vector__type__RK32.html", "structArrayJagged__mod_1_1Vector__type__RK32" ],
       [ "Vector_type_RK64", "structArrayJagged__mod_1_1Vector__type__RK64.html", "structArrayJagged__mod_1_1Vector__type__RK64" ]
     ] ],
+    [ "ArrayRemap_mod", "namespaceArrayRemap__mod.html", [
+      [ "remap", "interfaceArrayRemap__mod_1_1remap.html", null ]
+    ] ],
     [ "ArrayReplace_mod", "namespaceArrayReplace__mod.html", [
       [ "genReplaced", "interfaceArrayReplace__mod_1_1genReplaced.html", null ],
       [ "getReplaced", "interfaceArrayReplace__mod_1_1getReplaced.html", null ]
@@ -53,9 +56,13 @@ var annotated_dup =
     [ "ArrayResize_mod", "namespaceArrayResize__mod.html", [
       [ "resize", "interfaceArrayResize__mod_1_1resize.html", null ]
     ] ],
+    [ "ArrayShuffle_mod", "namespaceArrayShuffle__mod.html", [
+      [ "shuffle", "interfaceArrayShuffle__mod_1_1shuffle.html", null ]
+    ] ],
     [ "ArrayUnique_mod", "namespaceArrayUnique__mod.html", [
       [ "findUnique", "interfaceArrayUnique__mod_1_1findUnique.html", "interfaceArrayUnique__mod_1_1findUnique" ],
-      [ "genUnique", "interfaceArrayUnique__mod_1_1genUnique.html", null ]
+      [ "genUnique", "interfaceArrayUnique__mod_1_1genUnique.html", null ],
+      [ "getUnique", "interfaceArrayUnique__mod_1_1getUnique.html", null ]
     ] ],
     [ "Bench_mod", "namespaceBench__mod.html", [
       [ "Bench_type", "structBench__mod_1_1Bench__type.html", "structBench__mod_1_1Bench__type" ],

@@ -27,6 +27,7 @@ var File__mod_8f90 =
     [ "getCloseErr", "File__mod_8f90.html#afa79491142a5912185c8128a9aaab575", null ],
     [ "getDelim", "File__mod_8f90.html#a063526cd97f0db2d67d058b363b12563", null ],
     [ "getExistStatus", "File__mod_8f90.html#a758655b4a4fde2a20308b87c6c1d987e", null ],
+    [ "getFileUnit", "File__mod_8f90.html#af5410d61815bb9b8a3e3560b4f4151b5", null ],
     [ "getForm", "File__mod_8f90.html#aa9318fff27d0e8a7c100c8aefbab0e33", null ],
     [ "getInqErr", "File__mod_8f90.html#a2d3a8550ed7058dcb6dba5b2c7f23c34", null ],
     [ "getName", "File__mod_8f90.html#aa68ddc4ae8de0fc3b300fb06411b703f", null ],
@@ -37,6 +38,7 @@ var File__mod_8f90 =
     [ "getReadErr", "File__mod_8f90.html#ab557615360f46e4e1b772d87c5941734", null ],
     [ "getRecl", "File__mod_8f90.html#ab267c88b3b8a0a141ef577723f17b78e", null ],
     [ "getWriteErr", "File__mod_8f90.html#a3c0c42645fcd7daedd1603c396d30194", null ],
+    [ "isPreconnected", "File__mod_8f90.html#a2eeab6dd9131616e2cb5456d31b8188d", null ],
     [ "openFile", "File__mod_8f90.html#a92909aba685042ce728d6d050134a7eb", null ],
     [ "MODULE_NAME", "File__mod_8f90.html#ac9069358a56de7a23365599890443ecd", null ]
 ];

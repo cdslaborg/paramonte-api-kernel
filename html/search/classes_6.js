@@ -84,5 +84,6 @@ var searchData=
   ['getreplaced_81',['getReplaced',['../interfaceArrayFind__mod_1_1getReplaced.html',1,'ArrayFind_mod::getReplaced'],['../interfaceArrayReplace__mod_1_1getReplaced.html',1,'ArrayReplace_mod::getReplaced']]],
   ['getshifted_82',['getShifted',['../interfaceSampleShift__mod_1_1getShifted.html',1,'SampleShift_mod']]],
   ['getsumexp_83',['getSumExp',['../interfaceMath__mod_1_1getSumExp.html',1,'Math_mod::getSumExp'],['../interfaceMathLogSub__mod_1_1getSumExp.html',1,'MathLogSub_mod::getSumExp']]],
-  ['grb_5ftype_84',['GRB_type',['../structObservatoryComptonBatse__mod_1_1GRB__type.html',1,'ObservatoryComptonBatse_mod']]]
+  ['getunique_84',['getUnique',['../interfaceArrayUnique__mod_1_1getUnique.html',1,'ArrayUnique_mod']]],
+  ['grb_5ftype_85',['GRB_type',['../structObservatoryComptonBatse__mod_1_1GRB__type.html',1,'ObservatoryComptonBatse_mod']]]
 ];

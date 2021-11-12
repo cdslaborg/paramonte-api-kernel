@@ -27,6 +27,7 @@ var namespaceFile__mod =
     [ "getCloseErr", "namespaceFile__mod.html#afa79491142a5912185c8128a9aaab575", null ],
     [ "getDelim", "namespaceFile__mod.html#a063526cd97f0db2d67d058b363b12563", null ],
     [ "getExistStatus", "namespaceFile__mod.html#a758655b4a4fde2a20308b87c6c1d987e", null ],
+    [ "getFileUnit", "namespaceFile__mod.html#af5410d61815bb9b8a3e3560b4f4151b5", null ],
     [ "getForm", "namespaceFile__mod.html#aa9318fff27d0e8a7c100c8aefbab0e33", null ],
     [ "getInqErr", "namespaceFile__mod.html#a2d3a8550ed7058dcb6dba5b2c7f23c34", null ],
     [ "getName", "namespaceFile__mod.html#aa68ddc4ae8de0fc3b300fb06411b703f", null ],
@@ -37,6 +38,7 @@ var namespaceFile__mod =
     [ "getReadErr", "namespaceFile__mod.html#ab557615360f46e4e1b772d87c5941734", null ],
     [ "getRecl", "namespaceFile__mod.html#ab267c88b3b8a0a141ef577723f17b78e", null ],
     [ "getWriteErr", "namespaceFile__mod.html#a3c0c42645fcd7daedd1603c396d30194", null ],
+    [ "isPreconnected", "namespaceFile__mod.html#a2eeab6dd9131616e2cb5456d31b8188d", null ],
     [ "openFile", "namespaceFile__mod.html#a92909aba685042ce728d6d050134a7eb", null ],
     [ "MODULE_NAME", "namespaceFile__mod.html#ac9069358a56de7a23365599890443ecd", null ]
 ];

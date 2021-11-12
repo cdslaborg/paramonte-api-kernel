@@ -1553,6 +1553,36 @@
 \DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01551}01551 }
 \DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01552}01552 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
 \DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01553}01553 }
-\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01554}01554 \textcolor{fortran_statement}{end module }\mbox{\hyperlink{namespaceFile__mod}{File\_mod}} ! LCOV\_EXCL\_LINE}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01554}\mbox{\hyperlink{namespaceFile__mod_a2eeab6dd9131616e2cb5456d31b8188d}{01554}} \textcolor{fortran_attribute}{    pure}\textcolor{fortran_statement}{ function} \mbox{\hyperlink{namespaceFile__mod_a2eeab6dd9131616e2cb5456d31b8188d}{isPreconnected}}(unit)\textcolor{fortran_statement}{ result}(preconnected)}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01555}01555 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01556}01556 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: \mbox{\hyperlink{namespaceFile__mod_a2eeab6dd9131616e2cb5456d31b8188d}{isPreconnected}}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01557}01557 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01558}01558 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\textcolor{fortran_inrinsic_module}{iso\_fortran\_env}, \textcolor{fortran_statement}{only}:\textcolor{fortran_named_const}{ output\_unit}, \textcolor{fortran_named_const}{input\_unit}, \textcolor{fortran_named_const}{error\_unit}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01559}01559         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01560}01560         \textcolor{fortran_statement}{integer}(\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}) ,\textcolor{fortran_attribute}{ intent(in)}    :: unit}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01561}01561 \textcolor{fortran_statement}{        logical}                     :: preconnected}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01562}01562         preconnected\textcolor{fortran_operator_symbols}{ = }unit\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{= }\textcolor{fortran_named_const}{output\_unit }\textcolor{fortran_operator_logical}{.or.} unit\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{= }\textcolor{fortran_named_const}{input\_unit }\textcolor{fortran_operator_logical}{.or.} unit\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{= }\textcolor{fortran_named_const}{error\_unit}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01563}01563     \textcolor{fortran_statement}{end function }\mbox{\hyperlink{namespaceFile__mod_a2eeab6dd9131616e2cb5456d31b8188d}{isPreconnected}}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01564}01564 }
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01565}01565 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01566}01566 }
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01567}\mbox{\hyperlink{namespaceFile__mod_af5410d61815bb9b8a3e3560b4f4151b5}{01567}} \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{namespaceFile__mod_af5410d61815bb9b8a3e3560b4f4151b5}{getFileUnit}}(unit)}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01568}01568 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01569}01569 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: genRandFileUnit}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01570}01570 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01571}01571 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01572}01572         \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ intent(out)}   :: unit}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01573}01573 \textcolor{fortran_statement}{        logical}                     :: opened}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01574}01574         unit\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9}\textcolor{fortran_numeric_literal}{9\_IK}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01575}01575         \textcolor{fortran_keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01576}01576 \textcolor{fortran_statement}{            inquire}(\textcolor{fortran_spcifier}{unit}\textcolor{fortran_operator_symbols}{ = }unit,\textcolor{fortran_spcifier}{ opened}\textcolor{fortran_operator_symbols}{ = }opened)}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01577}01577             \textcolor{fortran_keywordflow}{if} (\textcolor{fortran_operator_logical}{.not.} opened)\textcolor{fortran_statement}{ return}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01578}01578             unit\textcolor{fortran_operator_symbols}{ = }unit\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01579}01579 \textcolor{fortran_keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01580}01580     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01581}01581 }
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01582}01582 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01583}01583 }
+\DoxyCodeLine{\Hypertarget{File__mod_8f90_source_l01584}01584 \textcolor{fortran_statement}{end module }\mbox{\hyperlink{namespaceFile__mod}{File\_mod}} ! LCOV\_EXCL\_LINE}
 
 \end{DoxyCode}
