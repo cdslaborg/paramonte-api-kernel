@@ -4,7 +4,6 @@ var namespaces_dup =
       [ "MODULE_NAME", "namespaceArray__mod.html#ab61502fe8ce3b44504d3e29999a1a625", null ]
     ] ],
     [ "ArrayComparison_mod", "namespaceArrayComparison__mod.html", "namespaceArrayComparison__mod" ],
-    [ "ArrayFind_mod", "namespaceArrayFind__mod.html", "namespaceArrayFind__mod" ],
     [ "ArrayJagged_mod", "namespaceArrayJagged__mod.html", "namespaceArrayJagged__mod" ],
     [ "ArrayRemap_mod", "namespaceArrayRemap__mod.html", "namespaceArrayRemap__mod" ],
     [ "ArrayReplace_mod", "namespaceArrayReplace__mod.html", "namespaceArrayReplace__mod" ],

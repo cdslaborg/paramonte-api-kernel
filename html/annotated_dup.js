@@ -3,10 +3,6 @@ var annotated_dup =
     [ "ArrayComparison_mod", "namespaceArrayComparison__mod.html", [
       [ "iseqall", "interfaceArrayComparison__mod_1_1iseqall.html", null ]
     ] ],
-    [ "ArrayFind_mod", "namespaceArrayFind__mod.html", [
-      [ "genReplaced", "interfaceArrayFind__mod_1_1genReplaced.html", null ],
-      [ "getReplaced", "interfaceArrayFind__mod_1_1getReplaced.html", null ]
-    ] ],
     [ "ArrayJagged_mod", "namespaceArrayJagged__mod.html", [
       [ "Cube_type_char", "structArrayJagged__mod_1_1Cube__type__char.html", "structArrayJagged__mod_1_1Cube__type__char" ],
       [ "Cube_type_CK", "structArrayJagged__mod_1_1Cube__type__CK.html", "structArrayJagged__mod_1_1Cube__type__CK" ],
