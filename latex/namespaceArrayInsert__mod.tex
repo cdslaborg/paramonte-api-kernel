@@ -29,6 +29,97 @@ This module contains procedures for removing a insertion from arrays of various 
 {\bfseries{Benchmark \+:: The runtime performance of \mbox{\hyperlink{interfaceArrayInsert__mod_1_1insert}{insert}} for scalar vs. vector input {\ttfamily Insertion} argument.}} \href{\#benchmark-scalarInsertion_vs_vectorInsertion}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
 
 \begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00001}00001 \textcolor{fortran_comment}{! Test the performance of insert() with a vector `Insertion` vs. scalar `Insertion`.}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00002}00002 \textcolor{fortran_statement}{program} benchmark}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00004}00004     \textcolor{fortran_statement}{use }\textcolor{fortran_inrinsic_module}{iso\_fortran\_env}, \textcolor{fortran_statement}{only}:\textcolor{fortran_named_const}{ error\_unit}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00005}00005     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00006}00006     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceBench__mod}{Bench\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00007}00007     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMathRange__mod}{MathRange\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceMathRange__mod_1_1genRange}{genRange}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00009}00009     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00011}00011     \textcolor{fortran_statement}{integer}(IK)                         :: i}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00012}00012     \textcolor{fortran_statement}{integer}(IK)                         :: isize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00013}00013     \textcolor{fortran_statement}{integer}(IK)                         :: fileUnit}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00014}00014     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}             :: NSIZE\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{8\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00015}00015     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}             :: NBENCH\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00016}00016     \textcolor{fortran_statement}{integer}(IK)                         :: ArraySize(NSIZE)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00017}00017 \textcolor{fortran_statement}{    logical}                             :: dummy\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.               }}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00018}00018     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ allocatable}           ::\textcolor{fortran_function}{ Index}(:)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00019}00019 \textcolor{fortran_statement}{    real}(RK)    ,\textcolor{fortran_attribute}{ allocatable}           :: Array(:)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00020}00020 \textcolor{fortran_statement}{    real}(RK)    ,\textcolor{fortran_attribute}{ allocatable}           :: ArrayNew(:)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00021}00021 \textcolor{fortran_statement}{    real}(RK)                            :: Insertion(\textcolor{fortran_numeric_literal}{1})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00022}00022     \textcolor{fortran_statement}{type}(Bench\_type)                    :: Bench(NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00024}00024     Bench(\textcolor{fortran_numeric_literal}{1})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}scalarInsertion"{}}, exec\textcolor{fortran_operator_symbols}{ = }scalarInsertion , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00025}00025     Bench(\textcolor{fortran_numeric_literal}{2})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}vectorInsertion"{}}, exec\textcolor{fortran_operator_symbols}{ = }vectorInsertion , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00027}00027     ArraySize\textcolor{fortran_operator_symbols}{ = }[(\textcolor{fortran_numeric_literal}{ 2\_IK}\textcolor{fortran_operator_symbols}{*}\textcolor{fortran_operator_symbols}{*}isize, isize\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}, NSIZE )]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00029}00029 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00030}00030 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}scalarInsertion() vs. vectorInsertion()"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00031}00031 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00033}00033 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnit, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.out"{}}, status\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}replace"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00035}00035 \textcolor{fortran_statement}{        write}(fileUnit, \textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) \textcolor{fortran_string}{"{}ArraySize"{}}, (Bench(i)\textcolor{fortran_operator_symbols}{\%}name, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00037}00037         loopOverArraySize: \textcolor{fortran_keywordflow}{do} isize\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NSIZE}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00039}00039 \textcolor{fortran_statement}{            write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Benchmarking with size"{}}, ArraySize(isize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00040}00040 \textcolor{fortran_statement}{            allocate}(Array(ArraySize(isize)), ArrayNew(ArraySize(isize)\textcolor{fortran_operator_symbols}{*}\textcolor{fortran_numeric_literal}{2}))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00041}00041             Index\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceMathRange__mod_1_1genRange}{genRange}}(\textcolor{fortran_numeric_literal}{1\_IK}, ArraySize(isize))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00043}00043             \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00044}00044 \textcolor{fortran_statement}{                call} Bench(i)\textcolor{fortran_operator_symbols}{\%}time(Bench(i)\textcolor{fortran_operator_symbols}{\%}Timing, minsec\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{5\_RK})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00045}00045 \textcolor{fortran_keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00047}00047 \textcolor{fortran_statement}{            deallocate}(Array, ArrayNew)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00048}00048 \textcolor{fortran_statement}{            write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) ArraySize(isize), (Bench(i)\textcolor{fortran_operator_symbols}{\%}Timing\textcolor{fortran_operator_symbols}{\%}Stat\textcolor{fortran_operator_symbols}{\%}mean, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00050}00050 \textcolor{fortran_keywordflow}{        end do} loopOverArraySize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00051}00051 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) dummy}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00052}00052 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00054}00054 \textcolor{fortran_statement}{    close}(fileUnit)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00056}00056 \textcolor{fortran_statement}{contains}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00058}00058     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00059}00059     \textcolor{fortran_comment}{! procedure wrappers.}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00060}00060     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00062}00062 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00063}00063 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00064}00064 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00065}00065     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00067}00067 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00068}00068 \textcolor{fortran_statement}{        call}\textcolor{fortran_subroutine}{ random\_number}(Insertion)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00069}00069     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00071}00071 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00072}00072         dummy\textcolor{fortran_operator_symbols}{ = }dummy \textcolor{fortran_operator_logical}{.and.} Insertion(\textcolor{fortran_numeric_literal}{1})\textcolor{fortran_operator_symbols}{ < }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{5\_RK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00073}00073     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00075}00075 \textcolor{fortran_statement}{    subroutine} scalarInsertion()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00076}00076         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArrayInsert__mod}{ArrayInsert\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArrayInsert__mod_1_1insert}{insert}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00077}00077 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00078}00078 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{interfaceArrayInsert__mod_1_1insert}{insert}}(ArrayNew, Array, Insertion(\textcolor{fortran_numeric_literal}{1}), Index)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00079}00079 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00080}00080     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00082}00082 \textcolor{fortran_statement}{    subroutine} vectorInsertion()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00083}00083         \textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00084}00084             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArrayInsert__mod}{ArrayInsert\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArrayInsert__mod_1_1insert}{insert}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00085}00085 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00086}00086 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{interfaceArrayInsert__mod_1_1insert}{insert}}(ArrayNew, Array, Insertion, Index)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00087}00087 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00088}00088 \textcolor{fortran_keywordflow}{        end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00089}00089     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00091}00091 \textcolor{fortran_statement}{end program }benchmark}
 
 \end{DoxyCodeInclude}
  ~\newline
@@ -56,6 +147,84 @@ This module contains procedures for removing a insertion from arrays of various 
 \Hypertarget{namespaceArrayInsert__mod_postprocb-scalarInsertion_vs_vectorInsertion}%
 {\bfseries{Postprocessing of the output}} \href{\#postprocb-scalarInsertion_vs_vectorInsertion}{\texttt{ ⛓}} 
 \begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00004}00004 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00005}00005 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00007}00007 fontsize = 14}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00009}00009 methods = [\textcolor{stringliteral}{"{}scalarInsertion"{}}, \textcolor{stringliteral}{"{}vectorInsertion"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00011}00011 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.out"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00017}00017 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00018}00018 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00020}00020 \textcolor{keywordflow}{for} method \textcolor{keywordflow}{in} methods:}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00021}00021     plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00022}00022             , df[method].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00023}00023             , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00024}00024             )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00026}00026 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00027}00027 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00028}00028 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00029}00029 ax.set\_ylabel(\textcolor{stringliteral}{"{}Runtime [ seconds ]"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00030}00030 ax.set\_title(\textcolor{stringliteral}{"{}Removing array segments with Insertion(1) (scalar) vs. Insertion(1:1) (vector).\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00031}00031 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00032}00032 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00033}00033 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00034}00034 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00035}00035 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00036}00036 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00037}00037 ax.legend   ( methods}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00038}00038            \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00039}00039            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00040}00040             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00041}00041             )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00043}00043 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00044}00044 plt.savefig(\textcolor{stringliteral}{"{}benchmark.scalarInsertion\_vs\_vectorInsertion.runtime.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00050}00050 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00051}00051 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00053}00053 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00054}00054         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00055}00055        \textcolor{comment}{\#, linestyle = "{}-\/-\/"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00056}00056        \textcolor{comment}{\#, color = "{}black"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00057}00057         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00058}00058         )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00059}00059 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00060}00060         , df[\textcolor{stringliteral}{"{}vectorInsertion"{}}].values / df[\textcolor{stringliteral}{"{}scalarInsertion"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00061}00061         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00062}00062         )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00064}00064 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00065}00065 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00066}00066 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00067}00067 ax.set\_ylabel(\textcolor{stringliteral}{"{}Runtime compared to scalarInsertion()"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00068}00068 ax.set\_title(\textcolor{stringliteral}{"{}Runtime Ratio: split with Delim(1:1) / split with Delim(1).\(\backslash\)nLower means faster. Lower than 1 means faster than scalarInsertion."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00069}00069 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00070}00070 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00071}00071 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00072}00072 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00073}00073 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00074}00074 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00075}00075 ax.legend   ( [\textcolor{stringliteral}{"{}scalarInsertion"{}}, \textcolor{stringliteral}{"{}vectorInsertion"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00076}00076            \textcolor{comment}{\#, bbox\_to\_anchor = (1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00077}00077            \textcolor{comment}{\#, loc = "{}center left"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00078}00078             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00079}00079             )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00081}00081 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00082}00082 plt.savefig(\textcolor{stringliteral}{"{}benchmark.scalarInsertion\_vs\_vectorInsertion.runtime.ratio.png"{}})}
 
 \end{DoxyCodeInclude}
  ~\newline
@@ -68,58 +237,7 @@ This module contains procedures for removing a insertion from arrays of various 
 {\bfseries{Benchmark moral}} \href{\#moralb-scalarInsertion_vs_vectorInsertion}{\texttt{ ⛓}} \DoxyHorRuler{0}
 
 \begin{DoxyEnumerate}
-\item The procedures under the generic interface \mbox{\hyperlink{interfaceArrayInsert__mod_1_1insert}{insert}} take both scalar and vector {\ttfamily Insertion} arguments. As evidenced by the above benchmark, when the input {\ttfamily Insertion} is vector of length {\ttfamily 1}, it is much faster, {\bfseries{up to 4X}}, to pass {\ttfamily Insertion} as a scalar instead of a whole array of length {\ttfamily 1}. Note that this benchmark is not relevant to removing substrings from Fortran strings.
-\end{DoxyEnumerate}
-\end{DoxyParagraph}
-
-
-\label{namespaceArrayInsert__mod_benchmark-genRemoved_vs_insert}%
-\Hypertarget{namespaceArrayInsert__mod_benchmark-genRemoved_vs_insert}%
-{\bfseries{Benchmark \+:: The runtime performance of gen\+Removed vs. \mbox{\hyperlink{interfaceArrayInsert__mod_1_1insert}{insert}}}} \href{\#benchmark-genRemoved_vs_insert}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
-
-\begin{DoxyCodeInclude}{0}
-
-\end{DoxyCodeInclude}
- ~\newline
- \label{namespaceArrayInsert__mod_compileb-unix-gnu-genRemoved_vs_insert}%
-\Hypertarget{namespaceArrayInsert__mod_compileb-unix-gnu-genRemoved_vs_insert}%
-{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compileb-unix-gnu-genRemoved_vs_insert}{\texttt{ ⛓}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00001}00001 \#!/bin/bash}
-\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
-\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00003}00003 ./main.exe}
-
-\end{DoxyCodeInclude}
- ~\newline
- \label{namespaceArrayInsert__mod_compileb-unix-intel-genRemoved_vs_insert}%
-\Hypertarget{namespaceArrayInsert__mod_compileb-unix-intel-genRemoved_vs_insert}%
-{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compileb-unix-intel-genRemoved_vs_insert}{\texttt{ ⛓}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00001}00001 \#!/bin/bash}
-\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
-\DoxyCodeLine{\Hypertarget{namespaceArrayInsert__mod_l00003}00003 ./main.exe}
-
-\end{DoxyCodeInclude}
- ~\newline
- \label{namespaceArrayInsert__mod_postprocb-genRemoved_vs_insert}%
-\Hypertarget{namespaceArrayInsert__mod_postprocb-genRemoved_vs_insert}%
-{\bfseries{Postprocessing of the output}} \href{\#postprocb-genRemoved_vs_insert}{\texttt{ ⛓}} 
-\begin{DoxyCodeInclude}{0}
-
-\end{DoxyCodeInclude}
- ~\newline
- \label{namespaceArrayInsert__mod_visb-genRemoved_vs_insert}%
-\Hypertarget{namespaceArrayInsert__mod_visb-genRemoved_vs_insert}%
-{\bfseries{Visualization of the benchmark output}} \href{\#visb-genRemoved_vs_insert}{\texttt{ ⛓}} \DoxyHorRuler{0}
-   ~\newline
- \label{namespaceArrayInsert__mod_moralb-genRemoved_vs_insert}%
-\Hypertarget{namespaceArrayInsert__mod_moralb-genRemoved_vs_insert}%
-{\bfseries{Benchmark moral}} \href{\#moralb-genRemoved_vs_insert}{\texttt{ ⛓}} \DoxyHorRuler{0}
-
-\begin{DoxyEnumerate}
-\item The procedures under the generic interface gen\+Removed are functions while the procedures under the generic interface \mbox{\hyperlink{interfaceArrayInsert__mod_1_1insert}{insert}} are subroutines. From the benchmark results, it appears that the functional interface performs slightly less efficiently than the subroutine interface, despite the two algorithms having the same implementation.
-\item Note that this benchmark does not even include the cost of repeated reallcations, that is, the allocation of {\ttfamily Removed} happen only once in all tests.
-\item Note that this benchmark considers the worst-\/case scenario where all insertions of the input {\ttfamily Array} match the input {\ttfamily Insertion} and must be therefore, inserted.
+\item The procedures under the generic interface \mbox{\hyperlink{interfaceArrayInsert__mod_1_1insert}{insert}} take both scalar and vector {\ttfamily Insertion} arguments. As evidenced by the above benchmark, when the input {\ttfamily Insertion} is vector of length {\ttfamily 1}, it is much faster, by {\bfseries{4X}} or more, to pass {\ttfamily Insertion} as a scalar instead of a whole array of length {\ttfamily 1}. This benchmark represents the worst-\/case scenario. Note that this benchmark is not relevant to inserting substrings to Fortran strings.
 \end{DoxyEnumerate}
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
@@ -148,5 +266,5 @@ Amir Shahmoradi, Wednesday 12\+:20 AM, October 13, 2021, Dallas, TX
 
 
 
-Definition at line \mbox{\hyperlink{ArrayInsert__mod_8f90_source_l00090}{90}} of file \mbox{\hyperlink{ArrayInsert__mod_8f90_source}{Array\+Insert\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{ArrayInsert__mod_8f90_source_l00074}{74}} of file \mbox{\hyperlink{ArrayInsert__mod_8f90_source}{Array\+Insert\+\_\+mod.\+f90}}.
 

@@ -124,8 +124,8 @@ $(document).ready(function(){initNavTree('interfaceArrayUnique__mod_1_1genUnique
  &#160; type <code>integer</code> of kind <a class="el" href="namespaceConstants__mod.html#ae3573d46486b5f1a0a8d5033a9d12879">IK8</a>, <a class="el" href="namespaceConstants__mod.html#acd3c33e94d12f6e7d7c0ee79b2d6280b">IK16</a>, <a class="el" href="namespaceConstants__mod.html#ab12a86d74008f0d7f287c3564c3defd9">IK32</a>, or <a class="el" href="namespaceConstants__mod.html#ad6aaf2f477491dc84e7ebbab3b64694e">IK64</a>, or <br  />
  &#160; type <code>complex</code> of kind <a class="el" href="namespaceConstants__mod.html#ac8b456bd9511bc9a52b4a03bda4b72df">CK32</a>, <a class="el" href="namespaceConstants__mod.html#aa6ea61256fca0b20db0ec2b90755b9f3">CK64</a>, or <a class="el" href="namespaceConstants__mod.html#ad3873e1ecc5eb3cf3651f72630cae087">CK128</a>, or <br  />
  &#160; type <code>real</code> of kind <a class="el" href="namespaceConstants__mod.html#aaf5c6c840ed0befe5a37da626c35716f">RK32</a>, <a class="el" href="namespaceConstants__mod.html#a855643f887b4c787e6542e9e7849680f">RK64</a>, or <a class="el" href="namespaceConstants__mod.html#aeef7c44b90b75aeeebdef1da504886cb">RK128</a>, or <br  />
- &#160; type <code>character</code> of default kind, or <br  />
- &#160; a scalar assumed-length <code>character</code> of default kind, <br  />
+ &#160; type <code>character</code> of default kind <a class="el" href="namespaceConstants__mod.html#af7cc6c6017142cddbb143225b0a4dc93">SK</a>, or <br  />
+ &#160; a scalar assumed-length <code>character</code> of default kind <a class="el" href="namespaceConstants__mod.html#af7cc6c6017142cddbb143225b0a4dc93">SK</a>, <br  />
  &#160; whose unique elements are to be returned. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">iseq</td><td>: The optional external user-specified function that takes two input scalar arguments of the same type and kind as the input <code>Array</code> and returns a scalar of type <code>logical</code> of default kind <a class="el" href="namespaceConstants__mod.html#a68ac316f10b57be996670bc7c0abed9d">LK</a> that is <code>.true.</code> if the two input elements of <code>Array</code> are equivalent (e.g., equal) according to the user-defined criterion, otherwise, it is <code>.false.</code>. This user-defined function is extremely useful where a user-defined equivalence test other than exact equality or identity is needed, for example, when the array elements are considered identical only within a given threshold or, when the case-sensitivity in character comparisons do not matter. In such cases, user can define a custom equivalence criterion within the user-defined external function <code>iseq</code> to achieve the goal. The following illustrates the generic interface of <code>iseq</code>, <div class="fragment"><div class="line"><span class="fortran_statement">function</span> iseq(element1, element2)<span class="fortran_statement"> result</span> (isEquivalent)</div>
 <div class="line">    <span class="fortran_statement">TYPE</span>(KIND)  ,<span class="fortran_attribute"> intent(in)</span>    :: element1, element2</div>
@@ -154,7 +154,7 @@ Note that in Fortran, trailing blanks are ignored in character comparison, that 
 </dd></dl>
 <p><a class="anchor" id="example"></a><b>Example usage</b> <a href="#example">⛓</a> </p><dl class="section user"><dt></dt><dd><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="fortran_statement">program</span> example</div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceConstants__mod.html">Constants_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_variable" href="namespaceConstants__mod.html#af7cc6c6017142cddbb143225b0a4dc93">SK</a> <span class="fortran_comment">! default string (character)  kind.</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceConstants__mod.html">Constants_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_variable" href="namespaceConstants__mod.html#af7cc6c6017142cddbb143225b0a4dc93">SK</a> <span class="fortran_comment">! default string (character) kind.</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceConstants__mod.html">Constants_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_variable" href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">IK</a> <span class="fortran_comment">! all other integer kinds are also acceptable: IK8, IK16, IK32, IK64.</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceConstants__mod.html">Constants_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_variable" href="namespaceConstants__mod.html#af98c475d7d15ede8622b2a6d0d3e4a72">CK</a> <span class="fortran_comment">! all other complex kinds are also acceptable: CK32, CK64, CK128.</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    <span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceConstants__mod.html">Constants_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_variable" href="namespaceConstants__mod.html#a2d9d57f0148a7016d900f471e5f28069">RK</a> <span class="fortran_comment">! all other real    kinds are also acceptable: RK32, RK64, RK128.</span></div>
@@ -323,18 +323,18 @@ Note that in Fortran, trailing blanks are ignored in character comparison, that 
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="fortran_comment">! Unique elements in character scalar.</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>Array_SK</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="fortran_string">&quot;ParaMonte is a Monte Carlo Library.&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><a class="code hl_interface" href="interfaceArrayUnique__mod_1_1genUnique.html">genUnique</a>(Array_SK)</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="fortran_string">&quot;ParMonte isClLby.&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>string_SK</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>ParaMonte is a Monte Carlo Library.</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><a class="code hl_interface" href="interfaceArrayUnique__mod_1_1genUnique.html">genUnique</a>(string_SK)</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>ParMonte isClLby.</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="fortran_comment">! Unique elements in character array.</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>Array_HK</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>Array_SK</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="fortran_string">&quot;ParaMonte&quot;</span>, <span class="fortran_string">&quot;PARAMONTE&quot;</span>, <span class="fortran_string">&quot;paramonte&quot;</span>, <span class="fortran_string">&quot;ParaMonte&quot;</span>, <span class="fortran_string">&quot;ParaMonte&quot;</span>, <span class="fortran_string">&quot;Paramonte&quot;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><a class="code hl_interface" href="interfaceArrayUnique__mod_1_1genUnique.html">genUnique</a>(Array_HK)</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><a class="code hl_interface" href="interfaceArrayUnique__mod_1_1genUnique.html">genUnique</a>(Array_SK)</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="fortran_string">&quot;         &quot;</span>, <span class="fortran_string">&quot;         &quot;</span>, <span class="fortran_string">&quot;         &quot;</span>, <span class="fortran_string">&quot;         &quot;</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
@@ -384,10 +384,10 @@ Note that in Fortran, trailing blanks are ignored in character comparison, that 
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="fortran_comment">! Unique case-insensitive instances within the character array.</span></div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="fortran_comment">!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>Array_SK</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="fortran_string">&quot;ABBAbbA&quot;</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><a class="code hl_interface" href="interfaceArrayUnique__mod_1_1genUnique.html">genUnique</a>(Array_SK, iseq<span class="fortran_operator_symbols"> = </span>isEquivalent_SK)</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="fortran_string">&quot;AB&quot;</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>string_SK</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>ABBAbbA</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><a class="code hl_interface" href="interfaceArrayUnique__mod_1_1genUnique.html">genUnique</a>(string_SK, iseq<span class="fortran_operator_symbols"> = </span>isEquivalent_SK)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>AB</div>
 </div><!-- fragment --></dd></dl>
 <dl class="test"><dt><b><a class="el" href="test.html#_test000038">Test:</a></b></dt><dd><a class="el" href="namespaceTest__ArrayUnique__mod.html">Test_ArrayUnique_mod</a></dd></dl>
 <dl class="bug"><dt><b><a class="el" href="bug.html#_bug000011">Bug:</a></b></dt><dd>The Intel Fortran compiler Classic 2021.2.0 has a bug for the following interface definition </dd></dl>
@@ -465,7 +465,7 @@ This software is distributed under the MIT-license. If you use any parts or conc
     <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
       <ul>
         <li class="navelem"><a class="el" href="namespaceArrayUnique__mod.html">ArrayUnique_mod</a></li><li class="navelem"><a class="el" href="interfaceArrayUnique__mod_1_1genUnique.html">genUnique</a></li>
-        <li class="footer">Generated on Fri Dec 3 2021 01:48:08 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+        <li class="footer">Generated on Fri Dec 3 2021 02:45:21 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
       </ul>
     </div>
     <div style="color: #ffffff; float: none; width: 100%;">

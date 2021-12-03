@@ -27,15 +27,15 @@ Reorder the elements of the input {\ttfamily Array} according to the input {\ttf
  ~ type {\ttfamily complex} of kind \mbox{\hyperlink{namespaceConstants__mod_ac8b456bd9511bc9a52b4a03bda4b72df}{CK32}}, \mbox{\hyperlink{namespaceConstants__mod_aa6ea61256fca0b20db0ec2b90755b9f3}{CK64}}, or \mbox{\hyperlink{namespaceConstants__mod_ad3873e1ecc5eb3cf3651f72630cae087}{CK128}}, or ~\newline
  ~ type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}, or ~\newline
  ~ type {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, or ~\newline
- ~ type {\ttfamily character} of default kind, or ~\newline
- ~ a scalar assumed-\/length {\ttfamily character} of default kind, ~\newline
+ ~ type {\ttfamily character} of default kind \mbox{\hyperlink{namespaceConstants__mod_af7cc6c6017142cddbb143225b0a4dc93}{SK}}, or ~\newline
+ ~ a scalar assumed-\/length {\ttfamily character} of default kind \mbox{\hyperlink{namespaceConstants__mod_af7cc6c6017142cddbb143225b0a4dc93}{SK}}, ~\newline
  ~ whose elements will be reordered according to the input {\ttfamily Index}. ~\newline
  ~ If the input argument {\ttfamily Array\+New} is specified, then {\ttfamily Array} has {\ttfamily intent(in)} and will not change. ~\newline
  ~ If the input argument {\ttfamily Array\+New} is missing, then {\ttfamily Array} will be reallocated and reordered on output. The the {\ttfamily allocatable} attribute and the reallocation of {\ttfamily Array} is essential for efficient fast reordering of {\ttfamily Array}. \\
 \hline
 \mbox{\texttt{ in}}  & {\em Index} & \+: The input contiguous array of shape {\ttfamily (\+:)} of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} of the same size as {\ttfamily Array}, containing the reordering indices. \\
 \hline
-\mbox{\texttt{ in}}  & {\em backward} & \+: The input logical of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}. If {\ttfamily .true.}, then {\ttfamily Array} will be reordered to {\ttfamily Array(Index(size(\+Index)\+:1\+:-\/1))}, otherwise, {\ttfamily Array} will be reordered to {\ttfamily Array(\+Index)} ({\bfseries{optional}}, default = {\ttfamily .false.}). \\
+\mbox{\texttt{ in}}  & {\em backward} & \+: The input {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}. If {\ttfamily .true.}, then {\ttfamily Array} will be reordered to {\ttfamily Array(Index(size(\+Index)\+:1\+:-\/1))}, otherwise, {\ttfamily Array} will be reordered to {\ttfamily Array(\+Index)} ({\bfseries{optional}}, default = {\ttfamily .false.}). \\
 \hline
 \mbox{\texttt{ out}}  & {\em Array\+New} & \+: The output contiguous array of the same type, kind, shape, and size as the input {\ttfamily Array} that will contain the reordered array ({\bfseries{optional}}, if missing, the ordered array will stored and output in the input allocatable {\ttfamily Array} {\bfseries{in-\/place}}).\\
 \hline
@@ -459,24 +459,24 @@ The primary purpose of the procedures under this generic interface is to provide
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00010}00010 \textcolor{fortran_comment}{! Remap character scalar.}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00011}00011 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00012}00012 }
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00013}00013 Array2\_SK}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00014}00014 \textcolor{fortran_string}{"{}ABCDEF"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00013}00013 string2\_SK}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00014}00014 ABCDEF}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00015}00015 Index}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00016}00016 \textcolor{fortran_operator_symbols}{+}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{1},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{3},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{3},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{2}}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00017}00017 \textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}}(Array2\_SK, Index)}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00018}00018 Array2\_SK}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00019}00019 \textcolor{fortran_string}{"{}BADCCB"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00017}00017 \textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}}(string2\_SK, Index)}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00018}00018 string2\_SK}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00019}00019 BADCCB}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00020}00020 }
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00021}00021 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00022}00022 \textcolor{fortran_comment}{! Remap character array.}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00023}00023 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00024}00024 }
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00025}00025 Array2\_HK}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00025}00025 Array2\_SK}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00026}00026 \textcolor{fortran_string}{"{}AA       "{}}, \textcolor{fortran_string}{"{}BB       "{}}, \textcolor{fortran_string}{"{}CC       "{}}, \textcolor{fortran_string}{"{}DD       "{}}, \textcolor{fortran_string}{"{}EE       "{}}, \textcolor{fortran_string}{"{}FF       "{}}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00027}00027 Index}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00028}00028 \textcolor{fortran_operator_symbols}{+}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{1},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{3},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{3},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{2}}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00029}00029 \textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}}(Array2\_HK, Index)}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00030}00030 Array2\_HK}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00029}00029 \textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}}(Array2\_SK, Index)}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00030}00030 Array2\_SK}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00031}00031 \textcolor{fortran_string}{"{}BB       "{}}, \textcolor{fortran_string}{"{}AA       "{}}, \textcolor{fortran_string}{"{}DD       "{}}, \textcolor{fortran_string}{"{}CC       "{}}, \textcolor{fortran_string}{"{}CC       "{}}, \textcolor{fortran_string}{"{}BB       "{}}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00032}00032 }
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00033}00033 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
@@ -538,24 +538,24 @@ The primary purpose of the procedures under this generic interface is to provide
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00089}00089 \textcolor{fortran_comment}{! Remap character scalar.}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00090}00090 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00091}00091 }
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00092}00092 Array2\_SK}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00093}00093 \textcolor{fortran_string}{"{}ABCDEF"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00092}00092 string2\_SK}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00093}00093 ABCDEF}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00094}00094 Index}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00095}00095 \textcolor{fortran_operator_symbols}{+}\textcolor{fortran_numeric_literal}{1},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{3},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{5},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{6}}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00096}00096 \textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}}(Array2\_SK, Index, backward\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.})}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00097}00097 Array2\_SK}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00098}00098 \textcolor{fortran_string}{"{}FEDCBA"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00096}00096 \textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}}(string2\_SK, Index, backward\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.})}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00097}00097 string2\_SK}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00098}00098 FEDCBA}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00099}00099 }
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00100}00100 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00101}00101 \textcolor{fortran_comment}{! Remap character array.}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00102}00102 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00103}00103 }
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00104}00104 Array2\_HK}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00104}00104 Array2\_SK}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00105}00105 \textcolor{fortran_string}{"{}AA       "{}}, \textcolor{fortran_string}{"{}BB       "{}}, \textcolor{fortran_string}{"{}CC       "{}}, \textcolor{fortran_string}{"{}DD       "{}}, \textcolor{fortran_string}{"{}EE       "{}}, \textcolor{fortran_string}{"{}FF       "{}}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00106}00106 Index}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00107}00107 \textcolor{fortran_operator_symbols}{+}\textcolor{fortran_numeric_literal}{1},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{3},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{5},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{6}}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00108}00108 \textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}}(Array2\_HK, Index, backward\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.})}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00109}00109 Array2\_HK}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00108}00108 \textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}}(Array2\_SK, Index, backward\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.})}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00109}00109 Array2\_SK}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00110}00110 \textcolor{fortran_string}{"{}FF       "{}}, \textcolor{fortran_string}{"{}EE       "{}}, \textcolor{fortran_string}{"{}DD       "{}}, \textcolor{fortran_string}{"{}CC       "{}}, \textcolor{fortran_string}{"{}BB       "{}}, \textcolor{fortran_string}{"{}AA       "{}}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00111}00111 }
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00112}00112 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
@@ -617,24 +617,24 @@ The primary purpose of the procedures under this generic interface is to provide
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00168}00168 \textcolor{fortran_comment}{! Remap character scalar.}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00169}00169 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00170}00170 }
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00171}00171 Array1\_SK}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00172}00172 \textcolor{fortran_string}{"{}ABCDEF"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00171}00171 string1\_SK}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00172}00172 ABCDEF}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00173}00173 Index}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00174}00174 \textcolor{fortran_operator_symbols}{+}\textcolor{fortran_numeric_literal}{1},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{3},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{5},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{6}}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00175}00175 \textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}}(Array1\_SK, Index, backward\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.}, ArrayNew\textcolor{fortran_operator_symbols}{ = }Array2\_SK)}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00176}00176 Array1\_SK}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00177}00177 \textcolor{fortran_string}{"{}ABCDEF"{}}}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00175}00175 \textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}}(string1\_SK, Index, backward\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.}, ArrayNew\textcolor{fortran_operator_symbols}{ = }string2\_SK)}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00176}00176 string1\_SK}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00177}00177 ABCDEF}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00178}00178 }
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00179}00179 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00180}00180 \textcolor{fortran_comment}{! Remap character array.}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00181}00181 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00182}00182 }
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00183}00183 Array1\_HK}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00183}00183 Array1\_SK}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00184}00184 \textcolor{fortran_string}{"{}AA       "{}}, \textcolor{fortran_string}{"{}BB       "{}}, \textcolor{fortran_string}{"{}CC       "{}}, \textcolor{fortran_string}{"{}DD       "{}}, \textcolor{fortran_string}{"{}EE       "{}}, \textcolor{fortran_string}{"{}FF       "{}}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00185}00185 Index}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00186}00186 \textcolor{fortran_operator_symbols}{+}\textcolor{fortran_numeric_literal}{1},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{3},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{4},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{5},\textcolor{fortran_operator_symbols}{ +}\textcolor{fortran_numeric_literal}{6}}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00187}00187 \textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}}(Array1\_HK, Index, backward\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.}, ArrayNew\textcolor{fortran_operator_symbols}{ = }Array2\_HK)}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00188}00188 Array1\_HK}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00187}00187 \textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}}(Array1\_SK, Index, backward\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.}, ArrayNew\textcolor{fortran_operator_symbols}{ = }Array2\_SK)}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00188}00188 Array1\_SK}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00189}00189 \textcolor{fortran_string}{"{}FF       "{}}, \textcolor{fortran_string}{"{}EE       "{}}, \textcolor{fortran_string}{"{}DD       "{}}, \textcolor{fortran_string}{"{}CC       "{}}, \textcolor{fortran_string}{"{}BB       "{}}, \textcolor{fortran_string}{"{}AA       "{}}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00190}00190 }
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemap__mod_1_1remap_l00191}00191 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}

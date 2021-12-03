@@ -71,6 +71,163 @@ Recommended routines for sorting arrays\+:
 {\bfseries{Benchmark \+:: sorting}} \href{\#benchmark-sorting}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
 Here is a code snippet for a performance comparison of the different sorting algorithms in this module. 
 \begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00001}00001 \textcolor{fortran_comment}{! Test the performance of different sorting algorithms in ArraySort\_mod.}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00002}00002 \textcolor{fortran_statement}{program} benchmark}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00004}00004     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00005}00005     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceBench__mod}{Bench\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00007}00007     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00009}00009 \textcolor{fortran_statement}{    logical}                             :: issorted}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00010}00010     \textcolor{fortran_statement}{integer}(IK)                         :: i}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00011}00011     \textcolor{fortran_statement}{integer}(IK)                         :: iarr}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00012}00012     \textcolor{fortran_statement}{integer}(IK)                         :: fileUnitRandom}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00013}00013     \textcolor{fortran_statement}{integer}(IK)                         :: fileUnitSorted}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00014}00014     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}             :: NARR\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00015}00015     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}             :: NBENCH\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00016}00016     \textcolor{fortran_statement}{integer}(IK)                         :: ArraySize(NARR)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00017}00017 \textcolor{fortran_statement}{    real}(RK)  ,\textcolor{fortran_attribute}{ allocatable}             :: Array(:)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00018}00018     \textcolor{fortran_statement}{type}(Bench\_type)                    :: Bench(\textcolor{fortran_numeric_literal}{2},NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00022}00022     Bench(\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{ 1})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}sort                     "{}}, exec\textcolor{fortran_operator_symbols}{ = }sort                      , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00023}00023     Bench(\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{ 2})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}sortBubble               "{}}, exec\textcolor{fortran_operator_symbols}{ = }sortBubble                , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00024}00024     Bench(\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{ 3})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}sortDualPivotRecursive   "{}}, exec\textcolor{fortran_operator_symbols}{ = }sortDualPivotRecursive    , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00025}00025     Bench(\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{ 4})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}sortHeap                 "{}}, exec\textcolor{fortran_operator_symbols}{ = }sortHeap                  , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00026}00026     Bench(\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{ 5})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}sortHeapRecursive        "{}}, exec\textcolor{fortran_operator_symbols}{ = }sortHeapRecursive         , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00027}00027     Bench(\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{ 6})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}sortInsertion            "{}}, exec\textcolor{fortran_operator_symbols}{ = }sortInsertion             , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00028}00028     Bench(\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{ 7})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}sortInsertionBinary      "{}}, exec\textcolor{fortran_operator_symbols}{ = }sortInsertionBinary       , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00029}00029     Bench(\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{ 8})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}sortInsertionDouble      "{}}, exec\textcolor{fortran_operator_symbols}{ = }sortInsertionDouble       , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00030}00030     Bench(\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{ 9})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}sortMergeRecursive       "{}}, exec\textcolor{fortran_operator_symbols}{ = }sortMergeRecursive        , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00031}00031     Bench(\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{0})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}sortRecursive            "{}}, exec\textcolor{fortran_operator_symbols}{ = }sortRecursive             , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00032}00032     Bench(\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{1})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}sortSelection            "{}}, exec\textcolor{fortran_operator_symbols}{ = }sortSelection             , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00033}00033     Bench(\textcolor{fortran_numeric_literal}{1}:\textcolor{fortran_numeric_literal}{2},\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}sortShell                "{}}, exec\textcolor{fortran_operator_symbols}{ = }sortShell                 , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00035}00035     ArraySize\textcolor{fortran_operator_symbols}{ = }[(\textcolor{fortran_numeric_literal}{ 2\_IK}\textcolor{fortran_operator_symbols}{*}\textcolor{fortran_operator_symbols}{*}iarr, iarr\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{3\_IK}, NARR\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{2\_IK} )]}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00037}00037 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00038}00038 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sort() vs. others."{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00039}00039 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00041}00041 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnitRandom, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.random.out"{}}, status\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}replace"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00042}00042 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnitSorted, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.sorted.out"{}}, status\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}replace"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00044}00044 \textcolor{fortran_statement}{        write}(fileUnitRandom       ,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) \textcolor{fortran_string}{"{}ArraySize"{}}, (Bench(\textcolor{fortran_numeric_literal}{1},i)\textcolor{fortran_operator_symbols}{\%}name, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00045}00045 \textcolor{fortran_statement}{        write}(fileUnitSorted,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) \textcolor{fortran_string}{"{}ArraySize"{}}, (Bench(\textcolor{fortran_numeric_literal}{2},i)\textcolor{fortran_operator_symbols}{\%}name, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00047}00047         loopOverArraySize: \textcolor{fortran_keywordflow}{do} iarr\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NARR}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00049}00049 \textcolor{fortran_statement}{            allocate}(Array(ArraySize(iarr)))}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00050}00050 \textcolor{fortran_statement}{            write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Benchmarking sorting algorithms with array size"{}}, ArraySize(iarr)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00052}00052             \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00053}00053             \textcolor{fortran_comment}{! Time sorting algorithms against the default sort() procedures.}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00054}00054             \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00056}00056             issorted\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.false.}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00057}00057             \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00058}00058 \textcolor{fortran_statement}{                call} Bench(\textcolor{fortran_numeric_literal}{1},i)\textcolor{fortran_operator_symbols}{\%}time(Bench(\textcolor{fortran_numeric_literal}{1},i)\textcolor{fortran_operator_symbols}{\%}Timing)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00059}00059 \textcolor{fortran_keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00060}00060 \textcolor{fortran_statement}{            write}(fileUnitRandom,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) ArraySize(iarr), (Bench(\textcolor{fortran_numeric_literal}{1},i)\textcolor{fortran_operator_symbols}{\%}Timing\textcolor{fortran_operator_symbols}{\%}Stat\textcolor{fortran_operator_symbols}{\%}mean, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00062}00062             \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00063}00063             \textcolor{fortran_comment}{! Time sorting algorithms with sorted input arrays against unordered input arrays.}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00064}00064             \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00066}00066             issorted\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00067}00067             \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00068}00068 \textcolor{fortran_statement}{                call} Bench(\textcolor{fortran_numeric_literal}{2},i)\textcolor{fortran_operator_symbols}{\%}time(Bench(\textcolor{fortran_numeric_literal}{2},i)\textcolor{fortran_operator_symbols}{\%}Timing)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00069}00069 \textcolor{fortran_keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00070}00070 \textcolor{fortran_statement}{            write}(fileUnitSorted,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) ArraySize(iarr), (Bench(\textcolor{fortran_numeric_literal}{2},i)\textcolor{fortran_operator_symbols}{\%}Timing\textcolor{fortran_operator_symbols}{\%}Stat\textcolor{fortran_operator_symbols}{\%}mean, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00072}00072 \textcolor{fortran_statement}{            deallocate}(Array)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00074}00074 \textcolor{fortran_keywordflow}{        end do} loopOverArraySize}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00075}00075 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00077}00077 \textcolor{fortran_statement}{    close}(fileUnitSorted)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00078}00078 \textcolor{fortran_statement}{    close}(fileUnitRandom)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00080}00080 \textcolor{fortran_statement}{contains}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00082}00082     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00083}00083     \textcolor{fortran_comment}{! sorting procedure wrappers.}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00084}00084     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00086}00086 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00087}00087 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00088}00088     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00090}00090 \textcolor{fortran_statement}{    subroutine} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00091}00091         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMath__mod}{Math\_mod}}, \textcolor{fortran_statement}{only}: genLinSpace}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00092}00092         \textcolor{fortran_keywordflow}{if} (issorted) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00093}00093             Array(:)\textcolor{fortran_operator_symbols}{ = }genLinSpace(\textcolor{fortran_numeric_literal}{0.\_RK},\textcolor{fortran_numeric_literal}{ 1.\_RK}, count\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{size}(Array,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}))}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00094}00094         \textcolor{fortran_keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00095}00095 \textcolor{fortran_statement}{            call}\textcolor{fortran_subroutine}{ random\_number}(Array)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00096}00096 \textcolor{fortran_keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00097}00097     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00099}00099 \textcolor{fortran_statement}{    subroutine} sort()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00100}00100 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00101}00101         \textcolor{fortran_keywordflow}{block}; \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySort__mod}{ArraySort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySort__mod_1_1sort}{sort}}; call \mbox{\hyperlink{interfaceArraySort__mod_1_1sort}{sort}}(Array);\textcolor{fortran_keywordflow}{ end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00102}00102     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00104}00104 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceArraySort__mod_1_1sortBubble}{sortBubble}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00105}00105 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00106}00106         \textcolor{fortran_keywordflow}{block}; \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySort__mod}{ArraySort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySort__mod_1_1sortBubble}{sortBubble}}; call \mbox{\hyperlink{interfaceArraySort__mod_1_1sortBubble}{sortBubble}}(Array);\textcolor{fortran_keywordflow}{ end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00107}00107     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00109}00109 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceArraySort__mod_1_1sortDualPivotRecursive}{sortDualPivotRecursive}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00110}00110 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00111}00111         \textcolor{fortran_keywordflow}{block}; \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySort__mod}{ArraySort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySort__mod_1_1sortDualPivotRecursive}{sortDualPivotRecursive}}; call \mbox{\hyperlink{interfaceArraySort__mod_1_1sortDualPivotRecursive}{sortDualPivotRecursive}}(Array);\textcolor{fortran_keywordflow}{ end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00112}00112     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00114}00114 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceArraySort__mod_1_1sortHeap}{sortHeap}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00115}00115 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00116}00116         \textcolor{fortran_keywordflow}{block}; \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySort__mod}{ArraySort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySort__mod_1_1sortHeap}{sortHeap}}; call \mbox{\hyperlink{interfaceArraySort__mod_1_1sortHeap}{sortHeap}}(Array);\textcolor{fortran_keywordflow}{ end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00117}00117     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00119}00119 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceArraySort__mod_1_1sortHeapRecursive}{sortHeapRecursive}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00120}00120 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00121}00121         \textcolor{fortran_keywordflow}{block}; \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySort__mod}{ArraySort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySort__mod_1_1sortHeapRecursive}{sortHeapRecursive}}; call \mbox{\hyperlink{interfaceArraySort__mod_1_1sortHeapRecursive}{sortHeapRecursive}}(Array);\textcolor{fortran_keywordflow}{ end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00122}00122     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00124}00124 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceArraySort__mod_1_1sortInsertion}{sortInsertion}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00125}00125 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00126}00126         \textcolor{fortran_keywordflow}{block}; \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySort__mod}{ArraySort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySort__mod_1_1sortInsertion}{sortInsertion}}; call \mbox{\hyperlink{interfaceArraySort__mod_1_1sortInsertion}{sortInsertion}}(Array);\textcolor{fortran_keywordflow}{ end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00127}00127     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00128}00128 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00129}00129 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceArraySort__mod_1_1sortInsertionBinary}{sortInsertionBinary}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00130}00130 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00131}00131         \textcolor{fortran_keywordflow}{block}; \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySort__mod}{ArraySort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySort__mod_1_1sortInsertionBinary}{sortInsertionBinary}}; call \mbox{\hyperlink{interfaceArraySort__mod_1_1sortInsertionBinary}{sortInsertionBinary}}(Array);\textcolor{fortran_keywordflow}{ end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00132}00132     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00133}00133 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00134}00134 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceArraySort__mod_1_1sortInsertionDouble}{sortInsertionDouble}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00135}00135 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00136}00136         \textcolor{fortran_keywordflow}{block}; \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySort__mod}{ArraySort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySort__mod_1_1sortInsertionDouble}{sortInsertionDouble}}; call \mbox{\hyperlink{interfaceArraySort__mod_1_1sortInsertionDouble}{sortInsertionDouble}}(Array);\textcolor{fortran_keywordflow}{ end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00137}00137     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00139}00139 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceArraySort__mod_1_1sortMergeRecursive}{sortMergeRecursive}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00140}00140 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00141}00141         \textcolor{fortran_keywordflow}{block}; \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySort__mod}{ArraySort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySort__mod_1_1sortMergeRecursive}{sortMergeRecursive}}; call \mbox{\hyperlink{interfaceArraySort__mod_1_1sortMergeRecursive}{sortMergeRecursive}}(Array);\textcolor{fortran_keywordflow}{ end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00142}00142     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00144}00144 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceArraySort__mod_1_1sortRecursive}{sortRecursive}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00145}00145 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00146}00146         \textcolor{fortran_keywordflow}{block}; \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySort__mod}{ArraySort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySort__mod_1_1sortRecursive}{sortRecursive}}; call \mbox{\hyperlink{interfaceArraySort__mod_1_1sortRecursive}{sortRecursive}}(Array);\textcolor{fortran_keywordflow}{ end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00147}00147     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00148}00148 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00149}00149 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceArraySort__mod_1_1sortSelection}{sortSelection}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00150}00150 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00151}00151         \textcolor{fortran_keywordflow}{block}; \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySort__mod}{ArraySort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySort__mod_1_1sortSelection}{sortSelection}}; call \mbox{\hyperlink{interfaceArraySort__mod_1_1sortSelection}{sortSelection}}(Array);\textcolor{fortran_keywordflow}{ end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00152}00152     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00153}00153 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00154}00154 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceArraySort__mod_1_1sortShell}{sortShell}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00155}00155 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00156}00156         \textcolor{fortran_keywordflow}{block}; \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySort__mod}{ArraySort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySort__mod_1_1sortShell}{sortShell}}; call \mbox{\hyperlink{interfaceArraySort__mod_1_1sortShell}{sortShell}}(Array);\textcolor{fortran_keywordflow}{ end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00157}00157     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00159}00159 \textcolor{fortran_statement}{end program }benchmark}
 
 \end{DoxyCodeInclude}
  ~\newline
@@ -98,6 +255,98 @@ Here is a code snippet for a performance comparison of the different sorting alg
 \Hypertarget{namespaceArraySort__mod_postprocb-sorting}%
 {\bfseries{Postprocessing of the output}} \href{\#postprocb-sorting}{\texttt{ ⛓}} 
 \begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00004}00004 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00005}00005 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00007}00007 fontsize = 15}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00009}00009 colnames =  [ \textcolor{stringliteral}{"{}sortBubble"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00010}00010             , \textcolor{stringliteral}{"{}sortHeap"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00011}00011            \textcolor{comment}{\#, "{}sortHeapRecursive"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00012}00012            \textcolor{comment}{\#, "{}sortInsertion"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00013}00013            \textcolor{comment}{\#, "{}sortInsertionBinary"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00014}00014             , \textcolor{stringliteral}{"{}sortInsertionDouble"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00015}00015             , \textcolor{stringliteral}{"{}sortMergeRecursive"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00016}00016             , \textcolor{stringliteral}{"{}sortSelection"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00017}00017             , \textcolor{stringliteral}{"{}sortShell"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00018}00018             , \textcolor{stringliteral}{"{}sortDualPivotRecursive"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00019}00019            \textcolor{comment}{\#, "{}sortRecursive"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00020}00020             ]}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00022}00022 dtypes = [\textcolor{stringliteral}{"{}random"{}}, \textcolor{stringliteral}{"{}sorted"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00026}00026 df = \{\}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00028}00028 \textcolor{keywordflow}{for} dtype \textcolor{keywordflow}{in} dtypes:}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00030}00030     df[dtype] = pd.read\_csv(\textcolor{stringliteral}{"{}main.\{\}.out"{}}.format(dtype))}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00032}00032     ax = plt.figure(figsize = 1.25*np.array([9.4,4.8]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00033}00033     ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00035}00035     \textcolor{keywordflow}{for} colname \textcolor{keywordflow}{in} colnames:}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00036}00036         plt.plot( df[dtype].values[:,0]}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00037}00037                 , df[dtype][colname].values / df[dtype][\textcolor{stringliteral}{"{}sort"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00038}00038                 , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00039}00039                 )}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00041}00041     plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00042}00042     plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00043}00043     ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size (\# elements)"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00044}00044     ax.set\_ylabel(\textcolor{stringliteral}{"{}Time normalized to sort() timing"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00045}00045     ax.set\_title(\textcolor{stringliteral}{"{}Benchmarking of sorting algorithms compared to sort().\(\backslash\)nInput data is "{}} + \textcolor{stringliteral}{r"{}\$\(\backslash\)mathrm\{\(\backslash\)bf\{"{}} + dtype + \textcolor{stringliteral}{"{}\}\}\$. Lower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00046}00046     ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00047}00047     ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00048}00048     plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00049}00049     plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00050}00050     ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00051}00051     ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00052}00052     ax.legend   ( colnames}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00053}00053                 , loc=\textcolor{stringliteral}{'center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00054}00054                 , bbox\_to\_anchor=(1, 0.5)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00055}00055                 , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00056}00056                 )}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00058}00058     plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00059}00059     plt.savefig(\textcolor{stringliteral}{"{}benchmark.sorting.\{\}.png"{}}.format(dtype))}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00063}00063 ax = plt.figure(figsize = 1.25*np.array([9.4,4.8]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00064}00064 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00066}00066 colnames.append(\textcolor{stringliteral}{"{}sort"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00068}00068 \textcolor{keywordflow}{for} colname \textcolor{keywordflow}{in} colnames:}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00069}00069     plt.plot( df[\textcolor{stringliteral}{"{}random"{}}].values[:,0]}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00070}00070             , df[\textcolor{stringliteral}{"{}sorted"{}}][colname].values / df[\textcolor{stringliteral}{"{}random"{}}][colname].values}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00071}00071             , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00072}00072             )}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00074}00074 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00075}00075 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00076}00076 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size (\# elements)"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00077}00077 ax.set\_ylabel(\textcolor{stringliteral}{"{}Sorting Time Ratio ( Sorted / Random Input Array )"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00078}00078 ax.set\_title(\textcolor{stringliteral}{"{}Sorted / Random input-\/arrays sorting-\/time ratio. Lower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00079}00079 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00080}00080 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00081}00081 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00082}00082 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00083}00083 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00084}00084 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00085}00085 ax.legend   ( colnames}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00086}00086             , loc=\textcolor{stringliteral}{'center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00087}00087             , bbox\_to\_anchor=(1, 0.5)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00088}00088             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00089}00089             )}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00091}00091 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00092}00092 plt.savefig(\textcolor{stringliteral}{"{}benchmark.sorting.random.sorted.ratio.png"{}})}
 
 \end{DoxyCodeInclude}
  ~\newline
@@ -113,6 +362,99 @@ Here is a code snippet for a performance comparison of the different sorting alg
 {\bfseries{Benchmark \+:: sorting vs. indexing}} \href{\#benchmark-sorting_vs_indexing}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
 The following program generates a performance comparison of the \mbox{\hyperlink{interfaceArraySort__mod_1_1sort}{sort}} algorithm with \mbox{\hyperlink{interfaceArraySort__mod_1_1sortIndex}{sort\+Index}}. 
 \begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00001}00001 \textcolor{fortran_statement}{program} benchmark}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00003}00003     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00004}00004     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceBench__mod}{Bench\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00006}00006     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00008}00008     \textcolor{fortran_statement}{integer}(IK)                         :: i,iarr}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00009}00009     \textcolor{fortran_statement}{integer}(IK)                         :: fileUnitRandom}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00010}00010     \textcolor{fortran_statement}{integer}(IK)                         :: fileUnitSorted}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00011}00011     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}             :: NARR\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{2\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00012}00012     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}             :: NBENCH\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{3\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00013}00013     \textcolor{fortran_statement}{integer}(IK)                         :: ArraySize(NARR)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00014}00014 \textcolor{fortran_statement}{    real}(RK)    ,\textcolor{fortran_attribute}{ allocatable}           :: Array(:)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00015}00015     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ allocatable}           ::\textcolor{fortran_function}{ Index}(:)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00016}00016 \textcolor{fortran_statement}{    logical}                             :: issorted}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00017}00017     \textcolor{fortran_statement}{type}(Bench\_type)                    :: Bench(\textcolor{fortran_numeric_literal}{2},NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00019}00019     Bench(:,\textcolor{fortran_numeric_literal}{1})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(\textcolor{fortran_string}{"{}sort"{}}, \mbox{\hyperlink{interfaceArraySort__mod_1_1sort}{sort}}, \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00020}00020     Bench(:,\textcolor{fortran_numeric_literal}{2})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(\textcolor{fortran_string}{"{}sortIndex"{}}, \mbox{\hyperlink{interfaceArraySort__mod_1_1sortIndex}{sortIndex}}, \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00021}00021     Bench(:,\textcolor{fortran_numeric_literal}{3})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(\textcolor{fortran_string}{"{}sortIndexWithSorting"{}}, sortIndexWithSorting, \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00023}00023     ArraySize\textcolor{fortran_operator_symbols}{ = }[(\textcolor{fortran_numeric_literal}{ 2\_IK}\textcolor{fortran_operator_symbols}{*}\textcolor{fortran_operator_symbols}{*}i, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{3\_IK}, NARR\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{2\_IK} )]}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00025}00025     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00026}00026     \textcolor{fortran_comment}{! Time the sort() against sortIndex for different array sizes.}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00027}00027     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00029}00029 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00030}00030 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sort() vs. sortIndex."{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00031}00031 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00033}00033 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnitRandom, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.random.out"{}}, status\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}replace"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00034}00034 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnitSorted, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.sorted.out"{}}, status\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}replace"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00035}00035 \textcolor{fortran_statement}{    write}(fileUnitRandom,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) \textcolor{fortran_string}{"{}ArraySize"{}}, (Bench(\textcolor{fortran_numeric_literal}{1},i)\textcolor{fortran_operator_symbols}{\%}name, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00036}00036 \textcolor{fortran_statement}{    write}(fileUnitSorted,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) \textcolor{fortran_string}{"{}ArraySize"{}}, (Bench(\textcolor{fortran_numeric_literal}{2},i)\textcolor{fortran_operator_symbols}{\%}name, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00038}00038     loopOverArraySize: \textcolor{fortran_keywordflow}{do} iarr\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NARR}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00040}00040 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Benchmarking with array size"{}}, ArraySize(iarr)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00042}00042 \textcolor{fortran_statement}{        allocate}(Array(ArraySize(iarr)),\textcolor{fortran_function}{ Index}(ArraySize(iarr)))}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00044}00044         issorted\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.false.}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00045}00045         \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00046}00046 \textcolor{fortran_statement}{            call} Bench(\textcolor{fortran_numeric_literal}{1},i)\textcolor{fortran_operator_symbols}{\%}time(Bench(\textcolor{fortran_numeric_literal}{1},i)\textcolor{fortran_operator_symbols}{\%}Timing)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00047}00047 \textcolor{fortran_keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00049}00049 \textcolor{fortran_statement}{        write}(fileUnitRandom,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) ArraySize(iarr), (Bench(\textcolor{fortran_numeric_literal}{1},i)\textcolor{fortran_operator_symbols}{\%}Timing\textcolor{fortran_operator_symbols}{\%}Stat\textcolor{fortran_operator_symbols}{\%}mean, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00051}00051         issorted\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00052}00052         \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00053}00053 \textcolor{fortran_statement}{            call} Bench(\textcolor{fortran_numeric_literal}{2},i)\textcolor{fortran_operator_symbols}{\%}time(Bench(\textcolor{fortran_numeric_literal}{2},i)\textcolor{fortran_operator_symbols}{\%}Timing)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00054}00054 \textcolor{fortran_keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00056}00056 \textcolor{fortran_statement}{        write}(fileUnitSorted,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) ArraySize(iarr), (Bench(\textcolor{fortran_numeric_literal}{2},i)\textcolor{fortran_operator_symbols}{\%}Timing\textcolor{fortran_operator_symbols}{\%}Stat\textcolor{fortran_operator_symbols}{\%}mean, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00058}00058 \textcolor{fortran_statement}{        deallocate}(Array, Index)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00060}00060 \textcolor{fortran_keywordflow}{    end do} loopOverArraySize}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00062}00062 \textcolor{fortran_statement}{    close}(fileUnitRandom)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00063}00063 \textcolor{fortran_statement}{    close}(fileUnitSorted)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00065}00065 \textcolor{fortran_statement}{contains}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00067}00067 \textcolor{fortran_statement}{    subroutine} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00068}00068         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMath__mod}{Math\_mod}}, \textcolor{fortran_statement}{only}: genLinSpace}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00069}00069         \textcolor{fortran_keywordflow}{if} (issorted) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00070}00070             Array(:)\textcolor{fortran_operator_symbols}{ = }genLinSpace(\textcolor{fortran_numeric_literal}{0.\_RK},\textcolor{fortran_numeric_literal}{ 1.\_RK}, count\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{size}(Array,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}))}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00071}00071         \textcolor{fortran_keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00072}00072 \textcolor{fortran_statement}{            call}\textcolor{fortran_subroutine}{ random\_number}(Array)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00073}00073 \textcolor{fortran_keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00074}00074     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00076}00076 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00077}00077 \textcolor{fortran_statement}{        call} getArray()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00078}00078     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00080}00080 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceArraySort__mod_1_1sort}{sort}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00081}00081         \textcolor{fortran_keywordflow}{block}; \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySort__mod}{ArraySort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySort__mod_1_1sort}{sort}}; call \mbox{\hyperlink{interfaceArraySort__mod_1_1sort}{sort}}(Array);\textcolor{fortran_keywordflow}{ end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00082}00082     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00084}00084 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceArraySort__mod_1_1sortIndex}{sortIndex}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00085}00085         \textcolor{fortran_keywordflow}{block}; \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySort__mod}{ArraySort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySort__mod_1_1sortIndex}{sortIndex}}; call \mbox{\hyperlink{interfaceArraySort__mod_1_1sortIndex}{sortIndex}}(Array,Index);\textcolor{fortran_keywordflow}{ end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00086}00086     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00088}00088 \textcolor{fortran_statement}{    subroutine} sortIndexWithSorting()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00089}00089         \textcolor{fortran_keywordflow}{block}; \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySort__mod}{ArraySort\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySort__mod_1_1sortIndex}{sortIndex}}; call \mbox{\hyperlink{interfaceArraySort__mod_1_1sortIndex}{sortIndex}}(Array,Index);\textcolor{fortran_keywordflow}{ end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00090}00090         Array(:)\textcolor{fortran_operator_symbols}{ = }Array(Index)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00091}00091     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00093}00093 \textcolor{fortran_statement}{end program }benchmark}
 
 \end{DoxyCodeInclude}
  ~\newline
@@ -140,6 +482,93 @@ The following program generates a performance comparison of the \mbox{\hyperlink
 \Hypertarget{namespaceArraySort__mod_postprocb-sorting_vs_indexing}%
 {\bfseries{Postprocessing of the output}} \href{\#postprocb-sorting_vs_indexing}{\texttt{ ⛓}} 
 \begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00004}00004 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00005}00005 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00007}00007 fontsize = 15}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00011}00011 dtypes = [\textcolor{stringliteral}{"{}random"{}}, \textcolor{stringliteral}{"{}sorted"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00013}00013 \textcolor{keywordflow}{for} dtype \textcolor{keywordflow}{in} dtypes:}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00015}00015     df = pd.read\_csv(\textcolor{stringliteral}{"{}main.\{\}.out"{}}.format(dtype))}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00017}00017     }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00019}00019     ax = plt.figure(figsize = 1.25*np.array([9.4,4.8]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00020}00020     ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00022}00022     \textcolor{keywordflow}{for} colname \textcolor{keywordflow}{in} df.columns[1:]:}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00023}00023         plt.plot( df.values[:,0]}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00024}00024                 , df[colname].values}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00025}00025                 , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00026}00026                 )}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00028}00028     plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00029}00029     plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00030}00030     ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size (\# elements)"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00031}00031     ax.set\_ylabel(\textcolor{stringliteral}{"{}Time [ seconds ]"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00032}00032     ax.set\_title(\textcolor{stringliteral}{"{}Timing of sort() vs. sortIndex(). Input data is \{\}.\(\backslash\)n Lower is better."{}}.format(dtype), fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00033}00033     ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00034}00034     ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00035}00035     plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00036}00036     plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00037}00037     ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00038}00038     ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00039}00039     ax.legend   ( df.columns[1:]}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00040}00040                \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00041}00041                \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00042}00042                 , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00043}00043                 )}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00045}00045     plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00046}00046     plt.savefig(\textcolor{stringliteral}{"{}benchmark.sorting\_vs\_indexing.\{\}.png"{}}.format(dtype))}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00048}00048     }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00050}00050     ax = plt.figure(figsize = 1.25*np.array([9.4,4.8]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00051}00051     ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00053}00053     start = 0}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00055}00055     plt.plot( df.values[:,0]}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00056}00056             , np.ones(len(df.values[:,0]))}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00057}00057             , linestyle = \textcolor{stringliteral}{"{}-\/-\/"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00058}00058             , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00059}00059            \textcolor{comment}{\#, color = "{}black"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00060}00060             )}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00061}00061     \textcolor{keywordflow}{for} colname \textcolor{keywordflow}{in} df.columns[2:]:}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00062}00062         plt.plot( df.values[start:,0]}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00063}00063                 , df[colname].values[start:] / df[\textcolor{stringliteral}{"{}sort"{}}].values[start:]}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00064}00064                 , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00065}00065                 )}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00067}00067     plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00068}00068     plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00069}00069     ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size (\# elements)"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00070}00070     ax.set\_ylabel(\textcolor{stringliteral}{"{}Time Ratio ( sortIndex() / sort() )"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00071}00071     ax.set\_title(\textcolor{stringliteral}{"{}Ratio of timing of sortIndex() to sort(). Input data is \{\}."{}}.format(dtype), fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00072}00072     ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00073}00073     \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00074}00074     plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00075}00075     plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00076}00076     ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00077}00077     ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00078}00078     ax.legend   ( [\textcolor{stringliteral}{"{}Equality Line"{}}] + list(df.columns[2:])}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00079}00079                \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00080}00080                \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00081}00081                 , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00082}00082                 )}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00084}00084     plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00085}00085     plt.savefig(\textcolor{stringliteral}{"{}benchmark.sorting\_vs\_indexing.\{\}.ratio.png"{}}.format(dtype))}
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySort__mod_l00087}00087 }
 
 \end{DoxyCodeInclude}
  ~\newline
