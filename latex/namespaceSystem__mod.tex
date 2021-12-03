@@ -56,15 +56,15 @@ subroutine \mbox{\hyperlink{namespaceSystem__mod_a3cf2c1a4cef476d2ed447906cc8055
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-character($\ast$), parameter \mbox{\hyperlink{namespaceSystem__mod_ad6e42e461a67af7db0b521a96c3f52a2}{MODULE\+\_\+\+NAME}} = \char`\"{}@System\+\_\+mod\char`\"{}
+character($\ast$, SK), parameter \mbox{\hyperlink{namespaceSystem__mod_a02315af0822676d2216dd219481c692d}{MODULE\+\_\+\+NAME}} = \char`\"{}@System\+\_\+mod\char`\"{}
 \item 
 integer(IK), parameter \mbox{\hyperlink{namespaceSystem__mod_a5dc19778bc2beddeded2a995e9c7b5ab}{MAX\+\_\+\+OS\+\_\+\+NAME\+\_\+\+LEN}} = 63\+\_\+\+IK
 \item 
-integer(IK), parameter \mbox{\hyperlink{namespaceSystem__mod_add04c90585f7f2a936729496dc9ab1fa}{MAX\+\_\+\+REC\+\_\+\+LEN}} = 9999
+integer(IK), parameter \mbox{\hyperlink{namespaceSystem__mod_add04c90585f7f2a936729496dc9ab1fa}{MAX\+\_\+\+REC\+\_\+\+LEN}} = 9999\+\_\+\+IK
 \begin{DoxyCompactList}\small\item\em maximum string record length \end{DoxyCompactList}\item 
-character($\ast$), parameter \mbox{\hyperlink{namespaceSystem__mod_a9fed4bacbf0ab7df74fff2f86456e3ec}{OS\+\_\+\+NAME}} = \char`\"{}Windows\char`\"{}
+character($\ast$, SK), parameter \mbox{\hyperlink{namespaceSystem__mod_a16b66bad9ad4a9a71963b5471e36424e}{OS\+\_\+\+NAME}} = \char`\"{}Windows\char`\"{}
 \item 
-character($\ast$), parameter \mbox{\hyperlink{namespaceSystem__mod_af4636622dbccf1004cce9d2d80d10639}{OS\+\_\+\+PATH\+\_\+\+SEPARATOR}} = \char`\"{}\textbackslash{}\char`\"{}
+character($\ast$, SK), parameter \mbox{\hyperlink{namespaceSystem__mod_af78bd549dc46c2662a3a28e21081b726}{OS\+\_\+\+PATH\+\_\+\+SEPARATOR}} = \char`\"{}\textbackslash{}\char`\"{}
 \item 
 logical, protected \mbox{\hyperlink{namespaceSystem__mod_aea1480cedd8e500e2afa0e677958eff8}{mv\+\_\+os\+Cache\+Activated}} = .false.
 \begin{DoxyCompactList}\small\item\em A logical flag indicating whether an OS query has occurred or not. \end{DoxyCompactList}\item 
@@ -87,7 +87,7 @@ Amir Shahmoradi
 \index{System\_mod@{System\_mod}!constructSysCmd@{constructSysCmd}}
 \index{constructSysCmd@{constructSysCmd}!System\_mod@{System\_mod}}
 \doxysubsubsection{\texorpdfstring{constructSysCmd()}{constructSysCmd()}}
-{\footnotesize\ttfamily type(\mbox{\hyperlink{structSystem__mod_1_1SysCmd__type}{Sys\+Cmd\+\_\+type}}) function System\+\_\+mod\+::construct\+Sys\+Cmd (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{cmd,  }\item[{logical, intent(in), optional}]{wait }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structSystem__mod_1_1SysCmd__type}{Sys\+Cmd\+\_\+type}}) function System\+\_\+mod\+::construct\+Sys\+Cmd (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{cmd,  }\item[{logical(LK), intent(in), optional}]{wait }\end{DoxyParamCaption})}
 
 
 
@@ -111,7 +111,7 @@ Definition at line \mbox{\hyperlink{System__mod_8f90_source_l00795}{795}} of fil
 \index{System\_mod@{System\_mod}!constructSystemInfo@{constructSystemInfo}}
 \index{constructSystemInfo@{constructSystemInfo}!System\_mod@{System\_mod}}
 \doxysubsubsection{\texorpdfstring{constructSystemInfo()}{constructSystemInfo()}}
-{\footnotesize\ttfamily type(\mbox{\hyperlink{structSystem__mod_1_1SystemInfo__type}{System\+Info\+\_\+type}}) function System\+\_\+mod\+::construct\+System\+Info (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structSystem__mod_1_1OS__type}{OS\+\_\+type}})}]{OS,  }\item[{character($\ast$), intent(in), optional}]{path,  }\item[{integer(IK), intent(in), optional}]{pid }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structSystem__mod_1_1SystemInfo__type}{System\+Info\+\_\+type}}) function System\+\_\+mod\+::construct\+System\+Info (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structSystem__mod_1_1OS__type}{OS\+\_\+type}})}]{OS,  }\item[{character($\ast$,SK), intent(in), optional}]{path,  }\item[{integer(IK), intent(in), optional}]{pid }\end{DoxyParamCaption})}
 
 
 
@@ -158,7 +158,7 @@ Copy file from the origin path to the destination path.
 \hline
 \end{DoxyParams}
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000064}{Todo}}]This code can be improved. See the extensive note in the body of the procedure. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{todo__todo000078}{Todo}}]This code can be improved. See the extensive note in the body of the procedure. \end{DoxyRefDesc}
 
 
 Definition at line \mbox{\hyperlink{System__mod_8f90_source_l01354}{1354}} of file \mbox{\hyperlink{System__mod_8f90_source}{System\+\_\+mod.\+f90}}.
@@ -221,7 +221,7 @@ Definition at line \mbox{\hyperlink{System__mod_8f90_source_l00658}{658}} of fil
 \index{System\_mod@{System\_mod}!getEnvVar@{getEnvVar}}
 \index{getEnvVar@{getEnvVar}!System\_mod@{System\_mod}}
 \doxysubsubsection{\texorpdfstring{getEnvVar()}{getEnvVar()}}
-{\footnotesize\ttfamily subroutine System\+\_\+mod\+::get\+Env\+Var (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{name,  }\item[{character(\+:), intent(out), allocatable}]{value,  }\item[{integer(IK), intent(out), optional}]{length,  }\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily subroutine System\+\_\+mod\+::get\+Env\+Var (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{name,  }\item[{character(\+:,SK), intent(out), allocatable}]{value,  }\item[{integer(IK), intent(out), optional}]{length,  }\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err }\end{DoxyParamCaption})}
 
 
 
@@ -246,7 +246,7 @@ Definition at line \mbox{\hyperlink{System__mod_8f90_source_l00740}{740}} of fil
 \index{System\_mod@{System\_mod}!getSystemInfo@{getSystemInfo}}
 \index{getSystemInfo@{getSystemInfo}!System\_mod@{System\_mod}}
 \doxysubsubsection{\texorpdfstring{getSystemInfo()}{getSystemInfo()}}
-{\footnotesize\ttfamily subroutine System\+\_\+mod\+::get\+System\+Info (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}})}]{List,  }\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err,  }\item[{type(\mbox{\hyperlink{structSystem__mod_1_1OS__type}{OS\+\_\+type}})}]{OS,  }\item[{integer(IK), intent(out), optional}]{count,  }\item[{character($\ast$)}]{cache\+File }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily subroutine System\+\_\+mod\+::get\+System\+Info (\begin{DoxyParamCaption}\item[{type(Str\+\_\+type)}]{List,  }\item[{type(\mbox{\hyperlink{structErr__mod_1_1Err__type}{Err\+\_\+type}})}]{Err,  }\item[{type(\mbox{\hyperlink{structSystem__mod_1_1OS__type}{OS\+\_\+type}})}]{OS,  }\item[{integer(IK), intent(out), optional}]{count,  }\item[{character($\ast$)}]{cache\+File }\end{DoxyParamCaption})}
 
 
 
@@ -266,7 +266,7 @@ Fetch a comprehensive report of the operating system and platform specifications
 \hline
 \end{DoxyParams}
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000063}{Todo}}]This code can be improved. See the extensive note in the body of the procedure. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{todo__todo000077}{Todo}}]This code can be improved. See the extensive note in the body of the procedure. \end{DoxyRefDesc}
 
 
 Definition at line \mbox{\hyperlink{System__mod_8f90_source_l01024}{1024}} of file \mbox{\hyperlink{System__mod_8f90_source}{System\+\_\+mod.\+f90}}.
@@ -412,7 +412,7 @@ Definition at line \mbox{\hyperlink{System__mod_8f90_source_l00054}{54}} of file
 \index{System\_mod@{System\_mod}!MAX\_REC\_LEN@{MAX\_REC\_LEN}}
 \index{MAX\_REC\_LEN@{MAX\_REC\_LEN}!System\_mod@{System\_mod}}
 \doxysubsubsection{\texorpdfstring{MAX\_REC\_LEN}{MAX\_REC\_LEN}}
-{\footnotesize\ttfamily integer(IK), parameter System\+\_\+mod\+::\+MAX\+\_\+\+REC\+\_\+\+LEN = 9999}
+{\footnotesize\ttfamily integer(IK), parameter System\+\_\+mod\+::\+MAX\+\_\+\+REC\+\_\+\+LEN = 9999\+\_\+\+IK}
 
 
 
@@ -422,11 +422,11 @@ maximum string record length
 
 Definition at line \mbox{\hyperlink{System__mod_8f90_source_l00055}{55}} of file \mbox{\hyperlink{System__mod_8f90_source}{System\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceSystem__mod_ad6e42e461a67af7db0b521a96c3f52a2}\label{namespaceSystem__mod_ad6e42e461a67af7db0b521a96c3f52a2}} 
+\mbox{\Hypertarget{namespaceSystem__mod_a02315af0822676d2216dd219481c692d}\label{namespaceSystem__mod_a02315af0822676d2216dd219481c692d}} 
 \index{System\_mod@{System\_mod}!MODULE\_NAME@{MODULE\_NAME}}
 \index{MODULE\_NAME@{MODULE\_NAME}!System\_mod@{System\_mod}}
 \doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
-{\footnotesize\ttfamily character($\ast$), parameter System\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@System\+\_\+mod\char`\"{}}
+{\footnotesize\ttfamily character($\ast$,SK), parameter System\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@System\+\_\+mod\char`\"{}}
 
 
 
@@ -470,21 +470,21 @@ A logical flag indicating whether a Shell query has occurred or not.
 
 Definition at line \mbox{\hyperlink{System__mod_8f90_source_l00178}{178}} of file \mbox{\hyperlink{System__mod_8f90_source}{System\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceSystem__mod_a9fed4bacbf0ab7df74fff2f86456e3ec}\label{namespaceSystem__mod_a9fed4bacbf0ab7df74fff2f86456e3ec}} 
+\mbox{\Hypertarget{namespaceSystem__mod_a16b66bad9ad4a9a71963b5471e36424e}\label{namespaceSystem__mod_a16b66bad9ad4a9a71963b5471e36424e}} 
 \index{System\_mod@{System\_mod}!OS\_NAME@{OS\_NAME}}
 \index{OS\_NAME@{OS\_NAME}!System\_mod@{System\_mod}}
 \doxysubsubsection{\texorpdfstring{OS\_NAME}{OS\_NAME}}
-{\footnotesize\ttfamily character($\ast$) parameter System\+\_\+mod\+::\+OS\+\_\+\+NAME = \char`\"{}Windows\char`\"{}}
+{\footnotesize\ttfamily character($\ast$) SK parameter System\+\_\+mod\+::\+OS\+\_\+\+NAME = \char`\"{}Windows\char`\"{}}
 
 
 
 Definition at line \mbox{\hyperlink{System__mod_8f90_source_l00058}{58}} of file \mbox{\hyperlink{System__mod_8f90_source}{System\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceSystem__mod_af4636622dbccf1004cce9d2d80d10639}\label{namespaceSystem__mod_af4636622dbccf1004cce9d2d80d10639}} 
+\mbox{\Hypertarget{namespaceSystem__mod_af78bd549dc46c2662a3a28e21081b726}\label{namespaceSystem__mod_af78bd549dc46c2662a3a28e21081b726}} 
 \index{System\_mod@{System\_mod}!OS\_PATH\_SEPARATOR@{OS\_PATH\_SEPARATOR}}
 \index{OS\_PATH\_SEPARATOR@{OS\_PATH\_SEPARATOR}!System\_mod@{System\_mod}}
 \doxysubsubsection{\texorpdfstring{OS\_PATH\_SEPARATOR}{OS\_PATH\_SEPARATOR}}
-{\footnotesize\ttfamily character($\ast$) parameter System\+\_\+mod\+::\+OS\+\_\+\+PATH\+\_\+\+SEPARATOR = \char`\"{}\textbackslash{}\char`\"{}}
+{\footnotesize\ttfamily character($\ast$) SK parameter System\+\_\+mod\+::\+OS\+\_\+\+PATH\+\_\+\+SEPARATOR = \char`\"{}\textbackslash{}\char`\"{}}
 
 
 

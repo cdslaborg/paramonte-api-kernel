@@ -16,18 +16,17 @@ Return the upper-\/triangle of the Cholesky factorization $L$ of the symmetric p
 \hline
 \mbox{\texttt{ out}}  & {\em Cho\+Dia} & \+: The output vector of the same type and kind as {\ttfamily Cho\+Upp\+Mat\+Low} containing the diagonal elements of the upper triangle of the Cholesky factorization. \\
 \hline
-\mbox{\texttt{ out}}  & {\em failed} & \+: The output {\ttfamily logical} of default kind that is {\ttfamily .true.} if the Cholesky factorization fails\\
+\mbox{\texttt{ out}}  & {\em failed} & \+: The output {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} that is {\ttfamily .true.} if the Cholesky factorization fails\\
 \hline
 \end{DoxyParams}
-\label{interfaceLinSys__mod_1_1solveLinSysChoUpp_interface}%
-\Hypertarget{interfaceLinSys__mod_1_1solveLinSysChoUpp_interface}%
+\label{interfaceArraySplit__mod_1_1split_interface}%
+\Hypertarget{interfaceArraySplit__mod_1_1split_interface}%
 {\bfseries{Possible calling interfaces}} \href{\#interface}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{fortran_keywordflow}{block}}
 \DoxyCodeLine{\textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMatrixCholesky__mod}{MatrixCholesky\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceMatrixCholesky__mod_1_1getChoUpp}{getChoUpp}}}
+\DoxyCodeLine{}
 \DoxyCodeLine{\textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceMatrixCholesky__mod_1_1getChoUpp}{getChoUpp}}(ChoUppMatLow, ChoDia, failed)}
-\DoxyCodeLine{\textcolor{fortran_statement}{end }block}
 
 \end{DoxyCode}
 
@@ -35,8 +34,6 @@ Return the upper-\/triangle of the Cholesky factorization $L$ of the symmetric p
 \begin{DoxyRemark}{Remarks}
 This routine is particularly useful for computing the Cholesky upper triangle of lower-\/triangle inverse matrices returned by gen\+Inv\+Low\+From\+Cho\+Low.
 \end{DoxyRemark}
-Returns in the upper triangle of {\ttfamily Cho\+Upp\+Cov\+Low}, the Cholesky factorization L$^\wedge$T of $\texttt{ChoUppCovLow} = L.L^T$. On input, the lower triangle of {\ttfamily Cho\+Upp\+Cov\+Low} must be given, which remains intact on output.
-
 \begin{DoxyWarning}{Warning}
 This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
 \end{DoxyWarning}
@@ -94,7 +91,7 @@ If {\ttfamily nd = 1}, {\ttfamily Cho\+Upp\+Mat\+Low} will not be touched, only 
 \DoxyCodeLine{\Hypertarget{interfaceMatrixCholesky__mod_1_1getChoUpp_l00041}00041 }
 \DoxyCodeLine{\Hypertarget{interfaceMatrixCholesky__mod_1_1getChoUpp_l00042}00042     Matrix\_RK64\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{real}(Matrix\_RK128,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}})}
 \DoxyCodeLine{\Hypertarget{interfaceMatrixCholesky__mod_1_1getChoUpp_l00043}00043 }
-\DoxyCodeLine{\Hypertarget{interfaceMatrixCholesky__mod_1_1getChoUpp_l00044}00044 \textcolor{fortran_statement}{    call} Display\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMatrixCholesky__mod_1_1getChoUpp_l00044}00044 \textcolor{fortran_statement}{    call} Display\textcolor{fortran_operator_symbols}{\%}skip()}
 \DoxyCodeLine{\Hypertarget{interfaceMatrixCholesky__mod_1_1getChoUpp_l00045}00045 \textcolor{fortran_statement}{    call} Display\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}Matrix Lower Triangle"{}})}
 \DoxyCodeLine{\Hypertarget{interfaceMatrixCholesky__mod_1_1getChoUpp_l00046}00046 \textcolor{fortran_statement}{    call} Display\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}( Matrix\_RK64 )}
 \DoxyCodeLine{\Hypertarget{interfaceMatrixCholesky__mod_1_1getChoUpp_l00047}00047 }
@@ -113,7 +110,7 @@ If {\ttfamily nd = 1}, {\ttfamily Cho\+Upp\+Mat\+Low} will not be touched, only 
 \DoxyCodeLine{\Hypertarget{interfaceMatrixCholesky__mod_1_1getChoUpp_l00060}00060 }
 \DoxyCodeLine{\Hypertarget{interfaceMatrixCholesky__mod_1_1getChoUpp_l00061}00061     Matrix\_RK32\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{real}(Matrix\_RK128,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}})}
 \DoxyCodeLine{\Hypertarget{interfaceMatrixCholesky__mod_1_1getChoUpp_l00062}00062 }
-\DoxyCodeLine{\Hypertarget{interfaceMatrixCholesky__mod_1_1getChoUpp_l00063}00063 \textcolor{fortran_statement}{    call} Display\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceMatrixCholesky__mod_1_1getChoUpp_l00063}00063 \textcolor{fortran_statement}{    call} Display\textcolor{fortran_operator_symbols}{\%}skip()}
 \DoxyCodeLine{\Hypertarget{interfaceMatrixCholesky__mod_1_1getChoUpp_l00064}00064 \textcolor{fortran_statement}{    call} Display\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}Matrix Lower Triangle"{}})}
 \DoxyCodeLine{\Hypertarget{interfaceMatrixCholesky__mod_1_1getChoUpp_l00065}00065 \textcolor{fortran_statement}{    call} Display\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}( Matrix\_RK32 )}
 \DoxyCodeLine{\Hypertarget{interfaceMatrixCholesky__mod_1_1getChoUpp_l00066}00066 }
@@ -191,7 +188,7 @@ If {\ttfamily nd = 1}, {\ttfamily Cho\+Upp\+Mat\+Low} will not be touched, only 
 
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000039}{Test}}]\mbox{\hyperlink{namespaceTest__MatrixCholesky__mod}{Test\+\_\+\+Matrix\+Cholesky\+\_\+mod}}\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000074}{Test}}]\mbox{\hyperlink{namespaceTest__MatrixCholesky__mod}{Test\+\_\+\+Matrix\+Cholesky\+\_\+mod}}\end{DoxyRefDesc}
 
 
 \begin{DoxyRemark}{Remarks}
@@ -207,7 +204,7 @@ Amir Shahmoradi, Apr 21, 2017, 1\+:54 AM, ICES, The University of Texas at Austi
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{MatrixCholesky__mod_8f90_source_l00281}{281}} of file \mbox{\hyperlink{MatrixCholesky__mod_8f90_source}{Matrix\+Cholesky\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{MatrixCholesky__mod_8f90_source_l00275}{275}} of file \mbox{\hyperlink{MatrixCholesky__mod_8f90_source}{Matrix\+Cholesky\+\_\+mod.\+f90}}.
 
 
 

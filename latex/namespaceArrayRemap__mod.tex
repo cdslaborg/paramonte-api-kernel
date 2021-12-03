@@ -2,7 +2,7 @@
 \label{namespaceArrayRemap__mod}\index{ArrayRemap\_mod@{ArrayRemap\_mod}}
 
 
-This module contains procedures for resizing arrays of type integer, real, complex, or string.  
+This module contains procedures for remapping arrays of various types.  
 
 
 \doxysubsection*{Data Types}
@@ -23,10 +23,10 @@ character($\ast$), parameter \mbox{\hyperlink{namespaceArrayRemap__mod_ae0bf7390
 
 
 \doxysubsection{Detailed Description}
-This module contains procedures for resizing arrays of type integer, real, complex, or string. 
+This module contains procedures for remapping arrays of various types. 
 
 \begin{DoxyRefDesc}{Benchmarks}
-\item[\mbox{\hyperlink{benchmarks__benchmarks000001}{Benchmarks}}]\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{benchmarks__benchmarks000002}{Benchmarks}}]\end{DoxyRefDesc}
 
 
 \label{namespaceArrayRemap__mod_benchmark-remap_vs_direct}%
@@ -174,7 +174,7 @@ This module contains procedures for resizing arrays of type integer, real, compl
 \DoxyCodeLine{\Hypertarget{namespaceArrayRemap__mod_l00031}00031 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayRemap__mod_l00032}00032 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayRemap__mod_l00033}00033 plt.minorticks\_on()}
-\DoxyCodeLine{\Hypertarget{namespaceArrayRemap__mod_l00034}00034 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayRemap__mod_l00034}00034 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayRemap__mod_l00035}00035 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayRemap__mod_l00036}00036 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayRemap__mod_l00037}00037 ax.legend   ( methods}
@@ -209,7 +209,7 @@ This module contains procedures for resizing arrays of type integer, real, compl
 \DoxyCodeLine{\Hypertarget{namespaceArrayRemap__mod_l00068}00068 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayRemap__mod_l00069}00069 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
 \DoxyCodeLine{\Hypertarget{namespaceArrayRemap__mod_l00070}00070 plt.minorticks\_on()}
-\DoxyCodeLine{\Hypertarget{namespaceArrayRemap__mod_l00071}00071 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayRemap__mod_l00071}00071 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayRemap__mod_l00072}00072 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayRemap__mod_l00073}00073 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayRemap__mod_l00074}00074 ax.legend   ( [\textcolor{stringliteral}{"{}remap()"{}}, \textcolor{stringliteral}{"{}Direct Method"{}}]}
@@ -234,11 +234,11 @@ This module contains procedures for resizing arrays of type integer, real, compl
 \begin{DoxyEnumerate}
 \item The procedures under the generic interface \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}} tend to be significantly faster than directly remapping arrays. This likely only true for remapping of {\bfseries{allocatable}} arrays. The primary reason for the better performance of \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}} is that \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}} avoid a final data copy from a dummy array to the original array by copying the allocation descriptor instead of the whole remapped array to the original array.
 \item Note that the observed performance benefit slightly diminishes if the remapping is not in {\ttfamily backward = .true.} mode.
-\item The other benefit of \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}} is that it provides a unified seamless generic interface for remapping all intrinsic types of arrays as well as assumed-\/size and assumed-\/shape characters.
+\item The other benefit of \mbox{\hyperlink{interfaceArrayRemap__mod_1_1remap}{remap}} is that it provides a unified seamless generic interface for reversing all intrinsic types and kinds of arrays as well as assumed-\/length and assumed-\/shape characters.
 \end{DoxyEnumerate}
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000001}{Test}}]Test\+\_\+\+Array\+Remap\+\_\+mod\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000004}{Test}}]\mbox{\hyperlink{namespaceTest__ArrayRemap__mod}{Test\+\_\+\+Array\+Remap\+\_\+mod}}\end{DoxyRefDesc}
 
 
 \begin{DoxyRemark}{Remarks}

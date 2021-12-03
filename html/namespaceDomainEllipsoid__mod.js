@@ -11,5 +11,5 @@ var namespaceDomainEllipsoid__mod =
     [ "getRandUnif_D2", "namespaceDomainEllipsoid__mod.html#ae326e362048a533ad4121f72d265bd36", null ],
     [ "isIdenticalDomain", "namespaceDomainEllipsoid__mod.html#a7d9164e925b4b980e129ceb6bf7a4873", null ],
     [ "isIdenticalDomainAlmost", "namespaceDomainEllipsoid__mod.html#a6ef03395142d8e4612f567e55c269737", null ],
-    [ "MODULE_NAME", "namespaceDomainEllipsoid__mod.html#a4a6063a90dabc1e4d9f683a82ba66edf", null ]
+    [ "MODULE_NAME", "namespaceDomainEllipsoid__mod.html#a6ce35648eb6e4f84533e1b1a32cff408", null ]
 ];

@@ -206,6 +206,16 @@ if ! [ -d "${ParaMonteDeploy_BLD_DIR}" ]; then
     exit 1
 fi
 
+# Get the ParaMonte version number.
+
+ParaMonte_VERSION=$(head -n 1 ../../.VERSION); export ParaMonte_VERSION
+
+# Copy the background image to the html build folder.
+
+cp ./logo/cdslab.png ./html/
+
+# Call Doxygen.
+
 cd "${FILE_DIR}" && ../../build/doxygen/build/bin/doxygen "${FILE_DIR}/config.txt" || {
     echo >&2
     echo >&2 "-- ParaMonteDoxygen - Failed to build the ParaMonte::Kernel Doxygen library. exiting..."

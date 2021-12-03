@@ -8,6 +8,6 @@ var namespaceBench__mod =
     [ "constructBench", "namespaceBench__mod.html#a16467ea4d1853b462976b52e0d95f53f", null ],
     [ "execEmpty", "namespaceBench__mod.html#a24459d76861f1112be532f76d4801b5f", null ],
     [ "finalizeBench", "namespaceBench__mod.html#a8f3249a84c6762174cafe01ef8179a85", null ],
-    [ "timeExec", "namespaceBench__mod.html#a2964c54e2b3af9b2c746253e5759d2fe", null ],
-    [ "MODULE_NAME", "namespaceBench__mod.html#a784b15bbce97946ccd566af0df53fb26", null ]
+    [ "timeExec", "namespaceBench__mod.html#a614b800597a05c0abca522f81f71769f", null ],
+    [ "MODULE_NAME", "namespaceBench__mod.html#a871abba5d3131ad228625eb9c9f4a6b1", null ]
 ];

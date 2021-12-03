@@ -7,7 +7,7 @@ var structDecoration__mod_1_1Decoration__type =
     [ "writeDecoratedList", "structDecoration__mod_1_1Decoration__type.html#a76b2a6c4c5cf9ac16793e9148bcae434", null ],
     [ "writeDecoratedText", "structDecoration__mod_1_1Decoration__type.html#a229657e557f03d56dfa50ebeb4ab3dd8", null ],
     [ "List", "structDecoration__mod_1_1Decoration__type.html#ada00d4c1151f54c07355b7b0dff84fe9", null ],
-    [ "symbol", "structDecoration__mod_1_1Decoration__type.html#af2cbb3fc51cd290c4fbdd84afb557f4d", null ],
-    [ "tab", "structDecoration__mod_1_1Decoration__type.html#ab347da6bcfa58fb4d08093dbb2aad521", null ],
-    [ "text", "structDecoration__mod_1_1Decoration__type.html#af8d79fd0d2cc0d907c4e77547e1eabce", null ]
+    [ "symbol", "structDecoration__mod_1_1Decoration__type.html#a3845fbb9eaca01ce87097259fc442a70", null ],
+    [ "tab", "structDecoration__mod_1_1Decoration__type.html#ac1367b8d3c73424980bd4d26de5e6fba", null ],
+    [ "text", "structDecoration__mod_1_1Decoration__type.html#aef33943e894e07e8bdd1e65ebc142321", null ]
 ];

@@ -23,13 +23,13 @@ var namespaceDecoration__mod =
     [ "DECORATION_THICKNESS_HORZ", "namespaceDecoration__mod.html#a6e42aba3cd2c19809270105096df5271", null ],
     [ "DECORATION_THICKNESS_VERT", "namespaceDecoration__mod.html#a274cb9f0dc8093763f326c386309c84a", null ],
     [ "DECORATION_WIDTH", "namespaceDecoration__mod.html#a7581ab9b285da37ce4ff35f896bbec16", null ],
-    [ "GENERIC_OUTPUT_FORMAT", "namespaceDecoration__mod.html#ab4b61a550d316d81125ec2327e82c319", null ],
-    [ "GENERIC_TABBED_FORMAT", "namespaceDecoration__mod.html#aa802c33655995e2b0c3770126e15bc52", null ],
-    [ "INDENT", "namespaceDecoration__mod.html#aea447b213bf4cdeab2803976af2b2cc5", null ],
+    [ "GENERIC_OUTPUT_FORMAT", "namespaceDecoration__mod.html#a135dba4706384d147a5e00a8edc3dc54", null ],
+    [ "GENERIC_TABBED_FORMAT", "namespaceDecoration__mod.html#ac91e31ef247925f00c615a1a675a92f4", null ],
+    [ "INDENT", "namespaceDecoration__mod.html#a828c6bfe246ae7a61640d7b4e96e3385", null ],
     [ "mc_AnsiAttributeList", "namespaceDecoration__mod.html#a68d020d1e5239ba03959d2737de6ca7f", null ],
     [ "mc_AnsiBackgroundColorList", "namespaceDecoration__mod.html#a66a1afb7d429666f5117dadb4277eda6", null ],
     [ "mc_AnsiForegroundColorList", "namespaceDecoration__mod.html#a8c9abddbf07a96cb42e3e499d7caba54", null ],
-    [ "MODULE_NAME", "namespaceDecoration__mod.html#a7c54f238f6226d3c2ec0c5484e8c4809", null ],
-    [ "STAR", "namespaceDecoration__mod.html#a716a4138da51089963cf7f1e2b64e52e", null ],
-    [ "TAB", "namespaceDecoration__mod.html#a966ffab0d973c2468db2418bb4edb8f3", null ]
+    [ "MODULE_NAME", "namespaceDecoration__mod.html#adb49b2c4a6ded37a68e5e04da12066e4", null ],
+    [ "STAR", "namespaceDecoration__mod.html#a4e3bb7b4acb3889a43ded36a6f31e257", null ],
+    [ "TAB", "namespaceDecoration__mod.html#a8593d30fb86a657fe627c0bc02e8e255", null ]
 ];

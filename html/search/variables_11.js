@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['r_0',['r',['../structConstants__mod_1_1private.html#aa6978278629d036a34f90e368f8b00bd',1,'Constants_mod::private']]],
-  ['r_1',['R',['../structConstants__mod_1_1LangIs__type.html#a4bf521287682d4544c24c95cd73810c9',1,'Constants_mod::LangIs_type']]],
+  ['r_0',['R',['../structConstants__mod_1_1LangIs__type.html#a4bf521287682d4544c24c95cd73810c9',1,'Constants_mod::LangIs_type']]],
+  ['r_1',['r',['../structConstants__mod_1_1private.html#aa6978278629d036a34f90e368f8b00bd',1,'Constants_mod::private']]],
   ['radius_2',['Radius',['../structDistMultiNormShellMix__mod_1_1DistMultiNormShellMix__type.html#aa9a4eb865d78ef501171a11f3ee8d0a0',1,'DistMultiNormShellMix_mod::DistMultiNormShellMix_type']]],
   ['radiussq_3',['radiusSq',['../structDomainEllipsoid__mod_1_1DomainEllipsoid__type.html#a83b6c8743e1095423e6955fdf06f8e14',1,'DomainEllipsoid_mod::DomainEllipsoid_type']]],
   ['randomseed_4',['RandomSeed',['../structSpecBase__mod_1_1SpecBase__type.html#a2f1c1fae903d945debff7766a9912fab',1,'SpecBase_mod::SpecBase_type']]],

@@ -16,7 +16,7 @@ var namespaceTest__mod =
     [ "setup", "namespaceTest__mod.html#ae0a3bd1ff7e148b464d4e4ef1c3fe797", null ],
     [ "mc_failedString", "namespaceTest__mod.html#a7a42c8841de0b215d2a5e0d85a9c43e2", null ],
     [ "mc_passedString", "namespaceTest__mod.html#ad086581bbcf343ec6e463b9e5a57d18a", null ],
-    [ "MODULE_NAME", "namespaceTest__mod.html#acd55c33f1fd1fcd991f41fe677ea3b84", null ],
+    [ "MODULE_NAME", "namespaceTest__mod.html#aae4afe314d86d6181f4b443e7f76cc46", null ],
     [ "mv_FailedTestFuncName", "namespaceTest__mod.html#a6529e6a81762754f2d007067cbd83aa3", null ],
     [ "mv_Image", "namespaceTest__mod.html#a45f48c4773d34040aa32c398f5494551", null ],
     [ "mv_nfail", "namespaceTest__mod.html#acd1e5ba2971a0a616c5a0da48753e0f9", null ],

@@ -2,7 +2,7 @@ var searchData=
 [
   ['operator_28_2ehas_2e_29_0',['operator(.has.)',['../interfaceString__mod_1_1operator_07_8has_8_08.html',1,'String_mod']]],
   ['operator_28_2eldtimes_2e_29_1',['operator(.ldtimes.)',['../interfaceMatrixScale__mod_1_1operator_07_8ldtimes_8_08.html',1,'MatrixScale_mod']]],
-  ['operator_28_2emerge_2e_29_2',['operator(.merge.)',['../interfaceSort__mod_1_1operator_07_8merge_8_08.html',1,'Sort_mod']]],
+  ['operator_28_2emerge_2e_29_2',['operator(.merge.)',['../interfaceArraySort__mod_1_1operator_07_8merge_8_08.html',1,'ArraySort_mod']]],
   ['operator_28_2eminus_2e_29_3',['operator(.minus.)',['../interfaceSet__mod_1_1operator_07_8minus_8_08.html',1,'Set_mod']]],
   ['operator_28_2eominus_2e_29_4',['operator(.ominus.)',['../interfaceSet__mod_1_1operator_07_8ominus_8_08.html',1,'Set_mod']]],
   ['operator_28_2eudtimes_2e_29_5',['operator(.udtimes.)',['../interfaceMatrixScale__mod_1_1operator_07_8udtimes_8_08.html',1,'MatrixScale_mod']]],

@@ -7,8 +7,6 @@ type \mbox{\hyperlink{structString__mod_1_1IntStr__type}{String\+\_\+mod\+::\+In
 \begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structString__mod_1_1IntStr__type}{Int\+Str\+\_\+type}}} class for converting integers to strings. \end{DoxyCompactList}\item 
 type \mbox{\hyperlink{structString__mod_1_1RealStr__type}{String\+\_\+mod\+::\+Real\+Str\+\_\+type}}
 \begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structString__mod_1_1RealStr__type}{Real\+Str\+\_\+type}}} class for converting real numbers to strings. \end{DoxyCompactList}\item 
-type \mbox{\hyperlink{structString__mod_1_1Str__type}{String\+\_\+mod\+::\+Str\+\_\+type}}
-\begin{DoxyCompactList}\small\item\em The primitive type to contain an allocatable character type as a single string. \end{DoxyCompactList}\item 
 interface \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+mod\+::\+String\+\_\+type}}
 \begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}} class for manipulating strings. \end{DoxyCompactList}\item 
 type \mbox{\hyperlink{structString__mod_1_1StrSplit__type}{String\+\_\+mod\+::\+Str\+Split\+\_\+type}}
@@ -35,10 +33,8 @@ interface \mbox{\hyperlink{interfaceString__mod_1_1int2str}{String\+\_\+mod\+::i
 \item 
 interface \mbox{\hyperlink{interfaceString__mod_1_1real2str}{String\+\_\+mod\+::real2str}}
 \item 
-interface \mbox{\hyperlink{interfaceString__mod_1_1val2char}{String\+\_\+mod\+::val2char}}
+interface \mbox{\hyperlink{interfaceString__mod_1_1val2str}{String\+\_\+mod\+::val2str}}
 \begin{DoxyCompactList}\small\item\em Convert the input value to an output allocatable character, with the requested format and sign symbol, if provided. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceString__mod_1_1genReverse}{String\+\_\+mod\+::gen\+Reverse}}
-\item 
 interface \mbox{\hyperlink{interfaceString__mod_1_1assignment_07_0a_08}{String\+\_\+mod\+::assignment(=)}}
 \begin{DoxyCompactList}\small\item\em Assign the contents of the input {\ttfamily string2} to the input {\ttfamily string1}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Modules}
@@ -49,59 +45,53 @@ module \mbox{\hyperlink{namespaceString__mod}{String\+\_\+mod}}
 \doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
-pure type(String\+\_\+type) function, dimension(size(Assumed\+Char, kind=IK)) \mbox{\hyperlink{namespaceString__mod_a34d4884c58302d45a5fe5acbd7a08ef3}{String\+\_\+mod\+::construct\+String}} (Assumed\+Char)
+pure type(Str\+\_\+type) function, dimension(size(String, kind=IK)) \mbox{\hyperlink{namespaceString__mod_a0f08025b6bb7af3451ed76ac22012e98}{String\+\_\+mod\+::construct\+String\+List}} (String)
 \item 
-pure logical function \mbox{\hyperlink{namespaceString__mod_a00e44bf3a651f4ca3da8b1a0b23739b1}{String\+\_\+mod\+::is\+Larger\+\_\+\+D0}} (string1, string2)
+pure logical(LK) function \mbox{\hyperlink{namespaceString__mod_a4a297f019ebbd5c798cabdf43de2e6a5}{String\+\_\+mod\+::is\+Larger\+\_\+\+D0}} (string1, string2)
 \begin{DoxyCompactList}\small\item\em Generate {\ttfamily .true.} if the input {\ttfamily string1} is smaller than the input {\ttfamily string2} in ASCII code, otherwise generate and return {\ttfamily .false.}. \end{DoxyCompactList}\item 
-pure logical function \mbox{\hyperlink{namespaceString__mod_aa16f515298e2421aeb9ac0cac02a6654}{String\+\_\+mod\+::is\+Larger\+Equal\+\_\+\+D0}} (string1, string2)
+pure logical(LK) function \mbox{\hyperlink{namespaceString__mod_ad5077ebf82ffb203c5571744f1fc69a7}{String\+\_\+mod\+::is\+Larger\+Equal\+\_\+\+D0}} (string1, string2)
 \item 
-pure logical function \mbox{\hyperlink{namespaceString__mod_aaedf21404c3502b48436093a37cc6d85}{String\+\_\+mod\+::is\+Smaller\+\_\+\+D0}} (string1, string2)
+pure logical(LK) function \mbox{\hyperlink{namespaceString__mod_adeac897eb73acb7ae1d9397157edb10a}{String\+\_\+mod\+::is\+Smaller\+\_\+\+D0}} (string1, string2)
 \item 
-pure logical function \mbox{\hyperlink{namespaceString__mod_a2329a78e5644a2f15365ee06c2d3370d}{String\+\_\+mod\+::is\+Smaller\+Equal\+\_\+\+D0}} (string1, string2)
+pure logical(LK) function \mbox{\hyperlink{namespaceString__mod_a13a84d15a857b6de41e27b45a2f83112}{String\+\_\+mod\+::is\+Smaller\+Equal\+\_\+\+D0}} (string1, string2)
 \item 
-pure logical function \mbox{\hyperlink{namespaceString__mod_a343c8e8b219d3386f5ff2d0a255b08ef}{String\+\_\+mod\+::is\+Not\+Equal\+\_\+\+D0}} (string1, string2)
+pure logical(LK) function \mbox{\hyperlink{namespaceString__mod_a8d51da0a8f8d8562b7acbb1ee7089588}{String\+\_\+mod\+::is\+Not\+Equal\+\_\+\+D0}} (string1, string2)
 \item 
-pure character(len(Array, kind=IK)) function \mbox{\hyperlink{namespaceString__mod_aa9be12ed3821cd5ec5d6b804e6943b28}{String\+\_\+mod\+::gen\+Reverse\+\_\+char\+\_\+\+D0}} (Array)
-\begin{DoxyCompactList}\small\item\em Generate the reverse of the input assumed-\/shape character of default kind. \end{DoxyCompactList}\item 
-pure character(len(Array, kind=IK)) function, dimension(size(Array, kind=IK)) \mbox{\hyperlink{namespaceString__mod_a0a292d671980fe5b0cc9fe1202741fda}{String\+\_\+mod\+::gen\+Reverse\+\_\+char\+\_\+\+D1}} (Array)
-\begin{DoxyCompactList}\small\item\em Generate the reverse of the input array of assumed-\/shape characters of default kind. \end{DoxyCompactList}\item 
-pure type(string\+\_\+type) function, dimension(size(Array, kind=IK)) \mbox{\hyperlink{namespaceString__mod_a80f4b950db1a10bd851c333774b6793f}{String\+\_\+mod\+::gen\+Reverse\+\_\+string}} (Array)
-\begin{DoxyCompactList}\small\item\em Generate the reverse of the input array of strings of type \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}. \end{DoxyCompactList}\item 
-pure logical function \mbox{\hyperlink{namespaceString__mod_a498e86c011fc2958583a3fdae4c87df6}{String\+\_\+mod\+::contains}} (string, search)
+pure logical(LK) function \mbox{\hyperlink{namespaceString__mod_a2205308049cba574348acd4453ee12a3}{String\+\_\+mod\+::contains}} (string, search)
 \begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} if the input assumed-\/size character vector contains the input {\ttfamily search} substring, otherwise return {\ttfamily .false.}. \end{DoxyCompactList}\item 
-pure recursive character(len=\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_adf2d0a723b9b74a97f7f50bc9fb1149a}{String\+\_\+mod\+::replace}} (value, search, substitute)
+pure recursive character(\+:, SK) function, allocatable \mbox{\hyperlink{namespaceString__mod_a4b5e3fb51b9cce838b3741700a546a68}{String\+\_\+mod\+::replace}} (value, search, substitute)
 \begin{DoxyCompactList}\small\item\em Replace all instances of the input {\ttfamily search} assumed-\/size character vector in the input {\ttfamily value} assumed-\/size character vector with the input {\ttfamily substitute} assumed-\/size character vector and return the result. \end{DoxyCompactList}\item 
-type(Str\+\_\+type) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceString__mod_a13a8791d75dde13643300315d31659cf}{String\+\_\+mod\+::split}} (value, delim, npart)
+type(String\+\_\+type) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceString__mod_a48cf22e3da284fccd5144b728916b2c2}{String\+\_\+mod\+::split}} (value, delim, npart)
 \begin{DoxyCompactList}\small\item\em Split the input {\ttfamily value} of type character of arbitrary length by finding the input {\ttfamily substitute} in the input {\ttfamily value} and return the result. \end{DoxyCompactList}\item 
-type(Str\+\_\+type) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceString__mod_a6cd16558dfee7fbfcbdcf0c1403d1302}{String\+\_\+mod\+::split\+Str}} (value, delim, n\+Part)
+type(String\+\_\+type) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceString__mod_ac25f8bcd7511e1c17459c712cab3725c}{String\+\_\+mod\+::split\+Str}} (value, delim, n\+Part)
 \begin{DoxyCompactList}\small\item\em Split the input {\ttfamily value} character of arbitrary length with the input {\ttfamily substitute} in the input {\ttfamily value} and return the result. \end{DoxyCompactList}\item 
-pure logical function \mbox{\hyperlink{namespaceString__mod_a4dfbcfa1364b4263973fe7a1248c4893}{String\+\_\+mod\+::is\+Digit}} (single\+Char)
+pure logical(LK) function \mbox{\hyperlink{namespaceString__mod_a3d47a522ffe39d51658e0ea1ae5df209}{String\+\_\+mod\+::is\+Digit}} (single\+Char)
 \begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} if the input single character is a digit\+: {\ttfamily \mbox{[}\char`\"{}0\char`\"{},\char`\"{}1\char`\"{},\char`\"{}2\char`\"{},\char`\"{}3\char`\"{},\char`\"{}4\char`\"{},\char`\"{}5\char`\"{},\char`\"{}6\char`\"{},\char`\"{}7\char`\"{},\char`\"{}8\char`\"{},\char`\"{}9\char`\"{}\mbox{]}}. \end{DoxyCompactList}\item 
-pure logical function \mbox{\hyperlink{namespaceString__mod_a4d710f50d57e4061becd3b4a1aeb32cf}{String\+\_\+mod\+::is\+Integer}} (value)
+pure logical(LK) function \mbox{\hyperlink{namespaceString__mod_a9ba6895a8032a18f8fa98a406a164796}{String\+\_\+mod\+::is\+Integer}} (value)
 \begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} if the input {\ttfamily value} is an integer containing only\+: {\ttfamily \mbox{[}\char`\"{}0\char`\"{},\char`\"{}1\char`\"{},\char`\"{}2\char`\"{},\char`\"{}3\char`\"{},\char`\"{}4\char`\"{},\char`\"{}5\char`\"{},\char`\"{}6\char`\"{},\char`\"{}7\char`\"{},\char`\"{}8\char`\"{},\char`\"{}9\char`\"{}\mbox{]}}. \end{DoxyCompactList}\item 
-pure character(len(value)) function \mbox{\hyperlink{namespaceString__mod_ade10dffb10b5ed445fec280457aa9eb4}{String\+\_\+mod\+::get\+Lower\+Case}} (value)
+pure character(len(value), SK) function \mbox{\hyperlink{namespaceString__mod_a250fd7bdb2d16e078748c844d57030ee}{String\+\_\+mod\+::gen\+Lower\+Case}} (value)
 \begin{DoxyCompactList}\small\item\em Return the lowercase of the input assumed-\/size character vector. \end{DoxyCompactList}\item 
-pure character(len(value)) function \mbox{\hyperlink{namespaceString__mod_a7812197cf955b4b2c1b1965e3b038073}{String\+\_\+mod\+::get\+Upper\+Case}} (value)
+pure character(len(value), SK) function \mbox{\hyperlink{namespaceString__mod_a9312fdfc6922496aa589e97613f53653}{String\+\_\+mod\+::gen\+Upper\+Case}} (value)
 \begin{DoxyCompactList}\small\item\em Return the uppercase of the input assumed-\/size character vector. \end{DoxyCompactList}\item 
-pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a6552eb523a25c1a62dadccfa2b82f45b}{String\+\_\+mod\+::val2char\+\_\+\+RK64\+\_\+\+D1}} (Value, format, len)
+pure character(\+:, SK) function, allocatable \mbox{\hyperlink{namespaceString__mod_a62b6f33780c3973b61f3ea68a98f146c}{String\+\_\+mod\+::val2str\+\_\+\+RK64\+\_\+\+D1}} (Value, format, len)
 \begin{DoxyCompactList}\small\item\em Convert an input vector of 64-\/bit real values to string, with the requested format, if provided. \end{DoxyCompactList}\item 
-pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a3e0e4e4c714c3824286aced7cc32c9e2}{String\+\_\+mod\+::val2char\+\_\+\+RK64\+\_\+\+D2}} (Value, format, len)
+pure character(\+:, SK) function, allocatable \mbox{\hyperlink{namespaceString__mod_aa41e8b9f180919d02ee34f0f3bb8eeec}{String\+\_\+mod\+::val2str\+\_\+\+RK64\+\_\+\+D2}} (Value, format, len)
 \begin{DoxyCompactList}\small\item\em Convert an input 2D matrix of 64-\/bit real values to string, with the requested format, if provided. \end{DoxyCompactList}\item 
-integer(IK) function \mbox{\hyperlink{namespaceString__mod_a39f8ac9d5727e6e4bf1187ed9f873b4f}{String\+\_\+mod\+::char2int}} (value, iostat)
+integer(IK) function \mbox{\hyperlink{namespaceString__mod_a6f2e79adac755eb6c7e8a824d4ae21af}{String\+\_\+mod\+::str2int}} (value, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to integer. \end{DoxyCompactList}\item 
-integer(IK32) function \mbox{\hyperlink{namespaceString__mod_a6211342a946d80cbdee652a8a3e48630}{String\+\_\+mod\+::char2int32}} (value, iostat)
+integer(IK32) function \mbox{\hyperlink{namespaceString__mod_a8129cf1f109650d075cdf067c6a94ed1}{String\+\_\+mod\+::str2int32}} (value, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to 32-\/bit integer. \end{DoxyCompactList}\item 
-integer(IK64) function \mbox{\hyperlink{namespaceString__mod_ab898b2fdbcd961bd91ee7550965fdbcc}{String\+\_\+mod\+::char2int64}} (value, iostat)
+integer(IK64) function \mbox{\hyperlink{namespaceString__mod_a08699445d965f7bc915c248c225be7d9}{String\+\_\+mod\+::str2int64}} (value, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to 64-\/bit integer. \end{DoxyCompactList}\item 
-real(RK) function \mbox{\hyperlink{namespaceString__mod_aa6450b384b4143de3b45095896e458e6}{String\+\_\+mod\+::char2real}} (value, iostat)
+real(RK) function \mbox{\hyperlink{namespaceString__mod_a5a037fea73efa33cdba65b10d240bf79}{String\+\_\+mod\+::str2real}} (value, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to real value. \end{DoxyCompactList}\item 
-real(RK32) function \mbox{\hyperlink{namespaceString__mod_ae6d1236fd58ad13349a9c4cf9beddec2}{String\+\_\+mod\+::char2real32}} (value, iostat)
+real(RK32) function \mbox{\hyperlink{namespaceString__mod_aeda50a8a14556f2d94a5c23f4c09b8be}{String\+\_\+mod\+::str2real32}} (value, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to 32-\/bit real value. \end{DoxyCompactList}\item 
-real(RK64) function \mbox{\hyperlink{namespaceString__mod_aa158363f5bfdb4e949e2f456dd411886}{String\+\_\+mod\+::char2real64}} (value, iostat)
+real(RK64) function \mbox{\hyperlink{namespaceString__mod_afcc1dfc73130d15ad819e5bcfb15bf94}{String\+\_\+mod\+::str2real64}} (value, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to 64-\/bit real value. \end{DoxyCompactList}\item 
 pure character(padded\+Len) function \mbox{\hyperlink{namespaceString__mod_a6af661c9ba1dbd7b57356c0902230373}{String\+\_\+mod\+::pad\+Char}} (value, symbol, padded\+Len)
 \begin{DoxyCompactList}\small\item\em Pad the input assumed-\/size character vector {\ttfamily value} with the input assumed-\/size character vector {\ttfamily symbol} for a length of {\ttfamily padded\+Len} and return the resulting new string. \end{DoxyCompactList}\item 
-pure integer(IK) function \mbox{\hyperlink{namespaceString__mod_a27155c2f7ab7242e9755e92331331bd3}{String\+\_\+mod\+::gen\+Min\+Loc\+\_\+char\+\_\+\+D0}} (Array)
+pure integer(IK) function \mbox{\hyperlink{namespaceString__mod_a7405ef302a16e5cd9450a80fa9081c68}{String\+\_\+mod\+::gen\+Min\+Loc\+\_\+\+SK}} (Array)
 \item 
 subroutine \mbox{\hyperlink{namespaceString__mod_a858f1ae33c587c881c1d67f0f02f1da6}{String\+\_\+mod\+::get\+Rand\+Char}} (rand\+Char)
 \item 
@@ -114,7 +104,7 @@ subroutine \mbox{\hyperlink{namespaceString__mod_af037d54184793d310dd981031ccc1f
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-character($\ast$), parameter \mbox{\hyperlink{namespaceString__mod_aea8d1ba3c565ed766a8924deb4d69b3f}{String\+\_\+mod\+::\+MODULE\+\_\+\+NAME}} = \char`\"{}@String\+\_\+mod\char`\"{}
+character($\ast$, SK), parameter \mbox{\hyperlink{namespaceString__mod_af11bdc03e8c55006b85e5c5802e2993e}{String\+\_\+mod\+::\+MODULE\+\_\+\+NAME}} = \char`\"{}@String\+\_\+mod\char`\"{}
 \item 
 integer(IK) \mbox{\hyperlink{namespaceString__mod_a7b67e450536904a2b7e051f72df27c01}{String\+\_\+mod\+::\+VAL2\+CHAR\+\_\+\+MAXLEN}} = 127\+\_\+\+IK
-\begin{DoxyCompactList}\small\item\em The maximum possible length of the string output from the functions under the generic interface {\ttfamily \mbox{\hyperlink{interfaceString__mod_1_1val2char}{val2char}}}. Note that {\ttfamily VAL2\+CHAR\+\_\+\+MAXLEN = 127} is very generous given that,. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The maximum possible length of the string output from the functions under the generic interface {\ttfamily \mbox{\hyperlink{interfaceString__mod_1_1val2str}{val2str}}}. Note that {\ttfamily VAL2\+CHAR\+\_\+\+MAXLEN = 127} is very generous given that,. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -10,8 +10,6 @@ This module contains the classes and procedures for various string manipulations
 \item 
 interface \mbox{\hyperlink{interfaceString__mod_1_1assignment_07_0a_08}{assignment(=)}}
 \begin{DoxyCompactList}\small\item\em Assign the contents of the input {\ttfamily string2} to the input {\ttfamily string1}. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceString__mod_1_1genReverse}{gen\+Reverse}}
-\item 
 interface \mbox{\hyperlink{interfaceString__mod_1_1int2str}{int2str}}
 \item 
 type \mbox{\hyperlink{structString__mod_1_1IntStr__type}{Int\+Str\+\_\+type}}
@@ -36,72 +34,64 @@ interface \mbox{\hyperlink{interfaceString__mod_1_1real2str}{real2str}}
 \item 
 type \mbox{\hyperlink{structString__mod_1_1RealStr__type}{Real\+Str\+\_\+type}}
 \begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structString__mod_1_1RealStr__type}{Real\+Str\+\_\+type}}} class for converting real numbers to strings. \end{DoxyCompactList}\item 
-type \mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}}
-\begin{DoxyCompactList}\small\item\em The primitive type to contain an allocatable character type as a single string. \end{DoxyCompactList}\item 
 interface \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}
 \begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}} class for manipulating strings. \end{DoxyCompactList}\item 
 type \mbox{\hyperlink{structString__mod_1_1StrSplit__type}{Str\+Split\+\_\+type}}
 \begin{DoxyCompactList}\small\item\em The {\ttfamily \mbox{\hyperlink{structString__mod_1_1StrSplit__type}{Str\+Split\+\_\+type}}} class with a container component for string parts. \end{DoxyCompactList}\item 
 interface \mbox{\hyperlink{interfaceString__mod_1_1upper}{upper}}
 \item 
-interface \mbox{\hyperlink{interfaceString__mod_1_1val2char}{val2char}}
+interface \mbox{\hyperlink{interfaceString__mod_1_1val2str}{val2str}}
 \begin{DoxyCompactList}\small\item\em Convert the input value to an output allocatable character, with the requested format and sign symbol, if provided. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
 \item 
-pure type(\mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}) function, dimension(size(Assumed\+Char, kind=IK)) \mbox{\hyperlink{namespaceString__mod_a34d4884c58302d45a5fe5acbd7a08ef3}{construct\+String}} (Assumed\+Char)
+pure type(Str\+\_\+type) function, dimension(size(String, kind=IK)) \mbox{\hyperlink{namespaceString__mod_a0f08025b6bb7af3451ed76ac22012e98}{construct\+String\+List}} (String)
 \item 
-pure logical function \mbox{\hyperlink{namespaceString__mod_a00e44bf3a651f4ca3da8b1a0b23739b1}{is\+Larger\+\_\+\+D0}} (string1, string2)
+pure logical(LK) function \mbox{\hyperlink{namespaceString__mod_a4a297f019ebbd5c798cabdf43de2e6a5}{is\+Larger\+\_\+\+D0}} (string1, string2)
 \begin{DoxyCompactList}\small\item\em Generate {\ttfamily .true.} if the input {\ttfamily string1} is smaller than the input {\ttfamily string2} in ASCII code, otherwise generate and return {\ttfamily .false.}. \end{DoxyCompactList}\item 
-pure logical function \mbox{\hyperlink{namespaceString__mod_aa16f515298e2421aeb9ac0cac02a6654}{is\+Larger\+Equal\+\_\+\+D0}} (string1, string2)
+pure logical(LK) function \mbox{\hyperlink{namespaceString__mod_ad5077ebf82ffb203c5571744f1fc69a7}{is\+Larger\+Equal\+\_\+\+D0}} (string1, string2)
 \item 
-pure logical function \mbox{\hyperlink{namespaceString__mod_aaedf21404c3502b48436093a37cc6d85}{is\+Smaller\+\_\+\+D0}} (string1, string2)
+pure logical(LK) function \mbox{\hyperlink{namespaceString__mod_adeac897eb73acb7ae1d9397157edb10a}{is\+Smaller\+\_\+\+D0}} (string1, string2)
 \item 
-pure logical function \mbox{\hyperlink{namespaceString__mod_a2329a78e5644a2f15365ee06c2d3370d}{is\+Smaller\+Equal\+\_\+\+D0}} (string1, string2)
+pure logical(LK) function \mbox{\hyperlink{namespaceString__mod_a13a84d15a857b6de41e27b45a2f83112}{is\+Smaller\+Equal\+\_\+\+D0}} (string1, string2)
 \item 
-pure logical function \mbox{\hyperlink{namespaceString__mod_a343c8e8b219d3386f5ff2d0a255b08ef}{is\+Not\+Equal\+\_\+\+D0}} (string1, string2)
+pure logical(LK) function \mbox{\hyperlink{namespaceString__mod_a8d51da0a8f8d8562b7acbb1ee7089588}{is\+Not\+Equal\+\_\+\+D0}} (string1, string2)
 \item 
-pure character(len(Array, kind=IK)) function \mbox{\hyperlink{namespaceString__mod_aa9be12ed3821cd5ec5d6b804e6943b28}{gen\+Reverse\+\_\+char\+\_\+\+D0}} (Array)
-\begin{DoxyCompactList}\small\item\em Generate the reverse of the input assumed-\/shape character of default kind. \end{DoxyCompactList}\item 
-pure character(len(Array, kind=IK)) function, dimension(size(Array, kind=IK)) \mbox{\hyperlink{namespaceString__mod_a0a292d671980fe5b0cc9fe1202741fda}{gen\+Reverse\+\_\+char\+\_\+\+D1}} (Array)
-\begin{DoxyCompactList}\small\item\em Generate the reverse of the input array of assumed-\/shape characters of default kind. \end{DoxyCompactList}\item 
-pure type(string\+\_\+type) function, dimension(size(Array, kind=IK)) \mbox{\hyperlink{namespaceString__mod_a80f4b950db1a10bd851c333774b6793f}{gen\+Reverse\+\_\+string}} (Array)
-\begin{DoxyCompactList}\small\item\em Generate the reverse of the input array of strings of type \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}. \end{DoxyCompactList}\item 
-pure logical function \mbox{\hyperlink{namespaceString__mod_a498e86c011fc2958583a3fdae4c87df6}{contains}} (string, search)
+pure logical(LK) function \mbox{\hyperlink{namespaceString__mod_a2205308049cba574348acd4453ee12a3}{contains}} (string, search)
 \begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} if the input assumed-\/size character vector contains the input {\ttfamily search} substring, otherwise return {\ttfamily .false.}. \end{DoxyCompactList}\item 
-pure recursive character(len=\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_adf2d0a723b9b74a97f7f50bc9fb1149a}{replace}} (value, search, substitute)
+pure recursive character(\+:, SK) function, allocatable \mbox{\hyperlink{namespaceString__mod_a4b5e3fb51b9cce838b3741700a546a68}{replace}} (value, search, substitute)
 \begin{DoxyCompactList}\small\item\em Replace all instances of the input {\ttfamily search} assumed-\/size character vector in the input {\ttfamily value} assumed-\/size character vector with the input {\ttfamily substitute} assumed-\/size character vector and return the result. \end{DoxyCompactList}\item 
-type(\mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}}) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceString__mod_a13a8791d75dde13643300315d31659cf}{split}} (value, delim, npart)
+type(\mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceString__mod_a48cf22e3da284fccd5144b728916b2c2}{split}} (value, delim, npart)
 \begin{DoxyCompactList}\small\item\em Split the input {\ttfamily value} of type character of arbitrary length by finding the input {\ttfamily substitute} in the input {\ttfamily value} and return the result. \end{DoxyCompactList}\item 
-type(\mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}}) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceString__mod_a6cd16558dfee7fbfcbdcf0c1403d1302}{split\+Str}} (value, delim, n\+Part)
+type(\mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}) function, dimension(\+:), allocatable \mbox{\hyperlink{namespaceString__mod_ac25f8bcd7511e1c17459c712cab3725c}{split\+Str}} (value, delim, n\+Part)
 \begin{DoxyCompactList}\small\item\em Split the input {\ttfamily value} character of arbitrary length with the input {\ttfamily substitute} in the input {\ttfamily value} and return the result. \end{DoxyCompactList}\item 
-pure logical function \mbox{\hyperlink{namespaceString__mod_a4dfbcfa1364b4263973fe7a1248c4893}{is\+Digit}} (single\+Char)
+pure logical(LK) function \mbox{\hyperlink{namespaceString__mod_a3d47a522ffe39d51658e0ea1ae5df209}{is\+Digit}} (single\+Char)
 \begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} if the input single character is a digit\+: {\ttfamily \mbox{[}\char`\"{}0\char`\"{},\char`\"{}1\char`\"{},\char`\"{}2\char`\"{},\char`\"{}3\char`\"{},\char`\"{}4\char`\"{},\char`\"{}5\char`\"{},\char`\"{}6\char`\"{},\char`\"{}7\char`\"{},\char`\"{}8\char`\"{},\char`\"{}9\char`\"{}\mbox{]}}. \end{DoxyCompactList}\item 
-pure logical function \mbox{\hyperlink{namespaceString__mod_a4d710f50d57e4061becd3b4a1aeb32cf}{is\+Integer}} (value)
+pure logical(LK) function \mbox{\hyperlink{namespaceString__mod_a9ba6895a8032a18f8fa98a406a164796}{is\+Integer}} (value)
 \begin{DoxyCompactList}\small\item\em Return {\ttfamily .true.} if the input {\ttfamily value} is an integer containing only\+: {\ttfamily \mbox{[}\char`\"{}0\char`\"{},\char`\"{}1\char`\"{},\char`\"{}2\char`\"{},\char`\"{}3\char`\"{},\char`\"{}4\char`\"{},\char`\"{}5\char`\"{},\char`\"{}6\char`\"{},\char`\"{}7\char`\"{},\char`\"{}8\char`\"{},\char`\"{}9\char`\"{}\mbox{]}}. \end{DoxyCompactList}\item 
-pure character(len(value)) function \mbox{\hyperlink{namespaceString__mod_ade10dffb10b5ed445fec280457aa9eb4}{get\+Lower\+Case}} (value)
+pure character(len(value), SK) function \mbox{\hyperlink{namespaceString__mod_a250fd7bdb2d16e078748c844d57030ee}{gen\+Lower\+Case}} (value)
 \begin{DoxyCompactList}\small\item\em Return the lowercase of the input assumed-\/size character vector. \end{DoxyCompactList}\item 
-pure character(len(value)) function \mbox{\hyperlink{namespaceString__mod_a7812197cf955b4b2c1b1965e3b038073}{get\+Upper\+Case}} (value)
+pure character(len(value), SK) function \mbox{\hyperlink{namespaceString__mod_a9312fdfc6922496aa589e97613f53653}{gen\+Upper\+Case}} (value)
 \begin{DoxyCompactList}\small\item\em Return the uppercase of the input assumed-\/size character vector. \end{DoxyCompactList}\item 
-pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a6552eb523a25c1a62dadccfa2b82f45b}{val2char\+\_\+\+RK64\+\_\+\+D1}} (Value, format, len)
+pure character(\+:, SK) function, allocatable \mbox{\hyperlink{namespaceString__mod_a62b6f33780c3973b61f3ea68a98f146c}{val2str\+\_\+\+RK64\+\_\+\+D1}} (Value, format, len)
 \begin{DoxyCompactList}\small\item\em Convert an input vector of 64-\/bit real values to string, with the requested format, if provided. \end{DoxyCompactList}\item 
-pure character(\+:) function, allocatable \mbox{\hyperlink{namespaceString__mod_a3e0e4e4c714c3824286aced7cc32c9e2}{val2char\+\_\+\+RK64\+\_\+\+D2}} (Value, format, len)
+pure character(\+:, SK) function, allocatable \mbox{\hyperlink{namespaceString__mod_aa41e8b9f180919d02ee34f0f3bb8eeec}{val2str\+\_\+\+RK64\+\_\+\+D2}} (Value, format, len)
 \begin{DoxyCompactList}\small\item\em Convert an input 2D matrix of 64-\/bit real values to string, with the requested format, if provided. \end{DoxyCompactList}\item 
-integer(IK) function \mbox{\hyperlink{namespaceString__mod_a39f8ac9d5727e6e4bf1187ed9f873b4f}{char2int}} (value, iostat)
+integer(IK) function \mbox{\hyperlink{namespaceString__mod_a6f2e79adac755eb6c7e8a824d4ae21af}{str2int}} (value, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to integer. \end{DoxyCompactList}\item 
-integer(IK32) function \mbox{\hyperlink{namespaceString__mod_a6211342a946d80cbdee652a8a3e48630}{char2int32}} (value, iostat)
+integer(IK32) function \mbox{\hyperlink{namespaceString__mod_a8129cf1f109650d075cdf067c6a94ed1}{str2int32}} (value, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to 32-\/bit integer. \end{DoxyCompactList}\item 
-integer(IK64) function \mbox{\hyperlink{namespaceString__mod_ab898b2fdbcd961bd91ee7550965fdbcc}{char2int64}} (value, iostat)
+integer(IK64) function \mbox{\hyperlink{namespaceString__mod_a08699445d965f7bc915c248c225be7d9}{str2int64}} (value, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to 64-\/bit integer. \end{DoxyCompactList}\item 
-real(RK) function \mbox{\hyperlink{namespaceString__mod_aa6450b384b4143de3b45095896e458e6}{char2real}} (value, iostat)
+real(RK) function \mbox{\hyperlink{namespaceString__mod_a5a037fea73efa33cdba65b10d240bf79}{str2real}} (value, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to real value. \end{DoxyCompactList}\item 
-real(RK32) function \mbox{\hyperlink{namespaceString__mod_ae6d1236fd58ad13349a9c4cf9beddec2}{char2real32}} (value, iostat)
+real(RK32) function \mbox{\hyperlink{namespaceString__mod_aeda50a8a14556f2d94a5c23f4c09b8be}{str2real32}} (value, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to 32-\/bit real value. \end{DoxyCompactList}\item 
-real(RK64) function \mbox{\hyperlink{namespaceString__mod_aa158363f5bfdb4e949e2f456dd411886}{char2real64}} (value, iostat)
+real(RK64) function \mbox{\hyperlink{namespaceString__mod_afcc1dfc73130d15ad819e5bcfb15bf94}{str2real64}} (value, iostat)
 \begin{DoxyCompactList}\small\item\em Convert an input assumed-\/size character vector to 64-\/bit real value. \end{DoxyCompactList}\item 
 pure character(padded\+Len) function \mbox{\hyperlink{namespaceString__mod_a6af661c9ba1dbd7b57356c0902230373}{pad\+Char}} (value, symbol, padded\+Len)
 \begin{DoxyCompactList}\small\item\em Pad the input assumed-\/size character vector {\ttfamily value} with the input assumed-\/size character vector {\ttfamily symbol} for a length of {\ttfamily padded\+Len} and return the resulting new string. \end{DoxyCompactList}\item 
-pure integer(IK) function \mbox{\hyperlink{namespaceString__mod_a27155c2f7ab7242e9755e92331331bd3}{gen\+Min\+Loc\+\_\+char\+\_\+\+D0}} (Array)
+pure integer(IK) function \mbox{\hyperlink{namespaceString__mod_a7405ef302a16e5cd9450a80fa9081c68}{gen\+Min\+Loc\+\_\+\+SK}} (Array)
 \item 
 subroutine \mbox{\hyperlink{namespaceString__mod_a858f1ae33c587c881c1d67f0f02f1da6}{get\+Rand\+Char}} (rand\+Char)
 \item 
@@ -114,10 +104,10 @@ subroutine \mbox{\hyperlink{namespaceString__mod_af037d54184793d310dd981031ccc1f
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-character($\ast$), parameter \mbox{\hyperlink{namespaceString__mod_aea8d1ba3c565ed766a8924deb4d69b3f}{MODULE\+\_\+\+NAME}} = \char`\"{}@String\+\_\+mod\char`\"{}
+character($\ast$, SK), parameter \mbox{\hyperlink{namespaceString__mod_af11bdc03e8c55006b85e5c5802e2993e}{MODULE\+\_\+\+NAME}} = \char`\"{}@String\+\_\+mod\char`\"{}
 \item 
 integer(IK) \mbox{\hyperlink{namespaceString__mod_a7b67e450536904a2b7e051f72df27c01}{VAL2\+CHAR\+\_\+\+MAXLEN}} = 127\+\_\+\+IK
-\begin{DoxyCompactList}\small\item\em The maximum possible length of the string output from the functions under the generic interface {\ttfamily \mbox{\hyperlink{interfaceString__mod_1_1val2char}{val2char}}}. Note that {\ttfamily VAL2\+CHAR\+\_\+\+MAXLEN = 127} is very generous given that,. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The maximum possible length of the string output from the functions under the generic interface {\ttfamily \mbox{\hyperlink{interfaceString__mod_1_1val2str}{val2str}}}. Note that {\ttfamily VAL2\+CHAR\+\_\+\+MAXLEN = 127} is very generous given that,. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -134,201 +124,21 @@ Amir Shahmoradi, Monday 2\+:21 AM, August 30, 2021, Dallas, TX
 
 
 \doxysubsection{Function/\+Subroutine Documentation}
-\mbox{\Hypertarget{namespaceString__mod_a39f8ac9d5727e6e4bf1187ed9f873b4f}\label{namespaceString__mod_a39f8ac9d5727e6e4bf1187ed9f873b4f}} 
-\index{String\_mod@{String\_mod}!char2int@{char2int}}
-\index{char2int@{char2int}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{char2int()}{char2int()}}
-{\footnotesize\ttfamily integer(IK) function String\+\_\+mod\+::char2int (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{namespaceString__mod_a0f08025b6bb7af3451ed76ac22012e98}\label{namespaceString__mod_a0f08025b6bb7af3451ed76ac22012e98}} 
+\index{String\_mod@{String\_mod}!constructStringList@{constructStringList}}
+\index{constructStringList@{constructStringList}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{constructStringList()}{constructStringList()}}
+{\footnotesize\ttfamily pure type(Str\+\_\+type) function, dimension(size(String,kind=IK)) String\+\_\+mod\+::construct\+String\+List (\begin{DoxyParamCaption}\item[{character($\ast$,SK)}]{String }\end{DoxyParamCaption})}
 
 
 
-Convert an input assumed-\/size character vector to integer. 
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00884}{884}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
-\hline
-\mbox{\texttt{ in}}  & {\em iostat} & \+: The Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat}.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily char2int} \+: The inferred integer from the input assumed-\/size character vector.
-\end{DoxyReturn}
-\begin{DoxyRemark}{Remarks}
-This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
-\end{DoxyRemark}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01598}{1598}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceString__mod_a6211342a946d80cbdee652a8a3e48630}\label{namespaceString__mod_a6211342a946d80cbdee652a8a3e48630}} 
-\index{String\_mod@{String\_mod}!char2int32@{char2int32}}
-\index{char2int32@{char2int32}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{char2int32()}{char2int32()}}
-{\footnotesize\ttfamily integer(IK32) function String\+\_\+mod\+::char2int32 (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
-
-
-
-Convert an input assumed-\/size character vector to 32-\/bit integer. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
-\hline
-\mbox{\texttt{ in}}  & {\em iostat} & \+: The Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat}.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily char2int} \+: The inferred 32-\/bit integer from the input assumed-\/size character vector.
-\end{DoxyReturn}
-\begin{DoxyRemark}{Remarks}
-This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
-\end{DoxyRemark}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01632}{1632}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceString__mod_ab898b2fdbcd961bd91ee7550965fdbcc}\label{namespaceString__mod_ab898b2fdbcd961bd91ee7550965fdbcc}} 
-\index{String\_mod@{String\_mod}!char2int64@{char2int64}}
-\index{char2int64@{char2int64}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{char2int64()}{char2int64()}}
-{\footnotesize\ttfamily integer(IK64) function String\+\_\+mod\+::char2int64 (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
-
-
-
-Convert an input assumed-\/size character vector to 64-\/bit integer. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
-\hline
-\mbox{\texttt{ in}}  & {\em iostat} & \+: The Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat}.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily char2int} \+: The inferred 64-\/bit integer from the input assumed-\/size character vector.
-\end{DoxyReturn}
-\begin{DoxyRemark}{Remarks}
-This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
-\end{DoxyRemark}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01666}{1666}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceString__mod_aa6450b384b4143de3b45095896e458e6}\label{namespaceString__mod_aa6450b384b4143de3b45095896e458e6}} 
-\index{String\_mod@{String\_mod}!char2real@{char2real}}
-\index{char2real@{char2real}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{char2real()}{char2real()}}
-{\footnotesize\ttfamily real(RK) function String\+\_\+mod\+::char2real (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
-
-
-
-Convert an input assumed-\/size character vector to real value. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
-\hline
-\mbox{\texttt{ in}}  & {\em iostat} & \+: The Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat}.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily char2int} \+: The inferred real value from the input assumed-\/size character vector.
-\end{DoxyReturn}
-\begin{DoxyRemark}{Remarks}
-This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
-\end{DoxyRemark}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01700}{1700}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceString__mod_ae6d1236fd58ad13349a9c4cf9beddec2}\label{namespaceString__mod_ae6d1236fd58ad13349a9c4cf9beddec2}} 
-\index{String\_mod@{String\_mod}!char2real32@{char2real32}}
-\index{char2real32@{char2real32}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{char2real32()}{char2real32()}}
-{\footnotesize\ttfamily real(RK32) function String\+\_\+mod\+::char2real32 (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
-
-
-
-Convert an input assumed-\/size character vector to 32-\/bit real value. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
-\hline
-\mbox{\texttt{ in}}  & {\em iostat} & \+: The Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat}.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily char2int} \+: The inferred 32-\/bit real value from the input assumed-\/size character vector.
-\end{DoxyReturn}
-\begin{DoxyRemark}{Remarks}
-This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
-\end{DoxyRemark}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01734}{1734}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceString__mod_aa158363f5bfdb4e949e2f456dd411886}\label{namespaceString__mod_aa158363f5bfdb4e949e2f456dd411886}} 
-\index{String\_mod@{String\_mod}!char2real64@{char2real64}}
-\index{char2real64@{char2real64}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{char2real64()}{char2real64()}}
-{\footnotesize\ttfamily real(RK64) function String\+\_\+mod\+::char2real64 (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
-
-
-
-Convert an input assumed-\/size character vector to 64-\/bit real value. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
-\hline
-\mbox{\texttt{ in}}  & {\em iostat} & \+: The optional output Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat} ({\bfseries{optional}}).\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily char2int} \+: The inferred 64-\/bit real value from the input assumed-\/size character vector.
-\end{DoxyReturn}
-\begin{DoxyRemark}{Remarks}
-This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
-\end{DoxyRemark}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01768}{1768}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceString__mod_a34d4884c58302d45a5fe5acbd7a08ef3}\label{namespaceString__mod_a34d4884c58302d45a5fe5acbd7a08ef3}} 
-\index{String\_mod@{String\_mod}!constructString@{constructString}}
-\index{constructString@{constructString}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{constructString()}{constructString()}}
-{\footnotesize\ttfamily pure type(\mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}) function, dimension(size(Assumed\+Char,kind=IK)) String\+\_\+mod\+::construct\+String (\begin{DoxyParamCaption}\item[{character($\ast$)}]{Assumed\+Char }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00887}{887}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceString__mod_a498e86c011fc2958583a3fdae4c87df6}\label{namespaceString__mod_a498e86c011fc2958583a3fdae4c87df6}} 
+\mbox{\Hypertarget{namespaceString__mod_a2205308049cba574348acd4453ee12a3}\label{namespaceString__mod_a2205308049cba574348acd4453ee12a3}} 
 \index{String\_mod@{String\_mod}!contains@{contains}}
 \index{contains@{contains}!String\_mod@{String\_mod}}
 \doxysubsubsection{\texorpdfstring{contains()}{contains()}}
-{\footnotesize\ttfamily pure logical function String\+\_\+mod\+::contains (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{string,  }\item[{character($\ast$), intent(in)}]{search }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure logical(LK) function String\+\_\+mod\+::contains (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{string,  }\item[{character($\ast$,SK), intent(in)}]{search }\end{DoxyParamCaption})}
 
 
 
@@ -349,122 +159,13 @@ Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01063}{1063}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01065}{1065}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceString__mod_a27155c2f7ab7242e9755e92331331bd3}\label{namespaceString__mod_a27155c2f7ab7242e9755e92331331bd3}} 
-\index{String\_mod@{String\_mod}!genMinLoc\_char\_D0@{genMinLoc\_char\_D0}}
-\index{genMinLoc\_char\_D0@{genMinLoc\_char\_D0}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{genMinLoc\_char\_D0()}{genMinLoc\_char\_D0()}}
-{\footnotesize\ttfamily pure integer(IK) function String\+\_\+mod\+::gen\+Min\+Loc\+\_\+char\+\_\+\+D0 (\begin{DoxyParamCaption}\item[{character($\ast$)}]{Array }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01828}{1828}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceString__mod_aa9be12ed3821cd5ec5d6b804e6943b28}\label{namespaceString__mod_aa9be12ed3821cd5ec5d6b804e6943b28}} 
-\index{String\_mod@{String\_mod}!genReverse\_char\_D0@{genReverse\_char\_D0}}
-\index{genReverse\_char\_D0@{genReverse\_char\_D0}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{genReverse\_char\_D0()}{genReverse\_char\_D0()}}
-{\footnotesize\ttfamily pure character(len(Array, kind = IK)) function String\+\_\+mod\+::gen\+Reverse\+\_\+char\+\_\+\+D0 (\begin{DoxyParamCaption}\item[{character($\ast$)}]{Array }\end{DoxyParamCaption})}
-
-
-
-Generate the reverse of the input assumed-\/shape character of default kind. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em Array} & \+: The input assumed-\/shape character of default kind.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Reverse} \+: The output character of default kind of the same length as the input assumed-\/length character, containing the input assumed-\/shape character in reverse order (from the end to the beginning).
-\end{DoxyReturn}
-\begin{DoxyRemark}{Remarks}
-For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
-
-For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
-
-This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
-
-\end{DoxyRemark}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00980}{980}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceString__mod_a0a292d671980fe5b0cc9fe1202741fda}\label{namespaceString__mod_a0a292d671980fe5b0cc9fe1202741fda}} 
-\index{String\_mod@{String\_mod}!genReverse\_char\_D1@{genReverse\_char\_D1}}
-\index{genReverse\_char\_D1@{genReverse\_char\_D1}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{genReverse\_char\_D1()}{genReverse\_char\_D1()}}
-{\footnotesize\ttfamily pure character(len(Array, kind = IK)) function, dimension(size(Array, kind = IK)) String\+\_\+mod\+::gen\+Reverse\+\_\+char\+\_\+\+D1 (\begin{DoxyParamCaption}\item[{character($\ast$)}]{Array }\end{DoxyParamCaption})}
-
-
-
-Generate the reverse of the input array of assumed-\/shape characters of default kind. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em Array} & \+: The input array of rank {\ttfamily 1} of assumed-\/shape characters of default kind.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Reverse} \+: The input array in reverse order (from the end to the beginning).
-\end{DoxyReturn}
-\begin{DoxyRemark}{Remarks}
-For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
-
-For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
-
-This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
-
-\end{DoxyRemark}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01008}{1008}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceString__mod_a80f4b950db1a10bd851c333774b6793f}\label{namespaceString__mod_a80f4b950db1a10bd851c333774b6793f}} 
-\index{String\_mod@{String\_mod}!genReverse\_string@{genReverse\_string}}
-\index{genReverse\_string@{genReverse\_string}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{genReverse\_string()}{genReverse\_string()}}
-{\footnotesize\ttfamily pure type(string\+\_\+type) function, dimension(size(Array, kind = IK)) String\+\_\+mod\+::gen\+Reverse\+\_\+string (\begin{DoxyParamCaption}\item[{type(string\+\_\+type)}]{Array }\end{DoxyParamCaption})}
-
-
-
-Generate the reverse of the input array of strings of type \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em Array} & \+: The input array of rank {\ttfamily 1} of strings.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Reverse} \+: The input array in reverse order (from the end to the beginning).
-\end{DoxyReturn}
-\begin{DoxyRemark}{Remarks}
-For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
-
-For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
-
-This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
-
-\end{DoxyRemark}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01036}{1036}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceString__mod_ade10dffb10b5ed445fec280457aa9eb4}\label{namespaceString__mod_ade10dffb10b5ed445fec280457aa9eb4}} 
-\index{String\_mod@{String\_mod}!getLowerCase@{getLowerCase}}
-\index{getLowerCase@{getLowerCase}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{getLowerCase()}{getLowerCase()}}
-{\footnotesize\ttfamily pure character(len(value)) function String\+\_\+mod\+::get\+Lower\+Case (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{namespaceString__mod_a250fd7bdb2d16e078748c844d57030ee}\label{namespaceString__mod_a250fd7bdb2d16e078748c844d57030ee}} 
+\index{String\_mod@{String\_mod}!genLowerCase@{genLowerCase}}
+\index{genLowerCase@{genLowerCase}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{genLowerCase()}{genLowerCase()}}
+{\footnotesize\ttfamily pure character(len(value),SK) function String\+\_\+mod\+::gen\+Lower\+Case (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{value }\end{DoxyParamCaption})}
 
 
 
@@ -486,53 +187,23 @@ Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01394}{1394}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01397}{1397}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceString__mod_ab942d6d2d620999005c8b86349ee550e}\label{namespaceString__mod_ab942d6d2d620999005c8b86349ee550e}} 
-\index{String\_mod@{String\_mod}!getRandAlpha@{getRandAlpha}}
-\index{getRandAlpha@{getRandAlpha}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{getRandAlpha()}{getRandAlpha()}}
-{\footnotesize\ttfamily subroutine String\+\_\+mod\+::get\+Rand\+Alpha (\begin{DoxyParamCaption}\item[{character($\ast$)}]{rand\+Alpha }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01868}{1868}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceString__mod_a613c6822a5070339df3760fc723ab08f}\label{namespaceString__mod_a613c6822a5070339df3760fc723ab08f}} 
-\index{String\_mod@{String\_mod}!getRandAlphaLower@{getRandAlphaLower}}
-\index{getRandAlphaLower@{getRandAlphaLower}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{getRandAlphaLower()}{getRandAlphaLower()}}
-{\footnotesize\ttfamily subroutine String\+\_\+mod\+::get\+Rand\+Alpha\+Lower (\begin{DoxyParamCaption}\item[{character($\ast$)}]{rand\+Alpha\+Lower }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{namespaceString__mod_a7405ef302a16e5cd9450a80fa9081c68}\label{namespaceString__mod_a7405ef302a16e5cd9450a80fa9081c68}} 
+\index{String\_mod@{String\_mod}!genMinLoc\_SK@{genMinLoc\_SK}}
+\index{genMinLoc\_SK@{genMinLoc\_SK}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{genMinLoc\_SK()}{genMinLoc\_SK()}}
+{\footnotesize\ttfamily pure integer(IK) function String\+\_\+mod\+::gen\+Min\+Loc\+\_\+\+SK (\begin{DoxyParamCaption}\item[{character($\ast$,SK)}]{Array }\end{DoxyParamCaption})}
 
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01893}{1893}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01831}{1831}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceString__mod_af037d54184793d310dd981031ccc1f96}\label{namespaceString__mod_af037d54184793d310dd981031ccc1f96}} 
-\index{String\_mod@{String\_mod}!getRandAlphaUpper@{getRandAlphaUpper}}
-\index{getRandAlphaUpper@{getRandAlphaUpper}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{getRandAlphaUpper()}{getRandAlphaUpper()}}
-{\footnotesize\ttfamily subroutine String\+\_\+mod\+::get\+Rand\+Alpha\+Upper (\begin{DoxyParamCaption}\item[{character($\ast$)}]{rand\+Alpha\+Upper }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01911}{1911}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceString__mod_a858f1ae33c587c881c1d67f0f02f1da6}\label{namespaceString__mod_a858f1ae33c587c881c1d67f0f02f1da6}} 
-\index{String\_mod@{String\_mod}!getRandChar@{getRandChar}}
-\index{getRandChar@{getRandChar}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{getRandChar()}{getRandChar()}}
-{\footnotesize\ttfamily subroutine String\+\_\+mod\+::get\+Rand\+Char (\begin{DoxyParamCaption}\item[{character($\ast$)}]{rand\+Char }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01850}{1850}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
-
-\mbox{\Hypertarget{namespaceString__mod_a7812197cf955b4b2c1b1965e3b038073}\label{namespaceString__mod_a7812197cf955b4b2c1b1965e3b038073}} 
-\index{String\_mod@{String\_mod}!getUpperCase@{getUpperCase}}
-\index{getUpperCase@{getUpperCase}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{getUpperCase()}{getUpperCase()}}
-{\footnotesize\ttfamily pure character(len(value)) function String\+\_\+mod\+::get\+Upper\+Case (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{namespaceString__mod_a9312fdfc6922496aa589e97613f53653}\label{namespaceString__mod_a9312fdfc6922496aa589e97613f53653}} 
+\index{String\_mod@{String\_mod}!genUpperCase@{genUpperCase}}
+\index{genUpperCase@{genUpperCase}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{genUpperCase()}{genUpperCase()}}
+{\footnotesize\ttfamily pure character(len(value),SK) function String\+\_\+mod\+::gen\+Upper\+Case (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{value }\end{DoxyParamCaption})}
 
 
 
@@ -554,13 +225,53 @@ Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01425}{1425}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01428}{1428}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceString__mod_a4dfbcfa1364b4263973fe7a1248c4893}\label{namespaceString__mod_a4dfbcfa1364b4263973fe7a1248c4893}} 
+\mbox{\Hypertarget{namespaceString__mod_ab942d6d2d620999005c8b86349ee550e}\label{namespaceString__mod_ab942d6d2d620999005c8b86349ee550e}} 
+\index{String\_mod@{String\_mod}!getRandAlpha@{getRandAlpha}}
+\index{getRandAlpha@{getRandAlpha}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{getRandAlpha()}{getRandAlpha()}}
+{\footnotesize\ttfamily subroutine String\+\_\+mod\+::get\+Rand\+Alpha (\begin{DoxyParamCaption}\item[{character($\ast$,SK)}]{rand\+Alpha }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01871}{1871}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a613c6822a5070339df3760fc723ab08f}\label{namespaceString__mod_a613c6822a5070339df3760fc723ab08f}} 
+\index{String\_mod@{String\_mod}!getRandAlphaLower@{getRandAlphaLower}}
+\index{getRandAlphaLower@{getRandAlphaLower}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{getRandAlphaLower()}{getRandAlphaLower()}}
+{\footnotesize\ttfamily subroutine String\+\_\+mod\+::get\+Rand\+Alpha\+Lower (\begin{DoxyParamCaption}\item[{character($\ast$,SK)}]{rand\+Alpha\+Lower }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01896}{1896}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_af037d54184793d310dd981031ccc1f96}\label{namespaceString__mod_af037d54184793d310dd981031ccc1f96}} 
+\index{String\_mod@{String\_mod}!getRandAlphaUpper@{getRandAlphaUpper}}
+\index{getRandAlphaUpper@{getRandAlphaUpper}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{getRandAlphaUpper()}{getRandAlphaUpper()}}
+{\footnotesize\ttfamily subroutine String\+\_\+mod\+::get\+Rand\+Alpha\+Upper (\begin{DoxyParamCaption}\item[{character($\ast$,SK)}]{rand\+Alpha\+Upper }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01914}{1914}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a858f1ae33c587c881c1d67f0f02f1da6}\label{namespaceString__mod_a858f1ae33c587c881c1d67f0f02f1da6}} 
+\index{String\_mod@{String\_mod}!getRandChar@{getRandChar}}
+\index{getRandChar@{getRandChar}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{getRandChar()}{getRandChar()}}
+{\footnotesize\ttfamily subroutine String\+\_\+mod\+::get\+Rand\+Char (\begin{DoxyParamCaption}\item[{character($\ast$,SK)}]{rand\+Char }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01853}{1853}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a3d47a522ffe39d51658e0ea1ae5df209}\label{namespaceString__mod_a3d47a522ffe39d51658e0ea1ae5df209}} 
 \index{String\_mod@{String\_mod}!isDigit@{isDigit}}
 \index{isDigit@{isDigit}!String\_mod@{String\_mod}}
 \doxysubsubsection{\texorpdfstring{isDigit()}{isDigit()}}
-{\footnotesize\ttfamily pure logical function String\+\_\+mod\+::is\+Digit (\begin{DoxyParamCaption}\item[{character(1)}]{single\+Char }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure logical(LK) function String\+\_\+mod\+::is\+Digit (\begin{DoxyParamCaption}\item[{character(1,SK)}]{single\+Char }\end{DoxyParamCaption})}
 
 
 
@@ -582,13 +293,13 @@ Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01327}{1327}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01328}{1328}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceString__mod_a4d710f50d57e4061becd3b4a1aeb32cf}\label{namespaceString__mod_a4d710f50d57e4061becd3b4a1aeb32cf}} 
+\mbox{\Hypertarget{namespaceString__mod_a9ba6895a8032a18f8fa98a406a164796}\label{namespaceString__mod_a9ba6895a8032a18f8fa98a406a164796}} 
 \index{String\_mod@{String\_mod}!isInteger@{isInteger}}
 \index{isInteger@{isInteger}!String\_mod@{String\_mod}}
 \doxysubsubsection{\texorpdfstring{isInteger()}{isInteger()}}
-{\footnotesize\ttfamily pure logical function String\+\_\+mod\+::is\+Integer (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure logical(LK) function String\+\_\+mod\+::is\+Integer (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{value }\end{DoxyParamCaption})}
 
 
 
@@ -610,13 +321,13 @@ Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01359}{1359}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01361}{1361}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceString__mod_a00e44bf3a651f4ca3da8b1a0b23739b1}\label{namespaceString__mod_a00e44bf3a651f4ca3da8b1a0b23739b1}} 
+\mbox{\Hypertarget{namespaceString__mod_a4a297f019ebbd5c798cabdf43de2e6a5}\label{namespaceString__mod_a4a297f019ebbd5c798cabdf43de2e6a5}} 
 \index{String\_mod@{String\_mod}!isLarger\_D0@{isLarger\_D0}}
 \index{isLarger\_D0@{isLarger\_D0}!String\_mod@{String\_mod}}
 \doxysubsubsection{\texorpdfstring{isLarger\_D0()}{isLarger\_D0()}}
-{\footnotesize\ttfamily pure logical function String\+\_\+mod\+::is\+Larger\+\_\+\+D0 (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}), intent(in)}]{string1,  }\item[{type(\mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}), intent(in)}]{string2 }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure logical(LK) function String\+\_\+mod\+::is\+Larger\+\_\+\+D0 (\begin{DoxyParamCaption}\item[{type(Str\+\_\+type), intent(in)}]{string1,  }\item[{type(Str\+\_\+type), intent(in)}]{string2 }\end{DoxyParamCaption})}
 
 
 
@@ -624,9 +335,9 @@ Generate {\ttfamily .true.} if the input {\ttfamily string1} is smaller than the
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em string1} & \+: The input object of type \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}. \\
+\mbox{\texttt{ in}}  & {\em string1} & \+: The input object of type Str\+\_\+type. \\
 \hline
-\mbox{\texttt{ in}}  & {\em string2} & \+: The input object of type \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.\\
+\mbox{\texttt{ in}}  & {\em string2} & \+: The input object of type Str\+\_\+type.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -645,43 +356,43 @@ Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00912}{912}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00909}{909}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceString__mod_aa16f515298e2421aeb9ac0cac02a6654}\label{namespaceString__mod_aa16f515298e2421aeb9ac0cac02a6654}} 
+\mbox{\Hypertarget{namespaceString__mod_ad5077ebf82ffb203c5571744f1fc69a7}\label{namespaceString__mod_ad5077ebf82ffb203c5571744f1fc69a7}} 
 \index{String\_mod@{String\_mod}!isLargerEqual\_D0@{isLargerEqual\_D0}}
 \index{isLargerEqual\_D0@{isLargerEqual\_D0}!String\_mod@{String\_mod}}
 \doxysubsubsection{\texorpdfstring{isLargerEqual\_D0()}{isLargerEqual\_D0()}}
-{\footnotesize\ttfamily pure logical function String\+\_\+mod\+::is\+Larger\+Equal\+\_\+\+D0 (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}), intent(in)}]{string1,  }\item[{type(\mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}), intent(in)}]{string2 }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure logical(LK) function String\+\_\+mod\+::is\+Larger\+Equal\+\_\+\+D0 (\begin{DoxyParamCaption}\item[{type(Str\+\_\+type), intent(in)}]{string1,  }\item[{type(Str\+\_\+type), intent(in)}]{string2 }\end{DoxyParamCaption})}
 
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00923}{923}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00921}{921}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceString__mod_a343c8e8b219d3386f5ff2d0a255b08ef}\label{namespaceString__mod_a343c8e8b219d3386f5ff2d0a255b08ef}} 
+\mbox{\Hypertarget{namespaceString__mod_a8d51da0a8f8d8562b7acbb1ee7089588}\label{namespaceString__mod_a8d51da0a8f8d8562b7acbb1ee7089588}} 
 \index{String\_mod@{String\_mod}!isNotEqual\_D0@{isNotEqual\_D0}}
 \index{isNotEqual\_D0@{isNotEqual\_D0}!String\_mod@{String\_mod}}
 \doxysubsubsection{\texorpdfstring{isNotEqual\_D0()}{isNotEqual\_D0()}}
-{\footnotesize\ttfamily pure logical function String\+\_\+mod\+::is\+Not\+Equal\+\_\+\+D0 (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}), intent(in)}]{string1,  }\item[{type(\mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}), intent(in)}]{string2 }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure logical(LK) function String\+\_\+mod\+::is\+Not\+Equal\+\_\+\+D0 (\begin{DoxyParamCaption}\item[{type(Str\+\_\+type), intent(in)}]{string1,  }\item[{type(Str\+\_\+type), intent(in)}]{string2 }\end{DoxyParamCaption})}
 
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00956}{956}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00957}{957}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceString__mod_aaedf21404c3502b48436093a37cc6d85}\label{namespaceString__mod_aaedf21404c3502b48436093a37cc6d85}} 
+\mbox{\Hypertarget{namespaceString__mod_adeac897eb73acb7ae1d9397157edb10a}\label{namespaceString__mod_adeac897eb73acb7ae1d9397157edb10a}} 
 \index{String\_mod@{String\_mod}!isSmaller\_D0@{isSmaller\_D0}}
 \index{isSmaller\_D0@{isSmaller\_D0}!String\_mod@{String\_mod}}
 \doxysubsubsection{\texorpdfstring{isSmaller\_D0()}{isSmaller\_D0()}}
-{\footnotesize\ttfamily pure logical function String\+\_\+mod\+::is\+Smaller\+\_\+\+D0 (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}), intent(in)}]{string1,  }\item[{type(\mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}), intent(in)}]{string2 }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure logical(LK) function String\+\_\+mod\+::is\+Smaller\+\_\+\+D0 (\begin{DoxyParamCaption}\item[{type(Str\+\_\+type), intent(in)}]{string1,  }\item[{type(Str\+\_\+type), intent(in)}]{string2 }\end{DoxyParamCaption})}
 
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00934}{934}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00933}{933}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceString__mod_a2329a78e5644a2f15365ee06c2d3370d}\label{namespaceString__mod_a2329a78e5644a2f15365ee06c2d3370d}} 
+\mbox{\Hypertarget{namespaceString__mod_a13a84d15a857b6de41e27b45a2f83112}\label{namespaceString__mod_a13a84d15a857b6de41e27b45a2f83112}} 
 \index{String\_mod@{String\_mod}!isSmallerEqual\_D0@{isSmallerEqual\_D0}}
 \index{isSmallerEqual\_D0@{isSmallerEqual\_D0}!String\_mod@{String\_mod}}
 \doxysubsubsection{\texorpdfstring{isSmallerEqual\_D0()}{isSmallerEqual\_D0()}}
-{\footnotesize\ttfamily pure logical function String\+\_\+mod\+::is\+Smaller\+Equal\+\_\+\+D0 (\begin{DoxyParamCaption}\item[{type(\mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}), intent(in)}]{string1,  }\item[{type(\mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}), intent(in)}]{string2 }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure logical(LK) function String\+\_\+mod\+::is\+Smaller\+Equal\+\_\+\+D0 (\begin{DoxyParamCaption}\item[{type(Str\+\_\+type), intent(in)}]{string1,  }\item[{type(Str\+\_\+type), intent(in)}]{string2 }\end{DoxyParamCaption})}
 
 
 
@@ -691,7 +402,7 @@ Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00945}{945}} of fil
 \index{String\_mod@{String\_mod}!padChar@{padChar}}
 \index{padChar@{padChar}!String\_mod@{String\_mod}}
 \doxysubsubsection{\texorpdfstring{padChar()}{padChar()}}
-{\footnotesize\ttfamily pure character(padded\+Len) function String\+\_\+mod\+::pad\+Char (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{value,  }\item[{character($\ast$), intent(in)}]{symbol,  }\item[{integer(IK)}]{padded\+Len }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure character(padded\+Len) function String\+\_\+mod\+::pad\+Char (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{value,  }\item[{character($\ast$,SK), intent(in)}]{symbol,  }\item[{integer(IK)}]{padded\+Len }\end{DoxyParamCaption})}
 
 
 
@@ -714,13 +425,13 @@ Note that {\ttfamily symbol} is an assumed-\/size character vector of any length
 \end{DoxyRemark}
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01802}{1802}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01805}{1805}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceString__mod_adf2d0a723b9b74a97f7f50bc9fb1149a}\label{namespaceString__mod_adf2d0a723b9b74a97f7f50bc9fb1149a}} 
+\mbox{\Hypertarget{namespaceString__mod_a4b5e3fb51b9cce838b3741700a546a68}\label{namespaceString__mod_a4b5e3fb51b9cce838b3741700a546a68}} 
 \index{String\_mod@{String\_mod}!replace@{replace}}
 \index{replace@{replace}!String\_mod@{String\_mod}}
 \doxysubsubsection{\texorpdfstring{replace()}{replace()}}
-{\footnotesize\ttfamily pure recursive character(len=\+:) function, allocatable String\+\_\+mod\+::replace (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{value,  }\item[{character(len=$\ast$), intent(in)}]{search,  }\item[{character(len=$\ast$), intent(in)}]{substitute }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily pure recursive character(\+:,SK) function, allocatable String\+\_\+mod\+::replace (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{value,  }\item[{character($\ast$,SK), intent(in)}]{search,  }\item[{character($\ast$,SK), intent(in)}]{substitute }\end{DoxyParamCaption})}
 
 
 
@@ -746,13 +457,13 @@ Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01092}{1092}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01094}{1094}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceString__mod_a13a8791d75dde13643300315d31659cf}\label{namespaceString__mod_a13a8791d75dde13643300315d31659cf}} 
+\mbox{\Hypertarget{namespaceString__mod_a48cf22e3da284fccd5144b728916b2c2}\label{namespaceString__mod_a48cf22e3da284fccd5144b728916b2c2}} 
 \index{String\_mod@{String\_mod}!split@{split}}
 \index{split@{split}!String\_mod@{String\_mod}}
 \doxysubsubsection{\texorpdfstring{split()}{split()}}
-{\footnotesize\ttfamily type(\mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}}) function, dimension(\+:), allocatable String\+\_\+mod\+::split (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{value,  }\item[{character(len=$\ast$), intent(in)}]{delim,  }\item[{integer(IK), intent(out), optional}]{npart }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}) function, dimension(\+:), allocatable String\+\_\+mod\+::split (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{value,  }\item[{character($\ast$,SK), intent(in)}]{delim,  }\item[{integer(IK), intent(out), optional}]{npart }\end{DoxyParamCaption})}
 
 
 
@@ -768,27 +479,27 @@ Split the input {\ttfamily value} of type character of arbitrary length by findi
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-{\ttfamily Parts} \+: An allocatable array of type \mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}} containing the split parts of the input value.
+{\ttfamily Parts} \+: An allocatable array of type Str\+\_\+type containing the split parts of the input value.
 \end{DoxyReturn}
 \begin{DoxyRemark}{Remarks}
 When {\ttfamily delim = \char`\"{}\char`\"{}}, this routine returns a jagged array of character vectors, each element of which is one character of the input value.
 
 This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
 
-This procedure should be preferred over the the legacy implementation \mbox{\hyperlink{namespaceString__mod_a6cd16558dfee7fbfcbdcf0c1403d1302}{split\+Str()}} that is kept only for legacy support. This routine is significantly faster than the legacy implementation and its semantic behavior is identical to the Python3\textquotesingle{}s {\ttfamily \mbox{\hyperlink{namespaceString__mod_a13a8791d75dde13643300315d31659cf}{split()}}} string method, except when {\ttfamily delim} is empty.
+This procedure should be preferred over the the legacy implementation \mbox{\hyperlink{namespaceString__mod_ac25f8bcd7511e1c17459c712cab3725c}{split\+Str()}} that is kept only for legacy support. This routine is significantly faster than the legacy implementation and its semantic behavior is identical to the Python3\textquotesingle{}s {\ttfamily \mbox{\hyperlink{namespaceString__mod_a48cf22e3da284fccd5144b728916b2c2}{split()}}} string method, except when {\ttfamily delim} is empty.
 \end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Friday Dec 4, 2020, 11\+:40 PM, Dallas, TX 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01150}{1150}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01151}{1151}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceString__mod_a6cd16558dfee7fbfcbdcf0c1403d1302}\label{namespaceString__mod_a6cd16558dfee7fbfcbdcf0c1403d1302}} 
+\mbox{\Hypertarget{namespaceString__mod_ac25f8bcd7511e1c17459c712cab3725c}\label{namespaceString__mod_ac25f8bcd7511e1c17459c712cab3725c}} 
 \index{String\_mod@{String\_mod}!splitStr@{splitStr}}
 \index{splitStr@{splitStr}!String\_mod@{String\_mod}}
 \doxysubsubsection{\texorpdfstring{splitStr()}{splitStr()}}
-{\footnotesize\ttfamily type(\mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}}) function, dimension(\+:), allocatable String\+\_\+mod\+::split\+Str (\begin{DoxyParamCaption}\item[{character(len=$\ast$), intent(in)}]{value,  }\item[{character(len=$\ast$), intent(in)}]{delim,  }\item[{integer(IK)}]{n\+Part }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}) function, dimension(\+:), allocatable String\+\_\+mod\+::split\+Str (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{value,  }\item[{character($\ast$,SK), intent(in)}]{delim,  }\item[{integer(IK)}]{n\+Part }\end{DoxyParamCaption})}
 
 
 
@@ -804,28 +515,208 @@ Split the input {\ttfamily value} character of arbitrary length with the input {
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-{\ttfamily Parts} \+: An allocatable array of type \mbox{\hyperlink{structString__mod_1_1Str__type}{Str\+\_\+type}} containing the split parts of the input value.
+{\ttfamily Parts} \+: An allocatable array of type Str\+\_\+type containing the split parts of the input value.
 \end{DoxyReturn}
 \begin{DoxyRemark}{Remarks}
 This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
 \end{DoxyRemark}
 \begin{DoxyWarning}{Warning}
-This algorithm is only kept for archival purposes and should not be used in new development, unless the implications and the behavior of this algorithm are fully understood. Use instead \mbox{\hyperlink{namespaceString__mod_a13a8791d75dde13643300315d31659cf}{split()}}.
+This algorithm is only kept for archival purposes and should not be used in new development, unless the implications and the behavior of this algorithm are fully understood. Use instead \mbox{\hyperlink{namespaceString__mod_a48cf22e3da284fccd5144b728916b2c2}{split()}}.
 
-The semantic behavior of this algorithm is different from \mbox{\hyperlink{namespaceString__mod_a13a8791d75dde13643300315d31659cf}{split()}}. Furthermore, this algorithm is slower than the alternative implementation in \mbox{\hyperlink{namespaceString__mod_a13a8791d75dde13643300315d31659cf}{split()}}.
+The semantic behavior of this algorithm is different from \mbox{\hyperlink{namespaceString__mod_a48cf22e3da284fccd5144b728916b2c2}{split()}}. Furthermore, this algorithm is slower than the alternative implementation in \mbox{\hyperlink{namespaceString__mod_a48cf22e3da284fccd5144b728916b2c2}{split()}}.
 \end{DoxyWarning}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01239}{1239}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01240}{1240}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceString__mod_a6552eb523a25c1a62dadccfa2b82f45b}\label{namespaceString__mod_a6552eb523a25c1a62dadccfa2b82f45b}} 
-\index{String\_mod@{String\_mod}!val2char\_RK64\_D1@{val2char\_RK64\_D1}}
-\index{val2char\_RK64\_D1@{val2char\_RK64\_D1}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{val2char\_RK64\_D1()}{val2char\_RK64\_D1()}}
-{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::val2char\+\_\+\+RK64\+\_\+\+D1 (\begin{DoxyParamCaption}\item[{real(RK64)}]{Value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{namespaceString__mod_a6f2e79adac755eb6c7e8a824d4ae21af}\label{namespaceString__mod_a6f2e79adac755eb6c7e8a824d4ae21af}} 
+\index{String\_mod@{String\_mod}!str2int@{str2int}}
+\index{str2int@{str2int}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{str2int()}{str2int()}}
+{\footnotesize\ttfamily integer(IK) function String\+\_\+mod\+::str2int (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
+
+
+
+Convert an input assumed-\/size character vector to integer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em iostat} & \+: The Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily str2int} \+: The inferred integer from the input assumed-\/size character vector.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01601}{1601}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a8129cf1f109650d075cdf067c6a94ed1}\label{namespaceString__mod_a8129cf1f109650d075cdf067c6a94ed1}} 
+\index{String\_mod@{String\_mod}!str2int32@{str2int32}}
+\index{str2int32@{str2int32}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{str2int32()}{str2int32()}}
+{\footnotesize\ttfamily integer(IK32) function String\+\_\+mod\+::str2int32 (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
+
+
+
+Convert an input assumed-\/size character vector to 32-\/bit integer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em iostat} & \+: The Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily str2int} \+: The inferred 32-\/bit integer from the input assumed-\/size character vector.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01635}{1635}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a08699445d965f7bc915c248c225be7d9}\label{namespaceString__mod_a08699445d965f7bc915c248c225be7d9}} 
+\index{String\_mod@{String\_mod}!str2int64@{str2int64}}
+\index{str2int64@{str2int64}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{str2int64()}{str2int64()}}
+{\footnotesize\ttfamily integer(IK64) function String\+\_\+mod\+::str2int64 (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
+
+
+
+Convert an input assumed-\/size character vector to 64-\/bit integer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em iostat} & \+: The Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily str2int} \+: The inferred 64-\/bit integer from the input assumed-\/size character vector.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01669}{1669}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a5a037fea73efa33cdba65b10d240bf79}\label{namespaceString__mod_a5a037fea73efa33cdba65b10d240bf79}} 
+\index{String\_mod@{String\_mod}!str2real@{str2real}}
+\index{str2real@{str2real}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{str2real()}{str2real()}}
+{\footnotesize\ttfamily real(RK) function String\+\_\+mod\+::str2real (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
+
+
+
+Convert an input assumed-\/size character vector to real value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em iostat} & \+: The Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily str2int} \+: The inferred real value from the input assumed-\/size character vector.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01703}{1703}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_aeda50a8a14556f2d94a5c23f4c09b8be}\label{namespaceString__mod_aeda50a8a14556f2d94a5c23f4c09b8be}} 
+\index{String\_mod@{String\_mod}!str2real32@{str2real32}}
+\index{str2real32@{str2real32}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{str2real32()}{str2real32()}}
+{\footnotesize\ttfamily real(RK32) function String\+\_\+mod\+::str2real32 (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
+
+
+
+Convert an input assumed-\/size character vector to 32-\/bit real value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em iostat} & \+: The Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily str2int} \+: The inferred 32-\/bit real value from the input assumed-\/size character vector.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01737}{1737}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_afcc1dfc73130d15ad819e5bcfb15bf94}\label{namespaceString__mod_afcc1dfc73130d15ad819e5bcfb15bf94}} 
+\index{String\_mod@{String\_mod}!str2real64@{str2real64}}
+\index{str2real64@{str2real64}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{str2real64()}{str2real64()}}
+{\footnotesize\ttfamily real(RK64) function String\+\_\+mod\+::str2real64 (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{value,  }\item[{integer, intent(out), optional}]{iostat }\end{DoxyParamCaption})}
+
+
+
+Convert an input assumed-\/size character vector to 64-\/bit real value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & \+: The input assumed-\/size character vector. \\
+\hline
+\mbox{\texttt{ in}}  & {\em iostat} & \+: The optional output Fortran IO status integer of default kind. Refer to the Fortran {\ttfamily read/write} functions for the meaning of different output values for {\ttfamily iostat} ({\bfseries{optional}}).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily str2int} \+: The inferred 64-\/bit real value from the input assumed-\/size character vector.
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01771}{1771}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+
+\mbox{\Hypertarget{namespaceString__mod_a62b6f33780c3973b61f3ea68a98f146c}\label{namespaceString__mod_a62b6f33780c3973b61f3ea68a98f146c}} 
+\index{String\_mod@{String\_mod}!val2str\_RK64\_D1@{val2str\_RK64\_D1}}
+\index{val2str\_RK64\_D1@{val2str\_RK64\_D1}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{val2str\_RK64\_D1()}{val2str\_RK64\_D1()}}
+{\footnotesize\ttfamily pure character(\+:,SK) function, allocatable String\+\_\+mod\+::val2str\+\_\+\+RK64\+\_\+\+D1 (\begin{DoxyParamCaption}\item[{real(RK64)}]{Value,  }\item[{character($\ast$,SK), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
 
 
 
@@ -841,7 +732,7 @@ Convert an input vector of 64-\/bit real values to string, with the requested fo
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-{\ttfamily val2char\+\_\+\+RK64\+\_\+\+D1} \+: The output vector of strings each representing one real value in the input vector.
+{\ttfamily val2str\+\_\+\+RK64\+\_\+\+D1} \+: The output vector of strings each representing one real value in the input vector.
 \end{DoxyReturn}
 \begin{DoxyRemark}{Remarks}
 This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
@@ -851,13 +742,13 @@ Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01497}{1497}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01500}{1500}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceString__mod_a3e0e4e4c714c3824286aced7cc32c9e2}\label{namespaceString__mod_a3e0e4e4c714c3824286aced7cc32c9e2}} 
-\index{String\_mod@{String\_mod}!val2char\_RK64\_D2@{val2char\_RK64\_D2}}
-\index{val2char\_RK64\_D2@{val2char\_RK64\_D2}!String\_mod@{String\_mod}}
-\doxysubsubsection{\texorpdfstring{val2char\_RK64\_D2()}{val2char\_RK64\_D2()}}
-{\footnotesize\ttfamily pure character(\+:) function, allocatable String\+\_\+mod\+::val2char\+\_\+\+RK64\+\_\+\+D2 (\begin{DoxyParamCaption}\item[{real(RK64)}]{Value,  }\item[{character($\ast$), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{namespaceString__mod_aa41e8b9f180919d02ee34f0f3bb8eeec}\label{namespaceString__mod_aa41e8b9f180919d02ee34f0f3bb8eeec}} 
+\index{String\_mod@{String\_mod}!val2str\_RK64\_D2@{val2str\_RK64\_D2}}
+\index{val2str\_RK64\_D2@{val2str\_RK64\_D2}!String\_mod@{String\_mod}}
+\doxysubsubsection{\texorpdfstring{val2str\_RK64\_D2()}{val2str\_RK64\_D2()}}
+{\footnotesize\ttfamily pure character(\+:,SK) function, allocatable String\+\_\+mod\+::val2str\+\_\+\+RK64\+\_\+\+D2 (\begin{DoxyParamCaption}\item[{real(RK64)}]{Value,  }\item[{character($\ast$,SK), intent(in), optional}]{format,  }\item[{integer(IK), intent(in), optional}]{len }\end{DoxyParamCaption})}
 
 
 
@@ -873,7 +764,7 @@ Convert an input 2D matrix of 64-\/bit real values to string, with the requested
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-{\ttfamily val2char\+\_\+\+RK64\+\_\+\+D2} \+: The output 2D array of strings each representing one real value in the input 2D matrix.
+{\ttfamily val2str\+\_\+\+RK64\+\_\+\+D2} \+: The output 2D array of strings each representing one real value in the input 2D matrix.
 \end{DoxyReturn}
 \begin{DoxyRemark}{Remarks}
 This procedure is a static method of the class \mbox{\hyperlink{structString__mod_1_1String__type}{String\+\_\+type}}.
@@ -883,20 +774,20 @@ Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01547}{1547}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l01550}{1550}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
 
 
 \doxysubsection{Variable Documentation}
-\mbox{\Hypertarget{namespaceString__mod_aea8d1ba3c565ed766a8924deb4d69b3f}\label{namespaceString__mod_aea8d1ba3c565ed766a8924deb4d69b3f}} 
+\mbox{\Hypertarget{namespaceString__mod_af11bdc03e8c55006b85e5c5802e2993e}\label{namespaceString__mod_af11bdc03e8c55006b85e5c5802e2993e}} 
 \index{String\_mod@{String\_mod}!MODULE\_NAME@{MODULE\_NAME}}
 \index{MODULE\_NAME@{MODULE\_NAME}!String\_mod@{String\_mod}}
 \doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
-{\footnotesize\ttfamily character($\ast$), parameter String\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@String\+\_\+mod\char`\"{}}
+{\footnotesize\ttfamily character($\ast$,SK), parameter String\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@String\+\_\+mod\char`\"{}}
 
 
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00062}{62}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00063}{63}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceString__mod_a7b67e450536904a2b7e051f72df27c01}\label{namespaceString__mod_a7b67e450536904a2b7e051f72df27c01}} 
 \index{String\_mod@{String\_mod}!VAL2CHAR\_MAXLEN@{VAL2CHAR\_MAXLEN}}
@@ -906,7 +797,7 @@ Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00062}{62}} of file
 
 
 
-The maximum possible length of the string output from the functions under the generic interface {\ttfamily \mbox{\hyperlink{interfaceString__mod_1_1val2char}{val2char}}}. Note that {\ttfamily VAL2\+CHAR\+\_\+\+MAXLEN = 127} is very generous given that,. 
+The maximum possible length of the string output from the functions under the generic interface {\ttfamily \mbox{\hyperlink{interfaceString__mod_1_1val2str}{val2str}}}. Note that {\ttfamily VAL2\+CHAR\+\_\+\+MAXLEN = 127} is very generous given that,. 
 
 
 \begin{DoxyItemize}
@@ -915,5 +806,5 @@ The maximum possible length of the string output from the functions under the ge
 \item The maximum length of an integer of kind {\ttfamily int64} including signs {\ttfamily 20} characters. {\ttfamily -\/9223372036854775807} 
 \end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00072}{72}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{String__mod_8f90_source_l00073}{73}} of file \mbox{\hyperlink{String__mod_8f90_source}{String\+\_\+mod.\+f90}}.
 

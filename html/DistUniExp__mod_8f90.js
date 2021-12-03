@@ -21,5 +21,5 @@ var DistUniExp__mod_8f90 =
     [ "getVar", "DistUniExp__mod_8f90.html#a4192a3687d1215540794862ef642f8ea", null ],
     [ "logpdf", "DistUniExp__mod_8f90.html#a95e768eadf49c33d007d6e318f1ba893", null ],
     [ "rand", "DistUniExp__mod_8f90.html#a84a94457304160ef784b37b7f701bc4d", null ],
-    [ "MODULE_NAME", "DistUniExp__mod_8f90.html#a71df5c2436cf22aabf2aa3b013f0d34e", null ]
+    [ "MODULE_NAME", "DistUniExp__mod_8f90.html#ad48dfb0eead3bd35e524439e5fe43aa7", null ]
 ];

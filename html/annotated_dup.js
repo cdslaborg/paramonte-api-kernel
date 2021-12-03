@@ -3,60 +3,54 @@ var annotated_dup =
     [ "ArrayComparison_mod", "namespaceArrayComparison__mod.html", [
       [ "iseqall", "interfaceArrayComparison__mod_1_1iseqall.html", null ]
     ] ],
-    [ "ArrayJagged_mod", "namespaceArrayJagged__mod.html", [
-      [ "Cube_type_char", "structArrayJagged__mod_1_1Cube__type__char.html", "structArrayJagged__mod_1_1Cube__type__char" ],
-      [ "Cube_type_CK", "structArrayJagged__mod_1_1Cube__type__CK.html", "structArrayJagged__mod_1_1Cube__type__CK" ],
-      [ "Cube_type_CK128", "structArrayJagged__mod_1_1Cube__type__CK128.html", "structArrayJagged__mod_1_1Cube__type__CK128" ],
-      [ "Cube_type_CK32", "structArrayJagged__mod_1_1Cube__type__CK32.html", "structArrayJagged__mod_1_1Cube__type__CK32" ],
-      [ "Cube_type_CK64", "structArrayJagged__mod_1_1Cube__type__CK64.html", "structArrayJagged__mod_1_1Cube__type__CK64" ],
-      [ "Cube_type_RK", "structArrayJagged__mod_1_1Cube__type__RK.html", "structArrayJagged__mod_1_1Cube__type__RK" ],
-      [ "Cube_type_RK128", "structArrayJagged__mod_1_1Cube__type__RK128.html", "structArrayJagged__mod_1_1Cube__type__RK128" ],
-      [ "Cube_type_RK32", "structArrayJagged__mod_1_1Cube__type__RK32.html", "structArrayJagged__mod_1_1Cube__type__RK32" ],
-      [ "Cube_type_RK64", "structArrayJagged__mod_1_1Cube__type__RK64.html", "structArrayJagged__mod_1_1Cube__type__RK64" ],
-      [ "Matrix_type_char", "structArrayJagged__mod_1_1Matrix__type__char.html", "structArrayJagged__mod_1_1Matrix__type__char" ],
-      [ "Matrix_type_CK", "structArrayJagged__mod_1_1Matrix__type__CK.html", "structArrayJagged__mod_1_1Matrix__type__CK" ],
-      [ "Matrix_type_CK128", "structArrayJagged__mod_1_1Matrix__type__CK128.html", "structArrayJagged__mod_1_1Matrix__type__CK128" ],
-      [ "Matrix_type_CK32", "structArrayJagged__mod_1_1Matrix__type__CK32.html", "structArrayJagged__mod_1_1Matrix__type__CK32" ],
-      [ "Matrix_type_CK64", "structArrayJagged__mod_1_1Matrix__type__CK64.html", "structArrayJagged__mod_1_1Matrix__type__CK64" ],
-      [ "Matrix_type_IK", "structArrayJagged__mod_1_1Matrix__type__IK.html", "structArrayJagged__mod_1_1Matrix__type__IK" ],
-      [ "Matrix_type_IK16", "structArrayJagged__mod_1_1Matrix__type__IK16.html", "structArrayJagged__mod_1_1Matrix__type__IK16" ],
-      [ "Matrix_type_IK32", "structArrayJagged__mod_1_1Matrix__type__IK32.html", "structArrayJagged__mod_1_1Matrix__type__IK32" ],
-      [ "Matrix_type_IK64", "structArrayJagged__mod_1_1Matrix__type__IK64.html", "structArrayJagged__mod_1_1Matrix__type__IK64" ],
-      [ "Matrix_type_IK8", "structArrayJagged__mod_1_1Matrix__type__IK8.html", "structArrayJagged__mod_1_1Matrix__type__IK8" ],
-      [ "Matrix_type_RK", "structArrayJagged__mod_1_1Matrix__type__RK.html", "structArrayJagged__mod_1_1Matrix__type__RK" ],
-      [ "Matrix_type_RK128", "structArrayJagged__mod_1_1Matrix__type__RK128.html", "structArrayJagged__mod_1_1Matrix__type__RK128" ],
-      [ "Matrix_type_RK32", "structArrayJagged__mod_1_1Matrix__type__RK32.html", "structArrayJagged__mod_1_1Matrix__type__RK32" ],
-      [ "Matrix_type_RK64", "structArrayJagged__mod_1_1Matrix__type__RK64.html", "structArrayJagged__mod_1_1Matrix__type__RK64" ],
-      [ "Vector_type_char", "structArrayJagged__mod_1_1Vector__type__char.html", "structArrayJagged__mod_1_1Vector__type__char" ],
-      [ "Vector_type_CK", "structArrayJagged__mod_1_1Vector__type__CK.html", "structArrayJagged__mod_1_1Vector__type__CK" ],
-      [ "Vector_type_CK128", "structArrayJagged__mod_1_1Vector__type__CK128.html", "structArrayJagged__mod_1_1Vector__type__CK128" ],
-      [ "Vector_type_CK32", "structArrayJagged__mod_1_1Vector__type__CK32.html", "structArrayJagged__mod_1_1Vector__type__CK32" ],
-      [ "Vector_type_CK64", "structArrayJagged__mod_1_1Vector__type__CK64.html", "structArrayJagged__mod_1_1Vector__type__CK64" ],
-      [ "Vector_type_IK", "structArrayJagged__mod_1_1Vector__type__IK.html", "structArrayJagged__mod_1_1Vector__type__IK" ],
-      [ "Vector_type_IK16", "structArrayJagged__mod_1_1Vector__type__IK16.html", "structArrayJagged__mod_1_1Vector__type__IK16" ],
-      [ "Vector_type_IK32", "structArrayJagged__mod_1_1Vector__type__IK32.html", "structArrayJagged__mod_1_1Vector__type__IK32" ],
-      [ "Vector_type_IK64", "structArrayJagged__mod_1_1Vector__type__IK64.html", "structArrayJagged__mod_1_1Vector__type__IK64" ],
-      [ "Vector_type_IK8", "structArrayJagged__mod_1_1Vector__type__IK8.html", "structArrayJagged__mod_1_1Vector__type__IK8" ],
-      [ "Vector_type_RK", "structArrayJagged__mod_1_1Vector__type__RK.html", "structArrayJagged__mod_1_1Vector__type__RK" ],
-      [ "Vector_type_RK128", "structArrayJagged__mod_1_1Vector__type__RK128.html", "structArrayJagged__mod_1_1Vector__type__RK128" ],
-      [ "Vector_type_RK32", "structArrayJagged__mod_1_1Vector__type__RK32.html", "structArrayJagged__mod_1_1Vector__type__RK32" ],
-      [ "Vector_type_RK64", "structArrayJagged__mod_1_1Vector__type__RK64.html", "structArrayJagged__mod_1_1Vector__type__RK64" ]
+    [ "ArrayInsert_mod", "namespaceArrayInsert__mod.html", [
+      [ "insert", "interfaceArrayInsert__mod_1_1insert.html", null ]
     ] ],
     [ "ArrayRemap_mod", "namespaceArrayRemap__mod.html", [
       [ "remap", "interfaceArrayRemap__mod_1_1remap.html", null ]
     ] ],
+    [ "ArrayRemove_mod", "namespaceArrayRemove__mod.html", [
+      [ "genRemoved", "interfaceArrayRemove__mod_1_1genRemoved.html", null ],
+      [ "remove", "interfaceArrayRemove__mod_1_1remove.html", null ]
+    ] ],
     [ "ArrayReplace_mod", "namespaceArrayReplace__mod.html", [
       [ "genReplaced", "interfaceArrayReplace__mod_1_1genReplaced.html", null ],
-      [ "getReplaced", "interfaceArrayReplace__mod_1_1getReplaced.html", null ]
+      [ "replace", "interfaceArrayReplace__mod_1_1replace.html", null ]
     ] ],
     [ "ArrayResize_mod", "namespaceArrayResize__mod.html", [
       [ "resize", "interfaceArrayResize__mod_1_1resize.html", null ]
     ] ],
+    [ "ArrayReverse_mod", "namespaceArrayReverse__mod.html", [
+      [ "genReverse", "interfaceArrayReverse__mod_1_1genReverse.html", null ],
+      [ "reverse", "interfaceArrayReverse__mod_1_1reverse.html", null ]
+    ] ],
     [ "ArrayShuffle_mod", "namespaceArrayShuffle__mod.html", [
       [ "shuffle", "interfaceArrayShuffle__mod_1_1shuffle.html", null ]
     ] ],
+    [ "ArraySort_mod", "namespaceArraySort__mod.html", [
+      [ "isAscending", "interfaceArraySort__mod_1_1isAscending.html", null ],
+      [ "isDescending", "interfaceArraySort__mod_1_1isDescending.html", null ],
+      [ "isSorted", "interfaceArraySort__mod_1_1isSorted.html", null ],
+      [ "merge", "interfaceArraySort__mod_1_1merge.html", null ],
+      [ "operator(.merge.)", "interfaceArraySort__mod_1_1operator_07_8merge_8_08.html", null ],
+      [ "sort", "interfaceArraySort__mod_1_1sort.html", null ],
+      [ "sortBubble", "interfaceArraySort__mod_1_1sortBubble.html", null ],
+      [ "sortDualPivotRecursive", "interfaceArraySort__mod_1_1sortDualPivotRecursive.html", null ],
+      [ "sortHeap", "interfaceArraySort__mod_1_1sortHeap.html", null ],
+      [ "sortHeapRecursive", "interfaceArraySort__mod_1_1sortHeapRecursive.html", null ],
+      [ "sortIndex", "interfaceArraySort__mod_1_1sortIndex.html", null ],
+      [ "sortInsertion", "interfaceArraySort__mod_1_1sortInsertion.html", null ],
+      [ "sortInsertionBinary", "interfaceArraySort__mod_1_1sortInsertionBinary.html", null ],
+      [ "sortInsertionDouble", "interfaceArraySort__mod_1_1sortInsertionDouble.html", null ],
+      [ "sortMergeRecursive", "interfaceArraySort__mod_1_1sortMergeRecursive.html", null ],
+      [ "sortRecursive", "interfaceArraySort__mod_1_1sortRecursive.html", null ],
+      [ "sortSelection", "interfaceArraySort__mod_1_1sortSelection.html", null ],
+      [ "sortShell", "interfaceArraySort__mod_1_1sortShell.html", null ]
+    ] ],
+    [ "ArraySplit_mod", "namespaceArraySplit__mod.html", [
+      [ "split", "interfaceArraySplit__mod_1_1split.html", null ]
+    ] ],
     [ "ArrayUnique_mod", "namespaceArrayUnique__mod.html", [
-      [ "findUnique", "interfaceArrayUnique__mod_1_1findUnique.html", "interfaceArrayUnique__mod_1_1findUnique" ],
       [ "genUnique", "interfaceArrayUnique__mod_1_1genUnique.html", null ],
       [ "getUnique", "interfaceArrayUnique__mod_1_1getUnique.html", null ]
     ] ],
@@ -75,6 +69,67 @@ var annotated_dup =
       [ "getPosInf", "interfaceConstants__mod_1_1getPosInf.html", "interfaceConstants__mod_1_1getPosInf" ],
       [ "LangIs_type", "structConstants__mod_1_1LangIs__type.html", "structConstants__mod_1_1LangIs__type" ],
       [ "private", "structConstants__mod_1_1private.html", "structConstants__mod_1_1private" ]
+    ] ],
+    [ "Container_mod", "namespaceContainer__mod.html", [
+      [ "Cube_type_CK", "structContainer__mod_1_1Cube__type__CK.html", "structContainer__mod_1_1Cube__type__CK" ],
+      [ "Cube_type_CK128", "structContainer__mod_1_1Cube__type__CK128.html", "structContainer__mod_1_1Cube__type__CK128" ],
+      [ "Cube_type_CK32", "structContainer__mod_1_1Cube__type__CK32.html", "structContainer__mod_1_1Cube__type__CK32" ],
+      [ "Cube_type_CK64", "structContainer__mod_1_1Cube__type__CK64.html", "structContainer__mod_1_1Cube__type__CK64" ],
+      [ "Cube_type_LK", "structContainer__mod_1_1Cube__type__LK.html", "structContainer__mod_1_1Cube__type__LK" ],
+      [ "Cube_type_RK", "structContainer__mod_1_1Cube__type__RK.html", "structContainer__mod_1_1Cube__type__RK" ],
+      [ "Cube_type_RK128", "structContainer__mod_1_1Cube__type__RK128.html", "structContainer__mod_1_1Cube__type__RK128" ],
+      [ "Cube_type_RK32", "structContainer__mod_1_1Cube__type__RK32.html", "structContainer__mod_1_1Cube__type__RK32" ],
+      [ "Cube_type_RK64", "structContainer__mod_1_1Cube__type__RK64.html", "structContainer__mod_1_1Cube__type__RK64" ],
+      [ "Cube_type_SK", "structContainer__mod_1_1Cube__type__SK.html", "structContainer__mod_1_1Cube__type__SK" ],
+      [ "Cube_type_UP", "structContainer__mod_1_1Cube__type__UP.html", "structContainer__mod_1_1Cube__type__UP" ],
+      [ "Matrix_type_CK", "structContainer__mod_1_1Matrix__type__CK.html", "structContainer__mod_1_1Matrix__type__CK" ],
+      [ "Matrix_type_CK128", "structContainer__mod_1_1Matrix__type__CK128.html", "structContainer__mod_1_1Matrix__type__CK128" ],
+      [ "Matrix_type_CK32", "structContainer__mod_1_1Matrix__type__CK32.html", "structContainer__mod_1_1Matrix__type__CK32" ],
+      [ "Matrix_type_CK64", "structContainer__mod_1_1Matrix__type__CK64.html", "structContainer__mod_1_1Matrix__type__CK64" ],
+      [ "Matrix_type_IK", "structContainer__mod_1_1Matrix__type__IK.html", "structContainer__mod_1_1Matrix__type__IK" ],
+      [ "Matrix_type_IK16", "structContainer__mod_1_1Matrix__type__IK16.html", "structContainer__mod_1_1Matrix__type__IK16" ],
+      [ "Matrix_type_IK32", "structContainer__mod_1_1Matrix__type__IK32.html", "structContainer__mod_1_1Matrix__type__IK32" ],
+      [ "Matrix_type_IK64", "structContainer__mod_1_1Matrix__type__IK64.html", "structContainer__mod_1_1Matrix__type__IK64" ],
+      [ "Matrix_type_IK8", "structContainer__mod_1_1Matrix__type__IK8.html", "structContainer__mod_1_1Matrix__type__IK8" ],
+      [ "Matrix_type_LK", "structContainer__mod_1_1Matrix__type__LK.html", "structContainer__mod_1_1Matrix__type__LK" ],
+      [ "Matrix_type_RK", "structContainer__mod_1_1Matrix__type__RK.html", "structContainer__mod_1_1Matrix__type__RK" ],
+      [ "Matrix_type_RK128", "structContainer__mod_1_1Matrix__type__RK128.html", "structContainer__mod_1_1Matrix__type__RK128" ],
+      [ "Matrix_type_RK32", "structContainer__mod_1_1Matrix__type__RK32.html", "structContainer__mod_1_1Matrix__type__RK32" ],
+      [ "Matrix_type_RK64", "structContainer__mod_1_1Matrix__type__RK64.html", "structContainer__mod_1_1Matrix__type__RK64" ],
+      [ "Matrix_type_SK", "structContainer__mod_1_1Matrix__type__SK.html", "structContainer__mod_1_1Matrix__type__SK" ],
+      [ "Matrix_type_UP", "structContainer__mod_1_1Matrix__type__UP.html", "structContainer__mod_1_1Matrix__type__UP" ],
+      [ "Scalar_type_CK", "structContainer__mod_1_1Scalar__type__CK.html", "structContainer__mod_1_1Scalar__type__CK" ],
+      [ "Scalar_type_CK128", "structContainer__mod_1_1Scalar__type__CK128.html", "structContainer__mod_1_1Scalar__type__CK128" ],
+      [ "Scalar_type_CK32", "structContainer__mod_1_1Scalar__type__CK32.html", "structContainer__mod_1_1Scalar__type__CK32" ],
+      [ "Scalar_type_CK64", "structContainer__mod_1_1Scalar__type__CK64.html", "structContainer__mod_1_1Scalar__type__CK64" ],
+      [ "Scalar_type_IK", "structContainer__mod_1_1Scalar__type__IK.html", "structContainer__mod_1_1Scalar__type__IK" ],
+      [ "Scalar_type_IK16", "structContainer__mod_1_1Scalar__type__IK16.html", "structContainer__mod_1_1Scalar__type__IK16" ],
+      [ "Scalar_type_IK32", "structContainer__mod_1_1Scalar__type__IK32.html", "structContainer__mod_1_1Scalar__type__IK32" ],
+      [ "Scalar_type_IK64", "structContainer__mod_1_1Scalar__type__IK64.html", "structContainer__mod_1_1Scalar__type__IK64" ],
+      [ "Scalar_type_IK8", "structContainer__mod_1_1Scalar__type__IK8.html", "structContainer__mod_1_1Scalar__type__IK8" ],
+      [ "Scalar_type_LK", "structContainer__mod_1_1Scalar__type__LK.html", "structContainer__mod_1_1Scalar__type__LK" ],
+      [ "Scalar_type_RK", "structContainer__mod_1_1Scalar__type__RK.html", "structContainer__mod_1_1Scalar__type__RK" ],
+      [ "Scalar_type_RK128", "structContainer__mod_1_1Scalar__type__RK128.html", "structContainer__mod_1_1Scalar__type__RK128" ],
+      [ "Scalar_type_RK32", "structContainer__mod_1_1Scalar__type__RK32.html", "structContainer__mod_1_1Scalar__type__RK32" ],
+      [ "Scalar_type_RK64", "structContainer__mod_1_1Scalar__type__RK64.html", "structContainer__mod_1_1Scalar__type__RK64" ],
+      [ "Scalar_type_SK", "structContainer__mod_1_1Scalar__type__SK.html", "structContainer__mod_1_1Scalar__type__SK" ],
+      [ "Scalar_type_UP", "structContainer__mod_1_1Scalar__type__UP.html", "structContainer__mod_1_1Scalar__type__UP" ],
+      [ "Vector_type_CK", "structContainer__mod_1_1Vector__type__CK.html", "structContainer__mod_1_1Vector__type__CK" ],
+      [ "Vector_type_CK128", "structContainer__mod_1_1Vector__type__CK128.html", "structContainer__mod_1_1Vector__type__CK128" ],
+      [ "Vector_type_CK32", "structContainer__mod_1_1Vector__type__CK32.html", "structContainer__mod_1_1Vector__type__CK32" ],
+      [ "Vector_type_CK64", "structContainer__mod_1_1Vector__type__CK64.html", "structContainer__mod_1_1Vector__type__CK64" ],
+      [ "Vector_type_IK", "structContainer__mod_1_1Vector__type__IK.html", "structContainer__mod_1_1Vector__type__IK" ],
+      [ "Vector_type_IK16", "structContainer__mod_1_1Vector__type__IK16.html", "structContainer__mod_1_1Vector__type__IK16" ],
+      [ "Vector_type_IK32", "structContainer__mod_1_1Vector__type__IK32.html", "structContainer__mod_1_1Vector__type__IK32" ],
+      [ "Vector_type_IK64", "structContainer__mod_1_1Vector__type__IK64.html", "structContainer__mod_1_1Vector__type__IK64" ],
+      [ "Vector_type_IK8", "structContainer__mod_1_1Vector__type__IK8.html", "structContainer__mod_1_1Vector__type__IK8" ],
+      [ "Vector_type_LK", "structContainer__mod_1_1Vector__type__LK.html", "structContainer__mod_1_1Vector__type__LK" ],
+      [ "Vector_type_RK", "structContainer__mod_1_1Vector__type__RK.html", "structContainer__mod_1_1Vector__type__RK" ],
+      [ "Vector_type_RK128", "structContainer__mod_1_1Vector__type__RK128.html", "structContainer__mod_1_1Vector__type__RK128" ],
+      [ "Vector_type_RK32", "structContainer__mod_1_1Vector__type__RK32.html", "structContainer__mod_1_1Vector__type__RK32" ],
+      [ "Vector_type_RK64", "structContainer__mod_1_1Vector__type__RK64.html", "structContainer__mod_1_1Vector__type__RK64" ],
+      [ "Vector_type_SK", "structContainer__mod_1_1Vector__type__SK.html", "structContainer__mod_1_1Vector__type__SK" ],
+      [ "Vector_type_UP", "structContainer__mod_1_1Vector__type__UP.html", "structContainer__mod_1_1Vector__type__UP" ]
     ] ],
     [ "CorCoef_mod", "namespaceCorCoef__mod.html", [
       [ "CorCoefSpearman_type", "structCorCoef__mod_1_1CorCoefSpearman__type.html", "structCorCoef__mod_1_1CorCoefSpearman__type" ]
@@ -253,13 +308,15 @@ var annotated_dup =
       [ "getCumSum", "interfaceMathCumSum__mod_1_1getCumSum.html", null ]
     ] ],
     [ "MathLinSpace_mod", "namespaceMathLinSpace__mod.html", [
-      [ "genLinSpace", "interfaceMathLinSpace__mod_1_1genLinSpace.html", null ]
+      [ "genLinSpace", "interfaceMathLinSpace__mod_1_1genLinSpace.html", null ],
+      [ "getLinSpace", "interfaceMathLinSpace__mod_1_1getLinSpace.html", null ]
     ] ],
     [ "MathLogAddExp_mod", "namespaceMathLogAddExp__mod.html", [
       [ "genLogAddExp", "interfaceMathLogAddExp__mod_1_1genLogAddExp.html", null ]
     ] ],
     [ "MathLogSpace_mod", "namespaceMathLogSpace__mod.html", [
-      [ "genLogSpace", "interfaceMathLogSpace__mod_1_1genLogSpace.html", null ]
+      [ "genLogSpace", "interfaceMathLogSpace__mod_1_1genLogSpace.html", null ],
+      [ "getLogSpace", "interfaceMathLogSpace__mod_1_1getLogSpace.html", null ]
     ] ],
     [ "MathLogSub_mod", "namespaceMathLogSub__mod.html", [
       [ "genLogAddExp", "interfaceMathLogSub__mod_1_1genLogAddExp.html", "interfaceMathLogSub__mod_1_1genLogAddExp" ],
@@ -274,6 +331,9 @@ var annotated_dup =
     [ "MathMinMax_mod", "namespaceMathMinMax__mod.html", [
       [ "genMinMax", "interfaceMathMinMax__mod_1_1genMinMax.html", null ],
       [ "getMinMax", "interfaceMathMinMax__mod_1_1getMinMax.html", null ]
+    ] ],
+    [ "MathRange_mod", "namespaceMathRange__mod.html", [
+      [ "genRange", "interfaceMathRange__mod_1_1genRange.html", null ]
     ] ],
     [ "MatrixCholesky_mod", "namespaceMatrixCholesky__mod.html", [
       [ "getChoLow", "interfaceMatrixCholesky__mod_1_1getChoLow.html", null ],
@@ -320,6 +380,7 @@ var annotated_dup =
       [ "mesh", "interfaceMisc__mod_1_1mesh.html", "interfaceMisc__mod_1_1mesh" ],
       [ "resize", "interfaceMisc__mod_1_1resize.html", "interfaceMisc__mod_1_1resize" ],
       [ "resizeVector", "interfaceMisc__mod_1_1resizeVector.html", "interfaceMisc__mod_1_1resizeVector" ],
+      [ "sum", "interfaceMisc__mod_1_1sum.html", "interfaceMisc__mod_1_1sum" ],
       [ "swap", "interfaceMisc__mod_1_1swap.html", "interfaceMisc__mod_1_1swap" ]
     ] ],
     [ "ObservatoryComptonBatse_mod", "namespaceObservatoryComptonBatse__mod.html", [
@@ -412,27 +473,6 @@ var annotated_dup =
       [ "operator(.ominus.)", "interfaceSet__mod_1_1operator_07_8ominus_8_08.html", "interfaceSet__mod_1_1operator_07_8ominus_8_08" ],
       [ "subtract", "interfaceSet__mod_1_1subtract.html", null ],
       [ "subtractOrdered", "interfaceSet__mod_1_1subtractOrdered.html", null ]
-    ] ],
-    [ "Sort_mod", "namespaceSort__mod.html", [
-      [ "isAscending", "interfaceSort__mod_1_1isAscending.html", null ],
-      [ "isDescending", "interfaceSort__mod_1_1isDescending.html", null ],
-      [ "isSorted", "interfaceSort__mod_1_1isSorted.html", null ],
-      [ "merge", "interfaceSort__mod_1_1merge.html", null ],
-      [ "operator(.merge.)", "interfaceSort__mod_1_1operator_07_8merge_8_08.html", null ],
-      [ "sort", "interfaceSort__mod_1_1sort.html", null ],
-      [ "sort_proc_RK64", "interfaceSort__mod_1_1sort__proc__RK64.html", "interfaceSort__mod_1_1sort__proc__RK64" ],
-      [ "sortBubble", "interfaceSort__mod_1_1sortBubble.html", null ],
-      [ "sortDualPivotRecursive", "interfaceSort__mod_1_1sortDualPivotRecursive.html", null ],
-      [ "sortHeap", "interfaceSort__mod_1_1sortHeap.html", null ],
-      [ "sortHeapRecursive", "interfaceSort__mod_1_1sortHeapRecursive.html", null ],
-      [ "sortIndex", "interfaceSort__mod_1_1sortIndex.html", null ],
-      [ "sortInsertion", "interfaceSort__mod_1_1sortInsertion.html", null ],
-      [ "sortInsertionBinary", "interfaceSort__mod_1_1sortInsertionBinary.html", null ],
-      [ "sortInsertionDouble", "interfaceSort__mod_1_1sortInsertionDouble.html", null ],
-      [ "sortMergeRecursive", "interfaceSort__mod_1_1sortMergeRecursive.html", null ],
-      [ "sortRecursive", "interfaceSort__mod_1_1sortRecursive.html", null ],
-      [ "sortSelection", "interfaceSort__mod_1_1sortSelection.html", null ],
-      [ "sortShell", "interfaceSort__mod_1_1sortShell.html", null ]
     ] ],
     [ "SpecBase_Description_mod", "namespaceSpecBase__Description__mod.html", [
       [ "Description_type", "structSpecBase__Description__mod_1_1Description__type.html", "structSpecBase__Description__mod_1_1Description__type" ]
@@ -607,7 +647,6 @@ var annotated_dup =
     ] ],
     [ "String_mod", "namespaceString__mod.html", [
       [ "assignment(=)", "interfaceString__mod_1_1assignment_07_0a_08.html", null ],
-      [ "genReverse", "interfaceString__mod_1_1genReverse.html", "interfaceString__mod_1_1genReverse" ],
       [ "int2str", "interfaceString__mod_1_1int2str.html", "interfaceString__mod_1_1int2str" ],
       [ "IntStr_type", "structString__mod_1_1IntStr__type.html", "structString__mod_1_1IntStr__type" ],
       [ "lower", "interfaceString__mod_1_1lower.html", "interfaceString__mod_1_1lower" ],
@@ -620,11 +659,10 @@ var annotated_dup =
       [ "operator(>=)", "interfaceString__mod_1_1operator_07_4_0a_08.html", "interfaceString__mod_1_1operator_07_4_0a_08" ],
       [ "real2str", "interfaceString__mod_1_1real2str.html", "interfaceString__mod_1_1real2str" ],
       [ "RealStr_type", "structString__mod_1_1RealStr__type.html", "structString__mod_1_1RealStr__type" ],
-      [ "Str_type", "structString__mod_1_1Str__type.html", "structString__mod_1_1Str__type" ],
       [ "String_type", "structString__mod_1_1String__type.html", "structString__mod_1_1String__type" ],
       [ "StrSplit_type", "structString__mod_1_1StrSplit__type.html", "structString__mod_1_1StrSplit__type" ],
       [ "upper", "interfaceString__mod_1_1upper.html", "interfaceString__mod_1_1upper" ],
-      [ "val2char", "interfaceString__mod_1_1val2char.html", null ]
+      [ "val2str", "interfaceString__mod_1_1val2str.html", null ]
     ] ],
     [ "System_mod", "namespaceSystem__mod.html", [
       [ "CmdArg_type", "structSystem__mod_1_1CmdArg__type.html", "structSystem__mod_1_1CmdArg__type" ],

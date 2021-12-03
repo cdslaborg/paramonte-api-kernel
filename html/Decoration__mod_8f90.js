@@ -23,13 +23,13 @@ var Decoration__mod_8f90 =
     [ "DECORATION_THICKNESS_HORZ", "Decoration__mod_8f90.html#a6e42aba3cd2c19809270105096df5271", null ],
     [ "DECORATION_THICKNESS_VERT", "Decoration__mod_8f90.html#a274cb9f0dc8093763f326c386309c84a", null ],
     [ "DECORATION_WIDTH", "Decoration__mod_8f90.html#a7581ab9b285da37ce4ff35f896bbec16", null ],
-    [ "GENERIC_OUTPUT_FORMAT", "Decoration__mod_8f90.html#ab4b61a550d316d81125ec2327e82c319", null ],
-    [ "GENERIC_TABBED_FORMAT", "Decoration__mod_8f90.html#aa802c33655995e2b0c3770126e15bc52", null ],
-    [ "INDENT", "Decoration__mod_8f90.html#aea447b213bf4cdeab2803976af2b2cc5", null ],
+    [ "GENERIC_OUTPUT_FORMAT", "Decoration__mod_8f90.html#a135dba4706384d147a5e00a8edc3dc54", null ],
+    [ "GENERIC_TABBED_FORMAT", "Decoration__mod_8f90.html#ac91e31ef247925f00c615a1a675a92f4", null ],
+    [ "INDENT", "Decoration__mod_8f90.html#a828c6bfe246ae7a61640d7b4e96e3385", null ],
     [ "mc_AnsiAttributeList", "Decoration__mod_8f90.html#a68d020d1e5239ba03959d2737de6ca7f", null ],
     [ "mc_AnsiBackgroundColorList", "Decoration__mod_8f90.html#a66a1afb7d429666f5117dadb4277eda6", null ],
     [ "mc_AnsiForegroundColorList", "Decoration__mod_8f90.html#a8c9abddbf07a96cb42e3e499d7caba54", null ],
-    [ "MODULE_NAME", "Decoration__mod_8f90.html#a7c54f238f6226d3c2ec0c5484e8c4809", null ],
-    [ "STAR", "Decoration__mod_8f90.html#a716a4138da51089963cf7f1e2b64e52e", null ],
-    [ "TAB", "Decoration__mod_8f90.html#a966ffab0d973c2468db2418bb4edb8f3", null ]
+    [ "MODULE_NAME", "Decoration__mod_8f90.html#adb49b2c4a6ded37a68e5e04da12066e4", null ],
+    [ "STAR", "Decoration__mod_8f90.html#a4e3bb7b4acb3889a43ded36a6f31e257", null ],
+    [ "TAB", "Decoration__mod_8f90.html#a8593d30fb86a657fe627c0bc02e8e255", null ]
 ];

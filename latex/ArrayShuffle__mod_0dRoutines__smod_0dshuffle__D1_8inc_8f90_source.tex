@@ -47,27 +47,28 @@
 \DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00048}00048 }
 \DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00049}00049 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
 \DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00050}00050 }
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00051}00051         \textcolor{fortran_statement}{integer}(IK) :: lenArray, i, randLoc}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00052}00052 \textcolor{fortran_statement}{        real}        :: unifrnd}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00053}00053 }
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00054}00054 \textcolor{preprocessor}{\#if shuffle\_D0\_HK\_ENABLED}}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00055}00055 \textcolor{preprocessor}{}        lenArray\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{len}(Array,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }IK)}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00056}00056 \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00057}00057 \textcolor{preprocessor}{}        lenArray\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{size}(Array,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }IK)}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00058}00058 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00059}00059 \textcolor{preprocessor}{}}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00060}00060         \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }lenArray,\textcolor{fortran_numeric_literal}{ 2\_IK},\textcolor{fortran_operator_symbols}{ -\/}\textcolor{fortran_numeric_literal}{1\_IK}}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00061}00061 \textcolor{fortran_statement}{            call}\textcolor{fortran_subroutine}{ random\_number}(unifrnd)}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00062}00062             randLoc\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{int}(unifrnd\textcolor{fortran_operator_symbols}{ * }i)\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{1\_IK}}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00063}00063 \textcolor{preprocessor}{\#if shuffle\_D0\_HK\_ENABLED}}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00064}00064 \textcolor{preprocessor}{}            temp\textcolor{fortran_operator_symbols}{ = }Array(randLoc:randLoc)}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00065}00065             Array(randLoc:randLoc)\textcolor{fortran_operator_symbols}{ = }Array(i:i)}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00066}00066             Array(i:i)\textcolor{fortran_operator_symbols}{ = }temp}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00067}00067 \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00068}00068 \textcolor{preprocessor}{}            temp\textcolor{fortran_operator_symbols}{ = }Array(randLoc)}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00069}00069             Array(randLoc)\textcolor{fortran_operator_symbols}{ = }Array(i)}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00070}00070             Array(i)\textcolor{fortran_operator_symbols}{ = }temp}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00071}00071 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00072}00072 \textcolor{preprocessor}{}\textcolor{fortran_keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00051}00051 \textcolor{preprocessor}{\#if shuffle\_D0\_SK\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00052}00052 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#define GET\_SLICE(i) i:i}}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00053}00053 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#define GET\_SIZE len}}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00054}00054 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00055}00055 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#define GET\_SLICE(i) i}}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00056}00056 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#define GET\_SIZE size}}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00057}00057 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00058}00058 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00059}00059         \textcolor{fortran_statement}{integer}(IK) :: lenArray, i, randLoc}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00060}00060 \textcolor{fortran_statement}{        real}        :: unifrnd}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00062}00062         lenArray\textcolor{fortran_operator_symbols}{ = }GET\_SIZE(Array,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }IK)}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00064}00064         \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }lenArray,\textcolor{fortran_numeric_literal}{ 2\_IK},\textcolor{fortran_operator_symbols}{ -\/}\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00065}00065 \textcolor{fortran_statement}{            call}\textcolor{fortran_subroutine}{ random\_number}(unifrnd)}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00066}00066             randLoc\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{int}(unifrnd\textcolor{fortran_operator_symbols}{ * }i)\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00067}00067             temp\textcolor{fortran_operator_symbols}{ = }Array(GET\_SLICE(randLoc))}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00068}00068             Array(GET\_SLICE(randLoc))\textcolor{fortran_operator_symbols}{ = }Array(GET\_SLICE(i))}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00069}00069             Array(GET\_SLICE(i))\textcolor{fortran_operator_symbols}{ = }temp}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00070}00070 \textcolor{fortran_keywordflow}{        end do}}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00072}00072 \textcolor{preprocessor}{\#undef GET\_SLICE}}
+\DoxyCodeLine{\Hypertarget{ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90_source_l00073}00073 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#undef GET\_SIZE}}
 
 \end{DoxyCode}

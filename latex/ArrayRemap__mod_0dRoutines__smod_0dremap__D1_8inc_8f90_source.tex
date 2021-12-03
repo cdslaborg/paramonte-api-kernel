@@ -48,88 +48,85 @@
 \DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00050}00050 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
 \DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00051}00051 }
 \DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00052}00052         \textcolor{fortran_statement}{integer}(IK) :: i, lenArray}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00053}00053 \textcolor{preprocessor}{\#if remapBack\_D1\_ENABLED}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00054}00054 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{integer}(IK) :: j}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00055}00055 }
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00056}00056 \textcolor{preprocessor}{\#if remap\_D0\_HK\_ENABLED}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00057}00057 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#define REMAP\_ELEMENT ArrayNew(i:i)=Array(Index(j):Index(j))}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00058}00058 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00059}00059 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#define REMAP\_ELEMENT ArrayNew(i)=Array(Index(j))}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00060}00060 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00061}00061 \textcolor{preprocessor}{}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00062}00062 \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00063}00063 \textcolor{preprocessor}{}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00064}00064 \textcolor{preprocessor}{\#if remap\_D0\_HK\_ENABLED}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00065}00065 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#define REMAP\_ELEMENT ArrayNew(i:i)=Array(Index(i):Index(i))}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00066}00066 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00067}00067 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#define REMAP\_ELEMENT ArrayNew(i)=Array(Index(i))}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00068}00068 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00069}00069 \textcolor{preprocessor}{}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00070}00070 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00071}00071 \textcolor{preprocessor}{}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00072}00072 \textcolor{preprocessor}{\#if remap\_D0\_HK\_ENABLED}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00073}00073 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#define GET\_SIZE len}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00074}00074 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00075}00075 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#define GET\_SIZE size}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00076}00076 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00077}00077 \textcolor{preprocessor}{}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00078}00078         lenArray\textcolor{fortran_operator_symbols}{ = }GET\_SIZE(Array,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }IK)}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00079}00079 }
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00080}00080 \textcolor{preprocessor}{\#if CHECK\_ENABLED}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00081}00081 \textcolor{preprocessor}{}        \textcolor{fortran_keywordflow}{block}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00082}00082             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceErr__mod}{Err\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceErr__mod_a36a83db6a4f7bbdd52e4e1a4da550e31}{assert}}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00083}00083             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceString__mod}{String\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceString__mod_1_1val2char}{val2char}}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00084}00084             \textcolor{fortran_statement}{integer}(IK) :: lenIndex}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00085}00085 \textcolor{preprocessor}{\#if remapNew\_D1\_ENABLED}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00086}00086 \textcolor{preprocessor}{}            \textcolor{fortran_statement}{integer}(IK) :: lenArrayNew}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00087}00087             lenArrayNew\textcolor{fortran_operator_symbols}{ = }GET\_SIZE(ArrayNew,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }IK)}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00088}00088 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{namespaceErr__mod_a36a83db6a4f7bbdd52e4e1a4da550e31}{assert}}(lenArray\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{= }lenArrayNew, \mbox{\hyperlink{namespaceErr__mod_a658759f4402b77a47bad9adf07ea44fa}{MODULE\_NAME}}\textcolor{fortran_operator_symbols}{/}\textcolor{fortran_operator_symbols}{/}\textcolor{fortran_string}{"{}@remap(): The size of the input `Array` must equal the size of the input `ArrayNew`. lenArray, lenArrayNew = "{}}\textcolor{fortran_operator_symbols}{/}\textcolor{fortran_operator_symbols}{/}\mbox{\hyperlink{interfaceString__mod_1_1val2char}{val2char}}([lenArray, lenArrayNew]))}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00089}00089 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00090}00090 \textcolor{preprocessor}{}            lenIndex\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{size}(Index,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }IK)}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00091}00091 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{namespaceErr__mod_a36a83db6a4f7bbdd52e4e1a4da550e31}{assert}}(lenArray\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{= }lenIndex, \mbox{\hyperlink{namespaceErr__mod_a658759f4402b77a47bad9adf07ea44fa}{MODULE\_NAME}}\textcolor{fortran_operator_symbols}{/}\textcolor{fortran_operator_symbols}{/}\textcolor{fortran_string}{"{}@remap(): The size of the input `Array` must equal the size of the input `Index`. lenArray, lenIndex = "{}}\textcolor{fortran_operator_symbols}{/}\textcolor{fortran_operator_symbols}{/}\mbox{\hyperlink{interfaceString__mod_1_1val2char}{val2char}}([lenArray, lenIndex]))}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00092}00092 \textcolor{fortran_keywordflow}{        end block}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00093}00093 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00094}00094 \textcolor{preprocessor}{}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00095}00095 \textcolor{preprocessor}{\#if !remapNew\_D1\_ENABLED}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00096}00096 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if remap\_D0\_HK\_ENABLED}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00097}00097 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        allocate}(\textcolor{fortran_statement}{character}(lenArray) :: ArrayNew)}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00098}00098 \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00099}00099 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        allocate}(ArrayNew(lenArray))}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00100}00100 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00101}00101 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00102}00102 \textcolor{preprocessor}{}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00103}00103         \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00053}00053 \textcolor{fortran_comment}{!\#if remapBack\_D1\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00054}00054 \textcolor{fortran_comment}{!        integer(IK) :: j}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00055}00055 \textcolor{fortran_comment}{!\#endif}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00057}00057 \textcolor{preprocessor}{\#if remap\_D0\_SK\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00058}00058 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#define ALLOCATE\_ARRAYNEW allocate(character(lenArray)::ArrayNew)}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00059}00059 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#define GET\_SLICE(i) i:i}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00060}00060 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#define GET\_SIZE len}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00061}00061 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00062}00062 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#define ALLOCATE\_ARRAYNEW allocate(ArrayNew(lenArray))}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00063}00063 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#define GET\_SLICE(i) i}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00064}00064 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#define GET\_SIZE size}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00065}00065 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00066}00066 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00067}00067         lenArray\textcolor{fortran_operator_symbols}{ = }GET\_SIZE(Array,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }IK)}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00069}00069 \textcolor{preprocessor}{\#if CHECK\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00070}00070 \textcolor{preprocessor}{}        \textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00071}00071             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceErr__mod}{Err\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceErr__mod_a36a83db6a4f7bbdd52e4e1a4da550e31}{assert}}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00072}00072             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceString__mod}{String\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceString__mod_1_1val2str}{val2str}}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00073}00073             \textcolor{fortran_statement}{integer}(IK) :: lenIndex}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00074}00074 \textcolor{preprocessor}{\#if remapNew\_D1\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00075}00075 \textcolor{preprocessor}{}            \textcolor{fortran_statement}{integer}(IK) :: lenArrayNew}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00076}00076             lenArrayNew\textcolor{fortran_operator_symbols}{ = }GET\_SIZE(ArrayNew,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }IK)}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00077}00077 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{namespaceErr__mod_a36a83db6a4f7bbdd52e4e1a4da550e31}{assert}}(lenArray\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{= }lenArrayNew, \mbox{\hyperlink{namespaceErr__mod_a658759f4402b77a47bad9adf07ea44fa}{MODULE\_NAME}}\textcolor{fortran_operator_symbols}{/}\textcolor{fortran_operator_symbols}{/}\textcolor{fortran_string}{"{}@remap(): The size of the input `Array` must equal the size of the input `ArrayNew`. lenArray, lenArrayNew = "{}}\textcolor{fortran_operator_symbols}{/}\textcolor{fortran_operator_symbols}{/}\mbox{\hyperlink{interfaceString__mod_1_1val2str}{val2str}}([lenArray, lenArrayNew]))}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00078}00078 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00079}00079 \textcolor{preprocessor}{}            lenIndex\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{size}(Index,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }IK)}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00080}00080 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{namespaceErr__mod_a36a83db6a4f7bbdd52e4e1a4da550e31}{assert}}(lenArray\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{= }lenIndex, \mbox{\hyperlink{namespaceErr__mod_a658759f4402b77a47bad9adf07ea44fa}{MODULE\_NAME}}\textcolor{fortran_operator_symbols}{/}\textcolor{fortran_operator_symbols}{/}\textcolor{fortran_string}{"{}@remap(): The size of the input `Array` must equal the size of the input `Index`. lenArray, lenIndex = "{}}\textcolor{fortran_operator_symbols}{/}\textcolor{fortran_operator_symbols}{/}\mbox{\hyperlink{interfaceString__mod_1_1val2str}{val2str}}([lenArray, lenIndex]))}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00081}00081 \textcolor{fortran_keywordflow}{        end block}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00082}00082 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00083}00083 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00084}00084 \textcolor{preprocessor}{\#if !remapNew\_D1\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00085}00085 \textcolor{preprocessor}{}        ALLOCATE\_ARRAYNEW \textcolor{fortran_comment}{! \(\backslash\)warning macro}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00086}00086 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00087}00087 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00088}00088         \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00090}00090 \textcolor{preprocessor}{\#if remapBack\_D1\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00091}00091 \textcolor{preprocessor}{}        \textcolor{fortran_keywordflow}{if} (backward) \textcolor{fortran_keywordflow}{then}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00092}00092 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00093}00093 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00094}00094             \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, lenArray}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00095}00095 \textcolor{preprocessor}{\#if remapBack\_D1\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00096}00096 \textcolor{preprocessor}{}                \textcolor{fortran_comment}{!j = lenArray -\/ i + 1\_IK}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00097}00097                 \textcolor{fortran_comment}{!ArrayNew(GET\_SLICE(i)) = Array(GET\_SLICE(Index(j)))}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00098}00098                 ArrayNew(GET\_SLICE(i))\textcolor{fortran_operator_symbols}{ = }Array(GET\_SLICE(\textcolor{fortran_function}{Index}(lenArray)))}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00099}00099                 lenArray\textcolor{fortran_operator_symbols}{ = }lenArray\textcolor{fortran_operator_symbols}{ -\/ }\textcolor{fortran_numeric_literal}{1}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00100}00100 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00101}00101 \textcolor{preprocessor}{}                ArrayNew(GET\_SLICE(i))\textcolor{fortran_operator_symbols}{ = }Array(GET\_SLICE(\textcolor{fortran_function}{Index}(i)))}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00102}00102 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00103}00103 \textcolor{preprocessor}{}\textcolor{fortran_keywordflow}{            end do}}
 \DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00104}00104 }
 \DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00105}00105 \textcolor{preprocessor}{\#if remapBack\_D1\_ENABLED}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00106}00106 \textcolor{preprocessor}{}        \textcolor{fortran_keywordflow}{if} (backward) \textcolor{fortran_keywordflow}{then}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00107}00107 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00108}00108 \textcolor{preprocessor}{}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00109}00109             \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, lenArray}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00110}00110 \textcolor{preprocessor}{\#if remapBack\_D1\_ENABLED}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00111}00111 \textcolor{preprocessor}{}                j\textcolor{fortran_operator_symbols}{ = }lenArray\textcolor{fortran_operator_symbols}{ -\/ }i\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00106}00106 \textcolor{preprocessor}{}        \textcolor{fortran_keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00108}00108 \textcolor{preprocessor}{\#if remapNew\_D1\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00109}00109 \textcolor{preprocessor}{}\textcolor{fortran_statement}{            call} remap(Array, Index, ArrayNew)}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00110}00110 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00111}00111 \textcolor{preprocessor}{}\textcolor{fortran_statement}{            call} remap(Array, Index)}
 \DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00112}00112 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00113}00113 \textcolor{preprocessor}{}                REMAP\_ELEMENT}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00114}00114 \textcolor{fortran_keywordflow}{            end do}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00115}00115 }
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00116}00116 \textcolor{preprocessor}{\#if remapBack\_D1\_ENABLED}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00117}00117 \textcolor{preprocessor}{}        \textcolor{fortran_keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00113}00113 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00114}00114 \textcolor{fortran_keywordflow}{        end if}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00115}00115 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00116}00116 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00117}00117         \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
 \DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00118}00118 }
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00119}00119 \textcolor{preprocessor}{\#if remapNew\_D1\_ENABLED}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00120}00120 \textcolor{preprocessor}{}\textcolor{fortran_statement}{            call} remap(Array, Index, ArrayNew)}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00121}00121 \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00122}00122 \textcolor{preprocessor}{}\textcolor{fortran_statement}{            call} remap(Array, Index)}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00123}00123 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00124}00124 \textcolor{preprocessor}{}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00125}00125 \textcolor{fortran_keywordflow}{        end if}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00126}00126 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00127}00127 \textcolor{preprocessor}{}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00128}00128         \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00129}00129 }
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00130}00130 \textcolor{preprocessor}{\#if !remapNew\_D1\_ENABLED}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00131}00131 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        call}\textcolor{fortran_subroutine}{ move\_alloc}(from\textcolor{fortran_operator_symbols}{ = }ArrayNew, to\textcolor{fortran_operator_symbols}{ = }Array)}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00132}00132 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00133}00133 \textcolor{preprocessor}{}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00134}00134 \textcolor{preprocessor}{\#undef REMAP\_ELEMENT}}
-\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00135}00135 \textcolor{preprocessor}{}\#undef GET\_SIZE}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00119}00119 \textcolor{preprocessor}{\#if !remapNew\_D1\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00120}00120 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#if remapBack\_D1\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00121}00121 \textcolor{preprocessor}{}        \textcolor{fortran_keywordflow}{if} (backward)\textcolor{fortran_operator_symbols}{ \&}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00122}00122 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00123}00123 \textcolor{preprocessor}{}\textcolor{fortran_statement}{        call}\textcolor{fortran_subroutine}{ move\_alloc}(from\textcolor{fortran_operator_symbols}{ = }ArrayNew, to\textcolor{fortran_operator_symbols}{ = }Array)}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00124}00124 \textcolor{preprocessor}{\#if \_\_GFORTRAN\_\_}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00125}00125 \textcolor{preprocessor}{}\textcolor{fortran_comment}{! \(\backslash\)bug gfortran 10.3 does not deallocate `ArrayNew` upon return.}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00126}00126         \textcolor{fortran_keywordflow}{if} (\textcolor{fortran_function}{allocated}(ArrayNew))\textcolor{fortran_statement}{ deallocate}(ArrayNew)}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00127}00127 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00128}00128 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00129}00129 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00130}00130 \textcolor{preprocessor}{\#undef ALLOCATE\_ARRAYNEW}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00131}00131 \textcolor{preprocessor}{}\textcolor{preprocessor}{\#undef GET\_SLICE}}
+\DoxyCodeLine{\Hypertarget{ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90_source_l00132}00132 \textcolor{preprocessor}{}\#undef GET\_SIZE}
 
 \end{DoxyCode}

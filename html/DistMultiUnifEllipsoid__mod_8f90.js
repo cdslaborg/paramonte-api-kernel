@@ -9,5 +9,5 @@ var DistMultiUnifEllipsoid__mod_8f90 =
     [ "genLogProbDenFromRepMat_RK", "DistMultiUnifEllipsoid__mod_8f90.html#a4643779efb6541d49a4200a00215aae2", null ],
     [ "genRand_D1", "DistMultiUnifEllipsoid__mod_8f90.html#ae9b32d4bc0a0de24b79e8afaa8376f1a", null ],
     [ "genRand_D2", "DistMultiUnifEllipsoid__mod_8f90.html#ac756fac4a39f1bc0cda1690cee8a97f5", null ],
-    [ "MODULE_NAME", "DistMultiUnifEllipsoid__mod_8f90.html#a7eaa88ee61c8a20b421260ff0d2f4e20", null ]
+    [ "MODULE_NAME", "DistMultiUnifEllipsoid__mod_8f90.html#a43185a46c26eb98c6f2871fe12a38485", null ]
 ];

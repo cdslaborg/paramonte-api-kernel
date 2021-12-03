@@ -12,5 +12,5 @@ var namespaceDistMultiUnifCube__mod =
     [ "getRandUnif", "namespaceDistMultiUnifCube__mod.html#a22b94e93b16e2524ede718484872e81a", null ],
     [ "logpdf", "namespaceDistMultiUnifCube__mod.html#ac4d80b740166800b742b51d992ba9b65", null ],
     [ "rand", "namespaceDistMultiUnifCube__mod.html#a0a7caee9d1898e7fa37691c20dc3415e", null ],
-    [ "MODULE_NAME", "namespaceDistMultiUnifCube__mod.html#a3fb3b5b4af24f22416724a88c19b9970", null ]
+    [ "MODULE_NAME", "namespaceDistMultiUnifCube__mod.html#a5be343ce875a6024b143a9f3e940170a", null ]
 ];

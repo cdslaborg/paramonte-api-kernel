@@ -8,5 +8,5 @@ var namespaceParallelism__mod =
     [ "getForkJoinSpeedup", "namespaceParallelism__mod.html#a8b7509b4ffc354000a5234e39d28b3d5", null ],
     [ "queryImage", "namespaceParallelism__mod.html#a5b581453eb6775859404d1ae3a244862", null ],
     [ "syncImages", "namespaceParallelism__mod.html#a41a69a1cbdf71657485af71988897817", null ],
-    [ "MODULE_NAME", "namespaceParallelism__mod.html#a7c6d862716613e56dabf6849bb6e36cd", null ]
+    [ "MODULE_NAME", "namespaceParallelism__mod.html#a8efba14291057fd5fd0d058d6fe299ad", null ]
 ];

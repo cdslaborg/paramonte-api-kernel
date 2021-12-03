@@ -9,6 +9,6 @@ var structSystem__mod_1_1Shell__type =
     [ "isSh", "structSystem__mod_1_1Shell__type.html#a40bd56e309d3369af7eca9bbe0b12252", null ],
     [ "isUnix", "structSystem__mod_1_1Shell__type.html#a9dfb8b2b9c74c7816a7ca06f39cf80c9", null ],
     [ "isZsh", "structSystem__mod_1_1Shell__type.html#a35cc686c362fe4e66fbde6dc65d996f1", null ],
-    [ "name", "structSystem__mod_1_1Shell__type.html#a9fa09e26efb4aea94dfb1ded99280b46", null ],
-    [ "slash", "structSystem__mod_1_1Shell__type.html#adb566e5626177c38fed39dfba036d286", null ]
+    [ "name", "structSystem__mod_1_1Shell__type.html#ab6b7d1b2675dc4ab62f86fce56eabbd5", null ],
+    [ "slash", "structSystem__mod_1_1Shell__type.html#ae4d2cdd8bacb1b939fc622dace0210ea", null ]
 ];

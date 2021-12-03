@@ -4,11 +4,15 @@ var namespaces_dup =
       [ "MODULE_NAME", "namespaceArray__mod.html#ab61502fe8ce3b44504d3e29999a1a625", null ]
     ] ],
     [ "ArrayComparison_mod", "namespaceArrayComparison__mod.html", "namespaceArrayComparison__mod" ],
-    [ "ArrayJagged_mod", "namespaceArrayJagged__mod.html", "namespaceArrayJagged__mod" ],
+    [ "ArrayInsert_mod", "namespaceArrayInsert__mod.html", "namespaceArrayInsert__mod" ],
     [ "ArrayRemap_mod", "namespaceArrayRemap__mod.html", "namespaceArrayRemap__mod" ],
+    [ "ArrayRemove_mod", "namespaceArrayRemove__mod.html", "namespaceArrayRemove__mod" ],
     [ "ArrayReplace_mod", "namespaceArrayReplace__mod.html", "namespaceArrayReplace__mod" ],
     [ "ArrayResize_mod", "namespaceArrayResize__mod.html", "namespaceArrayResize__mod" ],
+    [ "ArrayReverse_mod", "namespaceArrayReverse__mod.html", "namespaceArrayReverse__mod" ],
     [ "ArrayShuffle_mod", "namespaceArrayShuffle__mod.html", "namespaceArrayShuffle__mod" ],
+    [ "ArraySort_mod", "namespaceArraySort__mod.html", "namespaceArraySort__mod" ],
+    [ "ArraySplit_mod", "namespaceArraySplit__mod.html", "namespaceArraySplit__mod" ],
     [ "ArrayUnique_mod", "namespaceArrayUnique__mod.html", "namespaceArrayUnique__mod" ],
     [ "Bench_MatrixLUP_mod", "namespaceBench__MatrixLUP__mod.html", [
       [ "bench_MatrixLUP", "namespaceBench__MatrixLUP__mod.html#ad03b2df28672e40bde13c9a724af4b37", null ],
@@ -20,6 +24,7 @@ var namespaces_dup =
     ] ],
     [ "ClusteredPoint_mod", "namespaceClusteredPoint__mod.html", "namespaceClusteredPoint__mod" ],
     [ "Constants_mod", "namespaceConstants__mod.html", "namespaceConstants__mod" ],
+    [ "Container_mod", "namespaceContainer__mod.html", "namespaceContainer__mod" ],
     [ "CorCoef_mod", "namespaceCorCoef__mod.html", "namespaceCorCoef__mod" ],
     [ "Cosmology_mod", "namespaceCosmology__mod.html", [
       [ "getlogdvdz", "namespaceCosmology__mod.html#a9510b3e5c6963dda74a1987aec957315", null ],
@@ -84,6 +89,7 @@ var namespaces_dup =
     [ "MathLogSub_mod", "namespaceMathLogSub__mod.html", "namespaceMathLogSub__mod" ],
     [ "MathLogSumExp_mod", "namespaceMathLogSumExp__mod.html", "namespaceMathLogSumExp__mod" ],
     [ "MathMinMax_mod", "namespaceMathMinMax__mod.html", "namespaceMathMinMax__mod" ],
+    [ "MathRange_mod", "namespaceMathRange__mod.html", "namespaceMathRange__mod" ],
     [ "Matrix_mod", "namespaceMatrix__mod.html", [
       [ "genDet", "namespaceMatrix__mod.html#ab4337db6f2d5ea89918b3790725f5030", null ],
       [ "genSortedPosDefMat", "namespaceMatrix__mod.html#a0e1071f0d571d57fe97f315272d9d027", null ],
@@ -190,7 +196,6 @@ var namespaces_dup =
     [ "SampleShift_mod", "namespaceSampleShift__mod.html", "namespaceSampleShift__mod" ],
     [ "SampleVariance_mod", "namespaceSampleVariance__mod.html", "namespaceSampleVariance__mod" ],
     [ "Set_mod", "namespaceSet__mod.html", "namespaceSet__mod" ],
-    [ "Sort_mod", "namespaceSort__mod.html", "namespaceSort__mod" ],
     [ "SpecBase_Description_mod", "namespaceSpecBase__Description__mod.html", "namespaceSpecBase__Description__mod" ],
     [ "SpecBase_Domain_mod", "namespaceSpecBase__Domain__mod.html", "namespaceSpecBase__Domain__mod" ],
     [ "SpecBase_DomainAxesNameList_mod", "namespaceSpecBase__DomainAxesNameList__mod.html", "namespaceSpecBase__DomainAxesNameList__mod" ],
@@ -256,18 +261,55 @@ var namespaces_dup =
     [ "Statistics_mod", "namespaceStatistics__mod.html", "namespaceStatistics__mod" ],
     [ "String_mod", "namespaceString__mod.html", "namespaceString__mod" ],
     [ "System_mod", "namespaceSystem__mod.html", "namespaceSystem__mod" ],
-    [ "Test_Array_mod", "namespaceTest__Array__mod.html", [
-      [ "test_Array", "namespaceTest__Array__mod.html#adfaeaf09e0af13f7aabb2f742b227988", null ],
-      [ "Test", "namespaceTest__Array__mod.html#a7e1afe085399d3007775f2110c046816", null ]
+    [ "Test_ArrayInsert_mod", "namespaceTest__ArrayInsert__mod.html", [
+      [ "test_ArrayInsert", "namespaceTest__ArrayInsert__mod.html#a11eea38c14625650c719a003007d743e", null ],
+      [ "Test", "namespaceTest__ArrayInsert__mod.html#a657e561086f84294d71a4d7efb892332", null ]
+    ] ],
+    [ "Test_ArrayRemap_mod", "namespaceTest__ArrayRemap__mod.html", [
+      [ "test_ArrayRemap", "namespaceTest__ArrayRemap__mod.html#a6da0e18e5e834b76a04365373f43cae0", null ],
+      [ "Test", "namespaceTest__ArrayRemap__mod.html#a4979e9554ed4b32072c474b60a70b068", null ]
+    ] ],
+    [ "Test_ArrayRemove_mod", "namespaceTest__ArrayRemove__mod.html", [
+      [ "test_ArrayRemove", "namespaceTest__ArrayRemove__mod.html#aa659784dc02d5425f218e7f5214467fe", null ],
+      [ "Test", "namespaceTest__ArrayRemove__mod.html#aed22d38f02775337da9d66a3cfb445fd", null ]
     ] ],
     [ "Test_ArrayReplace_mod", "namespaceTest__ArrayReplace__mod.html", [
       [ "test_ArrayReplace", "namespaceTest__ArrayReplace__mod.html#a36c5d5ed9b00ad2e3d44b53e250cf05b", null ],
+      [ "test_genReplaced_recurs_alloc_1", "namespaceTest__ArrayReplace__mod.html#abe11932589e55132d001d7e68cb40fc8", null ],
+      [ "test_genReplaced_recurs_alloc_2", "namespaceTest__ArrayReplace__mod.html#ae99980f97c7bac7d6aed8284bad2182e", null ],
+      [ "test_genReplaced_recurs_alloc_3", "namespaceTest__ArrayReplace__mod.html#a90d1d9fc1abc9f352786de725f24a4f9", null ],
       [ "Test", "namespaceTest__ArrayReplace__mod.html#a204c0c75ce025758927bbcfc09244477", null ]
     ] ],
+    [ "Test_ArrayResize_mod", "namespaceTest__ArrayResize__mod.html", [
+      [ "test_ArrayResize", "namespaceTest__ArrayResize__mod.html#a76c5f5d01275ac5ec1d86c91895f568c", null ],
+      [ "Test", "namespaceTest__ArrayResize__mod.html#a6cecd0efcfec6a24524012d3e6f7fae5", null ]
+    ] ],
+    [ "Test_ArrayReverse_mod", "namespaceTest__ArrayReverse__mod.html", [
+      [ "test_ArrayReverse", "namespaceTest__ArrayReverse__mod.html#a318c8d795a8ed305764db5725c2bea6a", null ],
+      [ "Test", "namespaceTest__ArrayReverse__mod.html#ae17724ea49e0af64d08d133f66227c0d", null ]
+    ] ],
+    [ "Test_ArrayShuffle_mod", "namespaceTest__ArrayShuffle__mod.html", [
+      [ "test_ArrayShuffle", "namespaceTest__ArrayShuffle__mod.html#a3f9fd477df000efa217e59b8ec078c22", null ],
+      [ "Test", "namespaceTest__ArrayShuffle__mod.html#aae5e25f9409a19cf7fe025f0cc12b787", null ]
+    ] ],
+    [ "Test_ArraySort_mod", "namespaceTest__ArraySort__mod.html", [
+      [ "test_performance_1", "namespaceTest__ArraySort__mod.html#a2f18dcc9f23998b8ceec12ad3ae0184a", null ],
+      [ "test_Sort", "namespaceTest__ArraySort__mod.html#a74b45bf6a61ecb38aa78c2f06155d7c5", null ],
+      [ "test_sortRecursive_1", "namespaceTest__ArraySort__mod.html#aae881af32438a81a999fadc0b2bc1dd1", null ],
+      [ "DataUnsorted2_IK", "namespaceTest__ArraySort__mod.html#ac81f8c36ceb8ae25b9e6e176ff6c8e2e", null ],
+      [ "DataUnsorted2_RK", "namespaceTest__ArraySort__mod.html#a37f493eb4ad5d41d69af394b99bdf291", null ],
+      [ "DataUnsorted_IK", "namespaceTest__ArraySort__mod.html#a03491057ee09ad7f910a5a5e4fe70098", null ],
+      [ "DataUnsorted_RK", "namespaceTest__ArraySort__mod.html#aafa0d91026456b70b33c1f19425b0799", null ],
+      [ "ndata", "namespaceTest__ArraySort__mod.html#a80b8d8e69f5b4a944cbb278c48cf881e", null ],
+      [ "Test", "namespaceTest__ArraySort__mod.html#ab5147c4d025ae467a1f49a45dda67342", null ]
+    ] ],
+    [ "Test_ArraySplit_mod", "namespaceTest__ArraySplit__mod.html", [
+      [ "test_ArraySplit", "namespaceTest__ArraySplit__mod.html#ab4b807b98e88d338b6e60106c088671c", null ],
+      [ "Test", "namespaceTest__ArraySplit__mod.html#a7a89f94c26e7cdc407a2ceea4a214595", null ]
+    ] ],
     [ "Test_ArrayUnique_mod", "namespaceTest__ArrayUnique__mod.html", [
-      [ "test_findUnique_1", "namespaceTest__ArrayUnique__mod.html#a3c10237f5e500530c5db1219f69dae96", null ],
-      [ "test_genUnique_1", "namespaceTest__ArrayUnique__mod.html#aad370978a9aac5278da5fa7c9660e734", null ],
-      [ "test_Unique", "namespaceTest__ArrayUnique__mod.html#a42ff6c1d92ce5b2546dffaa0e59df764", null ],
+      [ "test_ArrayUnique", "namespaceTest__ArrayUnique__mod.html#a0dd5f5dddcf36bcec444df40447770d2", null ],
+      [ "test_genUnique_D1_1", "namespaceTest__ArrayUnique__mod.html#ab762b121aeb0d4e5a2b678f3d14c8873", null ],
       [ "Test", "namespaceTest__ArrayUnique__mod.html#a098e0e9213cf2f474ba2c3c4f28ee982", null ]
     ] ],
     [ "Test_Constants_mod", "namespaceTest__Constants__mod.html", [
@@ -673,6 +715,10 @@ var namespaces_dup =
       [ "test_MathMinMax", "namespaceTest__MathMinMax__mod.html#a1103df3baf4dcd83cc40bacd2019a6a6", null ],
       [ "Test", "namespaceTest__MathMinMax__mod.html#a63e2738e20b914ba25b63d5f37ee8652", null ]
     ] ],
+    [ "Test_MathRange_mod", "namespaceTest__MathRange__mod.html", [
+      [ "test_MathRange", "namespaceTest__MathRange__mod.html#aca2bd991631e48115a419f7445ec45ab", null ],
+      [ "Test", "namespaceTest__MathRange__mod.html#a5a0682576654b2357c5ac67de5c5663d", null ]
+    ] ],
     [ "Test_Matrix_mod", "namespaceTest__Matrix__mod.html", [
       [ "test_genDet_1", "namespaceTest__Matrix__mod.html#ac8452b1dc4af243e9b5a26573eb2d851", null ],
       [ "test_genSqrtDetPosDefMat_1", "namespaceTest__Matrix__mod.html#aaa89c9d3a00441aa5a5ed5c41f31229a", null ],
@@ -919,17 +965,6 @@ var namespaces_dup =
       [ "test_Set", "namespaceTest__Set__mod.html#aecac8acf13d4c439e022446b910093f3", null ],
       [ "Test", "namespaceTest__Set__mod.html#afe6fee5315e86985fab66777dc0080e1", null ]
     ] ],
-    [ "Test_Sort_mod", "namespaceTest__Sort__mod.html", [
-      [ "test_performance_1", "namespaceTest__Sort__mod.html#a475428826b9af448bfeeecdbef49e92b", null ],
-      [ "test_Sort", "namespaceTest__Sort__mod.html#a3007645c0e0ad8682cd3c22fdb1e57c8", null ],
-      [ "test_sortRecursive_1", "namespaceTest__Sort__mod.html#a5122d979a3e8d536f78f8e0945a08455", null ],
-      [ "DataUnsorted2_IK", "namespaceTest__Sort__mod.html#ad38ad1d1401616c73b69b1353c3d80fa", null ],
-      [ "DataUnsorted2_RK", "namespaceTest__Sort__mod.html#ae6838fd5ab47245fbbc584dd985e70a7", null ],
-      [ "DataUnsorted_IK", "namespaceTest__Sort__mod.html#a61c6261a740c6bdddec96a8e960c07a6", null ],
-      [ "DataUnsorted_RK", "namespaceTest__Sort__mod.html#a888d62ae775f3513a9555efd54aa1948", null ],
-      [ "ndata", "namespaceTest__Sort__mod.html#a39e7d13a290063e6f5953c2b38a8ae9d", null ],
-      [ "Test", "namespaceTest__Sort__mod.html#a58305fce1c81daccf01d3ba86e3a93c4", null ]
-    ] ],
     [ "Test_SpecFuncGamma_mod", "namespaceTest__SpecFuncGamma__mod.html", [
       [ "test_genLogFactorial_RK128_1", "namespaceTest__SpecFuncGamma__mod.html#adc7c4f9d2ad81d417058601b5ffaf696", null ],
       [ "test_genLogFactorial_RK32_1", "namespaceTest__SpecFuncGamma__mod.html#a315b220130f5594be290aeadf8d0b6f6", null ],
@@ -1017,23 +1052,11 @@ var namespaces_dup =
       [ "UnifRnd", "namespaceTest__Statistics__mod.html#aacebf7ed5cb2a5a73e9bd056f05dda05", null ]
     ] ],
     [ "Test_String_mod", "namespaceTest__String__mod.html", [
-      [ "test_char2int32_1", "namespaceTest__String__mod.html#a920817619e55e79df04490b8e614fd6a", null ],
-      [ "test_char2int32_2", "namespaceTest__String__mod.html#a00c2c5a46b8dfe18f0234e9e5bdaf388", null ],
-      [ "test_char2int64_1", "namespaceTest__String__mod.html#a27ae8d22638357e8fa03e6b1a1af170e", null ],
-      [ "test_char2int64_2", "namespaceTest__String__mod.html#a88d1a457994fc6ad05d3157d22486a5d", null ],
-      [ "test_char2int_1", "namespaceTest__String__mod.html#ad3aa772e9cf5c546c6cbd074bef9f3f2", null ],
-      [ "test_char2int_2", "namespaceTest__String__mod.html#aaa5e89428838ea5a00487904cc60f53a", null ],
-      [ "test_char2real32_1", "namespaceTest__String__mod.html#af2fa3d4c77c74cd7692b179ed1cf662e", null ],
-      [ "test_char2real32_2", "namespaceTest__String__mod.html#a5dbb5d57f976f809050826db512886c9", null ],
-      [ "test_char2real64_1", "namespaceTest__String__mod.html#a0cbb0f9dcc60551969feefcfd9462b38", null ],
-      [ "test_char2real64_2", "namespaceTest__String__mod.html#a4a73a02b77abf6203d8ef4d2386e3305", null ],
-      [ "test_char2real_1", "namespaceTest__String__mod.html#ac97ee8247cf62dac98eb5e7b96398d1d", null ],
-      [ "test_char2real_2", "namespaceTest__String__mod.html#a8259961f55257a8bbce97c2647e41fc7", null ],
       [ "test_contains_1", "namespaceTest__String__mod.html#a5d044f4b2b3a21a34be690d04e7bc05d", null ],
-      [ "test_getLowerCase_1", "namespaceTest__String__mod.html#a19e9722dbe23fc496570087275bd0a28", null ],
-      [ "test_getLowerCase_2", "namespaceTest__String__mod.html#afd1d3de6f2f0dd5eef5194c6eac4ea0a", null ],
-      [ "test_getUpperCase_1", "namespaceTest__String__mod.html#a82f7d3574a9a46e8aa001966a2ff9622", null ],
-      [ "test_getUpperCase_2", "namespaceTest__String__mod.html#a5debbe905d8e3206afb5c15845125652", null ],
+      [ "test_genLowerCase_1", "namespaceTest__String__mod.html#a74460bde10bc36e080831b007194f389", null ],
+      [ "test_genLowerCase_2", "namespaceTest__String__mod.html#a5c008e497838a000629523bccdc6c214", null ],
+      [ "test_genUpperCase_1", "namespaceTest__String__mod.html#aba42a2f595900ddd0f53ddae03ed11a2", null ],
+      [ "test_genUpperCase_2", "namespaceTest__String__mod.html#a7ab40189c022a53533e9e581e6a4c929", null ],
       [ "test_has_1", "namespaceTest__String__mod.html#a36095057a4d80bee6b20e15dfacb7ade", null ],
       [ "test_IntStr_type_1", "namespaceTest__String__mod.html#ae484718b448095f8276542651ba53ca6", null ],
       [ "test_IntStr_type_2", "namespaceTest__String__mod.html#ab39ba582c4b2ff4f29aee8e2577f4862", null ],
@@ -1054,33 +1077,45 @@ var namespaces_dup =
       [ "test_splitStr_3", "namespaceTest__String__mod.html#a19ee0e10039e14a61d67412326bd4e48", null ],
       [ "test_splitStr_4", "namespaceTest__String__mod.html#ac1beaf7d0f83d5587328abf4151d912d", null ],
       [ "test_splitStr_5", "namespaceTest__String__mod.html#a69cd5330b81c85648d0e7858b4104b87", null ],
+      [ "test_str2int32_1", "namespaceTest__String__mod.html#a0098aee2173c997086cc213ffa12889a", null ],
+      [ "test_str2int32_2", "namespaceTest__String__mod.html#a57815a9cb16fe72bbfcaa5509ccd55df", null ],
+      [ "test_str2int64_1", "namespaceTest__String__mod.html#abde1f303a8baac8944f847e5d16ee41d", null ],
+      [ "test_str2int64_2", "namespaceTest__String__mod.html#a365c49e41a152ef43dd38e3b56376284", null ],
+      [ "test_str2int_1", "namespaceTest__String__mod.html#a025826cfb498995444653dda675a37cf", null ],
+      [ "test_str2int_2", "namespaceTest__String__mod.html#aca94caa3e372d5e7e724175014adb791", null ],
+      [ "test_str2real32_1", "namespaceTest__String__mod.html#a2d6688436247a12d8135d96f3985f79c", null ],
+      [ "test_str2real32_2", "namespaceTest__String__mod.html#aa549ae97c2c0fa5fa967f99a4c6a965d", null ],
+      [ "test_str2real64_1", "namespaceTest__String__mod.html#af3f71e5791607f6062bf284622399664", null ],
+      [ "test_str2real64_2", "namespaceTest__String__mod.html#a4c0f7d3520e9c2ce01a044797c802d77", null ],
+      [ "test_str2real_1", "namespaceTest__String__mod.html#a478bdf288324d96c519932acb84b3810", null ],
+      [ "test_str2real_2", "namespaceTest__String__mod.html#a1674a9318bdc1ea8cb75e1c7c3c20543", null ],
       [ "test_String", "namespaceTest__String__mod.html#a9f287994ba1b9b1ade80c547a3aa70fa", null ],
-      [ "test_val2char_1", "namespaceTest__String__mod.html#aa28dd9c763daf0aee729bdf2308b0452", null ],
-      [ "test_val2char_2", "namespaceTest__String__mod.html#a7fa90463e71289091959844b478b2f26", null ],
-      [ "test_val2char_IK32_1", "namespaceTest__String__mod.html#abe876ba054df4751164cf8ae81e10cf6", null ],
-      [ "test_val2char_IK32_2", "namespaceTest__String__mod.html#a9aa1f826a5f6a2b4bab876f29245001f", null ],
-      [ "test_val2char_IK32_3", "namespaceTest__String__mod.html#a7bc7b8cc2cd4b7616b9d5dd15664ad5b", null ],
-      [ "test_val2char_IK64_1", "namespaceTest__String__mod.html#a502f65550ced8385635296d6ccc0ed69", null ],
-      [ "test_val2char_IK64_2", "namespaceTest__String__mod.html#a47935e2432110830e2fa6030de470ef2", null ],
-      [ "test_val2char_IK64_3", "namespaceTest__String__mod.html#ab835b67d809f3245e16f2b8623c28a78", null ],
-      [ "test_val2char_LK_1", "namespaceTest__String__mod.html#a414113949ae17011411d60693726c9f6", null ],
-      [ "test_val2char_LK_2", "namespaceTest__String__mod.html#a71e02f30e7a10340fd56df648d86463d", null ],
-      [ "test_val2char_RK32_1", "namespaceTest__String__mod.html#afe643e07178607814b90401b8093f274", null ],
-      [ "test_val2char_RK32_2", "namespaceTest__String__mod.html#a5acea2176bb8c0e410a630ad9bd2eaaa", null ],
-      [ "test_val2char_RK32_3", "namespaceTest__String__mod.html#a2028ede7a739b97c34c70b744351ba67", null ],
-      [ "test_val2char_RK32_4", "namespaceTest__String__mod.html#a26fefb3fccc49e5779525175aee7dfce", null ],
-      [ "test_val2char_RK64_1", "namespaceTest__String__mod.html#a9daf0a42a4525b3f956c9b063e4dac79", null ],
-      [ "test_val2char_RK64_2", "namespaceTest__String__mod.html#ab3e6117a55ded0a8c780aeb273c760af", null ],
-      [ "test_val2char_RK64_3", "namespaceTest__String__mod.html#ae28f109ad3001e715ec7a457b354e62b", null ],
-      [ "test_val2char_RK64_4", "namespaceTest__String__mod.html#a5468fe63a74977945fdf73378d916952", null ],
-      [ "test_val2char_RK64_D1_1", "namespaceTest__String__mod.html#ad6704705476c53f39fcaacbb61fbc471", null ],
-      [ "test_val2char_RK64_D1_2", "namespaceTest__String__mod.html#a82ab10af4dd3063b2371b5af78413a39", null ],
-      [ "test_val2char_RK64_D1_3", "namespaceTest__String__mod.html#a79f654acb576deb49e790bd398e4ee00", null ],
-      [ "test_val2char_RK64_D1_4", "namespaceTest__String__mod.html#a816b5f675eb605d8899ce94cae78c78c", null ],
-      [ "test_val2char_RK64_D2_1", "namespaceTest__String__mod.html#af0d944dfbcb2fd107bf77bdeffda230d", null ],
-      [ "test_val2char_RK64_D2_2", "namespaceTest__String__mod.html#a10ae240b07632f22ec1faaa532649649", null ],
-      [ "test_val2char_RK64_D2_3", "namespaceTest__String__mod.html#aee2fc27d6afcbdd9f30cb0c0622746c3", null ],
-      [ "test_val2char_RK64_D2_4", "namespaceTest__String__mod.html#a1d8e9791d9e15a60dabe53007c99d4b1", null ],
+      [ "test_val2str_1", "namespaceTest__String__mod.html#a69adbbad77530a6fca0914183db9f9fd", null ],
+      [ "test_val2str_2", "namespaceTest__String__mod.html#a004e3ec7cb4e7008980ad5ce4e7bc9ec", null ],
+      [ "test_val2str_IK32_1", "namespaceTest__String__mod.html#ac02a6d848d073fb40e5089865bb7948a", null ],
+      [ "test_val2str_IK32_2", "namespaceTest__String__mod.html#a868b53db9037d0c9c572c513718072be", null ],
+      [ "test_val2str_IK32_3", "namespaceTest__String__mod.html#a3e54d662514ad88cf6517895dd5c0920", null ],
+      [ "test_val2str_IK64_1", "namespaceTest__String__mod.html#ae8057ff848e7ea60db5ad643a490bf15", null ],
+      [ "test_val2str_IK64_2", "namespaceTest__String__mod.html#ae3f3b2029a8ee73fc5ec5fdaa0847bed", null ],
+      [ "test_val2str_IK64_3", "namespaceTest__String__mod.html#ac148ede0598121f66d6c42b03497582b", null ],
+      [ "test_val2str_LK_1", "namespaceTest__String__mod.html#af9a4d7dc30e5667b78d73adc772a687c", null ],
+      [ "test_val2str_LK_2", "namespaceTest__String__mod.html#a1d180e848820bbd3a176ba2d6bceabe8", null ],
+      [ "test_val2str_RK32_1", "namespaceTest__String__mod.html#ad6bbdd464b01f8d193fd54a804afa1ad", null ],
+      [ "test_val2str_RK32_2", "namespaceTest__String__mod.html#a01153268465a9321bdcfad146328c9be", null ],
+      [ "test_val2str_RK32_3", "namespaceTest__String__mod.html#af90b862046f2725c3572eba75703c305", null ],
+      [ "test_val2str_RK32_4", "namespaceTest__String__mod.html#a26bc2248547f79378f08b3092b59dbc4", null ],
+      [ "test_val2str_RK64_1", "namespaceTest__String__mod.html#ad0aa57584f7c53362be9375bff17ae91", null ],
+      [ "test_val2str_RK64_2", "namespaceTest__String__mod.html#abf266a701a644803fdec0197ac100ad3", null ],
+      [ "test_val2str_RK64_3", "namespaceTest__String__mod.html#a507c0a14f02029ef4d421f982535f719", null ],
+      [ "test_val2str_RK64_4", "namespaceTest__String__mod.html#ac1fe6532241e69fd05fc7d50a6c0bee6", null ],
+      [ "test_val2str_RK64_D1_1", "namespaceTest__String__mod.html#a6f307f86eca6d8415e377f7b0a13f6ae", null ],
+      [ "test_val2str_RK64_D1_2", "namespaceTest__String__mod.html#a51782250eaf6bc17ea6daaa0f928d61d", null ],
+      [ "test_val2str_RK64_D1_3", "namespaceTest__String__mod.html#a38bcf11efaa2a56965ab8707bce25621", null ],
+      [ "test_val2str_RK64_D1_4", "namespaceTest__String__mod.html#ae98c9b195317fed0147248e8702edaa6", null ],
+      [ "test_val2str_RK64_D2_1", "namespaceTest__String__mod.html#aa53c9e8d8d4824034beba82313bcc791", null ],
+      [ "test_val2str_RK64_D2_2", "namespaceTest__String__mod.html#aa621a893390a52d18980ed301aeb2c22", null ],
+      [ "test_val2str_RK64_D2_3", "namespaceTest__String__mod.html#ae23a010e0ae6e978f6309d99d0a9171e", null ],
+      [ "test_val2str_RK64_D2_4", "namespaceTest__String__mod.html#aab5758903bb6718d618fdd107ac2dd08", null ],
       [ "Test", "namespaceTest__String__mod.html#a7fe2abe772de09b644378790a19a0366", null ]
     ] ],
     [ "Test_System_mod", "namespaceTest__System__mod.html", [

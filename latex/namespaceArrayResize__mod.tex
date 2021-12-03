@@ -2,37 +2,275 @@
 \label{namespaceArrayResize__mod}\index{ArrayResize\_mod@{ArrayResize\_mod}}
 
 
-This module contains procedures for resizing arrays of type integer, real, complex, or string.  
+This module contains procedures for resizing arrays of various types.  
 
 
 \doxysubsection*{Data Types}
 \begin{DoxyCompactItemize}
 \item 
 interface \mbox{\hyperlink{interfaceArrayResize__mod_1_1resize}{resize}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Resize an input array to twice its current size or, shrink/expand it to the requested input {\ttfamily size} or to the requested input new lower and upper bounds ({\ttfamily lb, ub}) while keeping the array contents in its original indices in the resized array. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-character($\ast$), parameter \mbox{\hyperlink{namespaceArrayResize__mod_afebbcdecd86d1ae7f47130819a0a9ed4}{MODULE\+\_\+\+NAME}} = \char`\"{}@Array\+Resize\+\_\+mod\char`\"{}
+character($\ast$, SK), parameter \mbox{\hyperlink{namespaceArrayResize__mod_a810286605f705d12054636ce96d48d15}{MODULE\+\_\+\+NAME}} = \char`\"{}@Array\+Resize\+\_\+mod\char`\"{}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-This module contains procedures for resizing arrays of type integer, real, complex, or string. 
+This module contains procedures for resizing arrays of various types. 
 
+\begin{DoxyRefDesc}{Benchmarks}
+\item[\mbox{\hyperlink{benchmarks__benchmarks000005}{Benchmarks}}]\end{DoxyRefDesc}
+
+
+\label{namespaceArrayResize__mod_benchmark-resize_vs_direct}%
+\Hypertarget{namespaceArrayResize__mod_benchmark-resize_vs_direct}%
+{\bfseries{Benchmark \+:: The runtime performance of \mbox{\hyperlink{interfaceArrayResize__mod_1_1resize}{resize}} vs. direct reversing}} \href{\#benchmark-resize_vs_direct}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00001}00001 \textcolor{fortran_statement}{program} benchmark}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00003}00003     \textcolor{fortran_statement}{use }\textcolor{fortran_inrinsic_module}{iso\_fortran\_env}, \textcolor{fortran_statement}{only}:\textcolor{fortran_named_const}{ error\_unit}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00004}00004     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00005}00005     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceBench__mod}{Bench\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00007}00007     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00009}00009     \textcolor{fortran_statement}{integer}(IK)                         :: i}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00010}00010     \textcolor{fortran_statement}{integer}(IK)                         :: isize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00011}00011     \textcolor{fortran_statement}{integer}(IK)                         :: fileUnit}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00012}00012     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}             :: NSIZE\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00013}00013     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}             :: NBENCH\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00014}00014     \textcolor{fortran_statement}{integer}(IK)                         :: ArraySize(NSIZE)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00015}00015 \textcolor{fortran_statement}{    real}(RK)                            :: dummy\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.\_RK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00016}00016 \textcolor{fortran_statement}{    real}(RK)    ,\textcolor{fortran_attribute}{ allocatable}           :: Array(:)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00017}00017     \textcolor{fortran_statement}{type}(Bench\_type)                    :: Bench(NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00019}00019     Bench(\textcolor{fortran_numeric_literal}{1})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}resize"{}}, exec\textcolor{fortran_operator_symbols}{ = }resize , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00020}00020     Bench(\textcolor{fortran_numeric_literal}{2})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}direct"{}}, exec\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_af519846e59fa19929fbe6933df48e53b}{direct}} , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00022}00022     ArraySize\textcolor{fortran_operator_symbols}{ = }[(\textcolor{fortran_numeric_literal}{ 2\_IK}\textcolor{fortran_operator_symbols}{*}\textcolor{fortran_operator_symbols}{*}isize, isize\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}, NSIZE )]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00024}00024 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00025}00025 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}resize() vs. direct()"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00026}00026 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00028}00028 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnit, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.out"{}}, status\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}replace"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00030}00030 \textcolor{fortran_statement}{        write}(fileUnit, \textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) \textcolor{fortran_string}{"{}ArraySize"{}}, (Bench(i)\textcolor{fortran_operator_symbols}{\%}name, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00032}00032         loopOverArraySize: \textcolor{fortran_keywordflow}{do} isize\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NSIZE\textcolor{fortran_operator_symbols}{ -\/ }\textcolor{fortran_numeric_literal}{1}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00034}00034 \textcolor{fortran_statement}{            write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Benchmarking with size"{}}, ArraySize(isize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00036}00036 \textcolor{fortran_statement}{            allocate}(Array(ArraySize(isize)))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00037}00037 \textcolor{fortran_statement}{            call}\textcolor{fortran_subroutine}{ random\_number}(Array)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00038}00038             \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00039}00039 \textcolor{fortran_statement}{                call} Bench(i)\textcolor{fortran_operator_symbols}{\%}time(Bench(i)\textcolor{fortran_operator_symbols}{\%}Timing, minsec\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{1\_RK}, miniter\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{0\_IK})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00040}00040 \textcolor{fortran_keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00041}00041 \textcolor{fortran_statement}{            deallocate}(Array)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00043}00043 \textcolor{fortran_statement}{            write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) ArraySize(isize), (Bench(i)\textcolor{fortran_operator_symbols}{\%}Timing\textcolor{fortran_operator_symbols}{\%}Stat\textcolor{fortran_operator_symbols}{\%}mean, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00045}00045 \textcolor{fortran_keywordflow}{        end do} loopOverArraySize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00046}00046 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) dummy}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00047}00047 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00049}00049 \textcolor{fortran_statement}{    close}(fileUnit)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00051}00051 \textcolor{fortran_statement}{contains}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00053}00053     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00054}00054     \textcolor{fortran_comment}{! procedure wrappers.}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00055}00055     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00057}00057 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00058}00058 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00059}00059 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00060}00060     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00062}00062 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00063}00063         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArrayShuffle__mod}{ArrayShuffle\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArrayShuffle__mod_1_1shuffle}{shuffle}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00064}00064 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{interfaceArrayShuffle__mod_1_1shuffle}{shuffle}}(Array(\textcolor{fortran_numeric_literal}{1}:ArraySize(isize)))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00065}00065     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00067}00067 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00068}00068         dummy\textcolor{fortran_operator_symbols}{ = }dummy\textcolor{fortran_operator_symbols}{ + }Array(\textcolor{fortran_numeric_literal}{1})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00069}00069     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00071}00071 \textcolor{fortran_statement}{    subroutine} resize()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00072}00072         \textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00073}00073             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArrayResize__mod}{ArrayResize\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArrayResize__mod_1_1resize}{resize}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00074}00074 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00075}00075 \textcolor{fortran_statement}{                call} \mbox{\hyperlink{interfaceArrayResize__mod_1_1resize}{resize}}(Array, ArraySize(isize\textcolor{fortran_operator_symbols}{+}\textcolor{fortran_numeric_literal}{1}))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00076}00076 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00077}00077 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00078}00078 \textcolor{fortran_statement}{                call} \mbox{\hyperlink{interfaceArrayResize__mod_1_1resize}{resize}}(Array, ArraySize(isize))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00079}00079 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00080}00080 \textcolor{fortran_keywordflow}{        end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00081}00081     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00083}00083 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_af519846e59fa19929fbe6933df48e53b}{direct}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00084}00084 \textcolor{fortran_statement}{        real}(RK),\textcolor{fortran_attribute}{ allocatable} :: Temp(:)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00085}00085 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00086}00086             Temp\textcolor{fortran_operator_symbols}{ = }Array}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00087}00087 \textcolor{fortran_statement}{            deallocate}(Array)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00088}00088 \textcolor{fortran_statement}{            allocate}(Array(ArraySize(isize\textcolor{fortran_operator_symbols}{+}\textcolor{fortran_numeric_literal}{1})))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00089}00089             Array(\textcolor{fortran_numeric_literal}{1}:ArraySize(isize))\textcolor{fortran_operator_symbols}{ = }Temp}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00090}00090 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00091}00091 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00092}00092             Temp\textcolor{fortran_operator_symbols}{ = }Array(\textcolor{fortran_numeric_literal}{1}:ArraySize(isize))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00093}00093             Array\textcolor{fortran_operator_symbols}{ = }Temp}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00094}00094 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00095}00095 \textcolor{fortran_statement}{        deallocate}(Temp)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00096}00096     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00098}00098 \textcolor{fortran_statement}{end program }benchmark}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceArrayResize__mod_compileb-unix-gnu-resize_vs_direct}%
+\Hypertarget{namespaceArrayResize__mod_compileb-unix-gnu-resize_vs_direct}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compileb-unix-gnu-resize_vs_direct}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceArrayResize__mod_compileb-unix-intel-resize_vs_direct}%
+\Hypertarget{namespaceArrayResize__mod_compileb-unix-intel-resize_vs_direct}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compileb-unix-intel-resize_vs_direct}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceArrayResize__mod_postprocb-resize_vs_direct}%
+\Hypertarget{namespaceArrayResize__mod_postprocb-resize_vs_direct}%
+{\bfseries{Postprocessing of the output}} \href{\#postprocb-resize_vs_direct}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00004}00004 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00005}00005 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00007}00007 fontsize = 14}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00009}00009 methods = [\textcolor{stringliteral}{"{}resize"{}}, \textcolor{stringliteral}{"{}direct"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00011}00011 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.out"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00017}00017 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00018}00018 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00020}00020 \textcolor{keywordflow}{for} method \textcolor{keywordflow}{in} methods:}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00021}00021     plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00022}00022             , df[method].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00023}00023             , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00024}00024             )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00026}00026 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00027}00027 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00028}00028 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00029}00029 ax.set\_ylabel(\textcolor{stringliteral}{"{}Runtime [ seconds ]"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00030}00030 ax.set\_title(\textcolor{stringliteral}{"{}resize() vs. direct method.\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00031}00031 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00032}00032 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00033}00033 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00034}00034 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00035}00035 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00036}00036 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00037}00037 ax.legend   ( methods}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00038}00038            \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00039}00039            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00040}00040             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00041}00041             )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00043}00043 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00044}00044 plt.savefig(\textcolor{stringliteral}{"{}benchmark.resize\_vs\_direct.runtime.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00050}00050 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00051}00051 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00053}00053 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00054}00054         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00055}00055         , linestyle = \textcolor{stringliteral}{"{}-\/-\/"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00056}00056         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00057}00057         )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00058}00058 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00059}00059         , df[\textcolor{stringliteral}{"{}direct"{}}].values / df[\textcolor{stringliteral}{"{}resize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00060}00060         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00061}00061         )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00063}00063 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00064}00064 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00065}00065 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00066}00066 ax.set\_ylabel(\textcolor{stringliteral}{"{}Runtime compared to resize()"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00067}00067 ax.set\_title(\textcolor{stringliteral}{"{}direct method to resize() Runtime Ratio.\(\backslash\)nLower means faster. Lower than 1 means faster than resize()."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00068}00068 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00069}00069 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00070}00070 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00071}00071 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00072}00072 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00073}00073 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00074}00074 ax.legend   ( [\textcolor{stringliteral}{"{}resize()"{}}, \textcolor{stringliteral}{"{}Direct Method"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00075}00075            \textcolor{comment}{\#, bbox\_to\_anchor = (1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00076}00076            \textcolor{comment}{\#, loc = "{}center left"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00077}00077             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00078}00078             )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00080}00080 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayResize__mod_l00081}00081 plt.savefig(\textcolor{stringliteral}{"{}benchmark.resize\_vs\_direct.runtime.ratio.png"{}})}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceArrayResize__mod_visb-resize_vs_direct}%
+\Hypertarget{namespaceArrayResize__mod_visb-resize_vs_direct}%
+{\bfseries{Visualization of the benchmark output}} \href{\#visb-resize_vs_direct}{\texttt{ ⛓}} \DoxyHorRuler{0}
+   ~\newline
+ \label{namespaceArrayResize__mod_moralb-resize_vs_direct}%
+\Hypertarget{namespaceArrayResize__mod_moralb-resize_vs_direct}%
+{\bfseries{Benchmark moral}} \href{\#moralb-resize_vs_direct}{\texttt{ ⛓}} \DoxyHorRuler{0}
+
+\begin{DoxyEnumerate}
+\item The procedures under the generic interface \mbox{\hyperlink{interfaceArrayResize__mod_1_1resize}{resize}} are about 10-\/20\% faster than naively copying and resizing via temporary arrays, simply because \mbox{\hyperlink{interfaceArrayResize__mod_1_1resize}{resize}} avoids an extra unnecessary reallocation and data copy.
+\end{DoxyEnumerate}
+\end{DoxyParagraph}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000012}{Test}}]\mbox{\hyperlink{namespaceTest__ArrayResize__mod}{Test\+\_\+\+Array\+Resize\+\_\+mod}}\end{DoxyRefDesc}
+
+
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
 \begin{DoxyAuthor}{Author}
 Amir Shahmoradi, Wednesday 12\+:20 AM, October 13, 2021, Dallas, TX 
 \end{DoxyAuthor}
 
 
 \doxysubsection{Variable Documentation}
-\mbox{\Hypertarget{namespaceArrayResize__mod_afebbcdecd86d1ae7f47130819a0a9ed4}\label{namespaceArrayResize__mod_afebbcdecd86d1ae7f47130819a0a9ed4}} 
+\mbox{\Hypertarget{namespaceArrayResize__mod_a810286605f705d12054636ce96d48d15}\label{namespaceArrayResize__mod_a810286605f705d12054636ce96d48d15}} 
 \index{ArrayResize\_mod@{ArrayResize\_mod}!MODULE\_NAME@{MODULE\_NAME}}
 \index{MODULE\_NAME@{MODULE\_NAME}!ArrayResize\_mod@{ArrayResize\_mod}}
 \doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
-{\footnotesize\ttfamily character($\ast$), parameter Array\+Resize\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Array\+Resize\+\_\+mod\char`\"{}}
+{\footnotesize\ttfamily character($\ast$,SK), parameter Array\+Resize\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Array\+Resize\+\_\+mod\char`\"{}}
 
 
 
-Definition at line \mbox{\hyperlink{ArrayResize__mod_8f90_source_l00053}{53}} of file \mbox{\hyperlink{ArrayResize__mod_8f90_source}{Array\+Resize\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{ArrayResize__mod_8f90_source_l00074}{74}} of file \mbox{\hyperlink{ArrayResize__mod_8f90_source}{Array\+Resize\+\_\+mod.\+f90}}.
 

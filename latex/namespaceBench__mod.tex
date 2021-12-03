@@ -23,7 +23,7 @@ type \mbox{\hyperlink{structBench__mod_1_1Timing__type}{Timing\+\_\+type}}
 \item 
 type(\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\+\_\+type}}) function \mbox{\hyperlink{namespaceBench__mod_a16467ea4d1853b462976b52e0d95f53f}{construct\+Bench}} (name, exec, \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{get\+Overhead}}, minsec)
 \begin{DoxyCompactList}\small\item\em Construct and return an object of type \mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\+\_\+type}}. This is the constructor of the type \mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\+\_\+type}} for creating objects to perform benchmarking of the user-\/specified procedures within the user-\/provided wrapper function. \end{DoxyCompactList}\item 
-subroutine \mbox{\hyperlink{namespaceBench__mod_a2964c54e2b3af9b2c746253e5759d2fe}{time\+Exec}} (Bench, Timing, minsec, niter)
+subroutine \mbox{\hyperlink{namespaceBench__mod_a614b800597a05c0abca522f81f71769f}{time\+Exec}} (Bench, Timing, minsec, miniter)
 \begin{DoxyCompactList}\small\item\em Generate and return an object of type \mbox{\hyperlink{structBench__mod_1_1Timing__type}{Timing\+\_\+type}} containing the benchmark timing information and statistics. This procedure is a method of the class \mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\+\_\+type}}. \end{DoxyCompactList}\item 
 subroutine \mbox{\hyperlink{namespaceBench__mod_a8f3249a84c6762174cafe01ef8179a85}{finalize\+Bench}} (Bench)
 \item 
@@ -32,7 +32,7 @@ subroutine \mbox{\hyperlink{namespaceBench__mod_a24459d76861f1112be532f76d4801b5
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-character($\ast$), parameter \mbox{\hyperlink{namespaceBench__mod_a784b15bbce97946ccd566af0df53fb26}{MODULE\+\_\+\+NAME}} = \char`\"{}@Bench\+\_\+mod\char`\"{}
+character($\ast$, SK), parameter \mbox{\hyperlink{namespaceBench__mod_a871abba5d3131ad228625eb9c9f4a6b1}{MODULE\+\_\+\+NAME}} = \char`\"{}@Bench\+\_\+mod\char`\"{}
 \end{DoxyCompactItemize}
 
 
@@ -49,7 +49,7 @@ Amir Shahmoradi, Wednesday 4\+:13 AM, August 13, 2016, ICES, The University of T
 \index{Bench\_mod@{Bench\_mod}!constructBench@{constructBench}}
 \index{constructBench@{constructBench}!Bench\_mod@{Bench\_mod}}
 \doxysubsubsection{\texorpdfstring{constructBench()}{constructBench()}}
-{\footnotesize\ttfamily type(\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\+\_\+type}}) function Bench\+\_\+mod\+::construct\+Bench (\begin{DoxyParamCaption}\item[{character($\ast$), intent(in)}]{name,  }\item[{procedure(\mbox{\hyperlink{interfaceBench__mod_1_1exec__proc}{exec\+\_\+proc}})}]{exec,  }\item[{procedure(\mbox{\hyperlink{interfaceBench__mod_1_1exec__proc}{exec\+\_\+proc}})}]{get\+Overhead,  }\item[{real(RK), optional}]{minsec }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily type(\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\+\_\+type}}) function Bench\+\_\+mod\+::construct\+Bench (\begin{DoxyParamCaption}\item[{character($\ast$,SK), intent(in)}]{name,  }\item[{procedure(\mbox{\hyperlink{interfaceBench__mod_1_1exec__proc}{exec\+\_\+proc}})}]{exec,  }\item[{procedure(\mbox{\hyperlink{interfaceBench__mod_1_1exec__proc}{exec\+\_\+proc}})}]{get\+Overhead,  }\item[{real(RK), optional}]{minsec }\end{DoxyParamCaption})}
 
 
 
@@ -128,7 +128,7 @@ Definition at line \mbox{\hyperlink{Bench__mod_8f90_source_l00217}{217}} of file
 
 
 
-Definition at line \mbox{\hyperlink{Bench__mod_8f90_source_l00363}{363}} of file \mbox{\hyperlink{Bench__mod_8f90_source}{Bench\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Bench__mod_8f90_source_l00367}{367}} of file \mbox{\hyperlink{Bench__mod_8f90_source}{Bench\+\_\+mod.\+f90}}.
 
 \mbox{\Hypertarget{namespaceBench__mod_a8f3249a84c6762174cafe01ef8179a85}\label{namespaceBench__mod_a8f3249a84c6762174cafe01ef8179a85}} 
 \index{Bench\_mod@{Bench\_mod}!finalizeBench@{finalizeBench}}
@@ -138,13 +138,13 @@ Definition at line \mbox{\hyperlink{Bench__mod_8f90_source_l00363}{363}} of file
 
 
 
-Definition at line \mbox{\hyperlink{Bench__mod_8f90_source_l00352}{352}} of file \mbox{\hyperlink{Bench__mod_8f90_source}{Bench\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{Bench__mod_8f90_source_l00356}{356}} of file \mbox{\hyperlink{Bench__mod_8f90_source}{Bench\+\_\+mod.\+f90}}.
 
-\mbox{\Hypertarget{namespaceBench__mod_a2964c54e2b3af9b2c746253e5759d2fe}\label{namespaceBench__mod_a2964c54e2b3af9b2c746253e5759d2fe}} 
+\mbox{\Hypertarget{namespaceBench__mod_a614b800597a05c0abca522f81f71769f}\label{namespaceBench__mod_a614b800597a05c0abca522f81f71769f}} 
 \index{Bench\_mod@{Bench\_mod}!timeExec@{timeExec}}
 \index{timeExec@{timeExec}!Bench\_mod@{Bench\_mod}}
 \doxysubsubsection{\texorpdfstring{timeExec()}{timeExec()}}
-{\footnotesize\ttfamily subroutine Bench\+\_\+mod\+::time\+Exec (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\+\_\+type}})}]{Bench,  }\item[{type(\mbox{\hyperlink{structBench__mod_1_1Timing__type}{Timing\+\_\+type}})}]{Timing,  }\item[{real(RK), intent(in), optional}]{minsec,  }\item[{integer(IK), intent(in), optional}]{niter }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily subroutine Bench\+\_\+mod\+::time\+Exec (\begin{DoxyParamCaption}\item[{class(\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\+\_\+type}})}]{Bench,  }\item[{type(\mbox{\hyperlink{structBench__mod_1_1Timing__type}{Timing\+\_\+type}})}]{Timing,  }\item[{real(RK), intent(in), optional}]{minsec,  }\item[{integer(IK), intent(in), optional}]{miniter }\end{DoxyParamCaption})}
 
 
 
@@ -156,9 +156,11 @@ Generate and return an object of type \mbox{\hyperlink{structBench__mod_1_1Timin
 \hline
 \mbox{\texttt{ out}}  & {\em Timing} & \+: The output object of class \mbox{\hyperlink{structBench__mod_1_1Timing__type}{Timing\+\_\+type}} containing the resulting timing vector and statistics. For convenience, it is recommended to pass the {\ttfamily Timing} component of the implicitly-\/input object {\ttfamily Bench}. \\
 \hline
-\mbox{\texttt{ in}}  & {\em niter} & \+: The input number of iterations of timing of the procedure-\/wrapper to perform pointing to the user-\/defined wrapper procedure that calls the arbitrary procedure to be timed ({\bfseries{optional}}. If missing, it will be set dynamically to as many iterations as needed to meet the input {\ttfamily minsec} requirement). \\
+\mbox{\texttt{ in}}  & {\em miniter} & \+: The input scalar {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} representing the minimum number of iterations of the timing to perform ~\newline
+ ({\bfseries{optional}}, default = {\ttfamily 1\+\_\+\+IK}. If {\ttfamily minsec} is present, timing may repeat for more than {\ttfamily miniter} iterations until at least {\ttfamily minsec} seconds is elapsed). \\
 \hline
-\mbox{\texttt{ in}}  & {\em minsec} & \+: The input minimum time in seconds to spend on repeatedly timing the user-\/defined wrapper procedure. ({\bfseries{optional}}. default = {\ttfamily 0.\+05} seconds. However, if {\ttfamily niter} is present as input argument, any value for {\ttfamily minsec} will be ignored).\\
+\mbox{\texttt{ in}}  & {\em minsec} & \+: The input scalar {\ttfamily real} of kind \`{}\mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}} representing the minimum time in seconds to spend on timing repeatedly ~\newline
+ ({\bfseries{optional}}, default = the value specified at the time of constructing the object. If {\ttfamily miniter} is present as input argument, timing will continue for at least {\ttfamily miniter} iterations).\\
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
@@ -203,7 +205,7 @@ Generate and return an object of type \mbox{\hyperlink{structBench__mod_1_1Timin
 
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000007}{Todo}}]The computation of the median, skewness, and kurtosis of the timing vector in the Stat component must be implemented.\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{todo__todo000023}{Todo}}]The computation of the median, skewness, and kurtosis of the timing vector in the Stat component must be implemented.\end{DoxyRefDesc}
 
 
 \begin{DoxyRemark}{Remarks}
@@ -224,11 +226,11 @@ Definition at line \mbox{\hyperlink{Bench__mod_8f90_source_l00268}{268}} of file
 
 
 \doxysubsection{Variable Documentation}
-\mbox{\Hypertarget{namespaceBench__mod_a784b15bbce97946ccd566af0df53fb26}\label{namespaceBench__mod_a784b15bbce97946ccd566af0df53fb26}} 
+\mbox{\Hypertarget{namespaceBench__mod_a871abba5d3131ad228625eb9c9f4a6b1}\label{namespaceBench__mod_a871abba5d3131ad228625eb9c9f4a6b1}} 
 \index{Bench\_mod@{Bench\_mod}!MODULE\_NAME@{MODULE\_NAME}}
 \index{MODULE\_NAME@{MODULE\_NAME}!Bench\_mod@{Bench\_mod}}
 \doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
-{\footnotesize\ttfamily character($\ast$), parameter Bench\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Bench\+\_\+mod\char`\"{}}
+{\footnotesize\ttfamily character($\ast$,SK), parameter Bench\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Bench\+\_\+mod\char`\"{}}
 
 
 

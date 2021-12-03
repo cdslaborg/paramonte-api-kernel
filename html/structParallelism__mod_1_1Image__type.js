@@ -9,5 +9,5 @@ var structParallelism__mod_1_1Image__type =
     [ "isLeader", "structParallelism__mod_1_1Image__type.html#ac93c9550a1d47b9574cfdc0da83140c9", null ],
     [ "isNotFirst", "structParallelism__mod_1_1Image__type.html#aec8afb3f2713ad366080739ecfe11c15", null ],
     [ "isRooter", "structParallelism__mod_1_1Image__type.html#a49e0a5b48768f7ddd071ddf968d1638a", null ],
-    [ "name", "structParallelism__mod_1_1Image__type.html#a25213a78e1b500cdb726c3d90549d568", null ]
+    [ "name", "structParallelism__mod_1_1Image__type.html#a202ba6d0c0aa18a9f6e64cec94f3af1a", null ]
 ];

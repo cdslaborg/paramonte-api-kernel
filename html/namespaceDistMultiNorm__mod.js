@@ -16,5 +16,5 @@ var namespaceDistMultiNorm__mod =
     [ "getMultiNormLogNormFacPDF", "namespaceDistMultiNorm__mod.html#ae37c36837179b733e864ec6749931c38", null ],
     [ "getMVNDev", "namespaceDistMultiNorm__mod.html#a7ef22189560de1556d5440a1de51dada", null ],
     [ "logpdf", "namespaceDistMultiNorm__mod.html#abc50852f3f4a65e6dee14e501df15a60", null ],
-    [ "MODULE_NAME", "namespaceDistMultiNorm__mod.html#aa8ed981bf95ade8385103e854da084ce", null ]
+    [ "MODULE_NAME", "namespaceDistMultiNorm__mod.html#ae523dcb73ab50b13301bc98a946d4296", null ]
 ];

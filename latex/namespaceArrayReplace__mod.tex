@@ -2,7 +2,7 @@
 \label{namespaceArrayReplace__mod}\index{ArrayReplace\_mod@{ArrayReplace\_mod}}
 
 
-This module contains procedures for resizing arrays of type integer, real, complex, or string.  
+This module contains procedures for replacing patterns within arrays of various types.  
 
 
 \doxysubsection*{Data Types}
@@ -10,7 +10,7 @@ This module contains procedures for resizing arrays of type integer, real, compl
 \item 
 interface \mbox{\hyperlink{interfaceArrayReplace__mod_1_1genReplaced}{gen\+Replaced}}
 \begin{DoxyCompactList}\small\item\em Generate and return an {\ttfamily Array\+New} of the same type and kind as the input {\ttfamily Array}, in which the requested instances of the input {\ttfamily Pattern} have been replaced with the input {\ttfamily Replacement}. If a vector of {\ttfamily Instance} is specified, representing the specific instances of Pattern to change, then only those specific instances will be changed. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceArrayReplace__mod_1_1getReplaced}{get\+Replaced}}
+interface \mbox{\hyperlink{interfaceArrayReplace__mod_1_1replace}{replace}}
 \begin{DoxyCompactList}\small\item\em Replace the requested instances of the input {\ttfamily Pattern} with the input {\ttfamily Replacement} in the allocatable input/output {\ttfamily Array}. If a vector of {\ttfamily Instance} is specified, representing the specific instances of Pattern to change, then only those specific instances will be changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions/\+Subroutines}
 \begin{DoxyCompactItemize}
@@ -25,18 +25,18 @@ character($\ast$), parameter \mbox{\hyperlink{namespaceArrayReplace__mod_acd05c0
 
 
 \doxysubsection{Detailed Description}
-This module contains procedures for resizing arrays of type integer, real, complex, or string. 
+This module contains procedures for replacing patterns within arrays of various types. 
 
 \begin{DoxyRefDesc}{Benchmarks}
-\item[\mbox{\hyperlink{benchmarks__benchmarks000002}{Benchmarks}}]\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{benchmarks__benchmarks000004}{Benchmarks}}]\end{DoxyRefDesc}
 
 
-\label{namespaceArrayReplace__mod_benchmark-genReplaced_vs_getReplaced}%
-\Hypertarget{namespaceArrayReplace__mod_benchmark-genReplaced_vs_getReplaced}%
-{\bfseries{Benchmark \+:: The runtime performance of \mbox{\hyperlink{interfaceArrayReplace__mod_1_1genReplaced}{gen\+Replaced}} vs. \mbox{\hyperlink{interfaceArrayReplace__mod_1_1getReplaced}{get\+Replaced}}}} \href{\#benchmark-genReplaced_vs_getReplaced}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+\label{namespaceArrayReplace__mod_benchmark-genReplaced_vs_replace}%
+\Hypertarget{namespaceArrayReplace__mod_benchmark-genReplaced_vs_replace}%
+{\bfseries{Benchmark \+:: The runtime performance of \mbox{\hyperlink{interfaceArrayReplace__mod_1_1genReplaced}{gen\+Replaced}} vs. \mbox{\hyperlink{interfaceArrayReplace__mod_1_1replace}{replace}}}} \href{\#benchmark-genReplaced_vs_replace}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
 
 \begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00001}00001 \textcolor{fortran_comment}{! Test the performance of `genReplaced()` vs. `getReplaced()`.}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00001}00001 \textcolor{fortran_comment}{! Test the performance of `genReplaced()` vs. `replace()`.}}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00002}00002 \textcolor{fortran_statement}{program} benchmark}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00003}00003 }
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00004}00004     \textcolor{fortran_statement}{use }\textcolor{fortran_inrinsic_module}{iso\_fortran\_env}, \textcolor{fortran_statement}{only}:\textcolor{fortran_named_const}{ error\_unit}}
@@ -57,14 +57,14 @@ This module contains procedures for resizing arrays of type integer, real, compl
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00019}00019     \textcolor{fortran_statement}{character}(\textcolor{fortran_operator_symbols}{*}),\textcolor{fortran_attribute}{ parameter}             :: Replacement\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}**"{}}}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00020}00020     \textcolor{fortran_statement}{type}(Bench\_type)                    :: Bench(NBENCH)}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00021}00021 }
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00022}00022     Bench(\textcolor{fortran_numeric_literal}{1})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}getReplaced"{}}, exec\textcolor{fortran_operator_symbols}{ = }getReplaced , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00022}00022     Bench(\textcolor{fortran_numeric_literal}{1})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}replace"{}}, exec\textcolor{fortran_operator_symbols}{ = }replace , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00023}00023     Bench(\textcolor{fortran_numeric_literal}{2})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}genReplaced"{}}, exec\textcolor{fortran_operator_symbols}{ = }genReplaced , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00024}00024     Bench(\textcolor{fortran_numeric_literal}{3})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}genReplaced\_recurs\_alloc"{}}, exec\textcolor{fortran_operator_symbols}{ = }genReplaced\_recurs\_alloc , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00025}00025 }
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00026}00026     ArraySize\textcolor{fortran_operator_symbols}{ = }[(\textcolor{fortran_numeric_literal}{ 2\_IK}\textcolor{fortran_operator_symbols}{*}\textcolor{fortran_operator_symbols}{*}isize, isize\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}, NSIZE )]}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00027}00027 }
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00028}00028 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00029}00029 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}getReplaced() vs. genReplaced() vs. genReplaced\_recurs\_alloc()"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00029}00029 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}replace() vs. genReplaced() vs. genReplaced\_recurs\_alloc()"{}}}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00030}00030 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00031}00031 }
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00032}00032 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnit, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.out"{}}, status\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}replace"{}})}
@@ -114,11 +114,11 @@ This module contains procedures for resizing arrays of type integer, real, compl
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00076}00076 \textcolor{fortran_statement}{        deallocate}(Array)}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00077}00077     \textcolor{fortran_statement}{end subroutine}}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00078}00078 }
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00079}00079 \textcolor{fortran_statement}{    subroutine} getReplaced()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00079}00079 \textcolor{fortran_statement}{    subroutine} replace()}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00080}00080         \textcolor{fortran_keywordflow}{block}}
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00081}00081             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArrayReplace__mod}{ArrayReplace\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArrayReplace__mod_1_1getReplaced}{getReplaced}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00081}00081             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArrayReplace__mod}{ArrayReplace\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArrayReplace__mod_1_1replace}{replace}}}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00082}00082 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00083}00083 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{interfaceArrayReplace__mod_1_1getReplaced}{getReplaced}}(Array, Pattern, Replacement)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00083}00083 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{interfaceArrayReplace__mod_1_1replace}{replace}}(Array, Pattern, Replacement)}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00084}00084 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00085}00085 \textcolor{fortran_keywordflow}{        end block}}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00086}00086     \textcolor{fortran_statement}{end subroutine}}
@@ -145,9 +145,9 @@ This module contains procedures for resizing arrays of type integer, real, compl
 
 \end{DoxyCodeInclude}
  ~\newline
- \label{namespaceArrayReplace__mod_compileb-unix-gnu-genReplaced_vs_getReplaced}%
-\Hypertarget{namespaceArrayReplace__mod_compileb-unix-gnu-genReplaced_vs_getReplaced}%
-{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compileb-unix-gnu-genReplaced_vs_getReplaced}{\texttt{ ⛓}} 
+ \label{namespaceArrayReplace__mod_compileb-unix-gnu-genReplaced_vs_replace}%
+\Hypertarget{namespaceArrayReplace__mod_compileb-unix-gnu-genReplaced_vs_replace}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compileb-unix-gnu-genReplaced_vs_replace}{\texttt{ ⛓}} 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00001}00001 \#!/bin/bash}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
@@ -155,9 +155,9 @@ This module contains procedures for resizing arrays of type integer, real, compl
 
 \end{DoxyCodeInclude}
  ~\newline
- \label{namespaceArrayReplace__mod_compileb-unix-intel-genReplaced_vs_getReplaced}%
-\Hypertarget{namespaceArrayReplace__mod_compileb-unix-intel-genReplaced_vs_getReplaced}%
-{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compileb-unix-intel-genReplaced_vs_getReplaced}{\texttt{ ⛓}} 
+ \label{namespaceArrayReplace__mod_compileb-unix-intel-genReplaced_vs_replace}%
+\Hypertarget{namespaceArrayReplace__mod_compileb-unix-intel-genReplaced_vs_replace}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compileb-unix-intel-genReplaced_vs_replace}{\texttt{ ⛓}} 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00001}00001 \#!/bin/bash}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
@@ -165,9 +165,9 @@ This module contains procedures for resizing arrays of type integer, real, compl
 
 \end{DoxyCodeInclude}
  ~\newline
- \label{namespaceArrayReplace__mod_postprocb-genReplaced_vs_getReplaced}%
-\Hypertarget{namespaceArrayReplace__mod_postprocb-genReplaced_vs_getReplaced}%
-{\bfseries{Postprocessing of the output}} \href{\#postprocb-genReplaced_vs_getReplaced}{\texttt{ ⛓}} 
+ \label{namespaceArrayReplace__mod_postprocb-genReplaced_vs_replace}%
+\Hypertarget{namespaceArrayReplace__mod_postprocb-genReplaced_vs_replace}%
+{\bfseries{Postprocessing of the output}} \href{\#postprocb-genReplaced_vs_replace}{\texttt{ ⛓}} 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00002}00002 }
@@ -177,7 +177,7 @@ This module contains procedures for resizing arrays of type integer, real, compl
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00006}00006 }
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00007}00007 fontsize = 14}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00008}00008 }
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00009}00009 methods = [\textcolor{stringliteral}{"{}getReplaced"{}}, \textcolor{stringliteral}{"{}genReplaced"{}}, \textcolor{stringliteral}{"{}genReplaced\_recurs\_alloc"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00009}00009 methods = [\textcolor{stringliteral}{"{}replace"{}}, \textcolor{stringliteral}{"{}genReplaced"{}}, \textcolor{stringliteral}{"{}genReplaced\_recurs\_alloc"{}}]}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00010}00010 }
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00011}00011 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.out"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00012}00012 }
@@ -196,11 +196,11 @@ This module contains procedures for resizing arrays of type integer, real, compl
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00027}00027 plt.yticks(fontsize = fontsize)}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00028}00028 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00029}00029 ax.set\_ylabel(\textcolor{stringliteral}{"{}Runtime [ seconds ]"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00030}00030 ax.set\_title(\textcolor{stringliteral}{"{}getReplaced() vs. genReplaced() vs. genReplaced\_recurs\_alloc()\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00030}00030 ax.set\_title(\textcolor{stringliteral}{"{}replace() vs. genReplaced() vs. genReplaced\_recurs\_alloc()\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00031}00031 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00032}00032 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00033}00033 plt.minorticks\_on()}
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00034}00034 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00034}00034 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00035}00035 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00036}00036 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00037}00037 ax.legend   ( methods}
@@ -210,7 +210,7 @@ This module contains procedures for resizing arrays of type integer, real, compl
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00041}00041             )}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00042}00042 }
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00043}00043 plt.tight\_layout()}
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00044}00044 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genReplaced\_vs\_getReplaced.runtime.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00044}00044 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genReplaced\_vs\_replace.runtime.png"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00045}00045 }
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00046}00046 }
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00049}00049 }
@@ -224,51 +224,52 @@ This module contains procedures for resizing arrays of type integer, real, compl
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00057}00057         , linewidth = 2}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00058}00058         )}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00059}00059 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00060}00060         , df[\textcolor{stringliteral}{"{}genReplaced"{}}].values / df[\textcolor{stringliteral}{"{}getReplaced"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00060}00060         , df[\textcolor{stringliteral}{"{}genReplaced"{}}].values / df[\textcolor{stringliteral}{"{}replace"{}}].values}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00061}00061         , linewidth = 2}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00062}00062         )}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00063}00063 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00064}00064         , df[\textcolor{stringliteral}{"{}genReplaced\_recurs\_alloc"{}}].values / df[\textcolor{stringliteral}{"{}getReplaced"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00064}00064         , df[\textcolor{stringliteral}{"{}genReplaced\_recurs\_alloc"{}}].values / df[\textcolor{stringliteral}{"{}replace"{}}].values}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00065}00065         , linewidth = 2}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00066}00066         )}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00067}00067 }
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00068}00068 plt.xticks(fontsize = fontsize)}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00069}00069 plt.yticks(fontsize = fontsize)}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00070}00070 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00071}00071 ax.set\_ylabel(\textcolor{stringliteral}{"{}Runtime compared to getReplaced()"{}}, fontsize = fontsize)}
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00072}00072 ax.set\_title(\textcolor{stringliteral}{"{}genReplaced / getReplaced vs. genReplaced\_recurs\_alloc / getReplaced\(\backslash\)nLower means faster. Lower than 1 means faster than getReplaced()."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00071}00071 ax.set\_ylabel(\textcolor{stringliteral}{"{}Runtime compared to replace()"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00072}00072 ax.set\_title(\textcolor{stringliteral}{"{}genReplaced / replace vs. genReplaced\_recurs\_alloc / replace\(\backslash\)nLower means faster. Lower than 1 means faster than replace()."{}}, fontsize = fontsize)}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00073}00073 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00074}00074 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00075}00075 plt.minorticks\_on()}
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00076}00076 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color=\textcolor{stringliteral}{'0.85'}, linestyle=\textcolor{stringliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00076}00076 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00077}00077 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00078}00078 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00079}00079 ax.legend   ( [\textcolor{stringliteral}{"{}getReplaced"{}}, \textcolor{stringliteral}{"{}genReplaced"{}}, \textcolor{stringliteral}{"{}genReplaced\_recurs\_alloc"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00079}00079 ax.legend   ( [\textcolor{stringliteral}{"{}replace"{}}, \textcolor{stringliteral}{"{}genReplaced"{}}, \textcolor{stringliteral}{"{}genReplaced\_recurs\_alloc"{}}]}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00080}00080            \textcolor{comment}{\#, bbox\_to\_anchor = (1, 0.5)}}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00081}00081            \textcolor{comment}{\#, loc = "{}center left"{}}}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00082}00082             , fontsize = fontsize}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00083}00083             )}
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00084}00084 }
 \DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00085}00085 plt.tight\_layout()}
-\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00086}00086 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genReplaced\_vs\_getReplaced.runtime.ratio.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayReplace__mod_l00086}00086 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genReplaced\_vs\_replace.runtime.ratio.png"{}})}
 
 \end{DoxyCodeInclude}
  ~\newline
- \label{namespaceArrayReplace__mod_visb-genReplaced_vs_getReplaced}%
-\Hypertarget{namespaceArrayReplace__mod_visb-genReplaced_vs_getReplaced}%
-{\bfseries{Visualization of the benchmark output}} \href{\#visb-genReplaced_vs_getReplaced}{\texttt{ ⛓}} \DoxyHorRuler{0}
+ \label{namespaceArrayReplace__mod_visb-genReplaced_vs_replace}%
+\Hypertarget{namespaceArrayReplace__mod_visb-genReplaced_vs_replace}%
+{\bfseries{Visualization of the benchmark output}} \href{\#visb-genReplaced_vs_replace}{\texttt{ ⛓}} \DoxyHorRuler{0}
    ~\newline
- \label{namespaceArrayReplace__mod_moralb-genReplaced_vs_getReplaced}%
-\Hypertarget{namespaceArrayReplace__mod_moralb-genReplaced_vs_getReplaced}%
-{\bfseries{Benchmark moral}} \href{\#moralb-genReplaced_vs_getReplaced}{\texttt{ ⛓}} \DoxyHorRuler{0}
+ \label{namespaceArrayReplace__mod_moralb-genReplaced_vs_replace}%
+\Hypertarget{namespaceArrayReplace__mod_moralb-genReplaced_vs_replace}%
+{\bfseries{Benchmark moral}} \href{\#moralb-genReplaced_vs_replace}{\texttt{ ⛓}} \DoxyHorRuler{0}
 
 \begin{DoxyEnumerate}
-\item The procedures under the generic interface \mbox{\hyperlink{interfaceArrayReplace__mod_1_1genReplaced}{gen\+Replaced}} are functions while the procedures under the generic interface \mbox{\hyperlink{interfaceArrayReplace__mod_1_1getReplaced}{get\+Replaced}} are subroutines. From the benchmark results, it appears that the functional interface performs less efficiently than the subroutine interface. Note that this benchmark does not even include the cost of repeated reallcations, that is, the allocation of {\ttfamily Replaced} happen only once in all tests.
-\item Furthermore, the {\ttfamily gen\+Replaced()} implementation with a {\ttfamily reshape()} and implicit-\/loop appears to be 4-\/16 times slower than the subroutine implementation and 2-\/4 times slower than the function implementation.
+\item The procedures under the generic interface \mbox{\hyperlink{interfaceArrayReplace__mod_1_1genReplaced}{gen\+Replaced}} are functions while the procedures under the generic interface \mbox{\hyperlink{interfaceArrayReplace__mod_1_1replace}{replace}} are subroutines. From the benchmark results, it appears that the functional interface performs slightly less efficiently than the subroutine interface. Note that this benchmark does not even include the cost of repeated reallcations, that is, the allocation of {\ttfamily Replaced} happen only once in all tests.
+\item Furthermore, the recursive {\ttfamily gen\+Replaced()} implementation with recursive allocations appears to be 3-\/33 times slower than the subroutine implementation, depending on the size of the array within which the pattern is to be replaced.
+\item Note that this benchmark considers the worst-\/case scenario where all elements of the input {\ttfamily Array} match the input {\ttfamily Pattern} and must be therefore, replaced.
 \end{DoxyEnumerate}
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000003}{Test}}]\mbox{\hyperlink{namespaceTest__ArrayReplace__mod}{Test\+\_\+\+Array\+Replace\+\_\+mod}}\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000009}{Test}}]\mbox{\hyperlink{namespaceTest__ArrayReplace__mod}{Test\+\_\+\+Array\+Replace\+\_\+mod}}\end{DoxyRefDesc}
 
 
 \begin{DoxyRemark}{Remarks}
@@ -308,7 +309,7 @@ Generate and return a copy of the input {\ttfamily Array} where all instances of
 {\ttfamily Array\+New} \+: The output copy of the input {\ttfamily Array} where all instances of the input {\ttfamily Pattern} in it are replaced with the input {\ttfamily Replacement}.
 \end{DoxyReturn}
 \begin{DoxyWarning}{Warning}
-This procedure is solely provided for benchmarking purposes to compare the performance difference between a naive recursive allocation method of replacement and the optimized method implemented under the generic interfaces in \mbox{\hyperlink{interfaceArrayReplace__mod_1_1genReplaced}{gen\+Replaced}} and \mbox{\hyperlink{interfaceArrayReplace__mod_1_1getReplaced}{get\+Replaced}}.
+This procedure is solely provided for benchmarking purposes to compare the performance difference between a naive recursive allocation method of replacement and the optimized method implemented under the generic interfaces in \mbox{\hyperlink{interfaceArrayReplace__mod_1_1genReplaced}{gen\+Replaced}} and \mbox{\hyperlink{interfaceArrayReplace__mod_1_1replace}{replace}}.
 \end{DoxyWarning}
 \begin{DoxyRemark}{Remarks}
 This procedure is {\ttfamily pure}. 
@@ -317,7 +318,7 @@ This procedure is {\ttfamily recursive}.
 \end{DoxyRemark}
 \begin{DoxySeeAlso}{See also}
 \mbox{\hyperlink{interfaceArrayReplace__mod_1_1genReplaced}{gen\+Replaced}} ~\newline
- \mbox{\hyperlink{interfaceArrayReplace__mod_1_1getReplaced}{get\+Replaced}} ~\newline
+ \mbox{\hyperlink{interfaceArrayReplace__mod_1_1replace}{replace}} ~\newline
 
 \end{DoxySeeAlso}
 \mbox{\hyperlink{namespaceTest__ArrayReplace__mod}{Test\+\_\+\+Array\+Replace\+\_\+mod}}
@@ -335,7 +336,7 @@ Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{ArrayReplace__mod_8f90_source_l01867}{1867}} of file \mbox{\hyperlink{ArrayReplace__mod_8f90_source}{Array\+Replace\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{ArrayReplace__mod_8f90_source_l01963}{1963}} of file \mbox{\hyperlink{ArrayReplace__mod_8f90_source}{Array\+Replace\+\_\+mod.\+f90}}.
 
 
 
@@ -348,5 +349,5 @@ Definition at line \mbox{\hyperlink{ArrayReplace__mod_8f90_source_l01867}{1867}}
 
 
 
-Definition at line \mbox{\hyperlink{ArrayReplace__mod_8f90_source_l00076}{76}} of file \mbox{\hyperlink{ArrayReplace__mod_8f90_source}{Array\+Replace\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{ArrayReplace__mod_8f90_source_l00078}{78}} of file \mbox{\hyperlink{ArrayReplace__mod_8f90_source}{Array\+Replace\+\_\+mod.\+f90}}.
 
