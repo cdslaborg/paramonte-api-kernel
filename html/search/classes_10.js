@@ -16,7 +16,7 @@ var searchData=
   ['scalar_5ftype_5frk128_13',['Scalar_type_RK128',['../structContainer__mod_1_1Scalar__type__RK128.html',1,'Container_mod']]],
   ['scalar_5ftype_5frk32_14',['Scalar_type_RK32',['../structContainer__mod_1_1Scalar__type__RK32.html',1,'Container_mod']]],
   ['scalar_5ftype_5frk64_15',['Scalar_type_RK64',['../structContainer__mod_1_1Scalar__type__RK64.html',1,'Container_mod']]],
-  ['scalar_5ftype_5fsk_16',['Scalar_type_SK',['../structContainer__mod_1_1Scalar__type__SK.html',1,'Container_mod']]],
+  ['scalar_5ftype_5fsk_16',['Scalar_type_SK',['../structContainer__mod_1_1Scalar__type__SK.html',1,'Container_mod::Scalar_type_SK'],['../interfaceString__mod_1_1Scalar__type__SK.html',1,'String_mod::Scalar_type_SK']]],
   ['scalar_5ftype_5fup_17',['Scalar_type_UP',['../structContainer__mod_1_1Scalar__type__UP.html',1,'Container_mod']]],
   ['shell_5ftype_18',['Shell_type',['../structSystem__mod_1_1Shell__type.html',1,'System_mod']]],
   ['shuffle_19',['shuffle',['../interfaceArrayShuffle__mod_1_1shuffle.html',1,'ArrayShuffle_mod']]],

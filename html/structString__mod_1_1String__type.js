@@ -1,6 +1,5 @@
 var structString__mod_1_1String__type =
 [
-    [ "constructStringList", "structString__mod_1_1String__type.html#a9d369de5fbf81452059cd32340a4a2ca", null ],
     [ "endif", "structString__mod_1_1String__type.html#a8f5cbf5d1445280ae062392f74863437", null ],
     [ "endif", "structString__mod_1_1String__type.html#a8f5cbf5d1445280ae062392f74863437", null ],
     [ "endif", "structString__mod_1_1String__type.html#a8f5cbf5d1445280ae062392f74863437", null ],

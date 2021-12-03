@@ -659,6 +659,7 @@ var annotated_dup =
       [ "operator(>=)", "interfaceString__mod_1_1operator_07_4_0a_08.html", "interfaceString__mod_1_1operator_07_4_0a_08" ],
       [ "real2str", "interfaceString__mod_1_1real2str.html", "interfaceString__mod_1_1real2str" ],
       [ "RealStr_type", "structString__mod_1_1RealStr__type.html", "structString__mod_1_1RealStr__type" ],
+      [ "Scalar_type_SK", "interfaceString__mod_1_1Scalar__type__SK.html", "interfaceString__mod_1_1Scalar__type__SK" ],
       [ "String_type", "structString__mod_1_1String__type.html", "structString__mod_1_1String__type" ],
       [ "StrSplit_type", "structString__mod_1_1StrSplit__type.html", "structString__mod_1_1StrSplit__type" ],
       [ "upper", "interfaceString__mod_1_1upper.html", "interfaceString__mod_1_1upper" ],

@@ -1,11 +1,15 @@
 var NAVTREEINDEX16 =
 {
-"interfaceString__mod_1_1upper.html":[5,0,160,15],
-"interfaceString__mod_1_1upper.html":[6,0,139,15],
-"interfaceString__mod_1_1upper.html#a0ef6911f4c186758e9c2705d3181a0b0":[5,0,160,15,0],
-"interfaceString__mod_1_1upper.html#a0ef6911f4c186758e9c2705d3181a0b0":[6,0,139,15,0],
-"interfaceString__mod_1_1val2str.html":[6,0,139,16],
-"interfaceString__mod_1_1val2str.html":[5,0,160,16],
+"interfaceString__mod_1_1real2str.html#af3a494cbd557ef1533cb2a15c8457dc4":[5,0,160,11,4],
+"interfaceString__mod_1_1real2str.html#af3a494cbd557ef1533cb2a15c8457dc4":[6,0,139,11,4],
+"interfaceString__mod_1_1real2str.html#af5ecc66f2522474a0984a542d237bcdb":[6,0,139,11,1],
+"interfaceString__mod_1_1real2str.html#af5ecc66f2522474a0984a542d237bcdb":[5,0,160,11,1],
+"interfaceString__mod_1_1upper.html":[5,0,160,16],
+"interfaceString__mod_1_1upper.html":[6,0,139,16],
+"interfaceString__mod_1_1upper.html#a0ef6911f4c186758e9c2705d3181a0b0":[5,0,160,16,0],
+"interfaceString__mod_1_1upper.html#a0ef6911f4c186758e9c2705d3181a0b0":[6,0,139,16,0],
+"interfaceString__mod_1_1val2str.html":[5,0,160,17],
+"interfaceString__mod_1_1val2str.html":[6,0,139,17],
 "interfaceTest__mod_1_1test__func__proc.html":[6,0,145,2],
 "interfaceTest__mod_1_1test__func__proc.html":[5,0,216,2],
 "interfaceTest__mod_1_1test__func__proc.html#af7b9fa7c9b0e7d4ff44253faf5f832a3":[6,0,145,2,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX16 =
 "namespaceDistMultiUnifCube__mod.html#a5be343ce875a6024b143a9f3e940170a":[5,0,31,12],
 "namespaceDistMultiUnifCube__mod.html#aa0c1d1a960304befdce075a41d54b7b3":[5,0,31,5],
 "namespaceDistMultiUnifCube__mod.html#ac4d80b740166800b742b51d992ba9b65":[5,0,31,10],
-"namespaceDistMultiUnifCube__mod.html#ad639229b8218d399e64c58345ae874ed":[5,0,31,4],
-"namespaceDistMultiUnifCube__mod.html#ad7ea22d7e996c0e535cfd12e671eafb9":[5,0,31,6],
-"namespaceDistMultiUnifEllipsoid__mod.html":[5,0,32],
-"namespaceDistMultiUnifEllipsoid__mod.html#a43185a46c26eb98c6f2871fe12a38485":[5,0,32,9],
-"namespaceDistMultiUnifEllipsoid__mod.html#a4643779efb6541d49a4200a00215aae2":[5,0,32,6]
+"namespaceDistMultiUnifCube__mod.html#ad639229b8218d399e64c58345ae874ed":[5,0,31,4]
 };

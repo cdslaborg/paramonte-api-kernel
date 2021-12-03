@@ -338,6 +338,7 @@ var hierarchy =
     [ "Container_mod::Scalar_type_RK32", "structContainer__mod_1_1Scalar__type__RK32.html", null ],
     [ "Container_mod::Scalar_type_RK64", "structContainer__mod_1_1Scalar__type__RK64.html", null ],
     [ "Container_mod::Scalar_type_SK", "structContainer__mod_1_1Scalar__type__SK.html", null ],
+    [ "String_mod::Scalar_type_SK", "interfaceString__mod_1_1Scalar__type__SK.html", null ],
     [ "Container_mod::Scalar_type_UP", "structContainer__mod_1_1Scalar__type__UP.html", null ],
     [ "System_mod::Shell_type", "structSystem__mod_1_1Shell__type.html", null ],
     [ "ArrayShuffle_mod::shuffle", "interfaceArrayShuffle__mod_1_1shuffle.html", null ],

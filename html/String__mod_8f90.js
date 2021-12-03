@@ -4,6 +4,7 @@ var String__mod_8f90 =
     [ "String_mod::RealStr_type", "structString__mod_1_1RealStr__type.html", "structString__mod_1_1RealStr__type" ],
     [ "String_mod::String_type", "structString__mod_1_1String__type.html", "structString__mod_1_1String__type" ],
     [ "String_mod::StrSplit_type", "structString__mod_1_1StrSplit__type.html", "structString__mod_1_1StrSplit__type" ],
+    [ "String_mod::Scalar_type_SK", "interfaceString__mod_1_1Scalar__type__SK.html", "interfaceString__mod_1_1Scalar__type__SK" ],
     [ "String_mod::operator(.has.)", "interfaceString__mod_1_1operator_07_8has_8_08.html", "interfaceString__mod_1_1operator_07_8has_8_08" ],
     [ "String_mod::operator(>)", "interfaceString__mod_1_1operator_07_4_08.html", "interfaceString__mod_1_1operator_07_4_08" ],
     [ "String_mod::operator(<)", "interfaceString__mod_1_1operator_07_3_08.html", "interfaceString__mod_1_1operator_07_3_08" ],
