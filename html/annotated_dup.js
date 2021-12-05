@@ -4,6 +4,7 @@ var annotated_dup =
       [ "iseqall", "interfaceArrayComparison__mod_1_1iseqall.html", null ]
     ] ],
     [ "ArrayInsert_mod", "namespaceArrayInsert__mod.html", [
+      [ "genInserted", "interfaceArrayInsert__mod_1_1genInserted.html", null ],
       [ "insert", "interfaceArrayInsert__mod_1_1insert.html", null ]
     ] ],
     [ "ArrayRemap_mod", "namespaceArrayRemap__mod.html", [
@@ -395,6 +396,9 @@ var annotated_dup =
       [ "getFuncMD_proc", "interfaceOptimization__mod_1_1getFuncMD__proc.html", "interfaceOptimization__mod_1_1getFuncMD__proc" ],
       [ "minimize", "interfaceOptimization__mod_1_1minimize.html", "interfaceOptimization__mod_1_1minimize" ],
       [ "PowellMinimum_type", "structOptimization__mod_1_1PowellMinimum__type.html", "structOptimization__mod_1_1PowellMinimum__type" ]
+    ] ],
+    [ "Option_mod", "namespaceOption__mod.html", [
+      [ "genopt", "interfaceOption__mod_1_1genopt.html", null ]
     ] ],
     [ "ParaDRAM_mod", "namespaceParaDRAM__mod.html", [
       [ "ParaDRAM_type", "structParaDRAM__mod_1_1ParaDRAM__type.html", "structParaDRAM__mod_1_1ParaDRAM__type" ],

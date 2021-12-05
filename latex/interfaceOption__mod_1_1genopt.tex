@@ -1,0 +1,112 @@
+\hypertarget{interfaceOption__mod_1_1genopt}{}\doxysection{Option\+\_\+mod\+::genopt Interface Reference}
+\label{interfaceOption__mod_1_1genopt}\index{Option\_mod::genopt@{Option\_mod::genopt}}
+
+
+Generate and return the value of the {\ttfamily optional} input argument if it is present, otherwise, return the input {\ttfamily default} value.  
+
+
+
+
+\doxysubsection{Detailed Description}
+Generate and return the value of the {\ttfamily optional} input argument if it is present, otherwise, return the input {\ttfamily default} value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em optional} & \+: An input scalar value of either~\newline
+ ~ type {\ttfamily integer} of kind \mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}}, \mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}}, \mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}}, or \mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}}, or ~\newline
+ ~ type {\ttfamily complex} of kind \mbox{\hyperlink{namespaceConstants__mod_ac8b456bd9511bc9a52b4a03bda4b72df}{CK32}}, \mbox{\hyperlink{namespaceConstants__mod_aa6ea61256fca0b20db0ec2b90755b9f3}{CK64}}, or \mbox{\hyperlink{namespaceConstants__mod_ad3873e1ecc5eb3cf3651f72630cae087}{CK128}}, or ~\newline
+ ~ type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}, or ~\newline
+ ~ type {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, or ~\newline
+ ~ type {\ttfamily character} of default kind \mbox{\hyperlink{namespaceConstants__mod_af7cc6c6017142cddbb143225b0a4dc93}{SK}}, ~\newline
+ ~ representing the {\ttfamily optional} input argument whose value will be returned if present.~\newline
+ ({\bfseries{optional}}, default = {\ttfamily default}) \\
+\hline
+\mbox{\texttt{ in}}  & {\em default} & \+: An input value of the same type, kind, and rank as the input {\ttfamily optional} argument, whose value will be returned as the output {\ttfamily value} if {\ttfamily optional} is missing among the input arguments.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily value} \+: The output value of the same type, kind, and rank as the input {\ttfamily default}.~\newline
+ ~ If {\ttfamily optional} is present as an input argument, {\ttfamily value} takes the value of {\ttfamily optional}.~\newline
+ ~ If {\ttfamily optional} is missing as an input argument, {\ttfamily value} takes the value of {\ttfamily default}.~\newline
+
+\end{DoxyReturn}
+\label{interfaceArraySplit__mod_1_1split_interface}%
+\Hypertarget{interfaceArraySplit__mod_1_1split_interface}%
+{\bfseries{Possible calling interfaces}} \href{\#interface}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceOption__mod}{Option\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceOption__mod_1_1genopt}{genopt}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{defaultValue\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceOption__mod_1_1genopt}{genopt}}(optional, default)}
+
+\end{DoxyCode}
+
+\end{DoxyParagraph}
+\begin{DoxyWarning}{Warning}
+This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+\end{DoxyWarning}
+\label{namespaceInterpLinear__mod_example}%
+\Hypertarget{namespaceInterpLinear__mod_example}%
+{\bfseries{Example usage}} \href{\#example}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-gnu}%
+\Hypertarget{namespaceBench__mod_compile-unix-gnu}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compile-unix-gnu}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceOption__mod_1_1genopt_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceOption__mod_1_1genopt_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceOption__mod_1_1genopt_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-intel}%
+\Hypertarget{namespaceBench__mod_compile-unix-intel}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compile-unix-intel}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceOption__mod_1_1genopt_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceOption__mod_1_1genopt_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceOption__mod_1_1genopt_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_output}%
+\Hypertarget{namespaceBench__mod_output}%
+{\bfseries{Example output}} \href{\#output}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000091}{Test}}]Test\+\_\+\+Option\+\_\+mod\end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000060}{Todo}}]This generic interface can be extended to type-\/kind-\/rank-\/specific input objects for better performance.~\newline
+\end{DoxyRefDesc}
+
+
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2020, 01\+:12 AM, Dallas, Texas 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{Option__mod_8f90_source_l00113}{113}} of file \mbox{\hyperlink{Option__mod_8f90_source}{Option\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{Option__mod_8f90}{Option\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

@@ -126,6 +126,7 @@ var namespaces_dup =
     [ "Misc_mod", "namespaceMisc__mod.html", "namespaceMisc__mod" ],
     [ "ObservatoryComptonBatse_mod", "namespaceObservatoryComptonBatse__mod.html", "namespaceObservatoryComptonBatse__mod" ],
     [ "Optimization_mod", "namespaceOptimization__mod.html", "namespaceOptimization__mod" ],
+    [ "Option_mod", "namespaceOption__mod.html", "namespaceOption__mod" ],
     [ "ParaDISE_ChainFileContents_mod", "namespaceParaDISE__ChainFileContents__mod.html", null ],
     [ "ParaDISE_mod", "namespaceParaDISE__mod.html", null ],
     [ "ParaDISE_ProposalAbstract_mod", "namespaceParaDISE__ProposalAbstract__mod.html", null ],
