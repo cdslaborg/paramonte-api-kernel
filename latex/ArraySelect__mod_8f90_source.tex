@@ -1,0 +1,520 @@
+\hypertarget{ArraySelect__mod_8f90_source}{}\doxysection{Array\+Select\+\_\+mod.\+f90}
+\label{ArraySelect__mod_8f90_source}\index{/home/amir/git/paramonte/src/kernel/ArraySelect\_mod.f90@{/home/amir/git/paramonte/src/kernel/ArraySelect\_mod.f90}}
+\mbox{\hyperlink{ArraySelect__mod_8f90}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00001}00001 \textcolor{fortran_comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00002}00002 \textcolor{fortran_comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00003}00003 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00004}00004 \textcolor{fortran_comment}{!!!!   MIT License}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00005}00005 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00006}00006 \textcolor{fortran_comment}{!!!!   ParaMonte: plain powerful parallel Monte Carlo library.}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00007}00007 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00008}00008 \textcolor{fortran_comment}{!!!!   Copyright (C) 2012-\/present, The Computational Data Science Lab}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00009}00009 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00010}00010 \textcolor{fortran_comment}{!!!!   This file is part of the ParaMonte library.}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00011}00011 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00012}00012 \textcolor{fortran_comment}{!!!!   Permission is hereby granted, free of charge, to any person obtaining a}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00013}00013 \textcolor{fortran_comment}{!!!!   copy of this software and associated documentation files (the "{}Software"{}),}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00014}00014 \textcolor{fortran_comment}{!!!!   to deal in the Software without restriction, including without limitation}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00015}00015 \textcolor{fortran_comment}{!!!!   the rights to use, copy, modify, merge, publish, distribute, sublicense,}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00016}00016 \textcolor{fortran_comment}{!!!!   and/or sell copies of the Software, and to permit persons to whom the}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00017}00017 \textcolor{fortran_comment}{!!!!   Software is furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00018}00018 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00019}00019 \textcolor{fortran_comment}{!!!!   The above copyright notice and this permission notice shall be}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00020}00020 \textcolor{fortran_comment}{!!!!   included in all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00021}00021 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00022}00022 \textcolor{fortran_comment}{!!!!   THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND,}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00023}00023 \textcolor{fortran_comment}{!!!!   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00024}00024 \textcolor{fortran_comment}{!!!!   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00025}00025 \textcolor{fortran_comment}{!!!!   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00026}00026 \textcolor{fortran_comment}{!!!!   DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00027}00027 \textcolor{fortran_comment}{!!!!   OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00028}00028 \textcolor{fortran_comment}{!!!!   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00029}00029 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00030}00030 \textcolor{fortran_comment}{!!!!   ACKNOWLEDGMENT}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00031}00031 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00032}00032 \textcolor{fortran_comment}{!!!!   ParaMonte is an honor-\/ware and its currency is acknowledgment and citations.}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00033}00033 \textcolor{fortran_comment}{!!!!   As per the ParaMonte library license agreement terms, if you use any parts of}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00034}00034 \textcolor{fortran_comment}{!!!!   this library for any purposes, kindly acknowledge the use of ParaMonte in your}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00035}00035 \textcolor{fortran_comment}{!!!!   work (education/research/industry/development/...) by citing the ParaMonte}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00036}00036 \textcolor{fortran_comment}{!!!!   library as described on this page:}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00037}00037 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00038}00038 \textcolor{fortran_comment}{!!!!       https://github.com/cdslaborg/paramonte/blob/main/ACKNOWLEDGMENT.md}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00039}00039 \textcolor{fortran_comment}{!!!!}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00040}00040 \textcolor{fortran_comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00041}00041 \textcolor{fortran_comment}{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00086}\mbox{\hyperlink{namespaceArraySelect__mod}{00086}} \textcolor{fortran_statement}{module} \mbox{\hyperlink{namespaceArraySelect__mod}{ArraySelect\_mod}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00088}00088     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00090}\mbox{\hyperlink{namespaceArraySelect__mod_a4ca6148d710874be3e49903b3e38b8f1}{00090}}     \textcolor{fortran_statement}{character}(\textcolor{fortran_operator_symbols}{*}),\textcolor{fortran_attribute}{ parameter} :: \mbox{\hyperlink{namespaceArraySelect__mod_a4ca6148d710874be3e49903b3e38b8f1}{MODULE\_NAME}}\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}@ArraySelect\_mod"{}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00092}00092 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00176}\mbox{\hyperlink{interfaceArraySelect__mod_1_1genSelected}{00176}}     \textcolor{fortran_statement}{interface} \mbox{\hyperlink{interfaceArraySelect__mod_1_1genSelected}{genSelected}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00177}00177 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00178}00178     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00179}00179     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00180}00180     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00182}00182 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module function }genSelected\_D0\_SK(Array, rank, start, stop) \textcolor{fortran_suffix}{result}(selection)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00183}00183 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00184}00184 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: genSelected\_D0\_SK}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00185}00185 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00186}00186 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_af7cc6c6017142cddbb143225b0a4dc93}{SK}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00187}00187         \textcolor{fortran_statement}{character}(\textcolor{fortran_operator_symbols}{*},SK) ,\textcolor{fortran_attribute}{ intent(in)}                    :: Array}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00188}00188         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00189}00189         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00190}00190         \textcolor{fortran_statement}{character}(\textcolor{fortran_numeric_literal}{1},SK)                                 :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00191}00191     \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00192}00192 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00193}00193     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00194}00194     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00195}00195     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00196}00196 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00197}00197 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module function }genSelected\_D1\_SK(Array, rank, start, stop) \textcolor{fortran_suffix}{result}(selection)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00198}00198 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00199}00199 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: genSelected\_D1\_SK}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00200}00200 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00201}00201 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_af7cc6c6017142cddbb143225b0a4dc93}{SK}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00202}00202         \textcolor{fortran_statement}{character}(\textcolor{fortran_operator_symbols}{*},SK) ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00203}00203         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00204}00204         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00205}00205         \textcolor{fortran_statement}{character}(\textcolor{fortran_function}{len}(Array),SK)                        :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00206}00206     \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00207}00207 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00208}00208     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00209}00209     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00210}00210     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00211}00211 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00212}00212 \textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00213}00213 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00214}00214 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module function }genSelected\_D1\_IK64(Array, rank, start, stop) \textcolor{fortran_suffix}{result}(selection)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00215}00215 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00216}00216 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: genSelected\_D1\_IK64}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00217}00217 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00218}00218 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, IKC\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00219}00219         \textcolor{fortran_statement}{integer}(IKC)    ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00220}00220         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00221}00221         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00222}00222         \textcolor{fortran_statement}{integer}(IKC)                                    :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00223}00223     \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00224}00224 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00225}00225 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00226}00226 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00227}00227     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00228}00228 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00229}00229 \textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00230}00230 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00231}00231 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module function }genSelected\_D1\_IK32(Array, rank, start, stop) \textcolor{fortran_suffix}{result}(selection)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00232}00232 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00233}00233 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: genSelected\_D1\_IK32}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00234}00234 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00235}00235 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, IKC\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00236}00236         \textcolor{fortran_statement}{integer}(IKC)    ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00237}00237         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00238}00238         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00239}00239         \textcolor{fortran_statement}{integer}(IKC)                                    :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00240}00240     \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00241}00241 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00242}00242 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00243}00243 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00244}00244     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00245}00245 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00246}00246 \textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00247}00247 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00248}00248 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module function }genSelected\_D1\_IK16(Array, rank, start, stop) \textcolor{fortran_suffix}{result}(selection)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00249}00249 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00250}00250 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: genSelected\_D1\_IK16}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00251}00251 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00252}00252 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, IKC\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00253}00253         \textcolor{fortran_statement}{integer}(IKC)    ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00254}00254         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00255}00255         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00256}00256         \textcolor{fortran_statement}{integer}(IKC)                                    :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00257}00257     \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00258}00258 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00259}00259 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00260}00260 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00261}00261     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00262}00262 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00263}00263 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00264}00264 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00265}00265 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module function }genSelected\_D1\_IK8(Array, rank, start, stop) \textcolor{fortran_suffix}{result}(selection)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00266}00266 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00267}00267 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: genSelected\_D1\_IK8}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00268}00268 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00269}00269 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, IKC\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00270}00270         \textcolor{fortran_statement}{integer}(IKC)    ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00271}00271         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00272}00272         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00273}00273         \textcolor{fortran_statement}{integer}(IKC)                                    :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00274}00274     \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00275}00275 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00276}00276 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00277}00277 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00278}00278     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00279}00279     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00280}00280     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00281}00281 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00282}00282 \textcolor{preprocessor}{\#if CK128\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00283}00283 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00284}00284 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module function }genSelected\_D1\_CK128(Array, rank, start, stop) \textcolor{fortran_suffix}{result}(selection)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00285}00285 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00286}00286 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: genSelected\_D1\_CK128}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00287}00287 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00288}00288 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_af98c475d7d15ede8622b2a6d0d3e4a72}{CK}}\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_ad3873e1ecc5eb3cf3651f72630cae087}{CK128}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00289}00289         \textcolor{fortran_statement}{complex}(CK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00290}00290         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00291}00291         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00292}00292         \textcolor{fortran_statement}{complex}(CK)                                     :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00293}00293     \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00294}00294 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00295}00295 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00296}00296 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00297}00297     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00298}00298 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00299}00299 \textcolor{preprocessor}{\#if CK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00300}00300 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00301}00301 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module function }genSelected\_D1\_CK64(Array, rank, start, stop) \textcolor{fortran_suffix}{result}(selection)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00302}00302 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00303}00303 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: genSelected\_D1\_CK64}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00304}00304 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00305}00305 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_af98c475d7d15ede8622b2a6d0d3e4a72}{CK}}\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_aa6ea61256fca0b20db0ec2b90755b9f3}{CK64}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00306}00306         \textcolor{fortran_statement}{complex}(CK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00307}00307         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00308}00308         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00309}00309         \textcolor{fortran_statement}{complex}(CK)                                     :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00310}00310     \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00311}00311 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00312}00312 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00313}00313 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00314}00314     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00315}00315 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00316}00316 \textcolor{preprocessor}{\#if CK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00317}00317 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00318}00318 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module function }genSelected\_D1\_CK32(Array, rank, start, stop) \textcolor{fortran_suffix}{result}(selection)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00319}00319 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00320}00320 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: genSelected\_D1\_CK32}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00321}00321 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00322}00322 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_af98c475d7d15ede8622b2a6d0d3e4a72}{CK}}\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_ac8b456bd9511bc9a52b4a03bda4b72df}{CK32}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00323}00323         \textcolor{fortran_statement}{complex}(CK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00324}00324         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00325}00325         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00326}00326         \textcolor{fortran_statement}{complex}(CK)                                     :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00327}00327     \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00328}00328 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00329}00329 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00330}00330 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00331}00331     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00332}00332     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00333}00333     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00334}00334 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00335}00335 \textcolor{preprocessor}{\#if RK128\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00336}00336 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00337}00337 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module function }genSelected\_D1\_RK128(Array, rank, start, stop) \textcolor{fortran_suffix}{result}(selection)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00338}00338 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00339}00339 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: genSelected\_D1\_RK128}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00340}00340 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00341}00341 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00342}00342 \textcolor{fortran_statement}{        real}(RK)        ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00343}00343         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00344}00344         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00345}00345 \textcolor{fortran_statement}{        real}(RK)                                        :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00346}00346     \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00347}00347 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00348}00348 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00349}00349 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00350}00350     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00351}00351 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00352}00352 \textcolor{preprocessor}{\#if RK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00353}00353 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00354}00354 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module function }genSelected\_D1\_RK64(Array, rank, start, stop) \textcolor{fortran_suffix}{result}(selection)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00355}00355 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00356}00356 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: genSelected\_D1\_RK64}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00357}00357 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00358}00358 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00359}00359 \textcolor{fortran_statement}{        real}(RK)        ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00360}00360         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00361}00361         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00362}00362 \textcolor{fortran_statement}{        real}(RK)                                        :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00363}00363     \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00364}00364 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00365}00365 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00366}00366 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00367}00367     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00368}00368 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00369}00369 \textcolor{preprocessor}{\#if RK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00370}00370 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00371}00371 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module function }genSelected\_D1\_RK32(Array, rank, start, stop) \textcolor{fortran_suffix}{result}(selection)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00372}00372 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00373}00373 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: genSelected\_D1\_RK32}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00374}00374 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00375}00375 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00376}00376 \textcolor{fortran_statement}{        real}(RK)        ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00377}00377         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00378}00378         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00379}00379 \textcolor{fortran_statement}{        real}(RK)                                        :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00380}00380     \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00381}00381 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00382}00382 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00383}00383 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00384}00384     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00385}00385     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00386}00386     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00387}00387 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00388}00388 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module function }genSelected\_D1\_LK(Array, rank, start, stop) \textcolor{fortran_suffix}{result}(selection)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00389}00389 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00390}00390 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: genSelected\_D1\_LK}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00391}00391 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00392}00392 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00393}00393 \textcolor{fortran_statement}{        logical}(LK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00394}00394         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00395}00395         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00396}00396 \textcolor{fortran_statement}{        logical}(LK)                                     :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00397}00397     \textcolor{fortran_statement}{end function}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00398}00398 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00399}00399     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00400}00400     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00401}00401     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00402}00402 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00403}00403     \textcolor{fortran_statement}{end interface}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00404}00404 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00405}00405 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00406}00406 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00487}\mbox{\hyperlink{interfaceArraySelect__mod_1_1select}{00487}}     \textcolor{fortran_statement}{interface} \mbox{\hyperlink{interfaceArraySelect__mod_1_1select}{select}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00488}00488 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00489}00489     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00490}00490     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00491}00491     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00492}00492 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00493}00493 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module subroutine }select\_D0\_SK(selection, Array, rank, start, stop)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00494}00494 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00495}00495 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: select\_D0\_SK}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00496}00496 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00497}00497 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_af7cc6c6017142cddbb143225b0a4dc93}{SK}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00498}00498         \textcolor{fortran_statement}{character}(\textcolor{fortran_numeric_literal}{1},SK) ,\textcolor{fortran_attribute}{ intent(out)}                   :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00499}00499         \textcolor{fortran_statement}{character}(\textcolor{fortran_operator_symbols}{*},SK) ,\textcolor{fortran_attribute}{ intent(inout)}                 :: Array}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00500}00500         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00501}00501         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00502}00502     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00503}00503 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00504}00504     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00505}00505     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00506}00506     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00507}00507 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00508}00508 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module subroutine }select\_D1\_SK(selection, Array, rank, start, stop)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00509}00509 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00510}00510 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: select\_D1\_SK}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00511}00511 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00512}00512 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_af7cc6c6017142cddbb143225b0a4dc93}{SK}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00513}00513         \textcolor{fortran_statement}{character}(\textcolor{fortran_operator_symbols}{*},SK) ,\textcolor{fortran_attribute}{ intent(out)}                   :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00514}00514         \textcolor{fortran_statement}{character}(\textcolor{fortran_operator_symbols}{*},SK) ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00515}00515         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00516}00516         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00517}00517     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00518}00518 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00519}00519     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00520}00520     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00521}00521     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00522}00522 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00523}00523 \textcolor{preprocessor}{\#if IK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00524}00524 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00525}00525 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module subroutine }select\_D1\_IK64(selection, Array, rank, start, stop)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00526}00526 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00527}00527 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: select\_D1\_IK64}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00528}00528 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00529}00529 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, IKC\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00530}00530         \textcolor{fortran_statement}{integer}(IKC)    ,\textcolor{fortran_attribute}{ intent(out)}                   :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00531}00531         \textcolor{fortran_statement}{integer}(IKC)    ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00532}00532         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00533}00533         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00534}00534     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00535}00535 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00536}00536 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00537}00537 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00538}00538     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00539}00539 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00540}00540 \textcolor{preprocessor}{\#if IK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00541}00541 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00542}00542 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module subroutine }select\_D1\_IK32(selection, Array, rank, start, stop)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00543}00543 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00544}00544 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: select\_D1\_IK32}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00545}00545 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00546}00546 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, IKC\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00547}00547         \textcolor{fortran_statement}{integer}(IKC)    ,\textcolor{fortran_attribute}{ intent(out)}                   :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00548}00548         \textcolor{fortran_statement}{integer}(IKC)    ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00549}00549         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00550}00550         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00551}00551     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00552}00552 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00553}00553 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00554}00554 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00555}00555     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00556}00556 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00557}00557 \textcolor{preprocessor}{\#if IK16\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00558}00558 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00559}00559 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module subroutine }select\_D1\_IK16(selection, Array, rank, start, stop)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00560}00560 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00561}00561 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: select\_D1\_IK16}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00562}00562 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00563}00563 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, IKC\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00564}00564         \textcolor{fortran_statement}{integer}(IKC)    ,\textcolor{fortran_attribute}{ intent(out)}                   :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00565}00565         \textcolor{fortran_statement}{integer}(IKC)    ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00566}00566         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00567}00567         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00568}00568     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00569}00569 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00570}00570 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00571}00571 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00572}00572     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00573}00573 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00574}00574 \textcolor{preprocessor}{\#if IK8\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00575}00575 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00576}00576 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module subroutine }select\_D1\_IK8(selection, Array, rank, start, stop)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00577}00577 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00578}00578 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: select\_D1\_IK8}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00579}00579 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00580}00580 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, IKC\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00581}00581         \textcolor{fortran_statement}{integer}(IKC)    ,\textcolor{fortran_attribute}{ intent(out)}                   :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00582}00582         \textcolor{fortran_statement}{integer}(IKC)    ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00583}00583         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00584}00584         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00585}00585     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00586}00586 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00587}00587 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00588}00588 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00589}00589     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00590}00590     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00591}00591     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00592}00592 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00593}00593 \textcolor{preprocessor}{\#if CK128\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00594}00594 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00595}00595 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module subroutine }select\_D1\_CK128(selection, Array, rank, start, stop)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00596}00596 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00597}00597 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: select\_D1\_CK128}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00598}00598 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00599}00599 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_af98c475d7d15ede8622b2a6d0d3e4a72}{CK}}\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_ad3873e1ecc5eb3cf3651f72630cae087}{CK128}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00600}00600         \textcolor{fortran_statement}{complex}(CK)     ,\textcolor{fortran_attribute}{ intent(out)}                   :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00601}00601         \textcolor{fortran_statement}{complex}(CK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00602}00602         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00603}00603         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00604}00604     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00605}00605 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00606}00606 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00607}00607 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00608}00608     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00609}00609 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00610}00610 \textcolor{preprocessor}{\#if CK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00611}00611 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00612}00612 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module subroutine }select\_D1\_CK64(selection, Array, rank, start, stop)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00613}00613 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00614}00614 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: select\_D1\_CK64}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00615}00615 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00616}00616 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_af98c475d7d15ede8622b2a6d0d3e4a72}{CK}}\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_aa6ea61256fca0b20db0ec2b90755b9f3}{CK64}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00617}00617         \textcolor{fortran_statement}{complex}(CK)     ,\textcolor{fortran_attribute}{ intent(out)}                   :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00618}00618         \textcolor{fortran_statement}{complex}(CK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00619}00619         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00620}00620         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00621}00621     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00622}00622 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00623}00623 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00624}00624 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00625}00625     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00626}00626 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00627}00627 \textcolor{preprocessor}{\#if CK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00628}00628 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00629}00629 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module subroutine }select\_D1\_CK32(selection, Array, rank, start, stop)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00630}00630 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00631}00631 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: select\_D1\_CK32}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00632}00632 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00633}00633 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_af98c475d7d15ede8622b2a6d0d3e4a72}{CK}}\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_ac8b456bd9511bc9a52b4a03bda4b72df}{CK32}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00634}00634         \textcolor{fortran_statement}{complex}(CK)     ,\textcolor{fortran_attribute}{ intent(out)}                   :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00635}00635         \textcolor{fortran_statement}{complex}(CK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00636}00636         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00637}00637         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00638}00638     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00639}00639 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00640}00640 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00641}00641 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00642}00642     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00643}00643     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00644}00644     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00645}00645 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00646}00646 \textcolor{preprocessor}{\#if RK128\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00647}00647 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00648}00648 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module subroutine }select\_D1\_RK128(selection, Array, rank, start, stop)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00649}00649 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00650}00650 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: select\_D1\_RK128}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00651}00651 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00652}00652 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00653}00653 \textcolor{fortran_statement}{        real}(RK)        ,\textcolor{fortran_attribute}{ intent(out)}                   :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00654}00654 \textcolor{fortran_statement}{        real}(RK)        ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00655}00655         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00656}00656         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00657}00657     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00658}00658 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00659}00659 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00660}00660 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00661}00661     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00662}00662 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00663}00663 \textcolor{preprocessor}{\#if RK64\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00664}00664 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00665}00665 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module subroutine }select\_D1\_RK64(selection, Array, rank, start, stop)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00666}00666 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00667}00667 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: select\_D1\_RK64}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00668}00668 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00669}00669 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00670}00670 \textcolor{fortran_statement}{        real}(RK)        ,\textcolor{fortran_attribute}{ intent(out)}                   :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00671}00671 \textcolor{fortran_statement}{        real}(RK)        ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00672}00672         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00673}00673         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00674}00674     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00675}00675 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00676}00676 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00677}00677 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00678}00678     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00679}00679 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00680}00680 \textcolor{preprocessor}{\#if RK32\_ENABLED}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00681}00681 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00682}00682 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module subroutine }select\_D1\_RK32(selection, Array, rank, start, stop)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00683}00683 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00684}00684 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: select\_D1\_RK32}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00685}00685 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00686}00686 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }\mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00687}00687 \textcolor{fortran_statement}{        real}(RK)        ,\textcolor{fortran_attribute}{ intent(out)}                   :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00688}00688 \textcolor{fortran_statement}{        real}(RK)        ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00689}00689         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00690}00690         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00691}00691     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00692}00692 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00693}00693 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00694}00694 \textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00695}00695     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00696}00696     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00697}00697     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00698}00698 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00699}00699 \textcolor{fortran_attribute}{    PURE} \textcolor{fortran_prefix}{module subroutine }select\_D1\_LK(selection, Array, rank, start, stop)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00700}00700 \textcolor{preprocessor}{\#if INTEL\_COMPILER\_ENABLED \&\& DLL\_ENABLED \&\& (WINDOWS\_ENABLED || DARWIN\_ENABLED)}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00701}00701 \textcolor{preprocessor}{}\textcolor{fortran_directive_intel}{        !DEC\$ ATTRIBUTES DLLEXPORT }:: select\_D1\_LK}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00702}00702 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00703}00703 \textcolor{preprocessor}{}        \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00704}00704 \textcolor{fortran_statement}{        logical}(LK)     ,\textcolor{fortran_attribute}{ intent(out)}                   :: selection}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00705}00705 \textcolor{fortran_statement}{        logical}(LK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ contiguous}    :: Array(:)}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00706}00706         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}                    :: rank}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00707}00707         \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ intent(in)}    ,\textcolor{fortran_attribute}{ optional}      :: start, stop}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00708}00708     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00709}00709 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00710}00710     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00711}00711     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00712}00712     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00713}00713 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00714}00714     \textcolor{fortran_statement}{end interface}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00715}00715 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00716}00716 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00717}00717 }
+\DoxyCodeLine{\Hypertarget{ArraySelect__mod_8f90_source_l00718}00718 \textcolor{fortran_statement}{end module }\mbox{\hyperlink{namespaceArraySelect__mod}{ArraySelect\_mod}} ! LCOV\_EXCL\_LINE}
+
+\end{DoxyCode}

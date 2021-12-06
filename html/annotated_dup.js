@@ -25,6 +25,10 @@ var annotated_dup =
       [ "genReverse", "interfaceArrayReverse__mod_1_1genReverse.html", null ],
       [ "reverse", "interfaceArrayReverse__mod_1_1reverse.html", null ]
     ] ],
+    [ "ArraySelect_mod", "namespaceArraySelect__mod.html", [
+      [ "genSelected", "interfaceArraySelect__mod_1_1genSelected.html", null ],
+      [ "select", "interfaceArraySelect__mod_1_1select.html", null ]
+    ] ],
     [ "ArrayShuffle_mod", "namespaceArrayShuffle__mod.html", [
       [ "shuffle", "interfaceArrayShuffle__mod_1_1shuffle.html", null ]
     ] ],
@@ -398,7 +402,7 @@ var annotated_dup =
       [ "PowellMinimum_type", "structOptimization__mod_1_1PowellMinimum__type.html", "structOptimization__mod_1_1PowellMinimum__type" ]
     ] ],
     [ "Option_mod", "namespaceOption__mod.html", [
-      [ "genopt", "interfaceOption__mod_1_1genopt.html", null ]
+      [ "option", "interfaceOption__mod_1_1option.html", null ]
     ] ],
     [ "ParaDRAM_mod", "namespaceParaDRAM__mod.html", [
       [ "ParaDRAM_type", "structParaDRAM__mod_1_1ParaDRAM__type.html", "structParaDRAM__mod_1_1ParaDRAM__type" ],

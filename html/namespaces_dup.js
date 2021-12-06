@@ -10,6 +10,7 @@ var namespaces_dup =
     [ "ArrayReplace_mod", "namespaceArrayReplace__mod.html", "namespaceArrayReplace__mod" ],
     [ "ArrayResize_mod", "namespaceArrayResize__mod.html", "namespaceArrayResize__mod" ],
     [ "ArrayReverse_mod", "namespaceArrayReverse__mod.html", "namespaceArrayReverse__mod" ],
+    [ "ArraySelect_mod", "namespaceArraySelect__mod.html", "namespaceArraySelect__mod" ],
     [ "ArrayShuffle_mod", "namespaceArrayShuffle__mod.html", "namespaceArrayShuffle__mod" ],
     [ "ArraySort_mod", "namespaceArraySort__mod.html", "namespaceArraySort__mod" ],
     [ "ArraySplit_mod", "namespaceArraySplit__mod.html", "namespaceArraySplit__mod" ],
@@ -842,6 +843,10 @@ var namespaces_dup =
       [ "Test", "namespaceTest__ObservatoryComptonBatse__mod.html#add8b90ec035d7f9f20138507ca1364eb", null ]
     ] ],
     [ "Test_Optimization_mod", "namespaceTest__Optimization__mod.html", "namespaceTest__Optimization__mod" ],
+    [ "Test_Option_mod", "namespaceTest__Option__mod.html", [
+      [ "test_Option", "namespaceTest__Option__mod.html#a94b24a31726cb59943fb27072dbe9d2c", null ],
+      [ "Test", "namespaceTest__Option__mod.html#a679225b2fe8091062765ab2918aee35c", null ]
+    ] ],
     [ "Test_ParaDISE_ChainFileContents_mod", "namespaceTest__ParaDISE__ChainFileContents__mod.html", null ],
     [ "Test_ParaDISE_mod", "namespaceTest__ParaDISE__mod.html", null ],
     [ "Test_ParaDISE_RefinedChain_mod", "namespaceTest__ParaDISE__RefinedChain__mod.html", null ],
