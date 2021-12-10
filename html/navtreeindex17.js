@@ -1,5 +1,10 @@
 var NAVTREEINDEX17 =
 {
+"namespaceDistMultiNorm__mod.html#abc50852f3f4a65e6dee14e501df15a60":[5,0,27,15],
+"namespaceDistMultiNorm__mod.html#ae37c36837179b733e864ec6749931c38":[5,0,27,13],
+"namespaceDistMultiNorm__mod.html#ae523dcb73ab50b13301bc98a946d4296":[5,0,27,16],
+"namespaceDistMultiNorm__mod.html#afce840ed7d5ad6b5a9bc2ce69717673e":[5,0,27,4],
+"namespaceDistMultiSkewNorm__mod.html":[5,0,31],
 "namespaceDistMultiSkewNorm__mod.html#a1dfc43fdd9396f88e5f6de62ba0e9d1d":[5,0,31,4],
 "namespaceDistMultiSkewNorm__mod.html#a26a3af3d4ea893ef1409bfab835ffbed":[5,0,31,1],
 "namespaceDistMultiSkewNorm__mod.html#a529ed321612a1dc13664c9319155f370":[5,0,31,2],
@@ -244,10 +249,5 @@ var NAVTREEINDEX17 =
 "namespaceMath__mod.html#a136360c556ccfacde39b4aaea6944d1b":[5,0,55,4],
 "namespaceMath__mod.html#a238197f24c7d68ab3e346c206b6889ae":[5,0,55,3],
 "namespaceMath__mod.html#a25fc3868e181a640ba3f8866352b6677":[5,0,55,9],
-"namespaceMath__mod.html#a3974fffdcda7a33913960e0999a34b96":[5,0,55,10],
-"namespaceMath__mod.html#a88df8b4c3ed1d6b49716bce1807c4b8a":[5,0,55,11],
-"namespaceMath__mod.html#aaef7178686d70463cca2f6a933a3a1f9":[5,0,55,6],
-"namespaceMath__mod.html#aeaf16d563dfc7382b4a5f84d7e3d65f6":[5,0,55,7],
-"namespaceMatrixCholesky__mod.html":[5,0,66],
-"namespaceMatrixCholesky__mod.html#a6ad74b17779eee2be1dce2fcdeb19fd9":[5,0,66,2]
+"namespaceMath__mod.html#a3974fffdcda7a33913960e0999a34b96":[5,0,55,10]
 };

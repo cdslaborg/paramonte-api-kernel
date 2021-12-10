@@ -1,5 +1,6 @@
 var dir_4d389600729eb25db92af3e09978356f =
 [
+    [ "trash", "dir_a6fc2976781709d06f3038ae9a0bf9f9.html", "dir_a6fc2976781709d06f3038ae9a0bf9f9" ],
     [ "main.f90", "main_8f90.html", "main_8f90" ],
     [ "Test_ArrayInsert_mod.f90", "Test__ArrayInsert__mod_8f90.html", "Test__ArrayInsert__mod_8f90" ],
     [ "Test_ArrayInsert_mod@Routines_smod.f90", "Test__ArrayInsert__mod_0dRoutines__smod_8f90.html", null ],
@@ -11,9 +12,8 @@ var dir_4d389600729eb25db92af3e09978356f =
     [ "Test_ArrayRemap_mod@Routines_smod@remap_D1.inc.f90", "Test__ArrayRemap__mod_0dRoutines__smod_0dremap__D1_8inc_8f90.html", null ],
     [ "Test_ArrayRemove_mod.f90", "Test__ArrayRemove__mod_8f90.html", "Test__ArrayRemove__mod_8f90" ],
     [ "Test_ArrayRemove_mod@Routines_smod.f90", "Test__ArrayRemove__mod_0dRoutines__smod_8f90.html", null ],
-    [ "Test_ArrayRemove_mod@Routines_smod@remove_D1.inc.f90", "Test__ArrayRemove__mod_0dRoutines__smod_0dremove__D1_8inc_8f90.html", null ],
-    [ "Test_ArrayRemove_mod@Routines_smod@remove_D1.inc.patterns.inc.f90", "Test__ArrayRemove__mod_0dRoutines__smod_0dremove__D1_8inc_8patterns_8inc_8f90.html", "Test__ArrayRemove__mod_0dRoutines__smod_0dremove__D1_8inc_8patterns_8inc_8f90" ],
-    [ "Test_ArrayRemove_mod@Routines_smod@remove_D1.inc.patternv.inc.f90", "Test__ArrayRemove__mod_0dRoutines__smod_0dremove__D1_8inc_8patternv_8inc_8f90.html", "Test__ArrayRemove__mod_0dRoutines__smod_0dremove__D1_8inc_8patternv_8inc_8f90" ],
+    [ "Test_ArrayRemove_mod@Routines_smod@remove_D1_D0.inc.f90", "Test__ArrayRemove__mod_0dRoutines__smod_0dremove__D1__D0_8inc_8f90.html", null ],
+    [ "Test_ArrayRemove_mod@Routines_smod@remove_D1_D1.inc.f90", "Test__ArrayRemove__mod_0dRoutines__smod_0dremove__D1__D1_8inc_8f90.html", null ],
     [ "Test_ArrayReplace_mod.f90", "Test__ArrayReplace__mod_8f90.html", "Test__ArrayReplace__mod_8f90" ],
     [ "Test_ArrayReplace_mod@Routines_smod.f90", "Test__ArrayReplace__mod_0dRoutines__smod_8f90.html", null ],
     [ "Test_ArrayReplace_mod@Routines_smod@replace_D1.inc.f90", "Test__ArrayReplace__mod_0dRoutines__smod_0dreplace__D1_8inc_8f90.html", null ],
@@ -159,7 +159,7 @@ var dir_4d389600729eb25db92af3e09978356f =
     [ "Test_Optimization_mod.f90", "Test__Optimization__mod_8f90.html", "Test__Optimization__mod_8f90" ],
     [ "Test_Option_mod.f90", "Test__Option__mod_8f90.html", "Test__Option__mod_8f90" ],
     [ "Test_Option_mod@Routines_smod.f90", "Test__Option__mod_0dRoutines__smod_8f90.html", null ],
-    [ "Test_Option_mod@Routines_smod@option.inc.f90", "Test__Option__mod_0dRoutines__smod_0doption_8inc_8f90.html", null ],
+    [ "Test_Option_mod@Routines_smod@genOption.inc.f90", "Test__Option__mod_0dRoutines__smod_0dgenOption_8inc_8f90.html", null ],
     [ "Test_ParaDISE_ChainFileContents_mod.f90", "Test__ParaDISE__ChainFileContents__mod_8f90.html", null ],
     [ "Test_ParaDISE_mod.f90", "Test__ParaDISE__mod_8f90.html", null ],
     [ "Test_ParaDISE_RefinedChain_mod.f90", "Test__ParaDISE__RefinedChain__mod_8f90.html", null ],
