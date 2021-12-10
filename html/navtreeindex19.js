@@ -1,5 +1,9 @@
 var NAVTREEINDEX19 =
 {
+"namespaceSampleVariance__mod.html#a7e5d3248419b734b66b56b45db6c769d":[5,0,107,1],
+"namespaceSample__mod.html":[5,0,100],
+"namespaceSample__mod.html#a09a467371587c98f96236755496f7f13":[5,0,100,14],
+"namespaceSample__mod.html#a1e5daab49859d9c21c4ec3c916ec963d":[5,0,100,4],
 "namespaceSample__mod.html#a5f2a3ba527c41a88f8afefabf3385a9e":[5,0,100,5],
 "namespaceSample__mod.html#a64b836f780040d4b71c0a63c77ea5231":[5,0,100,9],
 "namespaceSample__mod.html#a69fe9bd0741ff89ecef392e6c4df1308":[5,0,100,8],
@@ -245,9 +249,5 @@ var NAVTREEINDEX19 =
 "namespaceSpecDRAM__ProposalDelayedRejectionCount__mod.html":[5,0,143],
 "namespaceSpecDRAM__ProposalDelayedRejectionCount__mod.html#a0914005b3e3505a21df1edfe43bcb5b7":[5,0,143,8],
 "namespaceSpecDRAM__ProposalDelayedRejectionCount__mod.html#a29ac3f10467acf878f5dc7de24b45e8f":[5,0,143,1],
-"namespaceSpecDRAM__ProposalDelayedRejectionCount__mod.html#a6cc2e4a642ec4ee791346b2b2dcfb675":[5,0,143,2],
-"namespaceSpecDRAM__ProposalDelayedRejectionCount__mod.html#aaa8a315d535c79c47d00806fa947187f":[5,0,143,4],
-"namespaceSpecDRAM__ProposalDelayedRejectionCount__mod.html#abf658cb1d09f9591f0ace96808c7ac9c":[5,0,143,3],
-"namespaceSpecDRAM__ProposalDelayedRejectionCount__mod.html#aca719c199e77915d268cbd088367b72b":[5,0,143,5],
-"namespaceSpecDRAM__ProposalDelayedRejectionCount__mod.html#ae7959b785eee1b4163dde1cb307459a7":[5,0,143,7]
+"namespaceSpecDRAM__ProposalDelayedRejectionCount__mod.html#a6cc2e4a642ec4ee791346b2b2dcfb675":[5,0,143,2]
 };

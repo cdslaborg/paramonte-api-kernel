@@ -1,5 +1,9 @@
 var NAVTREEINDEX18 =
 {
+"namespaceMath__mod.html#a136360c556ccfacde39b4aaea6944d1b":[5,0,55,4],
+"namespaceMath__mod.html#a238197f24c7d68ab3e346c206b6889ae":[5,0,55,3],
+"namespaceMath__mod.html#a25fc3868e181a640ba3f8866352b6677":[5,0,55,9],
+"namespaceMath__mod.html#a3974fffdcda7a33913960e0999a34b96":[5,0,55,10],
 "namespaceMath__mod.html#a88df8b4c3ed1d6b49716bce1807c4b8a":[5,0,55,11],
 "namespaceMath__mod.html#aaef7178686d70463cca2f6a933a3a1f9":[5,0,55,6],
 "namespaceMath__mod.html#aeaf16d563dfc7382b4a5f84d7e3d65f6":[5,0,55,7],
@@ -245,9 +249,5 @@ var NAVTREEINDEX18 =
 "namespaceSampleMean__mod.html#a73519670cd9d159e865e4e119e3c3edb":[5,0,105,1],
 "namespaceSampleShift__mod.html":[5,0,106],
 "namespaceSampleShift__mod.html#a058cc360068a751fca9f1aface6f8403":[5,0,106,2],
-"namespaceSampleVariance__mod.html":[5,0,107],
-"namespaceSampleVariance__mod.html#a7e5d3248419b734b66b56b45db6c769d":[5,0,107,1],
-"namespaceSample__mod.html":[5,0,100],
-"namespaceSample__mod.html#a09a467371587c98f96236755496f7f13":[5,0,100,14],
-"namespaceSample__mod.html#a1e5daab49859d9c21c4ec3c916ec963d":[5,0,100,4]
+"namespaceSampleVariance__mod.html":[5,0,107]
 };

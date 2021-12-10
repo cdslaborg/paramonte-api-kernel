@@ -1,5 +1,9 @@
 var NAVTREEINDEX20 =
 {
+"namespaceSpecDRAM__ProposalDelayedRejectionCount__mod.html#aaa8a315d535c79c47d00806fa947187f":[5,0,143,4],
+"namespaceSpecDRAM__ProposalDelayedRejectionCount__mod.html#abf658cb1d09f9591f0ace96808c7ac9c":[5,0,143,3],
+"namespaceSpecDRAM__ProposalDelayedRejectionCount__mod.html#aca719c199e77915d268cbd088367b72b":[5,0,143,5],
+"namespaceSpecDRAM__ProposalDelayedRejectionCount__mod.html#ae7959b785eee1b4163dde1cb307459a7":[5,0,143,7],
 "namespaceSpecDRAM__ProposalDelayedRejectionCount__mod.html#aebe38a9b12b6136b1ed3e3d73cbb9b3a":[5,0,143,6],
 "namespaceSpecDRAM__ProposalDelayedRejectionScaleFactor__mod.html":[5,0,144],
 "namespaceSpecDRAM__ProposalDelayedRejectionScaleFactor__mod.html#a5568230878eb0705884d73dd240db57b":[5,0,144,1],
@@ -245,9 +249,5 @@ var NAVTREEINDEX20 =
 "namespaceSystem__mod.html#a3c1981d0023737dd6900f2af31dded68":[5,0,163,15],
 "namespaceSystem__mod.html#a3cf2c1a4cef476d2ed447906cc805577":[5,0,163,18],
 "namespaceSystem__mod.html#a3dc98275f7b7666dc683044f85277222":[5,0,163,9],
-"namespaceSystem__mod.html#a4ebf44b65a8787d27184d6d179d33d0a":[5,0,163,24],
-"namespaceSystem__mod.html#a557d6e1a9315cfb68392ada8697b3785":[5,0,163,16],
-"namespaceSystem__mod.html#a5dc19778bc2beddeded2a995e9c7b5ab":[5,0,163,21],
-"namespaceSystem__mod.html#a60b6010a39f768d6f4717b3be2f397be":[5,0,163,20],
-"namespaceSystem__mod.html#a8e1e4cab63b901e256b969a31c696dda":[5,0,163,26]
+"namespaceSystem__mod.html#a4ebf44b65a8787d27184d6d179d33d0a":[5,0,163,24]
 };
