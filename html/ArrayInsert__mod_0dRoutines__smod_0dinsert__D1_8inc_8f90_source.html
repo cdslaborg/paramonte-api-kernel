@@ -176,13 +176,13 @@ $(document).ready(function(){initNavTree('ArrayInsert__mod_0dRoutines__smod_0din
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor"></span> </div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="fortran_comment">! Determine assumed-length scalar character vs. array input arguments.</span></div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#if insert_D0_D0_SK_ENABLED || genInserted_D0_D0_SK_ENABLED</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor"></span><span class="preprocessor">#define GEN_SIZE len</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor"></span><span class="preprocessor">#define GET_SIZE len</span></div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor"></span><span class="preprocessor">#define ALL</span></div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor"></span><span class="preprocessor">#elif insertScalar_ENABLED || genInsertedScalar_ENABLED</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor"></span><span class="preprocessor">#define GEN_SIZE size</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor"></span><span class="preprocessor">#define GET_SIZE size</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor"></span><span class="preprocessor">#define ALL all</span></div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor"></span><span class="preprocessor">#elif insertVector_ENABLED || genInsertedVector_ENABLED</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor"></span><span class="preprocessor">#define GEN_SIZE size</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor"></span><span class="preprocessor">#define GET_SIZE size</span></div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor"></span><span class="preprocessor">#define ALL all</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor"></span><span class="preprocessor">#else</span></div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor"></span><span class="preprocessor">#error &quot;Unrecognized interface.&quot;</span></div>
@@ -207,7 +207,7 @@ $(document).ready(function(){initNavTree('ArrayInsert__mod_0dRoutines__smod_0din
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor"></span>        <span class="fortran_statement">integer</span>(IK) ,<span class="fortran_attribute"> parameter</span>     :: lenInsertion<span class="fortran_operator_symbols"> = </span><span class="fortran_numeric_literal">1_IK</span></div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">#elif insertVector_ENABLED || genInsertedVector_ENABLED</span></div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor"></span>        <span class="fortran_statement">integer</span>(IK)                 :: lenInsertion</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        lenInsertion<span class="fortran_operator_symbols"> = </span>GEN_SIZE(Insertion,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK) <span class="fortran_comment">! \warning GEN_SIZE is a preprocessor macro.</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        lenInsertion<span class="fortran_operator_symbols"> = </span>GET_SIZE(Insertion,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK) <span class="fortran_comment">! \warning GET_SIZE is a preprocessor macro.</span></div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="fortran_keywordflow">if</span> (lenInsertion<span class="fortran_operator_symbols"> =</span><span class="fortran_operator_symbols">= </span><span class="fortran_numeric_literal">0_IK</span>) <span class="fortran_keywordflow">then</span></div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            ArrayNew<span class="fortran_operator_symbols"> = </span>Array</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="fortran_statement">            return</span></div>
@@ -220,8 +220,8 @@ $(document).ready(function(){initNavTree('ArrayInsert__mod_0dRoutines__smod_0din
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="fortran_keywordflow">if</span> (lenIndex<span class="fortran_operator_symbols"> &gt; </span><span class="fortran_numeric_literal">0_IK</span>) <span class="fortran_keywordflow">then</span></div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            lenArray<span class="fortran_operator_symbols"> = </span>GEN_SIZE(Array,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK) <span class="fortran_comment">! \warning GEN_SIZE is a preprocessor macro.</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            lenArrayNew<span class="fortran_operator_symbols"> = </span>GEN_SIZE(ArrayNew,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK) <span class="fortran_comment">! \warning GEN_SIZE is a preprocessor macro.</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            lenArray<span class="fortran_operator_symbols"> = </span>GET_SIZE(Array,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK) <span class="fortran_comment">! \warning GET_SIZE is a preprocessor macro.</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            lenArrayNew<span class="fortran_operator_symbols"> = </span>GET_SIZE(ArrayNew,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK) <span class="fortran_comment">! \warning GET_SIZE is a preprocessor macro.</span></div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="preprocessor">#if CHECK_ENABLED</span></div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor"></span>            <span class="fortran_keywordflow">block</span></div>
@@ -297,7 +297,7 @@ $(document).ready(function(){initNavTree('ArrayInsert__mod_0dRoutines__smod_0din
 <div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="preprocessor"></span><span class="preprocessor">#undef insertVector_ENABLED</span></div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="preprocessor"></span><span class="preprocessor">#undef INDEXNEW</span></div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="preprocessor"></span><span class="preprocessor">#undef IS_EQUAL</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="preprocessor"></span><span class="preprocessor">#undef GEN_SIZE</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="preprocessor"></span><span class="preprocessor">#undef GET_SIZE</span></div>
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="preprocessor"></span><span class="preprocessor">#undef ALL</span></div>
 <div class="ttc" id="ainterfaceString__mod_1_1val2str_html"><div class="ttname"><a href="interfaceString__mod_1_1val2str.html">String_mod::val2str</a></div><div class="ttdoc">Convert the input value to an output allocatable character, with the requested format and sign symbol...</div><div class="ttdef"><b>Definition:</b> <a href="String__mod_8f90_source.html#l00302">String_mod.f90:302</a></div></div>
 <div class="ttc" id="anamespaceErr__mod_html"><div class="ttname"><a href="namespaceErr__mod.html">Err_mod</a></div><div class="ttdoc">This module contains classes and procedures for reporting and handling errors.</div><div class="ttdef"><b>Definition:</b> <a href="Err__mod_8f90_source.html#l00046">Err_mod.f90:46</a></div></div>
@@ -310,7 +310,7 @@ $(document).ready(function(){initNavTree('ArrayInsert__mod_0dRoutines__smod_0din
     <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
       <ul>
         <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="ArrayInsert__mod_0dRoutines__smod_0dinsert__D1_8inc_8f90.html">ArrayInsert_mod@Routines_smod@insert_D1.inc.f90</a></li>
-        <li class="footer">Generated on Fri Dec 10 2021 03:25:42 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+        <li class="footer">Generated on Fri Dec 10 2021 04:19:08 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
       </ul>
     </div>
     <div style="color: #ffffff; float: none; width: 100%;">

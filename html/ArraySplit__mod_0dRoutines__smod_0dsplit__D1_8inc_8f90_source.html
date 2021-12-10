@@ -169,14 +169,14 @@ $(document).ready(function(){initNavTree('ArraySplit__mod_0dRoutines__smod_0dspl
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor"></span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="fortran_comment">! Determine assumed-length scalar character vs. array input arguments.</span></div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#if splitDelArr_D0_SK_ENABLED</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor"></span><span class="preprocessor">#define GEN_SIZE len</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor"></span><span class="preprocessor">#define GET_SIZE len</span></div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor"></span><span class="preprocessor">#define ALL</span></div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor"></span><span class="fortran_comment">!#elif split_D1_CK_ENABLED || split_D1_RK_ENABLED || split_D1_IK_ENABLED || split_D1_LK_ENABLED || split_D1_SK_ENABLED</span></div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#elif split_ENABLED</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor"></span><span class="preprocessor">#define GEN_SIZE size</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor"></span><span class="preprocessor">#define GET_SIZE size</span></div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor"></span><span class="preprocessor">#define ALL all</span></div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor"></span><span class="preprocessor">#elif splitDelArr_D1_CK_ENABLED || splitDelArr_D1_RK_ENABLED || splitDelArr_D1_IK_ENABLED || splitDelArr_D1_LK_ENABLED || splitDelArr_D1_SK_ENABLED</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor"></span><span class="preprocessor">#define GEN_SIZE size</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor"></span><span class="preprocessor">#define GET_SIZE size</span></div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor"></span><span class="preprocessor">#define ALL all</span></div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor"></span><span class="preprocessor">#else</span></div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor"></span><span class="preprocessor">#error &quot;Unrecognized interface.&quot;</span></div>
@@ -216,14 +216,14 @@ $(document).ready(function(){initNavTree('ArraySplit__mod_0dRoutines__smod_0dspl
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="preprocessor"></span> </div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="preprocessor">#if splitDelArr_ENABLED</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor"></span>        lenDelim<span class="fortran_operator_symbols"> = </span>GEN_SIZE(Delim,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK) <span class="fortran_comment">! \warning GEN_SIZE is a preprocessor macro.</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor"></span>        lenDelim<span class="fortran_operator_symbols"> = </span>GET_SIZE(Delim,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK) <span class="fortran_comment">! \warning GET_SIZE is a preprocessor macro.</span></div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="fortran_keywordflow">if</span> (lenDelim<span class="fortran_operator_symbols"> =</span><span class="fortran_operator_symbols">= </span><span class="fortran_numeric_literal">0_IK</span>) <span class="fortran_keywordflow">then</span></div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="fortran_statement">            allocate</span>(ArraySplit(<span class="fortran_numeric_literal">1</span>))</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            ArraySplit(<span class="fortran_numeric_literal">1</span>)<span class="fortran_operator_symbols">%</span>Value<span class="fortran_operator_symbols"> = </span>Array</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="fortran_statement">            return</span></div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="fortran_keywordflow">        end if</span></div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="preprocessor"></span>        lenArray<span class="fortran_operator_symbols"> = </span>GEN_SIZE(Array,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK) <span class="fortran_comment">! \warning GEN_SIZE is a preprocessor macro.</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="preprocessor"></span>        lenArray<span class="fortran_operator_symbols"> = </span>GET_SIZE(Array,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK) <span class="fortran_comment">! \warning GET_SIZE is a preprocessor macro.</span></div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="fortran_keywordflow">if</span> (lenArray<span class="fortran_operator_symbols"> &gt; </span>lenDelim) <span class="fortran_keywordflow">then</span></div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
@@ -372,7 +372,7 @@ $(document).ready(function(){initNavTree('ArraySplit__mod_0dRoutines__smod_0dspl
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="preprocessor"></span><span class="preprocessor">#undef split_ENABLED</span></div>
 <div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="preprocessor"></span><span class="preprocessor">#undef INSTANCENEW</span></div>
 <div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="preprocessor"></span><span class="preprocessor">#undef IS_EQUAL</span></div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="preprocessor"></span><span class="preprocessor">#undef GEN_SIZE</span></div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="preprocessor"></span><span class="preprocessor">#undef GET_SIZE</span></div>
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span><span class="preprocessor"></span><span class="preprocessor">#undef ALL</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -380,7 +380,7 @@ $(document).ready(function(){initNavTree('ArraySplit__mod_0dRoutines__smod_0dspl
     <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
       <ul>
         <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="ArraySplit__mod_0dRoutines__smod_0dsplit__D1_8inc_8f90.html">ArraySplit_mod@Routines_smod@split_D1.inc.f90</a></li>
-        <li class="footer">Generated on Fri Dec 10 2021 03:25:42 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+        <li class="footer">Generated on Fri Dec 10 2021 04:19:09 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
       </ul>
     </div>
     <div style="color: #ffffff; float: none; width: 100%;">
