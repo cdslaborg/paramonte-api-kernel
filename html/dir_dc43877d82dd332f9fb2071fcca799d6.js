@@ -1,9 +1,13 @@
 var dir_dc43877d82dd332f9fb2071fcca799d6 =
 [
-    [ "___backup___", "dir_b72a45328159d2305082986d68140076.html", "dir_b72a45328159d2305082986d68140076" ],
-    [ "___trash___", "dir_224eeac1a15c741d9ec428992bb14d4d.html", "dir_224eeac1a15c741d9ec428992bb14d4d" ],
     [ "tests", "dir_4d389600729eb25db92af3e09978356f.html", "dir_4d389600729eb25db92af3e09978356f" ],
     [ "Array_mod.f90", "Array__mod_8f90.html", "Array__mod_8f90" ],
+    [ "ArrayFind_mod.f90", "ArrayFind__mod_8f90.html", "ArrayFind__mod_8f90" ],
+    [ "ArrayFind_mod@Routines_smod.f90", "ArrayFind__mod_0dRoutines__smod_8f90.html", null ],
+    [ "ArrayFind_mod@Routines_smod@findLoc_D1.inc.f90", "ArrayFind__mod_0dRoutines__smod_0dfindLoc__D1_8inc_8f90.html", null ],
+    [ "ArrayFind_mod@Routines_smod@findLocCustom_D1.inc.f90", "ArrayFind__mod_0dRoutines__smod_0dfindLocCustom__D1_8inc_8f90.html", null ],
+    [ "ArrayFind_mod@Routines_smod@findLocCustomInstance_D1.inc.f90", "ArrayFind__mod_0dRoutines__smod_0dfindLocCustomInstance__D1_8inc_8f90.html", null ],
+    [ "ArrayFind_mod@Routines_smod@findLocInstance_D1.inc.f90", "ArrayFind__mod_0dRoutines__smod_0dfindLocInstance__D1_8inc_8f90.html", null ],
     [ "ArrayInsert_mod.f90", "ArrayInsert__mod_8f90.html", "ArrayInsert__mod_8f90" ],
     [ "ArrayInsert_mod@Routines_smod.f90", "ArrayInsert__mod_0dRoutines__smod_8f90.html", null ],
     [ "ArrayInsert_mod@Routines_smod@insert_D1.inc.f90", "ArrayInsert__mod_0dRoutines__smod_0dinsert__D1_8inc_8f90.html", null ],
@@ -36,6 +40,7 @@ var dir_dc43877d82dd332f9fb2071fcca799d6 =
     [ "ArrayReverse_mod@Routines_smod@reverseNew_D1.inc.f90", "ArrayReverse__mod_0dRoutines__smod_0dreverseNew__D1_8inc_8f90.html", null ],
     [ "ArraySelect_mod.f90", "ArraySelect__mod_8f90.html", "ArraySelect__mod_8f90" ],
     [ "ArraySelect_mod@Routines_smod.f90", "ArraySelect__mod_0dRoutines__smod_8f90.html", null ],
+    [ "ArraySelect_mod@Routines_smod@select_D1.inc.f90", "ArraySelect__mod_0dRoutines__smod_0dselect__D1_8inc_8f90.html", null ],
     [ "ArrayShuffle_mod.f90", "ArrayShuffle__mod_8f90.html", "ArrayShuffle__mod_8f90" ],
     [ "ArrayShuffle_mod@Routines_smod.f90", "ArrayShuffle__mod_0dRoutines__smod_8f90.html", null ],
     [ "ArrayShuffle_mod@Routines_smod@shuffle_D1.inc.f90", "ArrayShuffle__mod_0dRoutines__smod_0dshuffle__D1_8inc_8f90.html", null ],

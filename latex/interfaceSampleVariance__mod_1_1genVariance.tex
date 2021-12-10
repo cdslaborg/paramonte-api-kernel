@@ -12,7 +12,7 @@ Generate and return the variance of the input array of shape {\ttfamily (np)} or
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em Sample} & \+: The input contiguous array of type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} of shape {\ttfamily (np)}, {\ttfamily (nd,np)}, or {\ttfamily (np,nd)} containing the sample. If {\ttfamily Sample} is a 2D array, then the direction along which variance is computed is dictated by the optional input argument {\ttfamily dim}. \\
+\mbox{\texttt{ in}}  & {\em Sample} & \+: The input {\ttfamily contiguous} array of type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} of shape {\ttfamily (np)}, {\ttfamily (nd,np)}, or {\ttfamily (np,nd)} containing the sample. If {\ttfamily Sample} is a 2D array, then the direction along which variance is computed is dictated by the optional input argument {\ttfamily dim}. \\
 \hline
 \mbox{\texttt{ in}}  & {\em Weight} & \+: The contiguous vector of shape {\ttfamily (np)} of either the same type and kind as the input {\ttfamily Sample} or type {\ttfamily integer} of kind \mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}}, \mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}}, \mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}}, or \mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}}, containing the corresponding weight of each data points in {\ttfamily Sample} ({\bfseries{optional}}, default = a vector of ones). \\
 \hline
@@ -26,7 +26,7 @@ Generate and return the variance of the input array of shape {\ttfamily (np)} or
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-{\ttfamily variance} \+: The output variance of the input sample of the same type and kind as the input {\ttfamily Sample}. It is a scalar only if the input {\ttfamily Sample} is a 1D array. Otherwise, it is an allocatable array of shape {\ttfamily (nd)}.
+{\ttfamily variance} \+: The output variance of the input sample of the same type and kind as the input {\ttfamily Sample}. It is a scalar only if the input {\ttfamily Sample} is a 1D array. Otherwise, it is an {\ttfamily allocatable} array of shape {\ttfamily (nd)}.
 \end{DoxyReturn}
 \label{interfaceArraySplit__mod_1_1split_interface}%
 \Hypertarget{interfaceArraySplit__mod_1_1split_interface}%
@@ -49,7 +49,7 @@ Generate and return the variance of the input array of shape {\ttfamily (np)} or
 
 \end{DoxyParagraph}
 \begin{DoxyWarning}{Warning}
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+This {\ttfamily pure} procedures documented herein become {\ttfamily impure} when the Para\+Monte library is compiled with preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, {\ttfamily pure} procedures are {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
 \end{DoxyWarning}
 \begin{DoxyNote}{Note}
 For a one-\/dimensional {\ttfamily Sample}, one also use the concise Fortran syntax to achieve the same goal as with the interface {\ttfamily variance = \mbox{\hyperlink{interfaceSampleVariance__mod_1_1genVariance}{gen\+Variance}}(Sample(\+:), Weight(\+:), mean, biased = .false.)} with integer {\ttfamily Weight}\+: 
@@ -194,62 +194,62 @@ For a two or higher-\/dimensional {\ttfamily Sample}, if the variance is to be c
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00001}00001 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00002}00002 Unbiased sample variance along the second dimension.}
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00003}00003 }
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00004}00004 Unbiased sample variance  RK32 = 0.862859860E-\/1 0.822139829E-\/1}
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00005}00005 Unbiased sample variance  RK64 = 0.92146152223033503E-\/1 0.82926415737339151E-\/1}
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00006}00006 Unbiased sample variance RK128 = 0.791882408078037131224551574406665175E-\/1 0.863035290403501213201220696626230565E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00004}00004 Unbiased sample variance  RK32 = 0.826335251E-\/1 0.833132491E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00005}00005 Unbiased sample variance  RK64 = 0.78377254031617605E-\/1 0.81068259651677355E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00006}00006 Unbiased sample variance RK128 = 0.818374769111863388912886045769769940E-\/1 0.872086047229535539168911344898500563E-\/1}
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00007}00007 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00008}00008 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00009}00009 Biased sample variance along the first dimension.}
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00010}00010 }
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00011}00011 Biased sample variance  RK32 = 0.861997008E-\/1 0.821317732E-\/1}
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00012}00012 Biased sample variance  RK64 = 0.92054006070810476E-\/1 0.82843489321601807E-\/1}
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00013}00013 Biased sample variance RK128 = 0.791090525669959094093327022832258520E-\/1 0.862172255113097711988019475929604322E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00011}00011 Biased sample variance  RK32 = 0.825508982E-\/1 0.832299367E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00012}00012 Biased sample variance  RK64 = 0.78298876777585985E-\/1 0.80987191392025676E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00013}00013 Biased sample variance RK128 = 0.817556394342751525523973159724000156E-\/1 0.871213961182306003629742433553602045E-\/1}
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00014}00014 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00015}00015 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00016}00016 Unbiased sample variance along the second dimension with precomputed Mean.}
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00017}00017 }
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00018}00018 Unbiased sample variance  RK32 = 0.862859860E-\/1 0.822139829E-\/1}
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00019}00019 Unbiased sample variance  RK64 = 0.92146152223033503E-\/1 0.82926415737339151E-\/1}
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00020}00020 Unbiased sample variance RK128 = 0.791882408078037131224551574406665175E-\/1 0.863035290403501213201220696626230565E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00018}00018 Unbiased sample variance  RK32 = 0.826335251E-\/1 0.833132491E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00019}00019 Unbiased sample variance  RK64 = 0.78377254031617605E-\/1 0.81068259651677355E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00020}00020 Unbiased sample variance RK128 = 0.818374769111863388912886045769769940E-\/1 0.872086047229535539168911344898500563E-\/1}
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00021}00021 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00022}00022 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00023}00023 Unbiased sample variance along the second dimension for a shifted sample (with a mean of zero).}
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00024}00024 }
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00025}00025 Unbiased sample variance  RK32 = 0.862859860E-\/1 0.822139829E-\/1}
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00026}00026 Unbiased sample variance  RK64 = 0.92146152223033503E-\/1 0.82926415737339151E-\/1}
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00027}00027 Unbiased sample variance RK128 = 0.791882408078037131224551574406665175E-\/1 0.863035290403501213201220696626230565E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00025}00025 Unbiased sample variance  RK32 = 0.826335251E-\/1 0.833132491E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00026}00026 Unbiased sample variance  RK64 = 0.78377254031617605E-\/1 0.81068259651677355E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00027}00027 Unbiased sample variance RK128 = 0.818374769111863388912886045769769940E-\/1 0.872086047229535539168911344898500563E-\/1}
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00028}00028 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00029}00029 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00030}00030 Unbiased sample variance of a 1D array.}
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00031}00031 }
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00032}00032 Unbiased sample variance  RK32 = 0.862859935E-\/1}
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00033}00033 Unbiased sample variance  RK64 = 0.92146152223033503E-\/1}
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00034}00034 Unbiased sample variance RK128 = 0.791882408078037131224551574406665295E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00032}00032 Unbiased sample variance  RK32 = 0.826335326E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00033}00033 Unbiased sample variance  RK64 = 0.78377254031617605E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00034}00034 Unbiased sample variance RK128 = 0.818374769111863388912886045769769940E-\/1}
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00035}00035 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00036}00036 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00037}00037 Unbiased integer-\/weighted sample variance along the second dimension.}
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00038}00038 }
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00039}00039 Unbiased integer-\/weighted sample variance  RK32 = 0.857213438E-\/1 0.811569691E-\/1}
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00040}00040 Unbiased integer-\/weighted sample variance  RK64 = 0.92210690563991296E-\/1 0.82035555395969711E-\/1}
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00041}00041 Unbiased integer-\/weighted sample variance RK128 = 0.784043822730056120845683972514157226E-\/1 0.860691885038457388311981353732462253E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00039}00039 Unbiased integer-\/weighted sample variance  RK32 = 0.817106441E-\/1 0.826880485E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00040}00040 Unbiased integer-\/weighted sample variance  RK64 = 0.77957909482923332E-\/1 0.80241984782950568E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00041}00041 Unbiased integer-\/weighted sample variance RK128 = 0.798870525512433511988953431297433017E-\/1 0.871116789465661248049345637077976077E-\/1}
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00042}00042 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00043}00043 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00044}00044 Unbiased real-\/weighted sample variance along the second dimension.}
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00045}00045 }
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00046}00046 Unbiased real-\/weighted sample variance  RK32 = 0.858355686E-\/1 0.812651142E-\/1}
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00047}00047 Unbiased real-\/weighted sample variance  RK64 = 0.92333556240958639E-\/1 0.82144863264585269E-\/1}
-\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00048}00048 Unbiased real-\/weighted sample variance RK128 = 0.785088518030162791226557635368939542E-\/1 0.861838709668755132999938690646162947E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00046}00046 Unbiased real-\/weighted sample variance  RK32 = 0.818195269E-\/1 0.827982277E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00047}00047 Unbiased real-\/weighted sample variance  RK64 = 0.78061784112480853E-\/1 0.80348902817304932E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00048}00048 Unbiased real-\/weighted sample variance RK128 = 0.799934976579072330792403069447063068E-\/1 0.872277504708120490218631907080744760E-\/1}
 \DoxyCodeLine{\Hypertarget{interfaceSampleVariance__mod_1_1genVariance_l00049}00049 }
 
 \end{DoxyCodeInclude}
 
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000104}{Test}}]\mbox{\hyperlink{namespaceTest__SampleVariance__mod}{Test\+\_\+\+Sample\+Variance\+\_\+mod}}\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000106}{Test}}]\mbox{\hyperlink{namespaceTest__SampleVariance__mod}{Test\+\_\+\+Sample\+Variance\+\_\+mod}}\end{DoxyRefDesc}
 
 
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000075}{Todo}}]The functionality of this interface can be expanded in the future to include the computation of the variance of higher dimensional input {\ttfamily Sample} and whole {\ttfamily Sample} input arrays of arbitrary shape.\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{todo__todo000076}{Todo}}]The functionality of this interface can be expanded in the future to include the computation of the variance of higher dimensional input {\ttfamily Sample} and whole {\ttfamily Sample} input arrays of arbitrary shape.\end{DoxyRefDesc}
 
 
 \begin{DoxyRemark}{Remarks}

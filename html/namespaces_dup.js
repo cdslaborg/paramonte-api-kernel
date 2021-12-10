@@ -3,7 +3,7 @@ var namespaces_dup =
     [ "Array_mod", "namespaceArray__mod.html", [
       [ "MODULE_NAME", "namespaceArray__mod.html#ab61502fe8ce3b44504d3e29999a1a625", null ]
     ] ],
-    [ "ArrayComparison_mod", "namespaceArrayComparison__mod.html", "namespaceArrayComparison__mod" ],
+    [ "ArrayFind_mod", "namespaceArrayFind__mod.html", "namespaceArrayFind__mod" ],
     [ "ArrayInsert_mod", "namespaceArrayInsert__mod.html", "namespaceArrayInsert__mod" ],
     [ "ArrayRemap_mod", "namespaceArrayRemap__mod.html", "namespaceArrayRemap__mod" ],
     [ "ArrayRemove_mod", "namespaceArrayRemove__mod.html", "namespaceArrayRemove__mod" ],
@@ -290,13 +290,17 @@ var namespaces_dup =
       [ "test_ArrayReverse", "namespaceTest__ArrayReverse__mod.html#a318c8d795a8ed305764db5725c2bea6a", null ],
       [ "Test", "namespaceTest__ArrayReverse__mod.html#ae17724ea49e0af64d08d133f66227c0d", null ]
     ] ],
+    [ "Test_ArraySelect_mod", "namespaceTest__ArraySelect__mod.html", [
+      [ "test_ArraySelect", "namespaceTest__ArraySelect__mod.html#a9ca4f7c8adbe3cb54ece3b0fc9395f00", null ],
+      [ "Test", "namespaceTest__ArraySelect__mod.html#a478379710e428156a563ade2d26316a6", null ]
+    ] ],
     [ "Test_ArrayShuffle_mod", "namespaceTest__ArrayShuffle__mod.html", [
       [ "test_ArrayShuffle", "namespaceTest__ArrayShuffle__mod.html#a3f9fd477df000efa217e59b8ec078c22", null ],
       [ "Test", "namespaceTest__ArrayShuffle__mod.html#aae5e25f9409a19cf7fe025f0cc12b787", null ]
     ] ],
     [ "Test_ArraySort_mod", "namespaceTest__ArraySort__mod.html", [
+      [ "test_ArraySort", "namespaceTest__ArraySort__mod.html#a6e47aab56abf023ed1b10e1270ce1d67", null ],
       [ "test_performance_1", "namespaceTest__ArraySort__mod.html#a2f18dcc9f23998b8ceec12ad3ae0184a", null ],
-      [ "test_Sort", "namespaceTest__ArraySort__mod.html#a74b45bf6a61ecb38aa78c2f06155d7c5", null ],
       [ "test_sortRecursive_1", "namespaceTest__ArraySort__mod.html#aae881af32438a81a999fadc0b2bc1dd1", null ],
       [ "DataUnsorted2_IK", "namespaceTest__ArraySort__mod.html#ac81f8c36ceb8ae25b9e6e176ff6c8e2e", null ],
       [ "DataUnsorted2_RK", "namespaceTest__ArraySort__mod.html#a37f493eb4ad5d41d69af394b99bdf291", null ],

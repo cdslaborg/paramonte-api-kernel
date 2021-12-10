@@ -18,7 +18,7 @@ Solve the set of {\ttfamily nd} linear equations of the form,.
 \hline
 \mbox{\texttt{ in}}  & {\em Coef\+Mat\+Cho\+Low} & \+: The input contiguous square matrix of shape {\ttfamily (nd,nd)} of the same type and kind as {\ttfamily Solution}, representing the Cholesky lower-\/triangular decomposition of the matrix of coefficients $A$ of the linear system. This matrix is returned by the call to \mbox{\hyperlink{interfaceMatrixCholesky__mod_1_1getChoLow}{get\+Cho\+Low}}. \\
 \hline
-\mbox{\texttt{ out}}  & {\em Coef\+Mat\+Cho\+Dia} & \+: The input contiguous array of shape {\ttfamily (nd)} of the same type and kind as {\ttfamily Solution}, representing the diagonal elements of the Cholesky factorization of the matrix of coefficients $A$ of the linear system. This vector is returned by the call to \mbox{\hyperlink{interfaceMatrixCholesky__mod_1_1getChoLow}{get\+Cho\+Low}}. \\
+\mbox{\texttt{ out}}  & {\em Coef\+Mat\+Cho\+Dia} & \+: The input {\ttfamily contiguous} array of shape {\ttfamily (nd)} of the same type and kind as {\ttfamily Solution}, representing the diagonal elements of the Cholesky factorization of the matrix of coefficients $A$ of the linear system. This vector is returned by the call to \mbox{\hyperlink{interfaceMatrixCholesky__mod_1_1getChoLow}{get\+Cho\+Low}}. \\
 \hline
 \mbox{\texttt{ in}}  & {\em Right\+Hand} & \+: The input contiguous vector of size {\ttfamily nd} of the same type and kind as {\ttfamily Solution}, representing the right-\/hand-\/side $B$ in the system of linear equations to be solved ({\bfseries{optional}}, if missing, then $B$ must be provided as input in {\ttfamily Solution}).\\
 \hline
@@ -39,7 +39,7 @@ Solve the set of {\ttfamily nd} linear equations of the form,.
 \begin{DoxyWarning}{Warning}
 The dimensions of the input arguments {\ttfamily Solution}, {\ttfamily Coef\+Mat\+Cho\+Low}, and {\ttfamily Coef\+Mat\+Cho\+Dia} must be consistent with each other as described in the above. This condition is only checked for when the preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED=1} is set at build time.
 
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+This {\ttfamily pure} procedures documented herein become {\ttfamily impure} when the Para\+Monte library is compiled with preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, {\ttfamily pure} procedures are {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
 \end{DoxyWarning}
 \begin{DoxyNote}{Note}
 The input {\ttfamily Coef\+Mat\+Cho\+Low} and {\ttfamily Coef\+Mat\+Cho\+Dia} arguments are not modified by this routine and, can be left in place for successive calls with different right-\/hand sides {\ttfamily Solution}.
@@ -226,7 +226,7 @@ The input {\ttfamily Coef\+Mat\+Cho\+Low} and {\ttfamily Coef\+Mat\+Cho\+Dia} ar
 
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000052}{Test}}]\mbox{\hyperlink{namespaceTest__LinSys__mod}{Test\+\_\+\+Lin\+Sys\+\_\+mod}}\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000054}{Test}}]\mbox{\hyperlink{namespaceTest__LinSys__mod}{Test\+\_\+\+Lin\+Sys\+\_\+mod}}\end{DoxyRefDesc}
 
 
 \begin{DoxyRemark}{Remarks}

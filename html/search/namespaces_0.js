@@ -1,7 +1,7 @@
 var searchData=
 [
   ['array_5fmod_0',['Array_mod',['../namespaceArray__mod.html',1,'']]],
-  ['arraycomparison_5fmod_1',['ArrayComparison_mod',['../namespaceArrayComparison__mod.html',1,'']]],
+  ['arrayfind_5fmod_1',['ArrayFind_mod',['../namespaceArrayFind__mod.html',1,'']]],
   ['arrayinsert_5fmod_2',['ArrayInsert_mod',['../namespaceArrayInsert__mod.html',1,'']]],
   ['arrayremap_5fmod_3',['ArrayRemap_mod',['../namespaceArrayRemap__mod.html',1,'']]],
   ['arrayremove_5fmod_4',['ArrayRemove_mod',['../namespaceArrayRemove__mod.html',1,'']]],

@@ -12,7 +12,7 @@ Return a vector of unique values in the input array {\bfseries{in place of}} the
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em Array} & \+: The input contiguous array of shape {\ttfamily (\+:)} of either ~\newline
+\mbox{\texttt{ in}}  & {\em Array} & \+: The input {\ttfamily contiguous} array of shape {\ttfamily (\+:)} of either ~\newline
  ~ type {\ttfamily integer} of kind \mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}}, \mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}}, \mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}}, or \mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}}, or ~\newline
  ~ type {\ttfamily complex} of kind \mbox{\hyperlink{namespaceConstants__mod_ac8b456bd9511bc9a52b4a03bda4b72df}{CK32}}, \mbox{\hyperlink{namespaceConstants__mod_aa6ea61256fca0b20db0ec2b90755b9f3}{CK64}}, or \mbox{\hyperlink{namespaceConstants__mod_ad3873e1ecc5eb3cf3651f72630cae087}{CK128}}, or ~\newline
  ~ type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}, or ~\newline
@@ -20,9 +20,9 @@ Return a vector of unique values in the input array {\bfseries{in place of}} the
  ~ a scalar assumed-\/length {\ttfamily character} of default kind \mbox{\hyperlink{namespaceConstants__mod_af7cc6c6017142cddbb143225b0a4dc93}{SK}}, ~\newline
  ~ whose unique elements are to be returned. \\
 \hline
-\mbox{\texttt{ out}}  & {\em Unique} & \+: The output allocatable array of the same type and kind as the input {\ttfamily Array} containing all of its unique elements. \\
+\mbox{\texttt{ out}}  & {\em Unique} & \+: The output {\ttfamily allocatable} array of the same type and kind as the input {\ttfamily Array} containing all of its unique elements. \\
 \hline
-\mbox{\texttt{ out}}  & {\em Count} & \+: The output allocatable array of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} containing the corresponding counts of each of the uniques elements of {\ttfamily Array} in the output {\ttfamily Unique} array ({\bfseries{optional}}). \\
+\mbox{\texttt{ out}}  & {\em Count} & \+: The output {\ttfamily allocatable} array of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} containing the corresponding counts of each of the uniques elements of {\ttfamily Array} in the output {\ttfamily Unique} array ({\bfseries{optional}}). \\
 \hline
 \mbox{\texttt{ out}}  & {\em Index} & \+: The output allocatable jagged-\/array of type \mbox{\hyperlink{structContainer__mod_1_1Vector__type__IK}{Vector\+\_\+type\+\_\+\+IK}} each element of which contains the vector of indices of the positions of occurrences of the uniques values in {\ttfamily Array} ({\bfseries{optional}}). \\
 \hline
@@ -32,7 +32,7 @@ Return a vector of unique values in the input array {\bfseries{in place of}} the
  ~ If {\ttfamily +1}, the output array {\ttfamily Count} (and along with it, {\ttfamily Unique} and {\ttfamily Index}) will be sorted in {\bfseries{ascending}} order. ~\newline
  ~ ({\bfseries{optional}}, default = {\ttfamily 0\+\_\+\+IK}) \\
 \hline
-\mbox{\texttt{ in}}  & {\em iseq} & \+: The optional external user-\/specified function that takes two input scalar arguments of the same type and kind as the input {\ttfamily Array} and returns a scalar of type {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} that is {\ttfamily .true.} if the two input elements of {\ttfamily Array} are equivalent (e.\+g., equal) according to the user-\/defined criterion, otherwise, it is {\ttfamily .false.}. This user-\/defined function is extremely useful where a user-\/defined equivalence test other than exact equality or identity is needed, for example, when the array elements are considered identical only within a given threshold or, when the case-\/sensitivity in character comparisons do not matter. In such cases, user can define a custom equivalence criterion within the user-\/defined external function {\ttfamily iseq} to achieve the goal. The following illustrates the generic interface of {\ttfamily iseq}, 
+ & {\em iseq} & \+: The {\ttfamily optional, external} user-\/specified function that takes two input scalar arguments of the same type and kind as the input {\ttfamily Array} and returns a scalar of type {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} that is {\ttfamily .true.} if the two input elements of {\ttfamily Array} are equivalent (e.\+g., equal) according to the user-\/defined criterion, otherwise, it is {\ttfamily .false.}. This user-\/defined function is extremely useful where a user-\/defined equivalence test other than exact equality or identity is needed, for example, when the array elements are considered identical only within a given threshold or, when the case-\/sensitivity in character comparisons do not matter. In such cases, user can define a custom equivalence criterion within the user-\/defined external function {\ttfamily iseq} to achieve the goal. The following illustrates the generic interface of {\ttfamily iseq}, 
 \begin{DoxyCode}{1}
 \DoxyCodeLine{\textcolor{fortran_statement}{function} iseq(element1, element2)\textcolor{fortran_statement}{ result} (isEquivalent)}
 \DoxyCodeLine{    \textcolor{fortran_statement}{TYPE}(KIND)  ,\textcolor{fortran_attribute}{ intent(in)}    :: element1, element2}
@@ -63,14 +63,14 @@ Return a vector of unique values in the input array {\bfseries{in place of}} the
 
 \end{DoxyParagraph}
 \begin{DoxyWarning}{Warning}
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+This {\ttfamily pure} procedures documented herein become {\ttfamily impure} when the Para\+Monte library is compiled with preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, {\ttfamily pure} procedures are {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
 
-The purity of the procedure breaks when the input external procedure {\ttfamily iseq} is specified as input argument.
+The procedures under this generic interface are {\ttfamily impure} when the user-\/specified {\ttfamily external} procedure {\ttfamily iseq} is specified as input argument.
 
 Note that in Fortran, trailing blanks are ignored in character comparison, that is, {\ttfamily \char`\"{}\+Fortran\char`\"{} == \char`\"{}\+Fortran \char`\"{}} yields {\ttfamily .true.}.
 \end{DoxyWarning}
 \begin{DoxyRemark}{Remarks}
-The functions under this interface are slightly faster than the \mbox{\hyperlink{interfaceArrayUnique__mod_1_1genUnique}{gen\+Unique}} functional implementations.
+The functions under this generic interface are slightly faster than the \mbox{\hyperlink{interfaceArrayUnique__mod_1_1genUnique}{gen\+Unique}} functional implementations.
 \end{DoxyRemark}
 \begin{DoxySeeAlso}{See also}
 \mbox{\hyperlink{interfaceArrayUnique__mod_1_1genUnique}{gen\+Unique}}~\newline
@@ -410,16 +410,16 @@ The functions under this interface are slightly faster than the \mbox{\hyperlink
 
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000043}{Test}}]\mbox{\hyperlink{namespaceTest__ArrayUnique__mod}{Test\+\_\+\+Array\+Unique\+\_\+mod}}\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000045}{Test}}]\mbox{\hyperlink{namespaceTest__ArrayUnique__mod}{Test\+\_\+\+Array\+Unique\+\_\+mod}}\end{DoxyRefDesc}
 
 
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000024}{Todo}}]This generic interface can be extended to 2D input objects. ~\newline
+\item[\mbox{\hyperlink{todo__todo000025}{Todo}}]This generic interface can be extended to 2D input objects. ~\newline
 \end{DoxyRefDesc}
 
 
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000025}{Todo}}]To avoid extra data copy and improve performance, an extra optional {\ttfamily len\+Unique} output argument could be added to the procedures such that when it is present, the output arrays {\ttfamily Unique} and {\ttfamily Count} will not be resized from {\ttfamily size(\+Array)} to the correct length {\ttfamily len\+Unique}. In such a case, the onus would be on the user to ensure only the elements {\ttfamily (1\+:len\+Unique)} of the output arrays are used for any subsequent work as only these elements are meaningful. This would, however, come with the benefit of extra efficiency.\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{todo__todo000026}{Todo}}]To avoid extra data copy and improve performance, an extra optional {\ttfamily len\+Unique} output argument could be added to the procedures such that when it is present, the output arrays {\ttfamily Unique} and {\ttfamily Count} will not be resized from {\ttfamily size(\+Array)} to the correct length {\ttfamily len\+Unique}. In such a case, the onus would be on the user to ensure only the elements {\ttfamily (1\+:len\+Unique)} of the output arrays are used for any subsequent work as only these elements are meaningful. This would, however, come with the benefit of extra efficiency.\end{DoxyRefDesc}
 
 
 \begin{DoxyRemark}{Remarks}

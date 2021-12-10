@@ -12,9 +12,9 @@ Generate and return the {\bfseries{upper triangle}} of the correlation matrix of
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em Shifted\+Sample} & \+: The contiguous array of real type of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} of shape {\ttfamily (\+:,\+:)} containing the sample. The input sample must be shifted such that its mean is the origin (zero). If needed, the sample can be shifted by computing its mean via \mbox{\hyperlink{interfaceSampleMean__mod_1_1genMean}{gen\+Mean}} and passing its negative together with the sample to either gen\+Shifted or get\+Shifted to shift the sample toward the origin. \\
+\mbox{\texttt{ in}}  & {\em Shifted\+Sample} & \+: The {\ttfamily contiguous} array of real type of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} of shape {\ttfamily (\+:,\+:)} containing the sample. The input sample must be shifted such that its mean is the origin (zero). If needed, the sample can be shifted by computing its mean via \mbox{\hyperlink{interfaceSampleMean__mod_1_1genMean}{gen\+Mean}} and passing its negative together with the sample to either gen\+Shifted or get\+Shifted to shift the sample toward the origin. \\
 \hline
-\mbox{\texttt{ in}}  & {\em Weight} & \+: The contiguous array of shape {\ttfamily (\+:)} of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} or {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} containing the sample weights. The length of {\ttfamily Weight} must match the length of {\ttfamily Shifted\+Sample} along its longest axis. For example, if {\ttfamily Shifted\+Sample} has shape {\ttfamily (nd,np)} and {\ttfamily np \texorpdfstring{$>$}{>} nd}, then {\ttfamily Weight} must have the shape {\ttfamily (np)} ({\bfseries{optional}}, default = {\ttfamily 1}, that is, all points in the sample have equal weights).\\
+\mbox{\texttt{ in}}  & {\em Weight} & \+: The {\ttfamily contiguous} array of shape {\ttfamily (\+:)} of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} or {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} containing the sample weights. The length of {\ttfamily Weight} must match the length of {\ttfamily Shifted\+Sample} along its longest axis. For example, if {\ttfamily Shifted\+Sample} has shape {\ttfamily (nd,np)} and {\ttfamily np \texorpdfstring{$>$}{>} nd}, then {\ttfamily Weight} must have the shape {\ttfamily (np)} ({\bfseries{optional}}, default = {\ttfamily 1}, that is, all points in the sample have equal weights).\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -35,7 +35,7 @@ Generate and return the {\bfseries{upper triangle}} of the correlation matrix of
 
 \end{DoxyParagraph}
 \begin{DoxyWarning}{Warning}
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+This {\ttfamily pure} procedures documented herein become {\ttfamily impure} when the Para\+Monte library is compiled with preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, {\ttfamily pure} procedures are {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
 \end{DoxyWarning}
 \begin{DoxyNote}{Note}
 The full symmetric correlation matrix, if needed, can be obtained by passing the output of this procedure to the subroutine \mbox{\hyperlink{interfaceMatrixSymmetry__mod_1_1symmetrizeMatUpp}{symmetrize\+Mat\+Upp}} or the equivalent function \mbox{\hyperlink{interfaceMatrixSymmetry__mod_1_1genMatSymFromMatUpp}{gen\+Mat\+Sym\+From\+Mat\+Upp}}.
@@ -87,7 +87,7 @@ The full symmetric correlation matrix, if needed, can be obtained by passing the
 
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000096}{Test}}]Test\+\_\+\+Sample\+Cor\+Mat\+\_\+mod\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000098}{Test}}]Test\+\_\+\+Sample\+Cor\+Mat\+\_\+mod\end{DoxyRefDesc}
 
 
 \begin{DoxyRemark}{Remarks}

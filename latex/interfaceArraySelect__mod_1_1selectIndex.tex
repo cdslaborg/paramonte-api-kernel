@@ -1,0 +1,161 @@
+\hypertarget{interfaceArraySelect__mod_1_1selectIndex}{}\doxysection{Array\+Select\+\_\+mod\+::select\+Index Interface Reference}
+\label{interfaceArraySelect__mod_1_1selectIndex}\index{ArraySelect\_mod::selectIndex@{ArraySelect\_mod::selectIndex}}
+
+
+Return the {\ttfamily rank}th smallest (or ordered) value in the input array by first sorting its elements (optionally only between the specified indices {\ttfamily \mbox{[}left,right\mbox{]}}). By default, the array will be sorted in ascending order, unless the user-\/specific {\ttfamily is\+Sorted()} external function is supplied to define a custom sorting criterion.  
+
+
+
+
+\doxysubsection{Detailed Description}
+Return the {\ttfamily rank}th smallest (or ordered) value in the input array by first sorting its elements (optionally only between the specified indices {\ttfamily \mbox{[}left,right\mbox{]}}). By default, the array will be sorted in ascending order, unless the user-\/specific {\ttfamily is\+Sorted()} external function is supplied to define a custom sorting criterion. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em selection} & \+: The output scalar of either ~\newline
+ ~ type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}, or ~\newline
+ ~ type {\ttfamily integer} of kind \mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}}, \mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}}, \mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}}, or \mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}}, or ~\newline
+ ~ type {\ttfamily character} of default kind \mbox{\hyperlink{namespaceConstants__mod_af7cc6c6017142cddbb143225b0a4dc93}{SK}}, or ~\newline
+ ~ containing the {\ttfamily rank}th smallest value in the input {\ttfamily Array}.~\newline
+ \\
+\hline
+\mbox{\texttt{ in,out}}  & {\em Array} & \+: The input/output contiguous array of shape {\ttfamily (\+:)} of the same type and kind as {\ttfamily selection} containing the potentially unsorted sequence of values that is to be sorted and whose {\ttfamily rank}th smallest value is to be reported as the output {\ttfamily selection}. On return, the first {\ttfamily rank}th elements of {\ttfamily Array} will be sorted in ascending order or in the user-\/specified order as determined by the user-\/supplied external {\ttfamily is\+Sorted()} argument. \\
+\hline
+\mbox{\texttt{ in}}  & {\em rank} & \+: The input {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, representing the index of the {\ttfamily rank}th smallest value in the input {\ttfamily Array} or the {\ttfamily rank}th ordered value according to the user-\/supplied external {\ttfamily logical} function {\ttfamily is\+Sorted()}. \\
+\hline
+ & {\em is\+Sorted} & \+: The {\ttfamily optional, external} user-\/specified function that takes two input {\bfseries{scalar}} arguments of the same type and kind as the input {\ttfamily Array}. It returns a scalar {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} that is {\ttfamily .true.} if the first input scalar argument is sorted with respect to the second input argument according to the user-\/defined condition within {\ttfamily is\+Sorted}, otherwise, it is {\ttfamily .false.}. If {\ttfamily Array} is a Fortran string (i.\+e., an assumed-\/length scalar {\ttfamily character}), then both input arguments to {\ttfamily is\+Sorted()} are {\ttfamily character(1,\+SK)} of default kind \mbox{\hyperlink{namespaceConstants__mod_af7cc6c6017142cddbb143225b0a4dc93}{SK}}. ~\newline
+ The following illustrates the generic interface of {\ttfamily is\+Sorted()}, 
+\begin{DoxyCode}{1}
+\DoxyCodeLine{\textcolor{fortran_statement}{function} isSorted(a,b)\textcolor{fortran_statement}{ result} (sorted)}
+\DoxyCodeLine{    \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}}
+\DoxyCodeLine{    \textcolor{fortran_statement}{TYPE}(KIND)  ,\textcolor{fortran_attribute}{ intent(in)}    :: a, b}
+\DoxyCodeLine{\textcolor{fortran_statement}{    logical}(LK)                 :: sorted}
+\DoxyCodeLine{\textcolor{fortran_statement}{end function}}
+
+\end{DoxyCode}
+ where {\ttfamily TYPE(\+KIND)} represents the type and kind of the input argument {\ttfamily Array}, which can be one of the following, 
+\begin{DoxyCode}{1}
+\DoxyCodeLine{\textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}}, \mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}}, \mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}}, \mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}}, \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}, \mbox{\hyperlink{namespaceConstants__mod_af7cc6c6017142cddbb143225b0a4dc93}{SK}}}
+\DoxyCodeLine{\textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceString__mod}{String\_mod}}, \textcolor{fortran_statement}{only}: String\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{> }Str\_type}
+\DoxyCodeLine{\textcolor{fortran_statement}{integer}(IK8)    ,\textcolor{fortran_attribute}{ intent(in)} :: a, b}
+\DoxyCodeLine{\textcolor{fortran_statement}{integer}(IK16)   ,\textcolor{fortran_attribute}{ intent(in)} :: a, b}
+\DoxyCodeLine{\textcolor{fortran_statement}{integer}(IK32)   ,\textcolor{fortran_attribute}{ intent(in)} :: a, b}
+\DoxyCodeLine{\textcolor{fortran_statement}{integer}(IK64)   ,\textcolor{fortran_attribute}{ intent(in)} :: a, b}
+\DoxyCodeLine{\textcolor{fortran_statement}{real}(RK128)     ,\textcolor{fortran_attribute}{ intent(in)} :: a, b}
+\DoxyCodeLine{\textcolor{fortran_statement}{real}(RK64)      ,\textcolor{fortran_attribute}{ intent(in)} :: a, b}
+\DoxyCodeLine{\textcolor{fortran_statement}{real}(RK32)      ,\textcolor{fortran_attribute}{ intent(in)} :: a, b}
+\DoxyCodeLine{\textcolor{fortran_statement}{type}(String)    ,\textcolor{fortran_attribute}{ intent(in)} :: a, b}
+\DoxyCodeLine{\textcolor{fortran_statement}{character}(\textcolor{fortran_numeric_literal}{1},SK) ,\textcolor{fortran_attribute}{ intent(in)} :: a, b}
+
+\end{DoxyCode}
+ This user-\/defined equivalence check is extremely useful where a user-\/defined sorting criterion other than simple ascending order is needed, for example, when the case-\/sensitivity of an input string or array of strings is irrelevant or when sorting of the absolute values matters excluding the signs of the numbers, or when descending order is desired. In such cases, user can define a custom sorting condition within the user-\/defined external function {\ttfamily is\+Sorted} to achieve the goal. ({\bfseries{optional}}, the default sorting condition is ascending order, that is {\ttfamily a \texorpdfstring{$<$}{<}= b}. \\
+\hline
+\mbox{\texttt{ in}}  & {\em left} & \+: The {\ttfamily optional} input scalar {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} representing the starting index of Array below which the array elements are assumed to be in ascending order, such that only the elements starting with and beyond {\ttfamily left} require sorting. If the initial segment of the input array is ordered, specifying this lower bound will lead to better performance of the algorithm ({\bfseries{optional}}, default = {\ttfamily 1\+\_\+\+IK}). \\
+\hline
+\mbox{\texttt{ in}}  & {\em right} & \+: The {\ttfamily optional} input scalar {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} representing the starting index of Array above which the array elements are assumed to be in ascending order, such that only the elements ending with and below {\ttfamily right} require sorting. If the final segment of the input array is ordered, specifying this upper bound will lead to better performance of the algorithm ({\bfseries{optional}}, default = {\ttfamily size(Array, kind = IK)}).\\
+\hline
+\end{DoxyParams}
+\label{interfaceArraySplit__mod_1_1split_interface}%
+\Hypertarget{interfaceArraySplit__mod_1_1split_interface}%
+{\bfseries{Possible calling interfaces}} \href{\#interface}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySelect__mod}{ArraySelect\_mod}}, \textcolor{fortran_statement}{only}: LK, \mbox{\hyperlink{interfaceArraySelect__mod_1_1selectIndex}{selectIndex}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArraySelect__mod_1_1selectIndex}{selectIndex}}(selection, Array, rank)}
+\DoxyCodeLine{\textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArraySelect__mod_1_1selectIndex}{selectIndex}}(selection, Array, rank, left)}
+\DoxyCodeLine{\textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArraySelect__mod_1_1selectIndex}{selectIndex}}(selection, Array, rank, isSorted)}
+\DoxyCodeLine{\textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArraySelect__mod_1_1selectIndex}{selectIndex}}(selection, Array, rank, left, right)}
+\DoxyCodeLine{\textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArraySelect__mod_1_1selectIndex}{selectIndex}}(selection, Array, rank, right\textcolor{fortran_operator_symbols}{ = }right)}
+\DoxyCodeLine{\textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArraySelect__mod_1_1selectIndex}{selectIndex}}(selection, Array, rank, isSorted, left)}
+\DoxyCodeLine{\textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArraySelect__mod_1_1selectIndex}{selectIndex}}(selection, Array, rank, isSorted, right\textcolor{fortran_operator_symbols}{ = }right)}
+\DoxyCodeLine{\textcolor{fortran_statement}{call} \mbox{\hyperlink{interfaceArraySelect__mod_1_1selectIndex}{selectIndex}}(selection, Array, rank, isSorted, left, right)}
+
+\end{DoxyCode}
+
+\end{DoxyParagraph}
+\begin{DoxyWarning}{Warning}
+If {\ttfamily left} is present as an input argument, its value must be larger than {\ttfamily 0} and less than {\ttfamily right} or its default value. Furthermore, the specified {\ttfamily rank} must be larger than or equal to the specified value for {\ttfamily left}. These conditions are only checked for when the preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLD=1} is set when building the Para\+Monte library.
+
+If {\ttfamily right} is present as an input argument, its value must be less than or equal to the length of {\ttfamily Array} and larger than {\ttfamily right} or its default value. Furthermore, the specified {\ttfamily rank} must be smaller than or equal to the specified value for {\ttfamily right}. These conditions are only checked for when the preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLD=1} is set when building the Para\+Monte library.
+
+The functions under this generic interface are {\ttfamily impure} when the {\ttfamily external} input argument {\ttfamily is\+Sorted()} is {\ttfamily present}.
+
+This {\ttfamily pure} procedures documented herein become {\ttfamily impure} when the Para\+Monte library is compiled with preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, {\ttfamily pure} procedures are {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{interfaceArraySelect__mod_1_1genSelected}{gen\+Selected}}~\newline
+ \mbox{\hyperlink{interfaceArraySort__mod_1_1sortIndex}{sort\+Index}}~\newline
+ \mbox{\hyperlink{interfaceArraySort__mod_1_1sort}{sort}}~\newline
+ \mbox{\hyperlink{interfaceArrayReverse__mod_1_1reverse}{reverse}}~\newline
+ \mbox{\hyperlink{interfaceArrayRemove__mod_1_1genRemoved}{gen\+Removed}}~\newline
+ \mbox{\hyperlink{interfaceArrayReplace__mod_1_1genReplaced}{gen\+Replaced}}~\newline
+ \mbox{\hyperlink{interfaceArrayReplace__mod_1_1replace}{replace}}~\newline
+ \mbox{\hyperlink{interfaceArraySplit__mod_1_1split}{split}}~\newline
+
+\end{DoxySeeAlso}
+\label{namespaceInterpLinear__mod_example}%
+\Hypertarget{namespaceInterpLinear__mod_example}%
+{\bfseries{Example usage}} \href{\#example}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-gnu}%
+\Hypertarget{namespaceBench__mod_compile-unix-gnu}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compile-unix-gnu}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceArraySelect__mod_1_1selectIndex_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceArraySelect__mod_1_1selectIndex_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceArraySelect__mod_1_1selectIndex_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_compile-unix-intel}%
+\Hypertarget{namespaceBench__mod_compile-unix-intel}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compile-unix-intel}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{interfaceArraySelect__mod_1_1selectIndex_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{interfaceArraySelect__mod_1_1selectIndex_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{interfaceArraySelect__mod_1_1selectIndex_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceBench__mod_output}%
+\Hypertarget{namespaceBench__mod_output}%
+{\bfseries{Example output}} \href{\#output}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+
+\end{DoxyCodeInclude}
+
+\end{DoxyParagraph}
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000019}{Test}}]Test\+\_\+\+Array\+Select\+\_\+mod\end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000017}{Todo}}]This generic interface can be extended to higher-\/rank input objects.~\newline
+\end{DoxyRefDesc}
+
+
+\begin{DoxyRemark}{Remarks}
+For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
+
+For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
+
+This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
+
+\end{DoxyRemark}
+\begin{DoxyAuthor}{Author}
+Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
+\end{DoxyAuthor}
+
+
+Definition at line \mbox{\hyperlink{ArraySelect__mod_8f90_source_l00197}{197}} of file \mbox{\hyperlink{ArraySelect__mod_8f90_source}{Array\+Select\+\_\+mod.\+f90}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/amir/git/paramonte/src/kernel/\mbox{\hyperlink{ArraySelect__mod_8f90}{Array\+Select\+\_\+mod.\+f90}}\end{DoxyCompactItemize}

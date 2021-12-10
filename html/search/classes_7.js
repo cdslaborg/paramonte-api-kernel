@@ -12,11 +12,10 @@ var searchData=
   ['intstr_5ftype_9',['IntStr_type',['../structString__mod_1_1IntStr__type.html',1,'String_mod']]],
   ['isascending_10',['isAscending',['../interfaceArraySort__mod_1_1isAscending.html',1,'ArraySort_mod']]],
   ['isdescending_11',['isDescending',['../interfaceArraySort__mod_1_1isDescending.html',1,'ArraySort_mod']]],
-  ['iseqall_12',['iseqall',['../interfaceArrayComparison__mod_1_1iseqall.html',1,'ArrayComparison_mod']]],
-  ['isequal_13',['isEqual',['../interfaceDomainEllipsoid__mod_1_1isEqual.html',1,'DomainEllipsoid_mod']]],
-  ['isequallow_14',['isEqualLow',['../interfaceMatrixComparison__mod_1_1isEqualLow.html',1,'MatrixComparison_mod']]],
-  ['isequallowdia_15',['isEqualLowDia',['../interfaceMatrixComparison__mod_1_1isEqualLowDia.html',1,'MatrixComparison_mod']]],
-  ['isequalupp_16',['isEqualUpp',['../interfaceMatrixComparison__mod_1_1isEqualUpp.html',1,'MatrixComparison_mod']]],
-  ['isequaluppdia_17',['isEqualUppDia',['../interfaceMatrixComparison__mod_1_1isEqualUppDia.html',1,'MatrixComparison_mod']]],
-  ['issorted_18',['isSorted',['../interfaceArraySort__mod_1_1isSorted.html',1,'ArraySort_mod']]]
+  ['isequal_12',['isEqual',['../interfaceDomainEllipsoid__mod_1_1isEqual.html',1,'DomainEllipsoid_mod']]],
+  ['isequallow_13',['isEqualLow',['../interfaceMatrixComparison__mod_1_1isEqualLow.html',1,'MatrixComparison_mod']]],
+  ['isequallowdia_14',['isEqualLowDia',['../interfaceMatrixComparison__mod_1_1isEqualLowDia.html',1,'MatrixComparison_mod']]],
+  ['isequalupp_15',['isEqualUpp',['../interfaceMatrixComparison__mod_1_1isEqualUpp.html',1,'MatrixComparison_mod']]],
+  ['isequaluppdia_16',['isEqualUppDia',['../interfaceMatrixComparison__mod_1_1isEqualUppDia.html',1,'MatrixComparison_mod']]],
+  ['issorted_17',['isSorted',['../interfaceArraySort__mod_1_1isSorted.html',1,'ArraySort_mod']]]
 ];

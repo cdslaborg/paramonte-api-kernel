@@ -33,11 +33,11 @@ Reorder the elements of the input {\ttfamily Array} according to the input {\ttf
  ~ If the input argument {\ttfamily Array\+New} is specified, then {\ttfamily Array} has {\ttfamily intent(in)} and will not change. ~\newline
  ~ If the input argument {\ttfamily Array\+New} is missing, then {\ttfamily Array} will be reallocated and reordered on output. The the {\ttfamily allocatable} attribute and the reallocation of {\ttfamily Array} is essential for efficient fast reordering of {\ttfamily Array}. \\
 \hline
-\mbox{\texttt{ in}}  & {\em Index} & \+: The input contiguous array of shape {\ttfamily (\+:)} of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} of the same size as {\ttfamily Array}, containing the reordering indices. \\
+\mbox{\texttt{ in}}  & {\em Index} & \+: The input {\ttfamily contiguous} array of shape {\ttfamily (\+:)} of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} of the same size as {\ttfamily Array}, containing the reordering indices. \\
 \hline
 \mbox{\texttt{ in}}  & {\em backward} & \+: The input {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}. If {\ttfamily .true.}, then {\ttfamily Array} will be reordered to {\ttfamily Array(Index(size(\+Index)\+:1\+:-\/1))}, otherwise, {\ttfamily Array} will be reordered to {\ttfamily Array(\+Index)} ({\bfseries{optional}}, default = {\ttfamily .false.}). \\
 \hline
-\mbox{\texttt{ out}}  & {\em Array\+New} & \+: The output contiguous array of the same type, kind, shape, and size as the input {\ttfamily Array} that will contain the reordered array ({\bfseries{optional}}, if missing, the ordered array will stored and output in the input allocatable {\ttfamily Array} {\bfseries{in-\/place}}).\\
+\mbox{\texttt{ out}}  & {\em Array\+New} & \+: The output {\ttfamily contiguous} array of the same type, kind, shape, and size as the input {\ttfamily Array} that will contain the reordered array ({\bfseries{optional}}, if missing, the ordered array will stored and output in the input allocatable {\ttfamily Array} {\bfseries{in-\/place}}).\\
 \hline
 \end{DoxyParams}
 \label{interfaceArraySplit__mod_1_1split_interface}%
@@ -56,7 +56,7 @@ Reorder the elements of the input {\ttfamily Array} according to the input {\ttf
 
 \end{DoxyParagraph}
 \begin{DoxyWarning}{Warning}
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+This {\ttfamily pure} procedures documented herein become {\ttfamily impure} when the Para\+Monte library is compiled with preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, {\ttfamily pure} procedures are {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
 
 The sizes of {\ttfamily Array}, {\ttfamily Array\+New}, and {\ttfamily Index} arguments must be equal. This condition is checked only when the preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED=1} is set at library build time.
 \end{DoxyWarning}
@@ -689,11 +689,11 @@ The primary purpose of the procedures under this generic interface is to provide
 
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000006}{Test}}]\mbox{\hyperlink{namespaceTest__ArrayRemap__mod}{Test\+\_\+\+Array\+Remap\+\_\+mod}}\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000008}{Test}}]\mbox{\hyperlink{namespaceTest__ArrayRemap__mod}{Test\+\_\+\+Array\+Remap\+\_\+mod}}\end{DoxyRefDesc}
 
 
 \begin{DoxyRefDesc}{Bug}
-\item[\mbox{\hyperlink{bug__bug000003}{Bug}}]There is still a bug in gfortran as of version 10.\+3, where the compiler fails to properly deallocate the array of origin in a call to intrinsic {\ttfamily move\+\_\+alloc}\+: \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{bug__bug000002}{Bug}}]There is still a bug in gfortran as of version 10.\+3, where the compiler fails to properly deallocate the array of origin in a call to intrinsic {\ttfamily move\+\_\+alloc}\+: \end{DoxyRefDesc}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\textcolor{fortran_comment}{call move\_alloc(from = ArrayNew, to = Array)}}
@@ -702,11 +702,11 @@ The primary purpose of the procedures under this generic interface is to provide
  Currently, a preprocessor fence is added specifically for gfortran to explicitly deallocate {\ttfamily Array\+New} after the call to {\ttfamily move\+\_\+alloc()}. This is going to yield an extra tiny performance penalty. Upon the necessary corrections to gfortran, this extra preprocessing fence must be removed.
 
 \begin{DoxyRefDesc}{Bug}
-\item[\mbox{\hyperlink{bug__bug000004}{Bug}}]gfortran currently does not accept deferred-\/length allocatable characters as actual argument to procedures with assumed-\/length allocatable dummy arguments.\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{bug__bug000003}{Bug}}]gfortran currently does not accept deferred-\/length allocatable characters as actual argument to procedures with assumed-\/length allocatable dummy arguments.\end{DoxyRefDesc}
 
 
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000004}{Todo}}]This generic interface can be extended to 2D input objects. ~\newline
+\item[\mbox{\hyperlink{todo__todo000005}{Todo}}]This generic interface can be extended to 2D input objects. ~\newline
  The gfortran bugs in the implementations of this generic interface must be resolved in the future. ~\newline
 \end{DoxyRefDesc}
 

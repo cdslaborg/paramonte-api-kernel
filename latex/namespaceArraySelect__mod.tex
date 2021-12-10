@@ -9,13 +9,13 @@ This module contains procedures for removing a selection from arrays of various 
 \begin{DoxyCompactItemize}
 \item 
 interface \mbox{\hyperlink{interfaceArraySelect__mod_1_1genSelected}{gen\+Selected}}
-\begin{DoxyCompactList}\small\item\em Generate and return a new array containing the original array within which the input {\ttfamily Selection} has been selected at the specified indices {\ttfamily Index} of the original array. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Generate and return the {\ttfamily rank}th smallest value in the input array by first sorting its elements (optionally only between the specified indices {\ttfamily \mbox{[}left,right\mbox{]}}). By default, the array will be sorted in ascending order, unless the user-\/specific {\ttfamily is\+Sorted()} external function is supplied to define a custom sorting criterion. \end{DoxyCompactList}\item 
 interface \mbox{\hyperlink{interfaceArraySelect__mod_1_1select}{select}}
-\begin{DoxyCompactList}\small\item\em Return a new array {\ttfamily Array\+New} containing the original {\ttfamily Array} within which the input {\ttfamily Selection} has been selected at the specified indices {\ttfamily Index} of the original array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Return the {\ttfamily rank}th smallest (or ordered) value in the input array by first sorting its elements (optionally only between the specified indices {\ttfamily \mbox{[}left,right\mbox{]}}). By default, the array will be sorted in ascending order, unless the user-\/specific {\ttfamily is\+Sorted()} external function is supplied to define a custom sorting criterion. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-character($\ast$), parameter \mbox{\hyperlink{namespaceArraySelect__mod_a4ca6148d710874be3e49903b3e38b8f1}{MODULE\+\_\+\+NAME}} = \char`\"{}@Array\+Select\+\_\+mod\char`\"{}
+character($\ast$, SK), parameter \mbox{\hyperlink{namespaceArraySelect__mod_a78b192aded4a27d33fe753135d092733}{MODULE\+\_\+\+NAME}} = \char`\"{}@Array\+Select\+\_\+mod\char`\"{}
 \end{DoxyCompactItemize}
 
 
@@ -23,56 +23,7 @@ character($\ast$), parameter \mbox{\hyperlink{namespaceArraySelect__mod_a4ca6148
 This module contains procedures for removing a selection from arrays of various types at the specified instances of occurrence of selection. 
 
 \begin{DoxyRefDesc}{Benchmarks}
-\item[\mbox{\hyperlink{benchmarks__benchmarks000007}{Benchmarks}}]\end{DoxyRefDesc}
-
-
-\label{namespaceArraySelect__mod_benchmark-scalarSelection_vs_vectorSelection}%
-\Hypertarget{namespaceArraySelect__mod_benchmark-scalarSelection_vs_vectorSelection}%
-{\bfseries{Benchmark \+:: The runtime performance of \mbox{\hyperlink{interfaceArraySelect__mod_1_1select}{select}} for scalar vs. vector input {\ttfamily Selection} argument.}} \href{\#benchmark-scalarSelection_vs_vectorSelection}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
-
-\begin{DoxyCodeInclude}{0}
-
-\end{DoxyCodeInclude}
- ~\newline
- \label{namespaceArraySelect__mod_compileb-unix-gnu-scalarSelection_vs_vectorSelection}%
-\Hypertarget{namespaceArraySelect__mod_compileb-unix-gnu-scalarSelection_vs_vectorSelection}%
-{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compileb-unix-gnu-scalarSelection_vs_vectorSelection}{\texttt{ ⛓}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00001}00001 \#!/bin/bash}
-\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
-\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00003}00003 ./main.exe}
-
-\end{DoxyCodeInclude}
- ~\newline
- \label{namespaceArraySelect__mod_compileb-unix-intel-scalarSelection_vs_vectorSelection}%
-\Hypertarget{namespaceArraySelect__mod_compileb-unix-intel-scalarSelection_vs_vectorSelection}%
-{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compileb-unix-intel-scalarSelection_vs_vectorSelection}{\texttt{ ⛓}} 
-\begin{DoxyCodeInclude}{0}
-\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00001}00001 \#!/bin/bash}
-\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
-\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00003}00003 ./main.exe}
-
-\end{DoxyCodeInclude}
- ~\newline
- \label{namespaceArraySelect__mod_postprocb-scalarSelection_vs_vectorSelection}%
-\Hypertarget{namespaceArraySelect__mod_postprocb-scalarSelection_vs_vectorSelection}%
-{\bfseries{Postprocessing of the output}} \href{\#postprocb-scalarSelection_vs_vectorSelection}{\texttt{ ⛓}} 
-\begin{DoxyCodeInclude}{0}
-
-\end{DoxyCodeInclude}
- ~\newline
- \label{namespaceArraySelect__mod_visb-scalarSelection_vs_vectorSelection}%
-\Hypertarget{namespaceArraySelect__mod_visb-scalarSelection_vs_vectorSelection}%
-{\bfseries{Visualization of the benchmark output}} \href{\#visb-scalarSelection_vs_vectorSelection}{\texttt{ ⛓}} \DoxyHorRuler{0}
-   ~\newline
- \label{namespaceArraySelect__mod_moralb-scalarSelection_vs_vectorSelection}%
-\Hypertarget{namespaceArraySelect__mod_moralb-scalarSelection_vs_vectorSelection}%
-{\bfseries{Benchmark moral}} \href{\#moralb-scalarSelection_vs_vectorSelection}{\texttt{ ⛓}} \DoxyHorRuler{0}
-
-\begin{DoxyEnumerate}
-\item The procedures under the generic interface \mbox{\hyperlink{interfaceArraySelect__mod_1_1select}{select}} take both scalar and vector {\ttfamily Selection} arguments. As evidenced by the above benchmark, when the input {\ttfamily Selection} is vector of length {\ttfamily 1}, it is much faster, by {\bfseries{4X}} or more, to pass {\ttfamily Selection} as a scalar instead of a whole array of length {\ttfamily 1}. This benchmark represents the worst-\/case scenario. Note that this benchmark is not relevant to selecting substrings to Fortran strings.
-\end{DoxyEnumerate}
-\end{DoxyParagraph}
+\item[\mbox{\hyperlink{benchmarks__benchmarks000008}{Benchmarks}}]\end{DoxyRefDesc}
 
 
 \label{namespaceArraySelect__mod_benchmark-genSelected_vs_select}%
@@ -80,6 +31,98 @@ This module contains procedures for removing a selection from arrays of various 
 {\bfseries{Benchmark \+:: The runtime performance of \mbox{\hyperlink{interfaceArraySelect__mod_1_1genSelected}{gen\+Selected}} vs. \mbox{\hyperlink{interfaceArraySelect__mod_1_1select}{select}}}} \href{\#benchmark-genSelected_vs_select}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
 
 \begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00001}00001 \textcolor{fortran_comment}{! Test the performance of `genSelected()` vs. `select()`.}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00002}00002 \textcolor{fortran_statement}{program} benchmark}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00004}00004     \textcolor{fortran_statement}{use }\textcolor{fortran_inrinsic_module}{iso\_fortran\_env}, \textcolor{fortran_statement}{only}:\textcolor{fortran_named_const}{ error\_unit}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00005}00005     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMathRange__mod}{MathRange\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceMathRange__mod_1_1genRange}{genRange}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00006}00006     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00007}00007     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceBench__mod}{Bench\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00009}00009     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00011}00011     \textcolor{fortran_statement}{integer}(IK)                         :: i}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00012}00012     \textcolor{fortran_statement}{integer}(IK)                         :: isize}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00013}00013     \textcolor{fortran_statement}{integer}(IK)                         :: fileUnit}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00014}00014     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}             :: NSIZE\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{0\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00015}00015     \textcolor{fortran_statement}{integer}(IK) ,\textcolor{fortran_attribute}{ parameter}             :: NBENCH\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00016}00016     \textcolor{fortran_statement}{integer}(IK)                         :: ArraySize(NSIZE)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00017}00017 \textcolor{fortran_statement}{    logical}                             :: dummy\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.               }}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00018}00018 \textcolor{fortran_statement}{    real}(RK)                            :: selection\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1.\_RK}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00019}00019 \textcolor{fortran_statement}{    real}(RK)    ,\textcolor{fortran_attribute}{ allocatable}           :: Array(:)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00020}00020     \textcolor{fortran_statement}{integer}(IK)                         :: rank}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00021}00021     \textcolor{fortran_statement}{type}(Bench\_type)                    :: Bench(NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00023}00023     Bench(\textcolor{fortran_numeric_literal}{1})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}select"{}}, exec\textcolor{fortran_operator_symbols}{ = }select , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00024}00024     Bench(\textcolor{fortran_numeric_literal}{2})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}genSelected"{}}, exec\textcolor{fortran_operator_symbols}{ = }genSelected , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00026}00026     ArraySize\textcolor{fortran_operator_symbols}{ = }[(\textcolor{fortran_numeric_literal}{ 2\_IK}\textcolor{fortran_operator_symbols}{*}\textcolor{fortran_operator_symbols}{*}isize, isize\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}, NSIZE )]}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00028}00028 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00029}00029 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}select() vs. genSelected()"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00030}00030 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00032}00032 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnit, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.out"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00034}00034 \textcolor{fortran_statement}{        write}(fileUnit, \textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) \textcolor{fortran_string}{"{}ArraySize"{}}, (Bench(i)\textcolor{fortran_operator_symbols}{\%}name, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00036}00036         loopOverArraySize: \textcolor{fortran_keywordflow}{do} isize\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NSIZE}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00038}00038 \textcolor{fortran_statement}{            write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Benchmarking with size"{}}, ArraySize(isize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00040}00040 \textcolor{fortran_statement}{            allocate}(Array(ArraySize(isize)))}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00041}00041             rank\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK} \textcolor{fortran_comment}{! ArraySize(isize)}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00042}00042             \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00043}00043 \textcolor{fortran_statement}{                call} Bench(i)\textcolor{fortran_operator_symbols}{\%}time(Bench(i)\textcolor{fortran_operator_symbols}{\%}Timing, minsec\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{5\_RK})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00044}00044 \textcolor{fortran_keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00045}00045 \textcolor{fortran_statement}{            deallocate}(Array)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00047}00047 \textcolor{fortran_statement}{            write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) ArraySize(isize), (Bench(i)\textcolor{fortran_operator_symbols}{\%}Timing\textcolor{fortran_operator_symbols}{\%}Stat\textcolor{fortran_operator_symbols}{\%}mean, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00049}00049 \textcolor{fortran_keywordflow}{        end do} loopOverArraySize}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00050}00050 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) dummy}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00051}00051 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00053}00053 \textcolor{fortran_statement}{    close}(fileUnit)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00055}00055 \textcolor{fortran_statement}{contains}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00057}00057     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00058}00058     \textcolor{fortran_comment}{! procedure wrappers.}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00059}00059     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00061}00061 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00062}00062 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00063}00063 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00064}00064     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00066}00066 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00067}00067 \textcolor{fortran_statement}{        call}\textcolor{fortran_subroutine}{ random\_number}(Array)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00068}00068     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00070}00070 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00071}00071         dummy\textcolor{fortran_operator_symbols}{ = }dummy \textcolor{fortran_operator_logical}{.and.} selection\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{= }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{5\_RK}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00072}00072     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00074}00074 \textcolor{fortran_statement}{    subroutine} select()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00075}00075         \textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00076}00076             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySelect__mod}{ArraySelect\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySelect__mod_1_1select}{select}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00077}00077 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00078}00078 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{interfaceArraySelect__mod_1_1select}{select}}(selection, Array, rank)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00079}00079 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00080}00080 \textcolor{fortran_keywordflow}{        end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00081}00081     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00083}00083 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceArraySelect__mod_1_1genSelected}{genSelected}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00084}00084         \textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00085}00085             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArraySelect__mod}{ArraySelect\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArraySelect__mod_1_1genSelected}{genSelected}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00086}00086 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00087}00087             selection\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceArraySelect__mod_1_1genSelected}{genSelected}}(Array, rank)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00088}00088 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00089}00089 \textcolor{fortran_keywordflow}{        end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00090}00090     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00092}00092 \textcolor{fortran_statement}{end program }benchmark}
 
 \end{DoxyCodeInclude}
  ~\newline
@@ -107,6 +150,84 @@ This module contains procedures for removing a selection from arrays of various 
 \Hypertarget{namespaceArraySelect__mod_postprocb-genSelected_vs_select}%
 {\bfseries{Postprocessing of the output}} \href{\#postprocb-genSelected_vs_select}{\texttt{ ⛓}} 
 \begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00004}00004 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00005}00005 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00007}00007 fontsize = 14}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00009}00009 methods = [\textcolor{stringliteral}{"{}select"{}}, \textcolor{stringliteral}{"{}genSelected"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00011}00011 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.out"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00017}00017 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00018}00018 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00020}00020 \textcolor{keywordflow}{for} method \textcolor{keywordflow}{in} methods:}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00021}00021     plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00022}00022             , df[method].values}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00023}00023             , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00024}00024             )}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00026}00026 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00027}00027 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00028}00028 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00029}00029 ax.set\_ylabel(\textcolor{stringliteral}{"{}Runtime [ seconds ]"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00030}00030 ax.set\_title(\textcolor{stringliteral}{"{}select() vs. genSelected()\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00031}00031 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00032}00032 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00033}00033 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00034}00034 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00035}00035 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00036}00036 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00037}00037 ax.legend   ( methods}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00038}00038            \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00039}00039            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00040}00040             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00041}00041             )}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00043}00043 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00044}00044 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genSelected\_vs\_select.runtime.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00050}00050 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00051}00051 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00053}00053 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00054}00054         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00055}00055        \textcolor{comment}{\#, linestyle = "{}-\/"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00056}00056        \textcolor{comment}{\#, color = "{}black"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00057}00057         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00058}00058         )}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00059}00059 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00060}00060         , df[\textcolor{stringliteral}{"{}genSelected"{}}].values / df[\textcolor{stringliteral}{"{}select"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00061}00061         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00062}00062         )}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00064}00064 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00065}00065 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00066}00066 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00067}00067 ax.set\_ylabel(\textcolor{stringliteral}{"{}Runtime compared to select()"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00068}00068 ax.set\_title(\textcolor{stringliteral}{"{}genSelected() / select()\(\backslash\)nLower means faster. Lower than 1 means faster than select()."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00069}00069 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00070}00070 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00071}00071 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00072}00072 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00073}00073 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00074}00074 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00075}00075 ax.legend   ( [\textcolor{stringliteral}{"{}select"{}}, \textcolor{stringliteral}{"{}genSelected"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00076}00076            \textcolor{comment}{\#, bbox\_to\_anchor = (1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00077}00077            \textcolor{comment}{\#, loc = "{}center left"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00078}00078             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00079}00079             )}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00081}00081 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceArraySelect__mod_l00082}00082 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genSelected\_vs\_select.runtime.ratio.png"{}})}
 
 \end{DoxyCodeInclude}
  ~\newline
@@ -119,12 +240,13 @@ This module contains procedures for removing a selection from arrays of various 
 {\bfseries{Benchmark moral}} \href{\#moralb-genSelected_vs_select}{\texttt{ ⛓}} \DoxyHorRuler{0}
 
 \begin{DoxyEnumerate}
-\item The procedures under the generic interface \mbox{\hyperlink{interfaceArraySelect__mod_1_1genSelected}{gen\+Selected}} are functions while the procedures under the generic interface \mbox{\hyperlink{interfaceArraySelect__mod_1_1select}{select}} are subroutines. From the benchmark results, it appears that the functional interface performs slightly less efficiently than the subroutine interface. The sole apparent reason for this performance loss seems to be the extra copy of the result to the allocatable {\ttfamily Array\+New} on return from the function. Note that this benchmark does not even include the cost of repeated reallcations, that is, the allocation of {\ttfamily Array\+New} happen only once in all tests.
-\item Note that this benchmark considers the worst-\/case scenario where {\ttfamily Selection} must be selected at all positions of the input {\ttfamily Array}.
+\item The procedures under the generic interface \mbox{\hyperlink{interfaceArraySelect__mod_1_1genSelected}{gen\+Selected}} are functions while the procedures under the generic interface \mbox{\hyperlink{interfaceArraySelect__mod_1_1select}{select}} are subroutines. From the benchmark results, it appears that the functional interface performs slightly less efficiently than the subroutine interface. This is entirely due to the fact that the functional interface makes a full copy of the input array to keep the input array intact.
+\item Note that in this benchmark {\ttfamily rank = 1} was used to minimize the time spent on sorting, such that only the array copy time becomes the dominant factor. Nevertheless, the benchmark results point to the relatively minor effect of array copying on the runtime performance of functional vs. subroutine procedures.
+\item There is, however, a $\sim$30\%-\/300\% performance loss with the use of the functional interface when {\ttfamily size(\+Array) \texorpdfstring{$<$}{<} 10}.
 \end{DoxyEnumerate}
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000018}{Test}}]Test\+\_\+\+Array\+Select\+\_\+mod\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000020}{Test}}]\mbox{\hyperlink{namespaceTest__ArraySelect__mod}{Test\+\_\+\+Array\+Select\+\_\+mod}}\end{DoxyRefDesc}
 
 
 \begin{DoxyRemark}{Remarks}
@@ -141,13 +263,13 @@ Amir Shahmoradi, Wednesday 12\+:20 AM, October 13, 2021, Dallas, TX
 
 
 \doxysubsection{Variable Documentation}
-\mbox{\Hypertarget{namespaceArraySelect__mod_a4ca6148d710874be3e49903b3e38b8f1}\label{namespaceArraySelect__mod_a4ca6148d710874be3e49903b3e38b8f1}} 
+\mbox{\Hypertarget{namespaceArraySelect__mod_a78b192aded4a27d33fe753135d092733}\label{namespaceArraySelect__mod_a78b192aded4a27d33fe753135d092733}} 
 \index{ArraySelect\_mod@{ArraySelect\_mod}!MODULE\_NAME@{MODULE\_NAME}}
 \index{MODULE\_NAME@{MODULE\_NAME}!ArraySelect\_mod@{ArraySelect\_mod}}
 \doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
-{\footnotesize\ttfamily character($\ast$), parameter Array\+Select\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Array\+Select\+\_\+mod\char`\"{}}
+{\footnotesize\ttfamily character($\ast$,SK), parameter Array\+Select\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Array\+Select\+\_\+mod\char`\"{}}
 
 
 
-Definition at line \mbox{\hyperlink{ArraySelect__mod_8f90_source_l00090}{90}} of file \mbox{\hyperlink{ArraySelect__mod_8f90_source}{Array\+Select\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{ArraySelect__mod_8f90_source_l00079}{79}} of file \mbox{\hyperlink{ArraySelect__mod_8f90_source}{Array\+Select\+\_\+mod.\+f90}}.
 

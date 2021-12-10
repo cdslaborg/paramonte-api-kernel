@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('interfaceDistUniNorm__mod_1_1genNormLo
 <div class="textblock"><p >Generate the natural logarithm of probability density function (PDF) of the Normal distribution. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">Point</td><td>: The input scalar or contiguous array of rank 1 of type <code>real</code> of kind <a class="el" href="namespaceConstants__mod.html#aaf5c6c840ed0befe5a37da626c35716f">RK32</a>, <a class="el" href="namespaceConstants__mod.html#a855643f887b4c787e6542e9e7849680f">RK64</a>, or <a class="el" href="namespaceConstants__mod.html#aeef7c44b90b75aeeebdef1da504886cb">RK128</a>, representing the point(s) at which the PDF must be computed. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Point</td><td>: The input scalar or <code>contiguous</code> array of rank 1 of type <code>real</code> of kind <a class="el" href="namespaceConstants__mod.html#aaf5c6c840ed0befe5a37da626c35716f">RK32</a>, <a class="el" href="namespaceConstants__mod.html#a855643f887b4c787e6542e9e7849680f">RK64</a>, or <a class="el" href="namespaceConstants__mod.html#aeef7c44b90b75aeeebdef1da504886cb">RK128</a>, representing the point(s) at which the PDF must be computed. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">mean</td><td>: The input scalar of the same type and kind as <code>Point</code> representing the mean of the distribution (<b>optional</b>, default = <code>0._RK</code>). </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">invStd</td><td>: The input scalar of the same type and kind as <code>Point</code> representing the inverse of the standard deviation of the distribution The positivity of the input value is checked only if the library is built with the preprocessor macro <code>CHECK_ENABLED=1</code>. (<b>optional</b>, default = <code>1._RK</code>. If present, then the input argument <code>mean</code> must be also present). </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">logInvStd</td><td>: The input scalar of the same type and kind as <code>Point</code> representing the natural logarithm of the inverse of the standard deviation of the distribution. (<b>optional</b>, default = <code>0._RK</code>. If present, then the input arguments <code>mean</code> and <code>invStd</code> must be also present).</td></tr>
@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('interfaceDistUniNorm__mod_1_1genNormLo
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>LogPDF</code> : The output scalar of the same type, kind, and rank as the input <code>Point</code> representing the PDF of the Normal distribution at the given input <code>Point</code>s.</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>This procedure is <code>impure</code> when the library is compiled with macro <code>CHECK_ENABLED=1</code>. By default, it is <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>This <code>pure</code> procedures documented herein become <code>impure</code> when the ParaMonte library is compiled with preprocessor macro <code>CHECK_ENABLED=1</code>. By default, <code>pure</code> procedures are <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Since the PDF values are often extremely small, the values are returned as natural logarithms of the actual PDF values. Converting the output to natural values is as simple as passing it to the Fortran intrinsic procedure <code>exp()</code>.</dd>
 <dd>
 The fact that the input argument <code>mean</code> is required to be present when <code>stdInd</code> is present has good generic programming and performance reasons (over the alternative of making it an optional input argument when <code>invStd</code> is present).</dd></dl>
@@ -255,8 +255,8 @@ The fact that the input argument <code>mean</code> is required to be present whe
 <img src="genNormLogPDF.png" alt="" width="700"/>
 </div>
 </dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000050">Test:</a></b></dt><dd><a class="el" href="namespaceTest__DistUniNorm__mod.html">Test_DistUniNorm_mod</a></dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000030">Todo:</a></b></dt><dd>This generic interface can be expanded to include input <code>Point</code> of higher ranks than currently supported.</dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000052">Test:</a></b></dt><dd><a class="el" href="namespaceTest__DistUniNorm__mod.html">Test_DistUniNorm_mod</a></dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000031">Todo:</a></b></dt><dd>This generic interface can be expanded to include input <code>Point</code> of higher ranks than currently supported.</dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
 <dd>
 For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
@@ -275,7 +275,7 @@ This software is distributed under the MIT-license. If you use any parts or conc
     <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
       <ul>
         <li class="navelem"><a class="el" href="namespaceDistUniNorm__mod.html">DistUniNorm_mod</a></li><li class="navelem"><a class="el" href="interfaceDistUniNorm__mod_1_1genNormLogPDF.html">genNormLogPDF</a></li>
-        <li class="footer">Generated on Sun Dec 5 2021 21:40:39 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+        <li class="footer">Generated on Fri Dec 10 2021 01:04:28 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
       </ul>
     </div>
     <div style="color: #ffffff; float: none; width: 100%;">

@@ -2,17 +2,17 @@
 \label{interfaceArrayRemove__mod_1_1remove}\index{ArrayRemove\_mod::remove@{ArrayRemove\_mod::remove}}
 
 
-Return the remaining parts of the input array as a sequence after removing the input {\ttfamily Pattern} at the requested occurrences. If a vector of {\ttfamily Instance} is specified, containing the indices of the specific instances of {\ttfamily Pattern} that must be removed, then only those instances will be removed from the array.  
+Return the remaining parts of the input array as a sequence after removing the input {\ttfamily Pattern} at the requested occurrences. If an input vector of {\ttfamily Instance} is specified, containing the indices of the specific instances of {\ttfamily Pattern} that must be removed, then only those instances will be removed from the array.  
 
 
 
 
 \doxysubsection{Detailed Description}
-Return the remaining parts of the input array as a sequence after removing the input {\ttfamily Pattern} at the requested occurrences. If a vector of {\ttfamily Instance} is specified, containing the indices of the specific instances of {\ttfamily Pattern} that must be removed, then only those instances will be removed from the array. 
+Return the remaining parts of the input array as a sequence after removing the input {\ttfamily Pattern} at the requested occurrences. If an input vector of {\ttfamily Instance} is specified, containing the indices of the specific instances of {\ttfamily Pattern} that must be removed, then only those instances will be removed from the array. 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in,out}}  & {\em Array} & \+: The input/output allocatable array of shape {\ttfamily (\+:)} of either ~\newline
+\mbox{\texttt{ in,out}}  & {\em Array} & \+: The input/output {\ttfamily allocatable} array of shape {\ttfamily (\+:)} of either ~\newline
  ~ type {\ttfamily integer} of kind \mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}}, \mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}}, \mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}}, or \mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}}, or ~\newline
  ~ type {\ttfamily complex} of kind \mbox{\hyperlink{namespaceConstants__mod_ac8b456bd9511bc9a52b4a03bda4b72df}{CK32}}, \mbox{\hyperlink{namespaceConstants__mod_aa6ea61256fca0b20db0ec2b90755b9f3}{CK64}}, or \mbox{\hyperlink{namespaceConstants__mod_ad3873e1ecc5eb3cf3651f72630cae087}{CK128}}, or ~\newline
  ~ type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}, or ~\newline
@@ -22,9 +22,9 @@ Return the remaining parts of the input array as a sequence after removing the i
  ~ within which the requested instances of {\ttfamily Pattern} is to be removed. ~\newline
  ~ On output, {\ttfamily Array} is reallocated to contain the input {\ttfamily Array} with the requested instances of {\ttfamily Pattern} removed from it. \\
 \hline
-\mbox{\texttt{ in}}  & {\em Pattern} & \+: The input contiguous array of shape {\ttfamily (\+:)} or scalar of the same type and kind as the input {\ttfamily Array} containing the pattern that must be removed from the input {\ttfamily Array}. \\
+\mbox{\texttt{ in}}  & {\em Pattern} & \+: The input {\ttfamily contiguous} array of shape {\ttfamily (\+:)} or scalar of the same type and kind as the input {\ttfamily Array} containing the pattern that must be removed from the input {\ttfamily Array}. \\
 \hline
-\mbox{\texttt{ in}}  & {\em iseq} & \+: The optional external user-\/specified function that takes two input {\bfseries{explicit-\/shape}} arguments of the same type and kind as the input {\ttfamily Array} and possibly, also the length of the arguments as the third argument. It returns a scalar {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} that is {\ttfamily .true.} if all elements of the two input arguments are equivalent (e.\+g., equal) according to the user-\/defined criterion, otherwise, it is {\ttfamily .false.}. If {\ttfamily Pattern} is an array of shape {\ttfamily (\+:)} or an assumed-\/length scalar {\ttfamily character}, then the last argument to {\ttfamily iseq} is the length of the input {\ttfamily Pattern}, preceded by a slice of {\ttfamily Array} and {\ttfamily Pattern} as the first and second arguments, whose lengths are given by the third argument {\ttfamily len\+Pattern}. ~\newline
+ & {\em iseq} & \+: The {\ttfamily optional, external} user-\/specified function that takes two input {\bfseries{explicit-\/shape}} arguments of the same type and kind as the input {\ttfamily Array} and possibly, also the length of the arguments as the third argument. It returns a scalar {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} that is {\ttfamily .true.} if all elements of the two input arguments are equivalent (e.\+g., equal) according to the user-\/defined criterion, otherwise, it is {\ttfamily .false.}. If {\ttfamily Pattern} is an array of shape {\ttfamily (\+:)} or an assumed-\/length scalar {\ttfamily character}, then the last argument to {\ttfamily iseq} is the length of the input {\ttfamily Pattern}, preceded by a slice of {\ttfamily Array} and {\ttfamily Pattern} as the first and second arguments, whose lengths are given by the third argument {\ttfamily len\+Pattern}. ~\newline
  The following illustrates the generic interface of {\ttfamily iseq} where {\ttfamily Pattern} is array-\/like, 
 \begin{DoxyCode}{1}
 \DoxyCodeLine{\textcolor{fortran_statement}{function} iseq(ArraySegment, Pattern, lenPattern)\textcolor{fortran_statement}{ result} (isEquivalent)}
@@ -80,14 +80,14 @@ Return the remaining parts of the input array as a sequence after removing the i
 \end{DoxyCode}
  This user-\/defined equivalence check is extremely useful where a user-\/defined equivalence test other than exact equality or identity is needed, for example, when the array segments should match the input {\ttfamily Pattern} only within a given threshold or, when the case-\/sensitivity in character comparisons do not matter. In such cases, user can define a custom equivalence criterion within the user-\/defined external function {\ttfamily iseq} to achieve the goal. ({\bfseries{optional}}, the default equivalence operator is {\ttfamily .eqv.} if the input {\ttfamily Array} is {\ttfamily logical}, otherwise {\ttfamily ==}). \\
 \hline
-\mbox{\texttt{ in}}  & {\em Instance} & \+: The input contiguous array of shape {\ttfamily (\+:)} of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, containing the instances of the input {\ttfamily Pattern} in the input {\ttfamily Array} that should be removed. ~\newline
+\mbox{\texttt{ in}}  & {\em Instance} & \+: The input {\ttfamily contiguous} array of shape {\ttfamily (\+:)} of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, containing the instances of the input {\ttfamily Pattern} in the input {\ttfamily Array} that should be removed. ~\newline
  Any element of {\ttfamily Instance} that points to an out-\/of-\/scope instance of {\ttfamily Pattern} in the input {\ttfamily Array} will be ignored. ~\newline
  Any element of {\ttfamily Instance} that is negatively valued will be counted from end of the input {\ttfamily Array}. ~\newline
  For example, {\ttfamily Instance = \mbox{[}2,-\/1\mbox{]}} requests removing the second instance of {\ttfamily Pattern} in {\ttfamily Array} from the beginning and removing the first instance of {\ttfamily Pattern} starting from the end of {\ttfamily Array} ({\bfseries{optional}}, the default value corresponds to removing all instances of {\ttfamily Pattern} in {\ttfamily Array}). \\
 \hline
-\mbox{\texttt{ in}}  & {\em sorted} & \+: The input {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} indicating whether the elements of the specified input {\ttfamily Instance} are all ascending-\/ordered. This includes the negative elements of {\ttfamily Instance} {\bfseries{after}} they are translated to the corresponding {\bfseries{positive}} instances from the beginning of the input {\ttfamily Array}. Setting {\ttfamily sorted = .true.} will lead faster runtime of the procedure. However, the onus will be strictly on the user to ensure all elements of {\ttfamily Instance} are ascending-\/ordered. This is generally not an easy guarantee to make. Therefore, set {\ttfamily sorted = .true.} {\bfseries{if and only if}} you fully understand the implications. ({\bfseries{optional}}, default = {\ttfamily .false.}. It can be present as input argument {\bfseries{if and only if}} the input argument {\ttfamily Instance} is present). \\
+\mbox{\texttt{ in}}  & {\em sorted} & \+: The input {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} indicating whether the elements of the specified input {\ttfamily Instance} are all in ascending-\/order. This includes the negative elements of {\ttfamily Instance} {\bfseries{after}} they are translated to the corresponding {\bfseries{positive}} instances from the beginning of the input {\ttfamily Array}. Setting {\ttfamily sorted = .true.} will lead to faster runtime of the procedure. However, the onus will be strictly on the user to ensure all elements of {\ttfamily Instance} are in ascending-\/order. This is generally not an easy guarantee to make if there are negative elements in {\ttfamily Instance}. Therefore, set {\ttfamily sorted = .true.} {\bfseries{if and only if}} you can guarantee the validity of the condition. ({\bfseries{optional}}, default = {\ttfamily .false.}. It can be present as input argument {\bfseries{if and only if}} the input argument {\ttfamily Instance} is present). \\
 \hline
-\mbox{\texttt{ in}}  & {\em unique} & \+: The input {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} indicating whether the elements of the specified input {\ttfamily Instance} are all unique. This includes the negative elements of {\ttfamily Instance} {\bfseries{after}} they are translated to the corresponding {\bfseries{positive}} instances from the beginning of the input {\ttfamily Array}. Setting {\ttfamily unique = .true.} will lead faster runtime of the procedure. However, the onus will be strictly on the user to ensure all elements of {\ttfamily Instance} are unique. This is generally not an easy guarantee to make. Therefore, set {\ttfamily unique = .true.} {\bfseries{if and only if}} you fully understand the implications. ({\bfseries{optional}}, default = {\ttfamily .false.}. It can be present as input argument {\bfseries{if and only if}} the input argument {\ttfamily Instance} is present).\\
+\mbox{\texttt{ in}}  & {\em unique} & \+: The input {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} indicating whether the elements of the specified input {\ttfamily Instance} are all unique. This includes the negative elements of {\ttfamily Instance} {\bfseries{after}} they are translated to the corresponding {\bfseries{positive}} instances from the beginning of the input {\ttfamily Array}. Setting {\ttfamily unique = .true.} will lead to faster runtime of the procedure. However, the onus will be strictly on the user to ensure all elements of {\ttfamily Instance} are unique. This is generally not an easy guarantee to make if there are negative elements in {\ttfamily Instance}. Therefore, set {\ttfamily unique = .true.} {\bfseries{if and only if}} you can guarantee the validity of the condition. ({\bfseries{optional}}, default = {\ttfamily .false.}. It can be present as input argument {\bfseries{if and only if}} the input argument {\ttfamily Instance} is present).\\
 \hline
 \end{DoxyParams}
 \label{interfaceArraySplit__mod_1_1split_interface}%
@@ -114,14 +114,14 @@ Return the remaining parts of the input array as a sequence after removing the i
 
 \end{DoxyParagraph}
 \begin{DoxyWarning}{Warning}
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+This {\ttfamily pure} procedures documented herein become {\ttfamily impure} when the Para\+Monte library is compiled with preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, {\ttfamily pure} procedures are {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
 
-The purity of the procedure breaks when the input external procedure {\ttfamily iseq} is specified as input argument.
+The procedures under this generic interface are {\ttfamily impure} when the user-\/specified {\ttfamily external} procedure {\ttfamily iseq} is specified as input argument.
 
 Note that in Fortran, trailing blanks are ignored in character comparison, that is, {\ttfamily \char`\"{}\+Fortran\char`\"{} == \char`\"{}\+Fortran \char`\"{}} yields {\ttfamily .true.}.
 \end{DoxyWarning}
 \begin{DoxyRemark}{Remarks}
-The functions under this interface are slightly slower than the \mbox{\hyperlink{interfaceArrayRemove__mod_1_1remove}{remove}} subroutine implementations. See \mbox{\hyperlink{namespaceArrayRemove__mod}{Array\+Remove\+\_\+mod}} for the relevant benchmarks.
+The functions under this generic interface are slightly slower than the \mbox{\hyperlink{interfaceArrayRemove__mod_1_1remove}{remove}} subroutine implementations. See \mbox{\hyperlink{namespaceArrayRemove__mod}{Array\+Remove\+\_\+mod}} for the relevant benchmarks.
 \end{DoxyRemark}
 \begin{DoxySeeAlso}{See also}
 \mbox{\hyperlink{interfaceArrayRemove__mod_1_1genRemoved}{gen\+Removed}}~\newline
@@ -514,9 +514,9 @@ The functions under this interface are slightly slower than the \mbox{\hyperlink
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00376}00376 }
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00377}00377 }
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00378}00378 \textcolor{fortran_statement}{    call} Display\textcolor{fortran_operator_symbols}{\%}skip()}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00379}00379 \textcolor{fortran_statement}{    call} Display\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%"{}})}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00380}00380 \textcolor{fortran_statement}{    call} Display\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}! Replace case-\/insensitive instances of vector `Pattern` within the character array."{}})}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00381}00381 \textcolor{fortran_statement}{    call} Display\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00379}00379 \textcolor{fortran_statement}{    call} Display\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%"{}})}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00380}00380 \textcolor{fortran_statement}{    call} Display\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}! Remove case-\/insensitive instances of vector `Pattern` within the character array."{}})}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00381}00381 \textcolor{fortran_statement}{    call} Display\textcolor{fortran_operator_symbols}{\%}\textcolor{fortran_statement}{write}(\textcolor{fortran_string}{"{}!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%"{}})}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00382}00382 \textcolor{fortran_statement}{    call} Display\textcolor{fortran_operator_symbols}{\%}skip()}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00383}00383 }
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00384}00384     string\_SK\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}ABBAbbA"{}}}
@@ -870,9 +870,9 @@ The functions under this interface are slightly slower than the \mbox{\hyperlink
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00246}00246 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00247}00247 }
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00248}00248 }
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00249}00249 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00250}00250 \textcolor{fortran_comment}{! Replace case-\/insensitive instances of vector `Pattern` within the character array.}}
-\DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00251}00251 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00249}00249 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00250}00250 \textcolor{fortran_comment}{! Remove case-\/insensitive instances of vector `Pattern` within the character array.}}
+\DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00251}00251 \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00252}00252 }
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00253}00253 string\_SK}
 \DoxyCodeLine{\Hypertarget{interfaceArrayRemove__mod_1_1remove_l00254}00254 \textcolor{fortran_string}{"{}ABBAbbA"{}}}
@@ -914,11 +914,11 @@ The functions under this interface are slightly slower than the \mbox{\hyperlink
 
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000009}{Test}}]\mbox{\hyperlink{namespaceTest__ArrayRemove__mod}{Test\+\_\+\+Array\+Remove\+\_\+mod}}\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000011}{Test}}]\mbox{\hyperlink{namespaceTest__ArrayRemove__mod}{Test\+\_\+\+Array\+Remove\+\_\+mod}}\end{DoxyRefDesc}
 
 
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000006}{Todo}}]This generic interface can be extended to 2D input objects. ~\newline
+\item[\mbox{\hyperlink{todo__todo000007}{Todo}}]This generic interface can be extended to 2D input objects. ~\newline
 \end{DoxyRefDesc}
 
 
@@ -935,7 +935,7 @@ Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{ArrayRemove__mod_8f90_source_l01869}{1869}} of file \mbox{\hyperlink{ArrayRemove__mod_8f90_source}{Array\+Remove\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{ArrayRemove__mod_8f90_source_l01873}{1873}} of file \mbox{\hyperlink{ArrayRemove__mod_8f90_source}{Array\+Remove\+\_\+mod.\+f90}}.
 
 
 

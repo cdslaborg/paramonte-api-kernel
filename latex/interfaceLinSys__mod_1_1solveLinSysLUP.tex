@@ -18,13 +18,13 @@ Solve the set of {\ttfamily nd} linear equations of the form,.
 \hline
 \mbox{\texttt{ in}}  & {\em Coef\+Mat\+LUP} & \+: The input contiguous square matrix of shape {\ttfamily (nd,nd)} of the same type and kind as {\ttfamily Solution}, representing the LU-\/\+Pivoted (LUP) decomposition of the matrix of coefficients $A$ of the linear system. This matrix is returned by the call to \mbox{\hyperlink{interfaceMatrixLUP__mod_1_1getLUP}{get\+LUP}}. \\
 \hline
-\mbox{\texttt{ out}}  & {\em Row\+Perm} & \+: The input contiguous array of shape {\ttfamily (nd)} of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} containing the pivot indices. This vector is returned by the call to \mbox{\hyperlink{interfaceMatrixLUP__mod_1_1getLUP}{get\+LUP}}.\\
+\mbox{\texttt{ out}}  & {\em Row\+Perm} & \+: The input {\ttfamily contiguous} array of shape {\ttfamily (nd)} of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}} containing the pivot indices. This vector is returned by the call to \mbox{\hyperlink{interfaceMatrixLUP__mod_1_1getLUP}{get\+LUP}}.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyWarning}{Warning}
 The dimensions of the input arguments {\ttfamily Solution}, {\ttfamily Coef\+Mat\+LUP}, and {\ttfamily Row\+Perm} must be consistent with each other as described in the above. This condition is only checked for when the preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED=1} is set at build time.
 
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+This {\ttfamily pure} procedures documented herein become {\ttfamily impure} when the Para\+Monte library is compiled with preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, {\ttfamily pure} procedures are {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
 \end{DoxyWarning}
 \begin{DoxyRemark}{Remarks}
 This routine takes into account the possibility that {\ttfamily Solution} will begin with many zero elements, and is therefore efficient for matrix inversion.
@@ -222,7 +222,7 @@ The input {\ttfamily Coef\+Mat\+LUP} and {\ttfamily Row\+Perm} arguments are not
 
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000054}{Test}}]\mbox{\hyperlink{namespaceTest__LinSys__mod}{Test\+\_\+\+Lin\+Sys\+\_\+mod}}\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000056}{Test}}]\mbox{\hyperlink{namespaceTest__LinSys__mod}{Test\+\_\+\+Lin\+Sys\+\_\+mod}}\end{DoxyRefDesc}
 
 
 \begin{DoxyRemark}{Remarks}

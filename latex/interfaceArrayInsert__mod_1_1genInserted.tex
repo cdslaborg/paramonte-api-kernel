@@ -12,7 +12,7 @@ Generate and return a new array containing the original array within which the i
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em Array} & \+: The output contiguous array of shape {\ttfamily (\+:)} of either ~\newline
+\mbox{\texttt{ in}}  & {\em Array} & \+: The output {\ttfamily contiguous} array of shape {\ttfamily (\+:)} of either ~\newline
  ~ type {\ttfamily integer} of kind \mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}}, \mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}}, \mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}}, or \mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}}, or ~\newline
  ~ type {\ttfamily complex} of kind \mbox{\hyperlink{namespaceConstants__mod_ac8b456bd9511bc9a52b4a03bda4b72df}{CK32}}, \mbox{\hyperlink{namespaceConstants__mod_aa6ea61256fca0b20db0ec2b90755b9f3}{CK64}}, or \mbox{\hyperlink{namespaceConstants__mod_ad3873e1ecc5eb3cf3651f72630cae087}{CK128}}, or ~\newline
  ~ type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}, or ~\newline
@@ -21,9 +21,9 @@ Generate and return a new array containing the original array within which the i
  ~ a scalar assumed-\/length {\ttfamily character} of default kind \mbox{\hyperlink{namespaceConstants__mod_af7cc6c6017142cddbb143225b0a4dc93}{SK}}, ~\newline
  ~ containing the sequence of values within which the input {\ttfamily Insertion} must be inserted at the specified indices. \\
 \hline
-\mbox{\texttt{ in}}  & {\em Insertion} & \+: The input scalar or contiguous array of shape {\ttfamily (\+:)} of the same type and kind as the input {\ttfamily Array} containing the insertion that must be inserted at the specified indices of the input {\ttfamily Array}. \\
+\mbox{\texttt{ in}}  & {\em Insertion} & \+: The input scalar or {\ttfamily contiguous} array of shape {\ttfamily (\+:)} of the same type and kind as the input {\ttfamily Array} containing the insertion that must be inserted at the specified indices of the input {\ttfamily Array}. \\
 \hline
-\mbox{\texttt{ in}}  & {\em Index} & \+: The input contiguous array of shape {\ttfamily (\+:)} of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, containing the indices of the input {\ttfamily Array} where {\ttfamily Insertion} must be inserted to construct {\ttfamily Array\+New}.~\newline
+\mbox{\texttt{ in}}  & {\em Index} & \+: The input {\ttfamily contiguous} array of shape {\ttfamily (\+:)} of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, containing the indices of the input {\ttfamily Array} where {\ttfamily Insertion} must be inserted to construct {\ttfamily Array\+New}.~\newline
  ~ All elements of {\ttfamily Index} must have values between {\ttfamily 1} and the length of {\ttfamily Array} plus {\ttfamily 1}.~\newline
  ~ Any insertion of {\ttfamily Index} that is negatively valued will be counted from end of the input {\ttfamily Array}.~\newline
  ~ For example, {\ttfamily Index = \mbox{[}2,-\/1\mbox{]}} requests inserting {\ttfamily Insertion} at {\ttfamily Array(2)} and {\ttfamily Array(len\+Array)}.~\newline
@@ -32,11 +32,11 @@ Generate and return a new array containing the original array within which the i
 \hline
 \mbox{\texttt{ in}}  & {\em positive} & \+: The input {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} indicating whether the elements of {\ttfamily Index} are all positive (indicating counts from the beginning of {\ttfamily Array}). Setting {\ttfamily positive = .true.} will lead to a slightly better runtime performance of the algorithm since a conversion of potentially-\/negative index values to the corresponding positive values (counting from the beginning of {\ttfamily Array} will be avoided ({\bfseries{optional}}, default = {\ttfamily .false.}). \\
 \hline
-\mbox{\texttt{ in}}  & {\em sorted} & \+: The input {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} indicating whether the insertions of the specified input {\ttfamily Index} are all ascending-\/ordered. This includes the negative values of {\ttfamily Index} {\bfseries{after}} they are converted to the corresponding {\bfseries{positive}} indices from the beginning of the input {\ttfamily Array}. Setting {\ttfamily sorted = .true.} will lead to a better runtime performance of the algorithm since a call to the \mbox{\hyperlink{interfaceArraySort__mod_1_1sort}{sort}} to sort the index values in ascending order will be avoided. However, the onus will be on the user to guarantee the ascending order of the elements of the input Index ({\bfseries{optional}}, default = {\ttfamily .false.}).\\
+\mbox{\texttt{ in}}  & {\em sorted} & \+: The input {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} indicating whether the insertions of the specified input {\ttfamily Index} are all in ascending-\/order. This includes the negative values of {\ttfamily Index} {\bfseries{after}} they are converted to the corresponding {\bfseries{positive}} indices from the beginning of the input {\ttfamily Array}. Setting {\ttfamily sorted = .true.} will lead to a better runtime performance of the algorithm since a call to the \mbox{\hyperlink{interfaceArraySort__mod_1_1sort}{sort}} to sort the index values in ascending order will be avoided. However, the onus will be on the user to guarantee the ascending order of the elements of the input Index ({\bfseries{optional}}, default = {\ttfamily .false.}).\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-{\ttfamily Array\+New} \+: The input contiguous array of the same type, kind, and rank as {\ttfamily Array} containing the original array ~ within which the input {\ttfamily Insertion} has been inserted at the requested indices of the {\ttfamily Array}.~\newline
+{\ttfamily Array\+New} \+: The input {\ttfamily contiguous} array of the same type, kind, and rank as {\ttfamily Array} containing the original array ~ within which the input {\ttfamily Insertion} has been inserted at the requested indices of the {\ttfamily Array}.~\newline
  ~ The size of {\ttfamily Array\+New} will be,~\newline
  ~ {\ttfamily size(\+Array) + size(\+Index) $\ast$ size(\+Insertion)} if {\ttfamily Array} is a non-\/scalar-\/character and {\ttfamily Insertion} is a vector,~\newline
  ~ {\ttfamily size(\+Array) + size(\+Index) $\ast$ 1} if {\ttfamily Array} is a non-\/scalar-\/character and {\ttfamily Insertion} is a scalar,~\newline
@@ -61,7 +61,7 @@ Generate and return a new array containing the original array within which the i
 \begin{DoxyWarning}{Warning}
 All elements of {\ttfamily Index} must have values between {\ttfamily 1} and the length of {\ttfamily Array} plus {\ttfamily 1}. This condition is verified only when the preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED=1} is set when building the Para\+Monte library.
 
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+This {\ttfamily pure} procedures documented herein become {\ttfamily impure} when the Para\+Monte library is compiled with preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, {\ttfamily pure} procedures are {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
 \end{DoxyWarning}
 \begin{DoxySeeAlso}{See also}
 \mbox{\hyperlink{interfaceArrayInsert__mod_1_1insert}{insert}}~\newline
@@ -579,11 +579,11 @@ This procedure is {\ttfamily impure} when the library is compiled with macro {\t
 
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000003}{Test}}]\mbox{\hyperlink{namespaceTest__ArrayInsert__mod}{Test\+\_\+\+Array\+Insert\+\_\+mod}}\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000005}{Test}}]\mbox{\hyperlink{namespaceTest__ArrayInsert__mod}{Test\+\_\+\+Array\+Insert\+\_\+mod}}\end{DoxyRefDesc}
 
 
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000002}{Todo}}]This generic interface can be extended to 2D input objects.~\newline
+\item[\mbox{\hyperlink{todo__todo000003}{Todo}}]This generic interface can be extended to 2D input objects.~\newline
  A benchmark comparing the performance of \mbox{\hyperlink{interfaceArrayInsert__mod_1_1genInserted}{gen\+Inserted}} with and without {\ttfamily positive, sorted} should be added.~\newline
 \end{DoxyRefDesc}
 

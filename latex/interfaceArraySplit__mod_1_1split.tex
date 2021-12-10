@@ -2,13 +2,13 @@
 \label{interfaceArraySplit__mod_1_1split}\index{ArraySplit\_mod::split@{ArraySplit\_mod::split}}
 
 
-Return the parts of the input array split at the requested occurrences of the input {\ttfamily Delim}. If a vector of {\ttfamily Instance} is specified, containing the indices of the specific instances of {\ttfamily Delim} at which the {\ttfamily Array} must be split, then the input {\ttfamily Array} will be split only at those specific requested instances.  
+Return the parts of the input array split at the requested occurrences of the input {\ttfamily Delim}. If an input vector of {\ttfamily Instance} is specified, containing the indices of the specific instances of {\ttfamily Delim} at which the {\ttfamily Array} must be split, then the input {\ttfamily Array} will be split only at those specific requested instances.  
 
 
 
 
 \doxysubsection{Detailed Description}
-Return the parts of the input array split at the requested occurrences of the input {\ttfamily Delim}. If a vector of {\ttfamily Instance} is specified, containing the indices of the specific instances of {\ttfamily Delim} at which the {\ttfamily Array} must be split, then the input {\ttfamily Array} will be split only at those specific requested instances. 
+Return the parts of the input array split at the requested occurrences of the input {\ttfamily Delim}. If an input vector of {\ttfamily Instance} is specified, containing the indices of the specific instances of {\ttfamily Delim} at which the {\ttfamily Array} must be split, then the input {\ttfamily Array} will be split only at those specific requested instances. 
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -39,7 +39,7 @@ Return the parts of the input array split at the requested occurrences of the in
  ~ containing pieces of the input {\ttfamily Array} split at the requested instances of the input {\ttfamily delim}. ~\newline
  ~ Note that the vector contained within the container class (,that is, the allocatable component of the jagged-\/array) must have the same type and kind as the input {\ttfamily Array}. \\
 \hline
-\mbox{\texttt{ in}}  & {\em Array} & \+: The input contiguous array of shape {\ttfamily (\+:)} of the same type and kind as the {\ttfamily Value} component of the output argument {\ttfamily Array\+Split}, which can be either ~\newline
+\mbox{\texttt{ in}}  & {\em Array} & \+: The input {\ttfamily contiguous} array of shape {\ttfamily (\+:)} of the same type and kind as the {\ttfamily Value} component of the output argument {\ttfamily Array\+Split}, which can be either ~\newline
  ~ type {\ttfamily integer} of kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_ae3573d46486b5f1a0a8d5033a9d12879}{IK8}}, \mbox{\hyperlink{namespaceConstants__mod_acd3c33e94d12f6e7d7c0ee79b2d6280b}{IK16}}, \mbox{\hyperlink{namespaceConstants__mod_ab12a86d74008f0d7f287c3564c3defd9}{IK32}}, or \mbox{\hyperlink{namespaceConstants__mod_ad6aaf2f477491dc84e7ebbab3b64694e}{IK64}}, or ~\newline
  ~ type {\ttfamily complex} of kind \mbox{\hyperlink{namespaceConstants__mod_af98c475d7d15ede8622b2a6d0d3e4a72}{CK}}, \mbox{\hyperlink{namespaceConstants__mod_ac8b456bd9511bc9a52b4a03bda4b72df}{CK32}}, \mbox{\hyperlink{namespaceConstants__mod_aa6ea61256fca0b20db0ec2b90755b9f3}{CK64}}, or \mbox{\hyperlink{namespaceConstants__mod_ad3873e1ecc5eb3cf3651f72630cae087}{CK128}}, or ~\newline
  ~ type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}, \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}}, or ~\newline
@@ -48,9 +48,9 @@ Return the parts of the input array split at the requested occurrences of the in
  ~ a scalar assumed-\/length {\ttfamily character} of default kind \mbox{\hyperlink{namespaceConstants__mod_af7cc6c6017142cddbb143225b0a4dc93}{SK}}, ~\newline
  ~ that will be split at the specified instances of the input {\ttfamily delim}. \\
 \hline
-\mbox{\texttt{ in}}  & {\em Delim} & \+: The input contiguous array of shape {\ttfamily (\+:)} or scalar of the same type and kind as the input {\ttfamily Array}, containing the pattern at which the input {\ttfamily Array} will be split. \\
+\mbox{\texttt{ in}}  & {\em Delim} & \+: The input {\ttfamily contiguous} array of shape {\ttfamily (\+:)} or scalar of the same type and kind as the input {\ttfamily Array}, containing the pattern at which the input {\ttfamily Array} will be split. \\
 \hline
-\mbox{\texttt{ in}}  & {\em iseq} & \+: The optional external user-\/specified function that takes two input {\bfseries{explicit-\/shape}} arguments of the same type and kind as the input {\ttfamily Array} and returns a scalar {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} that is {\ttfamily .true.} if all elements of the two input arguments are equivalent (e.\+g., equal) according to the user-\/defined criterion, otherwise, it is {\ttfamily .false.}. ~\newline
+ & {\em iseq} & \+: The {\ttfamily optional, external} user-\/specified function that takes two input {\bfseries{explicit-\/shape}} arguments of the same type and kind as the input {\ttfamily Array} and returns a scalar {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} that is {\ttfamily .true.} if all elements of the two input arguments are equivalent (e.\+g., equal) according to the user-\/defined criterion, otherwise, it is {\ttfamily .false.}. ~\newline
  ~ If {\ttfamily Delim} is an array of shape {\ttfamily (\+:)} or an assumed-\/length scalar {\ttfamily character}, then the last argument to {\ttfamily iseq} is the length of the input {\ttfamily Delim}, followed by {\ttfamily Delim} as the second argument, followed by a segment of the input {\ttfamily Array} of the same length as {\ttfamily Delim} that is to be compared with {\ttfamily Delim} for equivalence. ~\newline
  The following illustrates the generic interface of {\ttfamily iseq} where {\ttfamily Delim} is array-\/like, 
 \begin{DoxyCode}{1}
@@ -107,14 +107,14 @@ Return the parts of the input array split at the requested occurrences of the in
 \end{DoxyCode}
  This user-\/defined equivalence check is extremely useful where a user-\/defined equivalence test other than exact equality or identity is needed, for example, when the array segments should match the input {\ttfamily Delim} only within a given threshold or, when the case-\/sensitivity in character comparisons do not matter. In such cases, user can define a custom equivalence criterion within the user-\/defined external function {\ttfamily iseq} to achieve the goal. ({\bfseries{optional}}, the default equivalence operator is {\ttfamily .eqv.} if the input {\ttfamily Array} is {\ttfamily logical}, otherwise {\ttfamily ==}). \\
 \hline
-\mbox{\texttt{ in}}  & {\em Instance} & \+: The input contiguous array of shape {\ttfamily (\+:)} of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, containing the instances of the input {\ttfamily Delim} in the input {\ttfamily Array} at which the {\ttfamily Array} should be split. ~\newline
+\mbox{\texttt{ in}}  & {\em Instance} & \+: The input {\ttfamily contiguous} array of shape {\ttfamily (\+:)} of type {\ttfamily integer} of default kind \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, containing the instances of the input {\ttfamily Delim} in the input {\ttfamily Array} at which the {\ttfamily Array} should be split. ~\newline
  Any element of {\ttfamily Instance} that points to an out-\/of-\/scope instance of {\ttfamily Delim} in the input {\ttfamily Array} will be ignored. ~\newline
  Any element of {\ttfamily Instance} that is negatively valued will be counted from end of the input {\ttfamily Array}. ~\newline
  For example, {\ttfamily Instance = \mbox{[}2,-\/1\mbox{]}} requests splitting at the second instance of {\ttfamily Delim} in {\ttfamily Array} from the beginning and splitting at the first instance of {\ttfamily Delim} starting from the end of {\ttfamily Array} ({\bfseries{optional}}, the default value corresponds to splitting at all instances of {\ttfamily Delim} in {\ttfamily Array}). \\
 \hline
-\mbox{\texttt{ in}}  & {\em sorted} & \+: The input {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} indicating whether the elements of the specified input {\ttfamily Instance} are all ascending-\/ordered. This includes the negative elements of {\ttfamily Instance} {\bfseries{after}} they are translated to the corresponding {\bfseries{positive}} instances from the beginning of the input {\ttfamily Array}. Setting {\ttfamily sorted = .true.} will lead faster runtime of the procedure. However, the onus will be strictly on the user to ensure all elements of {\ttfamily Instance} are ascending-\/ordered. This is generally not an easy guarantee to make. Therefore, set {\ttfamily sorted = .true.} {\bfseries{if and only if}} you fully understand the implications. ({\bfseries{optional}}, default = {\ttfamily .false.}. It can be present as input argument {\bfseries{if and only if}} the input argument {\ttfamily Instance} is present). \\
+\mbox{\texttt{ in}}  & {\em sorted} & \+: The input {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} indicating whether the elements of the specified input {\ttfamily Instance} are all in ascending-\/order. This includes the negative elements of {\ttfamily Instance} {\bfseries{after}} they are translated to the corresponding {\bfseries{positive}} instances from the beginning of the input {\ttfamily Array}. Setting {\ttfamily sorted = .true.} will lead to faster runtime of the procedure. However, the onus will be strictly on the user to ensure all elements of {\ttfamily Instance} are in ascending-\/order. This is generally not an easy guarantee to make if there are negative elements in {\ttfamily Instance}. Therefore, set {\ttfamily sorted = .true.} {\bfseries{if and only if}} you can guarantee the validity of the condition. ({\bfseries{optional}}, default = {\ttfamily .false.}. It can be present as input argument {\bfseries{if and only if}} the input argument {\ttfamily Instance} is present). \\
 \hline
-\mbox{\texttt{ in}}  & {\em unique} & \+: The input {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} indicating whether the elements of the specified input {\ttfamily Instance} are all unique. This includes the negative elements of {\ttfamily Instance} {\bfseries{after}} they are translated to the corresponding {\bfseries{positive}} instances from the beginning of the input {\ttfamily Array}. Setting {\ttfamily unique = .true.} will lead faster runtime of the procedure. However, the onus will be strictly on the user to ensure all elements of {\ttfamily Instance} are unique. This is generally not an easy guarantee to make. Therefore, set {\ttfamily unique = .true.} {\bfseries{if and only if}} you fully understand the implications. ({\bfseries{optional}}, default = {\ttfamily .false.}. It can be present as input argument {\bfseries{if and only if}} the input argument {\ttfamily Instance} is present).\\
+\mbox{\texttt{ in}}  & {\em unique} & \+: The input {\ttfamily logical} of default kind \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}} indicating whether the elements of the specified input {\ttfamily Instance} are all unique. This includes the negative elements of {\ttfamily Instance} {\bfseries{after}} they are translated to the corresponding {\bfseries{positive}} instances from the beginning of the input {\ttfamily Array}. Setting {\ttfamily unique = .true.} will lead to faster runtime of the procedure. However, the onus will be strictly on the user to ensure all elements of {\ttfamily Instance} are unique. This is generally not an easy guarantee to make if there are negative elements in {\ttfamily Instance}. Therefore, set {\ttfamily unique = .true.} {\bfseries{if and only if}} you can guarantee the validity of the condition. ({\bfseries{optional}}, default = {\ttfamily .false.}. It can be present as input argument {\bfseries{if and only if}} the input argument {\ttfamily Instance} is present).\\
 \hline
 \end{DoxyParams}
 \label{interfaceArraySplit__mod_1_1split_interface}%
@@ -141,9 +141,9 @@ Return the parts of the input array split at the requested occurrences of the in
 
 \end{DoxyParagraph}
 \begin{DoxyWarning}{Warning}
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+This {\ttfamily pure} procedures documented herein become {\ttfamily impure} when the Para\+Monte library is compiled with preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, {\ttfamily pure} procedures are {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
 
-The purity of the procedure breaks when the input external procedure {\ttfamily iseq} is specified as input argument.
+The procedures under this generic interface are {\ttfamily impure} when the user-\/specified {\ttfamily external} procedure {\ttfamily iseq} is specified as input argument.
 
 Note that in Fortran, trailing blanks are ignored in character comparison, that is, {\ttfamily \char`\"{}\+Fortran\char`\"{} == \char`\"{}\+Fortran \char`\"{}} yields {\ttfamily .true.}.
 \end{DoxyWarning}
@@ -972,11 +972,11 @@ Note that in Fortran, trailing blanks are ignored in character comparison, that 
 
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000041}{Test}}]\mbox{\hyperlink{namespaceTest__ArraySplit__mod}{Test\+\_\+\+Array\+Split\+\_\+mod}}\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000043}{Test}}]\mbox{\hyperlink{namespaceTest__ArraySplit__mod}{Test\+\_\+\+Array\+Split\+\_\+mod}}\end{DoxyRefDesc}
 
 
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000022}{Todo}}]This generic interface can be extended to 2D input objects. ~\newline
+\item[\mbox{\hyperlink{todo__todo000023}{Todo}}]This generic interface can be extended to 2D input objects. ~\newline
  A {\ttfamily backward} optional argument can be added in the future to search for the input {\ttfamily Delim} in the backward direction. ~\newline
 \end{DoxyRefDesc}
 
@@ -994,7 +994,7 @@ Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at
 \end{DoxyAuthor}
 
 
-Definition at line \mbox{\hyperlink{ArraySplit__mod_8f90_source_l00254}{254}} of file \mbox{\hyperlink{ArraySplit__mod_8f90_source}{Array\+Split\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{ArraySplit__mod_8f90_source_l00256}{256}} of file \mbox{\hyperlink{ArraySplit__mod_8f90_source}{Array\+Split\+\_\+mod.\+f90}}.
 
 
 

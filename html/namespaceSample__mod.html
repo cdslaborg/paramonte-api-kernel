@@ -213,7 +213,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>CorUpp</code> : The upper triangle of the correlation matrix. The lower-triangle will NOT be set.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Monday March 6, 2017, 3:22 pm, ICES, The University of Texas at Austin.</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>This procedure is <code>impure</code> when the library is compiled with macro <code>CHECK_ENABLED=1</code>. By default, it is <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>This <code>pure</code> procedures documented herein become <code>impure</code> when the ParaMonte library is compiled with preprocessor macro <code>CHECK_ENABLED=1</code>. By default, <code>pure</code> procedures are <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Sample__mod_8f90_source.html#l00808">808</a> of file <a class="el" href="Sample__mod_8f90_source.html">Sample_mod.f90</a>.</p>
 
@@ -254,8 +254,8 @@ Variables</h2></td></tr>
 <p>Return the full inverse covariance matrix of the input <code>ShiftedSample</code> sample (whose mean is shifted to the origin) whose shape is assumed to be <code>(nd,np)</code> or <code>(nd,np)</code> such that <code>nd &lt; np</code> always holds, where <code>nd</code> represents the number of attributes (dimensions) of the sample and <code>np</code> represents the number of data points in the sample. Note that by definition, <code>np &gt; nd</code> must hold. The input sample must be normalized in the sense that its mean is zero. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">ShiftedSample</td><td>: The contiguous array of shape <code>(:,:)</code> containing the sample. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">Weight</td><td>: The contiguous array of shape <code>(:,:)</code> containing the sample. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ShiftedSample</td><td>: The <code>contiguous</code> array of shape <code>(:,:)</code> containing the sample. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Weight</td><td>: The <code>contiguous</code> array of shape <code>(:,:)</code> containing the sample. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">failed</td><td>: An output logical that is <code>.true.</code>, it implies that the Cholesky factorization has failed. If missing among the dummy arguments, the procedure will end the program upon encountering a Cholesky factorization failure.</td></tr>
   </table>
   </dd>
@@ -332,14 +332,14 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section warning"><dt>Warning</dt><dd>If Cholesky factorization fails, <code>ChoDia(1)</code> will be set to <code>-1</code> to indicate an error on return. This is necessary to maintain the purity of the procedure. However, if the library is built with the preprocessor macro <code>CHECK_ENABLED</code> set to true, then the occurrence of an error will halt the program by executing the <code>error stop</code> statement.</dd>
 <dd>
-This procedure is <code>impure</code> when the library is compiled with macro <code>CHECK_ENABLED=1</code>. By default, it is <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds.</dd></dl>
+This <code>pure</code> procedures documented herein become <code>impure</code> when the ParaMonte library is compiled with preprocessor macro <code>CHECK_ENABLED=1</code>. By default, <code>pure</code> procedures are <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds.</dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
 <dd>
 For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
 <dd>
 This software is distributed under the MIT-license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the <a href="https://www.cdslab.org/paramonte/notes/overview/preface/#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work" target="_blank"><b>publications of the ParaMonte library</b></a>.<br  />
 </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000066">Todo:</a></b></dt><dd>The efficiency of this code can be further improved.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000067">Todo:</a></b></dt><dd>The efficiency of this code can be further improved.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, April 23, 2017, 1:36 AM, ICES, University of Texas at Austin </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Sample__mod_8f90_source.html#l00207">207</a> of file <a class="el" href="Sample__mod_8f90_source.html">Sample_mod.f90</a>.</p>
@@ -408,7 +408,7 @@ This software is distributed under the MIT-license. If you use any parts or conc
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000067">Todo:</a></b></dt><dd>The efficiency of this code can be further improved.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000068">Todo:</a></b></dt><dd>The efficiency of this code can be further improved.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Sample__mod_8f90_source.html#l00264">264</a> of file <a class="el" href="Sample__mod_8f90_source.html">Sample_mod.f90</a>.</p>
@@ -590,7 +590,7 @@ This software is distributed under the MIT-license. If you use any parts or conc
 This subroutine has the same functionality as <a class="el" href="namespaceSample__mod.html#a5f2a3ba527c41a88f8afefabf3385a9e">getMeanCov</a>, with the only difference that input data is transposed here on input. Based on the preliminary benchmarks with Intel 2017 ifort, <code><a class="el" href="namespaceSample__mod.html#a5f2a3ba527c41a88f8afefabf3385a9e" title="Return the sample mean, covariance matrix, the Mahalanobis distances squared of the points with respe...">getMeanCov()</a></code> is slightly faster than <code><a class="el" href="namespaceSample__mod.html#ab54f1da8d61065ad511b74648331cdab" title="Return the sample mean, covariance matrix, the Mahalanobis distances squared of the points with respe...">getMeanCovTrans()</a></code>.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>For more information, see Geisser &amp; Cornfield (1963) "Posterior distributions for multivariate normal parameters". Also, Box and Tiao (1973), "Bayesian Inference in Statistical Analysis" Page 421.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>This procedure is <code>impure</code> when the library is compiled with macro <code>CHECK_ENABLED=1</code>. By default, it is <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>This <code>pure</code> procedures documented herein become <code>impure</code> when the ParaMonte library is compiled with preprocessor macro <code>CHECK_ENABLED=1</code>. By default, <code>pure</code> procedures are <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Sample__mod_8f90_source.html#l00413">413</a> of file <a class="el" href="Sample__mod_8f90_source.html">Sample_mod.f90</a>.</p>
 
@@ -734,7 +734,7 @@ This subroutine has the same functionality as <a class="el" href="namespaceSampl
 <dl class="section remark"><dt>Remarks</dt><dd>This subroutine has the same functionality as <a class="el" href="namespaceSample__mod.html#ae9487a1bd8fb8e417b2ad4b193e63c41">getMeanCovUppTrans</a>, with the only difference only the upper triangle of the covariance matrix is returned. Also, optional arguments are not available. This subroutine is specifically optimized for use in the ParaMonte samplers.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>For more information, see Geisser &amp; Cornfield (1963) "Posterior distributions for multivariate normal parameters". Also, Box and Tiao (1973), "Bayesian Inference in Statistical Analysis" Page 421.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Oct 16, 2009, 11:14 AM, Michigan</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>This procedure is <code>impure</code> when the library is compiled with macro <code>CHECK_ENABLED=1</code>. By default, it is <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>This <code>pure</code> procedures documented herein become <code>impure</code> when the ParaMonte library is compiled with preprocessor macro <code>CHECK_ENABLED=1</code>. By default, <code>pure</code> procedures are <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Sample__mod_8f90_source.html#l00553">553</a> of file <a class="el" href="Sample__mod_8f90_source.html">Sample_mod.f90</a>.</p>
 
@@ -914,7 +914,7 @@ This subroutine has the same functionality as <a class="el" href="namespaceSampl
   </dd>
 </dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This subroutine is the same as <a class="el" href="namespaceSample__mod.html#a64b836f780040d4b71c0a63c77ea5231">mergeMeanCov</a>, with the <b>important difference</b> that only the upper triangles and diagonals of the input covariance matrices need to be given by the user: <code>CovUppA</code>, <code>CovUppB</code> This alternative implementation is 6-7 times faster, with all compiler optimization flags on. In addition, all computational coefficients are predefined in this implementation, resulting in an extra 10%-15% efficiency gain.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000068">Todo:</a></b></dt><dd>The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000069">Todo:</a></b></dt><dd>The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Nov 24, 2020, 4:19 AM, Dallas, TX </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Sample__mod_8f90_source.html#l00682">682</a> of file <a class="el" href="Sample__mod_8f90_source.html">Sample_mod.f90</a>.</p>
@@ -991,7 +991,7 @@ This subroutine has the same functionality as <a class="el" href="namespaceSampl
   </dd>
 </dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This subroutine is the same as <a class="el" href="namespaceSample__mod.html#ab6c8a951bf35c59402a30d6d17a6d193">mergeMeanCovUpp</a>, with the <b>important difference</b> that the resulting output mean and covariance matrices are written to the input arguments <code>MeanB</code>, <code>CovUppB</code>. This alternative implementation results in another extra 15%-20% efficiency gain. This result is based on the benchmarks with Intel Fortran compiler 19.4 with all compiler optimization flags on.</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000069">Todo:</a></b></dt><dd>The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000070">Todo:</a></b></dt><dd>The efficiency of this algorithm might still be improved by converting the upper triangle covariance matrix to a packed vector.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Nov 25, 2020, 1:00 AM, Dallas, TX </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Sample__mod_8f90_source.html#l00750">750</a> of file <a class="el" href="Sample__mod_8f90_source.html">Sample_mod.f90</a>.</p>
@@ -1093,7 +1093,7 @@ This subroutine has the same functionality as <a class="el" href="namespaceSampl
 <p>Return the transformed sample according to the input Cholesky factorization. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">Sample</td><td>: The contiguous array of data points of shape <code>(:,:)</code> normalized to their mean vector. By default, the shape of <code>Sample</code> is assumed to be <code>(nd,np)</code> unless <code>dim = 1</code>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Sample</td><td>: The <code>contiguous</code> array of data points of shape <code>(:,:)</code> normalized to their mean vector. By default, the shape of <code>Sample</code> is assumed to be <code>(nd,np)</code> unless <code>dim = 1</code>. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">ChoLow</td><td>: The input lower-triangle Cholesky factorization of shape <code>(nd,nd)</code> with which the input sample must be transformed. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">ChoDia</td><td>: The input diagonal elements of the Cholesky factorization of the transformation. (<b>optional</b>, if not provided, the procedure assumes that the diagonal elements are given in <code>ChoLow</code>) </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">dim</td><td>: The dimension of the input <code>Sample</code> along which individual data exist (<b>optional</b>, default = <code>2_IK</code>). </td></tr>
@@ -1103,7 +1103,7 @@ This subroutine has the same functionality as <a class="el" href="namespaceSampl
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>TranSample</code> : The output transformed sample based on the input Cholesky factorization.</dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Amir Shahmoradi, Thursday 2:45 AM, August 19, 2021, Dallas, TX</dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>This procedure is <code>impure</code> when the library is compiled with macro <code>CHECK_ENABLED=1</code>. By default, it is <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>This <code>pure</code> procedures documented herein become <code>impure</code> when the ParaMonte library is compiled with preprocessor macro <code>CHECK_ENABLED=1</code>. By default, <code>pure</code> procedures are <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Sample__mod_8f90_source.html#l00851">851</a> of file <a class="el" href="Sample__mod_8f90_source.html">Sample_mod.f90</a>.</p>
 
@@ -1132,7 +1132,7 @@ This subroutine has the same functionality as <a class="el" href="namespaceSampl
     <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
       <ul>
         <li class="navelem"><a class="el" href="namespaceSample__mod.html">Sample_mod</a></li>
-        <li class="footer">Generated on Sun Dec 5 2021 21:40:42 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+        <li class="footer">Generated on Fri Dec 10 2021 01:04:31 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
       </ul>
     </div>
     <div style="color: #ffffff; float: none; width: 100%;">

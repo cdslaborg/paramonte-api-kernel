@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('interfaceSampleShift__mod_1_1getShifte
 <div class="textblock"><p >Return a sample of shape <code>(np)</code>, or <code>(nd,np)</code> or <code>(np,nd)</code> that is shifted by the specified input <code>Amount</code> along the (optionally) specified axis <code>dim</code>. Here, <code>nd</code> stands for the number of dimensions (data attributes) of the input <code>Sample</code> and <code>np</code> represents the number of data points in the <code>Sample</code>. If the input <code>Amount</code> is the negative of the mean of the sample, then the returned sample will have a mean of zero. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">Sample</td><td>: The contiguous array of type <code>real</code> of kind <a class="el" href="namespaceConstants__mod.html#aaf5c6c840ed0befe5a37da626c35716f">RK32</a>, <a class="el" href="namespaceConstants__mod.html#a855643f887b4c787e6542e9e7849680f">RK64</a>, or <a class="el" href="namespaceConstants__mod.html#aeef7c44b90b75aeeebdef1da504886cb">RK128</a> of shape <code>(np)</code>, <code>(nd,np)</code>, or <code>(np,nd)</code> containing the sample. On output, it is completely overwritten with the shifted sample. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">Sample</td><td>: The <code>contiguous</code> array of type <code>real</code> of kind <a class="el" href="namespaceConstants__mod.html#aaf5c6c840ed0befe5a37da626c35716f">RK32</a>, <a class="el" href="namespaceConstants__mod.html#a855643f887b4c787e6542e9e7849680f">RK64</a>, or <a class="el" href="namespaceConstants__mod.html#aeef7c44b90b75aeeebdef1da504886cb">RK128</a> of shape <code>(np)</code>, <code>(nd,np)</code>, or <code>(np,nd)</code> containing the sample. On output, it is completely overwritten with the shifted sample. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">Amount</td><td>: The input scalar or the contiguous vector of the same type and kind as <code>Sample</code> representing the amount by which the input sample must be shifted.<br  />
  If the input <code>Sample</code> is a 1D array, then <code>Amount</code> must be a scalar.<br  />
  If the input <code>Sample</code> is a 2D array, then <code>Amount</code> must be a vector of size <code>nd</code>.<br  />
@@ -144,7 +144,7 @@ $(document).ready(function(){initNavTree('interfaceSampleShift__mod_1_1getShifte
 <div class="ttc" id="ainterfaceSampleShift__mod_1_1getShifted_html"><div class="ttname"><a href="interfaceSampleShift__mod_1_1getShifted.html">SampleShift_mod::getShifted</a></div><div class="ttdoc">Return a sample of shape (np), or (nd,np) or (np,nd) that is shifted by the specified input Amount al...</div><div class="ttdef"><b>Definition:</b> <a href="SampleShift__mod_8f90_source.html#l00276">SampleShift_mod.f90:276</a></div></div>
 <div class="ttc" id="anamespaceSampleShift__mod_html"><div class="ttname"><a href="namespaceSampleShift__mod.html">SampleShift_mod</a></div><div class="ttdoc">This module contains the classes and procedures for computing various statistical properties of data ...</div><div class="ttdef"><b>Definition:</b> <a href="SampleShift__mod_8f90_source.html#l00051">SampleShift_mod.f90:51</a></div></div>
 </div><!-- fragment --></dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>This procedure is <code>impure</code> when the library is compiled with macro <code>CHECK_ENABLED=1</code>. By default, it is <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>This <code>pure</code> procedures documented herein become <code>impure</code> when the ParaMonte library is compiled with preprocessor macro <code>CHECK_ENABLED=1</code>. By default, <code>pure</code> procedures are <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds.</dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>The procedures represented by this generic interface have the same functionality as <a class="el" href="interfaceSampleShift__mod_1_1genShifted.html">genShifted</a>. However, unlike <a class="el" href="interfaceSampleShift__mod_1_1genShifted.html">genShifted</a> which are functions and return the shifted data as a new allocatable object, <a class="el" href="interfaceSampleShift__mod_1_1getShifted.html">getShifted</a> subroutines shift the input data <b>in place</b>, making it potentially more efficient and less memory-consuming than <a class="el" href="interfaceSampleShift__mod_1_1genShifted.html">genShifted</a> functions.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="interfaceSampleShift__mod_1_1genShifted.html">genShifted</a> <br  />
 </dd></dl>
@@ -265,35 +265,35 @@ $(document).ready(function(){initNavTree('interfaceSampleShift__mod_1_1getShifte
  <a class="anchor" id="output"></a><b>Example output</b> <a href="#output">⛓</a> </p><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span>Sample mean across the second dimension.</div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>original sample mean RK32 = 0.472701192 0.481758356</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> shifted sample mean RK32 = 0.298023224E-7 0.00000000</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>original sample mean RK32 = 0.624183774 0.421713948</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> shifted sample mean RK32 = -0.149011612E-7 0.149011612E-7</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>original sample mean RK64 = 0.53639302454522153 0.40310698081339352</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> shifted sample mean RK64 = 0.0000000000000000 -0.41633363423443370E-16</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>original sample mean RK64 = 0.26293365862316054 0.50619184492462110</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> shifted sample mean RK64 = 0.27755575615628914E-16 -0.27755575615628914E-16</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>original sample mean RK128 = 0.395154470766854687775686591926755221 0.747462961971959363442997939910177964</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> shifted sample mean RK128 = 0.240741243048404481631997242823115915E-34 0.481482486096808963263994485646231830E-34</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>original sample mean RK128 = 0.655203372651148254007014203121257057 0.389723858832784172847506790920776846</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> shifted sample mean RK128 = 0.240741243048404481631997242823115915E-34 -0.240741243048404481631997242823115915E-34</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>Sample mean across the first dimension.</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>original sample mean RK32 = 0.207262963 0.652048469 0.499764740 0.549843013</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> shifted sample mean RK32 = 0.00000000 -0.298023224E-7 0.00000000 0.00000000</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>original sample mean RK32 = 0.222248435 0.277716845 0.748816133 0.843014002</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> shifted sample mean RK32 = 0.00000000 0.00000000 0.298023224E-7 0.00000000</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>original sample mean RK64 = 0.87251797305551015 0.32295761064448070 0.27341532270127056 0.41010910431596870</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> shifted sample mean RK64 = -0.55511151231257827E-16 0.0000000000000000 0.0000000000000000 0.0000000000000000</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>original sample mean RK64 = 0.45884073494934186 0.75970359357495088 0.22811233605628189 0.91594342514988658E-1</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> shifted sample mean RK64 = 0.0000000000000000 0.0000000000000000 0.0000000000000000 0.0000000000000000</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>original sample mean RK128 = 0.226779061251620450750066609151540512 0.762319947883732424035072088663829295 0.492122433265479951076228956931465550 0.804013423076795276576001408927031207</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>original sample mean RK128 = 0.765317889934529740896022749487380345 0.176150825736776739772538478868599844 0.395213355399355548303216639750659821 0.753172391897202824737264119977427845</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> shifted sample mean RK128 = 0.00000000000000000000000000000000000 0.00000000000000000000000000000000000 0.00000000000000000000000000000000000 -0.481482486096808963263994485646231830E-34</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>1D sample mean.</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>original sample = 0.99615232576956847 0.74524504228588750 0.36942066165617560 0.45141205070380819</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> shifted sample = 1.9961523257695686 1.7452450422858874 1.3694206616561755 1.4514120507038082</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>original sample = 0.83842279240120399 0.25858813424980998 0.65944591739019465 0.41095194024267112</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> shifted sample = 1.8384227924012040 1.2585881342498100 1.6594459173901948 1.4109519402426711</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.html#_test000103">Test:</a></b></dt><dd>test_getShifted</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000074">Todo:</a></b></dt><dd>The functionality of this interface can be expanded in the future to include shifting of higher dimensional input <code>Sample</code> and whole <code>Sample</code> input arrays of arbitrary shape, although the latter is trivial using the Fortran array syntax.</dd></dl>
+</div><!-- fragment --><dl class="test"><dt><b><a class="el" href="test.html#_test000105">Test:</a></b></dt><dd>test_getShifted</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000075">Todo:</a></b></dt><dd>The functionality of this interface can be expanded in the future to include shifting of higher dimensional input <code>Sample</code> and whole <code>Sample</code> input arrays of arbitrary shape, although the latter is trivial using the Fortran array syntax.</dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
 <dd>
 For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
@@ -312,7 +312,7 @@ This software is distributed under the MIT-license. If you use any parts or conc
     <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
       <ul>
         <li class="navelem"><a class="el" href="namespaceSampleShift__mod.html">SampleShift_mod</a></li><li class="navelem"><a class="el" href="interfaceSampleShift__mod_1_1getShifted.html">getShifted</a></li>
-        <li class="footer">Generated on Sun Dec 5 2021 21:40:42 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+        <li class="footer">Generated on Fri Dec 10 2021 01:04:31 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
       </ul>
     </div>
     <div style="color: #ffffff; float: none; width: 100%;">

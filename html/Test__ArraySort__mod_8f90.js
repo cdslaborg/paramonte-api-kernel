@@ -2,8 +2,8 @@ var Test__ArraySort__mod_8f90 =
 [
     [ "bench", "Test__ArraySort__mod_8f90.html#a6c0c71b215d516f677316f817252eb18", null ],
     [ "sortWrapper", "Test__ArraySort__mod_8f90.html#a5daf5f24830719e0b804e15e65b75735", null ],
+    [ "test_ArraySort", "Test__ArraySort__mod_8f90.html#a6e47aab56abf023ed1b10e1270ce1d67", null ],
     [ "test_performance_1", "Test__ArraySort__mod_8f90.html#a2f18dcc9f23998b8ceec12ad3ae0184a", null ],
-    [ "test_Sort", "Test__ArraySort__mod_8f90.html#a74b45bf6a61ecb38aa78c2f06155d7c5", null ],
     [ "test_sortRecursive_1", "Test__ArraySort__mod_8f90.html#aae881af32438a81a999fadc0b2bc1dd1", null ],
     [ "DataUnsorted2_IK", "Test__ArraySort__mod_8f90.html#ac81f8c36ceb8ae25b9e6e176ff6c8e2e", null ],
     [ "DataUnsorted2_RK", "Test__ArraySort__mod_8f90.html#a37f493eb4ad5d41d69af394b99bdf291", null ],

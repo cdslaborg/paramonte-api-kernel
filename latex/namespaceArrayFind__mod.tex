@@ -2,42 +2,129 @@
 \label{namespaceArrayFind__mod}\index{ArrayFind\_mod@{ArrayFind\_mod}}
 
 
-This module contains procedures for resizing arrays of type integer, real, complex, or string.  
+This module contains procedures for finding a pattern from arrays of various types at the specified instances of occurrence of pattern.  
 
 
 \doxysubsection*{Data Types}
 \begin{DoxyCompactItemize}
 \item 
-interface \mbox{\hyperlink{interfaceArrayFind__mod_1_1genReplaced}{gen\+Replaced}}
-\begin{DoxyCompactList}\small\item\em Generate and return an {\ttfamily Array\+New} of the same type and kind as the input {\ttfamily Array}, in which the requested instances of the input {\ttfamily Pattern} have been replaced with the input {\ttfamily Replacement}. If a vector of {\ttfamily Instance} is specified, representing the specific instances of Pattern to change, then only those specific instances will be changed. \end{DoxyCompactList}\item 
-interface \mbox{\hyperlink{interfaceArrayFind__mod_1_1getReplaced}{get\+Replaced}}
-\begin{DoxyCompactList}\small\item\em Replace the requested instances of the input {\ttfamily Pattern} with the input {\ttfamily Replacement} in the allocatable input/output {\ttfamily Array}. If a vector of {\ttfamily Instance} is specified, representing the specific instances of Pattern to change, then only those specific instances will be changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Functions/\+Subroutines}
-\begin{DoxyCompactItemize}
-\item 
-pure recursive character(len=\+:) function, allocatable \mbox{\hyperlink{namespaceArrayFind__mod_af2ac3de7cd27deb95622ca9aa03d4473}{gen\+Replaced\+\_\+recurs\+\_\+alloc}} (Array, Pattern, Replacement)
-\begin{DoxyCompactList}\small\item\em Generate and return a copy of the input {\ttfamily Array} where all instances of the input {\ttfamily Pattern} in it are replaced with the input {\ttfamily Replacement}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+interface \mbox{\hyperlink{interfaceArrayFind__mod_1_1findLoc}{find\+Loc}}
+\begin{DoxyCompactList}\small\item\em Return an {\ttfamily allocatable} array containing the indices of the locations within the input array where the input {\ttfamily Pattern} exists. If an input vector of {\ttfamily Instance} is specified, containing the indices of the specific instances of {\ttfamily Pattern} that must be found, then, the indices of only those specific instances will be returned. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interfaceArrayFind__mod_1_1genLoc}{gen\+Loc}}
+\begin{DoxyCompactList}\small\item\em Generate and return an {\ttfamily allocatable} array containing the indices of the locations within the input array where the input {\ttfamily Pattern} exists. If an input vector of {\ttfamily Instance} is specified, containing the indices of the specific instances of {\ttfamily Pattern} that must be found, then, the indices of only those specific instances will be returned. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-character($\ast$), parameter \mbox{\hyperlink{namespaceArrayFind__mod_a8607f950b8ec87005772bdc65d26cd2e}{MODULE\+\_\+\+NAME}} = \char`\"{}@Array\+Find\+\_\+mod\char`\"{}
+character($\ast$, SK), parameter \mbox{\hyperlink{namespaceArrayFind__mod_af6db18246c4235f0b01bc2e8e7d08bed}{MODULE\+\_\+\+NAME}} = \char`\"{}@Array\+Find\+\_\+mod\char`\"{}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-This module contains procedures for resizing arrays of type integer, real, complex, or string. 
+This module contains procedures for finding a pattern from arrays of various types at the specified instances of occurrence of pattern. 
 
-\label{namespaceArrayReplace__mod_benchmark-genReplaced_vs_getReplaced}%
-\Hypertarget{namespaceArrayReplace__mod_benchmark-genReplaced_vs_getReplaced}%
-{\bfseries{Benchmark \+:: The runtime performance of \mbox{\hyperlink{interfaceArrayFind__mod_1_1genReplaced}{gen\+Replaced}} vs. \mbox{\hyperlink{interfaceArrayFind__mod_1_1getReplaced}{get\+Replaced}}}} \href{\#benchmark-genReplaced_vs_getReplaced}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+\begin{DoxyRefDesc}{Benchmarks}
+\item[\mbox{\hyperlink{benchmarks__benchmarks000001}{Benchmarks}}]\end{DoxyRefDesc}
+
+
+\label{namespaceArrayFind__mod_benchmark-findLoc-scalarPattern_vs_vectorPattern}%
+\Hypertarget{namespaceArrayFind__mod_benchmark-findLoc-scalarPattern_vs_vectorPattern}%
+{\bfseries{Benchmark \+:: The runtime performance of \mbox{\hyperlink{interfaceArrayFind__mod_1_1findLoc}{find\+Loc}} for scalar vs. vector input {\ttfamily Pattern} argument.}} \href{\#benchmark-findLoc-scalarPattern_vs_vectorPattern}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
 
 \begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00001}00001 \textcolor{fortran_comment}{! Test the performance of findLoc() with a vector `Pattern` vs. scalar `Pattern`.}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00002}00002 \textcolor{fortran_statement}{program} benchmark}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00004}00004     \textcolor{fortran_statement}{use }\textcolor{fortran_inrinsic_module}{iso\_fortran\_env}, \textcolor{fortran_statement}{only}:\textcolor{fortran_named_const}{ error\_unit}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00005}00005     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00006}00006     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceBench__mod}{Bench\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00008}00008     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00010}00010     \textcolor{fortran_statement}{integer}(IK)                         :: i}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00011}00011     \textcolor{fortran_statement}{integer}(IK)                         :: isize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00012}00012     \textcolor{fortran_statement}{integer}(IK)                         :: fileUnit}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00013}00013     \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ parameter}         :: NSIZE\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{8\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00014}00014     \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ parameter}         :: NBENCH\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00015}00015     \textcolor{fortran_statement}{integer}(IK)                         :: ArraySize(NSIZE)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00016}00016 \textcolor{fortran_statement}{    logical}(LK)                         :: dummy\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.               }}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00017}00017     \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ allocatable}       ::\textcolor{fortran_function}{ Index}(:)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00018}00018     \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ allocatable}       :: Array(:)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00019}00019     \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ parameter}         :: Pattern(\textcolor{fortran_numeric_literal}{1})\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00020}00020     \textcolor{fortran_statement}{type}(Bench\_type)                    :: Bench(NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00022}00022     Bench(\textcolor{fortran_numeric_literal}{1})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}scalarPattern"{}}, exec\textcolor{fortran_operator_symbols}{ = }scalarPattern , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00023}00023     Bench(\textcolor{fortran_numeric_literal}{2})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}vectorPattern"{}}, exec\textcolor{fortran_operator_symbols}{ = }vectorPattern , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00025}00025     ArraySize\textcolor{fortran_operator_symbols}{ = }[(\textcolor{fortran_numeric_literal}{ 2\_IK}\textcolor{fortran_operator_symbols}{*}\textcolor{fortran_operator_symbols}{*}isize, isize\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}, NSIZE )]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00027}00027 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00028}00028 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}scalarPattern() vs. vectorPattern()"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00029}00029 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00031}00031 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnit, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.out"{}}, status\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}replace"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00033}00033 \textcolor{fortran_statement}{        write}(fileUnit, \textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) \textcolor{fortran_string}{"{}ArraySize"{}}, (Bench(i)\textcolor{fortran_operator_symbols}{\%}name, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00035}00035         loopOverArraySize: \textcolor{fortran_keywordflow}{do} isize\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NSIZE}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00037}00037 \textcolor{fortran_statement}{            write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Benchmarking with size"{}}, ArraySize(isize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00038}00038 \textcolor{fortran_statement}{            allocate}(Array(ArraySize(isize)))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00040}00040             \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00041}00041 \textcolor{fortran_statement}{                call} Bench(i)\textcolor{fortran_operator_symbols}{\%}time(Bench(i)\textcolor{fortran_operator_symbols}{\%}Timing, minsec\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{5\_RK})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00042}00042 \textcolor{fortran_keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00044}00044 \textcolor{fortran_statement}{            deallocate}(Array)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00045}00045 \textcolor{fortran_statement}{            write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) ArraySize(isize), (Bench(i)\textcolor{fortran_operator_symbols}{\%}Timing\textcolor{fortran_operator_symbols}{\%}Stat\textcolor{fortran_operator_symbols}{\%}mean, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00047}00047 \textcolor{fortran_keywordflow}{        end do} loopOverArraySize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00048}00048 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) dummy}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00049}00049 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00051}00051 \textcolor{fortran_statement}{    close}(fileUnit)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00053}00053 \textcolor{fortran_statement}{contains}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00055}00055     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00056}00056     \textcolor{fortran_comment}{! procedure wrappers.}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00057}00057     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00059}00059 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00060}00060 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00061}00061 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00062}00062     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00064}00064 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00065}00065         Array(:)\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00066}00066     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00068}00068 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00069}00069         dummy\textcolor{fortran_operator_symbols}{ = }dummy \textcolor{fortran_operator_logical}{.and.}\textcolor{fortran_function}{ size}(Index,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}})\textcolor{fortran_operator_symbols}{ < }\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00070}00070     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00072}00072 \textcolor{fortran_statement}{    subroutine} scalarPattern()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00073}00073         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArrayFind__mod}{ArrayFind\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArrayFind__mod_1_1findLoc}{findLoc}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00074}00074 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00075}00075 \textcolor{fortran_statement}{        call}\textcolor{fortran_function}{ findLoc}(Index, Array, Pattern(\textcolor{fortran_numeric_literal}{1}))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00076}00076 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00077}00077     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00079}00079 \textcolor{fortran_statement}{    subroutine} vectorPattern()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00080}00080         \textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00081}00081             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArrayFind__mod}{ArrayFind\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArrayFind__mod_1_1findLoc}{findLoc}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00082}00082 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00083}00083 \textcolor{fortran_statement}{            call}\textcolor{fortran_function}{ findLoc}(Index, Array, Pattern)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00084}00084 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00085}00085 \textcolor{fortran_keywordflow}{        end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00086}00086     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00088}00088 \textcolor{fortran_statement}{end program }benchmark}
 
 \end{DoxyCodeInclude}
  ~\newline
- \label{namespaceArrayReplace__mod_compileb-unix-gnu-genReplaced_vs_getReplaced}%
-\Hypertarget{namespaceArrayReplace__mod_compileb-unix-gnu-genReplaced_vs_getReplaced}%
-{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compileb-unix-gnu-genReplaced_vs_getReplaced}{\texttt{ ⛓}} 
+ \label{namespaceArrayFind__mod_compileb-unix-gnu-findLoc-scalarPattern_vs_vectorPattern}%
+\Hypertarget{namespaceArrayFind__mod_compileb-unix-gnu-findLoc-scalarPattern_vs_vectorPattern}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compileb-unix-gnu-findLoc-scalarPattern_vs_vectorPattern}{\texttt{ ⛓}} 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00001}00001 \#!/bin/bash}
 \DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
@@ -45,9 +132,9 @@ This module contains procedures for resizing arrays of type integer, real, compl
 
 \end{DoxyCodeInclude}
  ~\newline
- \label{namespaceArrayReplace__mod_compileb-unix-intel-genReplaced_vs_getReplaced}%
-\Hypertarget{namespaceArrayReplace__mod_compileb-unix-intel-genReplaced_vs_getReplaced}%
-{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compileb-unix-intel-genReplaced_vs_getReplaced}{\texttt{ ⛓}} 
+ \label{namespaceArrayFind__mod_compileb-unix-intel-findLoc-scalarPattern_vs_vectorPattern}%
+\Hypertarget{namespaceArrayFind__mod_compileb-unix-intel-findLoc-scalarPattern_vs_vectorPattern}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compileb-unix-intel-findLoc-scalarPattern_vs_vectorPattern}{\texttt{ ⛓}} 
 \begin{DoxyCodeInclude}{0}
 \DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00001}00001 \#!/bin/bash}
 \DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
@@ -55,24 +142,546 @@ This module contains procedures for resizing arrays of type integer, real, compl
 
 \end{DoxyCodeInclude}
  ~\newline
- \label{namespaceArrayReplace__mod_postprocb-genReplaced_vs_getReplaced}%
-\Hypertarget{namespaceArrayReplace__mod_postprocb-genReplaced_vs_getReplaced}%
-{\bfseries{Postprocessing of the output}} \href{\#postprocb-genReplaced_vs_getReplaced}{\texttt{ ⛓}} 
+ \label{namespaceArrayFind__mod_postprocb-findLoc-scalarPattern_vs_vectorPattern}%
+\Hypertarget{namespaceArrayFind__mod_postprocb-findLoc-scalarPattern_vs_vectorPattern}%
+{\bfseries{Postprocessing of the output}} \href{\#postprocb-findLoc-scalarPattern_vs_vectorPattern}{\texttt{ ⛓}} 
 \begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00004}00004 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00005}00005 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00007}00007 fontsize = 14}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00009}00009 methods = [\textcolor{stringliteral}{"{}scalarPattern"{}}, \textcolor{stringliteral}{"{}vectorPattern"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00011}00011 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.out"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00017}00017 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00018}00018 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00020}00020 \textcolor{keywordflow}{for} method \textcolor{keywordflow}{in} methods:}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00021}00021     plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00022}00022             , df[method].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00023}00023             , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00024}00024             )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00026}00026 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00027}00027 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00028}00028 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00029}00029 ax.set\_ylabel(\textcolor{stringliteral}{"{}Runtime [ seconds ]"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00030}00030 ax.set\_title(\textcolor{stringliteral}{"{}Finding array segments with Pattern(1) (scalar) vs. Pattern(1:1) (vector).\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00031}00031 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00032}00032 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00033}00033 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00034}00034 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00035}00035 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00036}00036 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00037}00037 ax.legend   ( methods}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00038}00038            \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00039}00039            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00040}00040             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00041}00041             )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00043}00043 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00044}00044 plt.savefig(\textcolor{stringliteral}{"{}benchmark.findLoc-\/scalarPattern\_vs\_vectorPattern.runtime.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00050}00050 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00051}00051 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00053}00053 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00054}00054         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00055}00055        \textcolor{comment}{\#, linestyle = "{}-\/-\/"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00056}00056        \textcolor{comment}{\#, color = "{}black"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00057}00057         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00058}00058         )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00059}00059 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00060}00060         , df[\textcolor{stringliteral}{"{}vectorPattern"{}}].values / df[\textcolor{stringliteral}{"{}scalarPattern"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00061}00061         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00062}00062         )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00064}00064 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00065}00065 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00066}00066 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00067}00067 ax.set\_ylabel(\textcolor{stringliteral}{"{}Runtime compared to scalarPattern()"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00068}00068 ax.set\_title(\textcolor{stringliteral}{"{}Runtime Ratio: Find Pattern(1:1) / Find Pattern(1).\(\backslash\)nLower means faster. Lower than 1 means faster than scalarPattern."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00069}00069 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00070}00070 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00071}00071 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00072}00072 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00073}00073 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00074}00074 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00075}00075 ax.legend   ( [\textcolor{stringliteral}{"{}scalarPattern"{}}, \textcolor{stringliteral}{"{}vectorPattern"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00076}00076            \textcolor{comment}{\#, bbox\_to\_anchor = (1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00077}00077            \textcolor{comment}{\#, loc = "{}center left"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00078}00078             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00079}00079             )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00081}00081 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00082}00082 plt.savefig(\textcolor{stringliteral}{"{}benchmark.findLoc-\/scalarPattern\_vs\_vectorPattern.runtime.ratio.png"{}})}
 
 \end{DoxyCodeInclude}
  ~\newline
- \label{namespaceArrayReplace__mod_visb-genReplaced_vs_getReplaced}%
-\Hypertarget{namespaceArrayReplace__mod_visb-genReplaced_vs_getReplaced}%
-{\bfseries{Visualization of the benchmark output}} \href{\#visb-genReplaced_vs_getReplaced}{\texttt{ ⛓}} \DoxyHorRuler{0}
+ \label{namespaceArrayFind__mod_visb-findLoc-scalarPattern_vs_vectorPattern}%
+\Hypertarget{namespaceArrayFind__mod_visb-findLoc-scalarPattern_vs_vectorPattern}%
+{\bfseries{Visualization of the benchmark output}} \href{\#visb-findLoc-scalarPattern_vs_vectorPattern}{\texttt{ ⛓}} \DoxyHorRuler{0}
    ~\newline
- \label{namespaceArrayReplace__mod_moralb-genReplaced_vs_getReplaced}%
-\Hypertarget{namespaceArrayReplace__mod_moralb-genReplaced_vs_getReplaced}%
-{\bfseries{Benchmark moral}} \href{\#moralb-genReplaced_vs_getReplaced}{\texttt{ ⛓}} \DoxyHorRuler{0}
+ \label{namespaceArrayFind__mod_moralb-findLoc-scalarPattern_vs_vectorPattern}%
+\Hypertarget{namespaceArrayFind__mod_moralb-findLoc-scalarPattern_vs_vectorPattern}%
+{\bfseries{Benchmark moral}} \href{\#moralb-findLoc-scalarPattern_vs_vectorPattern}{\texttt{ ⛓}} \DoxyHorRuler{0}
 
 \begin{DoxyEnumerate}
-\item The procedures under the generic interface \mbox{\hyperlink{interfaceArrayFind__mod_1_1genReplaced}{gen\+Replaced}} are functions while the procedures under the generic interface \mbox{\hyperlink{interfaceArrayFind__mod_1_1getReplaced}{get\+Replaced}} are subroutines. From the benchmark results, it appears that the functional interface performs less efficiently than the subroutine interface. Note that this benchmark does not even include the cost of repeated reallcations, that is, the allocation of {\ttfamily Replaced} happen only once in all tests.
-\item Furthermore, the {\ttfamily gen\+Replaced()} implementation with a {\ttfamily reshape()} and implicit-\/loop appears to be 4-\/16 times slower than the subroutine implementation and 2-\/4 times slower than the function implementation.
+\item The procedures under the generic interface \mbox{\hyperlink{interfaceArrayFind__mod_1_1findLoc}{find\+Loc}} take both scalar and vector {\ttfamily Pattern} arguments. As evidenced by the above benchmark, when the input {\ttfamily Pattern} is vector of length {\ttfamily 1}, it is much faster, possibly {\bfseries{up to 4X}}, to pass {\ttfamily Pattern} as a scalar instead of a whole array of length {\ttfamily 1}. Note that this benchmark is likely irrelevant to finding substrings in Fortran strings.
+\end{DoxyEnumerate}
+\end{DoxyParagraph}
+
+
+\label{namespaceArrayFind__mod_benchmark-genLoc_vs_findLoc}%
+\Hypertarget{namespaceArrayFind__mod_benchmark-genLoc_vs_findLoc}%
+{\bfseries{Benchmark \+:: The runtime performance of \mbox{\hyperlink{interfaceArrayFind__mod_1_1genLoc}{gen\+Loc}} vs. \mbox{\hyperlink{interfaceArrayFind__mod_1_1findLoc}{find\+Loc}}}} \href{\#benchmark-genLoc_vs_findLoc}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00001}00001 \textcolor{fortran_comment}{! Test the performance of `genLoc()` vs. `findLoc()`.}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00002}00002 \textcolor{fortran_statement}{program} benchmark}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00004}00004     \textcolor{fortran_statement}{use }\textcolor{fortran_inrinsic_module}{iso\_fortran\_env}, \textcolor{fortran_statement}{only}:\textcolor{fortran_named_const}{ error\_unit}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00005}00005     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}, \mbox{\hyperlink{namespaceConstants__mod_af7cc6c6017142cddbb143225b0a4dc93}{SK}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00006}00006     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceBench__mod}{Bench\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00008}00008     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00010}00010     \textcolor{fortran_statement}{integer}(IK)                         :: i}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00011}00011     \textcolor{fortran_statement}{integer}(IK)                         :: isize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00012}00012     \textcolor{fortran_statement}{integer}(IK)                         :: fileUnit}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00013}00013     \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ parameter}         :: NSIZE\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}\textcolor{fortran_numeric_literal}{8\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00014}00014     \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ parameter}         :: NBENCH\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00015}00015     \textcolor{fortran_statement}{integer}(IK)                         :: ArraySize(NSIZE)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00016}00016 \textcolor{fortran_statement}{    logical}(LK)                         :: dummy\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.               }}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00017}00017     \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ allocatable}       ::\textcolor{fortran_function}{ Index}(:)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00018}00018     \textcolor{fortran_statement}{character}(:,SK) ,\textcolor{fortran_attribute}{ allocatable}       :: Array}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00019}00019     \textcolor{fortran_statement}{character}(\textcolor{fortran_numeric_literal}{1},SK)                     :: Pattern}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00020}00020     \textcolor{fortran_statement}{type}(Bench\_type)                    :: Bench(NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00022}00022     Bench(\textcolor{fortran_numeric_literal}{1})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}findLoc"{}}, exec\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceArrayFind__mod_1_1findLoc}{findLoc}} , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00023}00023     Bench(\textcolor{fortran_numeric_literal}{2})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}genLoc"{}}, exec\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceArrayFind__mod_1_1genLoc}{genLoc}} , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00025}00025     ArraySize\textcolor{fortran_operator_symbols}{ = }[(\textcolor{fortran_numeric_literal}{ 2\_IK}\textcolor{fortran_operator_symbols}{*}\textcolor{fortran_operator_symbols}{*}isize, isize\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}, NSIZE )]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00027}00027 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00028}00028 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}findLoc() vs. genLoc()"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00029}00029 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00031}00031 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnit, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.out"{}}, status\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}replace"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00033}00033 \textcolor{fortran_statement}{        write}(fileUnit, \textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) \textcolor{fortran_string}{"{}ArraySize"{}}, (Bench(i)\textcolor{fortran_operator_symbols}{\%}name, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00035}00035         loopOverArraySize: \textcolor{fortran_keywordflow}{do} isize\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NSIZE}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00037}00037 \textcolor{fortran_statement}{            write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Benchmarking with size"{}}, ArraySize(isize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00039}00039 \textcolor{fortran_statement}{            allocate}(\textcolor{fortran_statement}{character}(ArraySize(isize)) :: Array)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00040}00040             \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00041}00041 \textcolor{fortran_statement}{                call} Bench(i)\textcolor{fortran_operator_symbols}{\%}time(Bench(i)\textcolor{fortran_operator_symbols}{\%}Timing, minsec\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{5\_RK})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00042}00042 \textcolor{fortran_keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00043}00043 \textcolor{fortran_statement}{            deallocate}(Array)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00045}00045 \textcolor{fortran_statement}{            write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) ArraySize(isize), (Bench(i)\textcolor{fortran_operator_symbols}{\%}Timing\textcolor{fortran_operator_symbols}{\%}Stat\textcolor{fortran_operator_symbols}{\%}mean, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00047}00047 \textcolor{fortran_keywordflow}{        end do} loopOverArraySize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00048}00048 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) dummy}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00049}00049 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00051}00051 \textcolor{fortran_statement}{    close}(fileUnit)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00053}00053 \textcolor{fortran_statement}{contains}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00055}00055     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00056}00056     \textcolor{fortran_comment}{! procedure wrappers.}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00057}00057     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00059}00059 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00060}00060 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00061}00061 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00062}00062     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00064}00064 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00065}00065         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceString__mod}{String\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceString__mod_ab942d6d2d620999005c8b86349ee550e}{getRandAlpha}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00066}00066         \textcolor{fortran_comment}{!allocate( character(ArraySize(isize)) :: Array )}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00067}00067 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{namespaceString__mod_ab942d6d2d620999005c8b86349ee550e}{getRandAlpha}}(Pattern)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00068}00068         Array(:)\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{repeat}(Pattern,\textcolor{fortran_function}{ len}(Array))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00069}00069     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00071}00071 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00072}00072         dummy\textcolor{fortran_operator_symbols}{ = }dummy \textcolor{fortran_operator_logical}{.and.} Pattern\textcolor{fortran_operator_symbols}{ =}\textcolor{fortran_operator_symbols}{= }\textcolor{fortran_string}{"{}a"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00073}00073         \textcolor{fortran_comment}{!deallocate(Array)}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00074}00074     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00076}00076 \textcolor{fortran_statement}{    subroutine}\textcolor{fortran_function}{ findLoc}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00077}00077         \textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00078}00078             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArrayFind__mod}{ArrayFind\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArrayFind__mod_1_1findLoc}{findLoc}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00079}00079 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00080}00080 \textcolor{fortran_statement}{            call}\textcolor{fortran_function}{ findLoc}(Index, Array, Pattern)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00081}00081 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00082}00082 \textcolor{fortran_keywordflow}{        end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00083}00083     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00085}00085 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{interfaceArrayFind__mod_1_1genLoc}{genLoc}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00086}00086         \textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00087}00087             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArrayFind__mod}{ArrayFind\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArrayFind__mod_1_1genLoc}{genLoc}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00088}00088 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00089}00089             Index\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceArrayFind__mod_1_1genLoc}{genLoc}}(Array, Pattern)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00090}00090 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00091}00091 \textcolor{fortran_keywordflow}{        end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00092}00092     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00094}00094 \textcolor{fortran_statement}{end program }benchmark}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceArrayFind__mod_compileb-unix-gnu-genLoc_vs_findLoc}%
+\Hypertarget{namespaceArrayFind__mod_compileb-unix-gnu-genLoc_vs_findLoc}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compileb-unix-gnu-genLoc_vs_findLoc}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceArrayFind__mod_compileb-unix-intel-genLoc_vs_findLoc}%
+\Hypertarget{namespaceArrayFind__mod_compileb-unix-intel-genLoc_vs_findLoc}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compileb-unix-intel-genLoc_vs_findLoc}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceArrayFind__mod_postprocb-genLoc_vs_findLoc}%
+\Hypertarget{namespaceArrayFind__mod_postprocb-genLoc_vs_findLoc}%
+{\bfseries{Postprocessing of the output}} \href{\#postprocb-genLoc_vs_findLoc}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00004}00004 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00005}00005 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00007}00007 fontsize = 14}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00009}00009 methods = [\textcolor{stringliteral}{"{}findLoc"{}}, \textcolor{stringliteral}{"{}genLoc"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00011}00011 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.out"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00017}00017 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00018}00018 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00020}00020 \textcolor{keywordflow}{for} method \textcolor{keywordflow}{in} methods:}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00021}00021     plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00022}00022             , df[method].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00023}00023             , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00024}00024             )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00026}00026 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00027}00027 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00028}00028 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00029}00029 ax.set\_ylabel(\textcolor{stringliteral}{"{}Runtime [ seconds ]"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00030}00030 ax.set\_title(\textcolor{stringliteral}{"{}findLoc() vs. genLoc()\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00031}00031 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00032}00032 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00033}00033 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00034}00034 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00035}00035 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00036}00036 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00037}00037 ax.legend   ( methods}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00038}00038            \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00039}00039            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00040}00040             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00041}00041             )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00043}00043 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00044}00044 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genLoc\_vs\_findLoc.runtime.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00050}00050 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00051}00051 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00053}00053 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00054}00054         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00055}00055        \textcolor{comment}{\#, linestyle = "{}-\/-\/"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00056}00056        \textcolor{comment}{\#, color = "{}black"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00057}00057         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00058}00058         )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00059}00059 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00060}00060         , df[\textcolor{stringliteral}{"{}genLoc"{}}].values / df[\textcolor{stringliteral}{"{}findLoc"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00061}00061         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00062}00062         )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00064}00064 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00065}00065 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00066}00066 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00067}00067 ax.set\_ylabel(\textcolor{stringliteral}{"{}Runtime compared to findLoc()"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00068}00068 ax.set\_title(\textcolor{stringliteral}{"{}genLoc() / findLoc()\(\backslash\)nLower means faster. Lower than 1 means faster than findLoc()."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00069}00069 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00070}00070 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00071}00071 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00072}00072 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00073}00073 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00074}00074 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00075}00075 ax.legend   ( [\textcolor{stringliteral}{"{}findLoc"{}}, \textcolor{stringliteral}{"{}genLoc"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00076}00076            \textcolor{comment}{\#, bbox\_to\_anchor = (1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00077}00077            \textcolor{comment}{\#, loc = "{}center left"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00078}00078             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00079}00079             )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00081}00081 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00082}00082 plt.savefig(\textcolor{stringliteral}{"{}benchmark.genLoc\_vs\_findLoc.runtime.ratio.png"{}})}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceArrayFind__mod_visb-genLoc_vs_findLoc}%
+\Hypertarget{namespaceArrayFind__mod_visb-genLoc_vs_findLoc}%
+{\bfseries{Visualization of the benchmark output}} \href{\#visb-genLoc_vs_findLoc}{\texttt{ ⛓}} \DoxyHorRuler{0}
+   ~\newline
+ \label{namespaceArrayFind__mod_moralb-genLoc_vs_findLoc}%
+\Hypertarget{namespaceArrayFind__mod_moralb-genLoc_vs_findLoc}%
+{\bfseries{Benchmark moral}} \href{\#moralb-genLoc_vs_findLoc}{\texttt{ ⛓}} \DoxyHorRuler{0}
+
+\begin{DoxyEnumerate}
+\item The procedures under the generic interface \mbox{\hyperlink{interfaceArrayFind__mod_1_1genLoc}{gen\+Loc}} are functions while the procedures under the generic interface \mbox{\hyperlink{interfaceArrayFind__mod_1_1findLoc}{find\+Loc}} are subroutines. From the benchmark results, it appears that the functional interface performs slightly less efficiently than the subroutine interface when the input {\ttfamily Array} size is small. Nevertheless, the difference appears to be marginal and insignificant in most practical situations.
+\item Note that this benchmark considers the worst-\/case scenario where all elements of the input {\ttfamily Array} match the input {\ttfamily Pattern} and must be therefore indexed.
+\end{DoxyEnumerate}
+\end{DoxyParagraph}
+
+
+\label{namespaceArrayFind__mod_benchmark-findLoc-sortedPositive_vs_defaultOptions}%
+\Hypertarget{namespaceArrayFind__mod_benchmark-findLoc-sortedPositive_vs_defaultOptions}%
+{\bfseries{Benchmark \+:: The runtime performance of \mbox{\hyperlink{interfaceArrayFind__mod_1_1findLoc}{find\+Loc}} with and without {\ttfamily sorted = .true.} and {\ttfamily positive = .true.} optional input arguments.}} \href{\#benchmark-findLoc-sortedPositive_vs_defaultOptions}{\texttt{ ⛓}} \begin{DoxyParagraph}{}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00001}00001 \textcolor{fortran_comment}{! Test the performance of findLoc() with and without the optional `sorted = .true., positive = .true.` input arguments.}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00002}00002 \textcolor{fortran_statement}{program} benchmark}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00004}00004     \textcolor{fortran_statement}{use }\textcolor{fortran_inrinsic_module}{iso\_fortran\_env}, \textcolor{fortran_statement}{only}:\textcolor{fortran_named_const}{ error\_unit}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00005}00005     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceConstants__mod}{Constants\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}}, \mbox{\hyperlink{namespaceConstants__mod_a68ac316f10b57be996670bc7c0abed9d}{LK}}, \mbox{\hyperlink{namespaceConstants__mod_a2d9d57f0148a7016d900f471e5f28069}{RK}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00006}00006     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceMathRange__mod}{MathRange\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceMathRange__mod_1_1genRange}{genRange}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00007}00007     \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceBench__mod}{Bench\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00009}00009     \textcolor{fortran_statement}{implicit none}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00011}00011     \textcolor{fortran_statement}{integer}(IK)                         :: i}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00012}00012     \textcolor{fortran_statement}{integer}(IK)                         :: isize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00013}00013     \textcolor{fortran_statement}{integer}(IK)                         :: fileUnit}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00014}00014     \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ parameter}         :: NSIZE\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2}\textcolor{fortran_numeric_literal}{0\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00015}00015     \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ parameter}         :: NBENCH\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{2\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00016}00016     \textcolor{fortran_statement}{integer}(IK)                         :: ArraySize(NSIZE)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00017}00017 \textcolor{fortran_statement}{    logical}(LK)                         :: dummy\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.               }}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00018}00018     \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ allocatable}       :: Instance(:)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00019}00019     \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ allocatable}       ::\textcolor{fortran_function}{ Index}(:)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00020}00020     \textcolor{fortran_statement}{integer}(IK)     ,\textcolor{fortran_attribute}{ allocatable}       :: Array(:)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00021}00021     \textcolor{fortran_statement}{integer}(IK)                         :: pattern}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00022}00022     \textcolor{fortran_statement}{type}(Bench\_type)                    :: Bench(NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00023}00023 \textcolor{fortran_statement}{    real}(RK)                            :: unifrnd}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00025}00025     Bench(\textcolor{fortran_numeric_literal}{1})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}sortedPositive"{}}, exec\textcolor{fortran_operator_symbols}{ = }sortedPositive , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00026}00026     Bench(\textcolor{fortran_numeric_literal}{2})\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{structBench__mod_1_1Bench__type}{Bench\_type}}(name\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}defaultOptions"{}}, exec\textcolor{fortran_operator_symbols}{ = }defaultOptions , \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00028}00028     ArraySize\textcolor{fortran_operator_symbols}{ = }[(\textcolor{fortran_numeric_literal}{ 2\_IK}\textcolor{fortran_operator_symbols}{*}\textcolor{fortran_operator_symbols}{*}isize, isize\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1\_IK}, NSIZE )]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00030}00030 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00031}00031 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}sortedPositive() vs. defaultOptions()"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00032}00032 \textcolor{fortran_statement}{    write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00034}00034 \textcolor{fortran_statement}{    open}(newunit\textcolor{fortran_operator_symbols}{ = }fileUnit, file\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}main.out"{}}, status\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_string}{"{}replace"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00036}00036 \textcolor{fortran_statement}{        write}(fileUnit, \textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) \textcolor{fortran_string}{"{}ArraySize"{}}, (Bench(i)\textcolor{fortran_operator_symbols}{\%}name, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00038}00038         loopOverArraySize: \textcolor{fortran_keywordflow}{do} isize\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NSIZE}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00040}00040 \textcolor{fortran_statement}{            write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) \textcolor{fortran_string}{"{}Benchmarking with size"{}}, ArraySize(isize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00041}00041             Instance\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{interfaceMathRange__mod_1_1genRange}{genRange}}(\textcolor{fortran_numeric_literal}{1\_IK}, ArraySize(isize))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00042}00042 \textcolor{fortran_statement}{            allocate}(Array(ArraySize(isize)))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00044}00044             \textcolor{fortran_keywordflow}{do} i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00045}00045 \textcolor{fortran_statement}{                call} Bench(i)\textcolor{fortran_operator_symbols}{\%}time(Bench(i)\textcolor{fortran_operator_symbols}{\%}Timing, minsec\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{0.}\textcolor{fortran_numeric_literal}{0}\textcolor{fortran_numeric_literal}{5\_RK})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00046}00046 \textcolor{fortran_keywordflow}{            end do}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00048}00048 \textcolor{fortran_statement}{            deallocate}(Array, Instance)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00049}00049 \textcolor{fortran_statement}{            write}(fileUnit,\textcolor{fortran_string}{"{}(*(g0,:,','))"{}}) ArraySize(isize), (Bench(i)\textcolor{fortran_operator_symbols}{\%}Timing\textcolor{fortran_operator_symbols}{\%}Stat\textcolor{fortran_operator_symbols}{\%}mean, i\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_numeric_literal}{1}, NBENCH)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00051}00051 \textcolor{fortran_keywordflow}{        end do} loopOverArraySize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00052}00052 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}}) dummy}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00053}00053 \textcolor{fortran_statement}{        write}(\textcolor{fortran_operator_symbols}{*},\textcolor{fortran_string}{"{}(*(g0,:,' '))"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00055}00055 \textcolor{fortran_statement}{    close}(fileUnit)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00057}00057 \textcolor{fortran_statement}{contains}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00059}00059     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00060}00060     \textcolor{fortran_comment}{! procedure wrappers.}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00061}00061     \textcolor{fortran_comment}{!\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00063}00063 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_ab2908f8712d51ebab9dd5edd56aae02b}{getOverhead}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00064}00064 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00065}00065 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00066}00066     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00068}00068 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00069}00069 \textcolor{fortran_statement}{        call}\textcolor{fortran_subroutine}{ random\_number}(unifrnd)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00070}00070         pattern\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_function}{nint}(unifrnd,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00071}00071         Array(:)\textcolor{fortran_operator_symbols}{ = }pattern\textcolor{fortran_operator_symbols}{ + }\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00072}00072     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00074}00074 \textcolor{fortran_statement}{    subroutine} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00075}00075         dummy\textcolor{fortran_operator_symbols}{ = }dummy \textcolor{fortran_operator_logical}{.and.}\textcolor{fortran_function}{ size}(Index,\textcolor{fortran_spcifier}{ kind}\textcolor{fortran_operator_symbols}{ = }\mbox{\hyperlink{namespaceConstants__mod_a2bf4d6767c9954d3a495d10ab6b538d6}{IK}})\textcolor{fortran_operator_symbols}{ < }\textcolor{fortran_numeric_literal}{1\_IK}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00076}00076     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00078}00078 \textcolor{fortran_statement}{    subroutine} sortedPositive()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00079}00079         \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArrayFind__mod}{ArrayFind\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArrayFind__mod_1_1findLoc}{findLoc}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00080}00080 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00081}00081 \textcolor{fortran_statement}{        call}\textcolor{fortran_function}{ findLoc}(Index, Array, pattern, Instance, sorted\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.}, positive\textcolor{fortran_operator_symbols}{ = }\textcolor{fortran_named_const}{.true.})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00082}00082 \textcolor{fortran_statement}{        call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00083}00083     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00085}00085 \textcolor{fortran_statement}{    subroutine} defaultOptions()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00086}00086         \textcolor{fortran_keywordflow}{block}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00087}00087             \textcolor{fortran_statement}{use }\mbox{\hyperlink{namespaceArrayFind__mod}{ArrayFind\_mod}}, \textcolor{fortran_statement}{only}: \mbox{\hyperlink{interfaceArrayFind__mod_1_1findLoc}{findLoc}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00088}00088 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_a352710714853f6a36012afba3dc7b164}{initialize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00089}00089 \textcolor{fortran_statement}{            call}\textcolor{fortran_function}{ findLoc}(Index, Array, pattern, Instance)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00090}00090 \textcolor{fortran_statement}{            call} \mbox{\hyperlink{main_8f90_aa646a4f73f657768d771c4904325603d}{finalize}}()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00091}00091 \textcolor{fortran_keywordflow}{        end block}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00092}00092     \textcolor{fortran_statement}{end subroutine}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00094}00094 \textcolor{fortran_statement}{end program }benchmark}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceArrayFind__mod_compileb-unix-gnu-findLoc-sortedPositive_vs_defaultOptions}%
+\Hypertarget{namespaceArrayFind__mod_compileb-unix-gnu-findLoc-sortedPositive_vs_defaultOptions}%
+{\bfseries{Example Unix compile command via GNU {\ttfamily gfortran} compiler}} \href{\#compileb-unix-gnu-findLoc-sortedPositive_vs_defaultOptions}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00002}00002 gfortran -\/O3 -\/ffree-\/line-\/length-\/none -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_gnu\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceArrayFind__mod_compileb-unix-intel-findLoc-sortedPositive_vs_defaultOptions}%
+\Hypertarget{namespaceArrayFind__mod_compileb-unix-intel-findLoc-sortedPositive_vs_defaultOptions}%
+{\bfseries{Example Unix compile command via Intel {\ttfamily ifort} compiler}} \href{\#compileb-unix-intel-findLoc-sortedPositive_vs_defaultOptions}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00001}00001 \#!/bin/bash}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00002}00002 ifort -\/standard-\/semantics -\/O3 -\/Wl,-\/rpath,../../../../lib -\/I../../../../include main.f90 ../../../../lib/libparamonte\_fortran\_*\_intel\_*.so -\/o main.exe}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00003}00003 ./main.exe}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceArrayFind__mod_postprocb-findLoc-sortedPositive_vs_defaultOptions}%
+\Hypertarget{namespaceArrayFind__mod_postprocb-findLoc-sortedPositive_vs_defaultOptions}%
+{\bfseries{Postprocessing of the output}} \href{\#postprocb-findLoc-sortedPositive_vs_defaultOptions}{\texttt{ ⛓}} 
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00001}00001 \textcolor{comment}{\#!/usr/bin/env python}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00003}00003 \textcolor{keyword}{import} matplotlib.pyplot \textcolor{keyword}{as} plt}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00004}00004 \textcolor{keyword}{import} pandas \textcolor{keyword}{as} pd}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00005}00005 \textcolor{keyword}{import} numpy \textcolor{keyword}{as} np}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00007}00007 fontsize = 14}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00009}00009 methods = [\textcolor{stringliteral}{"{}sortedPositive"{}}, \textcolor{stringliteral}{"{}defaultOptions"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00011}00011 df = pd.read\_csv(\textcolor{stringliteral}{"{}main.out"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00017}00017 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00018}00018 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00020}00020 \textcolor{keywordflow}{for} method \textcolor{keywordflow}{in} methods:}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00021}00021     plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00022}00022             , df[method].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00023}00023             , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00024}00024             )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00026}00026 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00027}00027 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00028}00028 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00029}00029 ax.set\_ylabel(\textcolor{stringliteral}{"{}Runtime [ seconds ]"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00030}00030 ax.set\_title(\textcolor{stringliteral}{"{}Finding pattern with `sorted = .true., positive = .true.` vs. the default.\(\backslash\)nLower is better."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00031}00031 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00032}00032 ax.set\_yscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00033}00033 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00034}00034 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00035}00035 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00036}00036 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00037}00037 ax.legend   ( methods}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00038}00038            \textcolor{comment}{\#, loc='center left'}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00039}00039            \textcolor{comment}{\#, bbox\_to\_anchor=(1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00040}00040             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00041}00041             )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00043}00043 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00044}00044 plt.savefig(\textcolor{stringliteral}{"{}benchmark.findLoc-\/sortedPositive\_vs\_defaultOptions.runtime.png"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00050}00050 ax = plt.figure(figsize = 1.25*np.array([6.4,4.6]), dpi = 200)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00051}00051 ax = plt.subplot()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00053}00053 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00054}00054         , np.ones(len(df[\textcolor{stringliteral}{"{}ArraySize"{}}].values))}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00055}00055        \textcolor{comment}{\#, linestyle = "{}-\/-\/"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00056}00056        \textcolor{comment}{\#, color = "{}black"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00057}00057         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00058}00058         )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00059}00059 plt.plot( df[\textcolor{stringliteral}{"{}ArraySize"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00060}00060         , df[\textcolor{stringliteral}{"{}defaultOptions"{}}].values / df[\textcolor{stringliteral}{"{}sortedPositive"{}}].values}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00061}00061         , linewidth = 2}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00062}00062         )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00064}00064 plt.xticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00065}00065 plt.yticks(fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00066}00066 ax.set\_xlabel(\textcolor{stringliteral}{"{}Array Size"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00067}00067 ax.set\_ylabel(\textcolor{stringliteral}{"{}Runtime compared to sortedPositive"{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00068}00068 ax.set\_title(\textcolor{stringliteral}{"{}Runtime Ratio: Find with sortedPositive / Find with defaultOptions.\(\backslash\)nLower means faster. Lower than 1 means faster than finding with sortedPositive."{}}, fontsize = fontsize)}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00069}00069 ax.set\_xscale(\textcolor{stringliteral}{"{}log"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00070}00070 \textcolor{comment}{\#ax.set\_yscale("{}log"{})}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00071}00071 plt.minorticks\_on()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00072}00072 plt.grid(b = \textcolor{keyword}{True}, which = \textcolor{stringliteral}{"{}both"{}}, axis = \textcolor{stringliteral}{"{}both"{}}, color = \textcolor{stringliteral}{"{}0.85"{}}, linestyle = \textcolor{stringliteral}{"{}-\/"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00073}00073 ax.tick\_params(axis = \textcolor{stringliteral}{"{}y"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00074}00074 ax.tick\_params(axis = \textcolor{stringliteral}{"{}x"{}}, which = \textcolor{stringliteral}{"{}minor"{}})}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00075}00075 ax.legend   ( [\textcolor{stringliteral}{"{}sortedPositive"{}}, \textcolor{stringliteral}{"{}defaultOptions"{}}]}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00076}00076            \textcolor{comment}{\#, bbox\_to\_anchor = (1, 0.5)}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00077}00077            \textcolor{comment}{\#, loc = "{}center left"{}}}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00078}00078             , fontsize = fontsize}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00079}00079             )}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00081}00081 plt.tight\_layout()}
+\DoxyCodeLine{\Hypertarget{namespaceArrayFind__mod_l00082}00082 plt.savefig(\textcolor{stringliteral}{"{}benchmark.findLoc-\/sortedPositive\_vs\_defaultOptions.runtime.ratio.png"{}})}
+
+\end{DoxyCodeInclude}
+ ~\newline
+ \label{namespaceArrayFind__mod_visb-findLoc-sortedPositive_vs_defaultOptions}%
+\Hypertarget{namespaceArrayFind__mod_visb-findLoc-sortedPositive_vs_defaultOptions}%
+{\bfseries{Visualization of the benchmark output}} \href{\#visb-findLoc-sortedPositive_vs_defaultOptions}{\texttt{ ⛓}} \DoxyHorRuler{0}
+   ~\newline
+ \label{namespaceArrayFind__mod_moralb-findLoc-sortedPositive_vs_defaultOptions}%
+\Hypertarget{namespaceArrayFind__mod_moralb-findLoc-sortedPositive_vs_defaultOptions}%
+{\bfseries{Benchmark moral}} \href{\#moralb-findLoc-sortedPositive_vs_defaultOptions}{\texttt{ ⛓}} \DoxyHorRuler{0}
+
+\begin{DoxyEnumerate}
+\item The procedures under the generic interface \mbox{\hyperlink{interfaceArrayFind__mod_1_1findLoc}{find\+Loc}} take two optional {\ttfamily sorted} and {\ttfamily positive} input arguments when the input array of instances {\ttfamily Instance} is also specified. Setting {\ttfamily sorted = .true., positive = .true.} guarantees to the procedures that all elements of {\ttfamily Instance} are sorted in {\bfseries{ascending-\/order}} and that no negative or zero value is present in {\ttfamily Instance}. Hence, the maximum value in {\ttfamily Instance} corresponds to {\ttfamily Instance(size(\+Instance))}, saving the procedures the time to find the maximum value of the input {\ttfamily Instance}.
+\item As evidenced by the above benchmark, when {\ttfamily sorted = .true., positive = .true.} can be guaranteed by the user, the runtime performance of the procedures could possibly increase {\bfseries{2-\/3 times}} compared to when the default values have to be assumed, corresponding to the worst case scenario ({\ttfamily sorted = .false., positive = .false.}).
+\item The results of this benchmark equally hold for the functions under the generic interface \mbox{\hyperlink{interfaceArrayFind__mod_1_1genLoc}{gen\+Loc}}.
 \end{DoxyEnumerate}
 \end{DoxyParagraph}
 \begin{DoxyRefDesc}{Test}
@@ -92,69 +701,14 @@ Amir Shahmoradi, Wednesday 12\+:20 AM, October 13, 2021, Dallas, TX
 \end{DoxyAuthor}
 
 
-\doxysubsection{Function/\+Subroutine Documentation}
-\mbox{\Hypertarget{namespaceArrayFind__mod_af2ac3de7cd27deb95622ca9aa03d4473}\label{namespaceArrayFind__mod_af2ac3de7cd27deb95622ca9aa03d4473}} 
-\index{ArrayFind\_mod@{ArrayFind\_mod}!genReplaced\_recurs\_alloc@{genReplaced\_recurs\_alloc}}
-\index{genReplaced\_recurs\_alloc@{genReplaced\_recurs\_alloc}!ArrayFind\_mod@{ArrayFind\_mod}}
-\doxysubsubsection{\texorpdfstring{genReplaced\_recurs\_alloc()}{genReplaced\_recurs\_alloc()}}
-{\footnotesize\ttfamily pure recursive character(len=\+:) function, allocatable Array\+Find\+\_\+mod\+::gen\+Replaced\+\_\+recurs\+\_\+alloc (\begin{DoxyParamCaption}\item[{character(len=$\ast$)}]{Array,  }\item[{character(len=$\ast$)}]{Pattern,  }\item[{character(len=$\ast$)}]{Replacement }\end{DoxyParamCaption})}
-
-
-
-Generate and return a copy of the input {\ttfamily Array} where all instances of the input {\ttfamily Pattern} in it are replaced with the input {\ttfamily Replacement}. 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em Array} & \+: The input assumed-\/size character of default kind. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Pattern} & \+: The input assumed-\/size character of the same type and kind as the input {\ttfamily Array} representing the pattern to be searched within {\ttfamily Array}. \\
-\hline
-\mbox{\texttt{ in}}  & {\em Replacement} & \+: The input assumed-\/size character of the same type and kind as the input {\ttfamily Array} representing the replacement for instances of {\ttfamily Pattern} in {\ttfamily Array}.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-{\ttfamily Array\+New} \+: The output copy of the input {\ttfamily Array} where all instances of the input {\ttfamily Pattern} in it are replaced with the input {\ttfamily Replacement}.
-\end{DoxyReturn}
-\begin{DoxyWarning}{Warning}
-This procedure is solely provided for benchmarking purposes to compare the performance difference between a naive recursive allocation method of replacement and the optimized method implemented under the generic interfaces in \mbox{\hyperlink{interfaceArrayFind__mod_1_1genReplaced}{gen\+Replaced}} and \mbox{\hyperlink{interfaceArrayFind__mod_1_1getReplaced}{get\+Replaced}}.
-\end{DoxyWarning}
-\begin{DoxyRemark}{Remarks}
-This procedure is {\ttfamily pure}. 
-
-This procedure is {\ttfamily recursive}.
-\end{DoxyRemark}
-\begin{DoxySeeAlso}{See also}
-\mbox{\hyperlink{interfaceArrayFind__mod_1_1genReplaced}{gen\+Replaced}} ~\newline
- \mbox{\hyperlink{interfaceArrayFind__mod_1_1getReplaced}{get\+Replaced}} ~\newline
-
-\end{DoxySeeAlso}
-Test\+\_\+\+Array\+Find\+\_\+mod
-
-\begin{DoxyRemark}{Remarks}
-For details of naming abbreviations, see \mbox{\hyperlink{index_ParaMonteAbbreviationGuidlines}{this page}}. 
-
-For details of the naming conventions, see \mbox{\hyperlink{index_ParaMonteNamingConventions}{this page}}. 
-
-This software is distributed under the MIT-\/license. If you use any parts or concepts originated from this library, please acknowledge the usage by citing the \href{https://www.cdslab.org/paramonte/notes/overview/preface/\#how-to-acknowledge-the-use-of-the-paramonte-library-in-your-work}{\texttt{ {\bfseries{publications of the Para\+Monte library}}}}.~\newline
-
-\end{DoxyRemark}
-\begin{DoxyAuthor}{Author}
-Amir Shahmoradi, September 1, 2017, 12\+:00 AM, ICES, The University of Texas at Austin 
-\end{DoxyAuthor}
-
-
-Definition at line \mbox{\hyperlink{ArrayFind__mod_8f90_source_l01859}{1859}} of file \mbox{\hyperlink{ArrayFind__mod_8f90_source}{Array\+Find\+\_\+mod.\+f90}}.
-
-
-
 \doxysubsection{Variable Documentation}
-\mbox{\Hypertarget{namespaceArrayFind__mod_a8607f950b8ec87005772bdc65d26cd2e}\label{namespaceArrayFind__mod_a8607f950b8ec87005772bdc65d26cd2e}} 
+\mbox{\Hypertarget{namespaceArrayFind__mod_af6db18246c4235f0b01bc2e8e7d08bed}\label{namespaceArrayFind__mod_af6db18246c4235f0b01bc2e8e7d08bed}} 
 \index{ArrayFind\_mod@{ArrayFind\_mod}!MODULE\_NAME@{MODULE\_NAME}}
 \index{MODULE\_NAME@{MODULE\_NAME}!ArrayFind\_mod@{ArrayFind\_mod}}
 \doxysubsubsection{\texorpdfstring{MODULE\_NAME}{MODULE\_NAME}}
-{\footnotesize\ttfamily character($\ast$), parameter Array\+Find\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Array\+Find\+\_\+mod\char`\"{}}
+{\footnotesize\ttfamily character($\ast$,SK), parameter Array\+Find\+\_\+mod\+::\+MODULE\+\_\+\+NAME = \char`\"{}@Array\+Find\+\_\+mod\char`\"{}}
 
 
 
-Definition at line \mbox{\hyperlink{ArrayFind__mod_8f90_source_l00074}{74}} of file \mbox{\hyperlink{ArrayFind__mod_8f90_source}{Array\+Find\+\_\+mod.\+f90}}.
+Definition at line \mbox{\hyperlink{ArrayFind__mod_8f90_source_l00111}{111}} of file \mbox{\hyperlink{ArrayFind__mod_8f90_source}{Array\+Find\+\_\+mod.\+f90}}.
 

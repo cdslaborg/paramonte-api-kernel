@@ -12,7 +12,7 @@ Return a sample of shape {\ttfamily (np)}, or {\ttfamily (nd,np)} or {\ttfamily 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in,out}}  & {\em Sample} & \+: The contiguous array of type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} of shape {\ttfamily (np)}, {\ttfamily (nd,np)}, or {\ttfamily (np,nd)} containing the sample. On output, it is completely overwritten with the shifted sample. \\
+\mbox{\texttt{ in,out}}  & {\em Sample} & \+: The {\ttfamily contiguous} array of type {\ttfamily real} of kind \mbox{\hyperlink{namespaceConstants__mod_aaf5c6c840ed0befe5a37da626c35716f}{RK32}}, \mbox{\hyperlink{namespaceConstants__mod_a855643f887b4c787e6542e9e7849680f}{RK64}}, or \mbox{\hyperlink{namespaceConstants__mod_aeef7c44b90b75aeeebdef1da504886cb}{RK128}} of shape {\ttfamily (np)}, {\ttfamily (nd,np)}, or {\ttfamily (np,nd)} containing the sample. On output, it is completely overwritten with the shifted sample. \\
 \hline
 \mbox{\texttt{ in}}  & {\em Amount} & \+: The input scalar or the contiguous vector of the same type and kind as {\ttfamily Sample} representing the amount by which the input sample must be shifted.~\newline
  If the input {\ttfamily Sample} is a 1D array, then {\ttfamily Amount} must be a scalar.~\newline
@@ -44,7 +44,7 @@ Return a sample of shape {\ttfamily (np)}, or {\ttfamily (nd,np)} or {\ttfamily 
 
 \end{DoxyParagraph}
 \begin{DoxyWarning}{Warning}
-This procedure is {\ttfamily impure} when the library is compiled with macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, it is {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
+This {\ttfamily pure} procedures documented herein become {\ttfamily impure} when the Para\+Monte library is compiled with preprocessor macro {\ttfamily CHECK\+\_\+\+ENABLED=1}. By default, {\ttfamily pure} procedures are {\ttfamily pure} in {\ttfamily release} build and {\ttfamily impure} in {\ttfamily debug} and {\ttfamily testing} builds.
 \end{DoxyWarning}
 \begin{DoxyRemark}{Remarks}
 The procedures represented by this generic interface have the same functionality as \mbox{\hyperlink{interfaceSampleShift__mod_1_1genShifted}{gen\+Shifted}}. However, unlike \mbox{\hyperlink{interfaceSampleShift__mod_1_1genShifted}{gen\+Shifted}} which are functions and return the shifted data as a new allocatable object, \mbox{\hyperlink{interfaceSampleShift__mod_1_1getShifted}{get\+Shifted}} subroutines shift the input data {\bfseries{in place}}, making it potentially more efficient and less memory-\/consuming than \mbox{\hyperlink{interfaceSampleShift__mod_1_1genShifted}{gen\+Shifted}} functions.
@@ -188,43 +188,43 @@ The procedures represented by this generic interface have the same functionality
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00001}00001 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00002}00002 Sample mean across the second dimension.}
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00003}00003 }
-\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00004}00004 original sample mean RK32 = 0.472701192 0.481758356}
-\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00005}00005  shifted sample mean RK32 = 0.298023224E-\/7 0.00000000}
+\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00004}00004 original sample mean RK32 = 0.624183774 0.421713948}
+\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00005}00005  shifted sample mean RK32 = -\/0.149011612E-\/7 0.149011612E-\/7}
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00006}00006 }
-\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00007}00007 original sample mean RK64 = 0.53639302454522153 0.40310698081339352}
-\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00008}00008  shifted sample mean RK64 = 0.0000000000000000 -\/0.41633363423443370E-\/16}
+\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00007}00007 original sample mean RK64 = 0.26293365862316054 0.50619184492462110}
+\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00008}00008  shifted sample mean RK64 = 0.27755575615628914E-\/16 -\/0.27755575615628914E-\/16}
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00009}00009 }
-\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00010}00010 original sample mean RK128 = 0.395154470766854687775686591926755221 0.747462961971959363442997939910177964}
-\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00011}00011  shifted sample mean RK128 = 0.240741243048404481631997242823115915E-\/34 0.481482486096808963263994485646231830E-\/34}
+\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00010}00010 original sample mean RK128 = 0.655203372651148254007014203121257057 0.389723858832784172847506790920776846}
+\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00011}00011  shifted sample mean RK128 = 0.240741243048404481631997242823115915E-\/34 -\/0.240741243048404481631997242823115915E-\/34}
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00012}00012 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00013}00013 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00014}00014 Sample mean across the first dimension.}
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00015}00015 }
-\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00016}00016 original sample mean RK32 = 0.207262963 0.652048469 0.499764740 0.549843013}
-\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00017}00017  shifted sample mean RK32 = 0.00000000 -\/0.298023224E-\/7 0.00000000 0.00000000}
+\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00016}00016 original sample mean RK32 = 0.222248435 0.277716845 0.748816133 0.843014002}
+\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00017}00017  shifted sample mean RK32 = 0.00000000 0.00000000 0.298023224E-\/7 0.00000000}
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00018}00018 }
-\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00019}00019 original sample mean RK64 = 0.87251797305551015 0.32295761064448070 0.27341532270127056 0.41010910431596870}
-\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00020}00020  shifted sample mean RK64 = -\/0.55511151231257827E-\/16 0.0000000000000000 0.0000000000000000 0.0000000000000000}
+\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00019}00019 original sample mean RK64 = 0.45884073494934186 0.75970359357495088 0.22811233605628189 0.91594342514988658E-\/1}
+\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00020}00020  shifted sample mean RK64 = 0.0000000000000000 0.0000000000000000 0.0000000000000000 0.0000000000000000}
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00021}00021 }
-\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00022}00022 original sample mean RK128 = 0.226779061251620450750066609151540512 0.762319947883732424035072088663829295 0.492122433265479951076228956931465550 0.804013423076795276576001408927031207}
+\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00022}00022 original sample mean RK128 = 0.765317889934529740896022749487380345 0.176150825736776739772538478868599844 0.395213355399355548303216639750659821 0.753172391897202824737264119977427845}
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00023}00023  shifted sample mean RK128 = 0.00000000000000000000000000000000000 0.00000000000000000000000000000000000 0.00000000000000000000000000000000000 -\/0.481482486096808963263994485646231830E-\/34}
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00024}00024 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00025}00025 }
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00026}00026 1D sample mean.}
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00027}00027 }
-\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00028}00028 original sample = 0.99615232576956847 0.74524504228588750 0.36942066165617560 0.45141205070380819}
-\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00029}00029  shifted sample = 1.9961523257695686 1.7452450422858874 1.3694206616561755 1.4514120507038082}
+\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00028}00028 original sample = 0.83842279240120399 0.25858813424980998 0.65944591739019465 0.41095194024267112}
+\DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00029}00029  shifted sample = 1.8384227924012040 1.2585881342498100 1.6594459173901948 1.4109519402426711}
 \DoxyCodeLine{\Hypertarget{interfaceSampleShift__mod_1_1getShifted_l00030}00030 }
 
 \end{DoxyCodeInclude}
 
 
 \begin{DoxyRefDesc}{Test}
-\item[\mbox{\hyperlink{test__test000103}{Test}}]test\+\_\+get\+Shifted\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{test__test000105}{Test}}]test\+\_\+get\+Shifted\end{DoxyRefDesc}
 
 
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000074}{Todo}}]The functionality of this interface can be expanded in the future to include shifting of higher dimensional input {\ttfamily Sample} and whole {\ttfamily Sample} input arrays of arbitrary shape, although the latter is trivial using the Fortran array syntax.\end{DoxyRefDesc}
+\item[\mbox{\hyperlink{todo__todo000075}{Todo}}]The functionality of this interface can be expanded in the future to include shifting of higher dimensional input {\ttfamily Sample} and whole {\ttfamily Sample} input arrays of arbitrary shape, although the latter is trivial using the Fortran array syntax.\end{DoxyRefDesc}
 
 
 \begin{DoxyRemark}{Remarks}

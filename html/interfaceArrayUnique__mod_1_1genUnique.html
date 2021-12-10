@@ -120,14 +120,14 @@ $(document).ready(function(){initNavTree('interfaceArrayUnique__mod_1_1genUnique
 <div class="textblock"><p >Generate and return a vector of unique values in the input array. The uniqueness of the values can be optionally determined by the user by specifying the external input function that checks the equivalence of a pair of elements of the input <code>Array</code>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">Array</td><td>: The input contiguous array of shape <code>(:)</code> of either <br  />
+    <tr><td class="paramdir">[in]</td><td class="paramname">Array</td><td>: The input <code>contiguous</code> array of shape <code>(:)</code> of either <br  />
  &#160; type <code>integer</code> of kind <a class="el" href="namespaceConstants__mod.html#ae3573d46486b5f1a0a8d5033a9d12879">IK8</a>, <a class="el" href="namespaceConstants__mod.html#acd3c33e94d12f6e7d7c0ee79b2d6280b">IK16</a>, <a class="el" href="namespaceConstants__mod.html#ab12a86d74008f0d7f287c3564c3defd9">IK32</a>, or <a class="el" href="namespaceConstants__mod.html#ad6aaf2f477491dc84e7ebbab3b64694e">IK64</a>, or <br  />
  &#160; type <code>complex</code> of kind <a class="el" href="namespaceConstants__mod.html#ac8b456bd9511bc9a52b4a03bda4b72df">CK32</a>, <a class="el" href="namespaceConstants__mod.html#aa6ea61256fca0b20db0ec2b90755b9f3">CK64</a>, or <a class="el" href="namespaceConstants__mod.html#ad3873e1ecc5eb3cf3651f72630cae087">CK128</a>, or <br  />
  &#160; type <code>real</code> of kind <a class="el" href="namespaceConstants__mod.html#aaf5c6c840ed0befe5a37da626c35716f">RK32</a>, <a class="el" href="namespaceConstants__mod.html#a855643f887b4c787e6542e9e7849680f">RK64</a>, or <a class="el" href="namespaceConstants__mod.html#aeef7c44b90b75aeeebdef1da504886cb">RK128</a>, or <br  />
  &#160; type <code>character</code> of default kind <a class="el" href="namespaceConstants__mod.html#af7cc6c6017142cddbb143225b0a4dc93">SK</a>, or <br  />
  &#160; a scalar assumed-length <code>character</code> of default kind <a class="el" href="namespaceConstants__mod.html#af7cc6c6017142cddbb143225b0a4dc93">SK</a>, <br  />
  &#160; whose unique elements are to be returned. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">iseq</td><td>: The optional external user-specified function that takes two input scalar arguments of the same type and kind as the input <code>Array</code> and returns a scalar of type <code>logical</code> of default kind <a class="el" href="namespaceConstants__mod.html#a68ac316f10b57be996670bc7c0abed9d">LK</a> that is <code>.true.</code> if the two input elements of <code>Array</code> are equivalent (e.g., equal) according to the user-defined criterion, otherwise, it is <code>.false.</code>. This user-defined function is extremely useful where a user-defined equivalence test other than exact equality or identity is needed, for example, when the array elements are considered identical only within a given threshold or, when the case-sensitivity in character comparisons do not matter. In such cases, user can define a custom equivalence criterion within the user-defined external function <code>iseq</code> to achieve the goal. The following illustrates the generic interface of <code>iseq</code>, <div class="fragment"><div class="line"><span class="fortran_statement">function</span> iseq(element1, element2)<span class="fortran_statement"> result</span> (isEquivalent)</div>
+    <tr><td class="paramdir"></td><td class="paramname">iseq</td><td>: The <code>optional, external</code> user-specified function that takes two input scalar arguments of the same type and kind as the input <code>Array</code> and returns a scalar of type <code>logical</code> of default kind <a class="el" href="namespaceConstants__mod.html#a68ac316f10b57be996670bc7c0abed9d">LK</a> that is <code>.true.</code> if the two input elements of <code>Array</code> are equivalent (e.g., equal) according to the user-defined criterion, otherwise, it is <code>.false.</code>. This user-defined function is extremely useful where a user-defined equivalence test other than exact equality or identity is needed, for example, when the array elements are considered identical only within a given threshold or, when the case-sensitivity in character comparisons do not matter. In such cases, user can define a custom equivalence criterion within the user-defined external function <code>iseq</code> to achieve the goal. The following illustrates the generic interface of <code>iseq</code>, <div class="fragment"><div class="line"><span class="fortran_statement">function</span> iseq(element1, element2)<span class="fortran_statement"> result</span> (isEquivalent)</div>
 <div class="line">    <span class="fortran_statement">TYPE</span>(KIND)  ,<span class="fortran_attribute"> intent(in)</span>    :: element1, element2</div>
 <div class="line"><span class="fortran_statement">    logical</span>(LK)                     :: isEquivalent</div>
 <div class="line"><span class="fortran_statement">end function</span></div>
@@ -135,7 +135,7 @@ $(document).ready(function(){initNavTree('interfaceArrayUnique__mod_1_1genUnique
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><code>Unique</code> : The output allocatable array of the same type and kind as the input <code>Array</code> containing all of its unique elements.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>Unique</code> : The output <code>allocatable</code> array of the same type and kind as the input <code>Array</code> containing all of its unique elements.</dd></dl>
 <p><a class="anchor" id="interface"></a><b>Possible calling interfaces</b> <a href="#interface">⛓</a> </p><dl class="section user"><dt></dt><dd><div class="fragment"><div class="line"><span class="fortran_statement">use </span><a class="code hl_namespace" href="namespaceArrayUnique__mod.html">ArrayUnique_mod</a>, <span class="fortran_statement">only</span>: <a class="code hl_interface" href="interfaceArrayUnique__mod_1_1genUnique.html">genUnique</a></div>
 <div class="line"> </div>
 <div class="line">Unique<span class="fortran_operator_symbols"> = </span><a class="code hl_interface" href="interfaceArrayUnique__mod_1_1genUnique.html">genUnique</a>(Array)</div>
@@ -143,12 +143,12 @@ $(document).ready(function(){initNavTree('interfaceArrayUnique__mod_1_1genUnique
 <div class="ttc" id="ainterfaceArrayUnique__mod_1_1genUnique_html"><div class="ttname"><a href="interfaceArrayUnique__mod_1_1genUnique.html">ArrayUnique_mod::genUnique</a></div><div class="ttdoc">Generate and return a vector of unique values in the input array. The uniqueness of the values can be...</div><div class="ttdef"><b>Definition:</b> <a href="ArrayUnique__mod_8f90_source.html#l00208">ArrayUnique_mod.f90:208</a></div></div>
 <div class="ttc" id="anamespaceArrayUnique__mod_html"><div class="ttname"><a href="namespaceArrayUnique__mod.html">ArrayUnique_mod</a></div><div class="ttdoc">This module contains miscellaneous procedures.</div><div class="ttdef"><b>Definition:</b> <a href="ArrayUnique__mod_8f90_source.html#l00046">ArrayUnique_mod.f90:46</a></div></div>
 </div><!-- fragment --></dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>This procedure is <code>impure</code> when the library is compiled with macro <code>CHECK_ENABLED=1</code>. By default, it is <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds.</dd>
+<dl class="section warning"><dt>Warning</dt><dd>This <code>pure</code> procedures documented herein become <code>impure</code> when the ParaMonte library is compiled with preprocessor macro <code>CHECK_ENABLED=1</code>. By default, <code>pure</code> procedures are <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds.</dd>
 <dd>
-The purity of the procedure breaks when the input external procedure <code>iseq</code> is specified as input argument.</dd>
+The procedures under this generic interface are <code>impure</code> when the user-specified <code>external</code> procedure <code>iseq</code> is specified as input argument.</dd>
 <dd>
 Note that in Fortran, trailing blanks are ignored in character comparison, that is, <code>"Fortran" == "Fortran "</code> yields <code>.true.</code>.</dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd>The functions under this interface are slightly slower than the <a class="el" href="interfaceArrayUnique__mod_1_1getUnique.html">getUnique</a> subroutine implementations.</dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>The functions under this generic interface are slightly slower than the <a class="el" href="interfaceArrayUnique__mod_1_1getUnique.html">getUnique</a> subroutine implementations.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>If needed, use <a class="el" href="interfaceArraySort__mod_1_1sort.html">sort</a> to sort the output unique values (in ascending order).</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="interfaceArrayUnique__mod_1_1getUnique.html">getUnique</a><br  />
 </dd></dl>
@@ -389,8 +389,8 @@ Note that in Fortran, trailing blanks are ignored in character comparison, that 
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><a class="code hl_interface" href="interfaceArrayUnique__mod_1_1genUnique.html">genUnique</a>(string_SK, iseq<span class="fortran_operator_symbols"> = </span>isEquivalent_SK)</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="fortran_string">&quot;AB&quot;</span></div>
 </div><!-- fragment --></dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000042">Test:</a></b></dt><dd><a class="el" href="namespaceTest__ArrayUnique__mod.html">Test_ArrayUnique_mod</a></dd></dl>
-<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000011">Bug:</a></b></dt><dd>The Intel Fortran compiler Classic 2021.2.0 has a bug for the following interface definition </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000044">Test:</a></b></dt><dd><a class="el" href="namespaceTest__ArrayUnique__mod.html">Test_ArrayUnique_mod</a></dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000010">Bug:</a></b></dt><dd>The Intel Fortran compiler Classic 2021.2.0 has a bug for the following interface definition </dd></dl>
 <div class="fragment"><div class="line"><span class="fortran_comment">character(len(Array),SK)   , allocatable   :: ArrayNew(:)</span></div>
 </div><!-- fragment --><p> leading to an <b>internal compiler error</b>. For now, the remedy seems to be to redefine the interface as, </p><div class="fragment"><div class="line"><span class="fortran_comment">character(:,SK) , allocatable   :: ArrayNew(:)</span></div>
 </div><!-- fragment --><p> and changing the allocation method accordingly in the implementation to, </p><div class="fragment"><div class="line"><span class="fortran_statement">allocate</span>(<span class="fortran_statement">character</span>(<span class="fortran_function">len</span>(Array,<span class="fortran_spcifier"> kind</span><span class="fortran_operator_symbols"> = </span>IK)) :: ArrayNew(lenArrayNew))</div>
@@ -444,7 +444,7 @@ Note that in Fortran, trailing blanks are ignored in character comparison, that 
 <div class="line">    <span class="fortran_statement">character</span>(<span class="fortran_numeric_literal">2</span>),<span class="fortran_attribute"> allocatable</span> :: ArrayNew(:)</div>
 <div class="line">    ArrayNew<span class="fortran_operator_symbols"> = </span>bug(Array)</div>
 <div class="line"><span class="fortran_statement">end program </span>main</div>
-</div><!-- fragment --><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000023">Todo:</a></b></dt><dd>This generic interface can be extended to 2D input objects. <br  />
+</div><!-- fragment --><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000024">Todo:</a></b></dt><dd>This generic interface can be extended to 2D input objects. <br  />
  The internal compiler error with <code>ifort</code> and <code>gfortran</code> has to be fixed in the future versions. <br  />
 </dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
@@ -465,7 +465,7 @@ This software is distributed under the MIT-license. If you use any parts or conc
     <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
       <ul>
         <li class="navelem"><a class="el" href="namespaceArrayUnique__mod.html">ArrayUnique_mod</a></li><li class="navelem"><a class="el" href="interfaceArrayUnique__mod_1_1genUnique.html">genUnique</a></li>
-        <li class="footer">Generated on Sun Dec 5 2021 21:40:37 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+        <li class="footer">Generated on Fri Dec 10 2021 01:04:25 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
       </ul>
     </div>
     <div style="color: #ffffff; float: none; width: 100%;">

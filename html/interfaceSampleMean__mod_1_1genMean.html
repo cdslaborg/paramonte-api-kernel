@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('interfaceSampleMean__mod_1_1genMean.ht
 <div class="textblock"><p >Generate and return the (weighted) mean of the input <code>Sample</code>, optionally weighted by the input <code>Weight</code>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">Sample</td><td>: The contiguous array of <code>real</code> type of kind <a class="el" href="namespaceConstants__mod.html#aaf5c6c840ed0befe5a37da626c35716f">RK32</a>, <a class="el" href="namespaceConstants__mod.html#a855643f887b4c787e6542e9e7849680f">RK64</a>, or <a class="el" href="namespaceConstants__mod.html#aeef7c44b90b75aeeebdef1da504886cb">RK128</a> of shape <code>(np)</code>, <code>(nd,np)</code> or <code>(np,nd)</code> containing the sample, where <code>nd</code> is the number of attributes of data in the sample and <code>np</code> is the number of data points in the sample. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Sample</td><td>: The <code>contiguous</code> array of <code>real</code> type of kind <a class="el" href="namespaceConstants__mod.html#aaf5c6c840ed0befe5a37da626c35716f">RK32</a>, <a class="el" href="namespaceConstants__mod.html#a855643f887b4c787e6542e9e7849680f">RK64</a>, or <a class="el" href="namespaceConstants__mod.html#aeef7c44b90b75aeeebdef1da504886cb">RK128</a> of shape <code>(np)</code>, <code>(nd,np)</code> or <code>(np,nd)</code> containing the sample, where <code>nd</code> is the number of attributes of data in the sample and <code>np</code> is the number of data points in the sample. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">Weight</td><td>: The contiguous vector of length <code>np</code>, of either type <code>real</code> of the same kind as the input <code>Sample</code> or type <code>integer</code> of kind <a class="el" href="namespaceConstants__mod.html#ae3573d46486b5f1a0a8d5033a9d12879">IK8</a>, <a class="el" href="namespaceConstants__mod.html#acd3c33e94d12f6e7d7c0ee79b2d6280b">IK16</a>, <a class="el" href="namespaceConstants__mod.html#ab12a86d74008f0d7f287c3564c3defd9">IK32</a>, or <a class="el" href="namespaceConstants__mod.html#ad6aaf2f477491dc84e7ebbab3b64694e">IK64</a>, containing the corresponding weights of the data points in the input <code>Sample</code> (<b>optional</b>, default = a vector of ones). </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">dim</td><td>: An <code>integer</code> of default kind <a class="el" href="namespaceConstants__mod.html#a2bf4d6767c9954d3a495d10ab6b538d6">IK</a> representing the dimension (1 or 2) along which data is stored in <code>Sample</code>. For example, <code>dim = 1</code> means that <code>Sample</code> has the shape <code>(np,nd)</code>, whereas <code>dim = 2</code> implies a <code>(nd,np)</code> shape. This input argument is available only when the input <code>Sample</code> has more than one dimension.</td></tr>
   </table>
@@ -131,7 +131,7 @@ $(document).ready(function(){initNavTree('interfaceSampleMean__mod_1_1genMean.ht
  When the input <code>Sample</code> has the shape <code>(np)</code>, the output mean is a vector of length <code>nd</code>.</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>Note the default assumed shape and size of the input argument <code>Sample</code> when it is a matrix of shape <code>(:,:)</code>.</dd>
 <dd>
-This procedure is <code>impure</code> when the library is compiled with macro <code>CHECK_ENABLED=1</code>. By default, it is <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds.</dd></dl>
+This <code>pure</code> procedures documented herein become <code>impure</code> when the ParaMonte library is compiled with preprocessor macro <code>CHECK_ENABLED=1</code>. By default, <code>pure</code> procedures are <code>pure</code> in <code>release</code> build and <code>impure</code> in <code>debug</code> and <code>testing</code> builds.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>If the input sample is to be an array of type <code>integer</code>, simply convert the sample to an array of type <code>real</code> of the desired kind for the output <code>real</code> mean of the sample. There is no point in accepting an input sample of type <code>integer</code> since it will be inevitably converted to an array of type <code>real</code> within the procedure to avoid potential integer overflow. Furthermore, an <code>Sample</code> of type <code>integer</code> creates ambiguity about the <code>kind</code> of the <code>real</code>-valued returned mean by the procedure.</dd>
 <dd>
 Note that the mean of any one or two-dimensional sample can be simply computed via the Fortran intrinsic routine <code>sum()</code>: <div class="fragment"><div class="line"><span class="fortran_statement">integer</span>(IK)                 :: i</div>
@@ -239,34 +239,34 @@ The mean of a whole multidimensional array can be obtained by reshaping the arra
  <a class="anchor" id="output"></a><b>Example output</b> <a href="#output">⛓</a> <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span>Sample mean along the second dimension.</div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>sample mean  RK32 = 0.496404260 0.512927294</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>sample mean  RK64 = 0.50808365679440171 0.50413863093544486</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>sample mean RK128 = 0.496361540802188276007348810626601367 0.508364743491589898682950251178727532</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>sample mean  RK32 = 0.503466249 0.487706155</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>sample mean  RK64 = 0.49820556191670251 0.49035597654722968</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>sample mean RK128 = 0.496565356936403144891315155170391838 0.501036417879792148677417030333211045</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>Sample mean along the first dimension.</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>sample mean  RK32 = 0.592006922 0.461147368 0.654134274 0.574602127</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>sample mean  RK64 = 0.41304765004811445 0.19321009293831753 0.61761657353482757 0.97865632917444167</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>sample mean RK128 = 0.184803701174967432283582102376922763 0.522222824676781188360742251602134191 0.745054192179409089689474208714752144 0.809199647659042323980625971049072825</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>sample mean  RK32 = 0.185379982 0.298541278 0.378227770 0.200804025</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>sample mean  RK64 = 0.64044239262534508 0.47688491725858967 0.43878191668196354 0.35789387815335549</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>sample mean RK128 = 0.301067558942978541000324058911037456 0.765833970337996717353757166453472348 0.521492853827804406975229230907572594 0.991352265239352606902404129997810834</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>Sample mean of a 1D array.</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>sample mean  RK32 = 4.96404171</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>sample mean  RK64 = 5.0808365679440053</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>sample mean RK128 = 4.96361540802188276007348810626601839</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>sample mean  RK32 = 5.03466797</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>sample mean  RK64 = 4.9820556191670242</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>sample mean RK128 = 4.96565356936403144891315155170391414</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>Sample mean of a whole 3D array.</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>sample mean  RK32 = -0.590497390E+16</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>sample mean  RK32 = 0.214897946</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>sample mean  RK64 = NaN</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>sample mean RK128 = NaN</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 </div><!-- fragment --></dd></dl>
-<dl class="test"><dt><b><a class="el" href="test.html#_test000101">Test:</a></b></dt><dd><a class="el" href="namespaceTest__SampleMean__mod.html">Test_SampleMean_mod</a></dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000072">Todo:</a></b></dt><dd>The functionality of this interface can be expanded in the future to include the computation of mean of higher dimensional input <code>Sample</code> and whole <code>Sample</code> input arrays of arbitrary shape.</dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000103">Test:</a></b></dt><dd><a class="el" href="namespaceTest__SampleMean__mod.html">Test_SampleMean_mod</a></dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000073">Todo:</a></b></dt><dd>The functionality of this interface can be expanded in the future to include the computation of mean of higher dimensional input <code>Sample</code> and whole <code>Sample</code> input arrays of arbitrary shape.</dd></dl>
 <dl class="section remark"><dt>Remarks</dt><dd>For details of naming abbreviations, see <a class="el" href="index.html#ParaMonteAbbreviationGuidlines">this page</a>. </dd>
 <dd>
 For details of the naming conventions, see <a class="el" href="index.html#ParaMonteNamingConventions">this page</a>. </dd>
@@ -285,7 +285,7 @@ This software is distributed under the MIT-license. If you use any parts or conc
     <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
       <ul>
         <li class="navelem"><a class="el" href="namespaceSampleMean__mod.html">SampleMean_mod</a></li><li class="navelem"><a class="el" href="interfaceSampleMean__mod_1_1genMean.html">genMean</a></li>
-        <li class="footer">Generated on Sun Dec 5 2021 21:40:42 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
+        <li class="footer">Generated on Fri Dec 10 2021 01:04:31 for ParaMonte by <a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3 </li>
       </ul>
     </div>
     <div style="color: #ffffff; float: none; width: 100%;">
