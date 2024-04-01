@@ -26,6 +26,9 @@ For full documentation visit the
 
 </div>
 
+> **This repository is now archived permanently and will not be updated**.  
+> All ParaMonte library documentation source files are now located in the new [paramonted](https://github.com/cdslaborg/paramonted) repository.
+
 ### Instructions to regenerate the documentation  
 
 +   Install [Doxygen](https://www.doxygen.nl/download.html) on your system.  
