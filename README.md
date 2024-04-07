@@ -8,6 +8,9 @@
     The ParaMonte Kernel API Documentation
 </h1>
 
+> **This repository is now archived permanently and will not be updated**.  
+> All ParaMonte library documentation source files are now located in the new [paramonted](https://github.com/cdslaborg/paramonted) repository.
+
 This project contains the 
 <a href="https://cdslaborg.github.io/paramonte-kernel-doc/html/" target="_blank">
     Application Programming Interface documentation
@@ -25,9 +28,6 @@ For full documentation visit the
 .
 
 </div>
-
-> **This repository is now archived permanently and will not be updated**.  
-> All ParaMonte library documentation source files are now located in the new [paramonted](https://github.com/cdslaborg/paramonted) repository.
 
 ### Instructions to regenerate the documentation  
 
